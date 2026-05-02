@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endiatx — Intern Workspace</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+:root {
+  --bg:#0e0f11; --surface:#16181c; --border:#2a2d35;
+  --accent:#00e5c9; --red:#ff5e5e; --purple:#c084fc; --yellow:#ffd166; --green:#4ade80;
+  --text:#e8eaf0; --muted:#606570;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;}
+
+/* PASSWORD */
+#password-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;}
+.pw-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:20px;}
+.pw-logo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;}
+.pw-title{font-family:'Space Mono',monospace;font-size:18px;color:var(--text);text-align:center;}
+.pw-sub{font-size:13px;color:var(--muted);text-align:center;}
+.pw-dots{display:flex;gap:6px;}
+.pw-dot{width:7px;height:7px;border-radius:50%;background:var(--border);transition:background 0.25s;}
+.pw-dot.active{background:var(--accent);}
+.pw-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;padding:14px 16px;outline:none;text-align:center;letter-spacing:0.1em;transition:border-color 0.2s;}
+.pw-input:focus{border-color:var(--accent);}
+.pw-btn{width:100%;padding:14px;background:var(--accent);color:#0e0f11;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:opacity 0.15s;}
+.pw-btn:hover{opacity:0.88;}
+.pw-error{font-size:12px;color:var(--red);display:none;text-align:center;}
+
+/* APP */
+#app{display:none;flex-direction:column;min-height:100vh;padding-bottom:60px;}
+
+header{border-bottom:1px solid var(--border);padding:14px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(14,15,17,0.96);backdrop-filter:blur(10px);z-index:100;gap:12px;flex-wrap:wrap;}
+.logo{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;}
+.logo span{color:var(--muted);}
+.header-center{display:flex;align-items:center;gap:10px;}
+.date-nav-btn{background:none;border:1px solid var(--border);color:var(--text);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:13px;transition:border-color 0.2s,color 0.2s;}
+.date-nav-btn:hover{border-color:var(--accent);color:var(--accent);}
+#current-date{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;min-width:130px;text-align:center;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.legend{display:flex;gap:12px;align-items:center;}
+.legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+.legend-dot{width:7px;height:7px;border-radius:50%;}
+.hdr-btn{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);background:none;padding:6px 10px;border-radius:6px;cursor:pointer;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.hdr-btn:hover{color:var(--accent);border-color:var(--accent);}
+.hdr-btn.tv-btn{color:var(--purple);border-color:var(--purple);}
+.hdr-btn.tv-btn:hover{color:#e0b4ff;border-color:#e0b4ff;}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--border);padding:0 28px;background:var(--bg);}
+.tab{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:13px 18px;cursor:pointer;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;background:none;border-top:none;border-left:none;border-right:none;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+.container{padding:20px 28px 0;}
+
+/* SCHEDULE GRID */
+.section-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;margin-top:26px;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.grid-wrapper{overflow-x:auto;border-radius:10px;border:1px solid var(--border);background:var(--surface);}
+table{width:100%;border-collapse:collapse;min-width:900px;}
+thead th{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.08em;color:var(--muted);text-align:center;padding:9px 4px;border-bottom:1px solid var(--border);font-weight:400;}
+thead th.resource-col{text-align:left;padding-left:12px;width:145px;min-width:130px;}
+tbody tr:last-child td{border-bottom:none;}
+td{border-bottom:1px solid var(--border);border-right:1px solid var(--border);vertical-align:middle;}
+td:last-child{border-right:none;}
+.resource-name{padding:7px 8px 7px 12px;}
+.resource-name .rname{font-size:12px;font-weight:500;}
+.resource-name .rtype{font-size:10px;color:var(--muted);margin-top:1px;}
+.resource-name .req-appr{font-size:9px;color:var(--yellow);margin-top:2px;font-family:'Space Mono',monospace;}
+.resource-name .last-user{font-size:9px;color:var(--muted);margin-top:2px;font-style:italic;}
+
+.slot{height:44px;min-width:52px;cursor:pointer;position:relative;transition:background 0.1s;text-align:center;padding:3px;}
+.slot:hover{background:rgba(255,255,255,0.025);}
+.slot.available::after{content:'+';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--border);font-size:14px;opacity:0;transition:opacity 0.1s;}
+.slot.available:hover::after{opacity:1;}
+.booking-pill{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;border-radius:4px;padding:2px 4px;line-height:1.3;transition:filter 0.1s;}
+.booking-pill:hover{filter:brightness(1.15);}
+.booking-pill .bname{font-size:9px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+.booking-pill .bproj{font-size:7px;opacity:0.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
+.wl-badge{position:absolute;bottom:1px;right:1px;background:var(--yellow);color:#0e0f11;border-radius:3px;font-size:7px;font-weight:700;padding:1px 2px;font-family:'Space Mono',monospace;}
+.cleanup-needed{position:absolute;top:1px;left:1px;font-size:8px;}
+
+/* WAITLIST */
+#waitlist-panel{display:none;}
+.wl-empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:13px;}
+.wl-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.wl-card.slot-open{border-color:var(--accent);background:rgba(0,229,201,0.04);}
+.wl-rname{font-size:13px;font-weight:600;}
+.wl-details{font-size:11px;color:var(--muted);margin-top:2px;}
+.wl-person{font-size:12px;color:var(--accent);font-family:'Space Mono',monospace;}
+.open-badge{font-size:9px;font-family:'Space Mono',monospace;background:var(--accent);color:#0e0f11;border-radius:4px;padding:2px 6px;font-weight:700;margin-left:6px;}
+.wl-remove{background:none;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:5px 9px;font-size:11px;cursor:pointer;transition:color 0.2s,border-color 0.2s;}
+.wl-remove:hover{color:var(--red);border-color:var(--red);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px;width:100%;max-width:420px;transform:translateY(8px);transition:transform 0.2s;}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal h2{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;}
+.slot-info{font-size:12px;color:var(--muted);margin-bottom:18px;}
+.approval-notice{background:rgba(255,209,102,0.08);border:1px solid rgba(255,209,102,0.3);border-radius:8px;padding:10px 12px;margin-bottom:14px;font-size:11px;color:var(--yellow);line-height:1.5;}
+.cleanup-notice{background:rgba(74,222,128,0.08);border:1px solid rgba(74,222,128,0.3);border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:12px;color:var(--green);line-height:1.6;}
+.cleanup-notice strong{display:block;margin-bottom:4px;font-size:13px;}
+.field{margin-bottom:12px;}
+.field label{display:block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.field input,.field select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 11px;outline:none;transition:border-color 0.2s;}
+.field input:focus,.field select:focus{border-color:var(--accent);}
+.field select option{background:var(--surface);}
+.modal-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+.btn{flex:1;padding:10px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;transition:opacity 0.15s,transform 0.1s;}
+.btn:active{transform:scale(0.98);}
+.btn-primary{background:var(--accent);color:#0e0f11;}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--muted);}
+.btn-danger{background:var(--red);color:white;flex:0 0 auto;padding:10px 14px;}
+.btn-wl{background:none;border:1px solid var(--yellow);color:var(--yellow);}
+.btn-green{background:var(--green);color:#0e0f11;}
+.btn-claim{background:var(--yellow);color:#0e0f11;flex:0 0 auto;padding:6px 12px;font-size:11px;}
+
+/* iCAL */
+.ical-content{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);white-space:pre-wrap;word-break:break-all;max-height:160px;overflow-y:auto;margin-bottom:14px;line-height:1.6;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:9px 20px;border-radius:30px;font-size:12px;font-weight:700;z-index:2000;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* TV MODE */
+#tv-screen{display:none;position:fixed;inset:0;background:#090a0c;z-index:8000;flex-direction:column;padding:28px 36px;}
+.tv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.tv-logo{font-family:'Space Mono',monospace;font-size:16px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;}
+.tv-date{font-family:'Space Mono',monospace;font-size:14px;color:var(--muted);letter-spacing:0.1em;}
+.tv-time{font-family:'Space Mono',monospace;font-size:28px;color:var(--text);letter-spacing:0.05em;}
+.tv-exit{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);border:1px solid var(--border);background:none;padding:6px 12px;border-radius:6px;cursor:pointer;letter-spacing:0.1em;}
+.tv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;flex:1;overflow:hidden;}
+.tv-resource{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;}
+.tv-resource.tv-occupied{border-color:rgba(255,94,94,0.4);background:rgba(255,94,94,0.05);}
+.tv-resource.tv-available{border-color:rgba(0,229,201,0.3);background:rgba(0,229,201,0.03);}
+.tv-resource.tv-pending{border-color:rgba(255,209,102,0.4);background:rgba(255,209,102,0.04);}
+.tv-rname{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;color:var(--muted);text-transform:uppercase;}
+.tv-status{font-size:16px;font-weight:600;}
+.tv-who{font-size:13px;color:var(--muted);}
+.tv-time-slot{font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;}
+.tv-last{font-size:10px;color:#404550;margin-top:2px;font-style:italic;}
+
+@media(max-width:600px){header{padding:12px 16px;}.legend{display:none;}.container{padding:14px 14px 0;}.tabs{padding:0 14px;}}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD -->
+<div id="password-screen">
+  <div class="pw-card">
+    <div class="pw-logo">Endiatx</div>
+    <div class="pw-dots" id="pw-dots">
+      <div class="pw-dot"></div><div class="pw-dot"></div><div class="pw-dot"></div>
+      <div class="pw-dot"></div><div class="pw-dot"></div><div class="pw-dot"></div>
+      <div class="pw-dot"></div><div class="pw-dot"></div><div class="pw-dot"></div>
+      <div class="pw-dot"></div><div class="pw-dot"></div>
+    </div>
+    <div class="pw-title">Intern Workspace</div>
+    <div class="pw-sub">Enter your team password to access the intern workspace</div>
+    <input class="pw-input" type="password" id="pw-input" placeholder="••••••••••" autocomplete="off"/>
+    <div class="pw-error" id="pw-error">Incorrect password — try again</div>
+    <button class="pw-btn" onclick="checkPassword()">Enter Lab →</button>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <header>
+    <div class="logo">Endiatx <span>/ Intern Workspace</span></div>
+    <div class="header-center">
+      <button class="date-nav-btn" onclick="shiftDay(-1)">←</button>
+      <div id="current-date"></div>
+      <button class="date-nav-btn" onclick="shiftDay(1)">→</button>
+    </div>
+    <div class="header-right">
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Workbench</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>Laser</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>Printer</div>
+      </div>
+      <button class="hdr-btn" onclick="showIcal()">⬇ iCal</button>
+      <button class="hdr-btn tv-btn" onclick="enterTvMode()">📺 TV Display</button>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('schedule',this)">Schedule</button>
+    <button class="tab" onclick="switchTab('waitlist',this)">Waitlist <span id="wl-count"></span></button>
+  </div>
+
+  <div class="container">
+    <div id="schedule-panel"><div id="schedule-root"></div></div>
+    <div id="waitlist-panel"><div id="waitlist-root" style="padding-top:18px"></div></div>
+  </div>
+</div>
+
+<!-- TV MODE -->
+<div id="tv-screen">
+  <div class="tv-header">
+    <div class="tv-logo">Endiatx / Intern Workspace Status</div>
+    <div style="text-align:center">
+      <div class="tv-time" id="tv-clock"></div>
+      <div class="tv-date" id="tv-date-display"></div>
+    </div>
+    <button class="tv-exit" onclick="exitTvMode()">✕ Exit</button>
+  </div>
+  <div class="tv-grid" id="tv-grid"></div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal">
+    <h2 id="modal-title">Reserve Slot</h2>
+    <div class="slot-info" id="modal-info"></div>
+    <div id="approval-notice" class="approval-notice" style="display:none">⚡ This equipment requires supervisor approval. Your booking will show as <strong>pending</strong> until confirmed.</div>
+    <div id="cleanup-notice" class="cleanup-notice" style="display:none">
+      <strong>🧹 Bench Sign-Out</strong>
+      Please confirm you have cleaned up your workbench before signing out. This keeps the lab organized and everyone accountable.
+    </div>
+    <div id="booking-fields">
+      <div class="field"><label>Your Name</label><input type="text" id="input-name" placeholder="e.g. Maya" autocomplete="off"/></div>
+      <div class="field"><label>Project / Purpose</label><input type="text" id="input-project" placeholder="e.g. PCB enclosure" autocomplete="off"/></div>
+      <div class="field" id="material-field" style="display:none"><label>Material / Sample Type</label><input type="text" id="input-material" placeholder="e.g. ABS, acrylic, resin" autocomplete="off"/></div>
+      <div class="field">
+        <label>Start Time</label>
+        <select id="input-start"></select>
+      </div>
+      <div class="field">
+        <label>End Time</label>
+        <select id="input-end"></select>
+      </div>
+    </div>
+    <div class="modal-actions" id="modal-actions"></div>
+  </div>
+</div>
+
+<!-- iCAL MODAL -->
+<div class="modal-overlay" id="ical-overlay">
+  <div class="modal">
+    <h2>iCal Export</h2>
+    <div class="slot-info">Download to add today's bookings to Google Calendar, Outlook, or Apple Calendar</div>
+    <div class="ical-content" id="ical-content"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="document.getElementById('ical-overlay').classList.remove('open')">Close</button>
+      <button class="btn btn-primary" onclick="downloadIcal()">Download .ics</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── CREDENTIALS ──
+const SUPABASE_URL  = 'https://fnjxxvghoebrpeflkdty.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_dQUzquFXUV-AE34K8PtqPQ_KHt8s1Ia';
+const SITE_PASSWORD = 'Pillbot2026_';
+
+// ── TIME SLOTS (15 min intervals 8am–7pm) ──
+function buildTimeSlots() {
+  const slots = [];
+  for (let h = 8; h <= 19; h++) {
+    for (let m = 0; m < 60; m += 15) {
+      if (h === 19 && m > 0) break;
+      const ampm = h < 12 ? 'AM' : 'PM';
+      const h12 = h > 12 ? h - 12 : h === 0 ? 12 : h;
+      const mm = String(m).padStart(2,'0');
+      slots.push(`${h12}:${mm} ${ampm}`);
+    }
+  }
+  return slots;
+}
+const TIME_SLOTS = buildTimeSlots(); // 45 slots
+
+// Header slots to display (every hour)
+const HEADER_SLOTS = TIME_SLOTS.filter((_,i) => i % 4 === 0);
+
+const RESOURCES = [
+  {id:'wb-1', name:'Workbench 1', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-2', name:'Workbench 2', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-3', name:'Workbench 3', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-4', name:'Workbench 4', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-5', name:'Workbench 5', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-6', name:'Workbench 6', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-7', name:'Workbench 7', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-8', name:'Workbench 8', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-9', name:'Workbench 9', type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-10',name:'Workbench 10',type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-11',name:'Workbench 11',type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'wb-12',name:'Workbench 12',type:'Workbench', color:'#00e5c9', bg:'rgba(0,229,201,0.13)', approval:false},
+  {id:'lc-1', name:'Laser Cutter 1',type:'Laser Cutter',color:'#c084fc',bg:'rgba(192,132,252,0.13)',approval:true},
+  {id:'lc-2', name:'Laser Cutter 2',type:'Laser Cutter',color:'#c084fc',bg:'rgba(192,132,252,0.13)',approval:true},
+  {id:'pr-1', name:'Printer 1',type:'3D Printer',color:'#ff5e5e',bg:'rgba(255,94,94,0.13)',approval:false},
+  {id:'pr-2', name:'Printer 2',type:'3D Printer',color:'#ff5e5e',bg:'rgba(255,94,94,0.13)',approval:false},
+  {id:'pr-3', name:'Printer 3',type:'3D Printer',color:'#ff5e5e',bg:'rgba(255,94,94,0.13)',approval:false},
+  {id:'pr-4', name:'Printer 4',type:'3D Printer',color:'#ff5e5e',bg:'rgba(255,94,94,0.13)',approval:false},
+];
+
+const isConfigured = SUPABASE_URL !== 'YOUR_SUPABASE_URL';
+const sb = isConfigured ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON) : null;
+
+// bookings[dateKey][resourceId] = [{id, name, project, material, startIdx, endIdx, status, cleanedUp, lastUser}]
+let bookings = {};
+let waitlist = [];
+let lastUsers = {}; // lastUsers[resourceId] = name
+let currentDate = new Date();
+let pendingSlot = null; // {date, resourceId, startIdx}
+let cancelTarget = null;
+
+// ── PASSWORD ──
+function checkPassword() {
+  const val = document.getElementById('pw-input').value;
+  if (val === SITE_PASSWORD) {
+    sessionStorage.setItem('endiatx-auth','1');
+    document.getElementById('password-screen').style.display='none';
+    document.getElementById('app').style.display='flex';
+    loadAll();
+  } else if (val.length >= SITE_PASSWORD.length || val.length >= 6) {
+    document.getElementById('pw-error').style.display='block';
+    document.getElementById('pw-input').style.borderColor='#ff5e5e';
+    setTimeout(()=>{
+      document.getElementById('pw-error').style.display='none';
+      document.getElementById('pw-input').style.borderColor='';
+      document.getElementById('pw-input').value='';
+      updateDots('');
+    },1400);
+  }
+}
+function updateDots(val) {
+  document.querySelectorAll('.pw-dot').forEach((d,i)=>d.classList.toggle('active',i<val.length));
+}
+document.getElementById('pw-input').addEventListener('input',e=>updateDots(e.target.value));
+document.getElementById('pw-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPassword();});
+
+// ── DATE ──
+function dateKey(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function formatDate(d) { return d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'}); }
+function shiftDay(n) { currentDate.setDate(currentDate.getDate()+n); loadAll(); }
+
+// ── LOAD ──
+async function loadAll() { await loadDay(); await loadWaitlist(); }
+
+async function loadDay() {
+  const key = dateKey(currentDate);
+  document.getElementById('current-date').textContent = formatDate(currentDate);
+  setLoading(true);
+
+  if (!isConfigured) {
+    const stored = JSON.parse(localStorage.getItem('endiatx-v2')||'{}');
+    bookings = stored.bookings||{};
+    lastUsers = stored.lastUsers||{};
+    setLoading(false); render(); return;
+  }
+
+  const {data,error} = await sb.from('bookings2').select('*').eq('date',key);
+  if (error) { showToast('Error loading ✗'); setLoading(false); return; }
+
+  bookings[key]={};
+  for (const row of data) {
+    if (!bookings[key][row.resource_id]) bookings[key][row.resource_id]=[];
+    bookings[key][row.resource_id].push({
+      id:row.id, name:row.intern_name, project:row.project||'',
+      material:row.material||'', startIdx:row.start_idx, endIdx:row.end_idx,
+      status:row.status||'confirmed', cleanedUp:row.cleaned_up||false
+    });
+  }
+
+  // Load last users
+  const {data:luData} = await sb.from('last_users').select('*');
+  if (luData) luData.forEach(r=>{ lastUsers[r.resource_id]=r.intern_name; });
+
+  setLoading(false); render();
+}
+
+async function loadWaitlist() {
+  if (!isConfigured) {
+    waitlist = JSON.parse(localStorage.getItem('endiatx-waitlist')||'[]');
+    renderWaitlist(); return;
+  }
+  const {data,error} = await sb.from('waitlist').select('*').order('created_at',{ascending:true});
+  if (!error&&data) { waitlist=data; renderWaitlist(); }
+}
+
+// ── CRUD ──
+async function createBooking(date,resourceId,name,project,material,startIdx,endIdx,status) {
+  const booking = {name,project:project||'',material:material||'',startIdx,endIdx,status,cleanedUp:false};
+
+  if (!isConfigured) {
+    if (!bookings[date]) bookings[date]={};
+    if (!bookings[date][resourceId]) bookings[date][resourceId]=[];
+    bookings[date][resourceId].push({...booking, id:Date.now().toString()});
+    saveLocal(); return true;
+  }
+
+  const {data,error} = await sb.from('bookings2').insert({
+    date, resource_id:resourceId, intern_name:name,
+    project:project||null, material:material||null,
+    start_idx:startIdx, end_idx:endIdx,
+    status, cleaned_up:false
+  }).select().single();
+
+  if (error) { showToast(error.code==='23505'?'Conflict — slot taken!':'Error saving ✗'); return false; }
+  if (!bookings[date]) bookings[date]={};
+  if (!bookings[date][resourceId]) bookings[date][resourceId]=[];
+  bookings[date][resourceId].push({...booking, id:data.id});
+  return true;
+}
+
+async function signOutBooking(date,resourceId,bookingId,cleanedUp) {
+  if (!isConfigured) {
+    const list = bookings[date]?.[resourceId]||[];
+    const b = list.find(x=>x.id===bookingId);
+    if (!b) return false;
+    lastUsers[resourceId] = b.name;
+    bookings[date][resourceId] = list.filter(x=>x.id!==bookingId);
+    saveLocal(); return true;
+  }
+  const b = (bookings[date]?.[resourceId]||[]).find(x=>x.id===bookingId);
+  if (!b) return false;
+  // Update last_user
+  await sb.from('last_users').upsert({resource_id:resourceId, intern_name:b.name},{onConflict:'resource_id'});
+  lastUsers[resourceId] = b.name;
+  const {error} = await sb.from('bookings2').delete().eq('id',bookingId);
+  if (error) { showToast('Error signing out ✗'); return false; }
+  bookings[date][resourceId] = (bookings[date][resourceId]||[]).filter(x=>x.id!==bookingId);
+  return true;
+}
+
+async function cancelBooking(date,resourceId,bookingId) {
+  if (!isConfigured) {
+    bookings[date][resourceId] = (bookings[date][resourceId]||[]).filter(x=>x.id!==bookingId);
+    saveLocal(); return true;
+  }
+  const {error} = await sb.from('bookings2').delete().eq('id',bookingId);
+  if (error) { showToast('Error cancelling ✗'); return false; }
+  bookings[date][resourceId] = (bookings[date][resourceId]||[]).filter(x=>x.id!==bookingId);
+  return true;
+}
+
+async function addToWaitlist(date,resourceId,startIdx,endIdx,name,project) {
+  if (!isConfigured) {
+    const wl = JSON.parse(localStorage.getItem('endiatx-waitlist')||'[]');
+    wl.push({id:Date.now().toString(),date,resource_id:resourceId,start_idx:startIdx,end_idx:endIdx,intern_name:name,project:project||''});
+    localStorage.setItem('endiatx-waitlist',JSON.stringify(wl));
+    await loadWaitlist(); return true;
+  }
+  const {error} = await sb.from('waitlist').insert({date,resource_id:resourceId,start_idx:startIdx,end_idx:endIdx,intern_name:name,project:project||''});
+  if (error) { showToast('Error joining waitlist ✗'); return false; }
+  await loadWaitlist(); return true;
+}
+
+async function removeFromWaitlist(id) {
+  if (!isConfigured) {
+    const wl = JSON.parse(localStorage.getItem('endiatx-waitlist')||'[]');
+    localStorage.setItem('endiatx-waitlist',JSON.stringify(wl.filter(e=>String(e.id)!==String(id))));
+    await loadWaitlist(); return;
+  }
+  await sb.from('waitlist').delete().eq('id',id);
+  await loadWaitlist();
+}
+
+function saveLocal() {
+  localStorage.setItem('endiatx-v2',JSON.stringify({bookings,lastUsers}));
+}
+
+// ── RENDER SCHEDULE ──
+function setLoading(on) {
+  const el=document.getElementById('schedule-root');
+  el.style.opacity=on?'0.4':'1'; el.style.pointerEvents=on?'none':'';
+}
+
+function getBookingForSlot(date,resourceId,slotIdx) {
+  return (bookings[date]?.[resourceId]||[]).find(b=>slotIdx>=b.startIdx&&slotIdx<b.endIdx)||null;
+}
+
+function isSlotStart(date,resourceId,slotIdx) {
+  return (bookings[date]?.[resourceId]||[]).some(b=>b.startIdx===slotIdx);
+}
+
+function render() {
+  const key = dateKey(currentDate);
+  const sections = [
+    ['Workbenches',   RESOURCES.filter(r=>r.type==='Workbench')],
+    ['Laser Cutters', RESOURCES.filter(r=>r.type==='Laser Cutter')],
+    ['3D Printers',   RESOURCES.filter(r=>r.type==='3D Printer')],
+  ];
+  document.getElementById('schedule-root').innerHTML = sections.map(([l,r])=>renderSection(l,r,key)).join('');
+}
+
+function renderSection(label,resources,key) {
+  // Show hour headers only (every 4th slot = 1hr)
+  const headers = TIME_SLOTS.map((t,i)=>
+    i%4===0 ? `<th colspan="4">${t}</th>` : ''
+  ).filter(Boolean).join('');
+
+  const rows = resources.map(r => {
+    const resourceBookings = bookings[key]?.[r.id]||[];
+    const lastUser = lastUsers[r.id];
+    let slotIdx = 0;
+    let cells = '';
+
+    while (slotIdx < TIME_SLOTS.length) {
+      const booking = getBookingForSlot(key, r.id, slotIdx);
+      if (booking && booking.startIdx === slotIdx) {
+        const span = booking.endIdx - booking.startIdx;
+        const pending = booking.status==='pending';
+        const bg = pending?'rgba(255,209,102,0.12)':r.bg;
+        const col = pending?'#ffd166':r.color;
+        const wlCount = waitlist.filter(w=>w.date===key&&w.resource_id===r.id).length;
+        cells += `<td class="slot booked" colspan="${span}" onclick="openView('${key}','${r.id}','${booking.id}')" style="cursor:pointer">
+          <div class="booking-pill" style="background:${bg};color:${col}">
+            <span class="bname">${escHtml(booking.name)}</span>
+            <span class="bproj">${escHtml(booking.project||'')}</span>
+            <span style="font-size:7px;opacity:0.6">${TIME_SLOTS[booking.startIdx]}–${TIME_SLOTS[booking.endIdx]||'End'}</span>
+            ${pending?`<span style="font-size:7px">⏳</span>`:''}
+          </div>
+          ${wlCount?`<div class="wl-badge">+${wlCount}</div>`:''}
+        </td>`;
+        slotIdx += span;
+      } else if (booking) {
+        // Part of a multi-slot booking already rendered
+        slotIdx++;
+      } else {
+        cells += `<td class="slot available" onclick="openBook('${key}','${r.id}',${slotIdx})"></td>`;
+        slotIdx++;
+      }
+    }
+
+    return `<tr>
+      <td><div class="resource-name">
+        <div class="rname">${r.name}</div>
+        <div class="rtype">${r.type}</div>
+        ${r.approval?`<div class="req-appr">⚡ approval req'd</div>`:''}
+        ${lastUser?`<div class="last-user">Last: ${escHtml(lastUser)}</div>`:''}
+      </div></td>
+      ${cells}
+    </tr>`;
+  }).join('');
+
+  return `<div class="section-label">${label}</div>
+    <div class="grid-wrapper"><table>
+      <thead><tr><th class="resource-col">Resource</th>${headers}</tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>`;
+}
+
+// ── WAITLIST ──
+function renderWaitlist() {
+  const count = waitlist.length;
+  document.getElementById('wl-count').textContent=count?`(${count})`:'';
+  const key = dateKey(currentDate);
+  const root = document.getElementById('waitlist-root');
+  if (!count) {
+    root.innerHTML=`<div class="wl-empty">No one on the waitlist.<br><span style="font-size:11px;display:block;margin-top:6px">When reserving a booked slot, interns can join the waitlist and get priority when it opens up.</span></div>`;
+    return;
+  }
+  root.innerHTML = waitlist.map(w=>{
+    const res = RESOURCES.find(r=>r.id===w.resource_id);
+    const resourceBookings = bookings[w.date]?.[w.resource_id]||[];
+    const overlapping = resourceBookings.some(b=>
+      !(b.endIdx<=w.start_idx||b.startIdx>=w.end_idx)
+    );
+    const slotOpen = !overlapping;
+    const isToday = w.date===key;
+    const startLabel = TIME_SLOTS[w.start_idx]||'';
+    const endLabel = TIME_SLOTS[w.end_idx]||'';
+    return `<div class="wl-card ${slotOpen&&isToday?'slot-open':''}">
+      <div>
+        <div class="wl-rname">${res?.name||w.resource_id}${slotOpen&&isToday?`<span class="open-badge">Open!</span>`:''}</div>
+        <div class="wl-details">${w.date} · ${startLabel}–${endLabel}${w.project?' · '+escHtml(w.project):''}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="wl-person">${escHtml(w.intern_name)}</div>
+        ${slotOpen&&isToday?`<button class="btn btn-claim" onclick="claimFromWL('${w.id}','${w.date}','${w.resource_id}',${w.start_idx},${w.end_idx},'${escHtml(w.intern_name)}','${escHtml(w.project||'')}')">Claim →</button>`:''}
+        <button class="wl-remove" onclick="removeFromWaitlist('${w.id}')">✕</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function claimFromWL(wlId,date,resourceId,startIdx,endIdx,name,project) {
+  const res = RESOURCES.find(r=>r.id===resourceId);
+  setLoading(true);
+  const ok = await createBooking(date,resourceId,name,project,'',startIdx,endIdx,res?.approval?'pending':'confirmed');
+  if (ok) { await removeFromWaitlist(wlId); render(); showToast(`${name} claimed the slot ✓`); }
+  setLoading(false);
+}
+
+// ── TIME SELECT HELPERS ──
+function populateTimeSelects(startSelectId, endSelectId, defaultStartIdx) {
+  const startSel = document.getElementById(startSelectId);
+  const endSel = document.getElementById(endSelectId);
+  startSel.innerHTML = TIME_SLOTS.map((t,i)=>`<option value="${i}" ${i===defaultStartIdx?'selected':''}>${t}</option>`).join('');
+  updateEndTimes(startSelectId, endSelectId);
+  startSel.addEventListener('change',()=>updateEndTimes(startSelectId,endSelectId));
+}
+
+function updateEndTimes(startSelectId, endSelectId) {
+  const startIdx = parseInt(document.getElementById(startSelectId).value);
+  const endSel = document.getElementById(endSelectId);
+  const prevEnd = parseInt(endSel.value)||startIdx+4;
+  endSel.innerHTML = TIME_SLOTS.slice(startIdx+1).map((t,i)=>{
+    const idx = startIdx+1+i;
+    return `<option value="${idx}" ${idx===prevEnd?'selected':''}>${t}</option>`;
+  }).join('');
+}
+
+// ── MODALS ──
+function openBook(date,resourceId,startSlotIdx) {
+  pendingSlot={date,resourceId,startIdx:startSlotIdx}; cancelTarget=null;
+  const res = RESOURCES.find(r=>r.id===resourceId);
+  document.getElementById('modal-title').textContent='Reserve';
+  document.getElementById('modal-info').textContent=`${res?.name||resourceId} · ${TIME_SLOTS[startSlotIdx]}`;
+  document.getElementById('approval-notice').style.display=res?.approval?'block':'none';
+  document.getElementById('cleanup-notice').style.display='none';
+  document.getElementById('booking-fields').style.display='block';
+  document.getElementById('material-field').style.display=res?.type!=='Workbench'?'flex':'none';
+  document.getElementById('input-name').value='';
+  document.getElementById('input-project').value='';
+  document.getElementById('input-material').value='';
+  populateTimeSelects('input-start','input-end',startSlotIdx);
+  document.getElementById('modal-actions').innerHTML=`
+    <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+    <button class="btn btn-wl" onclick="joinWaitlist()">+ Waitlist</button>
+    <button class="btn btn-primary" onclick="confirmBooking()">Reserve</button>`;
+  document.getElementById('modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('input-name').focus(),200);
+}
+
+function openView(date,resourceId,bookingId) {
+  const list = bookings[date]?.[resourceId]||[];
+  const booking = list.find(b=>b.id===bookingId);
+  if (!booking) return;
+  cancelTarget={date,resourceId,bookingId}; pendingSlot=null;
+  const res = RESOURCES.find(r=>r.id===resourceId);
+  const wlCount = waitlist.filter(w=>w.date===date&&w.resource_id===resourceId).length;
+
+  document.getElementById('modal-title').textContent='Reservation';
+  document.getElementById('modal-info').textContent=`${res?.name} · ${TIME_SLOTS[booking.startIdx]} – ${TIME_SLOTS[booking.endIdx]||'End'}`;
+  document.getElementById('approval-notice').style.display='none';
+  document.getElementById('cleanup-notice').style.display='none';
+  document.getElementById('booking-fields').style.display='none';
+  document.getElementById('modal-actions').innerHTML=`
+    <button class="btn btn-ghost" onclick="closeModal()">Close</button>
+    ${wlCount?`<span style="font-size:11px;color:var(--yellow);align-self:center">+${wlCount} waiting</span>`:''}
+    <button class="btn btn-green" onclick="openSignOut('${date}','${resourceId}','${bookingId}')">🧹 Sign Out</button>
+    <button class="btn btn-danger" onclick="confirmCancel()">Cancel</button>`;
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function openSignOut(date,resourceId,bookingId) {
+  cancelTarget={date,resourceId,bookingId};
+  const list = bookings[date]?.[resourceId]||[];
+  const booking = list.find(b=>b.id===bookingId);
+  const res = RESOURCES.find(r=>r.id===resourceId);
+
+  document.getElementById('modal-title').textContent='Sign Out';
+  document.getElementById('modal-info').textContent=`${res?.name} — ${booking?.name||''}`;
+  document.getElementById('approval-notice').style.display='none';
+  document.getElementById('cleanup-notice').style.display='block';
+  document.getElementById('booking-fields').style.display='none';
+  document.getElementById('modal-actions').innerHTML=`
+    <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+    <button class="btn btn-green" onclick="confirmSignOut(true)">✓ Cleaned Up & Sign Out</button>`;
+}
+
+async function confirmSignOut(cleanedUp) {
+  const {date,resourceId,bookingId} = cancelTarget;
+  closeModal(); setLoading(true);
+  const ok = await signOutBooking(date,resourceId,bookingId,cleanedUp);
+  setLoading(false);
+  if (ok) { render(); showToast('Signed out — thanks for cleaning up! 🧹'); await loadWaitlist(); }
+}
+
+async function confirmCancel() {
+  const {date,resourceId,bookingId} = cancelTarget;
+  closeModal(); setLoading(true);
+  const ok = await cancelBooking(date,resourceId,bookingId);
+  setLoading(false);
+  if (ok) { render(); showToast('Booking cancelled'); await loadWaitlist(); }
+}
+
+async function joinWaitlist() {
+  const name = document.getElementById('input-name').value.trim();
+  if (!name) { highlightErr('input-name'); return; }
+  const project = document.getElementById('input-project').value.trim();
+  const startIdx = parseInt(document.getElementById('input-start').value);
+  const endIdx = parseInt(document.getElementById('input-end').value);
+  const {date,resourceId} = pendingSlot;
+  closeModal();
+  const ok = await addToWaitlist(date,resourceId,startIdx,endIdx,name,project);
+  if (ok) { render(); showToast(`${name} added to waitlist ✓`); }
+}
+
+async function confirmBooking() {
+  const name = document.getElementById('input-name').value.trim();
+  if (!name) { highlightErr('input-name'); return; }
+  const project  = document.getElementById('input-project').value.trim();
+  const material = document.getElementById('input-material').value.trim();
+  const startIdx = parseInt(document.getElementById('input-start').value);
+  const endIdx   = parseInt(document.getElementById('input-end').value);
+  if (endIdx<=startIdx) { showToast('End time must be after start time'); return; }
+  const {date,resourceId} = pendingSlot;
+  const res = RESOURCES.find(r=>r.id===resourceId);
+
+  // Check overlap
+  const existing = bookings[date]?.[resourceId]||[];
+  const overlap = existing.some(b=>!(endIdx<=b.startIdx||startIdx>=b.endIdx));
+  if (overlap) { showToast('Time overlaps an existing booking'); return; }
+
+  const status = res?.approval?'pending':'confirmed';
+  closeModal(); setLoading(true);
+  const ok = await createBooking(date,resourceId,name,project,material,startIdx,endIdx,status);
+  setLoading(false);
+  if (ok) { render(); showToast(status==='pending'?'Booked — awaiting approval ⏳':`Reserved for ${name} ✓`); }
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('ical-overlay').classList.remove('open');
+}
+
+function switchTab(tab,btn) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('schedule-panel').style.display=tab==='schedule'?'block':'none';
+  document.getElementById('waitlist-panel').style.display=tab==='waitlist'?'block':'none';
+}
+
+// ── TV MODE ──
+let tvInterval = null;
+
+function enterTvMode() {
+  document.getElementById('tv-screen').style.display='flex';
+  renderTv();
+  tvInterval = setInterval(()=>{ updateTvClock(); renderTv(); }, 30000);
+  updateTvClock();
+}
+
+function exitTvMode() {
+  document.getElementById('tv-screen').style.display='none';
+  clearInterval(tvInterval);
+}
+
+function updateTvClock() {
+  const now = new Date();
+  document.getElementById('tv-clock').textContent = now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('tv-date-display').textContent = now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+}
+
+function renderTv() {
+  const key = dateKey(currentDate);
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMin = now.getMinutes();
+  const currentSlot = Math.max(0, (currentHour - 8) * 4 + Math.floor(currentMin / 15));
+
+  const wbs = RESOURCES.filter(r=>r.type==='Workbench');
+  const grid = document.getElementById('tv-grid');
+
+  grid.innerHTML = wbs.map(r=>{
+    const list = bookings[key]?.[r.id]||[];
+    const currentBooking = list.find(b=>currentSlot>=b.startIdx&&currentSlot<b.endIdx);
+    const nextBooking = list.filter(b=>b.startIdx>currentSlot).sort((a,b)=>a.startIdx-b.startIdx)[0];
+    const lastUser = lastUsers[r.id];
+
+    let cls = 'tv-available';
+    let statusHtml = `<div class="tv-status" style="color:var(--accent)">Available</div>`;
+    let whoHtml = '';
+    let timeHtml = '';
+
+    if (currentBooking) {
+      cls = currentBooking.status==='pending'?'tv-pending':'tv-occupied';
+      const col = currentBooking.status==='pending'?'var(--yellow)':'var(--red)';
+      statusHtml = `<div class="tv-status" style="color:${col}">${currentBooking.status==='pending'?'Pending':'In Use'}</div>`;
+      whoHtml = `<div class="tv-who">${escHtml(currentBooking.name)}${currentBooking.project?' · '+escHtml(currentBooking.project):''}</div>`;
+      timeHtml = `<div class="tv-time-slot">Until ${TIME_SLOTS[currentBooking.endIdx]||'End'}</div>`;
+    } else if (nextBooking) {
+      timeHtml = `<div class="tv-time-slot">Next: ${escHtml(nextBooking.name)} @ ${TIME_SLOTS[nextBooking.startIdx]}</div>`;
+    }
+
+    return `<div class="tv-resource ${cls}">
+      <div class="tv-rname">${r.name}</div>
+      ${statusHtml}${whoHtml}${timeHtml}
+      ${lastUser?`<div class="tv-last">Last used by ${escHtml(lastUser)}</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+// ── iCAL ──
+function showIcal() {
+  const key = dateKey(currentDate);
+  const day = bookings[key]||{};
+  const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Endiatx Lab//EN','CALSCALE:GREGORIAN'];
+  for (const [resId,list] of Object.entries(day)) {
+    const res = RESOURCES.find(r=>r.id===resId);
+    for (const b of list) {
+      const startH = 8 + Math.floor(b.startIdx/4);
+      const startM = (b.startIdx%4)*15;
+      const endH   = 8 + Math.floor(b.endIdx/4);
+      const endM   = (b.endIdx%4)*15;
+      const d = key.replace(/-/g,'');
+      lines.push('BEGIN:VEVENT',
+        `UID:${d}-${resId}-${b.startIdx}@endiatx`,
+        `DTSTART:${d}T${String(startH).padStart(2,'0')}${String(startM).padStart(2,'0')}00`,
+        `DTEND:${d}T${String(endH).padStart(2,'0')}${String(endM).padStart(2,'0')}00`,
+        `SUMMARY:${res?.name||resId} — ${b.name}`,
+        `DESCRIPTION:${b.project||''}`,
+        'END:VEVENT');
+    }
+  }
+  lines.push('END:VCALENDAR');
+  document.getElementById('ical-content').textContent=lines.join('\r\n');
+  document.getElementById('ical-overlay').classList.add('open');
+}
+
+function downloadIcal() {
+  const blob = new Blob([document.getElementById('ical-content').textContent],{type:'text/calendar'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=`endiatx-${dateKey(currentDate)}.ics`; a.click();
+}
+
+// ── UTILS ──
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function highlightErr(id){const el=document.getElementById(id);el.style.borderColor='#ff5e5e';el.focus();setTimeout(()=>el.style.borderColor='',1200);}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800);}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();exitTvMode();}
+});
+[document.getElementById('modal-overlay'),document.getElementById('ical-overlay')]
+  .forEach(el=>el.addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();}));
+
+// ── BOOT ──
+if(sessionStorage.getItem('endiatx-auth')==='1'){
+  document.getElementById('password-screen').style.display='none';
+  document.getElementById('app').style.display='flex';
+  loadAll();
+}
+</script>
+
+<!--
+SUPABASE SQL — run all of this in your SQL Editor:
+
+-- Drop old tables if upgrading
+drop table if exists bookings;
+
+-- New bookings table with start/end slots
+create table bookings2 (
+  id uuid default gen_random_uuid() primary key,
+  date date not null,
+  resource_id text not null,
+  start_idx integer not null,
+  end_idx integer not null,
+  intern_name text not null,
+  project text,
+  material text,
+  status text default 'confirmed',
+  cleaned_up boolean default false,
+  created_at timestamptz default now()
+);
+alter table bookings2 enable row level security;
+create policy "read" on bookings2 for select using (true);
+create policy "insert" on bookings2 for insert with check (true);
+create policy "delete" on bookings2 for delete using (true);
+create policy "update" on bookings2 for update using (true);
+
+-- Waitlist
+create table if not exists waitlist (
+  id uuid default gen_random_uuid() primary key,
+  date date not null,
+  resource_id text not null,
+  start_idx integer not null,
+  end_idx integer not null,
+  intern_name text not null,
+  project text,
+  created_at timestamptz default now()
+);
+alter table waitlist enable row level security;
+create policy "read wl" on waitlist for select using (true);
+create policy "insert wl" on waitlist for insert with check (true);
+create policy "delete wl" on waitlist for delete using (true);
+
+-- Last users (for accountability)
+create table if not exists last_users (
+  resource_id text primary key,
+  intern_name text not null,
+  updated_at timestamptz default now()
+);
+alter table last_users enable row level security;
+create policy "read lu" on last_users for select using (true);
+create policy "upsert lu" on last_users for insert with check (true);
+create policy "update lu" on last_users for update using (true);
+-->
+</body>
+</html>
