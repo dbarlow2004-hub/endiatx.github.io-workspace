@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio & Resume</title>
+<meta name="description" content="Creative portfolio and resume.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
+:root {
+  --bg:#0e0f11; --surface:#16181c; --surface2:#1c1f24; --border:#2a2d35;
+  --accent:#7dd3fc; --accent2:#c084fc;
+  --text:#e8eaf0; --muted:#8a8f9c; --dim:#5a5f6b;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.5;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+.mono{font-family:'Space Mono',monospace;}
+
+/* NAV */
+header{position:sticky;top:0;z-index:100;background:rgba(14,15,17,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+nav{max-width:1080px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);}
+.nav-links{display:flex;gap:26px;list-style:none;}
+.nav-links a{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.nav-links a:hover{color:var(--text);}
+.nav-cta{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--bg);background:var(--accent);padding:9px 16px;border-radius:8px;text-decoration:none;white-space:nowrap;transition:opacity 0.15s;}
+.nav-cta:hover{opacity:0.85;}
+
+main{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+/* HERO */
+.hero{padding:90px 0 70px;display:flex;align-items:center;gap:48px;flex-wrap:wrap;}
+.hero-text{flex:1 1 460px;min-width:280px;}
+.eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.hero h1{font-size:44px;font-weight:800;line-height:1.15;margin-bottom:18px;}
+.hero h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero p{font-size:16px;color:var(--muted);max-width:520px;margin-bottom:28px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:opacity 0.15s,border-color 0.15s,background 0.15s;}
+.btn-primary{background:var(--accent);color:#0e0f11;}
+.btn-primary:hover{opacity:0.85;}
+.btn-ghost{border-color:var(--border);color:var(--text);background:none;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.avatar{flex:0 0 auto;width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:52px;font-weight:700;color:#0e0f11;}
+
+/* SECTION */
+section{padding:64px 0;border-top:1px solid var(--border);}
+.section-head{margin-bottom:36px;}
+.section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.section-title{font-size:28px;font-weight:700;}
+.section-sub{color:var(--muted);font-size:14px;margin-top:8px;max-width:560px;}
+
+/* PROJECT GRID */
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
+.project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.15s,border-color 0.15s;}
+.project-card:hover{transform:translateY(-3px);border-color:var(--accent);}
+.project-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(14,15,17,0.55);font-weight:700;}
+.project-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.project-body h3{font-size:16px;font-weight:700;}
+.project-body p{font-size:13px;color:var(--muted);flex:1;}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;}
+.tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:5px;padding:3px 7px;}
+.project-links{display:flex;gap:14px;margin-top:4px;}
+.project-links a{font-size:12px;color:var(--accent);text-decoration:none;font-weight:600;}
+.project-links a:hover{text-decoration:underline;}
+
+/* RESUME */
+.resume-grid{display:grid;grid-template-columns:2fr 1fr;gap:48px;}
+.timeline{position:relative;padding-left:24px;}
+.timeline::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:30px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-item::before{content:'';position:absolute;left:-24px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--accent);}
+.tl-when{font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:0.05em;margin-bottom:4px;}
+.tl-role{font-size:16px;font-weight:700;}
+.tl-org{font-size:13px;color:var(--accent);margin-bottom:8px;}
+.tl-desc{font-size:13px;color:var(--muted);}
+.tl-desc ul{margin:8px 0 0 16px;}
+.tl-desc li{margin-bottom:4px;}
+
+.side-block{margin-bottom:32px;}
+.side-block:last-child{margin-bottom:0;}
+.side-title{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.edu-item{margin-bottom:16px;}
+.edu-item:last-child{margin-bottom:0;}
+.edu-degree{font-size:14px;font-weight:600;}
+.edu-school{font-size:12px;color:var(--accent);}
+.edu-when{font-family:'Space Mono',monospace;font-size:10px;color:var(--dim);margin-top:2px;}
+.skill-groups{display:flex;flex-direction:column;gap:14px;}
+.skill-group-name{font-size:12px;font-weight:600;margin-bottom:6px;color:var(--text);}
+.pill-row{display:flex;flex-wrap:wrap;gap:6px;}
+.pill{font-size:11px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 11px;color:var(--muted);}
+
+/* CONTACT */
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:44px;text-align:center;}
+.contact-card h2{font-size:26px;margin-bottom:10px;}
+.contact-card p{color:var(--muted);font-size:14px;margin-bottom:24px;}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+
+footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);font-family:'Space Mono',monospace;}
+
+@media(max-width:720px){
+  .hero{padding:60px 0 44px;flex-direction:column-reverse;text-align:center;}
+  .hero p{margin-left:auto;margin-right:auto;}
+  .hero-actions{justify-content:center;}
+  .hero h1{font-size:32px;}
+  .resume-grid{grid-template-columns:1fr;gap:40px;}
+  nav{padding:14px 18px;}
+  .nav-links{display:none;}
+  main{padding:0 18px;}
+}
+
+@media print{
+  header,.hero-actions,#work,footer,.nav-cta{display:none!important;}
+  body{background:#fff;color:#111;}
+  section{border-color:#ddd;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo" id="nav-logo">—</div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#" onclick="window.print();return false;">Download Résumé</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" style="border-top:none;">
+    <div class="hero-text">
+      <div class="eyebrow" id="hero-eyebrow">—</div>
+      <h1 id="hero-title"></h1>
+      <p id="hero-bio"></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#work">View Work</a>
+        <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+    <div class="avatar" id="hero-avatar">?</div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <div class="section-label">Selected Work</div>
+      <div class="section-title">Creative Portfolio</div>
+      <div class="section-sub">A mix of projects — swap these for your own case studies, images, and links.</div>
+    </div>
+    <div class="project-grid" id="project-grid"></div>
+  </section>
+
+  <section id="resume">
+    <div class="section-head">
+      <div class="section-label">Background</div>
+      <div class="section-title">Resume</div>
+    </div>
+    <div class="resume-grid">
+      <div>
+        <div class="timeline" id="experience-timeline"></div>
+      </div>
+      <div>
+        <div class="side-block">
+          <div class="side-title">Education</div>
+          <div id="education-list"></div>
+        </div>
+        <div class="side-block">
+          <div class="side-title">Skills</div>
+          <div class="skill-groups" id="skills-list"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-card">
+      <h2 id="contact-title">Let's work together</h2>
+      <p id="contact-sub">Open to freelance projects, collaborations, and full-time opportunities.</p>
+      <div class="contact-links" id="contact-links"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer-note"></footer>
+
+<script>
+/* ───────────────────────────────────────────────
+   EDIT ME — all real content lives in this config.
+   Replace every placeholder value below with your own.
+   ─────────────────────────────────────────────── */
+const PROFILE = {
+  name: "Your Name",
+  initials: "YN",
+  title: "Creative Technologist & Designer",
+  bio: "I design and build things at the intersection of code and craft — from interactive prototypes to brand identity. Currently open to new projects and collaborations.",
+  email: "you@example.com",
+  location: "Your City, ST",
+  socials: [
+    { label: "Email", href: "mailto:you@example.com" },
+    { label: "GitHub", href: "https://github.com/yourusername" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
+    { label: "Instagram", href: "https://instagram.com/yourusername" }
+  ]
+};
+
+const PROJECTS = [
+  {
+    title: "Project One",
+    description: "A short one- or two-sentence description of what this project is and the problem it solved.",
+    tags: ["Branding", "Web"],
+    color1: "#7dd3fc", color2: "#38bdf8",
+    liveUrl: "#", codeUrl: "#"
+  },
+  {
+    title: "Project Two",
+    description: "Another project summary — what you built, the tools you used, and the outcome or impact.",
+    tags: ["Illustration", "Print"],
+    color1: "#c084fc", color2: "#a855f7",
+    liveUrl: "#", codeUrl: "#"
+  },
+  {
+    title: "Project Three",
+    description: "A third example — great place for a photography series, a UI case study, or an app you shipped.",
+    tags: ["Photography"],
+    color1: "#4ade80", color2: "#22c55e",
+    liveUrl: "#", codeUrl: "#"
+  },
+  {
+    title: "Project Four",
+    description: "Keep adding entries to this PROJECTS array — the grid will lay them out automatically.",
+    tags: ["Product", "UX"],
+    color1: "#ffd166", color2: "#fbbf24",
+    liveUrl: "#", codeUrl: "#"
+  }
+];
+
+const EXPERIENCE = [
+  {
+    when: "2024 — Present",
+    role: "Job Title",
+    org: "Company Name",
+    bullets: [
+      "Key responsibility or achievement in this role.",
+      "Another concrete result, ideally with a number attached.",
+      "What you led, shipped, or improved."
+    ]
+  },
+  {
+    when: "2022 — 2024",
+    role: "Previous Job Title",
+    org: "Previous Company",
+    bullets: [
+      "What you did here and the impact it had.",
+      "Notable project or collaboration."
+    ]
+  },
+  {
+    when: "2020 — 2022",
+    role: "Earlier Role",
+    org: "Earlier Company",
+    bullets: [
+      "Summarize your earliest relevant experience here."
+    ]
+  }
+];
+
+const EDUCATION = [
+  { degree: "Degree, Major", school: "University Name", when: "2016 — 2020" }
+];
+
+const SKILLS = [
+  { group: "Design", items: ["Figma", "Illustrator", "Photoshop", "Typography"] },
+  { group: "Development", items: ["JavaScript", "React", "HTML/CSS", "Python"] },
+  { group: "Other", items: ["Art Direction", "Photography", "Project Management"] }
+];
+/* ─────────────────────────────────────────────── */
+
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+document.getElementById('nav-logo').textContent = PROFILE.initials;
+document.getElementById('hero-eyebrow').textContent = PROFILE.title;
+document.getElementById('hero-title').innerHTML = `Hi, I'm <span>${escHtml(PROFILE.name)}</span>`;
+document.getElementById('hero-bio').textContent = PROFILE.bio;
+document.getElementById('hero-avatar').textContent = PROFILE.initials;
+document.title = `${PROFILE.name} — Portfolio & Resume`;
+
+document.getElementById('project-grid').innerHTML = PROJECTS.map(p => `
+  <div class="project-card">
+    <div class="project-thumb" style="background:linear-gradient(135deg,${p.color1},${p.color2})">${escHtml(p.title)}</div>
+    <div class="project-body">
+      <h3>${escHtml(p.title)}</h3>
+      <p>${escHtml(p.description)}</p>
+      <div class="tag-row">${p.tags.map(t=>`<span class="tag">${escHtml(t)}</span>`).join('')}</div>
+      <div class="project-links">
+        <a href="${p.liveUrl}" target="_blank" rel="noopener">View →</a>
+        <a href="${p.codeUrl}" target="_blank" rel="noopener">Details →</a>
+      </div>
+    </div>
+  </div>
+`).join('');
+
+document.getElementById('experience-timeline').innerHTML = EXPERIENCE.map(e => `
+  <div class="tl-item">
+    <div class="tl-when mono">${escHtml(e.when)}</div>
+    <div class="tl-role">${escHtml(e.role)}</div>
+    <div class="tl-org">${escHtml(e.org)}</div>
+    <div class="tl-desc"><ul>${e.bullets.map(b=>`<li>${escHtml(b)}</li>`).join('')}</ul></div>
+  </div>
+`).join('');
+
+document.getElementById('education-list').innerHTML = EDUCATION.map(e => `
+  <div class="edu-item">
+    <div class="edu-degree">${escHtml(e.degree)}</div>
+    <div class="edu-school">${escHtml(e.school)}</div>
+    <div class="edu-when">${escHtml(e.when)}</div>
+  </div>
+`).join('');
+
+document.getElementById('skills-list').innerHTML = SKILLS.map(s => `
+  <div>
+    <div class="skill-group-name">${escHtml(s.group)}</div>
+    <div class="pill-row">${s.items.map(i=>`<span class="pill">${escHtml(i)}</span>`).join('')}</div>
+  </div>
+`).join('');
+
+document.getElementById('contact-sub').textContent = `Based in ${PROFILE.location}. Open to freelance projects, collaborations, and full-time opportunities.`;
+document.getElementById('contact-links').innerHTML = PROFILE.socials.map(s =>
+  `<a class="btn btn-ghost" href="${s.href}" target="_blank" rel="noopener">${escHtml(s.label)}</a>`
+).join('');
+
+document.getElementById('footer-note').textContent = `© ${new Date().getFullYear()} ${PROFILE.name}`;
+</script>
+</body>
+</html>
