@@ -44,7 +44,8 @@ main{max-width:1080px;margin:0 auto;padding:0 28px;}
 .btn-primary:hover{opacity:0.85;}
 .btn-ghost{border-color:var(--border);color:var(--text);background:none;}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
-.avatar{flex:0 0 auto;width:180px;height:180px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:52px;font-weight:700;color:#0e0f11;}
+.avatar{flex:0 0 auto;width:200px;height:240px;border-radius:24px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:52px;font-weight:700;color:#0e0f11;overflow:hidden;}
+.avatar img{width:100%;height:100%;object-fit:cover;}
 
 /* SECTION */
 section{padding:64px 0;border-top:1px solid var(--border);}
@@ -57,7 +58,8 @@ section{padding:64px 0;border-top:1px solid var(--border);}
 .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
 .project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform 0.15s,border-color 0.15s;}
 .project-card:hover{transform:translateY(-3px);border-color:var(--accent);}
-.project-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(14,15,17,0.55);font-weight:700;}
+.project-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(14,15,17,0.55);font-weight:700;overflow:hidden;}
+.project-thumb img{width:100%;height:100%;object-fit:cover;}
 .project-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
 .project-body h3{font-size:16px;font-weight:700;}
 .project-body p{font-size:13px;color:var(--muted);flex:1;}
@@ -89,6 +91,7 @@ section{padding:64px 0;border-top:1px solid var(--border);}
 .edu-degree{font-size:14px;font-weight:600;}
 .edu-school{font-size:12px;color:var(--accent);}
 .edu-when{font-family:'Space Mono',monospace;font-size:10px;color:var(--dim);margin-top:2px;}
+.edu-note{font-size:11px;color:var(--muted);margin-top:4px;font-style:italic;}
 .skill-groups{display:flex;flex-direction:column;gap:14px;}
 .skill-group-name{font-size:12px;font-weight:600;margin-bottom:6px;color:var(--text);}
 .pill-row{display:flex;flex-wrap:wrap;gap:6px;}
@@ -206,11 +209,12 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
 const PROFILE = {
   name: "D. Barlow Clark-Schoeb",
   initials: "DBC",
+  photo: "images/avatar.jpg",
   title: "Environmental Design & Sustainable Cities",
-  bio: "B.A. candidate in Environmental Studies and Spanish at the University of Connecticut (Class of 2026), with design training from the Harvard Graduate School of Design. I work across urban design, sustainability, and storytelling — from gallery layouts to documentary film to circular fashion.",
+  bio: "I'm a designer and environmental studies student working at the intersection of architecture, sustainability, and storytelling. My work explores how ecology, access, and culture shape the way communities inhabit space — from site-based research at Eastie Farm to a documentary on public water access in Zurich. I aim to create intuitive, climate-responsive, socially grounded environments, driven by community needs and material responsibility.",
   email: "dbarlow2004@gmail.com",
   phone: "(908) 666-2847",
-  location: "Storrs, CT",
+  location: "San Francisco, CA · Connecticut & California",
   socials: [
     { label: "Email", href: "mailto:dbarlow2004@gmail.com" },
     { label: "Call", href: "tel:+19086662847" }
@@ -221,54 +225,98 @@ const PROFILE = {
 
 const PROJECTS = [
   {
-    title: "Art Gallery Design Consultant",
-    description: "Redesigned a gallery layout to maximize display capacity and storage efficiency within a constrained floor plan, specifying modular hanging systems (cable, track, and bracket) tailored to client budget and aesthetic.",
-    tags: ["Exhibition Design", "Winter 2025-26"],
-    color1: "#7dd3fc", color2: "#38bdf8"
+    title: "Built Table",
+    description: "Designed and built a wooden table for my senior year as a symbolic map of my friends' college paths — each wedge represented a school, merging craft, storytelling, and community.",
+    tags: ["Furniture", "Woodworking"],
+    image: "images/built-table.jpg"
   },
   {
-    title: "What's Next?",
-    description: "Founder of a community platform connecting property owners, local businesses, and residents to activate underutilized spaces — researching land use policy and community engagement strategies to inform the roadmap.",
-    tags: ["Urban Design", "Founder", "Spring 2026 – Present"],
-    color1: "#c084fc", color2: "#a855f7"
+    title: "Pear & Avocado Paintings",
+    description: "A painted series exploring how color shifts mood and identity by rendering the same pear — and later, avocado — three ways: a playful study in tone, contrast, and expressive palettes.",
+    tags: ["Painting", "Studio Art"],
+    image: "images/pear-paintings.jpg"
   },
   {
-    title: "“Right to Swim: Urban Water Access in Zurich”",
-    description: "Directed and produced a documentary examining public space rights, urban infrastructure, and water access policy, combining visual storytelling with stakeholder interviews to translate policy into an accessible narrative. UConn / Zurich Sustainability & Film Program.",
-    tags: ["Documentary Film", "Summer 2025"],
-    color1: "#4ade80", color2: "#22c55e"
+    title: "Sustainable Swimwear",
+    description: "Hand-sewn swimsuits made from thrifted or eco-friendly fabrics, reimagining discarded material into personal, well-designed pieces — a practice in craft, patience, and responsible design.",
+    tags: ["Sewing", "Sustainable Fashion"],
+    image: "images/swimwear.jpg"
+  },
+  {
+    title: "Connecticut",
+    description: "A photographic study of Hartford's skyline — where domes, spires, and tiled roofs become sculpture. These images trace the city's personality through light, texture, and architectural rhythm.",
+    tags: ["Photography"],
+    image: "images/connecticut.jpg"
+  },
+  {
+    title: "Courtyard Tenement",
+    description: "A speculative courtyard tenement exploring daylight access, passive ventilation, and shared green space — studying how urban density can coexist with thermal comfort, social connection, and environmental performance. Harvard GSD, Summer 2025.",
+    tags: ["Architecture", "Harvard GSD"],
+    image: "images/courtyard-tenement.jpg"
+  },
+  {
+    title: "Fallow Urban Plot",
+    description: "A landscape intervention turning a vacant lot into shared public space — native plants reinforce soil structure and define gathering areas, while planting, paths, and seating choreograph shared movement and preserve moments of privacy. Harvard GSD, Summer 2025.",
+    tags: ["Landscape Design", "Harvard GSD"],
+    image: "images/fallow-urban-plot.jpg"
+  },
+  {
+    title: "Eastie Farm Site Study",
+    description: "Spatial analysis and architectural site studies focused on circulation and community interaction, developing conceptual interventions that explore adaptive use and environmental design.",
+    tags: ["Site Study", "Adaptive Reuse"]
   },
   {
     title: "ReUConn: Athletic Gear Reuse Initiative",
-    description: "Designed a campus-wide redistribution framework for athletic equipment, navigating NCAA and Title IX constraints, grounded in stakeholder interviews with equipment staff. University of Connecticut Sustainability Proposal.",
-    tags: ["Sustainability", "Proposal", "Spring 2025"],
-    color1: "#ffd166", color2: "#fbbf24"
+    description: "A sustainability initiative reducing athletic gear waste through donation and reuse systems, researching NCAA and Title IX compliance considerations for a campus-wide redistribution framework.",
+    tags: ["Sustainability", "Proposal"]
+  },
+  {
+    title: "“Right to Swim: Urban Water Access in Zurich”",
+    description: "Directed and produced a documentary examining public space rights, urban infrastructure, and water access policy, combining visual storytelling with stakeholder interviews. UConn / Zurich Sustainability & Film Program, Summer 2025.",
+    tags: ["Documentary Film"]
   },
   {
     title: "SALT: Salvaged And Loved Textiles",
-    description: "Founder of a clothing brand upcycling textiles into clothing and handmade products, promoting sustainable fashion and circular design.",
-    tags: ["Fashion", "Founder", "Spring 2021 – Present"],
-    color1: "#fb923c", color2: "#f97316"
+    description: "Founder of a clothing brand upcycling textiles into clothing and handmade products since 2021. Next, growing SALT into a multidisciplinary space where architecture, making, and sustainability meet — through small-batch fabrication, adaptive reuse, and landscape-driven research.",
+    tags: ["Fashion", "Founder", "2021 – Present"],
+    image: "images/salt.jpg"
   }
 ];
+const PROJECT_FALLBACK_COLORS = ["#7dd3fc,#38bdf8", "#c084fc,#a855f7", "#4ade80,#22c55e", "#ffd166,#fbbf24", "#fb923c,#f97316"];
 
 const EXPERIENCE = [
   {
-    when: "Winter 2024 — 2026",
-    role: "Shipment Manager & Content Creator",
-    org: "Babka Bailout",
+    when: "Summer 2026",
+    role: "Workspace Design & Operations Associate",
+    org: "ENDIATX — Hayward, CA",
     bullets: [
-      "Managed product logistics and customer fulfillment operations at Bryant Park Holiday Market.",
-      "Created TikTok and Instagram content, driving brand engagement during peak season."
+      "Planned and executed renovations and spatial reorganization for the office and warehouse spaces of a robotics and medical device company.",
+      "Interviewed employees across departments to understand workflow patterns, operational needs, and accessibility priorities.",
+      "Developed layouts and designated zones for collaborative office space, packaging and storage, media production, and prototyping/fabrication areas.",
+      "Coordinated with leadership, electricians, and engineering teams on infrastructure improvements and HVAC planning.",
+      "Completed hands-on renovation work including measuring, framing walls, drywall installation, painting, finishing, and door installation.",
+      "Sourced materials, secondhand furniture, and organizational systems to create sustainability-minded workplace environments.",
+      "Managed intern communication, scheduling, and summer programming initiatives."
     ]
   },
   {
-    when: "Spring 2017 — Summer 2023",
-    role: "Medical Scribe & Patient Services Assistant",
-    org: "New Jersey Spine Center",
+    when: "Spring 2026",
+    role: "Environmental Reporting Intern",
+    org: "The Active Voice — Connecticut",
     bullets: [
-      "Supported patient intake and care coordination for a high-volume orthopedic practice.",
-      "Provided real-time Spanish translation for patients, improving communication and care quality."
+      "Conducted research and reporting on sustainability, climate policy, and environmental issues.",
+      "Assisted with legislative testimony drafts and sustainability-focused communications.",
+      "Collaborated with leadership on environmental storytelling and public engagement initiatives."
+    ]
+  },
+  {
+    when: "Winter 2024 — 2026",
+    role: "Social Media & Operations Assistant",
+    org: "Babka Bailout — New York, NY",
+    bullets: [
+      "Managed social media content creation including TikTok and promotional campaigns.",
+      "Assisted with packaging, customer engagement, and operational logistics.",
+      "Supported brand growth through visual storytelling and customer experience."
     ]
   }
 ];
@@ -287,13 +335,15 @@ const LEADERSHIP = [
 ];
 
 const EDUCATION = [
-  { degree: "B.A. Environmental Studies | B.A. Spanish", school: "University of Connecticut", when: "Expected May 2026" },
-  { degree: "Architecture, Landscape & Urban Planning + Design Program; Architecture Design Discovery Program", school: "Harvard University Graduate School of Design", when: "Summer 2025" },
+  { degree: "B.A. Environmental Studies | B.A. Spanish | Minor in Geography", school: "University of Connecticut — Storrs, CT", when: "Expected May 2026", note: "Athletic Director's Honor Roll · Former NCAA Division I Athlete, Women's Lacrosse" },
+  { degree: "Design Discovery Program (Virtual + In-Person)", school: "Harvard University Graduate School of Design", when: "Summer 2025" },
   { degree: "Study Abroad — Spanish Conversation & Writing, Spanish History, Language Studies", school: "University of Salamanca", when: "Summer 2024" }
 ];
 
 const SKILLS = [
-  { group: "Design & Technical", items: ["Rhino", "Adobe Illustrator", "Photoshop", "Canva"] },
+  { group: "Design & Fabrication", items: ["Rhino", "AutoCAD", "Adobe Illustrator", "Adobe Photoshop", "Canva"] },
+  { group: "Hands-On & Construction", items: ["Framing", "Drywall Installation", "Painting & Finishing", "Furniture Sourcing"] },
+  { group: "Operations & Leadership", items: ["Project Coordination", "Operations Management", "Workflow Optimization", "Sustainability-Focused Design"] },
   { group: "Languages", items: ["Spanish (Fluent)", "ASL (Intermediate)", "French (Beginner)"] },
   { group: "Certifications", items: ["LEED Green Associate — In Progress"] }
 ];
@@ -305,12 +355,20 @@ document.getElementById('nav-logo').textContent = PROFILE.initials;
 document.getElementById('hero-eyebrow').textContent = PROFILE.title;
 document.getElementById('hero-title').innerHTML = `Hi, I'm <span>${escHtml(PROFILE.name)}</span>`;
 document.getElementById('hero-bio').textContent = PROFILE.bio;
-document.getElementById('hero-avatar').textContent = PROFILE.initials;
+document.getElementById('hero-avatar').innerHTML = PROFILE.photo
+  ? `<img src="${PROFILE.photo}" alt="${escHtml(PROFILE.name)}">`
+  : escHtml(PROFILE.initials);
 document.title = `${PROFILE.name} — Portfolio & Resume`;
 
-document.getElementById('project-grid').innerHTML = PROJECTS.map(p => `
+document.getElementById('project-grid').innerHTML = PROJECTS.map((p,i) => {
+  const [c1,c2] = (PROJECT_FALLBACK_COLORS[i % PROJECT_FALLBACK_COLORS.length]).split(',');
+  const thumb = p.image
+    ? `<img src="${p.image}" alt="${escHtml(p.title)}">`
+    : escHtml(p.title);
+  const thumbStyle = p.image ? '' : `style="background:linear-gradient(135deg,${c1},${c2})"`;
+  return `
   <div class="project-card">
-    <div class="project-thumb" style="background:linear-gradient(135deg,${p.color1},${p.color2})">${escHtml(p.title)}</div>
+    <div class="project-thumb" ${thumbStyle}>${thumb}</div>
     <div class="project-body">
       <h3>${escHtml(p.title)}</h3>
       <p>${escHtml(p.description)}</p>
@@ -318,7 +376,8 @@ document.getElementById('project-grid').innerHTML = PROJECTS.map(p => `
       ${p.links && p.links.length ? `<div class="project-links">${p.links.map(l=>`<a href="${l.href}" target="_blank" rel="noopener">${escHtml(l.label)} →</a>`).join('')}</div>` : ''}
     </div>
   </div>
-`).join('');
+`;
+}).join('');
 
 document.getElementById('experience-timeline').innerHTML = EXPERIENCE.map(e => `
   <div class="tl-item">
@@ -334,6 +393,7 @@ document.getElementById('education-list').innerHTML = EDUCATION.map(e => `
     <div class="edu-degree">${escHtml(e.degree)}</div>
     <div class="edu-school">${escHtml(e.school)}</div>
     <div class="edu-when">${escHtml(e.when)}</div>
+    ${e.note ? `<div class="edu-note">${escHtml(e.note)}</div>` : ''}
   </div>
 `).join('');
 
