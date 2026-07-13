@@ -16,24 +16,32 @@
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;}
 img{max-width:100%;display:block;}
 
-/* PASSWORD */
-#password-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;}
-.pw-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:20px;}
+/* AUTH */
+#auth-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px;}
+.pw-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:14px;}
 .pw-logo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;}
 .pw-title{font-family:'Space Mono',monospace;font-size:18px;text-align:center;}
 .pw-sub{font-size:13px;color:var(--muted);text-align:center;}
-.pw-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;padding:14px 16px;outline:none;text-align:center;letter-spacing:0.1em;}
+.pw-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;padding:14px 16px;outline:none;}
 .pw-input:focus{border-color:var(--accent);}
-.pw-btn{width:100%;padding:14px;background:var(--accent);color:#1a1410;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+.pw-btn{width:100%;padding:14px;background:var(--accent);color:#1a1410;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;}
 .pw-btn:hover{opacity:0.88;}
 .pw-error{font-size:12px;color:var(--red);display:none;text-align:center;}
+.pw-info{font-size:12px;color:var(--sage);display:none;text-align:center;line-height:1.6;}
+.pw-link{font-size:11px;color:var(--muted);text-align:center;cursor:pointer;margin-top:4px;}
+.pw-link:hover{color:var(--accent);}
+
+/* NO CLIENT */
+#no-client-view{display:none;min-height:100vh;align-items:center;justify-content:center;text-align:center;padding:24px;}
 
 /* APP */
 #app{display:none;flex-direction:column;min-height:100vh;padding-bottom:80px;}
 header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(18,17,16,0.96);backdrop-filter:blur(10px);z-index:100;gap:14px;flex-wrap:wrap;}
 .logo{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;}
 .logo span{color:var(--muted);}
-.room-select-wrap{display:flex;align-items:center;gap:8px;}
+#header-context-label{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.05em;}
+.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.room-select-wrap{display:none;align-items:center;gap:8px;}
 #room-select{background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;border-radius:8px;outline:none;}
 .hdr-btn{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);background:none;padding:8px 12px;border-radius:6px;cursor:pointer;white-space:nowrap;}
 .hdr-btn:hover{color:var(--accent);border-color:var(--accent);}
@@ -53,6 +61,15 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .section-label:first-child{margin-top:0;}
 
 .empty-state{text-align:center;padding:50px 20px;color:var(--muted);font-size:13px;border:1px dashed var(--border);border-radius:12px;}
+
+/* CLIENTS */
+.clients-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.client-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;}
+.client-card .cname{font-size:15px;font-weight:600;}
+.client-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:10px;display:inline-block;width:fit-content;}
+.client-badge.linked{background:rgba(143,168,136,0.15);color:var(--sage);}
+.client-badge.pending{background:rgba(212,165,116,0.15);color:var(--accent);}
+.client-card-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
 
 /* PHOTO GRID */
 .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
@@ -127,6 +144,19 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .icon-btn:hover{color:var(--accent);border-color:var(--accent);}
 .icon-btn.danger:hover{color:var(--red);border-color:var(--red);}
 
+/* INSPO BOARD */
+.masonry{columns:4 220px;column-gap:14px;}
+.pin-card{break-inside:avoid;margin-bottom:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.pin-card img{width:100%;display:block;}
+.pin-card .pin-body{padding:9px 12px;}
+.pin-card .pin-cap{font-size:12px;color:var(--text);}
+.pin-card .pin-meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px;gap:8px;}
+.pin-card .pin-src{font-size:10px;color:var(--muted);text-decoration:none;}
+.pin-card .pin-src:hover{color:var(--accent);}
+.pin-card .pin-by{font-size:9px;color:var(--muted);font-family:'Space Mono',monospace;}
+.pin-del{background:none;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;}
+.pin-del:hover{color:var(--red);border-color:var(--red);}
+
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
@@ -136,12 +166,14 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .field{margin-bottom:12px;}
 .field label{display:block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 11px;outline:none;}
+.field input:disabled,.field select:disabled,.field textarea:disabled{opacity:0.6;cursor:not-allowed;}
 .field textarea{resize:vertical;min-height:56px;}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);}
 .field select option{background:var(--surface);}
 .field-row{display:flex;gap:10px;}
 .field-row .field{flex:1;}
 .color-field-row{display:flex;gap:8px;align-items:center;}
+.mode-toggle-row{display:flex;gap:8px;margin-bottom:14px;}
 .modal-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
 .btn{flex:1;padding:11px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;}
 .btn:active{transform:scale(0.98);}
@@ -151,7 +183,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .btn-block{width:100%;}
 
 /* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:9px 20px;border-radius:30px;font-size:12px;font-weight:700;z-index:2000;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:9px 20px;border-radius:30px;font-size:12px;font-weight:700;z-index:2000;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;max-width:90vw;overflow:hidden;text-overflow:ellipsis;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 
 @media(max-width:600px){header{padding:12px 16px;}.container{padding:16px 16px 0;}.tabs{padding:0 16px;}}
@@ -159,15 +191,31 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 </head>
 <body>
 
-<!-- PASSWORD -->
-<div id="password-screen">
+<!-- AUTH -->
+<div id="auth-screen">
   <div class="pw-card">
     <div class="pw-logo">Apartment Design Studio</div>
-    <div class="pw-title">Welcome back</div>
-    <div class="pw-sub">Enter the studio password to continue</div>
-    <input class="pw-input" type="password" id="pw-input" placeholder="••••••••••" autocomplete="off"/>
-    <div class="pw-error" id="pw-error">Incorrect password — try again</div>
-    <button class="pw-btn" onclick="checkPassword()">Enter Studio →</button>
+    <div class="pw-title" id="auth-title">Sign In</div>
+    <div class="pw-sub" id="auth-sub">Sign in to your studio or client account</div>
+
+    <input class="pw-input" type="email" id="auth-email" placeholder="Email" autocomplete="email"/>
+    <input class="pw-input" type="password" id="auth-password" placeholder="Password" autocomplete="current-password"/>
+    <input class="pw-input" type="password" id="auth-password-confirm" placeholder="Confirm Password" autocomplete="new-password" style="display:none"/>
+
+    <div class="pw-error" id="auth-error"></div>
+    <div class="pw-info" id="auth-info"></div>
+
+    <button class="pw-btn" id="auth-submit-btn" onclick="handleSignIn()">Sign In →</button>
+    <div class="pw-link" id="auth-toggle-link" onclick="toggleAuthMode()">First time setting up your designer account? Create one →</div>
+  </div>
+</div>
+
+<!-- NO CLIENT LINKED -->
+<div id="no-client-view">
+  <div>
+    <div class="pw-title">You're signed in, but not linked to a project yet</div>
+    <div class="pw-sub" style="margin-top:10px">Contact your designer — they'll need to send you a fresh invite link.</div>
+    <button class="hdr-btn" style="margin-top:18px" onclick="handleSignOut()">Sign Out</button>
   </div>
 </div>
 
@@ -175,62 +223,100 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 <div id="app">
   <header>
     <div class="logo">Apartment <span>/ Design Studio</span></div>
-    <div class="room-select-wrap">
-      <select id="room-select" onchange="selectRoom(this.value)"></select>
-      <button class="hdr-btn" onclick="openRoomModal()">+ Room</button>
-    </div>
-    <div>
-      <button class="hdr-btn" onclick="openRoomModal(true)" id="rename-room-btn">✎ Rename</button>
-      <button class="hdr-btn" onclick="deleteCurrentRoom()">🗑 Delete Room</button>
+    <div id="header-context-label"></div>
+    <div class="header-right">
+      <button class="hdr-btn" id="back-to-clients-btn" style="display:none" onclick="backToClients()">← All Clients</button>
+      <div class="room-select-wrap" id="room-select-wrap">
+        <select id="room-select" onchange="selectRoom(this.value)"></select>
+      </div>
+      <div id="workspace-header-controls" style="display:none;gap:8px">
+        <button class="hdr-btn" onclick="openRoomModal()">+ Room</button>
+        <button class="hdr-btn" onclick="openRoomModal(true)">✎ Rename</button>
+        <button class="hdr-btn" onclick="deleteCurrentRoom()">🗑 Delete Room</button>
+      </div>
+      <span class="hdr-btn" id="readonly-badge" style="display:none;cursor:default">👁 View Only</span>
+      <button class="hdr-btn" id="signout-btn" onclick="handleSignOut()">Sign Out</button>
     </div>
   </header>
 
-  <div class="tabs">
-    <button class="tab active" data-tab="gallery" onclick="switchTab('gallery',this)">Before &amp; After</button>
-    <button class="tab" data-tab="palette" onclick="switchTab('palette',this)">Palette</button>
-    <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">Shopping List</button>
+  <!-- CLIENTS LIST (admin) -->
+  <div id="clients-view" style="display:none">
+    <div class="container">
+      <div class="section-label">Your Clients</div>
+      <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openClientModal()">+ New Client</button></div>
+      <div id="clients-grid" class="clients-grid"></div>
+    </div>
   </div>
 
-  <div class="container">
-
-    <!-- GALLERY PANEL -->
-    <div class="panel active" id="panel-gallery">
-      <div class="section-label">Before Photos</div>
-      <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('before')">+ Upload Before Photo</button></div>
-      <div id="before-grid" class="photo-grid"></div>
-
-      <div class="section-label">Renderings</div>
-      <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('rendering')">+ Upload Rendering</button></div>
-      <div id="rendering-list"></div>
+  <!-- WORKSPACE (rooms/palette/shop/inspo) -->
+  <div id="workspace-view" style="display:none">
+    <div class="tabs">
+      <button class="tab active" data-tab="gallery" onclick="switchTab('gallery',this)">Before &amp; After</button>
+      <button class="tab" data-tab="palette" onclick="switchTab('palette',this)">Palette</button>
+      <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">Shopping List</button>
+      <button class="tab" data-tab="inspo" onclick="switchTab('inspo',this)">Inspo Board</button>
     </div>
 
-    <!-- PALETTE PANEL -->
-    <div class="panel" id="panel-palette">
-      <div class="section-label">Room Palette</div>
-      <div class="add-color-form">
-        <input type="color" class="color-input-native" id="palette-color-native" value="#d4a574" oninput="document.getElementById('palette-color-hex').value=this.value">
-        <input type="text" class="hex-text-input" id="palette-color-hex" value="#D4A574" oninput="syncNativeFromHex(this.value)">
-        <input type="text" class="label-text-input" id="palette-color-label" placeholder="Label (e.g. Wall — Warm Sand)">
-        <button class="btn btn-primary" style="flex:0 0 auto;padding:9px 16px" onclick="addPaletteColor()">Add Color</button>
+    <div class="container">
+
+      <!-- GALLERY PANEL -->
+      <div class="panel active" id="panel-gallery">
+        <div class="section-label">Before Photos</div>
+        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('before')">+ Upload Before Photo</button></div>
+        <div id="before-grid" class="photo-grid"></div>
+
+        <div class="section-label">Renderings</div>
+        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('rendering')">+ Upload Rendering</button></div>
+        <div id="rendering-list"></div>
       </div>
-      <div id="palette-strip" class="palette-strip"></div>
 
-      <div class="section-label">Color Harmony Assistant</div>
-      <div class="add-color-form">
-        <input type="color" class="color-input-native" id="harmony-color-native" value="#d4a574" oninput="document.getElementById('harmony-color-hex').value=this.value;generateHarmony(this.value)">
-        <input type="text" class="hex-text-input" id="harmony-color-hex" value="#D4A574" oninput="generateHarmony(this.value)">
-        <span style="font-size:12px;color:var(--muted)">Pick a base color to generate a full scheme</span>
+      <!-- PALETTE PANEL -->
+      <div class="panel" id="panel-palette">
+        <div class="section-label">Room Palette</div>
+        <div class="add-color-form admin-only">
+          <input type="color" class="color-input-native" id="palette-color-native" value="#d4a574" oninput="document.getElementById('palette-color-hex').value=this.value">
+          <input type="text" class="hex-text-input" id="palette-color-hex" value="#D4A574" oninput="syncNativeFromHex(this.value)">
+          <input type="text" class="label-text-input" id="palette-color-label" placeholder="Label (e.g. Wall — Warm Sand)">
+          <button class="btn btn-primary" style="flex:0 0 auto;padding:9px 16px" onclick="addPaletteColor()">Add Color</button>
+        </div>
+        <div id="palette-strip" class="palette-strip"></div>
+
+        <div class="section-label">Color Harmony Assistant</div>
+        <div class="add-color-form">
+          <input type="color" class="color-input-native" id="harmony-color-native" value="#d4a574" oninput="document.getElementById('harmony-color-hex').value=this.value;generateHarmony(this.value)">
+          <input type="text" class="hex-text-input" id="harmony-color-hex" value="#D4A574" oninput="generateHarmony(this.value)">
+          <span style="font-size:12px;color:var(--muted)">Pick a base color to generate a full scheme</span>
+        </div>
+        <div id="harmony-output" class="harmony-block"></div>
       </div>
-      <div id="harmony-output" class="harmony-block"></div>
-    </div>
 
-    <!-- SHOPPING LIST PANEL -->
-    <div class="panel" id="panel-shop">
-      <div class="section-label">All Rooms — Tagged Items</div>
-      <div id="shop-summary" class="shop-summary"></div>
-      <div id="shop-list"></div>
-    </div>
+      <!-- SHOPPING LIST PANEL -->
+      <div class="panel" id="panel-shop">
+        <div class="section-label">All Rooms — Tagged Items</div>
+        <div id="shop-summary" class="shop-summary"></div>
+        <div id="shop-list"></div>
+      </div>
 
+      <!-- INSPO BOARD PANEL -->
+      <div class="panel" id="panel-inspo">
+        <div class="section-label">Inspiration Board</div>
+        <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openInspoModal()">+ Add Pin</button></div>
+        <div id="inspo-masonry" class="masonry"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT MODAL -->
+<div class="modal-overlay" id="client-modal-overlay">
+  <div class="modal">
+    <h2>New Client</h2>
+    <div class="field"><label>Client Name</label><input type="text" id="input-client-name" placeholder="e.g. Sarah Chen" autocomplete="off"/></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('client-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveClient()">Create Client</button>
+    </div>
   </div>
 </div>
 
@@ -293,32 +379,57 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   </div>
 </div>
 
+<!-- INSPO MODAL -->
+<div class="modal-overlay" id="inspo-modal-overlay">
+  <div class="modal">
+    <h2>Add Inspiration Pin</h2>
+    <div class="mode-toggle-row">
+      <button type="button" class="tag-btn active" id="inspo-mode-url" onclick="setInspoMode('url')" style="flex:1">Paste Image URL</button>
+      <button type="button" class="tag-btn" id="inspo-mode-file" onclick="setInspoMode('file')" style="flex:1">Upload File</button>
+    </div>
+    <div class="field" id="inspo-url-field"><label>Image URL</label><input type="text" id="input-inspo-url" placeholder="https://..."/></div>
+    <div class="field" id="inspo-file-field" style="display:none"><label>Image File</label><input type="file" id="input-inspo-file" accept="image/*"/></div>
+    <div class="field"><label>Caption (optional)</label><input type="text" id="input-inspo-caption" placeholder="e.g. Love this lighting style"/></div>
+    <div class="field"><label>Source Link (optional)</label><input type="text" id="input-inspo-source" placeholder="Original Pinterest / website link"/></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('inspo-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" id="inspo-submit-btn" onclick="submitInspoPin()">Add Pin</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 // ── CONFIG ──
-// Reuses the same Supabase project already configured for the Endiatx lab tool.
-// Change SITE_PASSWORD below to whatever you like — it's a soft client-side gate,
-// not real security (this is a public static site). Don't put anything you
-// wouldn't want publicly guessable behind it.
 const SUPABASE_URL  = 'https://fnjxxvghoebrpeflkdty.supabase.co';
 const SUPABASE_ANON = 'sb_publishable_dQUzquFXUV-AE34K8PtqPQ_KHt8s1Ia';
-const SITE_PASSWORD = 'DesignStudio2026';
 const STORAGE_BUCKET = 'apartment-images';
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
 // ── STATE ──
+let currentUser = null;
+let currentProfile = null;
+let isAdmin = false;
+let authMode = 'signin';
+
+let clientsList = [];
+let activeClientId = null;
+
 let rooms = [];
 let currentRoomId = null;
-let photos = [];   // all photos for current room
-let tags = {};      // tags[photoId] = [tag,...]
-let palette = [];   // palette for current room
-let allTagsAllRooms = []; // for shopping list: [{...tag, roomName, photoCaption}]
-let taggingModePhotoId = null; // which rendering is in "add tag" mode
+let photos = [];
+let tags = {};
+let palette = [];
+let allTagsAllRooms = [];
+let inspoPins = [];
+let inspoMode = 'url';
+
+let taggingModePhotoId = null;
 let editingTagId = null;
-let pendingTagPos = null; // {photoId, x, y}
+let pendingTagPos = null;
 let currentUploadKind = null;
 
 // ── RETAILERS ──
@@ -360,59 +471,253 @@ function hslToHex(h,s,l){h=((h%360)+360)%360;s/=100;l/=100;const c=(1-Math.abs(2
 }
 function hexToHsl(hex){const [r,g,b]=hexToRgb(hex);return rgbToHsl(r,g,b);}
 
-// ── PASSWORD ──
-function checkPassword() {
-  const val = document.getElementById('pw-input').value;
-  if (val === SITE_PASSWORD) {
-    sessionStorage.setItem('apt-design-auth','1');
-    document.getElementById('password-screen').style.display='none';
-    document.getElementById('app').style.display='flex';
-    boot();
+// ── AUTH ──
+function toggleAuthMode() {
+  authMode = authMode==='signin' ? 'signup' : 'signin';
+  document.getElementById('auth-title').textContent = authMode==='signin'?'Sign In':'Create Designer Account';
+  document.getElementById('auth-sub').textContent = authMode==='signin'?'Sign in to your studio or client account':'This creates your admin login. Clients sign up via their private invite link instead.';
+  document.getElementById('auth-password-confirm').style.display = authMode==='signup'?'block':'none';
+  document.getElementById('auth-submit-btn').textContent = authMode==='signin'?'Sign In →':'Create Account →';
+  document.getElementById('auth-submit-btn').onclick = authMode==='signin'?handleSignIn:handleSignUp;
+  document.getElementById('auth-toggle-link').textContent = authMode==='signin'?'First time setting up your designer account? Create one →':'← Back to sign in';
+  document.getElementById('auth-error').style.display='none';
+  document.getElementById('auth-info').style.display='none';
+}
+
+function showAuthError(msg) {
+  const el = document.getElementById('auth-error');
+  el.textContent = msg; el.style.display='block';
+  document.getElementById('auth-info').style.display='none';
+}
+function showAuthInfo(msg) {
+  const el = document.getElementById('auth-info');
+  el.textContent = msg; el.style.display='block';
+  document.getElementById('auth-error').style.display='none';
+}
+
+async function handleSignIn() {
+  const email = document.getElementById('auth-email').value.trim();
+  const password = document.getElementById('auth-password').value;
+  if (!email || !password) { showAuthError('Enter your email and password'); return; }
+  const {error} = await sb.auth.signInWithPassword({email,password});
+  if (error) { showAuthError(error.message); return; }
+}
+
+async function handleSignUp() {
+  const email = document.getElementById('auth-email').value.trim();
+  const password = document.getElementById('auth-password').value;
+  const confirmPw = document.getElementById('auth-password-confirm').value;
+  if (!email || !password) { showAuthError('Enter an email and password'); return; }
+  if (password !== confirmPw) { showAuthError("Passwords don't match"); return; }
+  if (password.length < 6) { showAuthError('Password must be at least 6 characters'); return; }
+  const {data, error} = await sb.auth.signUp({email, password});
+  if (error) { showAuthError(error.message); return; }
+  if (!data.session) {
+    showAuthInfo('Account created — check your email to confirm, then come back and sign in.');
+    return;
+  }
+  showAuthInfo(`Account created! Run this once in your Supabase SQL Editor to make yourself the admin, then refresh this page:  update profiles set role='admin' where id='${data.user.id}';`);
+}
+
+async function handleSignOut() {
+  await sb.auth.signOut();
+  location.reload();
+}
+
+async function fetchProfileWithRetry(userId, tries) {
+  tries = tries || 6;
+  for (let i=0;i<tries;i++) {
+    const {data} = await sb.from('profiles').select('*').eq('id',userId).maybeSingle();
+    if (data) return data;
+    await new Promise(r=>setTimeout(r,400));
+  }
+  return null;
+}
+
+function showAuthScreen() {
+  document.getElementById('auth-screen').style.display='flex';
+  document.getElementById('no-client-view').style.display='none';
+  document.getElementById('app').style.display='none';
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if (session) routeAfterAuth();
+  else showAuthScreen();
+});
+
+async function routeAfterAuth() {
+  const {data:{user}} = await sb.auth.getUser();
+  if (!user) { showAuthScreen(); return; }
+  currentUser = user;
+  const profile = await fetchProfileWithRetry(user.id);
+  if (!profile) { showAuthError('Could not load your profile — try refreshing.'); return; }
+  currentProfile = profile;
+  isAdmin = profile.role === 'admin';
+
+  document.getElementById('auth-screen').style.display='none';
+  document.getElementById('no-client-view').style.display='none';
+  document.getElementById('app').style.display='flex';
+  document.querySelectorAll('.admin-only').forEach(el=>el.style.display = isAdmin?'':'none');
+
+  if (isAdmin) {
+    document.getElementById('clients-view').style.display='block';
+    document.getElementById('workspace-view').style.display='none';
+    document.getElementById('header-context-label').textContent='Clients';
+    document.getElementById('back-to-clients-btn').style.display='none';
+    document.getElementById('room-select-wrap').style.display='none';
+    document.getElementById('workspace-header-controls').style.display='none';
+    document.getElementById('readonly-badge').style.display='none';
+    activeClientId = null;
+    await loadClients();
   } else {
-    document.getElementById('pw-error').style.display='block';
-    document.getElementById('pw-input').style.borderColor='var(--red)';
-    setTimeout(()=>{
-      document.getElementById('pw-error').style.display='none';
-      document.getElementById('pw-input').style.borderColor='';
-      document.getElementById('pw-input').value='';
-    },1400);
+    if (!profile.client_id) {
+      document.getElementById('app').style.display='none';
+      document.getElementById('no-client-view').style.display='flex';
+      return;
+    }
+    document.getElementById('clients-view').style.display='none';
+    document.getElementById('workspace-view').style.display='block';
+    document.getElementById('header-context-label').textContent='Your Project';
+    document.getElementById('back-to-clients-btn').style.display='none';
+    document.getElementById('room-select-wrap').style.display='flex';
+    document.getElementById('workspace-header-controls').style.display='none';
+    document.getElementById('readonly-badge').style.display='inline-block';
+    await loadWorkspace(profile.client_id);
   }
 }
-document.getElementById('pw-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPassword();});
 
-// ── BOOT ──
-async function boot() {
-  await loadRooms();
+// ── ADMIN: CLIENTS ──
+async function loadClients() {
+  const {data:clientRows, error} = await sb.from('clients').select('*').order('created_at',{ascending:true});
+  if (error) { showToast('Error loading clients ✗'); return; }
+  const {data:profileRows} = await sb.from('profiles').select('client_id').eq('role','client');
+  const linkedSet = new Set((profileRows||[]).filter(p=>p.client_id).map(p=>p.client_id));
+  clientsList = (clientRows||[]).map(c=>({...c, linked: linkedSet.has(c.id)}));
+  renderClients();
 }
 
-// ── ROOMS ──
+function renderClients() {
+  const grid = document.getElementById('clients-grid');
+  if (!clientsList.length) { grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">No clients yet. Click "+ New Client" to add your first one.</div>`; return; }
+  grid.innerHTML = clientsList.map(c=>`
+    <div class="client-card">
+      <div class="cname">${escHtml(c.name)}</div>
+      <span class="client-badge ${c.linked?'linked':'pending'}">${c.linked?'✓ Account Linked':'Invite Pending'}</span>
+      <div class="client-card-actions">
+        <button class="hdr-btn" onclick="openClient('${c.id}')">Open →</button>
+        <button class="hdr-btn" onclick="copyInviteLink('${c.id}')">Copy Invite Link</button>
+        <button class="hdr-btn" onclick="deleteClientPrompt('${c.id}')">🗑 Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function openClientModal() {
+  document.getElementById('input-client-name').value='';
+  document.getElementById('client-modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('input-client-name').focus(),150);
+}
+
+async function saveClient() {
+  const name = document.getElementById('input-client-name').value.trim();
+  if (!name) { highlightErr('input-client-name'); return; }
+  const {error} = await sb.from('clients').insert({name});
+  if (error) { showToast('Error creating client ✗'); return; }
+  closeModal('client-modal-overlay');
+  await loadClients();
+  showToast('Client created ✓');
+}
+
+async function deleteClientPrompt(id) {
+  const c = clientsList.find(x=>x.id===id);
+  if (!confirm(`Delete "${c?.name}" and ALL their rooms, photos, tags, palette, and inspo pins? This can't be undone.`)) return;
+  await sb.from('clients').delete().eq('id',id);
+  await loadClients();
+  showToast('Client deleted');
+}
+
+async function copyInviteLink(clientId) {
+  const client = clientsList.find(c=>c.id===clientId);
+  const {data:existing} = await sb.from('client_invites').select('*').eq('client_id',clientId).eq('used',false).order('created_at',{ascending:false}).limit(1);
+  let code;
+  if (existing && existing.length) {
+    code = existing[0].code;
+  } else {
+    const newCode = crypto.randomUUID();
+    const {data,error} = await sb.from('client_invites').insert({client_id:clientId, code:newCode, client_name: client?.name||null}).select().single();
+    if (error) { showToast('Error creating invite ✗'); return; }
+    code = data.code;
+  }
+  const base = location.pathname.replace(/index\.html$/,'');
+  const link = `${location.origin}${base}join.html?code=${code}`;
+  try {
+    await navigator.clipboard.writeText(link);
+    showToast('Invite link copied ✓');
+  } catch(e) {
+    prompt('Copy this invite link:', link);
+  }
+}
+
+function openClient(id) {
+  const client = clientsList.find(c=>c.id===id);
+  document.getElementById('clients-view').style.display='none';
+  document.getElementById('workspace-view').style.display='block';
+  document.getElementById('back-to-clients-btn').style.display='inline-block';
+  document.getElementById('room-select-wrap').style.display='flex';
+  document.getElementById('workspace-header-controls').style.display='flex';
+  document.getElementById('readonly-badge').style.display='none';
+  document.getElementById('header-context-label').textContent = client?.name||'';
+  loadWorkspace(id);
+}
+
+function backToClients() {
+  activeClientId = null;
+  document.getElementById('workspace-view').style.display='none';
+  document.getElementById('clients-view').style.display='block';
+  document.getElementById('back-to-clients-btn').style.display='none';
+  document.getElementById('room-select-wrap').style.display='none';
+  document.getElementById('workspace-header-controls').style.display='none';
+  document.getElementById('header-context-label').textContent='Clients';
+  loadClients();
+}
+
+// ── WORKSPACE (rooms/photos/tags/palette/shopping/inspo for activeClientId) ──
+async function loadWorkspace(clientId) {
+  activeClientId = clientId;
+  await loadRooms();
+  await loadInspo();
+  renderInspo();
+}
+
 async function loadRooms() {
-  const {data,error} = await sb.from('apt_rooms').select('*').order('created_at',{ascending:true});
+  const {data,error} = await sb.from('apt_rooms').select('*').eq('client_id',activeClientId).order('created_at',{ascending:true});
   if (error) { showToast('Error loading rooms ✗'); return; }
   rooms = data || [];
-  if (!rooms.length) {
-    const {data:created,error:cErr} = await sb.from('apt_rooms').insert({name:'Living Room'}).select().single();
+  if (!rooms.length && isAdmin) {
+    const {data:created,error:cErr} = await sb.from('apt_rooms').insert({name:'Living Room', client_id:activeClientId}).select().single();
     if (!cErr) rooms = [created];
   }
   renderRoomSelect();
   if (!currentRoomId || !rooms.find(r=>r.id===currentRoomId)) currentRoomId = rooms[0]?.id||null;
-  document.getElementById('room-select').value = currentRoomId;
+  if (currentRoomId) document.getElementById('room-select').value = currentRoomId;
   await selectRoom(currentRoomId, true);
 }
 
 function renderRoomSelect() {
-  document.getElementById('room-select').innerHTML = rooms.map(r=>`<option value="${r.id}">${escHtml(r.name)}</option>`).join('');
+  const sel = document.getElementById('room-select');
+  if (!rooms.length) { sel.innerHTML = `<option>No rooms yet</option>`; return; }
+  sel.innerHTML = rooms.map(r=>`<option value="${r.id}">${escHtml(r.name)}</option>`).join('');
 }
 
 async function selectRoom(id, skipReload) {
   currentRoomId = id;
-  if (!skipReload) document.getElementById('room-select').value = id;
+  if (!skipReload && id) document.getElementById('room-select').value = id;
   await Promise.all([loadPhotosAndTags(), loadPalette()]);
   await loadShoppingList();
   render();
 }
 
 function openRoomModal(isRename) {
+  if (!isAdmin) return;
   document.getElementById('room-modal-title').textContent = isRename?'Rename Room':'New Room';
   const input = document.getElementById('input-room-name');
   input.value = isRename ? (rooms.find(r=>r.id===currentRoomId)?.name||'') : '';
@@ -422,6 +727,7 @@ function openRoomModal(isRename) {
 }
 
 async function saveRoom() {
+  if (!isAdmin) return;
   const name = document.getElementById('input-room-name').value.trim();
   if (!name) { highlightErr('input-room-name'); return; }
   const mode = document.getElementById('room-modal-overlay').dataset.mode;
@@ -429,7 +735,7 @@ async function saveRoom() {
     const {error} = await sb.from('apt_rooms').update({name}).eq('id',currentRoomId);
     if (error) { showToast('Error renaming ✗'); return; }
   } else {
-    const {data,error} = await sb.from('apt_rooms').insert({name}).select().single();
+    const {data,error} = await sb.from('apt_rooms').insert({name, client_id:activeClientId}).select().single();
     if (error) { showToast('Error creating room ✗'); return; }
     currentRoomId = data.id;
   }
@@ -439,6 +745,7 @@ async function saveRoom() {
 }
 
 async function deleteCurrentRoom() {
+  if (!isAdmin) return;
   if (rooms.length<=1) { showToast("Can't delete your only room"); return; }
   const room = rooms.find(r=>r.id===currentRoomId);
   if (!confirm(`Delete "${room?.name}" and all its photos, tags, and palette? This can't be undone.`)) return;
@@ -450,6 +757,7 @@ async function deleteCurrentRoom() {
 
 // ── PHOTOS & TAGS ──
 async function loadPhotosAndTags() {
+  if (!currentRoomId) { photos=[]; tags={}; return; }
   const {data,error} = await sb.from('apt_photos').select('*').eq('room_id',currentRoomId).order('created_at',{ascending:true});
   if (error) { showToast('Error loading photos ✗'); return; }
   photos = data || [];
@@ -462,15 +770,23 @@ async function loadPhotosAndTags() {
 }
 
 async function loadPalette() {
+  if (!currentRoomId) { palette=[]; return; }
   const {data,error} = await sb.from('apt_palette').select('*').eq('room_id',currentRoomId).order('created_at',{ascending:true});
   if (error) { showToast('Error loading palette ✗'); return; }
   palette = data || [];
 }
 
 async function loadShoppingList() {
-  const {data:allPhotos} = await sb.from('apt_photos').select('id,caption,room_id');
-  const {data:allTags} = await sb.from('apt_tags').select('*').order('created_at',{ascending:true});
-  allTagsAllRooms = (allTags||[]).map(t=>{
+  const roomIds = rooms.map(r=>r.id);
+  if (!roomIds.length) { allTagsAllRooms = []; return; }
+  const {data:allPhotos} = await sb.from('apt_photos').select('id,caption,room_id').in('room_id',roomIds);
+  const photoIds = (allPhotos||[]).map(p=>p.id);
+  let allTags = [];
+  if (photoIds.length) {
+    const {data} = await sb.from('apt_tags').select('*').in('photo_id',photoIds).order('created_at',{ascending:true});
+    allTags = data || [];
+  }
+  allTagsAllRooms = allTags.map(t=>{
     const photo = (allPhotos||[]).find(p=>p.id===t.photo_id);
     const room = rooms.find(r=>r.id===photo?.room_id);
     return {...t, roomName: room?.name||'Unknown Room', photoCaption: photo?.caption||''};
@@ -478,6 +794,7 @@ async function loadShoppingList() {
 }
 
 function openUploadModal(kind) {
+  if (!isAdmin) return;
   currentUploadKind = kind;
   document.getElementById('upload-modal-title').textContent = kind==='before'?'Upload Before Photo':'Upload Rendering';
   document.getElementById('input-photo-file').value='';
@@ -486,6 +803,7 @@ function openUploadModal(kind) {
 }
 
 async function submitUpload() {
+  if (!isAdmin) return;
   const fileInput = document.getElementById('input-photo-file');
   const file = fileInput.files[0];
   if (!file) { showToast('Choose an image file first'); return; }
@@ -493,10 +811,10 @@ async function submitUpload() {
   const btn = document.getElementById('upload-submit-btn');
   btn.textContent = 'Uploading...'; btn.disabled = true;
 
-  const path = `${currentRoomId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+  const path = `rooms/${activeClientId}/${currentRoomId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
   const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
   if (upErr) {
-    showToast('Upload failed — is the "'+STORAGE_BUCKET+'" storage bucket set up? See setup notes at bottom of file.');
+    showToast('Upload failed — check storage bucket setup');
     btn.textContent='Upload'; btn.disabled=false; return;
   }
   const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
@@ -512,6 +830,7 @@ async function submitUpload() {
 }
 
 async function deletePhoto(photoId) {
+  if (!isAdmin) return;
   if (!confirm('Delete this photo and all its tags?')) return;
   await sb.from('apt_photos').delete().eq('id',photoId);
   await loadPhotosAndTags();
@@ -521,11 +840,13 @@ async function deletePhoto(photoId) {
 }
 
 function toggleTaggingMode(photoId) {
+  if (!isAdmin) return;
   taggingModePhotoId = (taggingModePhotoId===photoId) ? null : photoId;
   renderRenderings();
 }
 
 function onRenderClick(e, photoId) {
+  if (!isAdmin) return;
   if (taggingModePhotoId !== photoId) return;
   const rect = e.currentTarget.getBoundingClientRect();
   const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -536,7 +857,7 @@ function onRenderClick(e, photoId) {
 }
 
 function openTagModal(existingTag) {
-  document.getElementById('tag-modal-title').textContent = existingTag ? 'Edit Item' : 'Tag Item';
+  document.getElementById('tag-modal-title').textContent = existingTag ? (isAdmin?'Edit Item':'Item Details') : 'Tag Item';
   document.getElementById('input-tag-name').value = existingTag?.item_name || '';
   document.getElementById('input-tag-category').value = existingTag?.category || 'Furniture';
   document.getElementById('input-tag-budget').value = existingTag?.budget ?? '';
@@ -545,16 +866,23 @@ function openTagModal(existingTag) {
   document.getElementById('input-tag-color-native').value = hex;
   document.getElementById('input-tag-notes').value = existingTag?.notes || '';
 
+  document.querySelectorAll('#tag-modal-overlay input, #tag-modal-overlay select, #tag-modal-overlay textarea').forEach(el=>el.disabled=!isAdmin);
+
   const actions = document.getElementById('tag-modal-actions');
-  actions.innerHTML = `
-    <button class="btn btn-ghost" onclick="closeModal('tag-modal-overlay')">Cancel</button>
-    ${existingTag?`<button class="btn btn-danger" onclick="deleteTag('${existingTag.id}')">Delete</button>`:''}
-    <button class="btn btn-primary" onclick="saveTag()">Save Tag</button>`;
+  if (isAdmin) {
+    actions.innerHTML = `
+      <button class="btn btn-ghost" onclick="closeModal('tag-modal-overlay')">Cancel</button>
+      ${existingTag?`<button class="btn btn-danger" onclick="deleteTag('${existingTag.id}')">Delete</button>`:''}
+      <button class="btn btn-primary" onclick="saveTag()">Save Tag</button>`;
+  } else {
+    actions.innerHTML = `<button class="btn btn-primary" onclick="closeModal('tag-modal-overlay')">Close</button>`;
+  }
   document.getElementById('tag-modal-overlay').classList.add('open');
-  setTimeout(()=>document.getElementById('input-tag-name').focus(),150);
+  if (isAdmin) setTimeout(()=>document.getElementById('input-tag-name').focus(),150);
 }
 
 async function saveTag() {
+  if (!isAdmin) return;
   const item_name = document.getElementById('input-tag-name').value.trim();
   if (!item_name) { highlightErr('input-tag-name'); return; }
   const category = document.getElementById('input-tag-category').value;
@@ -581,6 +909,7 @@ async function saveTag() {
 }
 
 async function deleteTag(tagId) {
+  if (!isAdmin) return;
   await sb.from('apt_tags').delete().eq('id',tagId);
   closeModal('tag-modal-overlay');
   await loadPhotosAndTags();
@@ -597,6 +926,7 @@ function editTagById(photoId, tagId) {
 }
 
 async function togglePurchasedGlobal(tagId, current) {
+  if (!isAdmin) return;
   await sb.from('apt_tags').update({purchased:!current}).eq('id',tagId);
   await loadShoppingList();
   await loadPhotosAndTags();
@@ -613,6 +943,7 @@ function syncNativeFromHexEl(hex, nativeId) {
 }
 
 async function addPaletteColor() {
+  if (!isAdmin) return;
   let hex = document.getElementById('palette-color-hex').value.trim();
   if (!hex.startsWith('#')) hex = '#'+hex;
   if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) { highlightErr('palette-color-hex'); return; }
@@ -626,6 +957,7 @@ async function addPaletteColor() {
 }
 
 async function removePaletteColor(id) {
+  if (!isAdmin) return;
   await sb.from('apt_palette').delete().eq('id',id);
   await loadPalette();
   renderPalette();
@@ -671,25 +1003,23 @@ function render() {
   renderRenderings();
   renderPalette();
   renderShop();
-  const room = rooms.find(r=>r.id===currentRoomId);
-  document.title = room ? `${room.name} — Apartment Design Studio` : 'Apartment Design Studio';
 }
 
 function renderBeforeGrid() {
   const grid = document.getElementById('before-grid');
   const beforePhotos = photos.filter(p=>p.kind==='before');
-  if (!beforePhotos.length) { grid.innerHTML = `<div class="empty-state">No before photos yet. Upload the current state of the room to get started.</div>`; return; }
+  if (!beforePhotos.length) { grid.innerHTML = `<div class="empty-state">No before photos yet.${isAdmin?' Upload the current state of the room to get started.':''}</div>`; return; }
   grid.innerHTML = beforePhotos.map(p=>`
     <div class="photo-card">
       <div class="thumb-wrap"><img src="${p.image_url}" alt="${escHtml(p.caption||'')}"/></div>
-      <div class="cap"><span>${escHtml(p.caption||'Before photo')}</span><button onclick="deletePhoto('${p.id}')" title="Delete">✕</button></div>
+      <div class="cap"><span>${escHtml(p.caption||'Before photo')}</span>${isAdmin?`<button onclick="deletePhoto('${p.id}')" title="Delete">✕</button>`:''}</div>
     </div>`).join('');
 }
 
 function renderRenderings() {
   const list = document.getElementById('rendering-list');
   const renderings = photos.filter(p=>p.kind==='rendering');
-  if (!renderings.length) { list.innerHTML = `<div class="empty-state">No renderings yet. Upload a rendering, then click "Tag Items" and click anywhere on the image to tag furniture &amp; decor.</div>`; return; }
+  if (!renderings.length) { list.innerHTML = `<div class="empty-state">No renderings yet.${isAdmin?' Upload a rendering, then click "Tag Items" and click anywhere on the image to tag furniture &amp; decor.':''}</div>`; return; }
 
   list.innerHTML = renderings.map(p=>{
     const photoTags = tags[p.id]||[];
@@ -697,10 +1027,10 @@ function renderRenderings() {
     return `<div class="rendering-block">
       <div class="rendering-toolbar">
         <span class="cap">${escHtml(p.caption||'Rendering')}</span>
-        <div style="display:flex;gap:6px">
+        ${isAdmin?`<div style="display:flex;gap:6px">
           <button class="tag-btn ${isTagging?'active':''}" onclick="toggleTaggingMode('${p.id}')">${isTagging?'✓ Click image to tag':'+ Tag Items'}</button>
           <button class="icon-btn danger" onclick="deletePhoto('${p.id}')">🗑</button>
-        </div>
+        </div>`:''}
       </div>
       <div class="render-img-wrap ${isTagging?'':'not-tagging'}" onclick="onRenderClick(event,'${p.id}')">
         <img src="${p.image_url}" alt="${escHtml(p.caption||'')}"/>
@@ -719,11 +1049,11 @@ function renderRenderings() {
 
 function renderPalette() {
   const strip = document.getElementById('palette-strip');
-  if (!palette.length) { strip.innerHTML = `<div class="empty-state" style="width:100%">No colors saved for this room yet. Add wall paint, fabric, or accent colors above.</div>`; return; }
+  if (!palette.length) { strip.innerHTML = `<div class="empty-state" style="width:100%">No colors saved for this room yet.${isAdmin?' Add wall paint, fabric, or accent colors above.':''}</div>`; return; }
   strip.innerHTML = palette.map(c=>`
     <div class="swatch-card">
       <div class="box" style="background:${c.hex}" onclick="copyHex('${c.hex}')">
-        <button class="rm" onclick="event.stopPropagation();removePaletteColor('${c.id}')">✕</button>
+        ${isAdmin?`<button class="rm" onclick="event.stopPropagation();removePaletteColor('${c.id}')">✕</button>`:''}
       </div>
       <div class="hex">${c.hex}</div>
       <div class="lbl">${escHtml(c.label||'')}</div>
@@ -743,7 +1073,7 @@ function renderShop() {
     <div class="stat-card"><div class="num">$${total.toLocaleString()}</div><div class="lbl">Total Budget</div></div>
     <div class="stat-card"><div class="num">${purchased.length}/${items.length||0}</div><div class="lbl">Purchased ($${purchasedTotal.toLocaleString()})</div></div>`;
 
-  if (!items.length) { list.innerHTML = `<div class="empty-state">No items tagged yet. Go tag furniture and decor on a rendering to build your shopping list.</div>`; return; }
+  if (!items.length) { list.innerHTML = `<div class="empty-state">No items tagged yet.${isAdmin?' Go tag furniture and decor on a rendering to build your shopping list.':''}</div>`; return; }
 
   list.innerHTML = items.map(t=>{
     const colorName = t.color_hex ? nearestColorName(t.color_hex) : '';
@@ -759,7 +1089,94 @@ function renderShop() {
         </div>
       </div>
       <div class="shop-item-actions">
-        <button class="icon-btn" onclick="togglePurchasedGlobal('${t.id}',${t.purchased})">${t.purchased?'↺ Unmark':'✓ Purchased'}</button>
+        ${isAdmin?`<button class="icon-btn" onclick="togglePurchasedGlobal('${t.id}',${t.purchased})">${t.purchased?'↺ Unmark':'✓ Purchased'}</button>`:(t.purchased?`<span class="hdr-btn" style="cursor:default">✓ Purchased</span>`:'')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── INSPO BOARD ──
+function setInspoMode(mode) {
+  inspoMode = mode;
+  document.getElementById('inspo-mode-url').classList.toggle('active', mode==='url');
+  document.getElementById('inspo-mode-file').classList.toggle('active', mode==='file');
+  document.getElementById('inspo-url-field').style.display = mode==='url'?'block':'none';
+  document.getElementById('inspo-file-field').style.display = mode==='file'?'block':'none';
+}
+
+function openInspoModal() {
+  setInspoMode('url');
+  document.getElementById('input-inspo-url').value='';
+  document.getElementById('input-inspo-file').value='';
+  document.getElementById('input-inspo-caption').value='';
+  document.getElementById('input-inspo-source').value='';
+  document.getElementById('inspo-modal-overlay').classList.add('open');
+}
+
+async function submitInspoPin() {
+  const caption = document.getElementById('input-inspo-caption').value.trim();
+  let source = document.getElementById('input-inspo-source').value.trim();
+  const btn = document.getElementById('inspo-submit-btn');
+  let imageUrl = '';
+
+  if (inspoMode==='url') {
+    imageUrl = document.getElementById('input-inspo-url').value.trim();
+    if (!imageUrl) { highlightErr('input-inspo-url'); return; }
+    if (!source) source = imageUrl;
+  } else {
+    const file = document.getElementById('input-inspo-file').files[0];
+    if (!file) { showToast('Choose an image file first'); return; }
+    btn.textContent='Uploading...'; btn.disabled=true;
+    const path = `inspo/${activeClientId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+    const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
+    if (upErr) { showToast('Upload failed ✗'); btn.textContent='Add Pin'; btn.disabled=false; return; }
+    const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+    imageUrl = pub.publicUrl;
+  }
+
+  const {error} = await sb.from('inspo_pins').insert({
+    client_id: activeClientId, image_url: imageUrl, source_url: source||null, caption: caption||null, added_by: currentUser.id
+  });
+  btn.textContent='Add Pin'; btn.disabled=false;
+  if (error) { showToast('Error saving pin ✗'); return; }
+  closeModal('inspo-modal-overlay');
+  await loadInspo();
+  renderInspo();
+  showToast('Pin added ✓');
+}
+
+async function loadInspo() {
+  if (!activeClientId) { inspoPins=[]; return; }
+  const {data,error} = await sb.from('inspo_pins').select('*').eq('client_id',activeClientId).order('created_at',{ascending:false});
+  if (error) { showToast('Error loading inspo board ✗'); return; }
+  inspoPins = data || [];
+}
+
+async function deleteInspoPin(id) {
+  if (!confirm('Delete this pin?')) return;
+  const {error} = await sb.from('inspo_pins').delete().eq('id',id);
+  if (error) { showToast('Error deleting ✗'); return; }
+  await loadInspo();
+  renderInspo();
+}
+
+function renderInspo() {
+  const el = document.getElementById('inspo-masonry');
+  if (!inspoPins.length) { el.innerHTML = `<div class="empty-state">No inspiration pins yet. ${isAdmin?'Add some to spark ideas, or wait for your client to add their own.':'Click "+ Add Pin" to save images that capture the look you want.'}</div>`; return; }
+  el.innerHTML = inspoPins.map(p=>{
+    const canDelete = isAdmin || p.added_by===currentUser.id;
+    const byLabel = p.added_by===currentUser.id ? 'You' : (isAdmin ? 'Client' : 'Designer');
+    return `<div class="pin-card">
+      <img src="${p.image_url}" alt="${escHtml(p.caption||'')}" loading="lazy"/>
+      <div class="pin-body">
+        ${p.caption?`<div class="pin-cap">${escHtml(p.caption)}</div>`:''}
+        <div class="pin-meta">
+          <span class="pin-by">${byLabel}</span>
+          <div style="display:flex;gap:6px;align-items:center">
+            ${p.source_url?`<a class="pin-src" href="${p.source_url}" target="_blank" rel="noopener">Source ↗</a>`:''}
+            ${canDelete?`<button class="pin-del" onclick="deleteInspoPin('${p.id}')">✕</button>`:''}
+          </div>
+        </div>
       </div>
     </div>`;
   }).join('');
@@ -772,6 +1189,7 @@ function switchTab(tab, btn) {
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById(`panel-${tab}`).classList.add('active');
   if (tab==='shop') { loadShoppingList().then(renderShop); }
+  if (tab==='inspo') { loadInspo().then(renderInspo); }
 }
 
 // ── MODAL / UTIL ──
@@ -782,85 +1200,16 @@ function showToast(msg){const t=document.getElementById('toast');t.textContent=m
 
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));} });
 document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===e.currentTarget)el.classList.remove('open');}));
+document.getElementById('auth-password').addEventListener('keydown',e=>{if(e.key==='Enter'){authMode==='signin'?handleSignIn():handleSignUp();}});
 
 // generate an initial harmony preview
 generateHarmony('#D4A574');
-
-// ── AUTO LOGIN IF ALREADY VERIFIED THIS SESSION ──
-if (sessionStorage.getItem('apt-design-auth')==='1') {
-  document.getElementById('password-screen').style.display='none';
-  document.getElementById('app').style.display='flex';
-  boot();
-}
 </script>
 
 <!--
-SUPABASE SETUP — run this once in your Supabase project's SQL Editor
-(same project already used by the Endiatx lab tool: fnjxxvghoebrpeflkdty)
-
-create table apt_rooms (
-  id uuid default gen_random_uuid() primary key,
-  name text not null,
-  created_at timestamptz default now()
-);
-alter table apt_rooms enable row level security;
-create policy "read rooms" on apt_rooms for select using (true);
-create policy "insert rooms" on apt_rooms for insert with check (true);
-create policy "update rooms" on apt_rooms for update using (true);
-create policy "delete rooms" on apt_rooms for delete using (true);
-
-create table apt_photos (
-  id uuid default gen_random_uuid() primary key,
-  room_id uuid references apt_rooms(id) on delete cascade,
-  kind text not null check (kind in ('before','rendering')),
-  image_url text not null,
-  caption text,
-  created_at timestamptz default now()
-);
-alter table apt_photos enable row level security;
-create policy "read photos" on apt_photos for select using (true);
-create policy "insert photos" on apt_photos for insert with check (true);
-create policy "update photos" on apt_photos for update using (true);
-create policy "delete photos" on apt_photos for delete using (true);
-
-create table apt_tags (
-  id uuid default gen_random_uuid() primary key,
-  photo_id uuid references apt_photos(id) on delete cascade,
-  x numeric not null,
-  y numeric not null,
-  item_name text not null,
-  category text,
-  color_hex text,
-  notes text,
-  budget numeric,
-  purchased boolean default false,
-  created_at timestamptz default now()
-);
-alter table apt_tags enable row level security;
-create policy "read tags" on apt_tags for select using (true);
-create policy "insert tags" on apt_tags for insert with check (true);
-create policy "update tags" on apt_tags for update using (true);
-create policy "delete tags" on apt_tags for delete using (true);
-
-create table apt_palette (
-  id uuid default gen_random_uuid() primary key,
-  room_id uuid references apt_rooms(id) on delete cascade,
-  hex text not null,
-  label text,
-  created_at timestamptz default now()
-);
-alter table apt_palette enable row level security;
-create policy "read palette" on apt_palette for select using (true);
-create policy "insert palette" on apt_palette for insert with check (true);
-create policy "delete palette" on apt_palette for delete using (true);
-
--- STORAGE: In the Supabase Dashboard go to Storage > New bucket
--- Name it exactly:  apartment-images   and toggle "Public bucket" ON.
--- Then run this so uploads/reads/deletes work from the browser:
-
-create policy "apartment-images read" on storage.objects for select using (bucket_id = 'apartment-images');
-create policy "apartment-images insert" on storage.objects for insert with check (bucket_id = 'apartment-images');
-create policy "apartment-images delete" on storage.objects for delete using (bucket_id = 'apartment-images');
+SUPABASE SETUP — run this once in your Supabase project's SQL Editor.
+Full migration also provided in chat. See apartment/join.html for the
+client invite-redemption page this links to.
 -->
 </body>
 </html>
