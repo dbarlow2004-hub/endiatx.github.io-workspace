@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apartment Design Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg:#121110; --surface:#1a1816; --surface2:#211f1c; --border:#332f2a;
+  --accent:#d4a574; --accent-dim:rgba(212,165,116,0.14);
+  --sage:#8fa888; --red:#e17a6b; --blue:#7fa8c9;
+  --text:#f0ece5; --muted:#948d82;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;}
+img{max-width:100%;display:block;}
+
+/* PASSWORD */
+#password-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999;}
+.pw-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;gap:20px;}
+.pw-logo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;}
+.pw-title{font-family:'Space Mono',monospace;font-size:18px;text-align:center;}
+.pw-sub{font-size:13px;color:var(--muted);text-align:center;}
+.pw-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:15px;padding:14px 16px;outline:none;text-align:center;letter-spacing:0.1em;}
+.pw-input:focus{border-color:var(--accent);}
+.pw-btn{width:100%;padding:14px;background:var(--accent);color:#1a1410;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;}
+.pw-btn:hover{opacity:0.88;}
+.pw-error{font-size:12px;color:var(--red);display:none;text-align:center;}
+
+/* APP */
+#app{display:none;flex-direction:column;min-height:100vh;padding-bottom:80px;}
+header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(18,17,16,0.96);backdrop-filter:blur(10px);z-index:100;gap:14px;flex-wrap:wrap;}
+.logo{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;}
+.logo span{color:var(--muted);}
+.room-select-wrap{display:flex;align-items:center;gap:8px;}
+#room-select{background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;border-radius:8px;outline:none;}
+.hdr-btn{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);background:none;padding:8px 12px;border-radius:6px;cursor:pointer;white-space:nowrap;}
+.hdr-btn:hover{color:var(--accent);border-color:var(--accent);}
+
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--border);padding:0 28px;background:var(--bg);overflow-x:auto;}
+.tab{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);padding:14px 18px;cursor:pointer;border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap;}
+.tab:hover{color:var(--text);}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+
+.container{padding:24px 28px 0;max-width:1200px;margin:0 auto;width:100%;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+.section-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;margin-top:30px;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.section-label:first-child{margin-top:0;}
+
+.empty-state{text-align:center;padding:50px 20px;color:var(--muted);font-size:13px;border:1px dashed var(--border);border-radius:12px;}
+
+/* PHOTO GRID */
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.photo-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.photo-card .thumb-wrap{position:relative;background:#000;}
+.photo-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.photo-card .cap{padding:9px 12px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.photo-card .cap button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;}
+.photo-card .cap button:hover{color:var(--red);}
+
+/* RENDERING WITH TAGS */
+.rendering-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:18px;}
+.rendering-toolbar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
+.rendering-toolbar .cap{font-size:12px;color:var(--muted);}
+.tag-btn{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:7px 12px;border-radius:6px;cursor:pointer;border:1px solid var(--border);background:none;color:var(--muted);}
+.tag-btn.active{background:var(--accent);color:#1a1410;border-color:var(--accent);}
+.tag-btn:hover:not(.active){color:var(--accent);border-color:var(--accent);}
+.render-img-wrap{position:relative;cursor:crosshair;background:#000;}
+.render-img-wrap.not-tagging{cursor:default;}
+.render-img-wrap img{width:100%;display:block;}
+.pin{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#1a1410;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);cursor:pointer;box-shadow:0 0 0 3px rgba(212,165,116,0.3);}
+.pin:hover{transform:translate(-50%,-50%) scale(1.15);}
+.pin.purchased{background:var(--sage);box-shadow:0 0 0 3px rgba(143,168,136,0.3);}
+.render-taglist{padding:10px 14px 14px;display:flex;flex-direction:column;gap:6px;}
+.render-tag-row{display:flex;align-items:center;gap:8px;font-size:12px;padding:6px 8px;border-radius:6px;cursor:pointer;}
+.render-tag-row:hover{background:var(--surface2);}
+.render-tag-row .swatch{width:12px;height:12px;border-radius:3px;border:1px solid var(--border);flex-shrink:0;}
+.render-tag-row .num{font-family:'Space Mono',monospace;color:var(--accent);font-size:10px;width:16px;}
+.render-tag-row .nm{flex:1;}
+.render-tag-row .bud{color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;}
+
+/* PALETTE */
+.palette-strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+.swatch-card{width:88px;text-align:center;}
+.swatch-card .box{width:88px;height:64px;border-radius:8px;border:1px solid var(--border);position:relative;cursor:pointer;}
+.swatch-card .box .rm{position:absolute;top:3px;right:3px;background:rgba(0,0,0,0.4);color:#fff;border:none;border-radius:4px;width:16px;height:16px;font-size:10px;line-height:1;cursor:pointer;display:none;}
+.swatch-card .box:hover .rm{display:block;}
+.swatch-card .hex{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);margin-top:5px;}
+.swatch-card .lbl{font-size:10px;color:var(--muted);}
+.add-color-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px;}
+.color-input-native{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);background:none;cursor:pointer;padding:0;}
+.hex-text-input{background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Space Mono',monospace;font-size:13px;padding:9px 11px;width:110px;outline:none;}
+.hex-text-input:focus{border-color:var(--accent);}
+.label-text-input{background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:13px;padding:9px 11px;flex:1;min-width:120px;outline:none;}
+.label-text-input:focus{border-color:var(--accent);}
+
+.harmony-block{margin-top:10px;}
+.harmony-group{margin-bottom:20px;}
+.harmony-title{font-size:12px;color:var(--muted);margin-bottom:8px;}
+.harmony-row{display:flex;gap:8px;flex-wrap:wrap;}
+.harmony-swatch{width:64px;text-align:center;}
+.harmony-swatch .box{width:64px;height:48px;border-radius:6px;border:1px solid var(--border);cursor:pointer;}
+.harmony-swatch .hex{font-family:'Space Mono',monospace;font-size:8px;color:var(--muted);margin-top:4px;}
+
+/* SHOPPING LIST */
+.shop-summary{display:flex;gap:20px;margin-bottom:18px;flex-wrap:wrap;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 18px;min-width:130px;}
+.stat-card .num{font-family:'Space Mono',monospace;font-size:22px;color:var(--accent);}
+.stat-card .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:4px;}
+.shop-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;}
+.shop-item.purchased{opacity:0.5;}
+.shop-item .swatch-lg{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);flex-shrink:0;}
+.shop-item .info{flex:1;min-width:180px;}
+.shop-item .item-nm{font-size:14px;font-weight:600;}
+.shop-item .item-meta{font-size:11px;color:var(--muted);margin-top:2px;}
+.shop-item .item-notes{font-size:11px;color:var(--muted);margin-top:4px;font-style:italic;}
+.shop-links{display:flex;gap:6px;flex-wrap:wrap;}
+.shop-link{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.05em;text-transform:uppercase;padding:6px 10px;border-radius:6px;border:1px solid var(--border);color:var(--text);text-decoration:none;white-space:nowrap;}
+.shop-link:hover{border-color:var(--accent);color:var(--accent);}
+.shop-item-actions{display:flex;gap:6px;align-items:center;}
+.icon-btn{background:none;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:6px 9px;cursor:pointer;font-size:12px;}
+.icon-btn:hover{color:var(--accent);border-color:var(--accent);}
+.icon-btn.danger:hover{color:var(--red);border-color:var(--red);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px;width:100%;max-width:440px;max-height:88vh;overflow-y:auto;transform:translateY(8px);transition:transform 0.2s;}
+.modal-overlay.open .modal{transform:translateY(0);}
+.modal h2{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
+.field{margin-bottom:12px;}
+.field label{display:block;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.field input,.field select,.field textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 11px;outline:none;}
+.field textarea{resize:vertical;min-height:56px;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);}
+.field select option{background:var(--surface);}
+.field-row{display:flex;gap:10px;}
+.field-row .field{flex:1;}
+.color-field-row{display:flex;gap:8px;align-items:center;}
+.modal-actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+.btn{flex:1;padding:11px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;border:none;}
+.btn:active{transform:scale(0.98);}
+.btn-primary{background:var(--accent);color:#1a1410;}
+.btn-ghost{background:none;border:1px solid var(--border);color:var(--muted);}
+.btn-danger{background:var(--red);color:#1a1410;flex:0 0 auto;padding:11px 14px;}
+.btn-block{width:100%;}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--text);color:var(--bg);padding:9px 20px;border-radius:30px;font-size:12px;font-weight:700;z-index:2000;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+@media(max-width:600px){header{padding:12px 16px;}.container{padding:16px 16px 0;}.tabs{padding:0 16px;}}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD -->
+<div id="password-screen">
+  <div class="pw-card">
+    <div class="pw-logo">Apartment Design Studio</div>
+    <div class="pw-title">Welcome back</div>
+    <div class="pw-sub">Enter the studio password to continue</div>
+    <input class="pw-input" type="password" id="pw-input" placeholder="••••••••••" autocomplete="off"/>
+    <div class="pw-error" id="pw-error">Incorrect password — try again</div>
+    <button class="pw-btn" onclick="checkPassword()">Enter Studio →</button>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <header>
+    <div class="logo">Apartment <span>/ Design Studio</span></div>
+    <div class="room-select-wrap">
+      <select id="room-select" onchange="selectRoom(this.value)"></select>
+      <button class="hdr-btn" onclick="openRoomModal()">+ Room</button>
+    </div>
+    <div>
+      <button class="hdr-btn" onclick="openRoomModal(true)" id="rename-room-btn">✎ Rename</button>
+      <button class="hdr-btn" onclick="deleteCurrentRoom()">🗑 Delete Room</button>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="gallery" onclick="switchTab('gallery',this)">Before &amp; After</button>
+    <button class="tab" data-tab="palette" onclick="switchTab('palette',this)">Palette</button>
+    <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">Shopping List</button>
+  </div>
+
+  <div class="container">
+
+    <!-- GALLERY PANEL -->
+    <div class="panel active" id="panel-gallery">
+      <div class="section-label">Before Photos</div>
+      <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('before')">+ Upload Before Photo</button></div>
+      <div id="before-grid" class="photo-grid"></div>
+
+      <div class="section-label">Renderings</div>
+      <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('rendering')">+ Upload Rendering</button></div>
+      <div id="rendering-list"></div>
+    </div>
+
+    <!-- PALETTE PANEL -->
+    <div class="panel" id="panel-palette">
+      <div class="section-label">Room Palette</div>
+      <div class="add-color-form">
+        <input type="color" class="color-input-native" id="palette-color-native" value="#d4a574" oninput="document.getElementById('palette-color-hex').value=this.value">
+        <input type="text" class="hex-text-input" id="palette-color-hex" value="#D4A574" oninput="syncNativeFromHex(this.value)">
+        <input type="text" class="label-text-input" id="palette-color-label" placeholder="Label (e.g. Wall — Warm Sand)">
+        <button class="btn btn-primary" style="flex:0 0 auto;padding:9px 16px" onclick="addPaletteColor()">Add Color</button>
+      </div>
+      <div id="palette-strip" class="palette-strip"></div>
+
+      <div class="section-label">Color Harmony Assistant</div>
+      <div class="add-color-form">
+        <input type="color" class="color-input-native" id="harmony-color-native" value="#d4a574" oninput="document.getElementById('harmony-color-hex').value=this.value;generateHarmony(this.value)">
+        <input type="text" class="hex-text-input" id="harmony-color-hex" value="#D4A574" oninput="generateHarmony(this.value)">
+        <span style="font-size:12px;color:var(--muted)">Pick a base color to generate a full scheme</span>
+      </div>
+      <div id="harmony-output" class="harmony-block"></div>
+    </div>
+
+    <!-- SHOPPING LIST PANEL -->
+    <div class="panel" id="panel-shop">
+      <div class="section-label">All Rooms — Tagged Items</div>
+      <div id="shop-summary" class="shop-summary"></div>
+      <div id="shop-list"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ROOM MODAL -->
+<div class="modal-overlay" id="room-modal-overlay">
+  <div class="modal">
+    <h2 id="room-modal-title">New Room</h2>
+    <div class="field"><label>Room Name</label><input type="text" id="input-room-name" placeholder="e.g. Living Room" autocomplete="off"/></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('room-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveRoom()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD MODAL -->
+<div class="modal-overlay" id="upload-modal-overlay">
+  <div class="modal">
+    <h2 id="upload-modal-title">Upload Photo</h2>
+    <div class="field"><label>Image File</label><input type="file" id="input-photo-file" accept="image/*"/></div>
+    <div class="field"><label>Caption (optional)</label><input type="text" id="input-photo-caption" placeholder="e.g. North wall, facing window" autocomplete="off"/></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('upload-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" id="upload-submit-btn" onclick="submitUpload()">Upload</button>
+    </div>
+  </div>
+</div>
+
+<!-- TAG MODAL -->
+<div class="modal-overlay" id="tag-modal-overlay">
+  <div class="modal">
+    <h2 id="tag-modal-title">Tag Item</h2>
+    <div class="field"><label>Item Name</label><input type="text" id="input-tag-name" placeholder="e.g. Walnut console table" autocomplete="off"/></div>
+    <div class="field-row">
+      <div class="field">
+        <label>Category</label>
+        <select id="input-tag-category">
+          <option>Furniture</option><option>Lighting</option><option>Textiles</option>
+          <option>Rug</option><option>Wall Decor</option><option>Plant</option>
+          <option>Accessory</option><option>Window Treatment</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Budget ($)</label>
+        <input type="number" id="input-tag-budget" placeholder="0" min="0" step="1"/>
+      </div>
+    </div>
+    <div class="field">
+      <label>Color</label>
+      <div class="color-field-row">
+        <input type="color" class="color-input-native" id="input-tag-color-native" value="#d4a574" oninput="document.getElementById('input-tag-color-hex').value=this.value">
+        <input type="text" class="hex-text-input" id="input-tag-color-hex" value="#D4A574" oninput="syncNativeFromHexEl(this.value,'input-tag-color-native')">
+      </div>
+    </div>
+    <div class="field"><label>Notes</label><textarea id="input-tag-notes" placeholder="Dimensions, material, vibe..."></textarea></div>
+    <div class="modal-actions" id="tag-modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('tag-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveTag()">Save Tag</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── CONFIG ──
+// Reuses the same Supabase project already configured for the Endiatx lab tool.
+// Change SITE_PASSWORD below to whatever you like — it's a soft client-side gate,
+// not real security (this is a public static site). Don't put anything you
+// wouldn't want publicly guessable behind it.
+const SUPABASE_URL  = 'https://fnjxxvghoebrpeflkdty.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_dQUzquFXUV-AE34K8PtqPQ_KHt8s1Ia';
+const SITE_PASSWORD = 'DesignStudio2026';
+const STORAGE_BUCKET = 'apartment-images';
+
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+// ── STATE ──
+let rooms = [];
+let currentRoomId = null;
+let photos = [];   // all photos for current room
+let tags = {};      // tags[photoId] = [tag,...]
+let palette = [];   // palette for current room
+let allTagsAllRooms = []; // for shopping list: [{...tag, roomName, photoCaption}]
+let taggingModePhotoId = null; // which rendering is in "add tag" mode
+let editingTagId = null;
+let pendingTagPos = null; // {photoId, x, y}
+let currentUploadKind = null;
+
+// ── RETAILERS ──
+const RETAILERS = [
+  {name:'Amazon',    url:q=>`https://www.amazon.com/s?k=${q}`},
+  {name:'Wayfair',   url:q=>`https://www.wayfair.com/keyword.php?keyword=${q}`},
+  {name:'West Elm',  url:q=>`https://www.westelm.com/search/results.html?words=${q}`},
+  {name:'CB2',       url:q=>`https://www.cb2.com/search?query=${q}`},
+  {name:'Etsy',      url:q=>`https://www.etsy.com/search?q=${q}`},
+  {name:'Target',    url:q=>`https://www.target.com/s?searchTerm=${q}`},
+  {name:'Google Shopping', url:q=>`https://www.google.com/search?tbm=shop&q=${q}`},
+];
+
+// ── COLOR NAME LOOKUP (approx nearest match) ──
+const COLOR_NAMES = [
+  ['black','#000000'],['white','#ffffff'],['ivory','#fffff0'],['charcoal','#36454f'],
+  ['gray','#808080'],['light gray','#d3d3d3'],['brown','#8b5e3c'],['tan','#d2b48c'],
+  ['beige','#f5f5dc'],['cream','#fffdd0'],['navy','#1b2a4a'],['blue','#4a7ab5'],
+  ['light blue','#a8c8e0'],['teal','#3d8f8a'],['sage green','#9caf88'],['green','#4a7a4a'],
+  ['olive','#6b6b3a'],['red','#b0453a'],['terracotta','#c1633f'],['rust','#a0522d'],
+  ['orange','#d98246'],['mustard','#d4ac2b'],['yellow','#e0c341'],['gold','#c9a13b'],
+  ['pink','#dba0a8'],['blush','#e8c4c0'],['purple','#7d5a8c'],['lavender','#c3b1e1'],
+  ['walnut','#5c4433'],['espresso','#3b2a1e'],['taupe','#8b7d6b'],['silver','#c0c0c0'],
+];
+function hexToRgb(hex){hex=hex.replace('#','');if(hex.length===3)hex=hex.split('').map(c=>c+c).join('');const n=parseInt(hex,16);return[(n>>16)&255,(n>>8)&255,n&255];}
+function nearestColorName(hex){
+  const [r,g,b]=hexToRgb(hex); let best=null,bestD=Infinity;
+  for(const [name,h] of COLOR_NAMES){
+    const [r2,g2,b2]=hexToRgb(h);
+    const d=(r-r2)**2+(g-g2)**2+(b-b2)**2;
+    if(d<bestD){bestD=d;best=name;}
+  }
+  return best;
+}
+function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;const max=Math.max(r,g,b),min=Math.min(r,g,b);let h,s,l=(max+min)/2;if(max===min){h=s=0;}else{const d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return[h*360,s*100,l*100];}
+function hslToHex(h,s,l){h=((h%360)+360)%360;s/=100;l/=100;const c=(1-Math.abs(2*l-1))*s;const x=c*(1-Math.abs((h/60)%2-1));const m=l-c/2;let r,g,b;if(h<60){[r,g,b]=[c,x,0];}else if(h<120){[r,g,b]=[x,c,0];}else if(h<180){[r,g,b]=[0,c,x];}else if(h<240){[r,g,b]=[0,x,c];}else if(h<300){[r,g,b]=[x,0,c];}else{[r,g,b]=[c,0,x];}
+  const toHex=v=>Math.round((v+m)*255).toString(16).padStart(2,'0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
+}
+function hexToHsl(hex){const [r,g,b]=hexToRgb(hex);return rgbToHsl(r,g,b);}
+
+// ── PASSWORD ──
+function checkPassword() {
+  const val = document.getElementById('pw-input').value;
+  if (val === SITE_PASSWORD) {
+    sessionStorage.setItem('apt-design-auth','1');
+    document.getElementById('password-screen').style.display='none';
+    document.getElementById('app').style.display='flex';
+    boot();
+  } else {
+    document.getElementById('pw-error').style.display='block';
+    document.getElementById('pw-input').style.borderColor='var(--red)';
+    setTimeout(()=>{
+      document.getElementById('pw-error').style.display='none';
+      document.getElementById('pw-input').style.borderColor='';
+      document.getElementById('pw-input').value='';
+    },1400);
+  }
+}
+document.getElementById('pw-input').addEventListener('keydown',e=>{if(e.key==='Enter')checkPassword();});
+
+// ── BOOT ──
+async function boot() {
+  await loadRooms();
+}
+
+// ── ROOMS ──
+async function loadRooms() {
+  const {data,error} = await sb.from('apt_rooms').select('*').order('created_at',{ascending:true});
+  if (error) { showToast('Error loading rooms ✗'); return; }
+  rooms = data || [];
+  if (!rooms.length) {
+    const {data:created,error:cErr} = await sb.from('apt_rooms').insert({name:'Living Room'}).select().single();
+    if (!cErr) rooms = [created];
+  }
+  renderRoomSelect();
+  if (!currentRoomId || !rooms.find(r=>r.id===currentRoomId)) currentRoomId = rooms[0]?.id||null;
+  document.getElementById('room-select').value = currentRoomId;
+  await selectRoom(currentRoomId, true);
+}
+
+function renderRoomSelect() {
+  document.getElementById('room-select').innerHTML = rooms.map(r=>`<option value="${r.id}">${escHtml(r.name)}</option>`).join('');
+}
+
+async function selectRoom(id, skipReload) {
+  currentRoomId = id;
+  if (!skipReload) document.getElementById('room-select').value = id;
+  await Promise.all([loadPhotosAndTags(), loadPalette()]);
+  await loadShoppingList();
+  render();
+}
+
+function openRoomModal(isRename) {
+  document.getElementById('room-modal-title').textContent = isRename?'Rename Room':'New Room';
+  const input = document.getElementById('input-room-name');
+  input.value = isRename ? (rooms.find(r=>r.id===currentRoomId)?.name||'') : '';
+  document.getElementById('room-modal-overlay').dataset.mode = isRename?'rename':'create';
+  document.getElementById('room-modal-overlay').classList.add('open');
+  setTimeout(()=>input.focus(),150);
+}
+
+async function saveRoom() {
+  const name = document.getElementById('input-room-name').value.trim();
+  if (!name) { highlightErr('input-room-name'); return; }
+  const mode = document.getElementById('room-modal-overlay').dataset.mode;
+  if (mode==='rename') {
+    const {error} = await sb.from('apt_rooms').update({name}).eq('id',currentRoomId);
+    if (error) { showToast('Error renaming ✗'); return; }
+  } else {
+    const {data,error} = await sb.from('apt_rooms').insert({name}).select().single();
+    if (error) { showToast('Error creating room ✗'); return; }
+    currentRoomId = data.id;
+  }
+  closeModal('room-modal-overlay');
+  await loadRooms();
+  showToast('Saved ✓');
+}
+
+async function deleteCurrentRoom() {
+  if (rooms.length<=1) { showToast("Can't delete your only room"); return; }
+  const room = rooms.find(r=>r.id===currentRoomId);
+  if (!confirm(`Delete "${room?.name}" and all its photos, tags, and palette? This can't be undone.`)) return;
+  await sb.from('apt_rooms').delete().eq('id',currentRoomId);
+  currentRoomId = null;
+  await loadRooms();
+  showToast('Room deleted');
+}
+
+// ── PHOTOS & TAGS ──
+async function loadPhotosAndTags() {
+  const {data,error} = await sb.from('apt_photos').select('*').eq('room_id',currentRoomId).order('created_at',{ascending:true});
+  if (error) { showToast('Error loading photos ✗'); return; }
+  photos = data || [];
+  tags = {};
+  const photoIds = photos.map(p=>p.id);
+  if (photoIds.length) {
+    const {data:tagData} = await sb.from('apt_tags').select('*').in('photo_id',photoIds).order('created_at',{ascending:true});
+    (tagData||[]).forEach(t=>{ if(!tags[t.photo_id]) tags[t.photo_id]=[]; tags[t.photo_id].push(t); });
+  }
+}
+
+async function loadPalette() {
+  const {data,error} = await sb.from('apt_palette').select('*').eq('room_id',currentRoomId).order('created_at',{ascending:true});
+  if (error) { showToast('Error loading palette ✗'); return; }
+  palette = data || [];
+}
+
+async function loadShoppingList() {
+  const {data:allPhotos} = await sb.from('apt_photos').select('id,caption,room_id');
+  const {data:allTags} = await sb.from('apt_tags').select('*').order('created_at',{ascending:true});
+  allTagsAllRooms = (allTags||[]).map(t=>{
+    const photo = (allPhotos||[]).find(p=>p.id===t.photo_id);
+    const room = rooms.find(r=>r.id===photo?.room_id);
+    return {...t, roomName: room?.name||'Unknown Room', photoCaption: photo?.caption||''};
+  });
+}
+
+function openUploadModal(kind) {
+  currentUploadKind = kind;
+  document.getElementById('upload-modal-title').textContent = kind==='before'?'Upload Before Photo':'Upload Rendering';
+  document.getElementById('input-photo-file').value='';
+  document.getElementById('input-photo-caption').value='';
+  document.getElementById('upload-modal-overlay').classList.add('open');
+}
+
+async function submitUpload() {
+  const fileInput = document.getElementById('input-photo-file');
+  const file = fileInput.files[0];
+  if (!file) { showToast('Choose an image file first'); return; }
+  const caption = document.getElementById('input-photo-caption').value.trim();
+  const btn = document.getElementById('upload-submit-btn');
+  btn.textContent = 'Uploading...'; btn.disabled = true;
+
+  const path = `${currentRoomId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+  const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
+  if (upErr) {
+    showToast('Upload failed — is the "'+STORAGE_BUCKET+'" storage bucket set up? See setup notes at bottom of file.');
+    btn.textContent='Upload'; btn.disabled=false; return;
+  }
+  const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+  const {error: insErr} = await sb.from('apt_photos').insert({
+    room_id: currentRoomId, kind: currentUploadKind, image_url: pub.publicUrl, caption: caption||null
+  });
+  btn.textContent='Upload'; btn.disabled=false;
+  if (insErr) { showToast('Error saving photo ✗'); return; }
+  closeModal('upload-modal-overlay');
+  await loadPhotosAndTags();
+  render();
+  showToast('Uploaded ✓');
+}
+
+async function deletePhoto(photoId) {
+  if (!confirm('Delete this photo and all its tags?')) return;
+  await sb.from('apt_photos').delete().eq('id',photoId);
+  await loadPhotosAndTags();
+  await loadShoppingList();
+  render();
+  showToast('Photo deleted');
+}
+
+function toggleTaggingMode(photoId) {
+  taggingModePhotoId = (taggingModePhotoId===photoId) ? null : photoId;
+  renderRenderings();
+}
+
+function onRenderClick(e, photoId) {
+  if (taggingModePhotoId !== photoId) return;
+  const rect = e.currentTarget.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  pendingTagPos = {photoId, x, y};
+  editingTagId = null;
+  openTagModal();
+}
+
+function openTagModal(existingTag) {
+  document.getElementById('tag-modal-title').textContent = existingTag ? 'Edit Item' : 'Tag Item';
+  document.getElementById('input-tag-name').value = existingTag?.item_name || '';
+  document.getElementById('input-tag-category').value = existingTag?.category || 'Furniture';
+  document.getElementById('input-tag-budget').value = existingTag?.budget ?? '';
+  const hex = existingTag?.color_hex || '#D4A574';
+  document.getElementById('input-tag-color-hex').value = hex;
+  document.getElementById('input-tag-color-native').value = hex;
+  document.getElementById('input-tag-notes').value = existingTag?.notes || '';
+
+  const actions = document.getElementById('tag-modal-actions');
+  actions.innerHTML = `
+    <button class="btn btn-ghost" onclick="closeModal('tag-modal-overlay')">Cancel</button>
+    ${existingTag?`<button class="btn btn-danger" onclick="deleteTag('${existingTag.id}')">Delete</button>`:''}
+    <button class="btn btn-primary" onclick="saveTag()">Save Tag</button>`;
+  document.getElementById('tag-modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('input-tag-name').focus(),150);
+}
+
+async function saveTag() {
+  const item_name = document.getElementById('input-tag-name').value.trim();
+  if (!item_name) { highlightErr('input-tag-name'); return; }
+  const category = document.getElementById('input-tag-category').value;
+  const budgetRaw = document.getElementById('input-tag-budget').value;
+  const budget = budgetRaw===''?null:parseFloat(budgetRaw);
+  const color_hex = document.getElementById('input-tag-color-hex').value;
+  const notes = document.getElementById('input-tag-notes').value.trim();
+
+  if (editingTagId) {
+    const {error} = await sb.from('apt_tags').update({item_name,category,budget,color_hex,notes}).eq('id',editingTagId);
+    if (error) { showToast('Error saving ✗'); return; }
+  } else {
+    const {photoId,x,y} = pendingTagPos;
+    const {error} = await sb.from('apt_tags').insert({photo_id:photoId,x,y,item_name,category,budget,color_hex,notes,purchased:false});
+    if (error) { showToast('Error saving ✗'); return; }
+  }
+  closeModal('tag-modal-overlay');
+  taggingModePhotoId = null;
+  editingTagId = null; pendingTagPos = null;
+  await loadPhotosAndTags();
+  await loadShoppingList();
+  render();
+  showToast('Tag saved ✓');
+}
+
+async function deleteTag(tagId) {
+  await sb.from('apt_tags').delete().eq('id',tagId);
+  closeModal('tag-modal-overlay');
+  await loadPhotosAndTags();
+  await loadShoppingList();
+  render();
+  showToast('Tag deleted');
+}
+
+function editTagById(photoId, tagId) {
+  const t = (tags[photoId]||[]).find(x=>x.id===tagId);
+  if (!t) return;
+  editingTagId = tagId; pendingTagPos = null;
+  openTagModal(t);
+}
+
+async function togglePurchasedGlobal(tagId, current) {
+  await sb.from('apt_tags').update({purchased:!current}).eq('id',tagId);
+  await loadShoppingList();
+  await loadPhotosAndTags();
+  renderShop();
+  renderRenderings();
+}
+
+// ── PALETTE ──
+function syncNativeFromHex(hex) {
+  document.getElementById('palette-color-native').value = /^#[0-9A-Fa-f]{6}$/.test(hex)?hex:'#d4a574';
+}
+function syncNativeFromHexEl(hex, nativeId) {
+  document.getElementById(nativeId).value = /^#[0-9A-Fa-f]{6}$/.test(hex)?hex:'#d4a574';
+}
+
+async function addPaletteColor() {
+  let hex = document.getElementById('palette-color-hex').value.trim();
+  if (!hex.startsWith('#')) hex = '#'+hex;
+  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) { highlightErr('palette-color-hex'); return; }
+  const label = document.getElementById('palette-color-label').value.trim();
+  const {error} = await sb.from('apt_palette').insert({room_id:currentRoomId, hex:hex.toUpperCase(), label:label||null});
+  if (error) { showToast('Error adding color ✗'); return; }
+  document.getElementById('palette-color-label').value='';
+  await loadPalette();
+  renderPalette();
+  showToast('Color added ✓');
+}
+
+async function removePaletteColor(id) {
+  await sb.from('apt_palette').delete().eq('id',id);
+  await loadPalette();
+  renderPalette();
+}
+
+function generateHarmony(hex) {
+  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) return;
+  const [h,s,l] = hexToHsl(hex);
+  const groups = [
+    ['Complementary', [h, h+180]],
+    ['Analogous', [h-30, h, h+30]],
+    ['Triadic', [h, h+120, h+240]],
+    ['Monochromatic', [ [h,s,Math.min(90,l+30)], [h,s,Math.min(85,l+15)], [h,s,l], [h,s,Math.max(15,l-15)], [h,s,Math.max(10,l-30)] ]],
+  ];
+  const out = groups.map(([title, vals])=>{
+    let swatches;
+    if (title==='Monochromatic') {
+      swatches = vals.map(([hh,ss,ll])=>hslToHex(hh,ss,ll));
+    } else {
+      swatches = vals.map(hh=>hslToHex(hh,s,l));
+    }
+    return `<div class="harmony-group">
+      <div class="harmony-title">${title}</div>
+      <div class="harmony-row">
+        ${swatches.map(hx=>`<div class="harmony-swatch">
+          <div class="box" style="background:${hx}" title="Click to copy" onclick="copyHex('${hx}')"></div>
+          <div class="hex">${hx}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('harmony-output').innerHTML = out;
+}
+
+function copyHex(hex) {
+  navigator.clipboard?.writeText(hex);
+  showToast(`Copied ${hex} ✓`);
+}
+
+// ── RENDER ──
+function render() {
+  renderBeforeGrid();
+  renderRenderings();
+  renderPalette();
+  renderShop();
+  const room = rooms.find(r=>r.id===currentRoomId);
+  document.title = room ? `${room.name} — Apartment Design Studio` : 'Apartment Design Studio';
+}
+
+function renderBeforeGrid() {
+  const grid = document.getElementById('before-grid');
+  const beforePhotos = photos.filter(p=>p.kind==='before');
+  if (!beforePhotos.length) { grid.innerHTML = `<div class="empty-state">No before photos yet. Upload the current state of the room to get started.</div>`; return; }
+  grid.innerHTML = beforePhotos.map(p=>`
+    <div class="photo-card">
+      <div class="thumb-wrap"><img src="${p.image_url}" alt="${escHtml(p.caption||'')}"/></div>
+      <div class="cap"><span>${escHtml(p.caption||'Before photo')}</span><button onclick="deletePhoto('${p.id}')" title="Delete">✕</button></div>
+    </div>`).join('');
+}
+
+function renderRenderings() {
+  const list = document.getElementById('rendering-list');
+  const renderings = photos.filter(p=>p.kind==='rendering');
+  if (!renderings.length) { list.innerHTML = `<div class="empty-state">No renderings yet. Upload a rendering, then click "Tag Items" and click anywhere on the image to tag furniture &amp; decor.</div>`; return; }
+
+  list.innerHTML = renderings.map(p=>{
+    const photoTags = tags[p.id]||[];
+    const isTagging = taggingModePhotoId===p.id;
+    return `<div class="rendering-block">
+      <div class="rendering-toolbar">
+        <span class="cap">${escHtml(p.caption||'Rendering')}</span>
+        <div style="display:flex;gap:6px">
+          <button class="tag-btn ${isTagging?'active':''}" onclick="toggleTaggingMode('${p.id}')">${isTagging?'✓ Click image to tag':'+ Tag Items'}</button>
+          <button class="icon-btn danger" onclick="deletePhoto('${p.id}')">🗑</button>
+        </div>
+      </div>
+      <div class="render-img-wrap ${isTagging?'':'not-tagging'}" onclick="onRenderClick(event,'${p.id}')">
+        <img src="${p.image_url}" alt="${escHtml(p.caption||'')}"/>
+        ${photoTags.map((t,i)=>`<div class="pin ${t.purchased?'purchased':''}" style="left:${t.x}%;top:${t.y}%" onclick="event.stopPropagation();editTagById('${p.id}','${t.id}')">${i+1}</div>`).join('')}
+      </div>
+      ${photoTags.length?`<div class="render-taglist">${photoTags.map((t,i)=>`
+        <div class="render-tag-row" onclick="editTagById('${p.id}','${t.id}')">
+          <span class="num">${i+1}</span>
+          <span class="swatch" style="background:${t.color_hex||'#888'}"></span>
+          <span class="nm">${escHtml(t.item_name)} <span style="color:var(--muted)">· ${escHtml(t.category||'')}</span></span>
+          ${t.budget?`<span class="bud">$${Number(t.budget).toLocaleString()}</span>`:''}
+        </div>`).join('')}</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+function renderPalette() {
+  const strip = document.getElementById('palette-strip');
+  if (!palette.length) { strip.innerHTML = `<div class="empty-state" style="width:100%">No colors saved for this room yet. Add wall paint, fabric, or accent colors above.</div>`; return; }
+  strip.innerHTML = palette.map(c=>`
+    <div class="swatch-card">
+      <div class="box" style="background:${c.hex}" onclick="copyHex('${c.hex}')">
+        <button class="rm" onclick="event.stopPropagation();removePaletteColor('${c.id}')">✕</button>
+      </div>
+      <div class="hex">${c.hex}</div>
+      <div class="lbl">${escHtml(c.label||'')}</div>
+    </div>`).join('');
+}
+
+function renderShop() {
+  const summary = document.getElementById('shop-summary');
+  const list = document.getElementById('shop-list');
+  const items = allTagsAllRooms;
+  const total = items.reduce((s,t)=>s+(Number(t.budget)||0),0);
+  const purchased = items.filter(t=>t.purchased);
+  const purchasedTotal = purchased.reduce((s,t)=>s+(Number(t.budget)||0),0);
+
+  summary.innerHTML = `
+    <div class="stat-card"><div class="num">${items.length}</div><div class="lbl">Items Tagged</div></div>
+    <div class="stat-card"><div class="num">$${total.toLocaleString()}</div><div class="lbl">Total Budget</div></div>
+    <div class="stat-card"><div class="num">${purchased.length}/${items.length||0}</div><div class="lbl">Purchased ($${purchasedTotal.toLocaleString()})</div></div>`;
+
+  if (!items.length) { list.innerHTML = `<div class="empty-state">No items tagged yet. Go tag furniture and decor on a rendering to build your shopping list.</div>`; return; }
+
+  list.innerHTML = items.map(t=>{
+    const colorName = t.color_hex ? nearestColorName(t.color_hex) : '';
+    const q = encodeURIComponent(`${t.item_name} ${colorName}`.trim());
+    return `<div class="shop-item ${t.purchased?'purchased':''}">
+      <div class="swatch-lg" style="background:${t.color_hex||'#888'}"></div>
+      <div class="info">
+        <div class="item-nm">${escHtml(t.item_name)}</div>
+        <div class="item-meta">${escHtml(t.roomName)} · ${escHtml(t.category||'')}${t.budget?` · $${Number(t.budget).toLocaleString()}`:''}${colorName?` · ${colorName}`:''}</div>
+        ${t.notes?`<div class="item-notes">${escHtml(t.notes)}</div>`:''}
+        <div class="shop-links" style="margin-top:8px">
+          ${RETAILERS.map(r=>`<a class="shop-link" href="${r.url(q)}" target="_blank" rel="noopener">${r.name}</a>`).join('')}
+        </div>
+      </div>
+      <div class="shop-item-actions">
+        <button class="icon-btn" onclick="togglePurchasedGlobal('${t.id}',${t.purchased})">${t.purchased?'↺ Unmark':'✓ Purchased'}</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── TABS ──
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(`panel-${tab}`).classList.add('active');
+  if (tab==='shop') { loadShoppingList().then(renderShop); }
+}
+
+// ── MODAL / UTIL ──
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function highlightErr(id){const el=document.getElementById(id);el.style.borderColor='var(--red)';el.focus();setTimeout(()=>el.style.borderColor='',1200);}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));} });
+document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===e.currentTarget)el.classList.remove('open');}));
+
+// generate an initial harmony preview
+generateHarmony('#D4A574');
+
+// ── AUTO LOGIN IF ALREADY VERIFIED THIS SESSION ──
+if (sessionStorage.getItem('apt-design-auth')==='1') {
+  document.getElementById('password-screen').style.display='none';
+  document.getElementById('app').style.display='flex';
+  boot();
+}
+</script>
+
+<!--
+SUPABASE SETUP — run this once in your Supabase project's SQL Editor
+(same project already used by the Endiatx lab tool: fnjxxvghoebrpeflkdty)
+
+create table apt_rooms (
+  id uuid default gen_random_uuid() primary key,
+  name text not null,
+  created_at timestamptz default now()
+);
+alter table apt_rooms enable row level security;
+create policy "read rooms" on apt_rooms for select using (true);
+create policy "insert rooms" on apt_rooms for insert with check (true);
+create policy "update rooms" on apt_rooms for update using (true);
+create policy "delete rooms" on apt_rooms for delete using (true);
+
+create table apt_photos (
+  id uuid default gen_random_uuid() primary key,
+  room_id uuid references apt_rooms(id) on delete cascade,
+  kind text not null check (kind in ('before','rendering')),
+  image_url text not null,
+  caption text,
+  created_at timestamptz default now()
+);
+alter table apt_photos enable row level security;
+create policy "read photos" on apt_photos for select using (true);
+create policy "insert photos" on apt_photos for insert with check (true);
+create policy "update photos" on apt_photos for update using (true);
+create policy "delete photos" on apt_photos for delete using (true);
+
+create table apt_tags (
+  id uuid default gen_random_uuid() primary key,
+  photo_id uuid references apt_photos(id) on delete cascade,
+  x numeric not null,
+  y numeric not null,
+  item_name text not null,
+  category text,
+  color_hex text,
+  notes text,
+  budget numeric,
+  purchased boolean default false,
+  created_at timestamptz default now()
+);
+alter table apt_tags enable row level security;
+create policy "read tags" on apt_tags for select using (true);
+create policy "insert tags" on apt_tags for insert with check (true);
+create policy "update tags" on apt_tags for update using (true);
+create policy "delete tags" on apt_tags for delete using (true);
+
+create table apt_palette (
+  id uuid default gen_random_uuid() primary key,
+  room_id uuid references apt_rooms(id) on delete cascade,
+  hex text not null,
+  label text,
+  created_at timestamptz default now()
+);
+alter table apt_palette enable row level security;
+create policy "read palette" on apt_palette for select using (true);
+create policy "insert palette" on apt_palette for insert with check (true);
+create policy "delete palette" on apt_palette for delete using (true);
+
+-- STORAGE: In the Supabase Dashboard go to Storage > New bucket
+-- Name it exactly:  apartment-images   and toggle "Public bucket" ON.
+-- Then run this so uploads/reads/deletes work from the browser:
+
+create policy "apartment-images read" on storage.objects for select using (bucket_id = 'apartment-images');
+create policy "apartment-images insert" on storage.objects for insert with check (bucket_id = 'apartment-images');
+create policy "apartment-images delete" on storage.objects for delete using (bucket_id = 'apartment-images');
+-->
+</body>
+</html>
