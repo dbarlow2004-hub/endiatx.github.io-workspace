@@ -152,7 +152,7 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
     <div class="section-head">
       <div class="section-label">Selected Work</div>
       <div class="section-title">Creative Portfolio</div>
-      <div class="section-sub">A mix of projects — swap these for your own case studies, images, and links.</div>
+      <div class="section-sub">Design, sustainability, and storytelling projects from school, founding ventures, and independent work.</div>
     </div>
     <div class="project-grid" id="project-grid"></div>
   </section>
@@ -179,6 +179,14 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
     </div>
   </section>
 
+  <section id="leadership">
+    <div class="section-head">
+      <div class="section-label">Beyond the Classroom</div>
+      <div class="section-title">Leadership & Activities</div>
+    </div>
+    <div class="timeline" id="leadership-list"></div>
+  </section>
+
   <section id="contact">
     <div class="contact-card">
       <h2 id="contact-title">Let's work together</h2>
@@ -196,89 +204,98 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
    Replace every placeholder value below with your own.
    ─────────────────────────────────────────────── */
 const PROFILE = {
-  name: "Your Name",
-  initials: "YN",
-  title: "Creative Technologist & Designer",
-  bio: "I design and build things at the intersection of code and craft — from interactive prototypes to brand identity. Currently open to new projects and collaborations.",
-  email: "you@example.com",
-  location: "Your City, ST",
+  name: "D. Barlow Clark-Schoeb",
+  initials: "DBC",
+  title: "Environmental Design & Sustainable Cities",
+  bio: "B.A. candidate in Environmental Studies and Spanish at the University of Connecticut (Class of 2026), with design training from the Harvard Graduate School of Design. I work across urban design, sustainability, and storytelling — from gallery layouts to documentary film to circular fashion.",
+  email: "dbarlow2004@gmail.com",
+  phone: "(908) 666-2847",
+  location: "Storrs, CT",
   socials: [
-    { label: "Email", href: "mailto:you@example.com" },
-    { label: "GitHub", href: "https://github.com/yourusername" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/yourusername" },
-    { label: "Instagram", href: "https://instagram.com/yourusername" }
+    { label: "Email", href: "mailto:dbarlow2004@gmail.com" },
+    { label: "Call", href: "tel:+19086662847" }
+    // Add LinkedIn / Instagram / portfolio-site links here, e.g.:
+    // { label: "LinkedIn", href: "https://linkedin.com/in/yourhandle" },
   ]
 };
 
 const PROJECTS = [
   {
-    title: "Project One",
-    description: "A short one- or two-sentence description of what this project is and the problem it solved.",
-    tags: ["Branding", "Web"],
-    color1: "#7dd3fc", color2: "#38bdf8",
-    liveUrl: "#", codeUrl: "#"
+    title: "Art Gallery Design Consultant",
+    description: "Redesigned a gallery layout to maximize display capacity and storage efficiency within a constrained floor plan, specifying modular hanging systems (cable, track, and bracket) tailored to client budget and aesthetic.",
+    tags: ["Exhibition Design", "Winter 2025-26"],
+    color1: "#7dd3fc", color2: "#38bdf8"
   },
   {
-    title: "Project Two",
-    description: "Another project summary — what you built, the tools you used, and the outcome or impact.",
-    tags: ["Illustration", "Print"],
-    color1: "#c084fc", color2: "#a855f7",
-    liveUrl: "#", codeUrl: "#"
+    title: "What's Next?",
+    description: "Founder of a community platform connecting property owners, local businesses, and residents to activate underutilized spaces — researching land use policy and community engagement strategies to inform the roadmap.",
+    tags: ["Urban Design", "Founder", "Spring 2026 – Present"],
+    color1: "#c084fc", color2: "#a855f7"
   },
   {
-    title: "Project Three",
-    description: "A third example — great place for a photography series, a UI case study, or an app you shipped.",
-    tags: ["Photography"],
-    color1: "#4ade80", color2: "#22c55e",
-    liveUrl: "#", codeUrl: "#"
+    title: "“Right to Swim: Urban Water Access in Zurich”",
+    description: "Directed and produced a documentary examining public space rights, urban infrastructure, and water access policy, combining visual storytelling with stakeholder interviews to translate policy into an accessible narrative. UConn / Zurich Sustainability & Film Program.",
+    tags: ["Documentary Film", "Summer 2025"],
+    color1: "#4ade80", color2: "#22c55e"
   },
   {
-    title: "Project Four",
-    description: "Keep adding entries to this PROJECTS array — the grid will lay them out automatically.",
-    tags: ["Product", "UX"],
-    color1: "#ffd166", color2: "#fbbf24",
-    liveUrl: "#", codeUrl: "#"
+    title: "ReUConn: Athletic Gear Reuse Initiative",
+    description: "Designed a campus-wide redistribution framework for athletic equipment, navigating NCAA and Title IX constraints, grounded in stakeholder interviews with equipment staff. University of Connecticut Sustainability Proposal.",
+    tags: ["Sustainability", "Proposal", "Spring 2025"],
+    color1: "#ffd166", color2: "#fbbf24"
+  },
+  {
+    title: "SALT: Salvaged And Loved Textiles",
+    description: "Founder of a clothing brand upcycling textiles into clothing and handmade products, promoting sustainable fashion and circular design.",
+    tags: ["Fashion", "Founder", "Spring 2021 – Present"],
+    color1: "#fb923c", color2: "#f97316"
   }
 ];
 
 const EXPERIENCE = [
   {
-    when: "2024 — Present",
-    role: "Job Title",
-    org: "Company Name",
+    when: "Winter 2024 — 2026",
+    role: "Shipment Manager & Content Creator",
+    org: "Babka Bailout",
     bullets: [
-      "Key responsibility or achievement in this role.",
-      "Another concrete result, ideally with a number attached.",
-      "What you led, shipped, or improved."
+      "Managed product logistics and customer fulfillment operations at Bryant Park Holiday Market.",
+      "Created TikTok and Instagram content, driving brand engagement during peak season."
     ]
   },
   {
-    when: "2022 — 2024",
-    role: "Previous Job Title",
-    org: "Previous Company",
+    when: "Spring 2017 — Summer 2023",
+    role: "Medical Scribe & Patient Services Assistant",
+    org: "New Jersey Spine Center",
     bullets: [
-      "What you did here and the impact it had.",
-      "Notable project or collaboration."
+      "Supported patient intake and care coordination for a high-volume orthopedic practice.",
+      "Provided real-time Spanish translation for patients, improving communication and care quality."
     ]
-  },
+  }
+];
+
+const LEADERSHIP = [
   {
-    when: "2020 — 2022",
-    role: "Earlier Role",
-    org: "Earlier Company",
+    when: "",
+    role: "Community Service Board, President · Leadership Committee · Social Issues Board",
+    org: "UConn Women's Lacrosse",
     bullets: [
-      "Summarize your earliest relevant experience here."
+      "Community Service Board, President — led team-wide service initiatives and coordinated equipment donation programs.",
+      "Leadership Committee — partnered with team leaders to build culture and accountability systems.",
+      "Social Issues Board — organized discussions and awareness events addressing social challenges."
     ]
   }
 ];
 
 const EDUCATION = [
-  { degree: "Degree, Major", school: "University Name", when: "2016 — 2020" }
+  { degree: "B.A. Environmental Studies | B.A. Spanish", school: "University of Connecticut", when: "Expected May 2026" },
+  { degree: "Architecture, Landscape & Urban Planning + Design Program; Architecture Design Discovery Program", school: "Harvard University Graduate School of Design", when: "Summer 2025" },
+  { degree: "Study Abroad — Spanish Conversation & Writing, Spanish History, Language Studies", school: "University of Salamanca", when: "Summer 2024" }
 ];
 
 const SKILLS = [
-  { group: "Design", items: ["Figma", "Illustrator", "Photoshop", "Typography"] },
-  { group: "Development", items: ["JavaScript", "React", "HTML/CSS", "Python"] },
-  { group: "Other", items: ["Art Direction", "Photography", "Project Management"] }
+  { group: "Design & Technical", items: ["Rhino", "Adobe Illustrator", "Photoshop", "Canva"] },
+  { group: "Languages", items: ["Spanish (Fluent)", "ASL (Intermediate)", "French (Beginner)"] },
+  { group: "Certifications", items: ["LEED Green Associate — In Progress"] }
 ];
 /* ─────────────────────────────────────────────── */
 
@@ -298,10 +315,7 @@ document.getElementById('project-grid').innerHTML = PROJECTS.map(p => `
       <h3>${escHtml(p.title)}</h3>
       <p>${escHtml(p.description)}</p>
       <div class="tag-row">${p.tags.map(t=>`<span class="tag">${escHtml(t)}</span>`).join('')}</div>
-      <div class="project-links">
-        <a href="${p.liveUrl}" target="_blank" rel="noopener">View →</a>
-        <a href="${p.codeUrl}" target="_blank" rel="noopener">Details →</a>
-      </div>
+      ${p.links && p.links.length ? `<div class="project-links">${p.links.map(l=>`<a href="${l.href}" target="_blank" rel="noopener">${escHtml(l.label)} →</a>`).join('')}</div>` : ''}
     </div>
   </div>
 `).join('');
@@ -323,6 +337,15 @@ document.getElementById('education-list').innerHTML = EDUCATION.map(e => `
   </div>
 `).join('');
 
+document.getElementById('leadership-list').innerHTML = LEADERSHIP.map(l => `
+  <div class="tl-item">
+    ${l.when ? `<div class="tl-when mono">${escHtml(l.when)}</div>` : ''}
+    <div class="tl-role">${escHtml(l.role)}</div>
+    <div class="tl-org">${escHtml(l.org)}</div>
+    <div class="tl-desc"><ul>${l.bullets.map(b=>`<li>${escHtml(b)}</li>`).join('')}</ul></div>
+  </div>
+`).join('');
+
 document.getElementById('skills-list').innerHTML = SKILLS.map(s => `
   <div>
     <div class="skill-group-name">${escHtml(s.group)}</div>
@@ -330,7 +353,7 @@ document.getElementById('skills-list').innerHTML = SKILLS.map(s => `
   </div>
 `).join('');
 
-document.getElementById('contact-sub').textContent = `Based in ${PROFILE.location}. Open to freelance projects, collaborations, and full-time opportunities.`;
+document.getElementById('contact-sub').textContent = `${PROFILE.location} · ${PROFILE.phone} · ${PROFILE.email}`;
 document.getElementById('contact-links').innerHTML = PROFILE.socials.map(s =>
   `<a class="btn btn-ghost" href="${s.href}" target="_blank" rel="noopener">${escHtml(s.label)}</a>`
 ).join('');
