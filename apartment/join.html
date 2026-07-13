@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join Your Design Project</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg:#121110; --surface:#1a1816; --border:#332f2a;
+  --accent:#d4a574; --sage:#8fa888; --red:#e17a6b; --text:#f0ece5; --muted:#948d82;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:100%;max-width:420px;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.logo{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;}
+.title{font-family:'Space Mono',monospace;font-size:18px;text-align:center;}
+.sub{font-size:13px;color:var(--muted);text-align:center;line-height:1.6;}
+input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:14px;padding:14px 16px;outline:none;font-family:'DM Sans',sans-serif;}
+input:focus{border-color:var(--accent);}
+.btn{width:100%;padding:14px;background:var(--accent);color:#1a1410;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;}
+.btn:hover{opacity:0.88;}
+.btn:disabled{opacity:0.5;cursor:not-allowed;}
+.error-msg{font-size:12px;color:var(--red);display:none;text-align:center;}
+.info-msg{font-size:12px;color:var(--sage);display:none;text-align:center;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="logo">Apartment Design Studio</div>
+
+  <div id="loading-section">
+    <div class="title">Checking your invite…</div>
+  </div>
+
+  <div id="error-section" style="display:none;text-align:center">
+    <div class="title">Invite Link Invalid</div>
+    <div class="sub" id="error-text" style="margin-top:10px">This invite link is invalid or has already been used. Ask your designer for a new one.</div>
+  </div>
+
+  <div id="form-section" style="display:none;width:100%;display:flex;flex-direction:column;align-items:center;gap:14px">
+    <div class="title">You've been invited to <span id="invite-client-name" style="color:var(--accent)"></span></div>
+    <div class="sub">Create your account to view your project.</div>
+    <input type="text" id="input-name" placeholder="Your Name" autocomplete="name"/>
+    <input type="email" id="input-email" placeholder="Email" autocomplete="email"/>
+    <input type="password" id="input-password" placeholder="Password" autocomplete="new-password"/>
+    <input type="password" id="input-password-confirm" placeholder="Confirm Password" autocomplete="new-password"/>
+    <div class="error-msg" id="form-error"></div>
+    <div class="info-msg" id="form-info"></div>
+    <button class="btn" id="submit-btn" onclick="submitJoin()">Join Project →</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL  = 'https://fnjxxvghoebrpeflkdty.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_dQUzquFXUV-AE34K8PtqPQ_KHt8s1Ia';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+const params = new URLSearchParams(location.search);
+const code = params.get('code');
+let invite = null;
+let pendingLinkUser = null;
+
+function showError(msg) {
+  document.getElementById('loading-section').style.display='none';
+  document.getElementById('form-section').style.display='none';
+  document.getElementById('error-section').style.display='block';
+  document.getElementById('error-text').textContent = msg;
+}
+function showFormError(msg) {
+  const el = document.getElementById('form-error');
+  el.textContent = msg; el.style.display='block';
+  document.getElementById('form-info').style.display='none';
+}
+function showFormInfo(msg) {
+  const el = document.getElementById('form-info');
+  el.textContent = msg; el.style.display='block';
+  document.getElementById('form-error').style.display='none';
+}
+
+async function init() {
+  if (!code) { showError('Missing invite code. Ask your designer for the invite link.'); return; }
+  const {data, error} = await sb.from('client_invites').select('*').eq('code', code).eq('used', false).maybeSingle();
+  if (error || !data) { showError('This invite link is invalid or has already been used. Ask your designer for a new one.'); return; }
+  invite = data;
+  document.getElementById('invite-client-name').textContent = invite.client_name || 'your design project';
+  document.getElementById('loading-section').style.display='none';
+  document.getElementById('form-section').style.display='flex';
+
+  if (pendingLinkUser) await completeLinking(pendingLinkUser);
+}
+
+async function submitJoin() {
+  const name = document.getElementById('input-name').value.trim();
+  const email = document.getElementById('input-email').value.trim();
+  const password = document.getElementById('input-password').value;
+  const confirmPw = document.getElementById('input-password-confirm').value;
+  if (!email || !password) { showFormError('Enter an email and password'); return; }
+  if (password !== confirmPw) { showFormError("Passwords don't match"); return; }
+  if (password.length < 6) { showFormError('Password must be at least 6 characters'); return; }
+
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = 'Creating account...'; btn.disabled = true;
+
+  localStorage.setItem('apt-join-name', name);
+  const {data, error} = await sb.auth.signUp({
+    email, password,
+    options: { emailRedirectTo: `${location.origin}${location.pathname}?code=${encodeURIComponent(code)}` }
+  });
+
+  if (error) {
+    showFormError(error.message);
+    btn.textContent = 'Join Project →'; btn.disabled = false;
+    return;
+  }
+
+  if (data.session) {
+    await completeLinking(data.user);
+  } else {
+    showFormInfo('Almost done — check your email and click the confirmation link to finish joining.');
+    btn.textContent = 'Join Project →'; btn.disabled = false;
+  }
+}
+
+async function completeLinking(user) {
+  if (!invite) { pendingLinkUser = user; return; }
+  const name = localStorage.getItem('apt-join-name') || null;
+  await sb.from('profiles').update({client_id: invite.client_id, display_name: name}).eq('id', user.id);
+  await sb.from('client_invites').update({used: true}).eq('id', invite.id);
+  localStorage.removeItem('apt-join-name');
+  location.href = 'index.html';
+}
+
+sb.auth.onAuthStateChange((event, session) => {
+  if (session && event === 'SIGNED_IN') completeLinking(session.user);
+});
+
+init();
+</script>
+</body>
+</html>
