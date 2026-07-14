@@ -509,6 +509,19 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   </div>
 </div>
 
+<!-- INSPO EDIT MODAL -->
+<div class="modal-overlay" id="inspo-edit-modal-overlay">
+  <div class="modal">
+    <h2>Edit Pin</h2>
+    <div class="field"><label>Caption</label><input type="text" id="input-inspo-edit-caption" placeholder="e.g. Love this lighting style"/></div>
+    <div class="field"><label>Source Link</label><input type="text" id="input-inspo-edit-source" placeholder="Original Pinterest / website link"/></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('inspo-edit-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitInspoEdit()">Save</button>
+    </div>
+  </div>
+</div>
+
 <!-- SELECTIONS MODAL -->
 <div class="modal-overlay" id="wallpaper-modal-overlay">
   <div class="modal">
@@ -688,6 +701,25 @@ function showAuthScreen() {
   document.getElementById('app').style.display='none';
 }
 
+// ── REMEMBER LAST VIEWED PAGE (survives refresh / reopen) ──
+let currentTabName = 'gallery';
+function saveLastView() {
+  try { localStorage.setItem('apt-last-view', JSON.stringify({clientId: activeClientId, roomId: currentRoomId, tab: currentTabName})); } catch(e) {}
+}
+function loadLastView() {
+  try { return JSON.parse(localStorage.getItem('apt-last-view')||'null'); } catch(e) { return null; }
+}
+async function restoreTabAndRoom(last) {
+  if (!last) return;
+  if (last.roomId && last.roomId!==currentRoomId && rooms.some(r=>r.id===last.roomId)) {
+    await selectRoom(last.roomId);
+  }
+  if (last.tab && last.tab!==currentTabName) {
+    const btn = document.querySelector(`.tab[data-tab="${last.tab}"]`);
+    if (btn) switchTab(last.tab, btn);
+  }
+}
+
 sb.auth.onAuthStateChange((event, session) => {
   if (session) routeAfterAuth();
   else showAuthScreen();
@@ -707,6 +739,8 @@ async function routeAfterAuth() {
   document.getElementById('app').style.display='flex';
   document.querySelectorAll('.admin-only').forEach(el=>el.style.display = isAdmin?'':'none');
 
+  const last = loadLastView();
+
   if (isAdmin) {
     document.getElementById('clients-view').style.display='block';
     document.getElementById('workspace-view').style.display='none';
@@ -717,6 +751,10 @@ async function routeAfterAuth() {
     document.getElementById('readonly-badge').style.display='none';
     activeClientId = null;
     await loadClients();
+    if (last && last.clientId && clientsList.some(c=>c.id===last.clientId)) {
+      await openClient(last.clientId);
+      await restoreTabAndRoom(last);
+    }
   } else {
     if (!profile.client_id) {
       document.getElementById('app').style.display='none';
@@ -731,6 +769,7 @@ async function routeAfterAuth() {
     document.getElementById('workspace-header-controls').style.display='none';
     document.getElementById('readonly-badge').style.display='inline-block';
     await loadWorkspace(profile.client_id);
+    await restoreTabAndRoom(last);
   }
 }
 
@@ -870,7 +909,7 @@ async function copyInviteLink(clientId) {
   }
 }
 
-function openClient(id) {
+async function openClient(id) {
   const client = clientsList.find(c=>c.id===id);
   document.getElementById('clients-view').style.display='none';
   document.getElementById('workspace-view').style.display='block';
@@ -879,11 +918,13 @@ function openClient(id) {
   document.getElementById('workspace-header-controls').style.display='flex';
   document.getElementById('readonly-badge').style.display='none';
   document.getElementById('header-context-label').textContent = client?.name||'';
-  loadWorkspace(id);
+  await loadWorkspace(id);
+  saveLastView();
 }
 
 function backToClients() {
   activeClientId = null;
+  currentRoomId = null;
   document.getElementById('workspace-view').style.display='none';
   document.getElementById('clients-view').style.display='block';
   document.getElementById('back-to-clients-btn').style.display='none';
@@ -891,6 +932,7 @@ function backToClients() {
   document.getElementById('workspace-header-controls').style.display='none';
   document.getElementById('header-context-label').textContent='Clients';
   loadClients();
+  saveLastView();
 }
 
 // ── WORKSPACE (rooms/photos/tags/palette/shopping/inspo for activeClientId) ──
@@ -929,6 +971,7 @@ async function selectRoom(id, skipReload) {
   await Promise.all([loadPhotosAndTags(), loadPalette(), loadExistingFurniture()]);
   await loadShoppingList();
   render();
+  saveLastView();
 }
 
 function openRoomModal(isRename) {
@@ -1468,8 +1511,32 @@ async function deleteInspoPin(id) {
   renderInspo();
 }
 
+let editingInspoId = null;
+
+function openInspoEditModal(id) {
+  const p = inspoPins.find(x=>x.id===id);
+  if (!p) return;
+  const canEdit = isAdmin || p.added_by===currentUser.id;
+  if (!canEdit) return;
+  editingInspoId = id;
+  document.getElementById('input-inspo-edit-caption').value = p.caption || '';
+  document.getElementById('input-inspo-edit-source').value = p.source_url || '';
+  document.getElementById('inspo-edit-modal-overlay').classList.add('open');
+}
+
+async function submitInspoEdit() {
+  const caption = document.getElementById('input-inspo-edit-caption').value.trim();
+  const source_url = document.getElementById('input-inspo-edit-source').value.trim();
+  const {error} = await sb.from('inspo_pins').update({caption: caption||null, source_url: source_url||null}).eq('id', editingInspoId);
+  if (error) { showToast('Error saving ✗'); return; }
+  closeModal('inspo-edit-modal-overlay');
+  await loadInspo();
+  renderInspo();
+  showToast('Pin updated ✓');
+}
+
 function inspoPinCard(p) {
-  const canDelete = isAdmin || p.added_by===currentUser.id;
+  const canEdit = isAdmin || p.added_by===currentUser.id;
   const byLabel = p.added_by===currentUser.id ? 'You' : (isAdmin ? 'Client' : 'Designer');
   return `<div class="pin-card">
       <img src="${p.image_url}" alt="${escHtml(p.caption||'')}" loading="lazy"/>
@@ -1479,7 +1546,8 @@ function inspoPinCard(p) {
           <span class="pin-by">${byLabel}</span>
           <div style="display:flex;gap:6px;align-items:center">
             ${p.source_url?`<a class="pin-src" href="${p.source_url}" target="_blank" rel="noopener">Source ↗</a>`:''}
-            ${canDelete?`<button class="pin-del" onclick="deleteInspoPin('${p.id}')">✕</button>`:''}
+            ${canEdit?`<button class="pin-del" onclick="openInspoEditModal('${p.id}')" title="Add / edit link">✎</button>`:''}
+            ${canEdit?`<button class="pin-del" onclick="deleteInspoPin('${p.id}')">✕</button>`:''}
           </div>
         </div>
       </div>
@@ -1639,9 +1707,11 @@ function switchTab(tab, btn) {
   btn.classList.add('active');
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
   document.getElementById(`panel-${tab}`).classList.add('active');
+  currentTabName = tab;
   if (tab==='shop') { loadShoppingList().then(renderShop); }
   if (tab==='inspo') { loadInspo().then(renderInspo); }
   if (tab==='wallpaper') { loadWallpaper().then(renderWallpaper); }
+  saveLastView();
 }
 
 // ── MODAL / UTIL ──
