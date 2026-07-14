@@ -88,22 +88,29 @@ section{padding:64px 0;border-top:1px solid var(--border);}
 .reveal.in{opacity:1;transform:translateY(0);}
 
 /* LIGHTBOX */
-.lightbox-overlay{position:fixed;inset:0;background:rgba(6,7,9,0.85);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;padding:24px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
+.lightbox-overlay{position:fixed;inset:0;background:rgba(6,7,9,0.92);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;padding:16px;opacity:0;pointer-events:none;transition:opacity 0.22s;}
 .lightbox-overlay.open{opacity:1;pointer-events:all;}
-.lightbox{background:var(--surface);border:1px solid var(--border);border-radius:18px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;transform:scale(0.95) translateY(12px);transition:transform 0.25s;position:relative;}
+.lightbox{background:var(--surface);border:1px solid var(--border);border-radius:18px;max-width:min(1500px,96vw);width:100%;height:94vh;overflow:hidden;transform:scale(0.96) translateY(12px);transition:transform 0.25s;position:relative;display:flex;flex-direction:column;}
 .lightbox-overlay.open .lightbox{transform:scale(1) translateY(0);}
-.lightbox-thumb{height:280px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(14,15,17,0.55);font-weight:700;overflow:hidden;}
-.lightbox-thumb img{width:100%;height:100%;object-fit:cover;}
-.lightbox-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;background:rgba(14,15,17,0.6);border:1px solid var(--border);color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.15s,color 0.15s;}
+.lightbox-thumb{flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(14,15,17,0.55);font-weight:700;overflow:auto;background:#000;position:relative;}
+.lightbox-thumb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;cursor:zoom-in;transition:max-width 0.2s,max-height 0.2s;margin:auto;}
+.lightbox-thumb img.zoomed{max-width:none;max-height:none;width:auto;cursor:zoom-out;}
+.lightbox-thumb.has-gradient{padding:60px;}
+.zoom-hint{position:absolute;bottom:12px;right:14px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);background:rgba(0,0,0,0.5);border-radius:6px;padding:5px 9px;pointer-events:none;}
+.lightbox-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(14,15,17,0.7);border:1px solid var(--border);color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.15s,color 0.15s;z-index:2;}
 .lightbox-close:hover{border-color:var(--accent);color:var(--accent);}
-.lightbox-body{padding:26px 28px 28px;}
-.lightbox-body h3{font-size:21px;font-weight:700;margin-bottom:12px;}
-.lightbox-body p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:16px;}
-.lightbox-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border);}
+.lightbox-body{flex:0 0 auto;padding:20px 28px;border-top:1px solid var(--border);max-height:32vh;overflow-y:auto;}
+.lightbox-body h3{font-size:19px;font-weight:700;margin-bottom:8px;}
+.lightbox-body p{color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:12px;}
+.lightbox-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);}
 .lightbox-nav-btn{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;transition:color 0.15s,border-color 0.15s;}
 .lightbox-nav-btn:hover{color:var(--accent);border-color:var(--accent);}
 .lightbox-nav-btn:disabled{opacity:0.35;cursor:default;}
 .lightbox-nav-count{font-family:'Space Mono',monospace;font-size:11px;color:var(--dim);}
+@media(max-width:720px){
+  .lightbox{height:96vh;border-radius:12px;}
+  .lightbox-body{padding:16px 18px;max-height:38vh;}
+}
 
 /* RESUME */
 .resume-grid{display:grid;grid-template-columns:2fr 1fr;gap:48px;}
@@ -283,37 +290,43 @@ const PROJECTS = [
     title: "Built Table",
     description: "Designed and built a wooden table for my senior year as a symbolic map of my friends' college paths — each wedge represented a school, merging craft, storytelling, and community.",
     tags: ["Furniture", "Woodworking"],
-    image: "images/built-table.jpg"
+    image: "images/built-table.jpg",
+    imageFull: "images/full/built-table.jpg"
   },
   {
     title: "Pear & Avocado Paintings",
     description: "A painted series exploring how color shifts mood and identity by rendering the same pear — and later, avocado — three ways: a playful study in tone, contrast, and expressive palettes.",
     tags: ["Painting", "Studio Art"],
-    image: "images/pear-paintings.jpg"
+    image: "images/pear-paintings.jpg",
+    imageFull: "images/full/pear-paintings.jpg"
   },
   {
     title: "Sustainable Swimwear",
     description: "Hand-sewn swimsuits made from thrifted or eco-friendly fabrics, reimagining discarded material into personal, well-designed pieces — a practice in craft, patience, and responsible design.",
     tags: ["Sewing", "Sustainable Fashion"],
-    image: "images/swimwear.jpg"
+    image: "images/swimwear.jpg",
+    imageFull: "images/full/swimwear.jpg"
   },
   {
     title: "Connecticut",
     description: "A photographic study of Hartford's skyline — where domes, spires, and tiled roofs become sculpture. These images trace the city's personality through light, texture, and architectural rhythm.",
     tags: ["Photography"],
-    image: "images/connecticut.jpg"
+    image: "images/connecticut.jpg",
+    imageFull: "images/full/connecticut.jpg"
   },
   {
     title: "Courtyard Tenement",
     description: "A speculative courtyard tenement exploring daylight access, passive ventilation, and shared green space — studying how urban density can coexist with thermal comfort, social connection, and environmental performance. Harvard GSD, Summer 2025.",
     tags: ["Architecture", "Harvard GSD"],
-    image: "images/courtyard-tenement.jpg"
+    image: "images/courtyard-tenement.jpg",
+    imageFull: "images/full/courtyard-tenement.jpg"
   },
   {
     title: "Fallow Urban Plot",
     description: "A landscape intervention turning a vacant lot into shared public space — native plants reinforce soil structure and define gathering areas, while planting, paths, and seating choreograph shared movement and preserve moments of privacy. Harvard GSD, Summer 2025.",
     tags: ["Landscape Design", "Harvard GSD"],
-    image: "images/fallow-urban-plot.jpg"
+    image: "images/fallow-urban-plot.jpg",
+    imageFull: "images/full/fallow-urban-plot.jpg"
   },
   {
     title: "Eastie Farm Site Study",
@@ -334,7 +347,8 @@ const PROJECTS = [
     title: "SALT: Salvaged And Loved Textiles",
     description: "Founder of a clothing brand upcycling textiles into clothing and handmade products since 2021. Next, growing SALT into a multidisciplinary space where architecture, making, and sustainability meet — through small-batch fabrication, adaptive reuse, and landscape-driven research.",
     tags: ["Fashion", "Founder", "2021 – Present"],
-    image: "images/salt.jpg"
+    image: "images/salt.jpg",
+    imageFull: "images/full/salt.jpg"
   }
 ];
 const PROJECT_FALLBACK_COLORS = ["#7dd3fc,#38bdf8", "#c084fc,#a855f7", "#4ade80,#22c55e", "#ffd166,#fbbf24", "#fb923c,#f97316"];
@@ -486,9 +500,22 @@ function renderLightbox() {
   const thumb = document.getElementById('lightbox-thumb');
   if (p.image) {
     thumb.style.background = '';
-    thumb.innerHTML = `<img src="${p.image}" alt="${escHtml(p.title)}">`;
+    thumb.classList.remove('has-gradient');
+    const fullSrc = p.imageFull || p.image;
+    thumb.innerHTML = `<img src="${p.image}" alt="${escHtml(p.title)}" id="lightbox-img" data-full="${fullSrc}"><span class="zoom-hint">Click image to zoom</span>`;
+    const imgEl = document.getElementById('lightbox-img');
+    if (fullSrc !== p.image) {
+      const hiRes = new Image();
+      hiRes.onload = () => { if (imgEl.dataset.full === fullSrc) imgEl.src = fullSrc; };
+      hiRes.src = fullSrc;
+    }
+    imgEl.addEventListener('click', e => {
+      e.stopPropagation();
+      e.currentTarget.classList.toggle('zoomed');
+    });
   } else {
     thumb.style.background = `linear-gradient(135deg,${c1},${c2})`;
+    thumb.classList.add('has-gradient');
     thumb.innerHTML = escHtml(p.title);
   }
   document.getElementById('lightbox-title').textContent = p.title;
