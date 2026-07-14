@@ -90,16 +90,25 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .existing-card-body button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;flex-shrink:0;}
 .existing-card-body button:hover{color:var(--red);}
 
-/* RENDERING WITH TAGS */
-.rendering-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:18px;}
-.rendering-toolbar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
-.rendering-toolbar .cap{font-size:12px;color:var(--muted);}
+/* RENDERING WITH TAGS — collage-style room spread */
+.rendering-block{background:linear-gradient(160deg, var(--surface2), var(--surface));border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:28px;}
+.rendering-toolbar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);gap:10px;flex-wrap:wrap;}
+.rendering-toolbar .cap{font-size:13px;color:var(--text);font-weight:600;}
 .tag-btn{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:7px 12px;border-radius:6px;cursor:pointer;border:1px solid var(--border);background:none;color:var(--muted);}
 .tag-btn.active{background:var(--accent);color:#1a1410;border-color:var(--accent);}
 .tag-btn:hover:not(.active){color:var(--accent);border-color:var(--accent);}
-.render-img-wrap{position:relative;cursor:crosshair;background:#000;}
+.spread-hero{position:relative;padding:18px;}
+.render-img-wrap{position:relative;cursor:crosshair;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.4);}
 .render-img-wrap.not-tagging{cursor:default;}
 .render-img-wrap img{width:100%;display:block;}
+.spread-before-badge{position:absolute;top:32px;left:32px;width:88px;background:#f0ece5;padding:5px 5px 14px;border-radius:4px;box-shadow:0 10px 22px rgba(0,0,0,0.5);transform:rotate(-6deg);z-index:5;pointer-events:none;}
+.spread-before-badge img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:2px;display:block;}
+.spread-before-badge .badge-label{display:block;text-align:center;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.1em;color:#1a1410;margin-top:4px;text-transform:uppercase;}
+.spread-palette-row{display:flex;gap:8px;flex-wrap:wrap;padding:2px 18px 4px;}
+.palette-chip{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 10px 4px 4px;cursor:pointer;}
+.palette-chip:hover{border-color:var(--accent);}
+.palette-chip .dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;border:1px solid rgba(255,255,255,0.15);}
+.palette-chip .lbl{font-size:10px;color:var(--muted);white-space:nowrap;}
 .pin{position:absolute;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#1a1410;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);cursor:pointer;box-shadow:0 0 0 3px rgba(212,165,116,0.3);}
 .pin:hover{transform:translate(-50%,-50%) scale(1.15);}
 .pin.purchased{background:var(--sage);box-shadow:0 0 0 3px rgba(143,168,136,0.3);}
@@ -1300,6 +1309,7 @@ function renderBeforeGrid() {
 function renderRenderings() {
   const list = document.getElementById('rendering-list');
   const renderings = photos.filter(p=>p.kind==='rendering');
+  const beforePhoto = photos.find(p=>p.kind==='before');
   if (!renderings.length) { list.innerHTML = `<div class="empty-state">No renderings yet.${isAdmin?' Upload a rendering, then click "Tag Items" and click anywhere on the image to tag furniture &amp; decor.':''}</div>`; return; }
 
   list.innerHTML = renderings.map(p=>{
@@ -1313,10 +1323,14 @@ function renderRenderings() {
           <button class="icon-btn danger" onclick="deletePhoto('${p.id}')">🗑</button>
         </div>`:''}
       </div>
-      <div class="render-img-wrap ${isTagging?'':'not-tagging'}" onclick="onRenderClick(event,'${p.id}')">
-        <img src="${p.image_url}" alt="${escHtml(p.caption||'')}"/>
-        ${photoTags.map((t,i)=>`<div class="pin ${t.purchased?'purchased':''}" style="left:${t.x}%;top:${t.y}%" onclick="event.stopPropagation();editTagById('${p.id}','${t.id}')">${i+1}</div>`).join('')}
+      <div class="spread-hero">
+        ${beforePhoto?`<div class="spread-before-badge"><img src="${beforePhoto.image_url}" alt="Before"/><span class="badge-label">Before</span></div>`:''}
+        <div class="render-img-wrap ${isTagging?'':'not-tagging'}" onclick="onRenderClick(event,'${p.id}')">
+          <img src="${p.image_url}" alt="${escHtml(p.caption||'')}"/>
+          ${photoTags.map((t,i)=>`<div class="pin ${t.purchased?'purchased':''}" style="left:${t.x}%;top:${t.y}%" onclick="event.stopPropagation();editTagById('${p.id}','${t.id}')">${i+1}</div>`).join('')}
+        </div>
       </div>
+      ${palette.length?`<div class="spread-palette-row">${palette.map(c=>`<div class="palette-chip" onclick="copyHex('${c.hex}')"><span class="dot" style="background:${c.hex}"></span><span class="lbl">${escHtml(c.label||c.hex)}</span></div>`).join('')}</div>`:''}
       ${photoTags.length?`<div class="render-taglist">${photoTags.map((t,i)=>`
         <div class="render-tag-row" onclick="editTagById('${p.id}','${t.id}')">
           <span class="num">${i+1}</span>
