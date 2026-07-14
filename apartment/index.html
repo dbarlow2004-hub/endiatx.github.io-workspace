@@ -70,6 +70,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .client-badge.linked{background:rgba(143,168,136,0.15);color:var(--sage);}
 .client-badge.pending{background:rgba(212,165,116,0.15);color:var(--accent);}
 .client-card-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;}
+.client-card .client-cover{width:100%;height:100px;object-fit:cover;border-radius:8px;}
+.client-card .caddress{font-size:11px;color:var(--muted);}
 
 /* PHOTO GRID */
 .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
@@ -79,6 +81,14 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .photo-card .cap{padding:9px 12px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;gap:8px;}
 .photo-card .cap button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;}
 .photo-card .cap button:hover{color:var(--red);}
+.no-photo-placeholder{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;background:var(--surface2);}
+.existing-card-body{padding:9px 12px;display:flex;flex-direction:column;gap:3px;}
+.existing-card-body .top-row{display:flex;justify-content:space-between;align-items:center;width:100%;gap:8px;}
+.existing-card-body .nm{font-weight:600;color:var(--text);font-size:12px;}
+.existing-card-body .cat{font-size:11px;color:var(--muted);}
+.existing-card-body .nt{font-size:11px;color:var(--muted);font-style:italic;}
+.existing-card-body button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;flex-shrink:0;}
+.existing-card-body button:hover{color:var(--red);}
 
 /* RENDERING WITH TAGS */
 .rendering-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:18px;}
@@ -285,6 +295,10 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('before')">+ Upload Before Photo</button></div>
         <div id="before-grid" class="photo-grid"></div>
 
+        <div class="section-label">Existing Furniture</div>
+        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openExistingModal()">+ Add Existing Item</button></div>
+        <div id="existing-grid" class="photo-grid"></div>
+
         <div class="section-label">Renderings</div>
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('rendering')">+ Upload Rendering</button></div>
         <div id="rendering-list"></div>
@@ -309,7 +323,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 
       <!-- SELECTIONS PANEL (wallpaper, carpet, lighting, etc.) -->
       <div class="panel" id="panel-wallpaper">
-        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openWallpaperModal()">+ Add Option</button></div>
+        <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openWallpaperModal()">+ Add Option</button></div>
         <div id="wallpaper-grid"></div>
       </div>
 
@@ -322,9 +336,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 
       <!-- INSPO BOARD PANEL -->
       <div class="panel" id="panel-inspo">
-        <div class="section-label">Inspiration Board</div>
         <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openInspoModal()">+ Add Pin</button></div>
-        <div id="inspo-masonry" class="masonry"></div>
+        <div id="inspo-masonry"></div>
       </div>
 
     </div>
@@ -339,6 +352,66 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('client-modal-overlay')">Cancel</button>
       <button class="btn btn-primary" onclick="saveClient()">Create Client</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT CLIENT MODAL -->
+<div class="modal-overlay" id="client-edit-modal-overlay">
+  <div class="modal">
+    <h2>Edit Client</h2>
+    <div class="field"><label>Client Name</label><input type="text" id="input-edit-name" autocomplete="off"/></div>
+    <div class="field"><label>Address</label><input type="text" id="input-edit-address" placeholder="123 Main St, City, State" autocomplete="off"/></div>
+    <div class="field-row">
+      <div class="field"><label>Phone</label><input type="text" id="input-edit-phone" autocomplete="off"/></div>
+      <div class="field"><label>Email</label><input type="email" id="input-edit-email" autocomplete="off"/></div>
+    </div>
+    <div class="field"><label>Notes</label><textarea id="input-edit-notes" placeholder="Preferences, access info, anything to remember..."></textarea></div>
+    <div class="field"><label>Cover Photo</label><input type="file" id="input-edit-photo" accept="image/*"/></div>
+    <div class="field-row">
+      <div class="field">
+        <label>Card Color</label>
+        <div class="color-field-row">
+          <input type="color" class="color-input-native" id="input-edit-color-native" value="#1a1816" oninput="document.getElementById('input-edit-color-hex').value=this.value">
+          <input type="text" class="hex-text-input" id="input-edit-color-hex" placeholder="none" oninput="syncNativeFromHexEl(this.value,'input-edit-color-native')">
+        </div>
+      </div>
+      <div class="field">
+        <label>Card Texture</label>
+        <select id="input-edit-texture">
+          <option value="">None</option>
+          <option value="dots">Dots</option>
+          <option value="stripes">Stripes</option>
+          <option value="grid">Grid</option>
+          <option value="grain">Grain</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('client-edit-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" id="client-edit-submit-btn" onclick="submitClientEdit()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXISTING FURNITURE MODAL -->
+<div class="modal-overlay" id="existing-modal-overlay">
+  <div class="modal">
+    <h2>Add Existing Item</h2>
+    <div class="field"><label>Item Name</label><input type="text" id="input-existing-name" placeholder="e.g. Grandmother's oak dresser" autocomplete="off"/></div>
+    <div class="field">
+      <label>Category</label>
+      <select id="input-existing-category">
+        <option>Furniture</option><option>Lighting</option><option>Textiles</option>
+        <option>Rug / Carpet</option><option>Wall Decor</option><option>Plant</option>
+        <option>Accessory</option><option>Window Treatment</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field"><label>Photo (optional)</label><input type="file" id="input-existing-file" accept="image/*"/></div>
+    <div class="field"><label>Notes</label><textarea id="input-existing-notes" placeholder="Condition, dimensions, keep or donate..."></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('existing-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" id="existing-submit-btn" onclick="submitExistingItem()">Save Item</button>
     </div>
   </div>
 </div>
@@ -408,6 +481,10 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 <div class="modal-overlay" id="inspo-modal-overlay">
   <div class="modal">
     <h2>Add Inspiration Pin</h2>
+    <div class="mode-toggle-row">
+      <button type="button" class="tag-btn active" id="inspo-scope-room" onclick="setInspoScope('room')" style="flex:1">This Room</button>
+      <button type="button" class="tag-btn" id="inspo-scope-overall" onclick="setInspoScope('overall')" style="flex:1">Overall</button>
+    </div>
     <div class="mode-toggle-row">
       <button type="button" class="tag-btn active" id="inspo-mode-url" onclick="setInspoMode('url')" style="flex:1">Paste Image URL</button>
       <button type="button" class="tag-btn" id="inspo-mode-file" onclick="setInspoMode('file')" style="flex:1">Upload File</button>
@@ -481,6 +558,7 @@ let currentRoomId = null;
 let photos = [];
 let tags = {};
 let palette = [];
+let existingFurniture = [];
 let allTagsAllRooms = [];
 let inspoPins = [];
 let inspoMode = 'url';
@@ -657,19 +735,84 @@ async function loadClients() {
   renderClients();
 }
 
+function clientCardStyle(c) {
+  if (!c.card_color && !c.card_texture) return '';
+  const base = c.card_color || '#1a1816';
+  let bgImage = '', bgSize = '';
+  if (c.card_texture === 'dots') { bgImage = 'radial-gradient(rgba(255,255,255,0.16) 1.5px, transparent 1.5px)'; bgSize = '14px 14px'; }
+  else if (c.card_texture === 'stripes') { bgImage = 'repeating-linear-gradient(45deg, rgba(255,255,255,0.12) 0 6px, transparent 6px 14px)'; }
+  else if (c.card_texture === 'grid') { bgImage = 'linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)'; bgSize = '18px 18px'; }
+  else if (c.card_texture === 'grain') { bgImage = 'radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px)'; bgSize = '5px 5px'; }
+  return `background-color:${base};${bgImage?`background-image:${bgImage};`:''}${bgSize?`background-size:${bgSize};`:''}`;
+}
+
 function renderClients() {
   const grid = document.getElementById('clients-grid');
   if (!clientsList.length) { grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1">No clients yet. Click "+ New Client" to add your first one.</div>`; return; }
   grid.innerHTML = clientsList.map(c=>`
-    <div class="client-card">
+    <div class="client-card" style="${clientCardStyle(c)}">
+      ${c.cover_photo_url?`<img class="client-cover" src="${c.cover_photo_url}" alt=""/>`:''}
       <div class="cname">${escHtml(c.name)}</div>
       <span class="client-badge ${c.linked?'linked':'pending'}">${c.linked?'✓ Account Linked':'Invite Pending'}</span>
+      ${c.address?`<div class="caddress">📍 ${escHtml(c.address)}</div>`:''}
       <div class="client-card-actions">
         <button class="hdr-btn" onclick="openClient('${c.id}')">Open →</button>
+        <button class="hdr-btn" onclick="openClientEditModal('${c.id}')">✎ Edit</button>
         <button class="hdr-btn" onclick="copyInviteLink('${c.id}')">Copy Invite Link</button>
         <button class="hdr-btn" onclick="deleteClientPrompt('${c.id}')">🗑 Delete</button>
       </div>
     </div>`).join('');
+}
+
+let editingClientId = null;
+
+function openClientEditModal(id) {
+  const c = clientsList.find(x=>x.id===id);
+  if (!c) return;
+  editingClientId = id;
+  document.getElementById('input-edit-name').value = c.name||'';
+  document.getElementById('input-edit-address').value = c.address||'';
+  document.getElementById('input-edit-phone').value = c.phone||'';
+  document.getElementById('input-edit-email').value = c.email||'';
+  document.getElementById('input-edit-notes').value = c.notes||'';
+  document.getElementById('input-edit-photo').value = '';
+  document.getElementById('input-edit-color-hex').value = c.card_color || '';
+  document.getElementById('input-edit-color-native').value = c.card_color || '#1a1816';
+  document.getElementById('input-edit-texture').value = c.card_texture || '';
+  document.getElementById('client-edit-modal-overlay').classList.add('open');
+}
+
+async function submitClientEdit() {
+  const name = document.getElementById('input-edit-name').value.trim();
+  if (!name) { highlightErr('input-edit-name'); return; }
+  const address = document.getElementById('input-edit-address').value.trim();
+  const phone = document.getElementById('input-edit-phone').value.trim();
+  const email = document.getElementById('input-edit-email').value.trim();
+  const notes = document.getElementById('input-edit-notes').value.trim();
+  let card_color = document.getElementById('input-edit-color-hex').value.trim();
+  if (card_color && !card_color.startsWith('#')) card_color = '#'+card_color;
+  if (card_color && !/^#[0-9A-Fa-f]{6}$/.test(card_color)) { highlightErr('input-edit-color-hex'); return; }
+  const card_texture = document.getElementById('input-edit-texture').value;
+  const file = document.getElementById('input-edit-photo').files[0];
+  const btn = document.getElementById('client-edit-submit-btn');
+
+  const patch = {name, address: address||null, phone: phone||null, email: email||null, notes: notes||null, card_color: card_color||null, card_texture: card_texture||null};
+
+  if (file) {
+    btn.textContent='Uploading...'; btn.disabled=true;
+    const path = `clients/${editingClientId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+    const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
+    if (upErr) { showToast('Upload failed ✗'); btn.textContent='Save'; btn.disabled=false; return; }
+    const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+    patch.cover_photo_url = pub.publicUrl;
+  }
+
+  const {error} = await sb.from('clients').update(patch).eq('id',editingClientId);
+  btn.textContent='Save'; btn.disabled=false;
+  if (error) { showToast('Error saving ✗'); return; }
+  closeModal('client-edit-modal-overlay');
+  await loadClients();
+  showToast('Client updated ✓');
 }
 
 function openClientModal() {
@@ -774,7 +917,7 @@ function renderRoomSelect() {
 async function selectRoom(id, skipReload) {
   currentRoomId = id;
   if (!skipReload && id) document.getElementById('room-select').value = id;
-  await Promise.all([loadPhotosAndTags(), loadPalette()]);
+  await Promise.all([loadPhotosAndTags(), loadPalette(), loadExistingFurniture()]);
   await loadShoppingList();
   render();
 }
@@ -837,6 +980,75 @@ async function loadPalette() {
   const {data,error} = await sb.from('apt_palette').select('*').eq('room_id',currentRoomId).order('created_at',{ascending:true});
   if (error) { showToast('Error loading palette ✗'); return; }
   palette = data || [];
+}
+
+async function loadExistingFurniture() {
+  if (!currentRoomId) { existingFurniture=[]; return; }
+  const {data,error} = await sb.from('existing_furniture').select('*').eq('room_id',currentRoomId).order('created_at',{ascending:true});
+  if (error) { showToast('Error loading existing furniture ✗'); return; }
+  existingFurniture = data || [];
+}
+
+function openExistingModal() {
+  if (!isAdmin) return;
+  document.getElementById('input-existing-name').value='';
+  document.getElementById('input-existing-category').value='Furniture';
+  document.getElementById('input-existing-file').value='';
+  document.getElementById('input-existing-notes').value='';
+  document.getElementById('existing-modal-overlay').classList.add('open');
+}
+
+async function submitExistingItem() {
+  if (!isAdmin) return;
+  const item_name = document.getElementById('input-existing-name').value.trim();
+  if (!item_name) { highlightErr('input-existing-name'); return; }
+  const category = document.getElementById('input-existing-category').value;
+  const notes = document.getElementById('input-existing-notes').value.trim();
+  const file = document.getElementById('input-existing-file').files[0];
+  const btn = document.getElementById('existing-submit-btn');
+  let image_url = null;
+
+  if (file) {
+    btn.textContent='Uploading...'; btn.disabled=true;
+    const path = `existing/${activeClientId}/${currentRoomId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+    const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
+    if (upErr) { showToast('Upload failed ✗'); btn.textContent='Save Item'; btn.disabled=false; return; }
+    const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+    image_url = pub.publicUrl;
+  }
+
+  const {error} = await sb.from('existing_furniture').insert({room_id:currentRoomId, item_name, category, notes: notes||null, image_url});
+  btn.textContent='Save Item'; btn.disabled=false;
+  if (error) { showToast('Error saving item ✗'); return; }
+  closeModal('existing-modal-overlay');
+  await loadExistingFurniture();
+  renderExistingFurniture();
+  showToast('Item saved ✓');
+}
+
+async function deleteExistingItem(id) {
+  if (!isAdmin) return;
+  if (!confirm('Delete this item?')) return;
+  await sb.from('existing_furniture').delete().eq('id',id);
+  await loadExistingFurniture();
+  renderExistingFurniture();
+}
+
+function renderExistingFurniture() {
+  const grid = document.getElementById('existing-grid');
+  if (!existingFurniture.length) { grid.innerHTML = `<div class="empty-state">Nothing logged yet.${isAdmin?' Add furniture the client already owns so you can plan around it.':''}</div>`; return; }
+  grid.innerHTML = existingFurniture.map(f=>`
+    <div class="photo-card">
+      ${f.image_url?`<div class="thumb-wrap"><img src="${f.image_url}" alt="${escHtml(f.item_name)}"/></div>`:`<div class="no-photo-placeholder">No photo</div>`}
+      <div class="existing-card-body">
+        <div class="top-row">
+          <span class="nm">${escHtml(f.item_name)}</span>
+          ${isAdmin?`<button onclick="deleteExistingItem('${f.id}')" title="Delete">✕</button>`:''}
+        </div>
+        <span class="cat">${escHtml(f.category||'')}</span>
+        ${f.notes?`<span class="nt">${escHtml(f.notes)}</span>`:''}
+      </div>
+    </div>`).join('');
 }
 
 async function loadShoppingList() {
@@ -1067,9 +1279,11 @@ function copyHex(hex) {
 // ── RENDER ──
 function render() {
   renderBeforeGrid();
+  renderExistingFurniture();
   renderRenderings();
   renderPalette();
   renderShop();
+  renderInspo();
 }
 
 function renderBeforeGrid() {
@@ -1165,7 +1379,15 @@ function renderShop() {
   }).join('');
 }
 
-// ── INSPO BOARD ──
+// ── INSPO BOARD (overall + per-room) ──
+let inspoScope = 'room';
+
+function setInspoScope(scope) {
+  inspoScope = scope;
+  document.getElementById('inspo-scope-room').classList.toggle('active', scope==='room');
+  document.getElementById('inspo-scope-overall').classList.toggle('active', scope==='overall');
+}
+
 function setInspoMode(mode) {
   inspoMode = mode;
   document.getElementById('inspo-mode-url').classList.toggle('active', mode==='url');
@@ -1175,6 +1397,7 @@ function setInspoMode(mode) {
 }
 
 function openInspoModal() {
+  setInspoScope(currentRoomId ? 'room' : 'overall');
   setInspoMode('url');
   document.getElementById('input-inspo-url').value='';
   document.getElementById('input-inspo-file').value='';
@@ -1204,8 +1427,9 @@ async function submitInspoPin() {
     imageUrl = pub.publicUrl;
   }
 
+  const room_id = inspoScope==='room' ? currentRoomId : null;
   const {error} = await sb.from('inspo_pins').insert({
-    client_id: activeClientId, image_url: imageUrl, source_url: source||null, caption: caption||null, added_by: currentUser.id
+    client_id: activeClientId, room_id, image_url: imageUrl, source_url: source||null, caption: caption||null, added_by: currentUser.id
   });
   btn.textContent='Add Pin'; btn.disabled=false;
   if (error) { showToast('Error saving pin ✗'); return; }
@@ -1230,13 +1454,10 @@ async function deleteInspoPin(id) {
   renderInspo();
 }
 
-function renderInspo() {
-  const el = document.getElementById('inspo-masonry');
-  if (!inspoPins.length) { el.innerHTML = `<div class="empty-state">No inspiration pins yet. ${isAdmin?'Add some to spark ideas, or wait for your client to add their own.':'Click "+ Add Pin" to save images that capture the look you want.'}</div>`; return; }
-  el.innerHTML = inspoPins.map(p=>{
-    const canDelete = isAdmin || p.added_by===currentUser.id;
-    const byLabel = p.added_by===currentUser.id ? 'You' : (isAdmin ? 'Client' : 'Designer');
-    return `<div class="pin-card">
+function inspoPinCard(p) {
+  const canDelete = isAdmin || p.added_by===currentUser.id;
+  const byLabel = p.added_by===currentUser.id ? 'You' : (isAdmin ? 'Client' : 'Designer');
+  return `<div class="pin-card">
       <img src="${p.image_url}" alt="${escHtml(p.caption||'')}" loading="lazy"/>
       <div class="pin-body">
         ${p.caption?`<div class="pin-cap">${escHtml(p.caption)}</div>`:''}
@@ -1249,14 +1470,31 @@ function renderInspo() {
         </div>
       </div>
     </div>`;
-  }).join('');
+}
+
+function renderInspo() {
+  const el = document.getElementById('inspo-masonry');
+  const overallPins = inspoPins.filter(p=>!p.room_id);
+  const roomPins = inspoPins.filter(p=>p.room_id && p.room_id===currentRoomId);
+  const roomName = rooms.find(r=>r.id===currentRoomId)?.name || 'This Room';
+
+  let html = `<div class="section-label">Overall Inspiration</div>`;
+  html += overallPins.length
+    ? `<div class="masonry">${overallPins.map(inspoPinCard).join('')}</div>`
+    : `<div class="empty-state">No overall pins yet. ${isAdmin?'Add ideas that apply to the whole project.':'Save images that capture the overall look you want.'}</div>`;
+
+  html += `<div class="section-label" style="margin-top:26px">${escHtml(roomName)} Inspiration</div>`;
+  html += roomPins.length
+    ? `<div class="masonry">${roomPins.map(inspoPinCard).join('')}</div>`
+    : `<div class="empty-state">No pins for this room yet.</div>`;
+
+  el.innerHTML = html;
 }
 
 // ── SELECTIONS (wallpaper, carpet, lighting, etc.) ──
 const SELECTION_CATEGORY_ORDER = ['Wallpaper','Carpet','Lighting','Paint','Tile','Fabric','Other'];
 
 function openWallpaperModal() {
-  if (!isAdmin) return;
   document.getElementById('input-wallpaper-category').value='Wallpaper';
   document.getElementById('input-wallpaper-file').value='';
   document.getElementById('input-wallpaper-label').value='';
@@ -1264,7 +1502,6 @@ function openWallpaperModal() {
 }
 
 async function submitWallpaperOption() {
-  if (!isAdmin) return;
   const category = document.getElementById('input-wallpaper-category').value;
   const file = document.getElementById('input-wallpaper-file').files[0];
   if (!file) { showToast('Choose an image file first'); return; }
@@ -1275,7 +1512,7 @@ async function submitWallpaperOption() {
   const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
   if (upErr) { showToast('Upload failed ✗'); btn.textContent='Add Option'; btn.disabled=false; return; }
   const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
-  const {error: insErr} = await sb.from('wallpaper_options').insert({client_id:activeClientId, image_url:pub.publicUrl, label:label||null, category});
+  const {error: insErr} = await sb.from('wallpaper_options').insert({client_id:activeClientId, image_url:pub.publicUrl, label:label||null, category, added_by:currentUser.id});
   btn.textContent='Add Option'; btn.disabled=false;
   if (insErr) { showToast('Error saving option ✗'); return; }
   closeModal('wallpaper-modal-overlay');
@@ -1285,8 +1522,9 @@ async function submitWallpaperOption() {
 }
 
 async function deleteWallpaperOption(id) {
-  if (!isAdmin) return;
-  if (!confirm('Delete this wallpaper option?')) return;
+  const o = wallpaperOptions.find(x=>x.id===id);
+  if (!isAdmin && o?.added_by!==currentUser.id) return;
+  if (!confirm('Delete this option?')) return;
   await sb.from('wallpaper_options').delete().eq('id',id);
   await loadWallpaper();
   renderWallpaper();
@@ -1326,14 +1564,17 @@ function renderWallpaper() {
     <div class="wallpaper-grid">
       ${groups[cat].map(o=>{
         const liked = wallpaperLikedSet.has(o.id);
+        const canDelete = isAdmin || o.added_by===currentUser.id;
+        const byLabel = o.added_by ? (o.added_by===currentUser.id ? 'You' : (isAdmin ? 'Client' : 'Designer')) : null;
         return `<div class="wallpaper-card ${liked?'liked':''}">
           <img src="${o.image_url}" alt="${escHtml(o.label||'')}"/>
           <div class="wallpaper-body">
             ${o.label?`<div class="wallpaper-label">${escHtml(o.label)}</div>`:''}
+            ${byLabel?`<span class="pin-by">Added by ${byLabel}</span>`:''}
             <div class="wallpaper-actions">
               ${!isAdmin?`<button class="icon-btn ${liked?'liked':''}" onclick="toggleWallpaperLike('${o.id}')">${liked?'♥ Liked':'♡ Like This'}</button>`:`<span class="hdr-btn" style="cursor:default">${liked?'♥ Client likes this':'Not picked yet'}</span>`}
               <button class="comment-count-btn" onclick="openCommentsModal('wallpaper_option','${o.id}','${escHtml(o.label||cat)}')">💬 Comments</button>
-              ${isAdmin?`<button class="icon-btn danger" onclick="deleteWallpaperOption('${o.id}')">🗑</button>`:''}
+              ${canDelete?`<button class="icon-btn danger" onclick="deleteWallpaperOption('${o.id}')">🗑</button>`:''}
             </div>
           </div>
         </div>`;
