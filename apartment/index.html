@@ -100,6 +100,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .render-tag-row .num{font-family:'Space Mono',monospace;color:var(--accent);font-size:10px;width:16px;}
 .render-tag-row .nm{flex:1;}
 .render-tag-row .bud{color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;}
+.render-tag-row .tag-thumb{width:22px;height:22px;border-radius:4px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;}
+.render-tag-row .product-link-btn{text-decoration:none;}
 
 /* PALETTE */
 .palette-strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
@@ -393,6 +395,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <input type="text" class="hex-text-input" id="input-tag-color-hex" value="#D4A574" oninput="syncNativeFromHexEl(this.value,'input-tag-color-native')">
       </div>
     </div>
+    <div class="field"><label>Product Photo (image URL)</label><input type="text" id="input-tag-product-image" placeholder="Paste image URL from the retailer's page"/></div>
+    <div class="field"><label>Product Link (where to buy this exact item)</label><input type="text" id="input-tag-product-link" placeholder="Paste the product page URL"/></div>
     <div class="field"><label>Notes</label><textarea id="input-tag-notes" placeholder="Dimensions, material, vibe..."></textarea></div>
     <div class="modal-actions" id="tag-modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('tag-modal-overlay')">Cancel</button>
@@ -918,6 +922,8 @@ function openTagModal(existingTag) {
   document.getElementById('input-tag-color-hex').value = hex;
   document.getElementById('input-tag-color-native').value = hex;
   document.getElementById('input-tag-notes').value = existingTag?.notes || '';
+  document.getElementById('input-tag-product-image').value = existingTag?.product_image_url || '';
+  document.getElementById('input-tag-product-link').value = existingTag?.product_link || '';
 
   document.querySelectorAll('#tag-modal-overlay input, #tag-modal-overlay select, #tag-modal-overlay textarea').forEach(el=>el.disabled=!isAdmin);
 
@@ -943,13 +949,15 @@ async function saveTag() {
   const budget = budgetRaw===''?null:parseFloat(budgetRaw);
   const color_hex = document.getElementById('input-tag-color-hex').value;
   const notes = document.getElementById('input-tag-notes').value.trim();
+  const product_image_url = document.getElementById('input-tag-product-image').value.trim() || null;
+  const product_link = document.getElementById('input-tag-product-link').value.trim() || null;
 
   if (editingTagId) {
-    const {error} = await sb.from('apt_tags').update({item_name,category,budget,color_hex,notes}).eq('id',editingTagId);
+    const {error} = await sb.from('apt_tags').update({item_name,category,budget,color_hex,notes,product_image_url,product_link}).eq('id',editingTagId);
     if (error) { showToast('Error saving ✗'); return; }
   } else {
     const {photoId,x,y} = pendingTagPos;
-    const {error} = await sb.from('apt_tags').insert({photo_id:photoId,x,y,item_name,category,budget,color_hex,notes,purchased:false});
+    const {error} = await sb.from('apt_tags').insert({photo_id:photoId,x,y,item_name,category,budget,color_hex,notes,product_image_url,product_link,purchased:false});
     if (error) { showToast('Error saving ✗'); return; }
   }
   closeModal('tag-modal-overlay');
@@ -1092,9 +1100,10 @@ function renderRenderings() {
       ${photoTags.length?`<div class="render-taglist">${photoTags.map((t,i)=>`
         <div class="render-tag-row" onclick="editTagById('${p.id}','${t.id}')">
           <span class="num">${i+1}</span>
-          <span class="swatch" style="background:${t.color_hex||'#888'}"></span>
+          ${t.product_image_url?`<img class="tag-thumb" src="${t.product_image_url}" alt=""/>`:`<span class="swatch" style="background:${t.color_hex||'#888'}"></span>`}
           <span class="nm">${escHtml(t.item_name)} <span style="color:var(--muted)">· ${escHtml(t.category||'')}</span></span>
           ${t.budget?`<span class="bud">$${Number(t.budget).toLocaleString()}</span>`:''}
+          ${t.product_link?`<a class="comment-count-btn product-link-btn" href="${t.product_link}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🔗</a>`:''}
           <button class="comment-count-btn" onclick="event.stopPropagation();openCommentsModal('tag','${t.id}','${escHtml(t.item_name)}')">💬</button>
         </div>`).join('')}</div>`:''}
     </div>`;
@@ -1133,12 +1142,13 @@ function renderShop() {
     const colorName = t.color_hex ? nearestColorName(t.color_hex) : '';
     const q = encodeURIComponent(`${t.item_name} ${colorName}`.trim());
     return `<div class="shop-item ${t.purchased?'purchased':''}">
-      <div class="swatch-lg" style="background:${t.color_hex||'#888'}"></div>
+      ${t.product_image_url?`<img class="swatch-lg" src="${t.product_image_url}" alt="" style="object-fit:cover"/>`:`<div class="swatch-lg" style="background:${t.color_hex||'#888'}"></div>`}
       <div class="info">
         <div class="item-nm">${escHtml(t.item_name)}</div>
         <div class="item-meta">${escHtml(t.roomName)} · ${escHtml(t.category||'')}${t.budget?` · $${Number(t.budget).toLocaleString()}`:''}${colorName?` · ${colorName}`:''}</div>
         ${t.notes?`<div class="item-notes">${escHtml(t.notes)}</div>`:''}
         <div class="shop-links" style="margin-top:8px">
+          ${t.product_link?`<a class="shop-link" href="${t.product_link}" target="_blank" rel="noopener" style="background:var(--accent);color:#1a1410;border-color:var(--accent)">View Product ↗</a>`:''}
           ${RETAILERS.map(r=>`<a class="shop-link" href="${r.url(q)}" target="_blank" rel="noopener">${r.name}</a>`).join('')}
         </div>
       </div>
