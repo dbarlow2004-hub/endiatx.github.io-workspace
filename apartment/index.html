@@ -100,6 +100,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .render-tag-row .num{font-family:'Space Mono',monospace;color:var(--accent);font-size:10px;width:16px;}
 .render-tag-row .nm{flex:1;}
 .render-tag-row .bud{color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;}
+.render-tag-row .tag-thumb{width:22px;height:22px;border-radius:4px;object-fit:cover;border:1px solid var(--border);flex-shrink:0;}
+.render-tag-row .product-link-btn{text-decoration:none;}
 
 /* PALETTE */
 .palette-strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
@@ -270,7 +272,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   <div id="workspace-view" style="display:none">
     <div class="tabs">
       <button class="tab active" data-tab="gallery" onclick="switchTab('gallery',this)">Design</button>
-      <button class="tab" data-tab="wallpaper" onclick="switchTab('wallpaper',this)">Wallpaper</button>
+      <button class="tab" data-tab="wallpaper" onclick="switchTab('wallpaper',this)">Selections</button>
       <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">Shopping List</button>
       <button class="tab" data-tab="inspo" onclick="switchTab('inspo',this)">Inspo Board</button>
     </div>
@@ -305,11 +307,10 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <div id="harmony-output" class="harmony-block"></div>
       </div>
 
-      <!-- WALLPAPER PANEL -->
+      <!-- SELECTIONS PANEL (wallpaper, carpet, lighting, etc.) -->
       <div class="panel" id="panel-wallpaper">
-        <div class="section-label">Wallpaper Options</div>
-        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openWallpaperModal()">+ Add Wallpaper Option</button></div>
-        <div id="wallpaper-grid" class="wallpaper-grid"></div>
+        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openWallpaperModal()">+ Add Option</button></div>
+        <div id="wallpaper-grid"></div>
       </div>
 
       <!-- SHOPPING LIST PANEL -->
@@ -377,7 +378,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <label>Category</label>
         <select id="input-tag-category">
           <option>Furniture</option><option>Lighting</option><option>Textiles</option>
-          <option>Rug</option><option>Wall Decor</option><option>Plant</option>
+          <option>Rug / Carpet</option><option>Wallpaper</option><option>Wall Decor</option><option>Plant</option>
           <option>Accessory</option><option>Window Treatment</option><option>Other</option>
         </select>
       </div>
@@ -393,6 +394,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <input type="text" class="hex-text-input" id="input-tag-color-hex" value="#D4A574" oninput="syncNativeFromHexEl(this.value,'input-tag-color-native')">
       </div>
     </div>
+    <div class="field"><label>Product Photo (image URL)</label><input type="text" id="input-tag-product-image" placeholder="Paste image URL from the retailer's page"/></div>
+    <div class="field"><label>Product Link (where to buy this exact item)</label><input type="text" id="input-tag-product-link" placeholder="Paste the product page URL"/></div>
     <div class="field"><label>Notes</label><textarea id="input-tag-notes" placeholder="Dimensions, material, vibe..."></textarea></div>
     <div class="modal-actions" id="tag-modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('tag-modal-overlay')">Cancel</button>
@@ -420,10 +423,17 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   </div>
 </div>
 
-<!-- WALLPAPER MODAL -->
+<!-- SELECTIONS MODAL -->
 <div class="modal-overlay" id="wallpaper-modal-overlay">
   <div class="modal">
-    <h2>Add Wallpaper Option</h2>
+    <h2>Add Option</h2>
+    <div class="field">
+      <label>Category</label>
+      <select id="input-wallpaper-category">
+        <option>Wallpaper</option><option>Carpet</option><option>Lighting</option>
+        <option>Paint</option><option>Tile</option><option>Fabric</option><option>Other</option>
+      </select>
+    </div>
     <div class="field"><label>Image File</label><input type="file" id="input-wallpaper-file" accept="image/*"/></div>
     <div class="field"><label>Label (optional)</label><input type="text" id="input-wallpaper-label" placeholder="e.g. Option A — Botanical Print"/></div>
     <div class="modal-actions">
@@ -918,6 +928,8 @@ function openTagModal(existingTag) {
   document.getElementById('input-tag-color-hex').value = hex;
   document.getElementById('input-tag-color-native').value = hex;
   document.getElementById('input-tag-notes').value = existingTag?.notes || '';
+  document.getElementById('input-tag-product-image').value = existingTag?.product_image_url || '';
+  document.getElementById('input-tag-product-link').value = existingTag?.product_link || '';
 
   document.querySelectorAll('#tag-modal-overlay input, #tag-modal-overlay select, #tag-modal-overlay textarea').forEach(el=>el.disabled=!isAdmin);
 
@@ -943,13 +955,15 @@ async function saveTag() {
   const budget = budgetRaw===''?null:parseFloat(budgetRaw);
   const color_hex = document.getElementById('input-tag-color-hex').value;
   const notes = document.getElementById('input-tag-notes').value.trim();
+  const product_image_url = document.getElementById('input-tag-product-image').value.trim() || null;
+  const product_link = document.getElementById('input-tag-product-link').value.trim() || null;
 
   if (editingTagId) {
-    const {error} = await sb.from('apt_tags').update({item_name,category,budget,color_hex,notes}).eq('id',editingTagId);
+    const {error} = await sb.from('apt_tags').update({item_name,category,budget,color_hex,notes,product_image_url,product_link}).eq('id',editingTagId);
     if (error) { showToast('Error saving ✗'); return; }
   } else {
     const {photoId,x,y} = pendingTagPos;
-    const {error} = await sb.from('apt_tags').insert({photo_id:photoId,x,y,item_name,category,budget,color_hex,notes,purchased:false});
+    const {error} = await sb.from('apt_tags').insert({photo_id:photoId,x,y,item_name,category,budget,color_hex,notes,product_image_url,product_link,purchased:false});
     if (error) { showToast('Error saving ✗'); return; }
   }
   closeModal('tag-modal-overlay');
@@ -1092,9 +1106,10 @@ function renderRenderings() {
       ${photoTags.length?`<div class="render-taglist">${photoTags.map((t,i)=>`
         <div class="render-tag-row" onclick="editTagById('${p.id}','${t.id}')">
           <span class="num">${i+1}</span>
-          <span class="swatch" style="background:${t.color_hex||'#888'}"></span>
+          ${t.product_image_url?`<img class="tag-thumb" src="${t.product_image_url}" alt=""/>`:`<span class="swatch" style="background:${t.color_hex||'#888'}"></span>`}
           <span class="nm">${escHtml(t.item_name)} <span style="color:var(--muted)">· ${escHtml(t.category||'')}</span></span>
           ${t.budget?`<span class="bud">$${Number(t.budget).toLocaleString()}</span>`:''}
+          ${t.product_link?`<a class="comment-count-btn product-link-btn" href="${t.product_link}" target="_blank" rel="noopener" onclick="event.stopPropagation()">🔗</a>`:''}
           <button class="comment-count-btn" onclick="event.stopPropagation();openCommentsModal('tag','${t.id}','${escHtml(t.item_name)}')">💬</button>
         </div>`).join('')}</div>`:''}
     </div>`;
@@ -1133,12 +1148,13 @@ function renderShop() {
     const colorName = t.color_hex ? nearestColorName(t.color_hex) : '';
     const q = encodeURIComponent(`${t.item_name} ${colorName}`.trim());
     return `<div class="shop-item ${t.purchased?'purchased':''}">
-      <div class="swatch-lg" style="background:${t.color_hex||'#888'}"></div>
+      ${t.product_image_url?`<img class="swatch-lg" src="${t.product_image_url}" alt="" style="object-fit:cover"/>`:`<div class="swatch-lg" style="background:${t.color_hex||'#888'}"></div>`}
       <div class="info">
         <div class="item-nm">${escHtml(t.item_name)}</div>
         <div class="item-meta">${escHtml(t.roomName)} · ${escHtml(t.category||'')}${t.budget?` · $${Number(t.budget).toLocaleString()}`:''}${colorName?` · ${colorName}`:''}</div>
         ${t.notes?`<div class="item-notes">${escHtml(t.notes)}</div>`:''}
         <div class="shop-links" style="margin-top:8px">
+          ${t.product_link?`<a class="shop-link" href="${t.product_link}" target="_blank" rel="noopener" style="background:var(--accent);color:#1a1410;border-color:var(--accent)">View Product ↗</a>`:''}
           ${RETAILERS.map(r=>`<a class="shop-link" href="${r.url(q)}" target="_blank" rel="noopener">${r.name}</a>`).join('')}
         </div>
       </div>
@@ -1236,9 +1252,12 @@ function renderInspo() {
   }).join('');
 }
 
-// ── WALLPAPER ──
+// ── SELECTIONS (wallpaper, carpet, lighting, etc.) ──
+const SELECTION_CATEGORY_ORDER = ['Wallpaper','Carpet','Lighting','Paint','Tile','Fabric','Other'];
+
 function openWallpaperModal() {
   if (!isAdmin) return;
+  document.getElementById('input-wallpaper-category').value='Wallpaper';
   document.getElementById('input-wallpaper-file').value='';
   document.getElementById('input-wallpaper-label').value='';
   document.getElementById('wallpaper-modal-overlay').classList.add('open');
@@ -1246,22 +1265,23 @@ function openWallpaperModal() {
 
 async function submitWallpaperOption() {
   if (!isAdmin) return;
+  const category = document.getElementById('input-wallpaper-category').value;
   const file = document.getElementById('input-wallpaper-file').files[0];
   if (!file) { showToast('Choose an image file first'); return; }
   const label = document.getElementById('input-wallpaper-label').value.trim();
   const btn = document.getElementById('wallpaper-submit-btn');
   btn.textContent='Uploading...'; btn.disabled=true;
-  const path = `wallpaper/${activeClientId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+  const path = `selections/${activeClientId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
   const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
   if (upErr) { showToast('Upload failed ✗'); btn.textContent='Add Option'; btn.disabled=false; return; }
   const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
-  const {error: insErr} = await sb.from('wallpaper_options').insert({client_id:activeClientId, image_url:pub.publicUrl, label:label||null});
+  const {error: insErr} = await sb.from('wallpaper_options').insert({client_id:activeClientId, image_url:pub.publicUrl, label:label||null, category});
   btn.textContent='Add Option'; btn.disabled=false;
   if (insErr) { showToast('Error saving option ✗'); return; }
   closeModal('wallpaper-modal-overlay');
   await loadWallpaper();
   renderWallpaper();
-  showToast('Wallpaper option added ✓');
+  showToast('Option added ✓');
 }
 
 async function deleteWallpaperOption(id) {
@@ -1295,21 +1315,30 @@ async function loadWallpaper() {
 
 function renderWallpaper() {
   const el = document.getElementById('wallpaper-grid');
-  if (!wallpaperOptions.length) { el.innerHTML = `<div class="empty-state">No wallpaper options yet.${isAdmin?' Upload a few images for your client to choose from.':' Your designer hasn\'t added any options yet.'}</div>`; return; }
-  el.innerHTML = wallpaperOptions.map(o=>{
-    const liked = wallpaperLikedSet.has(o.id);
-    return `<div class="wallpaper-card ${liked?'liked':''}">
-      <img src="${o.image_url}" alt="${escHtml(o.label||'')}"/>
-      <div class="wallpaper-body">
-        ${o.label?`<div class="wallpaper-label">${escHtml(o.label)}</div>`:''}
-        <div class="wallpaper-actions">
-          ${!isAdmin?`<button class="icon-btn ${liked?'liked':''}" onclick="toggleWallpaperLike('${o.id}')">${liked?'♥ Liked':'♡ Like This'}</button>`:`<span class="hdr-btn" style="cursor:default">${liked?'♥ Client likes this':'Not picked yet'}</span>`}
-          <button class="comment-count-btn" onclick="openCommentsModal('wallpaper_option','${o.id}','${escHtml(o.label||'Wallpaper option')}')">💬 Comments</button>
-          ${isAdmin?`<button class="icon-btn danger" onclick="deleteWallpaperOption('${o.id}')">🗑</button>`:''}
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+  if (!wallpaperOptions.length) { el.innerHTML = `<div class="empty-state">No selections yet.${isAdmin?' Upload wallpaper, carpet, lighting, or other options for your client to choose from.':' Your designer hasn\'t added any options yet.'}</div>`; return; }
+
+  const groups = {};
+  wallpaperOptions.forEach(o=>{ const cat = o.category||'Other'; if (!groups[cat]) groups[cat]=[]; groups[cat].push(o); });
+  const cats = Object.keys(groups).sort((a,b)=>SELECTION_CATEGORY_ORDER.indexOf(a)-SELECTION_CATEGORY_ORDER.indexOf(b));
+
+  el.innerHTML = cats.map(cat => `
+    <div class="section-label">${escHtml(cat)}</div>
+    <div class="wallpaper-grid">
+      ${groups[cat].map(o=>{
+        const liked = wallpaperLikedSet.has(o.id);
+        return `<div class="wallpaper-card ${liked?'liked':''}">
+          <img src="${o.image_url}" alt="${escHtml(o.label||'')}"/>
+          <div class="wallpaper-body">
+            ${o.label?`<div class="wallpaper-label">${escHtml(o.label)}</div>`:''}
+            <div class="wallpaper-actions">
+              ${!isAdmin?`<button class="icon-btn ${liked?'liked':''}" onclick="toggleWallpaperLike('${o.id}')">${liked?'♥ Liked':'♡ Like This'}</button>`:`<span class="hdr-btn" style="cursor:default">${liked?'♥ Client likes this':'Not picked yet'}</span>`}
+              <button class="comment-count-btn" onclick="openCommentsModal('wallpaper_option','${o.id}','${escHtml(o.label||cat)}')">💬 Comments</button>
+              ${isAdmin?`<button class="icon-btn danger" onclick="deleteWallpaperOption('${o.id}')">🗑</button>`:''}
+            </div>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
 }
 
 // ── COMMENTS ──
