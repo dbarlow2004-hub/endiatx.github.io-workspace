@@ -157,6 +157,24 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .pin-del{background:none;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:4px 8px;font-size:11px;cursor:pointer;}
 .pin-del:hover{color:var(--red);border-color:var(--red);}
 
+/* WALLPAPER */
+.wallpaper-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.wallpaper-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.wallpaper-card.liked{border-color:var(--sage);}
+.wallpaper-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.wallpaper-body{padding:10px 12px;display:flex;flex-direction:column;gap:8px;}
+.wallpaper-label{font-size:12px;font-weight:600;}
+.wallpaper-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
+.icon-btn.liked{color:var(--sage);border-color:var(--sage);}
+
+/* COMMENTS */
+.comment-bubble{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:8px 12px;}
+.comment-bubble .c-author{font-family:'Space Mono',monospace;font-size:9px;color:var(--accent);text-transform:uppercase;letter-spacing:0.05em;}
+.comment-bubble .c-body{font-size:12px;margin-top:3px;line-height:1.5;white-space:pre-wrap;}
+.comment-bubble .c-time{font-size:9px;color:var(--muted);margin-top:4px;}
+.comment-count-btn{background:none;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:3px 8px;font-size:10px;cursor:pointer;font-family:'Space Mono',monospace;}
+.comment-count-btn:hover{color:var(--accent);border-color:var(--accent);}
+
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.78);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
@@ -251,15 +269,15 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   <!-- WORKSPACE (rooms/palette/shop/inspo) -->
   <div id="workspace-view" style="display:none">
     <div class="tabs">
-      <button class="tab active" data-tab="gallery" onclick="switchTab('gallery',this)">Before &amp; After</button>
-      <button class="tab" data-tab="palette" onclick="switchTab('palette',this)">Palette</button>
+      <button class="tab active" data-tab="gallery" onclick="switchTab('gallery',this)">Design</button>
+      <button class="tab" data-tab="wallpaper" onclick="switchTab('wallpaper',this)">Wallpaper</button>
       <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">Shopping List</button>
       <button class="tab" data-tab="inspo" onclick="switchTab('inspo',this)">Inspo Board</button>
     </div>
 
     <div class="container">
 
-      <!-- GALLERY PANEL -->
+      <!-- GALLERY + PALETTE PANEL -->
       <div class="panel active" id="panel-gallery">
         <div class="section-label">Before Photos</div>
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('before')">+ Upload Before Photo</button></div>
@@ -268,10 +286,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <div class="section-label">Renderings</div>
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('rendering')">+ Upload Rendering</button></div>
         <div id="rendering-list"></div>
-      </div>
 
-      <!-- PALETTE PANEL -->
-      <div class="panel" id="panel-palette">
         <div class="section-label">Room Palette</div>
         <div class="add-color-form admin-only">
           <input type="color" class="color-input-native" id="palette-color-native" value="#d4a574" oninput="document.getElementById('palette-color-hex').value=this.value">
@@ -288,6 +303,13 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
           <span style="font-size:12px;color:var(--muted)">Pick a base color to generate a full scheme</span>
         </div>
         <div id="harmony-output" class="harmony-block"></div>
+      </div>
+
+      <!-- WALLPAPER PANEL -->
+      <div class="panel" id="panel-wallpaper">
+        <div class="section-label">Wallpaper Options</div>
+        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openWallpaperModal()">+ Add Wallpaper Option</button></div>
+        <div id="wallpaper-grid" class="wallpaper-grid"></div>
       </div>
 
       <!-- SHOPPING LIST PANEL -->
@@ -398,6 +420,32 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   </div>
 </div>
 
+<!-- WALLPAPER MODAL -->
+<div class="modal-overlay" id="wallpaper-modal-overlay">
+  <div class="modal">
+    <h2>Add Wallpaper Option</h2>
+    <div class="field"><label>Image File</label><input type="file" id="input-wallpaper-file" accept="image/*"/></div>
+    <div class="field"><label>Label (optional)</label><input type="text" id="input-wallpaper-label" placeholder="e.g. Option A — Botanical Print"/></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('wallpaper-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" id="wallpaper-submit-btn" onclick="submitWallpaperOption()">Add Option</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMMENTS MODAL -->
+<div class="modal-overlay" id="comments-modal-overlay">
+  <div class="modal">
+    <h2 id="comments-modal-title">Comments</h2>
+    <div id="comments-list" style="max-height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:14px"></div>
+    <div class="field"><textarea id="input-comment-body" placeholder="Write a comment..." style="min-height:64px"></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('comments-modal-overlay')">Close</button>
+      <button class="btn btn-primary" onclick="submitComment()">Post Comment</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -426,6 +474,9 @@ let palette = [];
 let allTagsAllRooms = [];
 let inspoPins = [];
 let inspoMode = 'url';
+let wallpaperOptions = [];
+let wallpaperLikedSet = new Set();
+let activeCommentTarget = null;
 
 let taggingModePhotoId = null;
 let editingTagId = null;
@@ -686,6 +737,8 @@ async function loadWorkspace(clientId) {
   await loadRooms();
   await loadInspo();
   renderInspo();
+  await loadWallpaper();
+  renderWallpaper();
 }
 
 async function loadRooms() {
@@ -1042,6 +1095,7 @@ function renderRenderings() {
           <span class="swatch" style="background:${t.color_hex||'#888'}"></span>
           <span class="nm">${escHtml(t.item_name)} <span style="color:var(--muted)">· ${escHtml(t.category||'')}</span></span>
           ${t.budget?`<span class="bud">$${Number(t.budget).toLocaleString()}</span>`:''}
+          <button class="comment-count-btn" onclick="event.stopPropagation();openCommentsModal('tag','${t.id}','${escHtml(t.item_name)}')">💬</button>
         </div>`).join('')}</div>`:''}
     </div>`;
   }).join('');
@@ -1182,6 +1236,119 @@ function renderInspo() {
   }).join('');
 }
 
+// ── WALLPAPER ──
+function openWallpaperModal() {
+  if (!isAdmin) return;
+  document.getElementById('input-wallpaper-file').value='';
+  document.getElementById('input-wallpaper-label').value='';
+  document.getElementById('wallpaper-modal-overlay').classList.add('open');
+}
+
+async function submitWallpaperOption() {
+  if (!isAdmin) return;
+  const file = document.getElementById('input-wallpaper-file').files[0];
+  if (!file) { showToast('Choose an image file first'); return; }
+  const label = document.getElementById('input-wallpaper-label').value.trim();
+  const btn = document.getElementById('wallpaper-submit-btn');
+  btn.textContent='Uploading...'; btn.disabled=true;
+  const path = `wallpaper/${activeClientId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+  const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
+  if (upErr) { showToast('Upload failed ✗'); btn.textContent='Add Option'; btn.disabled=false; return; }
+  const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+  const {error: insErr} = await sb.from('wallpaper_options').insert({client_id:activeClientId, image_url:pub.publicUrl, label:label||null});
+  btn.textContent='Add Option'; btn.disabled=false;
+  if (insErr) { showToast('Error saving option ✗'); return; }
+  closeModal('wallpaper-modal-overlay');
+  await loadWallpaper();
+  renderWallpaper();
+  showToast('Wallpaper option added ✓');
+}
+
+async function deleteWallpaperOption(id) {
+  if (!isAdmin) return;
+  if (!confirm('Delete this wallpaper option?')) return;
+  await sb.from('wallpaper_options').delete().eq('id',id);
+  await loadWallpaper();
+  renderWallpaper();
+}
+
+async function toggleWallpaperLike(optionId) {
+  if (isAdmin) return;
+  if (wallpaperLikedSet.has(optionId)) {
+    await sb.from('wallpaper_likes').delete().eq('option_id',optionId).eq('client_id',activeClientId);
+  } else {
+    const {error} = await sb.from('wallpaper_likes').insert({option_id:optionId, client_id:activeClientId, liked_by:currentUser.id});
+    if (error) { showToast('Error saving your pick ✗'); return; }
+  }
+  await loadWallpaper();
+  renderWallpaper();
+}
+
+async function loadWallpaper() {
+  if (!activeClientId) { wallpaperOptions=[]; wallpaperLikedSet=new Set(); return; }
+  const {data:opts, error} = await sb.from('wallpaper_options').select('*').eq('client_id',activeClientId).order('created_at',{ascending:true});
+  if (error) { showToast('Error loading wallpaper options ✗'); return; }
+  wallpaperOptions = opts || [];
+  const {data:likes} = await sb.from('wallpaper_likes').select('*').eq('client_id',activeClientId);
+  wallpaperLikedSet = new Set((likes||[]).map(l=>l.option_id));
+}
+
+function renderWallpaper() {
+  const el = document.getElementById('wallpaper-grid');
+  if (!wallpaperOptions.length) { el.innerHTML = `<div class="empty-state">No wallpaper options yet.${isAdmin?' Upload a few images for your client to choose from.':' Your designer hasn\'t added any options yet.'}</div>`; return; }
+  el.innerHTML = wallpaperOptions.map(o=>{
+    const liked = wallpaperLikedSet.has(o.id);
+    return `<div class="wallpaper-card ${liked?'liked':''}">
+      <img src="${o.image_url}" alt="${escHtml(o.label||'')}"/>
+      <div class="wallpaper-body">
+        ${o.label?`<div class="wallpaper-label">${escHtml(o.label)}</div>`:''}
+        <div class="wallpaper-actions">
+          ${!isAdmin?`<button class="icon-btn ${liked?'liked':''}" onclick="toggleWallpaperLike('${o.id}')">${liked?'♥ Liked':'♡ Like This'}</button>`:`<span class="hdr-btn" style="cursor:default">${liked?'♥ Client likes this':'Not picked yet'}</span>`}
+          <button class="comment-count-btn" onclick="openCommentsModal('wallpaper_option','${o.id}','${escHtml(o.label||'Wallpaper option')}')">💬 Comments</button>
+          ${isAdmin?`<button class="icon-btn danger" onclick="deleteWallpaperOption('${o.id}')">🗑</button>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── COMMENTS ──
+async function openCommentsModal(targetType, targetId, title) {
+  activeCommentTarget = {type: targetType, id: targetId};
+  document.getElementById('comments-modal-title').textContent = `Comments — ${title}`;
+  document.getElementById('input-comment-body').value='';
+  document.getElementById('comments-modal-overlay').classList.add('open');
+  await loadAndRenderComments();
+}
+
+async function loadAndRenderComments() {
+  const {type,id} = activeCommentTarget;
+  const {data,error} = await sb.from('comments').select('*').eq('target_type',type).eq('target_id',id).order('created_at',{ascending:true});
+  const list = document.getElementById('comments-list');
+  if (error) { list.innerHTML = `<div class="empty-state">Error loading comments</div>`; return; }
+  if (!data.length) { list.innerHTML = `<div class="empty-state">No comments yet.</div>`; return; }
+  list.innerHTML = data.map(c=>{
+    const mine = c.author_id === currentUser.id;
+    const label = mine ? 'You' : (isAdmin ? 'Client' : 'Designer');
+    return `<div class="comment-bubble">
+      <div class="c-author">${label}</div>
+      <div class="c-body">${escHtml(c.body)}</div>
+      <div class="c-time">${new Date(c.created_at).toLocaleString()}</div>
+    </div>`;
+  }).join('');
+  list.scrollTop = list.scrollHeight;
+}
+
+async function submitComment() {
+  const body = document.getElementById('input-comment-body').value.trim();
+  if (!body) return;
+  const {type,id} = activeCommentTarget;
+  const {error} = await sb.from('comments').insert({client_id:activeClientId, target_type:type, target_id:id, author_id:currentUser.id, body});
+  if (error) { showToast('Error posting comment ✗'); return; }
+  document.getElementById('input-comment-body').value='';
+  await loadAndRenderComments();
+}
+
 // ── TABS ──
 function switchTab(tab, btn) {
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
@@ -1190,6 +1357,7 @@ function switchTab(tab, btn) {
   document.getElementById(`panel-${tab}`).classList.add('active');
   if (tab==='shop') { loadShoppingList().then(renderShop); }
   if (tab==='inspo') { loadInspo().then(renderInspo); }
+  if (tab==='wallpaper') { loadWallpaper().then(renderWallpaper); }
 }
 
 // ── MODAL / UTIL ──
