@@ -82,6 +82,8 @@ section{padding:64px 0;border-top:1px solid var(--border);}
 .project-links a{font-size:12px;color:var(--accent);text-decoration:none;font-weight:600;}
 .project-links a:hover{text-decoration:underline;}
 .expand-hint{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-top:2px;}
+.stack-badge{position:absolute;bottom:8px;right:8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.05em;background:rgba(0,0,0,0.6);color:#fff;border-radius:5px;padding:3px 7px;}
+.project-thumb{position:relative;}
 
 /* SCROLL REVEAL */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
@@ -96,7 +98,16 @@ section{padding:64px 0;border-top:1px solid var(--border);}
 .lightbox-thumb img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;cursor:zoom-in;transition:max-width 0.2s,max-height 0.2s;margin:auto;}
 .lightbox-thumb img.zoomed{max-width:none;max-height:none;width:auto;cursor:zoom-out;}
 .lightbox-thumb.has-gradient{padding:60px;}
-.zoom-hint{position:absolute;bottom:12px;right:14px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);background:rgba(0,0,0,0.5);border-radius:6px;padding:5px 9px;pointer-events:none;}
+.zoom-hint{position:absolute;top:14px;left:14px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.6);background:rgba(0,0,0,0.5);border-radius:6px;padding:5px 9px;pointer-events:none;}
+.gallery-chevron{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(14,15,17,0.55);border:1px solid rgba(255,255,255,0.15);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.15s,border-color 0.15s;z-index:2;}
+.gallery-chevron:hover{background:rgba(14,15,17,0.8);border-color:var(--accent);color:var(--accent);}
+.gallery-chevron:disabled{opacity:0;pointer-events:none;}
+.gallery-chevron.prev{left:16px;}
+.gallery-chevron.next{right:16px;}
+.gallery-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;background:rgba(0,0,0,0.4);padding:6px 10px;border-radius:20px;}
+.gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.35);border:none;padding:0;cursor:pointer;transition:background 0.15s,transform 0.15s;}
+.gallery-dot:hover{background:rgba(255,255,255,0.6);}
+.gallery-dot.active{background:var(--accent);transform:scale(1.25);}
 .lightbox-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(14,15,17,0.7);border:1px solid var(--border);color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.15s,color 0.15s;z-index:2;}
 .lightbox-close:hover{border-color:var(--accent);color:var(--accent);}
 .lightbox-body{flex:0 0 auto;padding:20px 28px;border-top:1px solid var(--border);max-height:32vh;overflow-y:auto;}
@@ -159,11 +170,51 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
   main{padding:0 18px;}
 }
 
+.print-only{display:none;}
+
 @media print{
-  header,.hero-actions,#work,footer,.nav-cta,.lightbox-overlay,.hero-glow{display:none!important;}
-  body{background:#fff;color:#111;}
-  section{border-color:#ddd;}
+  @page{margin:0.6in;}
+  header,.hero,.hero-glow,#work,#contact,footer,.nav-cta,.lightbox-overlay{display:none!important;}
+  body{background:#fff;color:#1a1a1a;font-size:11pt;line-height:1.45;}
+  main{max-width:100%;padding:0;margin:0;}
+  section{padding:0;border-top:none;}
   .reveal{opacity:1!important;transform:none!important;}
+
+  .print-only{display:block;margin-bottom:20px;}
+  .print-only h1{font-size:22pt;font-weight:800;color:#0e0f11;margin-bottom:3px;letter-spacing:0;}
+  .print-title{font-size:11.5pt;color:#333;margin-bottom:5px;}
+  .print-contact{font-family:'Space Mono',monospace;font-size:9pt;color:#444;letter-spacing:0.02em;}
+  .print-only::after{content:'';display:block;height:1px;background:#bbb;margin-top:16px;}
+
+  .section-head{margin-bottom:14px;}
+  .section-label{color:#666!important;}
+  .section-label::after{background:#ccc;}
+  .section-title{font-size:15pt;color:#0e0f11;}
+  #resume .section-sub,#leadership .section-sub{display:none;}
+  #resume > .section-head{display:none;}
+
+  .resume-grid{display:block;}
+  .timeline::before{background:#ccc;}
+  .tl-item{break-inside:avoid;margin-bottom:13px;}
+  .tl-item::before{background:#0e0f11;}
+  .tl-when{color:#666;}
+  .tl-role{color:#0e0f11;font-size:11.5pt;}
+  .tl-org{color:#333;margin-bottom:5px;}
+  .tl-desc{color:#333;}
+  .tl-desc li{margin-bottom:2px;}
+
+  .side-block{margin-top:20px;margin-bottom:0;break-inside:avoid;}
+  .side-title{color:#666;}
+  .skill-group-name{color:#0e0f11;}
+  .edu-item{break-inside:avoid;}
+  .edu-degree{color:#0e0f11;}
+  .edu-school{color:#333;}
+  .edu-when{color:#666;}
+  .edu-note{color:#555;}
+  .pill{background:none;border:1px solid #aaa;color:#333;}
+
+  #leadership{margin-top:18px;padding-top:16px;border-top:1px solid #ccc;}
+  #leadership .section-head{margin-bottom:10px;}
 }
 </style>
 </head>
@@ -206,6 +257,11 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
   </section>
 
   <section id="resume" class="reveal">
+    <div class="print-only" id="print-header">
+      <h1 id="print-name"></h1>
+      <div class="print-title" id="print-title"></div>
+      <div class="print-contact" id="print-contact"></div>
+    </div>
     <div class="section-head">
       <div class="section-label">Background</div>
       <div class="section-title">Resume</div>
@@ -270,7 +326,7 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
    ─────────────────────────────────────────────── */
 const PROFILE = {
   name: "D. Barlow Clark-Schoeb",
-  initials: "DBC",
+  initials: "DBCS",
   photo: "images/avatar.jpg",
   title: "Environmental Design & Sustainable Cities",
   bio: "I'm a designer and environmental studies student working at the intersection of architecture, sustainability, and storytelling. My work explores how ecology, access, and culture shape the way communities inhabit space — from site-based research at Eastie Farm to a documentary on public water access in Zurich. I aim to create intuitive, climate-responsive, socially grounded environments, driven by community needs and material responsibility.",
@@ -285,48 +341,46 @@ const PROFILE = {
   ]
 };
 
+// Each project's `images` array can hold one or several photos — the lightbox
+// lets visitors click through all of them for a given project.
+function img(name) { return { thumb: `images/${name}.jpg`, full: `images/full/${name}.jpg` }; }
+
 const PROJECTS = [
   {
     title: "Built Table",
     description: "Designed and built a wooden table for my senior year as a symbolic map of my friends' college paths — each wedge represented a school, merging craft, storytelling, and community.",
     tags: ["Furniture", "Woodworking"],
-    image: "images/built-table.jpg",
-    imageFull: "images/full/built-table.jpg"
+    images: [img("built-table-1"), img("built-table-2")]
   },
   {
     title: "Pear & Avocado Paintings",
     description: "A painted series exploring how color shifts mood and identity by rendering the same pear — and later, avocado — three ways: a playful study in tone, contrast, and expressive palettes.",
     tags: ["Painting", "Studio Art"],
-    image: "images/pear-paintings.jpg",
-    imageFull: "images/full/pear-paintings.jpg"
+    images: [img("pear-1"), img("pear-kitchen"), img("avocado-1"), img("avocado-2")]
   },
   {
     title: "Sustainable Swimwear",
     description: "Hand-sewn swimsuits made from thrifted or eco-friendly fabrics, reimagining discarded material into personal, well-designed pieces — a practice in craft, patience, and responsible design.",
     tags: ["Sewing", "Sustainable Fashion"],
-    image: "images/swimwear.jpg",
-    imageFull: "images/full/swimwear.jpg"
+    images: [img("swim-1"), img("swim-2")]
   },
   {
     title: "Connecticut",
     description: "A photographic study of Hartford's skyline — where domes, spires, and tiled roofs become sculpture. These images trace the city's personality through light, texture, and architectural rhythm.",
     tags: ["Photography"],
-    image: "images/connecticut.jpg",
-    imageFull: "images/full/connecticut.jpg"
+    images: [img("ct-1"), img("ct-2"), img("ct-3")]
   },
   {
     title: "Courtyard Tenement",
     description: "A speculative courtyard tenement exploring daylight access, passive ventilation, and shared green space — studying how urban density can coexist with thermal comfort, social connection, and environmental performance. Harvard GSD, Summer 2025.",
     tags: ["Architecture", "Harvard GSD"],
-    image: "images/courtyard-tenement.jpg",
-    imageFull: "images/full/courtyard-tenement.jpg"
+    images: [img("courtyard-1"), img("courtyard-2")]
   },
   {
     title: "Fallow Urban Plot",
     description: "A landscape intervention turning a vacant lot into shared public space — native plants reinforce soil structure and define gathering areas, while planting, paths, and seating choreograph shared movement and preserve moments of privacy. Harvard GSD, Summer 2025.",
     tags: ["Landscape Design", "Harvard GSD"],
-    image: "images/fallow-urban-plot.jpg",
-    imageFull: "images/full/fallow-urban-plot.jpg"
+    images: [img("fallow-1"), img("fallow-2"), img("fallow-3")]
   },
   {
     title: "Eastie Farm Site Study",
@@ -347,8 +401,7 @@ const PROJECTS = [
     title: "SALT: Salvaged And Loved Textiles",
     description: "Founder of a clothing brand upcycling textiles into clothing and handmade products since 2021. Next, growing SALT into a multidisciplinary space where architecture, making, and sustainability meet — through small-batch fabrication, adaptive reuse, and landscape-driven research.",
     tags: ["Fashion", "Founder", "2021 – Present"],
-    image: "images/salt.jpg",
-    imageFull: "images/full/salt.jpg"
+    images: [img("salt")]
   }
 ];
 const PROJECT_FALLBACK_COLORS = ["#7dd3fc,#38bdf8", "#c084fc,#a855f7", "#4ade80,#22c55e", "#ffd166,#fbbf24", "#fb923c,#f97316"];
@@ -431,19 +484,20 @@ document.title = `${PROFILE.name} — Portfolio & Resume`;
 
 document.getElementById('project-grid').innerHTML = PROJECTS.map((p,i) => {
   const [c1,c2] = (PROJECT_FALLBACK_COLORS[i % PROJECT_FALLBACK_COLORS.length]).split(',');
-  const thumb = p.image
-    ? `<img src="${p.image}" alt="${escHtml(p.title)}">`
+  const images = p.images || [];
+  const thumb = images.length
+    ? `<img src="${images[0].thumb}" alt="${escHtml(p.title)}">`
     : escHtml(p.title);
-  const thumbStyle = p.image ? '' : `style="background:linear-gradient(135deg,${c1},${c2})"`;
+  const thumbStyle = images.length ? '' : `style="background:linear-gradient(135deg,${c1},${c2})"`;
   return `
   <div class="project-card" data-index="${i}" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View details for ${escHtml(p.title)}">
-    <div class="project-thumb" ${thumbStyle}>${thumb}</div>
+    <div class="project-thumb" ${thumbStyle}>${thumb}${images.length>1?`<span class="stack-badge">1 / ${images.length}</span>`:''}</div>
     <div class="project-body">
       <h3>${escHtml(p.title)}</h3>
       <p>${escHtml(p.description)}</p>
       <div class="tag-row">${p.tags.map(t=>`<span class="tag">${escHtml(t)}</span>`).join('')}</div>
       ${p.links && p.links.length ? `<div class="project-links">${p.links.map(l=>`<a href="${l.href}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${escHtml(l.label)} →</a>`).join('')}</div>` : ''}
-      <div class="expand-hint">Click to expand →</div>
+      <div class="expand-hint">${images.length>1?'Click to view all photos →':'Click to expand →'}</div>
     </div>
   </div>
 `;
@@ -484,6 +538,9 @@ document.getElementById('skills-list').innerHTML = SKILLS.map(s => `
 `).join('');
 
 document.getElementById('contact-sub').textContent = `${PROFILE.location} · ${PROFILE.phone} · ${PROFILE.email}`;
+document.getElementById('print-name').textContent = PROFILE.name;
+document.getElementById('print-title').textContent = PROFILE.title;
+document.getElementById('print-contact').textContent = `${PROFILE.location} · ${PROFILE.phone} · ${PROFILE.email}`;
 document.getElementById('contact-links').innerHTML = PROFILE.socials.map(s =>
   `<a class="btn btn-ghost" href="${s.href}" target="_blank" rel="noopener">${escHtml(s.label)}</a>`
 ).join('');
@@ -492,32 +549,51 @@ document.getElementById('footer-note').textContent = `© ${new Date().getFullYea
 
 // ── LIGHTBOX ──
 let lightboxIndex = 0;
+let galleryIndex = 0;
 const lbOverlay = document.getElementById('lightbox-overlay');
 
-function renderLightbox() {
+function renderLightboxImage() {
   const p = PROJECTS[lightboxIndex];
+  const images = p.images || [];
   const [c1,c2] = (PROJECT_FALLBACK_COLORS[lightboxIndex % PROJECT_FALLBACK_COLORS.length]).split(',');
   const thumb = document.getElementById('lightbox-thumb');
-  if (p.image) {
+  if (images.length) {
+    const current = images[galleryIndex];
     thumb.style.background = '';
     thumb.classList.remove('has-gradient');
-    const fullSrc = p.imageFull || p.image;
-    thumb.innerHTML = `<img src="${p.image}" alt="${escHtml(p.title)}" id="lightbox-img" data-full="${fullSrc}"><span class="zoom-hint">Click image to zoom</span>`;
+    const chevrons = images.length > 1 ? `
+      <button class="gallery-chevron prev" id="gallery-prev" aria-label="Previous photo" ${galleryIndex===0?'disabled':''}>‹</button>
+      <button class="gallery-chevron next" id="gallery-next" aria-label="Next photo" ${galleryIndex===images.length-1?'disabled':''}>›</button>
+      <div class="gallery-dots">${images.map((_,gi)=>`<button class="gallery-dot ${gi===galleryIndex?'active':''}" data-gi="${gi}" aria-label="Photo ${gi+1}"></button>`).join('')}</div>
+    ` : '';
+    thumb.innerHTML = `<img src="${current.thumb}" alt="${escHtml(p.title)}" id="lightbox-img" data-full="${current.full}"><span class="zoom-hint">Click image to zoom</span>${chevrons}`;
     const imgEl = document.getElementById('lightbox-img');
-    if (fullSrc !== p.image) {
+    if (current.full !== current.thumb) {
       const hiRes = new Image();
-      hiRes.onload = () => { if (imgEl.dataset.full === fullSrc) imgEl.src = fullSrc; };
-      hiRes.src = fullSrc;
+      hiRes.onload = () => { if (imgEl.dataset.full === current.full) imgEl.src = current.full; };
+      hiRes.src = current.full;
     }
     imgEl.addEventListener('click', e => {
       e.stopPropagation();
       e.currentTarget.classList.toggle('zoomed');
     });
+    if (images.length > 1) {
+      document.getElementById('gallery-prev').addEventListener('click', e => { e.stopPropagation(); shiftGallery(-1); });
+      document.getElementById('gallery-next').addEventListener('click', e => { e.stopPropagation(); shiftGallery(1); });
+      thumb.querySelectorAll('.gallery-dot').forEach(dot => {
+        dot.addEventListener('click', e => { e.stopPropagation(); galleryIndex = parseInt(dot.dataset.gi); renderLightboxImage(); });
+      });
+    }
   } else {
     thumb.style.background = `linear-gradient(135deg,${c1},${c2})`;
     thumb.classList.add('has-gradient');
     thumb.innerHTML = escHtml(p.title);
   }
+}
+
+function renderLightbox() {
+  const p = PROJECTS[lightboxIndex];
+  renderLightboxImage();
   document.getElementById('lightbox-title').textContent = p.title;
   document.getElementById('lightbox-desc').textContent = p.description;
   document.getElementById('lightbox-tags').innerHTML = p.tags.map(t=>`<span class="tag">${escHtml(t)}</span>`).join('');
@@ -526,8 +602,18 @@ function renderLightbox() {
   document.getElementById('lightbox-next').disabled = lightboxIndex === PROJECTS.length - 1;
 }
 
+function shiftGallery(delta) {
+  const p = PROJECTS[lightboxIndex];
+  const images = p.images || [];
+  const next = galleryIndex + delta;
+  if (next < 0 || next >= images.length) return;
+  galleryIndex = next;
+  renderLightboxImage();
+}
+
 function openLightbox(index) {
   lightboxIndex = index;
+  galleryIndex = 0;
   renderLightbox();
   lbOverlay.classList.add('open');
 }
@@ -536,6 +622,7 @@ function shiftLightbox(delta) {
   const next = lightboxIndex + delta;
   if (next < 0 || next >= PROJECTS.length) return;
   lightboxIndex = next;
+  galleryIndex = 0;
   renderLightbox();
 }
 
@@ -554,9 +641,10 @@ document.getElementById('lightbox-next').addEventListener('click', () => shiftLi
 lbOverlay.addEventListener('click', e => { if (e.target === lbOverlay) closeLightbox(); });
 document.addEventListener('keydown', e => {
   if (!lbOverlay.classList.contains('open')) return;
+  const images = (PROJECTS[lightboxIndex].images || []);
   if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') shiftLightbox(-1);
-  if (e.key === 'ArrowRight') shiftLightbox(1);
+  if (e.key === 'ArrowLeft') images.length > 1 ? shiftGallery(-1) : shiftLightbox(-1);
+  if (e.key === 'ArrowRight') images.length > 1 ? shiftGallery(1) : shiftLightbox(1);
 });
 
 // ── PROJECT CARD TILT ──
