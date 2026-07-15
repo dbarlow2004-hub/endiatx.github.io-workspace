@@ -73,6 +73,19 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .client-card .client-cover{width:100%;height:100px;object-fit:cover;border-radius:8px;}
 .client-card .caddress{font-size:11px;color:var(--muted);}
 
+/* CLIENT HOME */
+.client-home-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:10px;flex-wrap:wrap;}
+.ch-name{font-size:24px;font-weight:700;}
+.ch-meta{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6;}
+.ch-inspo-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;}
+.ch-inspo-thumb{width:140px;height:140px;object-fit:cover;border-radius:10px;flex-shrink:0;border:1px solid var(--border);}
+.rooms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+.room-square{aspect-ratio:1/1;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;background:var(--surface);border:1px solid var(--border);}
+.room-square img{width:100%;height:100%;object-fit:cover;}
+.room-square-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;background:var(--surface2);text-align:center;padding:8px;}
+.room-square-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;font-size:12px;font-weight:600;padding:22px 10px 8px;}
+.room-square:hover{border-color:var(--accent);}
+
 /* PHOTO GRID */
 .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
 .photo-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
@@ -290,7 +303,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   <!-- WORKSPACE (rooms/palette/shop/inspo) -->
   <div id="workspace-view" style="display:none">
     <div class="tabs">
-      <button class="tab active" data-tab="gallery" onclick="switchTab('gallery',this)">Design</button>
+      <button class="tab active" data-tab="home" onclick="switchTab('home',this)">Home</button>
+      <button class="tab" data-tab="gallery" onclick="switchTab('gallery',this)">Design</button>
       <button class="tab" data-tab="wallpaper" onclick="switchTab('wallpaper',this)">Selections</button>
       <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">Shopping List</button>
       <button class="tab" data-tab="inspo" onclick="switchTab('inspo',this)">Inspo Board</button>
@@ -298,8 +312,32 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 
     <div class="container">
 
+      <!-- CLIENT HOME PANEL -->
+      <div class="panel active" id="panel-home">
+        <div class="client-home-header">
+          <div>
+            <div class="ch-name" id="ch-name"></div>
+            <div class="ch-meta" id="ch-meta"></div>
+          </div>
+        </div>
+
+        <div class="section-label">Inspiration Highlights</div>
+        <div id="ch-inspo-strip" class="ch-inspo-strip"></div>
+
+        <div class="section-label">Project Palette</div>
+        <div id="ch-palette-strip" class="palette-strip"></div>
+
+        <div class="section-label">Rooms</div>
+        <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openRoomModal()">+ Room</button></div>
+        <div id="ch-rooms-grid" class="rooms-grid"></div>
+
+        <div style="text-align:center;margin-top:40px;margin-bottom:10px">
+          <button class="btn btn-primary" style="max-width:280px;margin:0 auto;padding:14px 28px;display:block" onclick="downloadProjectCollage()">⬇ Download Project Collage</button>
+        </div>
+      </div>
+
       <!-- GALLERY + PALETTE PANEL -->
-      <div class="panel active" id="panel-gallery">
+      <div class="panel" id="panel-gallery">
         <div class="section-label">Before Photos</div>
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn" onclick="openUploadModal('before')">+ Upload Before Photo</button></div>
         <div id="before-grid" class="photo-grid"></div>
@@ -702,7 +740,7 @@ function showAuthScreen() {
 }
 
 // ── REMEMBER LAST VIEWED PAGE (survives refresh / reopen) ──
-let currentTabName = 'gallery';
+let currentTabName = 'home';
 function saveLastView() {
   try { localStorage.setItem('apt-last-view', JSON.stringify({clientId: activeClientId, roomId: currentRoomId, tab: currentTabName})); } catch(e) {}
 }
@@ -943,6 +981,146 @@ async function loadWorkspace(clientId) {
   renderInspo();
   await loadWallpaper();
   renderWallpaper();
+  await loadClientHomeData();
+  renderClientHome();
+}
+
+// ── CLIENT HOME ──
+let activeClientRecord = null;
+let overviewPalette = [];
+let roomThumbnails = {};
+
+async function loadClientHomeData() {
+  if (!activeClientId) { activeClientRecord=null; overviewPalette=[]; roomThumbnails={}; return; }
+  const {data:clientRow} = await sb.from('clients').select('*').eq('id',activeClientId).maybeSingle();
+  activeClientRecord = clientRow;
+
+  const roomIds = rooms.map(r=>r.id);
+  if (!roomIds.length) { overviewPalette=[]; roomThumbnails={}; return; }
+
+  const {data:paletteRows} = await sb.from('apt_palette').select('*').in('room_id',roomIds).order('created_at',{ascending:true});
+  const seen = new Set();
+  overviewPalette = (paletteRows||[]).filter(c=>{ if (seen.has(c.hex)) return false; seen.add(c.hex); return true; });
+
+  const {data:photoRows} = await sb.from('apt_photos').select('*').in('room_id',roomIds).order('created_at',{ascending:true});
+  const byRoom = {};
+  (photoRows||[]).forEach(p=>{ if(!byRoom[p.room_id]) byRoom[p.room_id]=[]; byRoom[p.room_id].push(p); });
+  roomThumbnails = {};
+  for (const rid in byRoom) {
+    const list = byRoom[rid];
+    roomThumbnails[rid] = (list.find(p=>p.kind==='rendering') || list[0])?.image_url || null;
+  }
+}
+
+function renderClientHome() {
+  const c = activeClientRecord || {};
+  document.getElementById('ch-name').textContent = c.name || '';
+  const metaParts = [];
+  if (c.address) metaParts.push(`📍 ${escHtml(c.address)}`);
+  if (c.phone) metaParts.push(`📞 ${escHtml(c.phone)}`);
+  if (c.email) metaParts.push(`✉ ${escHtml(c.email)}`);
+  document.getElementById('ch-meta').innerHTML = metaParts.join(' &nbsp;·&nbsp; ');
+
+  const inspoHighlights = inspoPins.filter(p=>!p.room_id).slice(0,8);
+  const inspoEl = document.getElementById('ch-inspo-strip');
+  inspoEl.innerHTML = inspoHighlights.length
+    ? inspoHighlights.map(p=>`<img class="ch-inspo-thumb" src="${p.image_url}" alt="${escHtml(p.caption||'')}" loading="lazy"/>`).join('')
+    : `<div class="empty-state">No overall inspiration pins yet. Add some from the Inspo Board tab.</div>`;
+
+  const paletteEl = document.getElementById('ch-palette-strip');
+  paletteEl.innerHTML = overviewPalette.length
+    ? overviewPalette.map(sw=>`<div class="swatch-card"><div class="box" style="background:${sw.hex}" onclick="copyHex('${sw.hex}')"></div><div class="hex">${sw.hex}</div><div class="lbl">${escHtml(sw.label||'')}</div></div>`).join('')
+    : `<div class="empty-state" style="width:100%">No colors saved yet. Add some from a room's Design tab.</div>`;
+
+  const roomsEl = document.getElementById('ch-rooms-grid');
+  roomsEl.innerHTML = rooms.length
+    ? rooms.map(r=>{
+        const thumb = roomThumbnails[r.id];
+        return `<div class="room-square" onclick="goToRoom('${r.id}')">
+          ${thumb?`<img src="${thumb}" alt=""/>`:`<div class="room-square-placeholder">No photo yet</div>`}
+          <div class="room-square-label">${escHtml(r.name)}</div>
+        </div>`;
+      }).join('')
+    : `<div class="empty-state">No rooms yet.</div>`;
+}
+
+function goToRoom(roomId) {
+  selectRoom(roomId);
+  const btn = document.querySelector('.tab[data-tab="gallery"]');
+  if (btn) switchTab('gallery', btn);
+}
+
+function loadCollageImage(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('image failed to load'));
+    img.src = url;
+  });
+}
+
+function drawCoverImage(ctx, img, x, y, w, h) {
+  const imgRatio = img.width / img.height;
+  const cellRatio = w / h;
+  let sx, sy, sw, sh;
+  if (imgRatio > cellRatio) { sh = img.height; sw = sh*cellRatio; sx = (img.width-sw)/2; sy = 0; }
+  else { sw = img.width; sh = sw/cellRatio; sx = 0; sy = (img.height-sh)/2; }
+  ctx.drawImage(img, sx, sy, sw, sh, x, y, w, h);
+}
+
+async function downloadProjectCollage() {
+  const roomsWithImages = rooms.filter(r=>roomThumbnails[r.id]);
+  if (!roomsWithImages.length) { showToast('Upload at least one photo to a room first'); return; }
+
+  showToast('Building collage...');
+  const cols = roomsWithImages.length<=2 ? roomsWithImages.length : (roomsWithImages.length<=4 ? 2 : 3);
+  const rowsCount = Math.ceil(roomsWithImages.length/cols);
+  const cellW=480, cellH=360, pad=18, headerH=90, labelH=36;
+  const canvasW = cols*cellW + (cols+1)*pad;
+  const canvasH = headerH + rowsCount*(cellH+labelH) + (rowsCount+1)*pad;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = canvasW; canvas.height = canvasH;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#121110';
+  ctx.fillRect(0,0,canvasW,canvasH);
+  ctx.fillStyle = '#d4a574';
+  ctx.font = 'bold 32px sans-serif';
+  ctx.fillText(`${(activeClientRecord&&activeClientRecord.name)||'Apartment'} — Design Collage`, pad, 50);
+  ctx.fillStyle = '#948d82';
+  ctx.font = '15px sans-serif';
+  ctx.fillText(new Date().toLocaleDateString(), pad, 76);
+
+  for (let i=0;i<roomsWithImages.length;i++) {
+    const r = roomsWithImages[i];
+    const col = i%cols, row = Math.floor(i/cols);
+    const x = pad + col*(cellW+pad);
+    const y = headerH + pad + row*(cellH+labelH+pad);
+    try {
+      const img = await loadCollageImage(roomThumbnails[r.id]);
+      drawCoverImage(ctx, img, x, y, cellW, cellH);
+    } catch(e) {
+      ctx.fillStyle = '#211f1c';
+      ctx.fillRect(x,y,cellW,cellH);
+    }
+    ctx.fillStyle = '#f0ece5';
+    ctx.font = 'bold 18px sans-serif';
+    ctx.fillText(r.name, x, y+cellH+26);
+  }
+
+  let dataUrl;
+  try {
+    dataUrl = canvas.toDataURL('image/png');
+  } catch(e) {
+    showToast('Could not export collage — image hosting blocked the download ✗');
+    return;
+  }
+  const a = document.createElement('a');
+  a.href = dataUrl;
+  a.download = `${((activeClientRecord&&activeClientRecord.name)||'project').replace(/[^a-z0-9]+/gi,'-').toLowerCase()}-collage.png`;
+  a.click();
+  showToast('Collage downloaded ✓');
 }
 
 async function loadRooms() {
@@ -1711,6 +1889,7 @@ function switchTab(tab, btn) {
   if (tab==='shop') { loadShoppingList().then(renderShop); }
   if (tab==='inspo') { loadInspo().then(renderInspo); }
   if (tab==='wallpaper') { loadWallpaper().then(renderWallpaper); }
+  if (tab==='home') { loadClientHomeData().then(renderClientHome); }
   saveLastView();
 }
 
