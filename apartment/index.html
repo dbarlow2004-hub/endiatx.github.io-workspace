@@ -278,6 +278,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
     <div id="header-context-label"></div>
     <div class="header-right">
       <button class="hdr-btn" id="back-to-clients-btn" style="display:none" onclick="backToClients()">← All Clients</button>
+      <button class="hdr-btn admin-only" onclick="openFindsLibrary()">🛋 Finds Library</button>
       <div class="room-select-wrap" id="room-select-wrap">
         <select id="room-select" onchange="selectRoom(this.value)"></select>
       </div>
@@ -300,6 +301,15 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
     </div>
   </div>
 
+  <!-- FINDS LIBRARY (admin) -->
+  <div id="finds-library-view" style="display:none">
+    <div class="container">
+      <div class="section-label">Your Finds Library</div>
+      <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openFindModal()">+ Add Find</button></div>
+      <div id="finds-grid" class="photo-grid"></div>
+    </div>
+  </div>
+
   <!-- WORKSPACE (rooms/palette/shop/inspo) -->
   <div id="workspace-view" style="display:none">
     <div class="tabs">
@@ -308,6 +318,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
       <button class="tab" data-tab="wallpaper" onclick="switchTab('wallpaper',this)">Selections</button>
       <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">Shopping List</button>
       <button class="tab" data-tab="inspo" onclick="switchTab('inspo',this)">Inspo Board</button>
+      <button class="tab" data-tab="finds" onclick="switchTab('finds',this)">Finds</button>
     </div>
 
     <div class="container">
@@ -385,6 +396,12 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
       <div class="panel" id="panel-inspo">
         <div style="margin-bottom:14px"><button class="hdr-btn" onclick="openInspoModal()">+ Add Pin</button></div>
         <div id="inspo-masonry"></div>
+      </div>
+
+      <!-- FINDS SENT TO THIS CLIENT -->
+      <div class="panel" id="panel-finds">
+        <div class="section-label">Finds Sent to You</div>
+        <div id="client-finds-grid" class="photo-grid"></div>
       </div>
 
     </div>
@@ -560,6 +577,37 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   </div>
 </div>
 
+<!-- FIND MODAL -->
+<div class="modal-overlay" id="find-modal-overlay">
+  <div class="modal">
+    <h2>Add Find</h2>
+    <div class="mode-toggle-row">
+      <button type="button" class="tag-btn active" id="find-mode-url" onclick="setFindMode('url')" style="flex:1">Paste Image URL</button>
+      <button type="button" class="tag-btn" id="find-mode-file" onclick="setFindMode('file')" style="flex:1">Upload File</button>
+    </div>
+    <div class="field" id="find-url-field"><label>Image URL</label><input type="text" id="input-find-url" placeholder="https://..."/></div>
+    <div class="field" id="find-file-field" style="display:none"><label>Image File</label><input type="file" id="input-find-file" accept="image/*"/></div>
+    <div class="field"><label>Item Name</label><input type="text" id="input-find-name" placeholder="e.g. Rattan swivel chair"/></div>
+    <div class="field-row">
+      <div class="field">
+        <label>Category</label>
+        <select id="input-find-category">
+          <option>Furniture</option><option>Lighting</option><option>Textiles</option>
+          <option>Rug / Carpet</option><option>Wall Decor</option><option>Plant</option>
+          <option>Accessory</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Price ($)</label><input type="number" id="input-find-price" min="0" step="1"/></div>
+    </div>
+    <div class="field"><label>Product Link</label><input type="text" id="input-find-link" placeholder="Where to buy it"/></div>
+    <div class="field"><label>Notes</label><textarea id="input-find-notes" placeholder="Why you liked it..."></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('find-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" id="find-submit-btn" onclick="submitFind()">Save Find</button>
+    </div>
+  </div>
+</div>
+
 <!-- SELECTIONS MODAL -->
 <div class="modal-overlay" id="wallpaper-modal-overlay">
   <div class="modal">
@@ -625,6 +673,9 @@ let inspoMode = 'url';
 let wallpaperOptions = [];
 let wallpaperLikedSet = new Set();
 let activeCommentTarget = null;
+let finds = [];
+let findMode = 'url';
+let clientFindSends = [];
 
 let taggingModePhotoId = null;
 let editingTagId = null;
@@ -947,9 +998,15 @@ async function copyInviteLink(clientId) {
   }
 }
 
+function hideAllTopViews() {
+  document.getElementById('clients-view').style.display='none';
+  document.getElementById('workspace-view').style.display='none';
+  document.getElementById('finds-library-view').style.display='none';
+}
+
 async function openClient(id) {
   const client = clientsList.find(c=>c.id===id);
-  document.getElementById('clients-view').style.display='none';
+  hideAllTopViews();
   document.getElementById('workspace-view').style.display='block';
   document.getElementById('back-to-clients-btn').style.display='inline-block';
   document.getElementById('room-select-wrap').style.display='flex';
@@ -963,7 +1020,7 @@ async function openClient(id) {
 function backToClients() {
   activeClientId = null;
   currentRoomId = null;
-  document.getElementById('workspace-view').style.display='none';
+  hideAllTopViews();
   document.getElementById('clients-view').style.display='block';
   document.getElementById('back-to-clients-btn').style.display='none';
   document.getElementById('room-select-wrap').style.display='none';
@@ -971,6 +1028,20 @@ function backToClients() {
   document.getElementById('header-context-label').textContent='Clients';
   loadClients();
   saveLastView();
+}
+
+async function openFindsLibrary() {
+  if (!isAdmin) return;
+  activeClientId = null;
+  hideAllTopViews();
+  document.getElementById('finds-library-view').style.display='block';
+  document.getElementById('back-to-clients-btn').style.display='inline-block';
+  document.getElementById('room-select-wrap').style.display='none';
+  document.getElementById('workspace-header-controls').style.display='none';
+  document.getElementById('readonly-badge').style.display='none';
+  document.getElementById('header-context-label').textContent='Finds Library';
+  await loadFinds();
+  renderFinds();
 }
 
 // ── WORKSPACE (rooms/photos/tags/palette/shopping/inspo for activeClientId) ──
@@ -983,6 +1054,8 @@ async function loadWorkspace(clientId) {
   renderWallpaper();
   await loadClientHomeData();
   renderClientHome();
+  await loadClientFinds();
+  renderClientFinds();
 }
 
 // ── CLIENT HOME ──
@@ -1842,6 +1915,181 @@ function renderWallpaper() {
     </div>`).join('');
 }
 
+// ── FINDS LIBRARY (admin's personal catalog, not tied to a client) ──
+function setFindMode(mode) {
+  findMode = mode;
+  document.getElementById('find-mode-url').classList.toggle('active', mode==='url');
+  document.getElementById('find-mode-file').classList.toggle('active', mode==='file');
+  document.getElementById('find-url-field').style.display = mode==='url'?'block':'none';
+  document.getElementById('find-file-field').style.display = mode==='file'?'block':'none';
+}
+
+function openFindModal() {
+  if (!isAdmin) return;
+  setFindMode('url');
+  document.getElementById('input-find-url').value='';
+  document.getElementById('input-find-file').value='';
+  document.getElementById('input-find-name').value='';
+  document.getElementById('input-find-category').value='Furniture';
+  document.getElementById('input-find-price').value='';
+  document.getElementById('input-find-link').value='';
+  document.getElementById('input-find-notes').value='';
+  document.getElementById('find-modal-overlay').classList.add('open');
+}
+
+async function submitFind() {
+  if (!isAdmin) return;
+  const item_name = document.getElementById('input-find-name').value.trim();
+  const category = document.getElementById('input-find-category').value;
+  const priceRaw = document.getElementById('input-find-price').value;
+  const price = priceRaw===''?null:parseFloat(priceRaw);
+  const product_link = document.getElementById('input-find-link').value.trim() || null;
+  const notes = document.getElementById('input-find-notes').value.trim() || null;
+  const btn = document.getElementById('find-submit-btn');
+  let image_url = '';
+
+  if (findMode==='url') {
+    image_url = document.getElementById('input-find-url').value.trim();
+    if (!image_url) { highlightErr('input-find-url'); return; }
+  } else {
+    const file = document.getElementById('input-find-file').files[0];
+    if (!file) { showToast('Choose an image file first'); return; }
+    btn.textContent='Uploading...'; btn.disabled=true;
+    const path = `finds/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+    const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
+    if (upErr) { showToast('Upload failed ✗'); btn.textContent='Save Find'; btn.disabled=false; return; }
+    const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+    image_url = pub.publicUrl;
+  }
+
+  const {error} = await sb.from('finds').insert({image_url, item_name: item_name||null, category, price, product_link, notes});
+  btn.textContent='Save Find'; btn.disabled=false;
+  if (error) { showToast('Error saving find ✗'); return; }
+  closeModal('find-modal-overlay');
+  await loadFinds();
+  renderFinds();
+  showToast('Find added ✓');
+}
+
+async function deleteFind(id) {
+  if (!isAdmin) return;
+  if (!confirm('Delete this find? This also removes it from every client it was sent to.')) return;
+  await sb.from('finds').delete().eq('id',id);
+  await loadFinds();
+  renderFinds();
+}
+
+async function sendFindToClient(findId) {
+  if (!isAdmin) return;
+  const sel = document.getElementById(`find-send-select-${findId}`);
+  const clientId = sel.value;
+  if (!clientId) { showToast('Choose a client first'); return; }
+  const {error} = await sb.from('find_sends').insert({find_id: findId, client_id: clientId, status: 'pending'});
+  if (error) {
+    showToast(error.code==='23505' ? 'Already sent to that client' : 'Error sending ✗');
+    return;
+  }
+  await loadFinds();
+  renderFinds();
+  showToast('Sent ✓');
+}
+
+async function loadFinds() {
+  const {data: findRows, error} = await sb.from('finds').select('*').order('created_at',{ascending:false});
+  if (error) { showToast('Error loading finds ✗'); return; }
+  const {data: sendRows} = await sb.from('find_sends').select('*');
+  finds = (findRows||[]).map(f=>({...f, sends: (sendRows||[]).filter(s=>s.find_id===f.id)}));
+}
+
+function renderFinds() {
+  const grid = document.getElementById('finds-grid');
+  if (!finds.length) { grid.innerHTML = `<div class="empty-state">No finds yet. Click "+ Add Find" to start building your library.</div>`; return; }
+  const clientOptions = clientsList.map(c=>`<option value="${c.id}">${escHtml(c.name)}</option>`).join('');
+  grid.innerHTML = finds.map(f=>{
+    const sendsHtml = f.sends.length
+      ? f.sends.map(s=>{
+          const c = clientsList.find(x=>x.id===s.client_id);
+          const label = s.status==='liked'?'❤ Liked':s.status==='rejected'?'✕ Passed':'⏳ Pending';
+          return `<div style="font-size:10px;color:var(--muted)">${escHtml(c?.name||'Unknown client')}: ${label}</div>`;
+        }).join('')
+      : `<div style="font-size:10px;color:var(--muted)">Not sent yet</div>`;
+    return `<div class="photo-card">
+      <div class="thumb-wrap"><img src="${f.image_url}" alt="${escHtml(f.item_name||'')}"/></div>
+      <div class="cap" style="flex-direction:column;align-items:flex-start;gap:6px">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center">
+          <span style="font-weight:600;color:var(--text)">${escHtml(f.item_name||'Untitled')}</span>
+          <button onclick="deleteFind('${f.id}')" title="Delete">✕</button>
+        </div>
+        <span style="color:var(--muted);font-size:11px">${escHtml(f.category||'')}${f.price?` · $${Number(f.price).toLocaleString()}`:''}</span>
+        ${f.notes?`<span style="font-size:11px;color:var(--muted);font-style:italic">${escHtml(f.notes)}</span>`:''}
+        ${f.product_link?`<a class="shop-link" href="${f.product_link}" target="_blank" rel="noopener">View Product ↗</a>`:''}
+        <div style="display:flex;gap:6px;width:100%;margin-top:4px">
+          <select id="find-send-select-${f.id}" style="flex:1;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:12px;padding:6px">
+            <option value="">Send to client...</option>
+            ${clientOptions}
+          </select>
+          <button class="hdr-btn" onclick="sendFindToClient('${f.id}')">Send</button>
+        </div>
+        <div style="width:100%;margin-top:2px">${sendsHtml}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── CLIENT-FACING FINDS (items sent to the currently open client) ──
+async function loadClientFinds() {
+  if (!activeClientId) { clientFindSends=[]; return; }
+  const {data, error} = await sb.from('find_sends').select('*, finds(*)').eq('client_id',activeClientId).order('created_at',{ascending:false});
+  if (error) { showToast('Error loading finds ✗'); return; }
+  clientFindSends = data || [];
+}
+
+async function respondToFind(sendId, status) {
+  if (isAdmin) return;
+  const {error} = await sb.from('find_sends').update({status, responded_at: new Date().toISOString()}).eq('id', sendId);
+  if (error) { showToast('Error saving response ✗'); return; }
+  await loadClientFinds();
+  renderClientFinds();
+  showToast(status==='liked' ? 'Liked ✓' : 'Passed');
+}
+
+async function unsendFind(sendId) {
+  if (!isAdmin) return;
+  if (!confirm('Remove this find from the client?')) return;
+  await sb.from('find_sends').delete().eq('id',sendId);
+  await loadClientFinds();
+  renderClientFinds();
+}
+
+function renderClientFinds() {
+  const grid = document.getElementById('client-finds-grid');
+  if (!clientFindSends.length) { grid.innerHTML = `<div class="empty-state">No finds sent yet.${isAdmin?' Send some from your Finds Library.':''}</div>`; return; }
+  grid.innerHTML = clientFindSends.map(fs=>{
+    const f = fs.finds || {};
+    const statusBadge = fs.status==='liked'
+      ? `<span class="client-badge linked">❤ Liked</span>`
+      : fs.status==='rejected'
+        ? `<span class="client-badge pending" style="background:rgba(225,122,107,0.15);color:var(--red)">✕ Passed</span>`
+        : `<span class="client-badge pending">⏳ Awaiting response</span>`;
+    return `<div class="photo-card">
+      <div class="thumb-wrap"><img src="${f.image_url||''}" alt="${escHtml(f.item_name||'')}"/></div>
+      <div class="cap" style="flex-direction:column;align-items:flex-start;gap:6px">
+        <div style="display:flex;justify-content:space-between;width:100%;align-items:center">
+          <span style="font-weight:600;color:var(--text)">${escHtml(f.item_name||'Untitled')}</span>
+          ${statusBadge}
+        </div>
+        <span style="color:var(--muted);font-size:11px">${escHtml(f.category||'')}${f.price?` · $${Number(f.price).toLocaleString()}`:''}</span>
+        ${f.notes?`<span style="font-size:11px;color:var(--muted);font-style:italic">${escHtml(f.notes)}</span>`:''}
+        ${f.product_link?`<a class="shop-link" href="${f.product_link}" target="_blank" rel="noopener">View Product ↗</a>`:''}
+        ${!isAdmin?`<div style="display:flex;gap:8px;margin-top:6px;width:100%">
+          <button class="btn ${fs.status==='liked'?'btn-primary':'btn-ghost'}" style="flex:1" onclick="respondToFind('${fs.id}','liked')">❤ Like</button>
+          <button class="btn ${fs.status==='rejected'?'btn-danger':'btn-ghost'}" style="flex:1" onclick="respondToFind('${fs.id}','rejected')">✕ Pass</button>
+        </div>`:`<button class="icon-btn danger" style="margin-top:6px" onclick="unsendFind('${fs.id}')">Remove from client</button>`}
+      </div>
+    </div>`;
+  }).join('');
+}
+
 // ── COMMENTS ──
 async function openCommentsModal(targetType, targetId, title) {
   activeCommentTarget = {type: targetType, id: targetId};
@@ -1890,6 +2138,7 @@ function switchTab(tab, btn) {
   if (tab==='inspo') { loadInspo().then(renderInspo); }
   if (tab==='wallpaper') { loadWallpaper().then(renderWallpaper); }
   if (tab==='home') { loadClientHomeData().then(renderClientHome); }
+  if (tab==='finds') { loadClientFinds().then(renderClientFinds); }
   saveLastView();
 }
 
