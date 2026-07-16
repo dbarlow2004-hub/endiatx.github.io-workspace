@@ -588,13 +588,9 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 <!-- FIND MODAL -->
 <div class="modal-overlay" id="find-modal-overlay">
   <div class="modal">
-    <h2>Add Find</h2>
-    <div class="mode-toggle-row">
-      <button type="button" class="tag-btn active" id="find-mode-url" onclick="setFindMode('url')" style="flex:1">Paste Image URL</button>
-      <button type="button" class="tag-btn" id="find-mode-file" onclick="setFindMode('file')" style="flex:1">Upload File</button>
-    </div>
-    <div class="field" id="find-url-field"><label>Image URL</label><input type="text" id="input-find-url" placeholder="https://..."/></div>
-    <div class="field" id="find-file-field" style="display:none"><label>Image File</label><input type="file" id="input-find-file" accept="image/*"/></div>
+    <h2 id="find-modal-title">Add Find</h2>
+    <div class="field"><label>Image URL</label><input type="text" id="input-find-url" placeholder="https://..."/></div>
+    <div class="field"><label>Or Upload a File</label><input type="file" id="input-find-file" accept="image/*"/></div>
     <div class="field"><label>Item Name</label><input type="text" id="input-find-name" placeholder="e.g. Rattan swivel chair"/></div>
     <div class="field-row">
       <div class="field">
@@ -682,7 +678,7 @@ let wallpaperOptions = [];
 let wallpaperLikedSet = new Set();
 let activeCommentTarget = null;
 let finds = [];
-let findMode = 'url';
+let editingFindId = null;
 let clientFindSends = [];
 
 let taggingModePhotoId = null;
@@ -1924,24 +1920,19 @@ function renderWallpaper() {
 }
 
 // ── FINDS LIBRARY (admin's personal catalog, not tied to a client) ──
-function setFindMode(mode) {
-  findMode = mode;
-  document.getElementById('find-mode-url').classList.toggle('active', mode==='url');
-  document.getElementById('find-mode-file').classList.toggle('active', mode==='file');
-  document.getElementById('find-url-field').style.display = mode==='url'?'block':'none';
-  document.getElementById('find-file-field').style.display = mode==='file'?'block':'none';
-}
-
-function openFindModal() {
+function openFindModal(id) {
   if (!isAdmin) return;
-  setFindMode('url');
-  document.getElementById('input-find-url').value='';
-  document.getElementById('input-find-file').value='';
-  document.getElementById('input-find-name').value='';
-  document.getElementById('input-find-category').value='Furniture';
-  document.getElementById('input-find-price').value='';
-  document.getElementById('input-find-link').value='';
-  document.getElementById('input-find-notes').value='';
+  editingFindId = id || null;
+  const f = editingFindId ? finds.find(x=>x.id===editingFindId) : null;
+  document.getElementById('find-modal-title').textContent = f ? 'Edit Find' : 'Add Find';
+  document.getElementById('input-find-url').value = f?.image_url || '';
+  document.getElementById('input-find-file').value = '';
+  document.getElementById('input-find-name').value = f?.item_name || '';
+  document.getElementById('input-find-category').value = f?.category || 'Furniture';
+  document.getElementById('input-find-price').value = f?.price ?? '';
+  document.getElementById('input-find-link').value = f?.product_link || '';
+  document.getElementById('input-find-notes').value = f?.notes || '';
+  document.getElementById('find-submit-btn').textContent = f ? 'Save Changes' : 'Save Find';
   document.getElementById('find-modal-overlay').classList.add('open');
 }
 
@@ -1954,29 +1945,42 @@ async function submitFind() {
   const product_link = document.getElementById('input-find-link').value.trim() || null;
   const notes = document.getElementById('input-find-notes').value.trim() || null;
   const btn = document.getElementById('find-submit-btn');
-  let image_url = '';
+  const busyLabel = editingFindId ? 'Save Changes' : 'Save Find';
 
-  if (findMode==='url') {
-    image_url = document.getElementById('input-find-url').value.trim();
-    if (!image_url) { highlightErr('input-find-url'); return; }
-  } else {
-    const file = document.getElementById('input-find-file').files[0];
-    if (!file) { showToast('Choose an image file first'); return; }
+  const existing = editingFindId ? finds.find(x=>x.id===editingFindId) : null;
+  let image_url = existing?.image_url || '';
+
+  const file = document.getElementById('input-find-file').files[0];
+  const urlVal = document.getElementById('input-find-url').value.trim();
+
+  if (file) {
     btn.textContent='Uploading...'; btn.disabled=true;
     const path = `finds/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
     const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
-    if (upErr) { showToast('Upload failed ✗'); btn.textContent='Save Find'; btn.disabled=false; return; }
+    if (upErr) { showToast('Upload failed ✗'); btn.textContent=busyLabel; btn.disabled=false; return; }
     const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
     image_url = pub.publicUrl;
+  } else if (urlVal) {
+    image_url = urlVal;
   }
 
-  const {error} = await sb.from('finds').insert({image_url, item_name: item_name||null, category, price, product_link, notes});
-  btn.textContent='Save Find'; btn.disabled=false;
+  if (!image_url) { highlightErr('input-find-url'); showToast('Add an image URL or upload a file'); return; }
+
+  const payload = {image_url, item_name: item_name||null, category, price, product_link, notes};
+  let error;
+  if (editingFindId) {
+    ({error} = await sb.from('finds').update(payload).eq('id', editingFindId));
+  } else {
+    ({error} = await sb.from('finds').insert(payload));
+  }
+  btn.textContent = busyLabel; btn.disabled=false;
   if (error) { showToast('Error saving find ✗'); return; }
   closeModal('find-modal-overlay');
+  const wasEditing = !!editingFindId;
+  editingFindId = null;
   await loadFinds();
   renderFinds();
-  showToast('Find added ✓');
+  showToast(wasEditing ? 'Find updated ✓' : 'Find added ✓');
 }
 
 async function deleteFind(id) {
@@ -2026,7 +2030,10 @@ function renderFinds() {
       <div class="cap" style="flex-direction:column;align-items:flex-start;gap:6px">
         <div style="display:flex;justify-content:space-between;width:100%;align-items:center">
           <span style="font-weight:600;color:var(--text)">${escHtml(f.item_name||'Untitled')}</span>
-          <button onclick="deleteFind('${f.id}')" title="Delete">✕</button>
+          <div style="display:flex;gap:4px;flex-shrink:0">
+            <button onclick="openFindModal('${f.id}')" title="Edit">✎</button>
+            <button onclick="deleteFind('${f.id}')" title="Delete">✕</button>
+          </div>
         </div>
         <span style="color:var(--muted);font-size:11px">${escHtml(f.category||'')}${f.price?` · $${Number(f.price).toLocaleString()}`:''}</span>
         ${f.notes?`<span style="font-size:11px;color:var(--muted);font-style:italic">${escHtml(f.notes)}</span>`:''}
