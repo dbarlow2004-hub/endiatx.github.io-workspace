@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio — Daily Practice</title>
+<style>
+:root{
+  --paper:#E6E7DF; --panel:#DBDACB; --ink:#24261F; --muted:#6F7267; --line:#C7C6B6; --card:#F2F1E7;
+  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E;
+  --good:#3B6B57; --bad:#A24B3E;
+  --font-display:ui-serif,"Iowan Old Style","Palatino Linotype","URW Palladio L","P052",Georgia,serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono","DejaVu Sans Mono",monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --paper:#1B1D17; --panel:#232519; --ink:#E9E7DA; --muted:#9B9C89; --line:#34362A; --card:#20221B;
+    --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; }
+}
+:root[data-theme="dark"]{ --paper:#1B1D17; --panel:#232519; --ink:#E9E7DA; --muted:#9B9C89; --line:#34362A; --card:#20221B;
+  --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; }
+:root[data-theme="light"]{ --paper:#E6E7DF; --panel:#DBDACB; --ink:#24261F; --muted:#6F7267; --line:#C7C6B6; --card:#F2F1E7;
+  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E; --good:#3B6B57; --bad:#A24B3E; }
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;height:100%;}
+body{background:var(--line); font-family:var(--font-body); color:var(--ink);}
+button{font-family:inherit; cursor:pointer;}
+h1,h2,h3{font-family:var(--font-display); font-weight:600; margin:0; text-wrap:balance;}
+p{margin:0;}
+
+#frame{max-width:480px; margin:0 auto; min-height:100vh; background:var(--paper); display:none; flex-direction:column; position:relative;}
+
+/* KEY GATE */
+#key-gate{position:fixed; inset:0; background:var(--paper); display:flex; align-items:center; justify-content:center; z-index:999; padding:20px;}
+.gate-card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:32px 26px; width:100%; max-width:380px;}
+.gate-card .eyebrow{font-family:var(--font-mono); font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:10px;}
+.gate-card h2{font-size:1.3rem; margin-bottom:10px;}
+.gate-card p.d{font-size:0.88rem; color:var(--muted); margin-bottom:18px; line-height:1.5;}
+.gate-card input{width:100%; background:var(--paper); border:1px solid var(--line); border-radius:8px; color:var(--ink); font-family:var(--font-body); font-size:0.95rem; padding:11px 13px; outline:none; margin-bottom:12px;}
+.gate-card input:focus{border-color:var(--cert);}
+
+/* TOP BAR */
+.topbar{display:flex; align-items:center; justify-content:space-between; padding:18px 20px 14px; border-bottom:1px solid var(--line);}
+.brand{font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted);}
+.topbar-right{display:flex; align-items:center; gap:14px;}
+.sync-dot{width:8px; height:8px; border-radius:50%; background:var(--muted); transition:background .2s;}
+.sync-dot.syncing{background:var(--software);}
+.sync-dot.synced{background:var(--good);}
+.sync-dot.offline{background:var(--bad);}
+.streak{display:flex; align-items:center; gap:7px; font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
+.streak .flame{width:9px; height:9px; border-radius:50% 50% 50% 0; background:var(--software); transform:rotate(45deg);}
+.streak .n{font-size:1rem; font-weight:700;}
+.streak .l{font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em;}
+
+/* VIEWS */
+main{flex:1; overflow-y:auto; padding:20px 20px 100px;}
+.view{display:none;}
+.view.active{display:block;}
+
+/* TODAY */
+.today-date{font-size:0.8rem; color:var(--muted); margin-bottom:2px;}
+.today-h1{font-size:1.6rem; margin-bottom:20px;}
+
+.dcard{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:12px;}
+.dcard .top{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;}
+.dcard .eyebrow{font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);}
+.dcard h3{font-size:1.15rem; margin-bottom:4px;}
+.dcard .sub{font-size:0.86rem; color:var(--muted); margin-bottom:12px;}
+.dcard .row{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+
+.btn{border:none; border-radius:7px; padding:10px 16px; font-size:0.86rem; font-weight:600; transition:opacity .15s;}
+.btn:active{opacity:0.75;}
+.btn-primary{background:var(--ink); color:var(--paper);}
+.btn-ghost{background:none; border:1px solid var(--line); color:var(--ink);}
+.btn-block{width:100%;}
+.btn:disabled{opacity:0.4; cursor:default;}
+
+.track-bars{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
+.track-bar-row{display:flex; align-items:center; gap:10px;}
+.track-bar-label{font-size:0.78rem; width:96px; flex:none; color:var(--muted);}
+.track-bar-track{flex:1; height:6px; border-radius:3px; background:var(--line); overflow:hidden;}
+.track-bar-fill{height:100%; border-radius:3px;}
+.track-bar-n{font-family:var(--font-mono); font-size:0.72rem; width:44px; text-align:right; flex:none; color:var(--muted); font-variant-numeric:tabular-nums;}
+
+/* CHIPS */
+.chiprow{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;}
+.chip{font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase; padding:6px 11px; border-radius:20px; border:1px solid var(--line); background:none; color:var(--ink);}
+.chip.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+
+/* FLASHCARD SESSION */
+.session-empty{text-align:center; padding:60px 10px; color:var(--muted);}
+.session-empty h3{color:var(--ink); margin-bottom:8px;}
+.progress-line{font-family:var(--font-mono); font-size:0.72rem; color:var(--muted); margin-bottom:14px;}
+.flashcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:34px 22px; min-height:180px; display:flex; align-items:center; justify-content:center; text-align:center; margin-bottom:16px;}
+.flashcard .face{font-size:1.2rem; line-height:1.4;}
+.flashcard .back{margin-top:16px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:1.02rem; display:none;}
+.flashcard.revealed .back{display:block;}
+.session-actions{display:flex; gap:10px;}
+.btn-miss{background:none; border:1px solid var(--bad); color:var(--bad); flex:1;}
+.btn-got{background:var(--good); color:var(--paper); flex:1;}
+
+/* LIBRARY */
+.lib-section{margin-bottom:26px;}
+.lib-section h3{font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-mono); font-weight:500; margin-bottom:10px;}
+.lib-item{display:flex; gap:12px; align-items:flex-start; padding:11px 0; border-bottom:1px solid var(--line);}
+.lib-item:last-child{border-bottom:none;}
+.lib-check{width:20px; height:20px; border-radius:5px; border:1.5px solid var(--line); flex:none; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; background:none;}
+.lib-check.done{background:var(--tc,var(--ink)); border-color:var(--tc,var(--ink)); color:var(--paper);}
+.lib-body b{font-weight:600; font-size:0.94rem;}
+.lib-body .src{font-size:0.78rem; color:var(--muted); margin-top:2px;}
+.lib-body .hint{font-family:var(--font-mono); font-size:0.7rem; color:var(--muted); margin-top:3px;}
+
+/* SETTINGS */
+.field{margin-bottom:18px;}
+.field label{display:block; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-family:var(--font-mono); margin-bottom:6px;}
+.field input[type=time],.field input[type=text]{background:var(--card); border:1px solid var(--line); border-radius:7px; padding:8px 10px; font-family:var(--font-mono); color:var(--ink); font-size:0.9rem;}
+.status-line{font-size:0.82rem; color:var(--muted); margin-top:8px;}
+.setting-block{margin-bottom:30px; padding-bottom:26px; border-bottom:1px solid var(--line);}
+.setting-block:last-child{border-bottom:none;}
+.setting-block h3{font-size:1.05rem; margin-bottom:6px;}
+.setting-block p.d{font-size:0.86rem; color:var(--muted); margin-bottom:14px;}
+
+/* BOTTOM NAV */
+nav.tabs{position:sticky; bottom:0; display:flex; background:var(--paper); border-top:1px solid var(--line); padding:6px 8px calc(6px + env(safe-area-inset-bottom));}
+nav.tabs button{flex:1; background:none; border:none; padding:10px 4px; font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); border-radius:8px;}
+nav.tabs button.active{color:var(--ink); background:var(--panel);}
+
+.toast{position:fixed; left:50%; bottom:96px; transform:translate(-50%,20px); background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:20px; font-size:0.82rem; opacity:0; pointer-events:none; transition:all .25s; white-space:nowrap; z-index:50;}
+.toast.show{opacity:1; transform:translate(-50%,0);}
+
+@media(max-width:520px){ #frame{max-width:100%;} }
+</style>
+</head>
+<body>
+
+<div id="key-gate">
+  <div class="gate-card">
+    <div class="eyebrow">Studio · Daily Practice</div>
+    <h2>Your sync key</h2>
+    <p class="d">Pick any word or PIN — enter the same one on your phone and computer to share progress between them. It's not a password, just a shared label for your data.</p>
+    <input type="text" id="gate-input" placeholder="e.g. a name or PIN" autocomplete="off">
+    <button class="btn btn-primary btn-block" id="gate-btn">Continue</button>
+    <div class="status-line" id="gate-status"></div>
+  </div>
+</div>
+
+<div id="frame">
+  <div class="topbar">
+    <div class="brand">Studio</div>
+    <div class="topbar-right">
+      <div class="sync-dot" id="sync-dot" title="Sync status"></div>
+      <div class="streak"><div class="flame"></div><span class="n" id="streak-n">0</span><span class="l">day streak</span></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- TODAY -->
+    <section class="view active" id="view-today">
+      <div class="today-date" id="today-date"></div>
+      <h1 class="today-h1">Today</h1>
+
+      <div class="dcard">
+        <div class="top"><span class="eyebrow">Flashcards</span></div>
+        <h3 id="due-count-h">— cards due</h3>
+        <div class="sub">Spaced repetition across all four tracks.</div>
+        <button class="btn btn-primary btn-block" id="btn-start-review">Start Review</button>
+      </div>
+
+      <div class="dcard" id="today-video-card">
+        <div class="top"><span class="eyebrow" id="today-video-track"></span></div>
+        <h3 id="today-video-title"></h3>
+        <div class="sub" id="today-video-src"></div>
+        <div class="row"><span class="sub" id="today-video-hint"></span><button class="btn btn-ghost" id="btn-video-done">Mark watched</button></div>
+      </div>
+
+      <div class="dcard" id="today-listen-card">
+        <div class="top"><span class="eyebrow" id="today-listen-track"></span></div>
+        <h3 id="today-listen-title"></h3>
+        <div class="sub" id="today-listen-src"></div>
+        <div class="row"><span class="sub" id="today-listen-hint"></span><button class="btn btn-ghost" id="btn-listen-done">Mark listened</button></div>
+      </div>
+
+      <div class="dcard">
+        <div class="top"><span class="eyebrow">Mastery by track</span></div>
+        <div class="track-bars" id="track-bars"></div>
+      </div>
+    </section>
+
+    <!-- FLASHCARDS -->
+    <section class="view" id="view-cards">
+      <h1 class="today-h1">Flashcards</h1>
+      <div class="chiprow" id="card-track-chips"></div>
+      <div id="session-root"></div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section class="view" id="view-library">
+      <h1 class="today-h1">Library</h1>
+      <div class="chiprow" id="lib-track-chips"></div>
+      <div id="library-root"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" id="view-settings">
+      <h1 class="today-h1">Settings</h1>
+
+      <div class="setting-block">
+        <h3>Sync</h3>
+        <p class="d">Your progress is shared across devices using the sync key below.</p>
+        <div class="field"><label>Sync key</label><input type="text" id="input-sync-key" disabled></div>
+        <div class="status-line" id="settings-sync-status"></div>
+        <button class="btn btn-ghost btn-block" id="btn-change-key" style="margin-top:10px">Use a different sync key</button>
+      </div>
+
+      <div class="setting-block">
+        <h3>Calendar reminders</h3>
+        <p class="d">Downloads a daily recurring reminder for review + listening time. Works on any phone or computer, even with this app closed — the reliable option.</p>
+        <div class="field"><label>Flashcard review time</label><input type="time" id="input-time-flash" value="19:00"></div>
+        <div class="field"><label>Listening time</label><input type="time" id="input-time-listen" value="08:00"></div>
+        <button class="btn btn-primary btn-block" id="btn-download-ics">Download reminders (.ics)</button>
+      </div>
+
+      <div class="setting-block">
+        <h3>Browser notifications</h3>
+        <p class="d">Fires a notification at the times above, but only while this page is open in a tab — a convenience on top of the calendar reminders, not a replacement.</p>
+        <button class="btn btn-ghost btn-block" id="btn-enable-notif">Enable browser notifications</button>
+        <div class="status-line" id="notif-status">Not enabled</div>
+      </div>
+
+      <div class="setting-block">
+        <h3>Progress</h3>
+        <p class="d" id="settings-progress-line"></p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="tabs">
+    <button class="active" data-view="today">Today</button>
+    <button data-view="cards">Cards</button>
+    <button data-view="library">Library</button>
+    <button data-view="settings">Settings</button>
+  </nav>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ── SUPABASE (shared project already used by index.html) ──
+const SUPABASE_URL  = 'https://fnjxxvghoebrpeflkdty.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_dQUzquFXUV-AE34K8PtqPQ_KHt8s1Ia';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+// ── CONTENT ──
+const TRACKS = [
+  {id:'cert', name:'Certifications', color:'var(--cert)'},
+  {id:'software', name:'Software', color:'var(--software)'},
+  {id:'practice', name:'Design Practice', color:'var(--practice)'},
+  {id:'french', name:'French', color:'var(--french)'},
+];
+const trackById = id => TRACKS.find(t=>t.id===id);
+
+const CARDS = [
+  {id:'c1',track:'cert',front:'What does LEED stand for?',back:'Leadership in Energy and Environmental Design'},
+  {id:'c2',track:'cert',front:'Who administers the LEED exams?',back:'GBCI (Green Business Certification Inc.), on behalf of USGBC'},
+  {id:'c3',track:'cert',front:"Name LEED's main credit categories.",back:'Location & Transportation, Sustainable Sites, Water Efficiency, Energy & Atmosphere, Materials & Resources, Indoor Environmental Quality, Innovation, Regional Priority'},
+  {id:'c4',track:'cert',front:'What does BREEAM stand for?',back:'Building Research Establishment Environmental Assessment Method'},
+  {id:'c5',track:'cert',front:"What are BREEAM's rating levels?",back:'Pass, Good, Very Good, Excellent, Outstanding'},
+  {id:'c6',track:'cert',front:'What does LBC stand for, and who runs it?',back:'Living Building Challenge, run by the International Living Future Institute (ILFI)'},
+  {id:'c7',track:'cert',front:"How many 'Petals' does the Living Building Challenge have, and name two.",back:'Seven — e.g. Place, Water, Energy, Health & Happiness, Materials, Equity, Beauty'},
+  {id:'c8',track:'cert',front:'What is embodied carbon?',back:'Emissions from extracting, manufacturing, and transporting materials — as opposed to a building’s operational emissions'},
+  {id:'c9',track:'cert',front:'What is a Declare label?',back:"ILFI's ingredient-disclosure label for building products — a 'nutrition label' for materials"},
+  {id:'c10',track:'cert',front:"What is LBC's 'Red List'?",back:'A list of the worst-in-class chemicals and materials banned from Living Building Challenge projects'},
+  {id:'c11',track:'cert',front:'Which LEED specialty credential aligns most with interior design work?',back:'LEED AP Interior Design + Construction (ID+C)'},
+  {id:'c12',track:'cert',front:'What is a rating system credit vs. a prerequisite?',back:'Prerequisites are mandatory minimums; credits are optional and earn points toward certification level'},
+
+  {id:'s1',track:'software',front:'What geometry type does Rhino primarily model with?',back:'NURBS — Non-Uniform Rational B-Splines'},
+  {id:'s2',track:'software',front:'Which Rhino command turns a 3D model into 2D line drawings?',back:'Make2D'},
+  {id:'s3',track:'software',front:'What is Grasshopper?',back:"Rhino's visual, parametric scripting plug-in"},
+  {id:'s4',track:'software',front:'What does Boolean Union / Difference do in Rhino?',back:'Combines or subtracts solid geometry to form new shapes'},
+  {id:'s5',track:'software',front:'In Illustrator, what tool draws precise bezier paths?',back:'The Pen tool'},
+  {id:'s6',track:'software',front:"What is a Clipping Mask in Illustrator?",back:'An object whose shape hides any artwork that falls outside it'},
+  {id:'s7',track:'software',front:'What does Live Paint let you do in Illustrator?',back:'Fill enclosed regions across intersecting paths without manually splitting them first'},
+  {id:'s8',track:'software',front:'What controls repeated elements like headers/footers in InDesign?',back:'Master Pages'},
+  {id:'s9',track:'software',front:'What is a Paragraph Style in InDesign?',back:'A saved set of text formatting applied consistently across a document'},
+  {id:'s10',track:'software',front:'In InDesign, how are images typically handled — embedded or linked?',back:'Linked by reference and managed via the Links panel, keeping file size down'},
+
+  {id:'p1',track:'practice',front:'What is biophilic design?',back:'Design that incorporates natural light, materials, and greenery to connect occupants with nature'},
+  {id:'p2',track:'practice',front:'What is space planning?',back:'Arranging functional areas and circulation within a floor plan to meet program needs'},
+  {id:'p3',track:'practice',front:'What is a mood board used for?',back:'Communicating a design direction through color, material, and image references before detailed design begins'},
+  {id:'p4',track:'practice',front:'What does NCIDQ stand for?',back:'National Council for Interior Design Qualification — the US interior design licensing exam body'},
+  {id:'p5',track:'practice',front:'What is universal design?',back:'Designing spaces usable by people of all ages and abilities without special adaptation'},
+  {id:'p6',track:'practice',front:'What is anthropometric data used for in space planning?',back:'Human body measurements (reach, clearance, seated height) used to size furniture and circulation'},
+
+  {id:'f1',track:'french',front:'Bonjour',back:'Hello'},
+  {id:'f2',track:'french',front:'Merci beaucoup',back:'Thank you very much'},
+  {id:'f3',track:'french',front:'durable',back:'sustainable'},
+  {id:'f4',track:'french',front:'le bâtiment',back:'the building'},
+  {id:'f5',track:'french',front:'la conception',back:'the design (process)'},
+  {id:'f6',track:'french',front:"l'aménagement intérieur",back:'interior fit-out / interior design'},
+  {id:'f7',track:'french',front:"l'économie d'énergie",back:'energy saving'},
+  {id:'f8',track:'french',front:'les matériaux',back:'materials'},
+  {id:'f9',track:'french',front:'Je voudrais...',back:'I would like...'},
+  {id:'f10',track:'french',front:'Pourriez-vous répéter, s’il vous plaît ?',back:'Could you repeat that, please?'},
+];
+
+const VIDEOS = [
+  {id:'v1',track:'cert',title:'LEED Green Associate overview series',source:'USGBC',hint:'Search: "USGBC LEED Green Associate overview"'},
+  {id:'v2',track:'cert',title:'Introduction to BREEAM',source:'BRE Academy',hint:'Search: "BRE Academy BREEAM introduction"'},
+  {id:'v3',track:'cert',title:'Living Building Challenge explained',source:'International Living Future Institute',hint:'Search: "ILFI Living Building Challenge explainer"'},
+  {id:'v4',track:'cert',title:'LEED exam prep walkthroughs',source:'GBES',hint:'Search: "GBES LEED exam prep webinar"'},
+  {id:'v5',track:'software',title:'Rhino Level 1 training playlist',source:'McNeel (official)',hint:'Search: "McNeel Rhino Level 1 training"'},
+  {id:'v6',track:'software',title:'Grasshopper primer',source:'Mode Lab',hint:'Search: "Mode Lab Grasshopper primer"'},
+  {id:'v7',track:'software',title:'InDesign & Illustrator official tutorials',source:'Adobe',hint:'Search: "Adobe InDesign get started tutorials"'},
+  {id:'v8',track:'practice',title:'Project case-study teardowns',source:'Dezeen',hint:'Browse Dezeen’s interiors category'},
+  {id:'v9',track:'practice',title:'Project case-study teardowns',source:'Architizer',hint:'Browse Architizer’s project database'},
+  {id:'v10',track:'french',title:"Apprendre le français — graded video lessons",source:'TV5MONDE',hint:'Search: "TV5MONDE apprendre le français"'},
+  {id:'v11',track:'french',title:'Everyday spoken French lessons',source:'Français Authentique',hint:'Search: "Français Authentique"'},
+];
+
+const LISTEN = [
+  {id:'l1',track:'cert',title:'LEED & GBCI recorded webinars',source:'USGBC',hint:'usgbc.org webinar archive'},
+  {id:'l2',track:'cert',title:'ILFI webinar archive',source:'International Living Future Institute',hint:'living-future.org resources'},
+  {id:'l3',track:'software',title:'Rhino office-hour recordings',source:'McNeel forum (Discourse)',hint:'McNeel community forum'},
+  {id:'l4',track:'software',title:'Creative Cloud tutorials, audio-first episodes',source:'Adobe',hint:'Adobe Creative Cloud resources'},
+  {id:'l5',track:'practice',title:'Interior Design Illustrated',source:'Francis D.K. Ching (check Audible/Libro.fm)',hint:'Availability varies by audiobook platform'},
+  {id:'l6',track:'french',title:'Coffee Break French',source:'Podcast',hint:'Search your podcast app: "Coffee Break French"'},
+  {id:'l7',track:'french',title:'Journal en français facile',source:'RFI',hint:'Daily graded news podcast — rfi.fr'},
+  {id:'l8',track:'french',title:'Français Authentique',source:'Podcast',hint:'Search your podcast app: "Français Authentique"'},
+];
+
+const INTERVALS = [1,2,4,7,14,30,60]; // days, by box
+const MASTER_BOX = 4; // box >= this counts "mastered"
+
+// ── STATE & SYNC ──
+const CACHE_KEY = 'studio-app-cache-v1';
+const KEY_STORAGE = 'studio-sync-key';
+let syncKey = null;
+let state = null;
+let realtimeChannel = null;
+let pushTimer = null;
+
+function defaultState(){
+  return { srs:{}, watched:{}, listened:{}, streak:{count:0,last:null}, reminders:{enabled:false,flashTime:'19:00',listenTime:'08:00',lastFired:{}} };
+}
+function normalizeState(s){
+  const d = defaultState();
+  s = s || {};
+  return {
+    srs: s.srs || d.srs, watched: s.watched || d.watched, listened: s.listened || d.listened,
+    streak: s.streak || d.streak, reminders: Object.assign({}, d.reminders, s.reminders||{})
+  };
+}
+function loadCache(){ try{ return JSON.parse(localStorage.getItem(CACHE_KEY)); }catch(e){ return null; } }
+function persistCache(){ localStorage.setItem(CACHE_KEY, JSON.stringify(state)); }
+
+function todayKey(){ const d=new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+function addDays(key,n){ const d=new Date(key+'T00:00:00'); d.setDate(d.getDate()+n); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+
+function setSyncStatus(status){
+  const dot = document.getElementById('sync-dot');
+  dot.className = 'sync-dot ' + status;
+  const map = {syncing:'Syncing…', synced:'Synced', offline:'Offline — saved on this device only'};
+  const el = document.getElementById('settings-sync-status');
+  if (el) el.textContent = map[status] || '';
+}
+
+function saveState(){
+  persistCache();
+  clearTimeout(pushTimer);
+  pushTimer = setTimeout(async ()=>{
+    setSyncStatus('syncing');
+    try{
+      const {error} = await sb.from('studio_state').upsert(
+        {profile_key:syncKey, state, updated_at:new Date().toISOString()},
+        {onConflict:'profile_key'}
+      );
+      if (error) throw error;
+      setSyncStatus('synced');
+    }catch(e){ setSyncStatus('offline'); }
+  }, 700);
+}
+
+function bumpStreak(){
+  const tk = todayKey();
+  if (state.streak.last === tk) return;
+  const yesterday = addDays(tk,-1);
+  state.streak.count = (state.streak.last === yesterday) ? state.streak.count+1 : 1;
+  state.streak.last = tk;
+  saveState();
+}
+
+async function initSync(key){
+  syncKey = key;
+  localStorage.setItem(KEY_STORAGE, key);
+  const cached = loadCache();
+  state = normalizeState(cached);
+
+  document.getElementById('key-gate').style.display='none';
+  document.getElementById('frame').style.display='flex';
+  document.getElementById('input-sync-key').value = syncKey;
+  renderToday();
+
+  setSyncStatus('syncing');
+  try{
+    const {data,error} = await sb.from('studio_state').select('state').eq('profile_key',syncKey).maybeSingle();
+    if (error) throw error;
+    if (data && data.state){
+      state = normalizeState(data.state);
+    } else {
+      await sb.from('studio_state').insert({profile_key:syncKey, state});
+    }
+    persistCache();
+    setSyncStatus('synced');
+  }catch(e){ setSyncStatus('offline'); }
+
+  bumpStreak();
+  renderAll();
+  subscribeRealtime();
+}
+
+function subscribeRealtime(){
+  if (realtimeChannel) sb.removeChannel(realtimeChannel);
+  realtimeChannel = sb.channel('studio_state_'+syncKey)
+    .on('postgres_changes', {event:'*', schema:'public', table:'studio_state', filter:`profile_key=eq.${syncKey}`}, payload=>{
+      if (payload.new && payload.new.state){
+        state = normalizeState(payload.new.state);
+        persistCache();
+        renderAll();
+        showToast('Synced from your other device');
+      }
+    })
+    .subscribe();
+}
+
+function renderAll(){
+  renderToday();
+  const activeView = document.querySelector('nav.tabs button.active')?.dataset.view;
+  if (activeView==='cards'){ renderCardChips(); startSession(); }
+  if (activeView==='library'){ renderLibChips(); renderLibrary(); }
+  if (activeView==='settings'){ renderSettings(); }
+}
+
+// ── SRS ──
+function cardsDue(trackFilter){
+  const tk = todayKey();
+  return CARDS.filter(c=>{
+    if (trackFilter && trackFilter!=='all' && c.track!==trackFilter) return false;
+    const rec = state.srs[c.id];
+    return !rec || rec.due <= tk;
+  });
+}
+function reviewCard(cardId, got){
+  const rec = state.srs[cardId] || {box:0,due:todayKey()};
+  if (got){ rec.box = Math.min(rec.box+1, INTERVALS.length-1); }
+  else { rec.box = 0; }
+  rec.due = addDays(todayKey(), INTERVALS[rec.box]);
+  state.srs[cardId] = rec;
+  saveState();
+}
+function masteryForTrack(trackId){
+  const cards = CARDS.filter(c=>c.track===trackId);
+  const mastered = cards.filter(c=> (state.srs[c.id]?.box||0) >= MASTER_BOX).length;
+  return {mastered, total:cards.length};
+}
+
+// ── DAILY PICKS ──
+function dayIndex(){ const d=new Date(); const start=new Date(d.getFullYear(),0,0); return Math.floor((d-start)/86400000); }
+function pickDaily(list, doneMap){
+  const pending = list.filter(x=>!doneMap[x.id]);
+  const pool = pending.length ? pending : list;
+  if (!pool.length) return null;
+  return pool[dayIndex() % pool.length];
+}
+
+// ── RENDER: TODAY ──
+function renderToday(){
+  document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
+  const due = cardsDue('all');
+  document.getElementById('due-count-h').textContent = due.length ? `${due.length} card${due.length===1?'':'s'} due` : 'All caught up';
+  document.getElementById('btn-start-review').textContent = due.length ? 'Start Review' : 'Nothing due — practice ahead';
+
+  const vid = pickDaily(VIDEOS, state.watched);
+  if (vid){
+    document.getElementById('today-video-card').style.display='block';
+    document.getElementById('today-video-track').textContent = trackById(vid.track).name;
+    document.getElementById('today-video-track').style.color = trackById(vid.track).color;
+    document.getElementById('today-video-title').textContent = vid.title;
+    document.getElementById('today-video-src').textContent = vid.source;
+    document.getElementById('today-video-hint').textContent = vid.hint;
+    document.getElementById('btn-video-done').onclick = ()=>{ state.watched[vid.id]=true; saveState(); showToast('Marked watched'); renderToday(); };
+  } else { document.getElementById('today-video-card').style.display='none'; }
+
+  const lis = pickDaily(LISTEN, state.listened);
+  if (lis){
+    document.getElementById('today-listen-card').style.display='block';
+    document.getElementById('today-listen-track').textContent = trackById(lis.track).name;
+    document.getElementById('today-listen-track').style.color = trackById(lis.track).color;
+    document.getElementById('today-listen-title').textContent = lis.title;
+    document.getElementById('today-listen-src').textContent = lis.source;
+    document.getElementById('today-listen-hint').textContent = lis.hint;
+    document.getElementById('btn-listen-done').onclick = ()=>{ state.listened[lis.id]=true; saveState(); showToast('Marked listened'); renderToday(); };
+  } else { document.getElementById('today-listen-card').style.display='none'; }
+
+  document.getElementById('streak-n').textContent = state.streak.count;
+
+  const bars = TRACKS.map(t=>{
+    const {mastered,total} = masteryForTrack(t.id);
+    const pct = total ? Math.round(100*mastered/total) : 0;
+    return `<div class="track-bar-row">
+      <div class="track-bar-label">${t.name}</div>
+      <div class="track-bar-track"><div class="track-bar-fill" style="width:${pct}%;background:${t.color}"></div></div>
+      <div class="track-bar-n">${mastered}/${total}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('track-bars').innerHTML = bars;
+}
+
+// ── RENDER: FLASHCARDS ──
+let cardTrackFilter = 'all';
+let sessionQueue = [];
+let sessionIdx = 0;
+let sessionReviewed = 0;
+
+function renderCardChips(){
+  const chips = [{id:'all',name:'All'}, ...TRACKS];
+  document.getElementById('card-track-chips').innerHTML = chips.map(t=>
+    `<button class="chip ${cardTrackFilter===t.id?'active':''}" data-track="${t.id}">${t.name}</button>`
+  ).join('');
+  document.getElementById('card-track-chips').querySelectorAll('.chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ cardTrackFilter = btn.dataset.track; startSession(); renderCardChips(); });
+  });
+}
+
+function startSession(){
+  sessionQueue = shuffle(cardsDue(cardTrackFilter));
+  sessionIdx = 0; sessionReviewed = 0;
+  renderSession();
+}
+function shuffle(arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function renderSession(){
+  const root = document.getElementById('session-root');
+  if (sessionIdx >= sessionQueue.length){
+    root.innerHTML = `<div class="session-empty">
+      <h3>${sessionReviewed ? 'Session complete' : 'Nothing due right now'}</h3>
+      <p>${sessionReviewed ? `Reviewed ${sessionReviewed} card${sessionReviewed===1?'':'s'}.` : 'Come back when cards are due, or practice ahead.'}</p>
+      <div style="margin-top:18px"><button class="btn btn-ghost" id="btn-practice-ahead">Practice ahead anyway</button></div>
+    </div>`;
+    document.getElementById('btn-practice-ahead').onclick = ()=>{
+      sessionQueue = shuffle(CARDS.filter(c=>cardTrackFilter==='all'||c.track===cardTrackFilter));
+      sessionIdx = 0; renderSession();
+    };
+    return;
+  }
+  const card = sessionQueue[sessionIdx];
+  const t = trackById(card.track);
+  root.innerHTML = `
+    <div class="progress-line">${sessionIdx+1} of ${sessionQueue.length} · <span style="color:${t.color}">${t.name}</span></div>
+    <div class="flashcard" id="flashcard">
+      <div>
+        <div class="face">${card.front}</div>
+        <div class="back">${card.back}</div>
+      </div>
+    </div>
+    <button class="btn btn-ghost btn-block" id="btn-reveal" style="margin-bottom:14px">Show answer</button>
+    <div class="session-actions" id="session-actions" style="display:none">
+      <button class="btn btn-miss" id="btn-miss">Missed it</button>
+      <button class="btn btn-got" id="btn-got">Got it</button>
+    </div>
+  `;
+  document.getElementById('btn-reveal').onclick = ()=>{
+    document.getElementById('flashcard').classList.add('revealed');
+    document.getElementById('btn-reveal').style.display='none';
+    document.getElementById('session-actions').style.display='flex';
+  };
+  document.getElementById('btn-miss').onclick = ()=>{ reviewCard(card.id,false); sessionReviewed++; sessionIdx++; renderSession(); };
+  document.getElementById('btn-got').onclick = ()=>{ reviewCard(card.id,true); sessionReviewed++; sessionIdx++; renderSession(); };
+}
+
+// ── RENDER: LIBRARY ──
+let libTrackFilter = 'all';
+function renderLibChips(){
+  const chips = [{id:'all',name:'All'}, ...TRACKS];
+  document.getElementById('lib-track-chips').innerHTML = chips.map(t=>
+    `<button class="chip ${libTrackFilter===t.id?'active':''}" data-track="${t.id}">${t.name}</button>`
+  ).join('');
+  document.getElementById('lib-track-chips').querySelectorAll('.chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ libTrackFilter = btn.dataset.track; renderLibrary(); renderLibChips(); });
+  });
+}
+function libItemHtml(item, doneMap, colorVar){
+  const done = !!doneMap[item.id];
+  return `<div class="lib-item">
+    <button class="lib-check ${done?'done':''}" style="--tc:${colorVar}" data-id="${item.id}">${done?'✓':''}</button>
+    <div class="lib-body"><b>${item.title}</b><div class="src">${item.source}</div><div class="hint">${item.hint}</div></div>
+  </div>`;
+}
+function renderLibrary(){
+  const vids = VIDEOS.filter(v=>libTrackFilter==='all'||v.track===libTrackFilter);
+  const lis = LISTEN.filter(l=>libTrackFilter==='all'||l.track===libTrackFilter);
+  const root = document.getElementById('library-root');
+  root.innerHTML = `
+    <div class="lib-section"><h3>Watch</h3>${vids.map(v=>libItemHtml(v,state.watched,trackById(v.track).color)).join('') || '<p class="sub">No videos in this track.</p>'}</div>
+    <div class="lib-section"><h3>Listen</h3>${lis.map(l=>libItemHtml(l,state.listened,trackById(l.track).color)).join('') || '<p class="sub">No audio in this track.</p>'}</div>
+  `;
+  root.querySelectorAll('.lib-item .lib-check').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.id;
+      const isVideo = VIDEOS.some(v=>v.id===id);
+      const map = isVideo ? state.watched : state.listened;
+      map[id] = !map[id];
+      saveState(); renderLibrary(); renderToday();
+    });
+  });
+}
+
+// ── SETTINGS ──
+function renderSettings(){
+  document.getElementById('input-time-flash').value = state.reminders.flashTime;
+  document.getElementById('input-time-listen').value = state.reminders.listenTime;
+  document.getElementById('notif-status').textContent = state.reminders.enabled
+    ? `Enabled — review at ${state.reminders.flashTime}, listening at ${state.reminders.listenTime}`
+    : 'Not enabled';
+  const totalCards = CARDS.length;
+  const masteredTotal = CARDS.filter(c=>(state.srs[c.id]?.box||0)>=MASTER_BOX).length;
+  const watchedN = Object.keys(state.watched).length;
+  const listenedN = Object.keys(state.listened).length;
+  document.getElementById('settings-progress-line').textContent =
+    `${masteredTotal}/${totalCards} cards mastered · ${watchedN}/${VIDEOS.length} videos watched · ${listenedN}/${LISTEN.length} listened · ${state.streak.count}-day streak`;
+}
+
+document.getElementById('input-time-flash').addEventListener('change', e=>{ state.reminders.flashTime = e.target.value; saveState(); renderSettings(); });
+document.getElementById('input-time-listen').addEventListener('change', e=>{ state.reminders.listenTime = e.target.value; saveState(); renderSettings(); });
+
+document.getElementById('btn-change-key').addEventListener('click', ()=>{
+  localStorage.removeItem(KEY_STORAGE);
+  location.reload();
+});
+
+document.getElementById('btn-enable-notif').addEventListener('click', async ()=>{
+  if (!('Notification' in window)){ showToast('Notifications not supported in this browser'); return; }
+  const perm = await Notification.requestPermission();
+  if (perm === 'granted'){ state.reminders.enabled = true; saveState(); renderSettings(); showToast('Notifications enabled'); }
+  else { showToast('Permission denied'); }
+});
+
+setInterval(()=>{
+  if (!state || !state.reminders.enabled || Notification.permission !== 'granted') return;
+  const now = new Date();
+  const hhmm = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+  const tk = todayKey();
+  if (hhmm === state.reminders.flashTime && state.reminders.lastFired.flash !== tk){
+    const due = cardsDue('all').length;
+    new Notification('Flashcard review', {body: due ? `${due} cards due` : 'Practice ahead — nothing due today'});
+    state.reminders.lastFired.flash = tk; saveState();
+  }
+  if (hhmm === state.reminders.listenTime && state.reminders.lastFired.listen !== tk){
+    new Notification('Listening time', {body:"Today's pick is waiting in the Library tab"});
+    state.reminders.lastFired.listen = tk; saveState();
+  }
+}, 20000);
+
+document.getElementById('btn-download-ics').addEventListener('click', ()=>{
+  const flashTime = document.getElementById('input-time-flash').value || '19:00';
+  const listenTime = document.getElementById('input-time-listen').value || '08:00';
+  const d = todayKey().replace(/-/g,'');
+  const mk = (uid,time,summary,desc) => {
+    const [h,m] = time.split(':');
+    return ['BEGIN:VEVENT',`UID:${uid}@studio-app`,`DTSTART:${d}T${h}${m}00`,`DTEND:${d}T${h}${m}00`,
+      'RRULE:FREQ=DAILY',`SUMMARY:${summary}`,`DESCRIPTION:${desc}`,'END:VEVENT'].join('\r\n');
+  };
+  const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Studio Practice//EN','CALSCALE:GREGORIAN',
+    mk('flashcards',flashTime,'Flashcard review','Certifications, software, design practice, French'),
+    mk('listening',listenTime,'Listening session','Today\'s pick is in the Library tab'),
+    'END:VCALENDAR'].join('\r\n');
+  const blob = new Blob([lines],{type:'text/calendar'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'studio-reminders.ics'; a.click();
+  showToast('Downloaded — import into your calendar app');
+});
+
+// ── NAV ──
+document.querySelectorAll('nav.tabs button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.getElementById(`view-${btn.dataset.view}`).classList.add('active');
+    if (btn.dataset.view==='cards'){ renderCardChips(); startSession(); }
+    if (btn.dataset.view==='library'){ renderLibChips(); renderLibrary(); }
+    if (btn.dataset.view==='settings'){ renderSettings(); }
+    if (btn.dataset.view==='today'){ renderToday(); }
+  });
+});
+document.getElementById('btn-start-review').addEventListener('click', ()=>{
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.remove('active'));
+  document.querySelector('nav.tabs button[data-view="cards"]').classList.add('active');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-cards').classList.add('active');
+  cardTrackFilter = 'all'; renderCardChips(); startSession();
+});
+
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(window.__toastT); window.__toastT=setTimeout(()=>t.classList.remove('show'),2400); }
+
+// ── KEY GATE ──
+document.getElementById('gate-btn').addEventListener('click', ()=>{
+  const val = document.getElementById('gate-input').value.trim();
+  if (!val){ document.getElementById('gate-status').textContent = 'Enter a key first.'; return; }
+  initSync(val);
+});
+document.getElementById('gate-input').addEventListener('keydown', e=>{ if (e.key==='Enter') document.getElementById('gate-btn').click(); });
+
+// ── BOOT ──
+const savedKey = localStorage.getItem(KEY_STORAGE);
+if (savedKey) initSync(savedKey);
+</script>
+</body>
+</html>
