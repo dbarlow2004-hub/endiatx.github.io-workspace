@@ -62,7 +62,7 @@ main{flex:1; overflow-y:auto; padding:20px 20px 100px;}
 .today-date{font-size:0.8rem; color:var(--muted); margin-bottom:2px;}
 .today-h1{font-size:1.6rem; margin-bottom:20px;}
 
-.dcard{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:12px;}
+.dcard{background:var(--card); border:1px solid var(--line); border-left:4px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:12px;}
 .dcard .top{display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;}
 .dcard .eyebrow{font-family:var(--font-mono); font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);}
 .dcard h3{font-size:1.15rem; margin-bottom:4px;}
@@ -85,14 +85,14 @@ main{flex:1; overflow-y:auto; padding:20px 20px 100px;}
 
 /* CHIPS */
 .chiprow{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;}
-.chip{font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase; padding:6px 11px; border-radius:20px; border:1px solid var(--line); background:none; color:var(--ink);}
-.chip.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+.chip{font-family:var(--font-mono); font-size:0.68rem; letter-spacing:0.05em; text-transform:uppercase; padding:6px 11px; border-radius:20px; border:1.5px solid var(--tc,var(--line)); background:none; color:var(--tc,var(--ink)); transition:background .12s,color .12s;}
+.chip.active{background:var(--tc,var(--ink)); color:var(--paper); border-color:var(--tc,var(--ink));}
 
 /* FLASHCARD SESSION */
 .session-empty{text-align:center; padding:60px 10px; color:var(--muted);}
 .session-empty h3{color:var(--ink); margin-bottom:8px;}
 .progress-line{font-family:var(--font-mono); font-size:0.72rem; color:var(--muted); margin-bottom:14px;}
-.flashcard{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:34px 22px; min-height:180px; display:flex; align-items:center; justify-content:center; text-align:center; margin-bottom:16px;}
+.flashcard{background:var(--card); border:1px solid var(--line); border-left:5px solid var(--line); border-radius:12px; padding:34px 22px; min-height:180px; display:flex; align-items:center; justify-content:center; text-align:center; margin-bottom:16px;}
 .flashcard .face{font-size:1.2rem; line-height:1.4;}
 .flashcard .back{margin-top:16px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:1.02rem; display:none;}
 .flashcard.revealed .back{display:block;}
@@ -103,7 +103,7 @@ main{flex:1; overflow-y:auto; padding:20px 20px 100px;}
 /* LIBRARY */
 .lib-section{margin-bottom:26px;}
 .lib-section h3{font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); font-family:var(--font-mono); font-weight:500; margin-bottom:10px;}
-.lib-item{display:flex; gap:12px; align-items:flex-start; padding:11px 0; border-bottom:1px solid var(--line);}
+.lib-item{display:flex; gap:12px; align-items:flex-start; padding:11px 0 11px 10px; border-bottom:1px solid var(--line); border-left:4px solid var(--line);}
 .lib-item:last-child{border-bottom:none;}
 .lib-check{width:20px; height:20px; border-radius:5px; border:1.5px solid var(--line); flex:none; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; background:none;}
 .lib-check.done{background:var(--tc,var(--ink)); border-color:var(--tc,var(--ink)); color:var(--paper);}
@@ -484,6 +484,7 @@ function renderToday(){
   const vid = pickDaily(VIDEOS, state.watched);
   if (vid){
     document.getElementById('today-video-card').style.display='block';
+    document.getElementById('today-video-card').style.borderLeftColor = trackById(vid.track).color;
     document.getElementById('today-video-track').textContent = trackById(vid.track).name;
     document.getElementById('today-video-track').style.color = trackById(vid.track).color;
     document.getElementById('today-video-title').textContent = vid.title;
@@ -495,6 +496,7 @@ function renderToday(){
   const lis = pickDaily(LISTEN, state.listened);
   if (lis){
     document.getElementById('today-listen-card').style.display='block';
+    document.getElementById('today-listen-card').style.borderLeftColor = trackById(lis.track).color;
     document.getElementById('today-listen-track').textContent = trackById(lis.track).name;
     document.getElementById('today-listen-track').style.color = trackById(lis.track).color;
     document.getElementById('today-listen-title').textContent = lis.title;
@@ -509,7 +511,7 @@ function renderToday(){
     const {mastered,total} = masteryForTrack(t.id);
     const pct = total ? Math.round(100*mastered/total) : 0;
     return `<div class="track-bar-row">
-      <div class="track-bar-label">${t.name}</div>
+      <div class="track-bar-label" style="color:${t.color}">${t.name}</div>
       <div class="track-bar-track"><div class="track-bar-fill" style="width:${pct}%;background:${t.color}"></div></div>
       <div class="track-bar-n">${mastered}/${total}</div>
     </div>`;
@@ -524,9 +526,9 @@ let sessionIdx = 0;
 let sessionReviewed = 0;
 
 function renderCardChips(){
-  const chips = [{id:'all',name:'All'}, ...TRACKS];
+  const chips = [{id:'all',name:'All',color:'var(--ink)'}, ...TRACKS];
   document.getElementById('card-track-chips').innerHTML = chips.map(t=>
-    `<button class="chip ${cardTrackFilter===t.id?'active':''}" data-track="${t.id}">${t.name}</button>`
+    `<button class="chip ${cardTrackFilter===t.id?'active':''}" style="--tc:${t.color}" data-track="${t.id}">${t.name}</button>`
   ).join('');
   document.getElementById('card-track-chips').querySelectorAll('.chip').forEach(btn=>{
     btn.addEventListener('click', ()=>{ cardTrackFilter = btn.dataset.track; startSession(); renderCardChips(); });
@@ -558,7 +560,7 @@ function renderSession(){
   const t = trackById(card.track);
   root.innerHTML = `
     <div class="progress-line">${sessionIdx+1} of ${sessionQueue.length} · <span style="color:${t.color}">${t.name}</span></div>
-    <div class="flashcard" id="flashcard">
+    <div class="flashcard" id="flashcard" style="border-left-color:${t.color}">
       <div>
         <div class="face">${card.front}</div>
         <div class="back">${card.back}</div>
@@ -582,9 +584,9 @@ function renderSession(){
 // ── RENDER: LIBRARY ──
 let libTrackFilter = 'all';
 function renderLibChips(){
-  const chips = [{id:'all',name:'All'}, ...TRACKS];
+  const chips = [{id:'all',name:'All',color:'var(--ink)'}, ...TRACKS];
   document.getElementById('lib-track-chips').innerHTML = chips.map(t=>
-    `<button class="chip ${libTrackFilter===t.id?'active':''}" data-track="${t.id}">${t.name}</button>`
+    `<button class="chip ${libTrackFilter===t.id?'active':''}" style="--tc:${t.color}" data-track="${t.id}">${t.name}</button>`
   ).join('');
   document.getElementById('lib-track-chips').querySelectorAll('.chip').forEach(btn=>{
     btn.addEventListener('click', ()=>{ libTrackFilter = btn.dataset.track; renderLibrary(); renderLibChips(); });
@@ -592,7 +594,7 @@ function renderLibChips(){
 }
 function libItemHtml(item, doneMap, colorVar){
   const done = !!doneMap[item.id];
-  return `<div class="lib-item">
+  return `<div class="lib-item" style="border-left-color:${colorVar}">
     <button class="lib-check ${done?'done':''}" style="--tc:${colorVar}" data-id="${item.id}">${done?'✓':''}</button>
     <div class="lib-body"><b>${item.title}</b><div class="src">${item.source}</div><div class="hint">${item.hint}</div></div>
   </div>`;
