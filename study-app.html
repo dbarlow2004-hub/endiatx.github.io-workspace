@@ -8,19 +8,19 @@
 :root{
   --paper:#E6E7DF; --panel:#DBDACB; --ink:#24261F; --muted:#6F7267; --line:#C7C6B6; --card:#F2F1E7;
   --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E;
-  --good:#3B6B57; --bad:#A24B3E;
+  --good:#3B6B57; --bad:#A24B3E; --urgent:#D6472C; --urgent-ink:#FFFFFF;
   --font-display:ui-serif,"Iowan Old Style","Palatino Linotype","URW Palladio L","P052",Georgia,serif;
   --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --font-mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono","DejaVu Sans Mono",monospace;
 }
 @media (prefers-color-scheme: dark){
   :root{ --paper:#1B1D17; --panel:#232519; --ink:#E9E7DA; --muted:#9B9C89; --line:#34362A; --card:#20221B;
-    --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; }
+    --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; --urgent:#FF6B4A; --urgent-ink:#1B1D17; }
 }
 :root[data-theme="dark"]{ --paper:#1B1D17; --panel:#232519; --ink:#E9E7DA; --muted:#9B9C89; --line:#34362A; --card:#20221B;
-  --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; }
+  --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; --urgent:#FF6B4A; --urgent-ink:#1B1D17; }
 :root[data-theme="light"]{ --paper:#E6E7DF; --panel:#DBDACB; --ink:#24261F; --muted:#6F7267; --line:#C7C6B6; --card:#F2F1E7;
-  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E; --good:#3B6B57; --bad:#A24B3E; }
+  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E; --good:#3B6B57; --bad:#A24B3E; --urgent:#D6472C; --urgent-ink:#FFFFFF; }
 
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;height:100%;}
@@ -49,9 +49,12 @@ p{margin:0;}
 .sync-dot.synced{background:var(--good);}
 .sync-dot.offline{background:var(--bad);}
 .streak{display:flex; align-items:center; gap:7px; font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
-.streak .flame{width:9px; height:9px; border-radius:50% 50% 50% 0; background:var(--software); transform:rotate(45deg);}
+.streak .flame{width:9px; height:9px; border-radius:50% 50% 50% 0; background:var(--software); transform:rotate(45deg); transition:background .2s;}
+.streak .flame.urgent{background:var(--urgent); animation:flamePulse 1.5s ease-in-out infinite;}
 .streak .n{font-size:1rem; font-weight:700;}
 .streak .l{font-size:0.68rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em;}
+@keyframes flamePulse{0%,100%{transform:rotate(45deg) scale(1);}50%{transform:rotate(45deg) scale(1.35);}}
+@media (prefers-reduced-motion: reduce){ .streak .flame.urgent{animation:none;} }
 
 /* VIEWS */
 main{flex:1; overflow-y:auto; padding:20px 20px 100px;}
@@ -69,12 +72,25 @@ main{flex:1; overflow-y:auto; padding:20px 20px 100px;}
 .dcard .sub{font-size:0.86rem; color:var(--muted); margin-bottom:12px;}
 .dcard .row{display:flex; align-items:center; justify-content:space-between; gap:10px;}
 
-.btn{border:none; border-radius:7px; padding:10px 16px; font-size:0.86rem; font-weight:600; transition:opacity .15s;}
-.btn:active{opacity:0.75;}
+.due-stat{display:flex; align-items:baseline; gap:9px; margin:2px 0 8px;}
+.due-num{font-family:var(--font-mono); font-variant-numeric:tabular-nums; font-size:2.6rem; font-weight:700; line-height:1; color:var(--ink); transition:color .2s;}
+.due-card.urgent .due-num{color:var(--urgent);}
+.due-label{font-size:0.72rem; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; font-family:var(--font-mono); font-weight:600;}
+.due-card.urgent .due-label{color:var(--urgent);}
+
+.btn{border:none; border-radius:7px; padding:10px 16px; font-size:0.86rem; font-weight:600; transition:opacity .15s,transform .1s;}
+.btn:active{opacity:0.75; transform:scale(0.98);}
 .btn-primary{background:var(--ink); color:var(--paper);}
 .btn-ghost{background:none; border:1px solid var(--line); color:var(--ink);}
 .btn-block{width:100%;}
 .btn:disabled{opacity:0.4; cursor:default;}
+.btn-urgent{background:var(--urgent); color:var(--urgent-ink); font-size:0.95rem; padding:13px 16px; animation:btnPulse 2.2s ease-in-out infinite;}
+.btn-calm{background:var(--good); color:var(--paper);}
+@keyframes btnPulse{
+  0%,100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--urgent) 40%, transparent);}
+  50%{box-shadow:0 0 0 9px color-mix(in srgb, var(--urgent) 0%, transparent);}
+}
+@media (prefers-reduced-motion: reduce){ .btn-urgent{animation:none;} }
 
 .track-bars{display:flex; flex-direction:column; gap:10px; margin-top:6px;}
 .track-bar-row{display:flex; align-items:center; gap:10px;}
@@ -150,7 +166,7 @@ nav.tabs button.active{color:var(--ink); background:var(--panel);}
     <div class="brand">Studio</div>
     <div class="topbar-right">
       <div class="sync-dot" id="sync-dot" title="Sync status"></div>
-      <div class="streak"><div class="flame"></div><span class="n" id="streak-n">0</span><span class="l">day streak</span></div>
+      <div class="streak"><div class="flame" id="streak-flame"></div><span class="n" id="streak-n">0</span><span class="l">day streak</span></div>
     </div>
   </div>
 
@@ -160,11 +176,11 @@ nav.tabs button.active{color:var(--ink); background:var(--panel);}
       <div class="today-date" id="today-date"></div>
       <h1 class="today-h1">Today</h1>
 
-      <div class="dcard">
+      <div class="dcard" id="due-card">
         <div class="top"><span class="eyebrow">Flashcards</span></div>
-        <h3 id="due-count-h">— cards due</h3>
+        <div class="due-stat"><span class="due-num" id="due-count-n">—</span><span class="due-label" id="due-count-l">cards due</span></div>
         <div class="sub">Spaced repetition across all four tracks.</div>
-        <button class="btn btn-primary btn-block" id="btn-start-review">Start Review</button>
+        <button class="btn btn-block" id="btn-start-review">Start Review</button>
       </div>
 
       <div class="dcard" id="today-video-card">
@@ -478,8 +494,26 @@ function pickDaily(list, doneMap){
 function renderToday(){
   document.getElementById('today-date').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'});
   const due = cardsDue('all');
-  document.getElementById('due-count-h').textContent = due.length ? `${due.length} card${due.length===1?'':'s'} due` : 'All caught up';
-  document.getElementById('btn-start-review').textContent = due.length ? 'Start Review' : 'Nothing due — practice ahead';
+  const dueCard = document.getElementById('due-card');
+  const dueNum = document.getElementById('due-count-n');
+  const dueLabel = document.getElementById('due-count-l');
+  const startBtn = document.getElementById('btn-start-review');
+  const flame = document.getElementById('streak-flame');
+  if (due.length){
+    dueCard.classList.add('urgent');
+    dueNum.textContent = due.length;
+    dueLabel.textContent = due.length===1 ? 'card due — now' : 'cards due — now';
+    startBtn.className = 'btn btn-block btn-urgent';
+    startBtn.textContent = 'Start Review';
+    flame.classList.add('urgent');
+  } else {
+    dueCard.classList.remove('urgent');
+    dueNum.textContent = '✓';
+    dueLabel.textContent = 'all caught up';
+    startBtn.className = 'btn btn-block btn-calm';
+    startBtn.textContent = 'Practice ahead';
+    flame.classList.remove('urgent');
+  }
 
   const vid = pickDaily(VIDEOS, state.watched);
   if (vid){
