@@ -115,6 +115,23 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .time-entry-row .te-note{flex:1;color:var(--text);min-width:100px;}
 .time-entry-row .te-actions{display:flex;gap:4px;flex-shrink:0;}
 
+/* MESSAGES */
+.messages-thread{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;max-height:520px;overflow-y:auto;padding:6px 2px;}
+.msg-row{display:flex;flex-direction:column;max-width:78%;}
+.msg-row.from-admin{align-self:flex-end;align-items:flex-end;}
+.msg-row.from-client{align-self:flex-start;align-items:flex-start;}
+.msg-bubble{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:11px 15px;font-size:14px;line-height:1.5;}
+.msg-row.from-admin .msg-bubble{background:rgba(212,165,122,0.14);border-color:rgba(212,165,122,0.3);}
+.msg-bubble img{max-width:220px;border-radius:8px;margin-top:8px;}
+.msg-meta{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Space Mono',monospace;}
+.msg-reactions{display:flex;gap:6px;margin-top:6px;}
+.msg-react-btn{background:none;border:1px solid var(--border);border-radius:14px;padding:5px 12px;font-size:12px;cursor:pointer;color:var(--muted);}
+.msg-react-btn.active-like{border-color:var(--sage);color:var(--sage);background:rgba(143,168,136,0.12);}
+.msg-react-btn.active-dislike{border-color:var(--red);color:var(--red);background:rgba(225,122,107,0.12);}
+.message-composer{display:flex;gap:10px;align-items:flex-end;}
+.message-composer textarea{flex:1;min-height:52px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;padding:12px 14px;outline:none;resize:vertical;}
+.message-composer textarea:focus{border-color:var(--accent);}
+
 /* PHOTO GRID */
 .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
 .photo-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
@@ -178,14 +195,6 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .hex-text-input:focus{border-color:var(--accent);}
 .label-text-input{background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:14.5px;padding:9px 11px;flex:1;min-width:120px;outline:none;}
 .label-text-input:focus{border-color:var(--accent);}
-
-.harmony-block{margin-top:10px;}
-.harmony-group{margin-bottom:20px;}
-.harmony-title{font-size:14px;color:var(--muted);margin-bottom:8px;}
-.harmony-row{display:flex;gap:8px;flex-wrap:wrap;}
-.harmony-swatch{width:64px;text-align:center;}
-.harmony-swatch .box{width:64px;height:48px;border-radius:6px;border:1px solid var(--border);cursor:pointer;}
-.harmony-swatch .hex{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--muted);margin-top:4px;}
 
 /* SHOPPING LIST */
 .shop-summary{display:flex;gap:20px;margin-bottom:18px;flex-wrap:wrap;}
@@ -309,7 +318,6 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
     <span id="role-badge"></span>
     <div id="header-context-label"></div>
     <div class="header-right">
-      <button class="hdr-btn" id="confused-btn" style="display:none" onclick="openConfusionModal()">🤔 I'm Confused</button>
       <button class="hdr-btn" id="back-to-clients-btn" style="display:none" onclick="backToClients()">← All Clients</button>
       <button class="hdr-btn admin-only" onclick="openFindsLibrary()">🛋 Finds Library</button>
       <div class="room-select-wrap" id="room-select-wrap">
@@ -353,6 +361,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
       <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">🛒 Shopping List</button>
       <button class="tab" data-tab="inspo" onclick="switchTab('inspo',this)">📌 Inspo Board</button>
       <button class="tab" data-tab="finds" onclick="switchTab('finds',this)">🔎 Finds</button>
+      <button class="tab" data-tab="messages" onclick="switchTab('messages',this)">💬 Messages</button>
     </div>
 
     <div class="container">
@@ -364,11 +373,6 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
             <div class="ch-name" id="ch-name"></div>
             <div class="ch-meta" id="ch-meta"></div>
           </div>
-        </div>
-
-        <div id="confusion-flags-section" class="admin-only" style="display:none">
-          <div class="section-label" style="color:var(--red)">⚠️ Client Flagged Confusion</div>
-          <div id="confusion-flags-list"></div>
         </div>
 
         <div class="section-label">Inspiration Highlights</div>
@@ -395,6 +399,15 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 
       <!-- GALLERY + PALETTE PANEL -->
       <div class="panel" id="panel-gallery">
+        <div class="section-label">Room Palette</div>
+        <div class="add-color-form admin-only">
+          <input type="color" class="color-input-native" id="palette-color-native" value="#d4a574" oninput="document.getElementById('palette-color-hex').value=this.value">
+          <input type="text" class="hex-text-input" id="palette-color-hex" value="#D4A574" oninput="syncNativeFromHex(this.value)">
+          <input type="text" class="label-text-input" id="palette-color-label" placeholder="Label (e.g. Wall — Warm Sand)">
+          <button class="btn btn-primary" style="flex:0 0 auto;padding:9px 16px" onclick="addPaletteColor()">Add Color</button>
+        </div>
+        <div id="palette-strip" class="palette-strip"></div>
+
         <div class="section-label">Before Photos</div>
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn primary" onclick="openUploadModal('before')">+ Upload Before Photo</button></div>
         <div id="before-grid" class="photo-grid"></div>
@@ -406,23 +419,6 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <div class="section-label">Renderings</div>
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn primary" onclick="openUploadModal('rendering')">+ Upload Rendering</button></div>
         <div id="rendering-list"></div>
-
-        <div class="section-label">Room Palette</div>
-        <div class="add-color-form admin-only">
-          <input type="color" class="color-input-native" id="palette-color-native" value="#d4a574" oninput="document.getElementById('palette-color-hex').value=this.value">
-          <input type="text" class="hex-text-input" id="palette-color-hex" value="#D4A574" oninput="syncNativeFromHex(this.value)">
-          <input type="text" class="label-text-input" id="palette-color-label" placeholder="Label (e.g. Wall — Warm Sand)">
-          <button class="btn btn-primary" style="flex:0 0 auto;padding:9px 16px" onclick="addPaletteColor()">Add Color</button>
-        </div>
-        <div id="palette-strip" class="palette-strip"></div>
-
-        <div class="section-label">Color Harmony Assistant</div>
-        <div class="add-color-form">
-          <input type="color" class="color-input-native" id="harmony-color-native" value="#d4a574" oninput="document.getElementById('harmony-color-hex').value=this.value;generateHarmony(this.value)">
-          <input type="text" class="hex-text-input" id="harmony-color-hex" value="#D4A574" oninput="generateHarmony(this.value)">
-          <span style="font-size:12px;color:var(--muted)">Pick a base color to generate a full scheme</span>
-        </div>
-        <div id="harmony-output" class="harmony-block"></div>
       </div>
 
       <!-- SELECTIONS PANEL (wallpaper, carpet, lighting, etc.) -->
@@ -448,6 +444,17 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
       <div class="panel" id="panel-finds">
         <div class="section-label">Finds Sent to You</div>
         <div id="client-finds-grid" class="photo-grid"></div>
+      </div>
+
+      <!-- MESSAGES -->
+      <div class="panel" id="panel-messages">
+        <div class="section-label">Messages</div>
+        <div id="messages-thread" class="messages-thread"></div>
+        <div class="message-composer">
+          <textarea id="input-message-body" placeholder="Type a message..."></textarea>
+          <button class="btn btn-primary" style="width:auto;flex:0 0 auto;padding:14px 20px" onclick="sendMessage()">Send</button>
+        </div>
+        <div class="admin-only field" style="margin-top:8px"><label>Attach Image (optional — client can like/dislike it)</label><input type="file" id="input-message-image" accept="image/*"/></div>
       </div>
 
     </div>
@@ -623,18 +630,6 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   </div>
 </div>
 
-<!-- CONFUSION FLAG MODAL -->
-<div class="modal-overlay" id="confusion-modal-overlay">
-  <div class="modal">
-    <h2>Let Your Designer Know</h2>
-    <div class="pw-sub" style="text-align:left;margin-bottom:14px">This lets your designer know something on this screen was confusing — totally fine to leave it blank.</div>
-    <div class="field"><label>What's confusing? (optional)</label><textarea id="input-confusion-note" placeholder="e.g. Not sure what this tab is for..."></textarea></div>
-    <div class="modal-actions">
-      <button class="btn btn-ghost" onclick="closeModal('confusion-modal-overlay')">Cancel</button>
-      <button class="btn btn-primary" onclick="submitConfusionFlag()">Send</button>
-    </div>
-  </div>
-</div>
 
 <!-- TIME ENTRY MODAL -->
 <div class="modal-overlay" id="time-modal-overlay">
@@ -950,14 +945,12 @@ async function routeAfterAuth() {
   document.querySelectorAll('.admin-only').forEach(el=>el.style.display = isAdmin?'':'none');
 
   const roleBadge = document.getElementById('role-badge');
-  const confusedBtn = document.getElementById('confused-btn');
 
   const last = loadLastView();
 
   if (isAdmin) {
     roleBadge.textContent = '🎨 Designer';
     roleBadge.className = 'role-admin';
-    confusedBtn.style.display = 'none';
     document.getElementById('clients-view').style.display='block';
     document.getElementById('workspace-view').style.display='none';
     document.getElementById('header-context-label').textContent='Clients';
@@ -980,7 +973,6 @@ async function routeAfterAuth() {
     const {data: myClient} = await sb.from('clients').select('name').eq('id',profile.client_id).maybeSingle();
     roleBadge.textContent = `🏡 ${myClient?.name ? myClient.name + "'s" : 'Your'} Home`;
     roleBadge.className = 'role-client';
-    confusedBtn.style.display = 'inline-block';
     document.getElementById('clients-view').style.display='none';
     document.getElementById('workspace-view').style.display='block';
     document.getElementById('header-context-label').textContent='Your Project';
@@ -1000,9 +992,10 @@ async function loadClients() {
   const {data:codeRows} = await sb.from('client_access_codes').select('*');
   const codeMap = {};
   (codeRows||[]).forEach(r=>{ codeMap[r.client_id] = r.code; });
-  const {data:flagRows} = await sb.from('confusion_flags').select('client_id').eq('resolved',false);
-  const flaggedSet = new Set((flagRows||[]).map(r=>r.client_id));
-  clientsList = (clientRows||[]).map(c=>({...c, accessCode: codeMap[c.id]||null, hasConfusionFlags: flaggedSet.has(c.id)}));
+  const {data:msgRows} = await sb.from('messages').select('client_id').eq('from_client',true).eq('read_by_admin',false);
+  const unreadCounts = {};
+  (msgRows||[]).forEach(m=>{ unreadCounts[m.client_id] = (unreadCounts[m.client_id]||0)+1; });
+  clientsList = (clientRows||[]).map(c=>({...c, accessCode: codeMap[c.id]||null, unreadMessages: unreadCounts[c.id]||0}));
   renderClients();
 }
 
@@ -1023,9 +1016,9 @@ function renderClients() {
   grid.innerHTML = clientsList.map(c=>`
     <div class="client-card" style="${clientCardStyle(c)}">
       ${c.cover_photo_url?`<img class="client-cover" src="${c.cover_photo_url}" alt=""/>`:''}
-      <div class="cname">${escHtml(c.name)}${c.hasConfusionFlags?' ⚠️':''}</div>
+      <div class="cname">${escHtml(c.name)}</div>
       <span class="client-badge ${c.accessCode?'linked':'pending'}">${c.accessCode?`🔑 ${c.accessCode}`:'No Code Yet'}</span>
-      ${c.hasConfusionFlags?`<span class="client-badge pending" style="background:rgba(225,122,107,0.15);color:var(--red)">⚠️ Needs Attention</span>`:''}
+      ${c.unreadMessages?`<span class="client-badge pending" style="background:rgba(212,165,122,0.2);color:var(--accent)">💬 ${c.unreadMessages} new</span>`:''}
       ${c.address?`<div class="caddress">📍 ${escHtml(c.address)}</div>`:''}
       <div class="client-card-actions">
         <button class="hdr-btn primary" onclick="openClient('${c.id}')">Open →</button>
@@ -1216,7 +1209,9 @@ async function loadWorkspace(clientId) {
   renderClientHome();
   await loadClientFinds();
   renderClientFinds();
-  if (isAdmin) { await loadTimeEntries(); renderTimeLog(); await loadConfusionFlags(); renderConfusionFlags(); }
+  await loadMessages();
+  renderMessages();
+  if (isAdmin) { await loadTimeEntries(); renderTimeLog(); }
 }
 
 // ── TIME TRACKING (admin-only, per client) ──
@@ -1351,54 +1346,89 @@ function renderTimeLog() {
     </div>`).join('');
 }
 
-// ── CONFUSION FLAGS (clients flag confusing screens, designer sees them) ──
-let confusionFlags = [];
+// ── MESSAGES (chat thread per client, with like/dislike on posts) ──
+let messages = [];
+let messageReactions = [];
 
-function openConfusionModal() {
-  if (isAdmin) return;
-  document.getElementById('input-confusion-note').value = '';
-  document.getElementById('confusion-modal-overlay').classList.add('open');
+async function loadMessages() {
+  if (!activeClientId) { messages=[]; messageReactions=[]; return; }
+  const {data, error} = await sb.from('messages').select('*').eq('client_id',activeClientId).order('created_at',{ascending:true});
+  if (error) { showToast('Error loading messages ✗'); return; }
+  messages = data || [];
+  const {data:reactions} = await sb.from('message_reactions').select('*').eq('client_id',activeClientId);
+  messageReactions = reactions || [];
+  if (isAdmin) {
+    const hasUnread = messages.some(m=>m.from_client && !m.read_by_admin);
+    if (hasUnread) {
+      await sb.from('messages').update({read_by_admin:true}).eq('client_id',activeClientId).eq('from_client',true).eq('read_by_admin',false);
+      messages.forEach(m=>{ if (m.from_client) m.read_by_admin = true; });
+    }
+  }
 }
 
-async function submitConfusionFlag() {
-  const note = document.getElementById('input-confusion-note').value.trim() || null;
-  const {error} = await sb.from('confusion_flags').insert({client_id: activeClientId, tab: currentTabName, note});
+async function sendMessage() {
+  const bodyEl = document.getElementById('input-message-body');
+  const body = bodyEl.value.trim();
+  const fileInput = document.getElementById('input-message-image');
+  const file = isAdmin && fileInput ? fileInput.files[0] : null;
+  if (!body && !file) { showToast('Type a message or attach an image'); return; }
+
+  let image_url = null;
+  if (file) {
+    const path = `messages/${activeClientId}/${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;
+    const {error: upErr} = await sb.storage.from(STORAGE_BUCKET).upload(path, file, {cacheControl:'3600', upsert:false});
+    if (upErr) { showToast('Image upload failed ✗'); return; }
+    const {data:pub} = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+    image_url = pub.publicUrl;
+  }
+
+  const {error} = await sb.from('messages').insert({
+    client_id: activeClientId, sender_id: currentUser.id, from_client: !isAdmin,
+    body: body||null, image_url, read_by_admin: isAdmin
+  });
   if (error) { showToast('Error sending ✗'); return; }
-  closeModal('confusion-modal-overlay');
-  showToast("Sent — your designer will see this ✓");
+  bodyEl.value = '';
+  if (fileInput) fileInput.value = '';
+  await loadMessages();
+  renderMessages();
 }
 
-async function loadConfusionFlags() {
-  if (!activeClientId) { confusionFlags=[]; return; }
-  const {data, error} = await sb.from('confusion_flags').select('*').eq('client_id',activeClientId).eq('resolved',false).order('created_at',{ascending:false});
-  if (error) { showToast('Error loading flags ✗'); return; }
-  confusionFlags = data || [];
+async function reactToMessage(messageId, reaction) {
+  if (isAdmin) return;
+  const existing = messageReactions.find(r=>r.message_id===messageId);
+  if (existing && existing.reaction===reaction) {
+    await sb.from('message_reactions').delete().eq('id',existing.id);
+  } else if (existing) {
+    await sb.from('message_reactions').update({reaction}).eq('id',existing.id);
+  } else {
+    await sb.from('message_reactions').insert({message_id:messageId, client_id:activeClientId, reaction});
+  }
+  await loadMessages();
+  renderMessages();
 }
 
-async function resolveConfusionFlag(id) {
-  if (!isAdmin) return;
-  await sb.from('confusion_flags').update({resolved:true}).eq('id',id);
-  await loadConfusionFlags();
-  renderConfusionFlags();
-}
-
-const TAB_LABELS = {home:'Home', gallery:'Design', wallpaper:'Selections', shop:'Shopping List', inspo:'Inspo Board', finds:'Finds'};
-
-function renderConfusionFlags() {
-  const el = document.getElementById('confusion-flags-list');
+function renderMessages() {
+  const el = document.getElementById('messages-thread');
   if (!el) return;
-  const wrap = document.getElementById('confusion-flags-section');
-  if (!confusionFlags.length) { if (wrap) wrap.style.display='none'; return; }
-  if (wrap) wrap.style.display='block';
-  el.innerHTML = confusionFlags.map(f=>`
-    <div class="time-entry-row" style="border-color:rgba(225,122,107,0.4)">
-      <span class="te-date">${new Date(f.created_at).toLocaleDateString()}</span>
-      <span class="te-dur" style="color:var(--red)">${escHtml(TAB_LABELS[f.tab]||f.tab||'—')}</span>
-      <span class="te-note">${escHtml(f.note||'No note left')}</span>
-      <div class="te-actions">
-        <button class="comment-count-btn" onclick="resolveConfusionFlag('${f.id}')">✓ Resolve</button>
+  if (!messages.length) { el.innerHTML = `<div class="empty-state">No messages yet. Say hello!</div>`; return; }
+  el.innerHTML = messages.map(m=>{
+    const mine = m.sender_id === currentUser.id;
+    const label = mine ? 'You' : (m.from_client ? 'Client' : 'Designer');
+    const reaction = messageReactions.find(r=>r.message_id===m.id);
+    const canReact = !isAdmin && !m.from_client;
+    return `<div class="msg-row ${m.from_client?'from-client':'from-admin'}">
+      <div class="msg-bubble">
+        ${m.body?`<div>${escHtml(m.body)}</div>`:''}
+        ${m.image_url?`<img src="${m.image_url}" alt=""/>`:''}
       </div>
-    </div>`).join('');
+      <div class="msg-meta">${label} · ${new Date(m.created_at).toLocaleString()}</div>
+      ${canReact?`<div class="msg-reactions">
+        <button class="msg-react-btn ${reaction?.reaction==='like'?'active-like':''}" onclick="reactToMessage('${m.id}','like')">👍 Like</button>
+        <button class="msg-react-btn ${reaction?.reaction==='dislike'?'active-dislike':''}" onclick="reactToMessage('${m.id}','dislike')">👎 Dislike</button>
+      </div>`:(reaction?`<div class="msg-reactions"><span class="msg-react-btn ${reaction.reaction==='like'?'active-like':'active-dislike'}">${reaction.reaction==='like'?'👍 Liked':'👎 Disliked'}</span></div>`:'')}
+    </div>`;
+  }).join('');
+  el.scrollTop = el.scrollHeight;
 }
 
 // ── CLIENT HOME ──
@@ -1886,35 +1916,6 @@ async function removePaletteColor(id) {
   await sb.from('apt_palette').delete().eq('id',id);
   await loadPalette();
   renderPalette();
-}
-
-function generateHarmony(hex) {
-  if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) return;
-  const [h,s,l] = hexToHsl(hex);
-  const groups = [
-    ['Complementary', [h, h+180]],
-    ['Analogous', [h-30, h, h+30]],
-    ['Triadic', [h, h+120, h+240]],
-    ['Monochromatic', [ [h,s,Math.min(90,l+30)], [h,s,Math.min(85,l+15)], [h,s,l], [h,s,Math.max(15,l-15)], [h,s,Math.max(10,l-30)] ]],
-  ];
-  const out = groups.map(([title, vals])=>{
-    let swatches;
-    if (title==='Monochromatic') {
-      swatches = vals.map(([hh,ss,ll])=>hslToHex(hh,ss,ll));
-    } else {
-      swatches = vals.map(hh=>hslToHex(hh,s,l));
-    }
-    return `<div class="harmony-group">
-      <div class="harmony-title">${title}</div>
-      <div class="harmony-row">
-        ${swatches.map(hx=>`<div class="harmony-swatch">
-          <div class="box" style="background:${hx}" title="Click to copy" onclick="copyHex('${hx}')"></div>
-          <div class="hex">${hx}</div>
-        </div>`).join('')}
-      </div>
-    </div>`;
-  }).join('');
-  document.getElementById('harmony-output').innerHTML = out;
 }
 
 function copyHex(hex) {
@@ -2491,7 +2492,8 @@ function switchTab(tab, btn) {
   if (tab==='shop') { loadShoppingList().then(renderShop); }
   if (tab==='inspo') { loadInspo().then(renderInspo); }
   if (tab==='wallpaper') { loadWallpaper().then(renderWallpaper); }
-  if (tab==='home') { loadClientHomeData().then(renderClientHome); if (isAdmin) { loadTimeEntries().then(renderTimeLog); loadConfusionFlags().then(renderConfusionFlags); } }
+  if (tab==='home') { loadClientHomeData().then(renderClientHome); if (isAdmin) { loadTimeEntries().then(renderTimeLog); } }
+  if (tab==='messages') { loadMessages().then(renderMessages); }
   if (tab==='finds') { loadClientFinds().then(renderClientFinds); }
   saveLastView();
 }
@@ -2507,9 +2509,6 @@ document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('cli
 document.getElementById('auth-password').addEventListener('keydown',e=>{if(e.key==='Enter'){authMode==='signin'?handleSignIn():handleSignUp();}});
 document.getElementById('auth-code').addEventListener('keydown',e=>{if(e.key==='Enter'){handleAccessCode();}});
 setAuthMode('code');
-
-// generate an initial harmony preview
-generateHarmony('#D4A574');
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
