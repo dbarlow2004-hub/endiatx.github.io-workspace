@@ -50,6 +50,9 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .logo{font-family:'Space Mono',monospace;font-size:14.5px;letter-spacing:0.14em;color:var(--accent);text-transform:uppercase;}
 .logo span{color:var(--muted);}
 #header-context-label{font-family:'Space Mono',monospace;font-size:13px;color:var(--muted);letter-spacing:0.05em;}
+#role-badge{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:6px 14px;border-radius:20px;white-space:nowrap;}
+#role-badge.role-admin{background:rgba(212,165,122,0.18);color:var(--accent);border:1px solid rgba(212,165,122,0.4);}
+#role-badge.role-client{background:rgba(143,168,136,0.18);color:var(--sage);border:1px solid rgba(143,168,136,0.4);}
 .header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .room-select-wrap{display:none;align-items:center;gap:8px;}
 #room-select{background:var(--surface);border:1px solid var(--border);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14.5px;padding:9px 12px;border-radius:8px;outline:none;}
@@ -303,8 +306,10 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 <div id="app">
   <header>
     <div class="logo">Apartment <span>/ Design Studio</span></div>
+    <span id="role-badge"></span>
     <div id="header-context-label"></div>
     <div class="header-right">
+      <button class="hdr-btn" id="confused-btn" style="display:none" onclick="openConfusionModal()">🤔 I'm Confused</button>
       <button class="hdr-btn" id="back-to-clients-btn" style="display:none" onclick="backToClients()">← All Clients</button>
       <button class="hdr-btn admin-only" onclick="openFindsLibrary()">🛋 Finds Library</button>
       <div class="room-select-wrap" id="room-select-wrap">
@@ -359,6 +364,11 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
             <div class="ch-name" id="ch-name"></div>
             <div class="ch-meta" id="ch-meta"></div>
           </div>
+        </div>
+
+        <div id="confusion-flags-section" class="admin-only" style="display:none">
+          <div class="section-label" style="color:var(--red)">⚠️ Client Flagged Confusion</div>
+          <div id="confusion-flags-list"></div>
         </div>
 
         <div class="section-label">Inspiration Highlights</div>
@@ -609,6 +619,19 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('inspo-edit-modal-overlay')">Cancel</button>
       <button class="btn btn-primary" onclick="submitInspoEdit()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFUSION FLAG MODAL -->
+<div class="modal-overlay" id="confusion-modal-overlay">
+  <div class="modal">
+    <h2>Let Your Designer Know</h2>
+    <div class="pw-sub" style="text-align:left;margin-bottom:14px">This lets your designer know something on this screen was confusing — totally fine to leave it blank.</div>
+    <div class="field"><label>What's confusing? (optional)</label><textarea id="input-confusion-note" placeholder="e.g. Not sure what this tab is for..."></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('confusion-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" onclick="submitConfusionFlag()">Send</button>
     </div>
   </div>
 </div>
@@ -926,9 +949,15 @@ async function routeAfterAuth() {
   document.getElementById('app').style.display='flex';
   document.querySelectorAll('.admin-only').forEach(el=>el.style.display = isAdmin?'':'none');
 
+  const roleBadge = document.getElementById('role-badge');
+  const confusedBtn = document.getElementById('confused-btn');
+
   const last = loadLastView();
 
   if (isAdmin) {
+    roleBadge.textContent = '🎨 Designer';
+    roleBadge.className = 'role-admin';
+    confusedBtn.style.display = 'none';
     document.getElementById('clients-view').style.display='block';
     document.getElementById('workspace-view').style.display='none';
     document.getElementById('header-context-label').textContent='Clients';
@@ -948,6 +977,10 @@ async function routeAfterAuth() {
       document.getElementById('no-client-view').style.display='flex';
       return;
     }
+    const {data: myClient} = await sb.from('clients').select('name').eq('id',profile.client_id).maybeSingle();
+    roleBadge.textContent = `🏡 ${myClient?.name ? myClient.name + "'s" : 'Your'} Home`;
+    roleBadge.className = 'role-client';
+    confusedBtn.style.display = 'inline-block';
     document.getElementById('clients-view').style.display='none';
     document.getElementById('workspace-view').style.display='block';
     document.getElementById('header-context-label').textContent='Your Project';
@@ -967,7 +1000,9 @@ async function loadClients() {
   const {data:codeRows} = await sb.from('client_access_codes').select('*');
   const codeMap = {};
   (codeRows||[]).forEach(r=>{ codeMap[r.client_id] = r.code; });
-  clientsList = (clientRows||[]).map(c=>({...c, accessCode: codeMap[c.id]||null}));
+  const {data:flagRows} = await sb.from('confusion_flags').select('client_id').eq('resolved',false);
+  const flaggedSet = new Set((flagRows||[]).map(r=>r.client_id));
+  clientsList = (clientRows||[]).map(c=>({...c, accessCode: codeMap[c.id]||null, hasConfusionFlags: flaggedSet.has(c.id)}));
   renderClients();
 }
 
@@ -988,8 +1023,9 @@ function renderClients() {
   grid.innerHTML = clientsList.map(c=>`
     <div class="client-card" style="${clientCardStyle(c)}">
       ${c.cover_photo_url?`<img class="client-cover" src="${c.cover_photo_url}" alt=""/>`:''}
-      <div class="cname">${escHtml(c.name)}</div>
+      <div class="cname">${escHtml(c.name)}${c.hasConfusionFlags?' ⚠️':''}</div>
       <span class="client-badge ${c.accessCode?'linked':'pending'}">${c.accessCode?`🔑 ${c.accessCode}`:'No Code Yet'}</span>
+      ${c.hasConfusionFlags?`<span class="client-badge pending" style="background:rgba(225,122,107,0.15);color:var(--red)">⚠️ Needs Attention</span>`:''}
       ${c.address?`<div class="caddress">📍 ${escHtml(c.address)}</div>`:''}
       <div class="client-card-actions">
         <button class="hdr-btn primary" onclick="openClient('${c.id}')">Open →</button>
@@ -1180,7 +1216,7 @@ async function loadWorkspace(clientId) {
   renderClientHome();
   await loadClientFinds();
   renderClientFinds();
-  if (isAdmin) { await loadTimeEntries(); renderTimeLog(); }
+  if (isAdmin) { await loadTimeEntries(); renderTimeLog(); await loadConfusionFlags(); renderConfusionFlags(); }
 }
 
 // ── TIME TRACKING (admin-only, per client) ──
@@ -1311,6 +1347,56 @@ function renderTimeLog() {
       <div class="te-actions">
         <button class="comment-count-btn" onclick="openTimeModal('${e.id}')">✎</button>
         <button class="comment-count-btn" onclick="deleteTimeEntry('${e.id}')">✕</button>
+      </div>
+    </div>`).join('');
+}
+
+// ── CONFUSION FLAGS (clients flag confusing screens, designer sees them) ──
+let confusionFlags = [];
+
+function openConfusionModal() {
+  if (isAdmin) return;
+  document.getElementById('input-confusion-note').value = '';
+  document.getElementById('confusion-modal-overlay').classList.add('open');
+}
+
+async function submitConfusionFlag() {
+  const note = document.getElementById('input-confusion-note').value.trim() || null;
+  const {error} = await sb.from('confusion_flags').insert({client_id: activeClientId, tab: currentTabName, note});
+  if (error) { showToast('Error sending ✗'); return; }
+  closeModal('confusion-modal-overlay');
+  showToast("Sent — your designer will see this ✓");
+}
+
+async function loadConfusionFlags() {
+  if (!activeClientId) { confusionFlags=[]; return; }
+  const {data, error} = await sb.from('confusion_flags').select('*').eq('client_id',activeClientId).eq('resolved',false).order('created_at',{ascending:false});
+  if (error) { showToast('Error loading flags ✗'); return; }
+  confusionFlags = data || [];
+}
+
+async function resolveConfusionFlag(id) {
+  if (!isAdmin) return;
+  await sb.from('confusion_flags').update({resolved:true}).eq('id',id);
+  await loadConfusionFlags();
+  renderConfusionFlags();
+}
+
+const TAB_LABELS = {home:'Home', gallery:'Design', wallpaper:'Selections', shop:'Shopping List', inspo:'Inspo Board', finds:'Finds'};
+
+function renderConfusionFlags() {
+  const el = document.getElementById('confusion-flags-list');
+  if (!el) return;
+  const wrap = document.getElementById('confusion-flags-section');
+  if (!confusionFlags.length) { if (wrap) wrap.style.display='none'; return; }
+  if (wrap) wrap.style.display='block';
+  el.innerHTML = confusionFlags.map(f=>`
+    <div class="time-entry-row" style="border-color:rgba(225,122,107,0.4)">
+      <span class="te-date">${new Date(f.created_at).toLocaleDateString()}</span>
+      <span class="te-dur" style="color:var(--red)">${escHtml(TAB_LABELS[f.tab]||f.tab||'—')}</span>
+      <span class="te-note">${escHtml(f.note||'No note left')}</span>
+      <div class="te-actions">
+        <button class="comment-count-btn" onclick="resolveConfusionFlag('${f.id}')">✓ Resolve</button>
       </div>
     </div>`).join('');
 }
@@ -2405,7 +2491,7 @@ function switchTab(tab, btn) {
   if (tab==='shop') { loadShoppingList().then(renderShop); }
   if (tab==='inspo') { loadInspo().then(renderInspo); }
   if (tab==='wallpaper') { loadWallpaper().then(renderWallpaper); }
-  if (tab==='home') { loadClientHomeData().then(renderClientHome); if (isAdmin) { loadTimeEntries().then(renderTimeLog); } }
+  if (tab==='home') { loadClientHomeData().then(renderClientHome); if (isAdmin) { loadTimeEntries().then(renderTimeLog); loadConfusionFlags().then(renderConfusionFlags); } }
   if (tab==='finds') { loadClientFinds().then(renderClientFinds); }
   saveLastView();
 }
