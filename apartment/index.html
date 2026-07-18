@@ -114,6 +114,9 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .time-entry-row .te-dur{font-family:'Space Mono',monospace;color:var(--accent);width:80px;flex-shrink:0;}
 .time-entry-row .te-note{flex:1;color:var(--text);min-width:100px;}
 .time-entry-row .te-actions{display:flex;gap:4px;flex-shrink:0;}
+.track-indicator{font-family:'Space Mono',monospace;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;padding:2px 9px;border-radius:10px;vertical-align:middle;}
+.track-indicator.active{color:var(--sage);background:rgba(143,168,136,0.15);}
+.track-indicator.idle{color:var(--muted);background:rgba(255,255,255,0.05);}
 
 /* MESSAGES */
 .messages-thread{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;max-height:520px;overflow-y:auto;padding:6px 2px;}
@@ -328,7 +331,6 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <button class="hdr-btn" onclick="openRoomModal(true)">✎ Rename</button>
         <button class="hdr-btn danger" onclick="deleteCurrentRoom()">🗑 Delete Room</button>
       </div>
-      <button class="hdr-btn admin-only" id="timer-btn" style="display:none" onclick="toggleTimer()">⏱ Start Timer</button>
       <span class="hdr-btn" id="readonly-badge" style="display:none;cursor:default">👁 View Only</span>
       <button class="hdr-btn" id="signout-btn" onclick="handleSignOut()">Sign Out</button>
     </div>
@@ -385,10 +387,10 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn primary" onclick="openRoomModal()">+ Room</button></div>
         <div id="ch-rooms-grid" class="rooms-grid"></div>
 
-        <div class="section-label admin-only">Hours Logged</div>
+        <div class="section-label admin-only">Hours Logged <span id="auto-track-indicator" class="track-indicator"></span> <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">— private to you, tracked automatically while you work</span></div>
         <div class="admin-only" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
           <span id="time-log-total" style="font-family:'Space Mono',monospace;color:var(--accent);font-size:16px;font-weight:700"></span>
-          <button class="hdr-btn primary" onclick="openTimeModal()">+ Add Entry</button>
+          <button class="hdr-btn" onclick="openTimeModal()">✎ Adjust Manually</button>
         </div>
         <div id="time-log-list" class="admin-only"></div>
 
@@ -740,10 +742,12 @@ let activeCommentTarget = null;
 let finds = [];
 let timeEntries = [];
 let editingTimeEntryId = null;
-let timerRunning = false;
-let timerEntryId = null;
-let timerStartedAt = null;
-let timerInterval = null;
+let autoTrackClientId = null;
+let autoTrackEntryId = null;
+let autoTrackHeartbeat = null;
+let lastActivityAt = 0;
+const AUTO_TRACK_IDLE_MS = 90000;
+const AUTO_TRACK_HEARTBEAT_MS = 20000;
 let editingFindId = null;
 let clientFindSends = [];
 
@@ -886,6 +890,7 @@ async function handleSignUp() {
 }
 
 async function handleSignOut() {
+  stopAutoTrack();
   await sb.auth.signOut();
   location.reload();
 }
@@ -1158,16 +1163,15 @@ async function openClient(id) {
   document.getElementById('back-to-clients-btn').style.display='inline-block';
   document.getElementById('room-select-wrap').style.display='flex';
   document.getElementById('workspace-header-controls').style.display='flex';
-  document.getElementById('timer-btn').style.display = isAdmin ? 'inline-block' : 'none';
   document.getElementById('readonly-badge').style.display='none';
   document.getElementById('header-context-label').textContent = client?.name||'';
   await loadWorkspace(id);
-  await checkRunningTimer();
+  if (isAdmin) startAutoTrack(id);
   saveLastView();
 }
 
 async function backToClients() {
-  await stopTimerIfRunning();
+  stopAutoTrack();
   activeClientId = null;
   currentRoomId = null;
   hideAllTopViews();
@@ -1175,7 +1179,6 @@ async function backToClients() {
   document.getElementById('back-to-clients-btn').style.display='none';
   document.getElementById('room-select-wrap').style.display='none';
   document.getElementById('workspace-header-controls').style.display='none';
-  document.getElementById('timer-btn').style.display='none';
   document.getElementById('header-context-label').textContent='Clients';
   loadClients();
   saveLastView();
@@ -1183,14 +1186,13 @@ async function backToClients() {
 
 async function openFindsLibrary() {
   if (!isAdmin) return;
-  await stopTimerIfRunning();
+  stopAutoTrack();
   activeClientId = null;
   hideAllTopViews();
   document.getElementById('finds-library-view').style.display='block';
   document.getElementById('back-to-clients-btn').style.display='inline-block';
   document.getElementById('room-select-wrap').style.display='none';
   document.getElementById('workspace-header-controls').style.display='none';
-  document.getElementById('timer-btn').style.display='none';
   document.getElementById('readonly-badge').style.display='none';
   document.getElementById('header-context-label').textContent='Finds Library';
   await loadFinds();
@@ -1214,62 +1216,57 @@ async function loadWorkspace(clientId) {
   if (isAdmin) { await loadTimeEntries(); renderTimeLog(); }
 }
 
-// ── TIME TRACKING (admin-only, per client) ──
-async function toggleTimer() {
-  if (!isAdmin || !activeClientId) return;
-  const btn = document.getElementById('timer-btn');
-  if (!timerRunning) {
-    // only one running session at a time — stop any other client's running timer first
-    await sb.from('time_entries').update({ended_at: new Date().toISOString()}).is('ended_at', null).neq('client_id', activeClientId);
-    const {data, error} = await sb.from('time_entries').insert({client_id: activeClientId, started_at: new Date().toISOString()}).select().single();
-    if (error) { showToast('Error starting timer ✗'); return; }
-    timerEntryId = data.id;
-    timerStartedAt = new Date(data.started_at);
-    timerRunning = true;
-    btn.classList.add('danger');
-    clearInterval(timerInterval);
-    timerInterval = setInterval(updateTimerDisplay, 1000);
-    updateTimerDisplay();
-  } else {
-    await stopTimerIfRunning();
-    await loadTimeEntries();
-    renderTimeLog();
+// ── TIME TRACKING (admin-only, private — auto-logs while you're actually working) ──
+function startAutoTrack(clientId) {
+  stopAutoTrack();
+  if (!isAdmin) return;
+  autoTrackClientId = clientId;
+  lastActivityAt = Date.now();
+  autoTrackHeartbeat = setInterval(autoTrackTick, AUTO_TRACK_HEARTBEAT_MS);
+  autoTrackTick();
+}
+
+function stopAutoTrack() {
+  if (autoTrackHeartbeat) clearInterval(autoTrackHeartbeat);
+  autoTrackHeartbeat = null;
+  autoTrackEntryId = null;
+  autoTrackClientId = null;
+  updateTrackingIndicator(false);
+}
+
+async function autoTrackTick() {
+  const trackingFor = autoTrackClientId;
+  if (!isAdmin || !trackingFor) return;
+  const idleFor = Date.now() - lastActivityAt;
+  if (idleFor > AUTO_TRACK_IDLE_MS) {
+    autoTrackEntryId = null;
+    if (activeClientId === trackingFor) updateTrackingIndicator(false);
+    return;
   }
-}
-
-async function stopTimerIfRunning() {
-  if (!timerRunning || !timerEntryId) return;
-  clearInterval(timerInterval);
-  await sb.from('time_entries').update({ended_at: new Date().toISOString()}).eq('id', timerEntryId);
-  timerRunning = false; timerEntryId = null; timerStartedAt = null;
-  const btn = document.getElementById('timer-btn');
-  if (btn) { btn.classList.remove('danger'); btn.textContent = '⏱ Start Timer'; }
-}
-
-function updateTimerDisplay() {
-  if (!timerRunning || !timerStartedAt) return;
-  const secs = Math.floor((Date.now() - timerStartedAt.getTime())/1000);
-  const h = String(Math.floor(secs/3600)).padStart(2,'0');
-  const m = String(Math.floor((secs%3600)/60)).padStart(2,'0');
-  const s = String(secs%60).padStart(2,'0');
-  const btn = document.getElementById('timer-btn');
-  if (btn) btn.textContent = `⏱ ${h}:${m}:${s} Stop`;
-}
-
-async function checkRunningTimer() {
-  clearInterval(timerInterval);
-  if (!isAdmin || !activeClientId) return;
-  const {data} = await sb.from('time_entries').select('*').eq('client_id',activeClientId).is('ended_at',null).order('started_at',{ascending:false}).limit(1).maybeSingle();
-  const btn = document.getElementById('timer-btn');
-  if (data) {
-    timerRunning = true; timerEntryId = data.id; timerStartedAt = new Date(data.started_at);
-    if (btn) btn.classList.add('danger');
-    timerInterval = setInterval(updateTimerDisplay, 1000);
-    updateTimerDisplay();
+  if (activeClientId === trackingFor) updateTrackingIndicator(true);
+  const nowIso = new Date().toISOString();
+  if (!autoTrackEntryId) {
+    // resume a recently-paused auto session (short break) instead of fragmenting the log
+    const cutoff = new Date(Date.now() - 10*60000).toISOString();
+    const {data: recent} = await sb.from('time_entries').select('*').eq('client_id', trackingFor).eq('is_auto', true).gte('ended_at', cutoff).order('ended_at',{ascending:false}).limit(1).maybeSingle();
+    if (recent) {
+      autoTrackEntryId = recent.id;
+      await sb.from('time_entries').update({ended_at: nowIso}).eq('id', autoTrackEntryId);
+    } else {
+      const {data, error} = await sb.from('time_entries').insert({client_id: trackingFor, started_at: nowIso, ended_at: nowIso, is_auto: true}).select().single();
+      if (!error && data) autoTrackEntryId = data.id;
+    }
   } else {
-    timerRunning = false; timerEntryId = null; timerStartedAt = null;
-    if (btn) { btn.classList.remove('danger'); btn.textContent = '⏱ Start Timer'; }
+    await sb.from('time_entries').update({ended_at: nowIso}).eq('id', autoTrackEntryId);
   }
+  if (activeClientId === trackingFor && currentTabName === 'home') { await loadTimeEntries(); renderTimeLog(); }
+}
+
+function updateTrackingIndicator(active) {
+  const el = document.getElementById('auto-track-indicator');
+  if (!el) return;
+  el.textContent = active ? '● tracking' : '○ idle';
+  el.className = 'track-indicator ' + (active ? 'active' : 'idle');
 }
 
 async function loadTimeEntries() {
@@ -1305,7 +1302,7 @@ async function submitTimeEntry() {
   if (!dateVal || !hoursVal || hoursVal<=0) { showToast('Enter a date and hours worked'); return; }
   const started = new Date(dateVal + 'T12:00:00');
   const ended = new Date(started.getTime() + hoursVal*3600000);
-  const payload = {client_id: activeClientId, started_at: started.toISOString(), ended_at: ended.toISOString(), note};
+  const payload = {client_id: activeClientId, started_at: started.toISOString(), ended_at: ended.toISOString(), note, is_auto: false};
   let error;
   if (editingTimeEntryId) {
     ({error} = await sb.from('time_entries').update(payload).eq('id', editingTimeEntryId));
@@ -1338,7 +1335,7 @@ function renderTimeLog() {
     <div class="time-entry-row">
       <span class="te-date">${new Date(e.started_at).toLocaleDateString()}</span>
       <span class="te-dur">${formatDuration(e.started_at,e.ended_at)}</span>
-      <span class="te-note">${escHtml(e.note||'')}</span>
+      <span class="te-note">${escHtml(e.note||'') || (e.is_auto?'<span style="color:var(--muted)">Auto-tracked</span>':'')}</span>
       <div class="te-actions">
         <button class="comment-count-btn" onclick="openTimeModal('${e.id}')">✎</button>
         <button class="comment-count-btn" onclick="deleteTimeEntry('${e.id}')">✕</button>
@@ -2503,6 +2500,10 @@ function closeModal(id) { document.getElementById(id).classList.remove('open'); 
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function highlightErr(id){const el=document.getElementById(id);el.style.borderColor='var(--red)';el.focus();setTimeout(()=>el.style.borderColor='',1200);}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+
+['mousemove','mousedown','keydown','touchstart','scroll','wheel'].forEach(evt=>
+  document.addEventListener(evt, ()=>{ lastActivityAt = Date.now(); }, {passive:true})
+);
 
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));} });
 document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===e.currentTarget)el.classList.remove('open');}));
