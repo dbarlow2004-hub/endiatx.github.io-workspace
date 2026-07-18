@@ -255,18 +255,20 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 <div id="auth-screen">
   <div class="pw-card">
     <div class="pw-logo">Apartment Design Studio</div>
-    <div class="pw-title" id="auth-title">Sign In</div>
-    <div class="pw-sub" id="auth-sub">Sign in to your studio or client account</div>
+    <div class="pw-title" id="auth-title">Enter Your Access Code</div>
+    <div class="pw-sub" id="auth-sub">Your designer gave you a short code — enter it below</div>
 
-    <input class="pw-input" type="email" id="auth-email" placeholder="Email" autocomplete="email"/>
-    <input class="pw-input" type="password" id="auth-password" placeholder="Password" autocomplete="current-password"/>
+    <input class="pw-input" type="text" id="auth-code" placeholder="ACCESS CODE" style="text-align:center;letter-spacing:0.25em;text-transform:uppercase" autocomplete="off"/>
+    <input class="pw-input" type="email" id="auth-email" placeholder="Email" autocomplete="email" style="display:none"/>
+    <input class="pw-input" type="password" id="auth-password" placeholder="Password" autocomplete="current-password" style="display:none"/>
     <input class="pw-input" type="password" id="auth-password-confirm" placeholder="Confirm Password" autocomplete="new-password" style="display:none"/>
 
     <div class="pw-error" id="auth-error"></div>
     <div class="pw-info" id="auth-info"></div>
 
-    <button class="pw-btn" id="auth-submit-btn" onclick="handleSignIn()">Sign In →</button>
-    <div class="pw-link" id="auth-toggle-link" onclick="toggleAuthMode()">First time setting up your designer account? Create one →</div>
+    <button class="pw-btn" id="auth-submit-btn" onclick="handleAccessCode()">Enter Studio →</button>
+    <div class="pw-link" id="auth-toggle-link" onclick="setAuthMode('signin')">Designer? Sign in with email →</div>
+    <div class="pw-link" id="auth-toggle-link-2" style="display:none" onclick="setAuthMode('code')">← I have an access code instead</div>
   </div>
 </div>
 
@@ -274,7 +276,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 <div id="no-client-view">
   <div>
     <div class="pw-title">You're signed in, but not linked to a project yet</div>
-    <div class="pw-sub" style="margin-top:10px">Contact your designer — they'll need to send you a fresh invite link.</div>
+    <div class="pw-sub" style="margin-top:10px">Contact your designer — they'll need to give you a valid access code.</div>
     <button class="hdr-btn" style="margin-top:18px" onclick="handleSignOut()">Sign Out</button>
   </div>
 </div>
@@ -726,14 +728,36 @@ function hslToHex(h,s,l){h=((h%360)+360)%360;s/=100;l/=100;const c=(1-Math.abs(2
 function hexToHsl(hex){const [r,g,b]=hexToRgb(hex);return rgbToHsl(r,g,b);}
 
 // ── AUTH ──
-function toggleAuthMode() {
-  authMode = authMode==='signin' ? 'signup' : 'signin';
-  document.getElementById('auth-title').textContent = authMode==='signin'?'Sign In':'Create Designer Account';
-  document.getElementById('auth-sub').textContent = authMode==='signin'?'Sign in to your studio or client account':'This creates your admin login. Clients sign up via their private invite link instead.';
-  document.getElementById('auth-password-confirm').style.display = authMode==='signup'?'block':'none';
-  document.getElementById('auth-submit-btn').textContent = authMode==='signin'?'Sign In →':'Create Account →';
-  document.getElementById('auth-submit-btn').onclick = authMode==='signin'?handleSignIn:handleSignUp;
-  document.getElementById('auth-toggle-link').textContent = authMode==='signin'?'First time setting up your designer account? Create one →':'← Back to sign in';
+function setAuthMode(mode) {
+  authMode = mode;
+  document.getElementById('auth-code').style.display = mode==='code'?'block':'none';
+  document.getElementById('auth-email').style.display = mode==='code'?'none':'block';
+  document.getElementById('auth-password').style.display = mode==='code'?'none':'block';
+  document.getElementById('auth-password-confirm').style.display = mode==='signup'?'block':'none';
+  document.getElementById('auth-toggle-link-2').style.display = mode==='signin'?'block':'none';
+
+  if (mode==='code') {
+    document.getElementById('auth-title').textContent = 'Enter Your Access Code';
+    document.getElementById('auth-sub').textContent = 'Your designer gave you a short code — enter it below';
+    document.getElementById('auth-submit-btn').textContent = 'Enter Studio →';
+    document.getElementById('auth-submit-btn').onclick = handleAccessCode;
+    document.getElementById('auth-toggle-link').textContent = 'Designer? Sign in with email →';
+    document.getElementById('auth-toggle-link').onclick = () => setAuthMode('signin');
+  } else if (mode==='signin') {
+    document.getElementById('auth-title').textContent = 'Sign In';
+    document.getElementById('auth-sub').textContent = 'Sign in to your studio account';
+    document.getElementById('auth-submit-btn').textContent = 'Sign In →';
+    document.getElementById('auth-submit-btn').onclick = handleSignIn;
+    document.getElementById('auth-toggle-link').textContent = 'First time setting up your designer account? Create one →';
+    document.getElementById('auth-toggle-link').onclick = () => setAuthMode('signup');
+  } else if (mode==='signup') {
+    document.getElementById('auth-title').textContent = 'Create Designer Account';
+    document.getElementById('auth-sub').textContent = 'This creates your admin login. Clients use their access code instead.';
+    document.getElementById('auth-submit-btn').textContent = 'Create Account →';
+    document.getElementById('auth-submit-btn').onclick = handleSignUp;
+    document.getElementById('auth-toggle-link').textContent = '← Back to sign in';
+    document.getElementById('auth-toggle-link').onclick = () => setAuthMode('signin');
+  }
   document.getElementById('auth-error').style.display='none';
   document.getElementById('auth-info').style.display='none';
 }
@@ -755,6 +779,30 @@ async function handleSignIn() {
   if (!email || !password) { showAuthError('Enter your email and password'); return; }
   const {error} = await sb.auth.signInWithPassword({email,password});
   if (error) { showAuthError(error.message); return; }
+}
+
+async function handleAccessCode() {
+  const code = document.getElementById('auth-code').value.trim().toUpperCase();
+  if (!code) { showAuthError('Enter your access code'); return; }
+  const btn = document.getElementById('auth-submit-btn');
+  btn.textContent = 'Checking...'; btn.disabled = true;
+
+  await sb.auth.signOut();
+  const {error: signErr} = await sb.auth.signInAnonymously();
+  if (signErr) {
+    showAuthError('Could not connect — try again');
+    btn.textContent = 'Enter Studio →'; btn.disabled = false;
+    return;
+  }
+
+  const {data: redeemedClientId, error: rpcErr} = await sb.rpc('redeem_access_code', { p_code: code });
+  btn.textContent = 'Enter Studio →'; btn.disabled = false;
+  if (rpcErr || !redeemedClientId) {
+    await sb.auth.signOut();
+    showAuthError('Invalid access code — check with your designer');
+    return;
+  }
+  routeAfterAuth();
 }
 
 async function handleSignUp() {
@@ -870,9 +918,10 @@ async function routeAfterAuth() {
 async function loadClients() {
   const {data:clientRows, error} = await sb.from('clients').select('*').order('created_at',{ascending:true});
   if (error) { showToast('Error loading clients ✗'); return; }
-  const {data:profileRows} = await sb.from('profiles').select('client_id').eq('role','client');
-  const linkedSet = new Set((profileRows||[]).filter(p=>p.client_id).map(p=>p.client_id));
-  clientsList = (clientRows||[]).map(c=>({...c, linked: linkedSet.has(c.id)}));
+  const {data:codeRows} = await sb.from('client_access_codes').select('*');
+  const codeMap = {};
+  (codeRows||[]).forEach(r=>{ codeMap[r.client_id] = r.code; });
+  clientsList = (clientRows||[]).map(c=>({...c, accessCode: codeMap[c.id]||null}));
   renderClients();
 }
 
@@ -894,12 +943,13 @@ function renderClients() {
     <div class="client-card" style="${clientCardStyle(c)}">
       ${c.cover_photo_url?`<img class="client-cover" src="${c.cover_photo_url}" alt=""/>`:''}
       <div class="cname">${escHtml(c.name)}</div>
-      <span class="client-badge ${c.linked?'linked':'pending'}">${c.linked?'✓ Account Linked':'Invite Pending'}</span>
+      <span class="client-badge ${c.accessCode?'linked':'pending'}">${c.accessCode?`🔑 ${c.accessCode}`:'No Code Yet'}</span>
       ${c.address?`<div class="caddress">📍 ${escHtml(c.address)}</div>`:''}
       <div class="client-card-actions">
         <button class="hdr-btn" onclick="openClient('${c.id}')">Open →</button>
         <button class="hdr-btn" onclick="openClientEditModal('${c.id}')">✎ Edit</button>
-        <button class="hdr-btn" onclick="copyInviteLink('${c.id}')">Copy Invite Link</button>
+        <button class="hdr-btn" onclick="copyAccessCode('${c.id}')">🔑 Copy Code</button>
+        <button class="hdr-btn" onclick="regenerateAccessCode('${c.id}')">🔄 New Code</button>
         <button class="hdr-btn" onclick="deleteClientPrompt('${c.id}')">🗑 Delete</button>
       </div>
     </div>`).join('');
@@ -980,25 +1030,43 @@ async function deleteClientPrompt(id) {
   showToast('Client deleted');
 }
 
-async function copyInviteLink(clientId) {
-  const client = clientsList.find(c=>c.id===clientId);
-  const {data:existing} = await sb.from('client_invites').select('*').eq('client_id',clientId).eq('used',false).order('created_at',{ascending:false}).limit(1);
-  let code;
-  if (existing && existing.length) {
-    code = existing[0].code;
-  } else {
-    const newCode = crypto.randomUUID();
-    const {data,error} = await sb.from('client_invites').insert({client_id:clientId, code:newCode, client_name: client?.name||null}).select().single();
-    if (error) { showToast('Error creating invite ✗'); return; }
+function generateAccessCode() {
+  const alphabet = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no 0/O/1/I/L, avoids look-alike mistakes
+  let code = '';
+  for (let i=0;i<8;i++) code += alphabet[Math.floor(Math.random()*alphabet.length)];
+  return code;
+}
+
+async function copyAccessCode(clientId) {
+  let code = clientsList.find(c=>c.id===clientId)?.accessCode;
+  if (!code) {
+    code = generateAccessCode();
+    const {data,error} = await sb.from('client_access_codes').insert({client_id:clientId, code}).select().single();
+    if (error) { showToast('Error creating code ✗'); return; }
     code = data.code;
+    await loadClients();
   }
-  const base = location.pathname.replace(/index\.html$/,'');
-  const link = `${location.origin}${base}join.html?code=${code}`;
   try {
-    await navigator.clipboard.writeText(link);
-    showToast('Invite link copied ✓');
+    await navigator.clipboard.writeText(code);
+    showToast(`Access code copied: ${code}`);
   } catch(e) {
-    prompt('Copy this invite link:', link);
+    prompt('Client access code:', code);
+  }
+}
+
+async function regenerateAccessCode(clientId) {
+  const client = clientsList.find(c=>c.id===clientId);
+  if (client?.accessCode && !confirm(`Generate a new code for ${client.name}? Their old code (${client.accessCode}) will stop working immediately.`)) return;
+  const newCode = generateAccessCode();
+  await sb.from('client_access_codes').delete().eq('client_id',clientId);
+  const {data,error} = await sb.from('client_access_codes').insert({client_id:clientId, code:newCode}).select().single();
+  if (error) { showToast('Error creating code ✗'); return; }
+  await loadClients();
+  try {
+    await navigator.clipboard.writeText(data.code);
+    showToast(`New code copied: ${data.code}`);
+  } catch(e) {
+    prompt('New client access code:', data.code);
   }
 }
 
@@ -2166,6 +2234,8 @@ function showToast(msg){const t=document.getElementById('toast');t.textContent=m
 document.addEventListener('keydown',e=>{ if(e.key==='Escape'){document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));} });
 document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===e.currentTarget)el.classList.remove('open');}));
 document.getElementById('auth-password').addEventListener('keydown',e=>{if(e.key==='Enter'){authMode==='signin'?handleSignIn():handleSignUp();}});
+document.getElementById('auth-code').addEventListener('keydown',e=>{if(e.key==='Enter'){handleAccessCode();}});
+setAuthMode('code');
 
 // generate an initial harmony preview
 generateHarmony('#D4A574');
