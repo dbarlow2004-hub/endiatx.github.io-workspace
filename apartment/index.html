@@ -160,8 +160,8 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .tag-btn.active{background:var(--accent);color:#1a1410;border-color:var(--accent);}
 .tag-btn:hover:not(.active){color:var(--accent);border-color:var(--accent);}
 .spread-hero{position:relative;padding:18px;}
-.render-img-wrap{position:relative;cursor:crosshair;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.4);}
-.render-img-wrap.not-tagging{cursor:default;}
+.render-img-wrap{position:relative;cursor:crosshair;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.4);max-width:640px;margin:0 auto;}
+.render-img-wrap.not-tagging{cursor:zoom-in;}
 .render-img-wrap img{width:100%;display:block;}
 .spread-before-badge{position:absolute;top:32px;left:32px;width:88px;background:#f0ece5;padding:5px 5px 14px;border-radius:4px;box-shadow:0 10px 22px rgba(0,0,0,0.5);transform:rotate(-6deg);z-index:5;pointer-events:none;}
 .spread-before-badge img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:2px;display:block;}
@@ -255,6 +255,13 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .modal-overlay.open{opacity:1;pointer-events:all;}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px;width:100%;max-width:440px;max-height:88vh;overflow-y:auto;transform:translateY(8px);transition:transform 0.2s;}
 .modal-overlay.open .modal{transform:translateY(0);}
+.lightbox-overlay{background:rgba(0,0,0,0.92);}
+.lightbox-inner{position:relative;max-width:95vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.lightbox-inner img{max-width:95vw;max-height:78vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.6);}
+.lightbox-close{position:absolute;top:-44px;right:0;background:none;border:1px solid var(--border);color:var(--text);border-radius:50%;width:36px;height:36px;font-size:16px;cursor:pointer;}
+.lightbox-close:hover{border-color:var(--accent);color:var(--accent);}
+.lightbox-footer{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;}
+.lightbox-caption{color:var(--muted);font-size:14px;}
 .modal h2{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;}
 .field{margin-bottom:12px;}
 .field label{display:block;font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
@@ -707,6 +714,18 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   </div>
 </div>
 
+<!-- PHOTO LIGHTBOX -->
+<div class="modal-overlay lightbox-overlay" id="photo-lightbox-overlay">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeModal('photo-lightbox-overlay')">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-footer">
+      <span id="lightbox-caption" class="lightbox-caption"></span>
+      <button class="btn btn-primary" style="width:auto;flex:0 0 auto;padding:10px 18px" onclick="commentOnLightboxPhoto()">💬 Comment on this</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -754,6 +773,8 @@ let clientFindSends = [];
 let taggingModePhotoId = null;
 let editingTagId = null;
 let pendingTagPos = null;
+let lightboxPhotoId = null;
+let lightboxPhotoCaption = '';
 let currentUploadKind = null;
 
 // ── RETAILERS ──
@@ -1794,14 +1815,31 @@ function toggleTaggingMode(photoId) {
 }
 
 function onRenderClick(e, photoId) {
-  if (!isAdmin) return;
-  if (taggingModePhotoId !== photoId) return;
-  const rect = e.currentTarget.getBoundingClientRect();
-  const x = ((e.clientX - rect.left) / rect.width) * 100;
-  const y = ((e.clientY - rect.top) / rect.height) * 100;
-  pendingTagPos = {photoId, x, y};
-  editingTagId = null;
-  openTagModal();
+  if (isAdmin && taggingModePhotoId === photoId) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    pendingTagPos = {photoId, x, y};
+    editingTagId = null;
+    openTagModal();
+    return;
+  }
+  openPhotoLightbox(photoId);
+}
+
+function openPhotoLightbox(photoId) {
+  const p = photos.find(x=>x.id===photoId);
+  if (!p) return;
+  lightboxPhotoId = photoId;
+  lightboxPhotoCaption = p.caption || 'Rendering';
+  document.getElementById('lightbox-img').src = p.image_url;
+  document.getElementById('lightbox-caption').textContent = lightboxPhotoCaption;
+  document.getElementById('photo-lightbox-overlay').classList.add('open');
+}
+
+function commentOnLightboxPhoto() {
+  closeModal('photo-lightbox-overlay');
+  openCommentsModal('photo', lightboxPhotoId, lightboxPhotoCaption);
 }
 
 function openTagModal(existingTag) {
@@ -1953,10 +1991,13 @@ function renderRenderings() {
     return `<div class="rendering-block">
       <div class="rendering-toolbar">
         <span class="cap">${escHtml(p.caption||'Rendering')}</span>
-        ${isAdmin?`<div style="display:flex;gap:6px">
+        <div style="display:flex;gap:6px">
+          <button class="comment-count-btn" onclick="openCommentsModal('photo','${p.id}','${escHtml(p.caption||'Rendering')}')">💬 Comment</button>
+          ${isAdmin?`
           <button class="tag-btn ${isTagging?'active':''}" onclick="toggleTaggingMode('${p.id}')">${isTagging?'✓ Click image to tag':'+ Tag Items'}</button>
           <button class="icon-btn danger" onclick="deletePhoto('${p.id}')">🗑</button>
-        </div>`:''}
+          `:''}
+        </div>
       </div>
       <div class="spread-hero">
         ${beforePhoto?`<div class="spread-before-badge"><img src="${beforePhoto.image_url}" alt="Before"/><span class="badge-label">Before</span></div>`:''}
