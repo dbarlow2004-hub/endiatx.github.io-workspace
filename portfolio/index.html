@@ -183,48 +183,51 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
 .print-only{display:none;}
 
 @media print{
-  @page{margin:0.6in;}
+  @page{margin:0.45in 0.55in;}
   header,.hero,.hero-glow,#work,#contact,footer,.nav-cta,.lightbox-overlay{display:none!important;}
-  body{background:#fff;color:#1a1a1a;font-size:11pt;line-height:1.45;}
+  body{background:#fff;color:#1a1a1a;font-size:10.5pt;line-height:1.38;}
   main{max-width:100%;padding:0;margin:0;}
   section{padding:0;border-top:none;}
   .reveal{opacity:1!important;transform:none!important;}
 
-  .print-only{display:block;margin-bottom:20px;}
-  .print-only h1{font-size:22pt;font-weight:800;color:#0e0f11;margin-bottom:3px;letter-spacing:0;}
-  .print-title{font-size:11.5pt;color:#333;margin-bottom:5px;}
-  .print-contact{font-family:'Space Mono',monospace;font-size:9pt;color:#444;letter-spacing:0.02em;}
-  .print-only::after{content:'';display:block;height:1px;background:#bbb;margin-top:16px;}
+  .print-only{display:block;margin-bottom:12px;}
+  .print-only h1{font-size:19pt;font-weight:800;color:#0e0f11;margin-bottom:2px;letter-spacing:0;}
+  .print-title{font-size:10pt;color:#333;margin-bottom:4px;}
+  .print-contact{font-family:'Space Mono',monospace;font-size:8pt;color:#444;letter-spacing:0.02em;}
+  .print-only::after{content:'';display:block;height:1px;background:#bbb;margin-top:10px;}
 
-  .section-head{margin-bottom:14px;}
-  .section-label{color:#666!important;}
+  .section-head{margin-bottom:8px;}
+  .section-label{color:#666!important;font-size:9pt;}
   .section-label::after{background:#ccc;}
-  .section-title{font-size:15pt;color:#0e0f11;}
+  .section-title{font-size:13pt;color:#0e0f11;}
   #resume .section-sub,#leadership .section-sub{display:none;}
   #resume > .section-head{display:none;}
 
   .resume-grid{display:block;}
   .timeline::before{background:#ccc;}
-  .tl-item{break-inside:avoid;margin-bottom:13px;}
-  .tl-item::before{background:#0e0f11;}
-  .tl-when{color:#666;}
-  .tl-role{color:#0e0f11;font-size:11.5pt;}
-  .tl-org{color:#333;margin-bottom:5px;}
+  .tl-item{break-inside:avoid;margin-bottom:8px;}
+  .tl-item::before{background:#0e0f11;width:6px;height:6px;}
+  .tl-when{color:#666;font-size:8.5pt;}
+  .tl-role{color:#0e0f11;font-size:10.5pt;}
+  .tl-org{color:#333;margin-bottom:3px;font-size:9pt;}
   .tl-desc{color:#333;}
-  .tl-desc li{margin-bottom:2px;}
+  .tl-desc ul{margin-top:4px;}
+  .tl-desc li{margin-bottom:1px;}
 
-  .side-block{margin-top:20px;margin-bottom:0;break-inside:avoid;}
-  .side-title{color:#666;}
-  .skill-group-name{color:#0e0f11;}
-  .edu-item{break-inside:avoid;}
-  .edu-degree{color:#0e0f11;}
-  .edu-school{color:#333;}
-  .edu-when{color:#666;}
-  .edu-note{color:#555;}
-  .pill{background:none;border:1px solid #aaa;color:#333;}
+  .side-block{margin-top:12px;margin-bottom:0;break-inside:avoid;}
+  .side-title{color:#666;font-size:9pt;margin-bottom:8px;}
+  .skill-group-name{color:#0e0f11;font-size:9pt;margin-bottom:4px;}
+  .skill-groups{gap:8px;}
+  .pill-row{gap:4px;}
+  .pill{background:none;border:1px solid #aaa;color:#333;font-size:8.5pt;padding:2px 8px;}
+  .edu-item{break-inside:avoid;margin-bottom:10px;}
+  .edu-degree{color:#0e0f11;font-size:9.5pt;}
+  .edu-school{color:#333;font-size:9pt;}
+  .edu-when{color:#666;font-size:8.5pt;}
+  .edu-note{color:#555;font-size:8.5pt;}
 
-  #leadership{margin-top:18px;padding-top:16px;border-top:1px solid #ccc;}
-  #leadership .section-head{margin-bottom:10px;}
+  #leadership{margin-top:10px;padding-top:10px;border-top:1px solid #ccc;}
+  #leadership .section-head{margin-bottom:6px;}
 }
 </style>
 </head>
@@ -261,7 +264,7 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
     <div class="section-head">
       <div class="section-label">Selected Work</div>
       <div class="section-title">Creative Portfolio</div>
-      <div class="section-sub">Design, sustainability, and storytelling projects from school, founding ventures, and independent work. Click any project to see more.</div>
+      <div class="section-sub">Startup engineering, medical device prototyping, and hands-on design work, alongside independent creative projects. Click any project to see more.</div>
     </div>
     <div class="project-grid" id="project-grid"></div>
   </section>
@@ -338,11 +341,11 @@ const PROFILE = {
   name: "D. Barlow Clark-Schoeb",
   initials: "DBCS",
   photo: "images/avatar.jpg",
-  title: "Environmental Design & Sustainable Cities",
-  bio: "I'm a designer and environmental studies student working at the intersection of architecture, sustainability, and storytelling. My work explores how ecology, access, and culture shape the way communities inhabit space — from site-based research at Eastie Farm to a documentary on public water access in Zurich. I aim to create intuitive, climate-responsive, socially grounded environments, driven by community needs and material responsibility.",
+  title: "Operations, Design & Prototyping",
+  bio: "I'm a builder and problem-solver who thrives in unfamiliar, fast-moving environments — most recently at a medical robotics startup, where I ran operations, fabricated prototypes, and helped project-manage a critical FDA 510(k) submission. I move fluidly between hands-on construction, CAD/prototyping, and cross-functional project management, bridging technical and non-technical teams to get things built and shipped.",
   email: "dbarlow2004@gmail.com",
   phone: "(908) 666-2847",
-  location: "San Francisco, CA · Connecticut & California",
+  location: "San Francisco Bay Area, CA (Summer 2026) · Connecticut",
   socials: [
     { label: "Email", href: "mailto:dbarlow2004@gmail.com" },
     { label: "Call", href: "tel:+19086662847" }
@@ -356,6 +359,16 @@ const PROFILE = {
 function img(name) { return { thumb: `images/${name}.jpg`, full: `images/full/${name}.jpg` }; }
 
 const PROJECTS = [
+  {
+    title: "Anatomical Silicone Stomach Prototype",
+    description: "Designed an anatomical stomach model in SolidWorks for medical device testing at ENDIATX, 3D printing iterative prototypes and researching silicone materials and manufacturing methods. Designed molds and fabricated silicone stomach models through multiple rounds of iteration with the engineering team.",
+    tags: ["Medical Device", "SolidWorks", "3D Printing", "ENDIATX"]
+  },
+  {
+    title: "FDA 510(k) Submission — Project Management",
+    description: "Served as project manager for a company-critical FDA 510(k) medical device submission at ENDIATX, coordinating cross-functional teams, tracking milestones and documentation, and identifying blockers to keep one of the company's highest-priority projects on schedule.",
+    tags: ["Project Management", "Regulatory", "ENDIATX"]
+  },
   {
     title: "Built Table",
     description: "Designed and built a wooden table for my senior year as a symbolic map of my friends' college paths — each wedge represented a school, merging craft, storytelling, and community.",
@@ -419,16 +432,17 @@ const PROJECT_FALLBACK_COLORS = ["#7dd3fc,#38bdf8", "#c084fc,#a855f7", "#4ade80,
 const EXPERIENCE = [
   {
     when: "Summer 2026",
-    role: "Workspace Design & Operations Associate",
+    role: "Operations, Design & Prototyping Associate",
     org: "ENDIATX — Hayward, CA",
     bullets: [
-      "Planned and executed renovations and spatial reorganization for the office and warehouse spaces of a robotics and medical device company.",
-      "Interviewed employees across departments to understand workflow patterns, operational needs, and accessibility priorities.",
-      "Developed layouts and designated zones for collaborative office space, packaging and storage, media production, and prototyping/fabrication areas.",
-      "Coordinated with leadership, electricians, and engineering teams on infrastructure improvements and HVAC planning.",
-      "Completed hands-on renovation work including measuring, framing walls, drywall installation, painting, finishing, and door installation.",
-      "Sourced materials, secondhand furniture, and organizational systems to create sustainability-minded workplace environments.",
-      "Managed intern communication, scheduling, and summer programming initiatives."
+      "Led a full office and warehouse transformation — from cross-departmental workflow interviews through final construction — converting the space into a professional, investor-ready environment.",
+      "Built a conference room from an unused space end-to-end: framing, insulation, drywall, painting, and finish carpentry.",
+      "Reorganized warehouse inventory and storage, retired obsolete equipment, and managed furniture/equipment procurement and vendor coordination.",
+      "Designed and fabricated company signage and office infrastructure using AutoCAD, laser cutting, and 3D printing alongside the engineering team.",
+      "Designed an anatomical stomach model in SolidWorks and 3D printed iterative prototypes to support medical device testing.",
+      "Researched silicone materials and manufacturing methods, designed molds, and fabricated silicone stomach prototypes through multiple rounds of engineering collaboration.",
+      "Served as project manager for a company-critical FDA 510(k) submission, coordinating cross-functional teams and tracking milestones to keep the regulatory timeline on schedule.",
+      "Organized submission documentation and proactively surfaced and resolved blockers across engineering, regulatory, and operations."
     ]
   },
   {
@@ -436,9 +450,9 @@ const EXPERIENCE = [
     role: "Environmental Reporting Intern",
     org: "The Active Voice — Connecticut",
     bullets: [
-      "Conducted research and reporting on sustainability, climate policy, and environmental issues.",
-      "Assisted with legislative testimony drafts and sustainability-focused communications.",
-      "Collaborated with leadership on environmental storytelling and public engagement initiatives."
+      "Researched and reported on sustainability, climate policy, and environmental issues for publication.",
+      "Drafted legislative testimony materials and sustainability-focused communications.",
+      "Partnered with leadership on environmental storytelling and public engagement initiatives."
     ]
   },
   {
@@ -446,9 +460,9 @@ const EXPERIENCE = [
     role: "Social Media & Operations Assistant",
     org: "Babka Bailout — New York, NY",
     bullets: [
-      "Managed social media content creation including TikTok and promotional campaigns.",
-      "Assisted with packaging, customer engagement, and operational logistics.",
-      "Supported brand growth through visual storytelling and customer experience."
+      "Produced social media content, including TikTok and promotional campaigns, to drive brand engagement.",
+      "Managed packaging, customer engagement, and day-to-day operational logistics at Bryant Park Holiday Market.",
+      "Drove brand growth through visual storytelling and hands-on customer experience."
     ]
   }
 ];
@@ -473,9 +487,11 @@ const EDUCATION = [
 ];
 
 const SKILLS = [
-  { group: "Design & Fabrication", items: ["Rhino", "AutoCAD", "Adobe Illustrator", "Adobe Photoshop", "Canva"] },
-  { group: "Hands-On & Construction", items: ["Framing", "Drywall Installation", "Painting & Finishing", "Furniture Sourcing"] },
-  { group: "Operations & Leadership", items: ["Project Coordination", "Operations Management", "Workflow Optimization", "Sustainability-Focused Design"] },
+  { group: "Technical", items: ["SolidWorks", "AutoCAD", "Rhino", "Laser Cutting", "3D Printing", "Rapid Prototyping", "Silicone Mold Fabrication"] },
+  { group: "Project Management", items: ["Cross-Functional Coordination", "Project Scheduling", "Operations Management", "Vendor Coordination", "Workflow Optimization", "Procurement"] },
+  { group: "Design", items: ["Spatial Planning", "Workplace Design", "Furniture Sourcing", "Adaptive Reuse"] },
+  { group: "Fabrication & Construction", items: ["Framing", "Drywall Installation", "Painting & Finishing"] },
+  { group: "Software", items: ["Adobe Illustrator", "Adobe Photoshop", "Microsoft Office", "Google Workspace", "Canva"] },
   { group: "Languages", items: ["Spanish (Fluent)", "ASL (Intermediate)", "French (Beginner)"] },
   { group: "Certifications", items: ["LEED Green Associate — In Progress"] }
 ];
