@@ -79,9 +79,10 @@ section{padding:64px 0;border-top:1px solid var(--border);}
 .project-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform 0.15s,border-color 0.15s,box-shadow 0.2s;will-change:transform;}
 .project-card:hover{border-color:var(--accent);box-shadow:0 14px 30px -12px rgba(0,0,0,0.5);}
 .project-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
-.project-thumb{height:180px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(14,15,17,0.55);font-weight:700;overflow:hidden;}
-.project-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.35s ease;}
-.project-card:hover .project-thumb img{transform:scale(1.06);}
+.project-thumb{height:200px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(14,15,17,0.55);font-weight:700;overflow:hidden;background:var(--surface2);}
+.project-thumb .thumb-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(26px) brightness(0.5) saturate(1.15);transform:scale(1.2);}
+.project-thumb img{position:relative;z-index:1;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transition:transform 0.35s ease;}
+.project-card:hover .project-thumb img{transform:scale(1.045);}
 .project-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1;}
 .project-body h3{font-size:16px;font-weight:700;}
 .project-body p{font-size:13px;color:var(--muted);flex:1;}
@@ -345,7 +346,7 @@ const PROFILE = {
   bio: "I'm a builder and problem-solver who thrives in unfamiliar, fast-moving environments — most recently at a medical robotics startup, where I ran operations, fabricated prototypes, and helped project-manage a critical FDA 510(k) submission. I move fluidly between hands-on construction, CAD/prototyping, and cross-functional project management, bridging technical and non-technical teams to get things built and shipped.",
   email: "dbarlow2004@gmail.com",
   phone: "(908) 666-2847",
-  location: "San Francisco Bay Area, CA (Summer 2026) · Connecticut",
+  location: "San Francisco Bay Area, CA (Summer 2026) · New Jersey & Connecticut",
   socials: [
     { label: "Email", href: "mailto:dbarlow2004@gmail.com" },
     { label: "Call", href: "tel:+19086662847" }
@@ -512,7 +513,7 @@ document.getElementById('project-grid').innerHTML = PROJECTS.map((p,i) => {
   const [c1,c2] = (PROJECT_FALLBACK_COLORS[i % PROJECT_FALLBACK_COLORS.length]).split(',');
   const images = p.images || [];
   const thumb = images.length
-    ? `<img src="${images[0].thumb}" alt="${escHtml(p.title)}">`
+    ? `<div class="thumb-bg" style="background-image:url('${images[0].thumb}')"></div><img src="${images[0].thumb}" alt="${escHtml(p.title)}">`
     : escHtml(p.title);
   const thumbStyle = images.length ? '' : `style="background:linear-gradient(135deg,${c1},${c2})"`;
   return `
