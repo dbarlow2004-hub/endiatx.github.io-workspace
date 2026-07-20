@@ -7,7 +7,7 @@
 <style>
 :root{
   --paper:#E6E7DF; --panel:#DBDACB; --ink:#24261F; --muted:#6F7267; --line:#C7C6B6; --card:#F2F1E7;
-  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E;
+  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E; --arch:#54488F;
   --good:#3B6B57; --bad:#A24B3E; --urgent:#D6472C; --urgent-ink:#FFFFFF;
   --font-display:ui-serif,"Iowan Old Style","Palatino Linotype","URW Palladio L","P052",Georgia,serif;
   --font-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -15,12 +15,12 @@
 }
 @media (prefers-color-scheme: dark){
   :root{ --paper:#1B1D17; --panel:#232519; --ink:#E9E7DA; --muted:#9B9C89; --line:#34362A; --card:#20221B;
-    --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; --urgent:#FF6B4A; --urgent-ink:#1B1D17; }
+    --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --arch:#A79BE0; --good:#71B99A; --bad:#D98A7C; --urgent:#FF6B4A; --urgent-ink:#1B1D17; }
 }
 :root[data-theme="dark"]{ --paper:#1B1D17; --panel:#232519; --ink:#E9E7DA; --muted:#9B9C89; --line:#34362A; --card:#20221B;
-  --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --good:#71B99A; --bad:#D98A7C; --urgent:#FF6B4A; --urgent-ink:#1B1D17; }
+  --cert:#71B99A; --software:#DA9F63; --practice:#BE8FB2; --french:#84A9CC; --arch:#A79BE0; --good:#71B99A; --bad:#D98A7C; --urgent:#FF6B4A; --urgent-ink:#1B1D17; }
 :root[data-theme="light"]{ --paper:#E6E7DF; --panel:#DBDACB; --ink:#24261F; --muted:#6F7267; --line:#C7C6B6; --card:#F2F1E7;
-  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E; --good:#3B6B57; --bad:#A24B3E; --urgent:#D6472C; --urgent-ink:#FFFFFF; }
+  --cert:#3B6B57; --software:#925A2E; --practice:#6B4B63; --french:#33526E; --arch:#54488F; --good:#3B6B57; --bad:#A24B3E; --urgent:#D6472C; --urgent-ink:#FFFFFF; }
 
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;height:100%;}
@@ -123,6 +123,10 @@ main{flex:1; overflow-y:auto; padding:20px 20px 100px;}
 .lib-item:last-child{border-bottom:none;}
 .lib-check{width:20px; height:20px; border-radius:5px; border:1.5px solid var(--line); flex:none; margin-top:2px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; background:none;}
 .lib-check.done{background:var(--tc,var(--ink)); border-color:var(--tc,var(--ink)); color:var(--paper);}
+.lib-icon{width:52px; height:44px; flex:none; border-radius:7px; background:var(--panel); display:flex; align-items:center; justify-content:center; color:var(--tc,var(--ink));}
+.lib-icon svg{width:38px; height:30px; display:block;}
+.lib-body .meta{font-size:0.78rem; color:var(--muted); margin-top:2px;}
+.lib-body{flex:1; min-width:0;}
 .lib-body b{font-weight:600; font-size:0.94rem;}
 .lib-body .src{font-size:0.78rem; color:var(--muted); margin-top:2px;}
 .lib-body .hint{font-family:var(--font-mono); font-size:0.7rem; color:var(--muted); margin-top:3px;}
@@ -274,6 +278,7 @@ const TRACKS = [
   {id:'software', name:'Software', color:'var(--software)'},
   {id:'practice', name:'Design Practice', color:'var(--practice)'},
   {id:'french', name:'French', color:'var(--french)'},
+  {id:'arch', name:'Architecture', color:'var(--arch)'},
 ];
 const trackById = id => TRACKS.find(t=>t.id===id);
 
@@ -319,6 +324,23 @@ const CARDS = [
   {id:'f8',track:'french',front:'les matériaux',back:'materials'},
   {id:'f9',track:'french',front:'Je voudrais...',back:'I would like...'},
   {id:'f10',track:'french',front:'Pourriez-vous répéter, s’il vous plaît ?',back:'Could you repeat that, please?'},
+
+  {id:'a1',track:'arch',front:'Frank Lloyd Wright',back:'American architect, pioneer of "organic architecture" — designed Fallingwater'},
+  {id:'a2',track:'arch',front:'Zaha Hadid',back:'First woman to win the Pritzker Prize (2004); known for fluid, futuristic deconstructivist forms'},
+  {id:'a3',track:'arch',front:'Le Corbusier',back:'Pioneer of modernism; formulated the "Five Points of Architecture"; designed Villa Savoye'},
+  {id:'a4',track:'arch',front:'Ludwig Mies van der Rohe',back:'Coined "less is more"; Bauhaus\'s last director; designed the Seagram Building and Barcelona Pavilion'},
+  {id:'a5',track:'arch',front:'Antoni Gaudí',back:'Catalan architect associated with Modernisme; designed the still-unfinished Sagrada Família'},
+  {id:'a6',track:'arch',front:'I.M. Pei',back:'Designed the Louvre Pyramid, blending modernist glass geometry with a classical setting'},
+  {id:'a7',track:'arch',front:'Frank Gehry',back:'Deconstructivist known for sculptural, titanium-clad forms — designed the Guggenheim Museum Bilbao'},
+  {id:'a8',track:'arch',front:'Jørn Utzon',back:'Danish architect who designed the Sydney Opera House and its sail-like shell roofs'},
+  {id:'a9',track:'arch',front:'What is Bauhaus?',back:'German design school (1919–1933) that united art, craft, and industry under "form follows function"'},
+  {id:'a10',track:'arch',front:'What is Brutalism?',back:'Mid-20th-century style built around raw, exposed concrete (béton brut) and bold geometric massing'},
+  {id:'a11',track:'arch',front:'What defines Gothic architecture?',back:'Pointed arches, ribbed vaults, flying buttresses, and large stained-glass windows'},
+  {id:'a12',track:'arch',front:'What is Art Deco?',back:'1920s–30s style of geometric ornament, symmetry, and glamour — e.g. the Chrysler Building'},
+  {id:'a13',track:'arch',front:'What is Deconstructivism?',back:'Style of fragmented, non-rectilinear forms that appear to defy gravity — associated with Gehry, Hadid, and Libeskind'},
+  {id:'a14',track:'arch',front:'Fallingwater',back:'Frank Lloyd Wright house built directly over a waterfall in Pennsylvania (1935)'},
+  {id:'a15',track:'arch',front:'Villa Savoye',back:'Le Corbusier\'s exemplar of modernism — a white box raised on pilotis (1931)'},
+  {id:'a16',track:'arch',front:'Farnsworth House',back:'Mies van der Rohe\'s minimalist glass-walled residence outside Chicago (1951)'},
 ];
 
 const VIDEOS = [
@@ -333,6 +355,8 @@ const VIDEOS = [
   {id:'v9',track:'practice',title:'Project case-study teardowns',source:'Architizer',hint:'Browse Architizer’s project database'},
   {id:'v10',track:'french',title:"Apprendre le français — graded video lessons",source:'TV5MONDE',hint:'Search: "TV5MONDE apprendre le français"'},
   {id:'v11',track:'french',title:'Everyday spoken French lessons',source:'Français Authentique',hint:'Search: "Français Authentique"'},
+  {id:'v12',track:'arch',title:'Architect profile documentaries',source:'PBS / various',hint:'Search: "Frank Lloyd Wright documentary", "Zaha Hadid documentary"'},
+  {id:'v13',track:'arch',title:'Iconic building walkthroughs',source:'Architecture YouTube channels',hint:'Search: "Sagrada Familia tour", "Guggenheim Bilbao architecture tour"'},
 ];
 
 const LISTEN = [
@@ -344,6 +368,23 @@ const LISTEN = [
   {id:'l6',track:'french',title:'Coffee Break French',source:'Podcast',hint:'Search your podcast app: "Coffee Break French"'},
   {id:'l7',track:'french',title:'Journal en français facile',source:'RFI',hint:'Daily graded news podcast — rfi.fr'},
   {id:'l8',track:'french',title:'Français Authentique',source:'Podcast',hint:'Search your podcast app: "Français Authentique"'},
+  {id:'l9',track:'arch',title:'99% Invisible',source:'Podcast',hint:'Search your podcast app: "99% Invisible" — design & architecture stories'},
+];
+
+// Line-art elevation sketches (original, drawn for this app — not photographs) for famous buildings.
+const GALLERY = [
+  {id:'b1',track:'arch',title:'Sydney Opera House',meta:'Jørn Utzon · 1973',hint:'Search: "Sydney Opera House photos" for the real thing',
+   icon:'<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="62" x2="110" y2="62"/><path d="M22,62 Q34,26 48,62"/><path d="M40,62 Q60,16 82,62"/><path d="M66,62 Q84,30 100,62"/></svg>'},
+  {id:'b2',track:'arch',title:'Guggenheim Museum Bilbao',meta:'Frank Gehry · 1997',hint:'Search: "Guggenheim Bilbao photos" for the real thing',
+   icon:'<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="64" x2="110" y2="64"/><path d="M16,64 C22,42 34,28 52,32 C70,36 66,54 86,50 C98,48 104,58 100,64 Z"/><line x1="18" y1="70" x2="102" y2="70" stroke-dasharray="2 4"/></svg>'},
+  {id:'b3',track:'arch',title:'Sagrada Família',meta:'Antoni Gaudí · begun 1882',hint:'Search: "Sagrada Familia photos" for the real thing',
+   icon:'<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="28" y="50" width="64" height="16"/><circle cx="60" cy="58" r="6"/><path d="M34,50 L38,22 L42,50"/><path d="M50,50 L55,14 L60,50"/><path d="M68,50 L73,18 L78,50"/><path d="M84,50 L88,26 L92,50"/></svg>'},
+  {id:'b4',track:'arch',title:'Villa Savoye',meta:'Le Corbusier · 1931',hint:'Search: "Villa Savoye photos" for the real thing',
+   icon:'<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="66" x2="110" y2="66"/><rect x="24" y="30" width="72" height="26"/><line x1="24" y1="42" x2="96" y2="42"/><line x1="34" y1="56" x2="34" y2="66"/><line x1="50" y1="56" x2="50" y2="66"/><line x1="66" y1="56" x2="66" y2="66"/><line x1="82" y1="56" x2="82" y2="66"/></svg>'},
+  {id:'b5',track:'arch',title:'Farnsworth House',meta:'Mies van der Rohe · 1951',hint:'Search: "Farnsworth House photos" for the real thing',
+   icon:'<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="66" x2="112" y2="66"/><rect x="18" y="46" width="88" height="5"/><rect x="18" y="18" width="88" height="5"/><line x1="30" y1="23" x2="30" y2="46"/><line x1="46" y1="23" x2="46" y2="46"/><line x1="62" y1="23" x2="62" y2="46"/><line x1="78" y1="23" x2="78" y2="46"/><line x1="94" y1="23" x2="94" y2="46"/><line x1="26" y1="51" x2="26" y2="66"/><line x1="98" y1="51" x2="98" y2="66"/></svg>'},
+  {id:'b6',track:'arch',title:'Chrysler Building',meta:'William Van Alen · 1930 (Art Deco)',hint:'Search: "Chrysler Building photos" for the real thing',
+   icon:'<svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="38" y="52" width="30" height="12"/><rect x="41" y="38" width="24" height="14"/><rect x="44" y="26" width="18" height="12"/><path d="M44,26 L53,8 L62,26"/><path d="M48,26 L53,14 L58,26"/><line x1="53" y1="8" x2="53" y2="2"/></svg>'},
 ];
 
 const INTERVALS = [1,2,4,7,14,30,60]; // days, by box
@@ -358,13 +399,13 @@ let realtimeChannel = null;
 let pushTimer = null;
 
 function defaultState(){
-  return { srs:{}, watched:{}, listened:{}, streak:{count:0,last:null}, reminders:{enabled:false,flashTime:'19:00',listenTime:'08:00',lastFired:{}} };
+  return { srs:{}, watched:{}, listened:{}, explored:{}, streak:{count:0,last:null}, reminders:{enabled:false,flashTime:'19:00',listenTime:'08:00',lastFired:{}} };
 }
 function normalizeState(s){
   const d = defaultState();
   s = s || {};
   return {
-    srs: s.srs || d.srs, watched: s.watched || d.watched, listened: s.listened || d.listened,
+    srs: s.srs || d.srs, watched: s.watched || d.watched, listened: s.listened || d.listened, explored: s.explored || d.explored,
     streak: s.streak || d.streak, reminders: Object.assign({}, d.reminders, s.reminders||{})
   };
 }
@@ -633,19 +674,28 @@ function libItemHtml(item, doneMap, colorVar){
     <div class="lib-body"><b>${item.title}</b><div class="src">${item.source}</div><div class="hint">${item.hint}</div></div>
   </div>`;
 }
+function galleryItemHtml(item, doneMap, colorVar){
+  const done = !!doneMap[item.id];
+  return `<div class="lib-item" style="border-left-color:${colorVar}">
+    <div class="lib-icon" style="--tc:${colorVar}">${item.icon}</div>
+    <div class="lib-body"><b>${item.title}</b><div class="meta">${item.meta}</div><div class="hint">${item.hint}</div></div>
+    <button class="lib-check ${done?'done':''}" style="--tc:${colorVar}" data-id="${item.id}">${done?'✓':''}</button>
+  </div>`;
+}
 function renderLibrary(){
   const vids = VIDEOS.filter(v=>libTrackFilter==='all'||v.track===libTrackFilter);
   const lis = LISTEN.filter(l=>libTrackFilter==='all'||l.track===libTrackFilter);
+  const gal = GALLERY.filter(g=>libTrackFilter==='all'||g.track===libTrackFilter);
   const root = document.getElementById('library-root');
   root.innerHTML = `
     <div class="lib-section"><h3>Watch</h3>${vids.map(v=>libItemHtml(v,state.watched,trackById(v.track).color)).join('') || '<p class="sub">No videos in this track.</p>'}</div>
     <div class="lib-section"><h3>Listen</h3>${lis.map(l=>libItemHtml(l,state.listened,trackById(l.track).color)).join('') || '<p class="sub">No audio in this track.</p>'}</div>
+    <div class="lib-section"><h3>See</h3>${gal.map(g=>galleryItemHtml(g,state.explored,trackById(g.track).color)).join('') || '<p class="sub">No buildings in this track.</p>'}</div>
   `;
   root.querySelectorAll('.lib-item .lib-check').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const id = btn.dataset.id;
-      const isVideo = VIDEOS.some(v=>v.id===id);
-      const map = isVideo ? state.watched : state.listened;
+      const map = VIDEOS.some(v=>v.id===id) ? state.watched : GALLERY.some(g=>g.id===id) ? state.explored : state.listened;
       map[id] = !map[id];
       saveState(); renderLibrary(); renderToday();
     });
@@ -663,8 +713,9 @@ function renderSettings(){
   const masteredTotal = CARDS.filter(c=>(state.srs[c.id]?.box||0)>=MASTER_BOX).length;
   const watchedN = Object.keys(state.watched).length;
   const listenedN = Object.keys(state.listened).length;
+  const exploredN = Object.keys(state.explored).length;
   document.getElementById('settings-progress-line').textContent =
-    `${masteredTotal}/${totalCards} cards mastered · ${watchedN}/${VIDEOS.length} videos watched · ${listenedN}/${LISTEN.length} listened · ${state.streak.count}-day streak`;
+    `${masteredTotal}/${totalCards} cards mastered · ${watchedN}/${VIDEOS.length} videos watched · ${listenedN}/${LISTEN.length} listened · ${exploredN}/${GALLERY.length} buildings explored · ${state.streak.count}-day streak`;
 }
 
 document.getElementById('input-time-flash').addEventListener('change', e=>{ state.reminders.flashTime = e.target.value; saveState(); renderSettings(); });
