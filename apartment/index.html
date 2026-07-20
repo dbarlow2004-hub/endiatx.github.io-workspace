@@ -159,10 +159,16 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .tag-btn{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.08em;text-transform:uppercase;padding:7px 12px;border-radius:6px;cursor:pointer;border:1px solid var(--border);background:none;color:var(--muted);}
 .tag-btn.active{background:var(--accent);color:#16232B;border-color:var(--accent);}
 .tag-btn:hover:not(.active){color:var(--accent);border-color:var(--accent);}
-.spread-hero{position:relative;padding:18px;}
-.render-img-wrap{position:relative;cursor:crosshair;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.4);max-width:640px;margin:0 auto;}
+.spread-hero{position:relative;padding:18px;display:flex;gap:18px;flex-wrap:wrap;justify-content:center;align-items:flex-start;}
+.render-img-wrap{position:relative;cursor:crosshair;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 14px 32px rgba(0,0,0,0.4);flex:1 1 400px;max-width:640px;}
 .render-img-wrap.not-tagging{cursor:zoom-in;}
 .render-img-wrap img{width:100%;display:block;}
+.tag-gallery{display:flex;flex-direction:column;gap:10px;flex:0 1 160px;min-width:130px;}
+.tag-gallery-item{position:relative;cursor:pointer;background:var(--surface2);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:transform 0.15s ease,border-color 0.15s ease;}
+.tag-gallery-item:hover{transform:translateY(-2px);border-color:var(--accent);}
+.tag-gallery-item img,.tag-gallery-item .tgi-swatch{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+.tag-gallery-item .tgi-num{position:absolute;top:6px;left:6px;background:var(--accent);color:#16232B;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;}
+.tag-gallery-item .tgi-label{display:block;padding:6px 8px;font-size:12px;color:var(--text);line-height:1.3;}
 .spread-before-badge{position:absolute;top:32px;left:32px;width:88px;background:#f0ece5;padding:5px 5px 14px;border-radius:4px;box-shadow:0 10px 22px rgba(0,0,0,0.5);transform:rotate(-6deg);z-index:5;pointer-events:none;}
 .spread-before-badge img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:2px;display:block;}
 .spread-before-badge .badge-label{display:block;text-align:center;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:#16232B;margin-top:4px;text-transform:uppercase;}
@@ -2005,6 +2011,12 @@ function renderRenderings() {
           <img src="${p.image_url}" alt="${escHtml(p.caption||'')}"/>
           ${photoTags.map((t,i)=>`<div class="pin ${t.purchased?'purchased':''}" style="left:${t.x}%;top:${t.y}%" onclick="event.stopPropagation();editTagById('${p.id}','${t.id}')">${i+1}</div>`).join('')}
         </div>
+        ${photoTags.length?`<div class="tag-gallery">${photoTags.map((t,i)=>`
+          <div class="tag-gallery-item" onclick="editTagById('${p.id}','${t.id}')" title="${escHtml(t.item_name)}">
+            <span class="tgi-num">${i+1}</span>
+            ${t.product_image_url?`<img src="${t.product_image_url}" alt="${escHtml(t.item_name)}"/>`:`<div class="tgi-swatch" style="background:${t.color_hex||'#888'}"></div>`}
+            <span class="tgi-label">${escHtml(t.item_name)}</span>
+          </div>`).join('')}</div>`:''}
       </div>
       ${palette.length?`<div class="spread-palette-row">${palette.map(c=>`<div class="palette-chip" onclick="copyHex('${c.hex}')"><span class="dot" style="background:${c.hex}"></span><span class="lbl">${escHtml(c.label||c.hex)}</span></div>`).join('')}</div>`:''}
       ${photoTags.length?`<div class="render-taglist">${photoTags.map((t,i)=>`
