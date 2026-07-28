@@ -98,17 +98,30 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .client-card .caddress{font-size:13px;color:var(--muted);}
 
 /* CLIENT HOME */
-.client-home-header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:10px;flex-wrap:wrap;}
-.ch-name{font-size:24px;font-weight:700;}
-.ch-meta{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.6;}
+.ch-hero{position:relative;border-radius:18px;overflow:hidden;margin-bottom:10px;min-height:300px;background:linear-gradient(160deg, var(--surface2), var(--surface));border:1px solid var(--border);display:flex;align-items:flex-end;}
+.ch-hero.has-image{cursor:pointer;}
+.ch-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.ch-hero-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:15.5px;font-style:italic;text-align:center;padding:20px;}
+.ch-hero-overlay{position:relative;z-index:2;width:100%;padding:30px 28px 24px;}
+.ch-hero.has-image .ch-hero-overlay{background:linear-gradient(transparent, rgba(20,16,12,0.72) 55%);}
+.ch-hero-eyebrow{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.ch-hero.has-image .ch-hero-eyebrow{color:rgba(255,255,255,0.8);}
+.ch-hero .ch-name{font-size:30px;font-weight:700;color:var(--text);}
+.ch-hero.has-image .ch-name{color:#fff;}
+.ch-hero .ch-meta{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.6;}
+.ch-hero.has-image .ch-meta{color:rgba(255,255,255,0.88);}
+.ch-new-badge{display:none;margin-top:12px;background:var(--accent);color:#16232B;font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:20px;cursor:pointer;align-items:center;gap:6px;}
+.ch-new-badge:hover{opacity:0.9;}
 .ch-inspo-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;}
 .ch-inspo-thumb{width:140px;height:140px;object-fit:cover;border-radius:10px;flex-shrink:0;border:1px solid var(--border);}
-.rooms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
-.room-square{aspect-ratio:1/1;border-radius:12px;overflow:hidden;position:relative;cursor:pointer;background:var(--surface);border:1px solid var(--border);}
+.rooms-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;}
+.room-square{aspect-ratio:4/3;border-radius:14px;overflow:hidden;position:relative;cursor:pointer;background:var(--surface);border:1px solid var(--border);transition:transform 0.15s ease,border-color 0.15s ease;}
 .room-square img{width:100%;height:100%;object-fit:cover;}
 .room-square-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;background:var(--surface2);text-align:center;padding:8px;}
-.room-square-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));color:#fff;font-size:14px;font-weight:600;padding:22px 10px 8px;}
-.room-square:hover{border-color:var(--accent);}
+.room-square-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.78));color:#fff;font-size:16.5px;font-weight:700;padding:38px 16px 14px;}
+.room-square-new{position:absolute;top:10px;right:10px;z-index:3;background:var(--accent);color:#16232B;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:12px;font-family:'Space Mono',monospace;}
+.tab-badge{display:none;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;margin-left:6px;background:var(--red);color:#fff;border-radius:10px;font-size:11px;font-weight:700;font-family:'Space Mono',monospace;vertical-align:middle;}
+.room-square:hover{border-color:var(--accent);transform:translateY(-3px);}
 .time-entry-row{display:flex;align-items:center;gap:14px;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin-bottom:8px;font-size:13px;flex-wrap:wrap;}
 .time-entry-row .te-date{font-family:'Space Mono',monospace;color:var(--muted);width:90px;flex-shrink:0;}
 .time-entry-row .te-dur{font-family:'Space Mono',monospace;color:var(--accent);width:80px;flex-shrink:0;}
@@ -371,7 +384,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
   <div id="workspace-view" style="display:none">
     <div class="tabs">
       <button class="tab active" data-tab="home" onclick="switchTab('home',this)">🏠 Home</button>
-      <button class="tab" data-tab="gallery" onclick="switchTab('gallery',this)">🎨 Design</button>
+      <button class="tab" data-tab="gallery" onclick="switchTab('gallery',this)">🎨 Design<span id="design-tab-badge" class="tab-badge" style="display:none"></span></button>
       <button class="tab" data-tab="wallpaper" onclick="switchTab('wallpaper',this)">🖼️ Selections</button>
       <button class="tab" data-tab="shop" onclick="switchTab('shop',this)">🛒 Shopping List</button>
       <button class="tab" data-tab="inspo" onclick="switchTab('inspo',this)">📌 Inspo Board</button>
@@ -383,22 +396,26 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 
       <!-- CLIENT HOME PANEL -->
       <div class="panel active" id="panel-home">
-        <div class="client-home-header">
-          <div>
+        <div class="ch-hero" id="ch-hero">
+          <img id="ch-hero-img" src="" alt="" style="display:none"/>
+          <div class="ch-hero-empty" id="ch-hero-empty"></div>
+          <div class="ch-hero-overlay">
+            <div class="ch-hero-eyebrow">Welcome home</div>
             <div class="ch-name" id="ch-name"></div>
             <div class="ch-meta" id="ch-meta"></div>
+            <span id="ch-new-badge" class="ch-new-badge" style="display:none" onclick="event.stopPropagation();goToDesignTab()"></span>
           </div>
         </div>
 
-        <div class="section-label">Inspiration Highlights</div>
-        <div id="ch-inspo-strip" class="ch-inspo-strip"></div>
-
-        <div class="section-label">Project Palette</div>
-        <div id="ch-palette-strip" class="palette-strip"></div>
-
-        <div class="section-label">Rooms</div>
+        <div class="section-label">Explore Each Room</div>
         <div class="admin-only" style="margin-bottom:14px"><button class="hdr-btn primary" onclick="openRoomModal()">+ Room</button></div>
         <div id="ch-rooms-grid" class="rooms-grid"></div>
+
+        <div class="section-label">Your Color Story</div>
+        <div id="ch-palette-strip" class="palette-strip"></div>
+
+        <div class="section-label">Mood &amp; Inspiration</div>
+        <div id="ch-inspo-strip" class="ch-inspo-strip"></div>
 
         <div class="section-label admin-only">Hours Logged <span id="auto-track-indicator" class="track-indicator"></span> <span style="font-size:11px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0">— private to you, tracked automatically while you work</span></div>
         <div class="admin-only" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:10px">
@@ -1459,14 +1476,23 @@ function renderMessages() {
 let activeClientRecord = null;
 let overviewPalette = [];
 let roomThumbnails = {};
+let tagsLastSeenAt = null;
+let newTagsByRoom = {};
 
 async function loadClientHomeData() {
   if (!activeClientId) { activeClientRecord=null; overviewPalette=[]; roomThumbnails={}; return; }
   const {data:clientRow} = await sb.from('clients').select('*').eq('id',activeClientId).maybeSingle();
   activeClientRecord = clientRow;
 
+  if (!isAdmin) {
+    const {data:activityRow} = await sb.from('client_activity').select('*').eq('client_id',activeClientId).maybeSingle();
+    tagsLastSeenAt = activityRow?.tags_last_seen_at || null;
+  } else {
+    tagsLastSeenAt = null;
+  }
+
   const roomIds = rooms.map(r=>r.id);
-  if (!roomIds.length) { overviewPalette=[]; roomThumbnails={}; return; }
+  if (!roomIds.length) { overviewPalette=[]; roomThumbnails={}; newTagsByRoom={}; return; }
 
   const {data:paletteRows} = await sb.from('apt_palette').select('*').in('room_id',roomIds).order('created_at',{ascending:true});
   const seen = new Set();
@@ -1480,6 +1506,46 @@ async function loadClientHomeData() {
     const list = byRoom[rid];
     roomThumbnails[rid] = (list.find(p=>p.kind==='rendering') || list[0])?.image_url || null;
   }
+
+  newTagsByRoom = {};
+  if (!isAdmin && tagsLastSeenAt) {
+    const photoIds = (photoRows||[]).map(p=>p.id);
+    const photoToRoom = {};
+    (photoRows||[]).forEach(p=>{ photoToRoom[p.id] = p.room_id; });
+    if (photoIds.length) {
+      const {data:tagRows} = await sb.from('apt_tags').select('photo_id,created_at').in('photo_id',photoIds);
+      const cutoff = new Date(tagsLastSeenAt).getTime();
+      (tagRows||[]).forEach(t=>{
+        if (new Date(t.created_at).getTime() > cutoff) {
+          const rid = photoToRoom[t.photo_id];
+          newTagsByRoom[rid] = (newTagsByRoom[rid]||0) + 1;
+        }
+      });
+    }
+  }
+}
+
+async function markTagsSeen() {
+  if (isAdmin || !activeClientId) return;
+  const hadNew = Object.values(newTagsByRoom).some(n=>n>0);
+  if (!hadNew && tagsLastSeenAt) return;
+  const nowIso = new Date().toISOString();
+  const {data:existing} = await sb.from('client_activity').select('client_id').eq('client_id',activeClientId).maybeSingle();
+  if (existing) {
+    await sb.from('client_activity').update({tags_last_seen_at:nowIso}).eq('client_id',activeClientId);
+  } else {
+    await sb.from('client_activity').insert({client_id:activeClientId, tags_last_seen_at:nowIso});
+  }
+  tagsLastSeenAt = nowIso;
+  newTagsByRoom = {};
+  renderClientHome();
+}
+
+function pickHeroImage() {
+  for (const r of rooms) {
+    if (roomThumbnails[r.id]) return {roomId: r.id, url: roomThumbnails[r.id]};
+  }
+  return null;
 }
 
 function renderClientHome() {
@@ -1490,6 +1556,40 @@ function renderClientHome() {
   if (c.phone) metaParts.push(`📞 ${escHtml(c.phone)}`);
   if (c.email) metaParts.push(`✉ ${escHtml(c.email)}`);
   document.getElementById('ch-meta').innerHTML = metaParts.join(' &nbsp;·&nbsp; ');
+
+  const hero = pickHeroImage();
+  const heroEl = document.getElementById('ch-hero');
+  const heroImgEl = document.getElementById('ch-hero-img');
+  const heroEmptyEl = document.getElementById('ch-hero-empty');
+  if (hero) {
+    heroEl.classList.add('has-image');
+    heroEl.onclick = () => goToRoom(hero.roomId);
+    heroImgEl.src = hero.url;
+    heroImgEl.style.display = 'block';
+    heroEmptyEl.style.display = 'none';
+  } else {
+    heroEl.classList.remove('has-image');
+    heroEl.onclick = null;
+    heroImgEl.style.display = 'none';
+    heroEmptyEl.style.display = 'flex';
+    heroEmptyEl.textContent = isAdmin ? 'Upload a rendering to bring this space to life ✨' : 'Your designer is putting the vision together — check back soon ✨';
+  }
+
+  const totalNewTags = Object.values(newTagsByRoom).reduce((s,n)=>s+n,0);
+  const newBadgeEl = document.getElementById('ch-new-badge');
+  if (newBadgeEl) {
+    if (!isAdmin && totalNewTags > 0) {
+      newBadgeEl.style.display = 'inline-flex';
+      newBadgeEl.textContent = `✨ ${totalNewTags} new item${totalNewTags===1?'':'s'} tagged since your last visit`;
+    } else {
+      newBadgeEl.style.display = 'none';
+    }
+  }
+  const designTabBadge = document.getElementById('design-tab-badge');
+  if (designTabBadge) {
+    designTabBadge.textContent = totalNewTags>0 ? totalNewTags : '';
+    designTabBadge.style.display = (!isAdmin && totalNewTags>0) ? 'inline-flex' : 'none';
+  }
 
   const inspoHighlights = inspoPins.filter(p=>!p.room_id).slice(0,8);
   const inspoEl = document.getElementById('ch-inspo-strip');
@@ -1506,8 +1606,10 @@ function renderClientHome() {
   roomsEl.innerHTML = rooms.length
     ? rooms.map(r=>{
         const thumb = roomThumbnails[r.id];
+        const newCount = newTagsByRoom[r.id]||0;
         return `<div class="room-square" onclick="goToRoom('${r.id}')">
           ${thumb?`<img src="${thumb}" alt=""/>`:`<div class="room-square-placeholder">No photo yet</div>`}
+          ${newCount?`<span class="room-square-new">✨ ${newCount} new</span>`:''}
           <div class="room-square-label">${escHtml(r.name)}</div>
         </div>`;
       }).join('')
@@ -1516,6 +1618,11 @@ function renderClientHome() {
 
 function goToRoom(roomId) {
   selectRoom(roomId);
+  const btn = document.querySelector('.tab[data-tab="gallery"]');
+  if (btn) switchTab('gallery', btn);
+}
+
+function goToDesignTab() {
   const btn = document.querySelector('.tab[data-tab="gallery"]');
   if (btn) switchTab('gallery', btn);
 }
@@ -2545,6 +2652,7 @@ function switchTab(tab, btn) {
   if (tab==='home') { loadClientHomeData().then(renderClientHome); if (isAdmin) { loadTimeEntries().then(renderTimeLog); } }
   if (tab==='messages') { loadMessages().then(renderMessages); }
   if (tab==='finds') { loadClientFinds().then(renderClientFinds); }
+  if (tab==='gallery' && !isAdmin) { markTagsSeen(); }
   saveLastView();
 }
 
