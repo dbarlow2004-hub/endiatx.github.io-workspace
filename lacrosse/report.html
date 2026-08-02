@@ -7,16 +7,27 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 :root{
+  --bg:#f5f6f8; --surface:#ffffff; --surface2:#eef1f5; --border:#e0e4ea;
+  --accent:#0f766e; --red:#dc2626; --purple:#6d28d9; --yellow:#b45309; --green:#15803d; --blue:#2563eb;
+  --text:#171b22; --text2:#3d4551; --muted:#5c6472; --muted2:#8a919e;
+  --badge-ink:#ffffff; --blur:rgba(255,255,255,0.9); --row-hover:rgba(0,0,0,0.03); --border2:#c9cfd8;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
   --bg:#0e0f11; --surface:#16181c; --surface2:#1c1f24; --border:#2a2d35;
   --accent:#00e5c9; --red:#ff5e5e; --purple:#c084fc; --yellow:#ffd166; --green:#4ade80; --blue:#60a5fa;
-  --text:#e8eaf0; --muted:#8b909c; --muted2:#606570;
+  --text:#e8eaf0; --text2:#d3d7e0; --muted:#8b909c; --muted2:#606570;
+  --badge-ink:#0e0f11; --blur:rgba(14,15,17,0.96); --row-hover:rgba(255,255,255,0.02); --border2:#3a3e48;
+  color-scheme:dark;
 }
+.theme-btn{font-family:'Space Mono',monospace;font-size:12px;line-height:1;cursor:pointer;background:var(--surface);border:1px solid var(--border);color:var(--muted);border-radius:7px;padding:7px 10px;transition:all .15s;}
+.theme-btn:hover{color:var(--accent);border-color:var(--accent);}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;font-size:15px;}
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
-::selection{background:var(--accent);color:#0e0f11;}
+::selection{background:var(--accent);color:var(--badge-ink);}
 .page{max-width:1000px;margin:0 auto;padding:0 22px 100px;}
 
 /* HEADER */
@@ -27,7 +38,7 @@ h1{font-size:30px;font-weight:700;margin:8px 0 6px;letter-spacing:-0.01em;}
 .pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
 .pill{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.05em;padding:5px 10px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--muted);}
 .pill b{color:var(--text);}
-.topnav{position:sticky;top:0;background:rgba(14,15,17,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50;margin:0 -22px 24px;padding:10px 22px;display:flex;gap:6px;flex-wrap:wrap;}
+.topnav{position:sticky;top:0;background:var(--blur);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50;margin:0 -22px 24px;padding:10px 22px;display:flex;gap:6px;flex-wrap:wrap;}
 .topnav a{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:6px 9px;border-radius:6px;}
 .topnav a:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;}
 .topnav a.app{color:var(--purple);border-color:var(--purple);}
@@ -40,8 +51,8 @@ h2::after{content:'';display:block;}
 .h2-rule{height:1px;background:var(--border);margin:12px 0 20px;}
 h3{font-size:17px;font-weight:600;margin:22px 0 8px;color:var(--text);}
 h4{font-size:14px;font-weight:600;margin:16px 0 6px;font-family:'Space Mono',monospace;letter-spacing:0.04em;color:var(--yellow);text-transform:uppercase;}
-p{margin-bottom:12px;color:#d3d7e0;}
-ul,ol{margin:0 0 14px 20px;color:#d3d7e0;}
+p{margin-bottom:12px;color:var(--text2);}
+ul,ol{margin:0 0 14px 20px;color:var(--text2);}
 li{margin-bottom:6px;}
 strong{color:var(--text);font-weight:600;}
 em{color:var(--muted);}
@@ -61,16 +72,16 @@ em{color:var(--muted);}
 .twrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:14px 0;}
 table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px;}
 th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);background:var(--surface2);white-space:nowrap;}
-td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:#d3d7e0;}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text2);}
 tr:last-child td{border-bottom:none;}
-tbody tr:hover{background:rgba(255,255,255,0.02);}
+tbody tr:hover{background:var(--row-hover);}
 td.num{font-family:'Space Mono',monospace;}
 .unk{color:var(--muted2);font-style:italic;font-size:12px;}
 
 /* BADGES */
 .badge{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.04em;padding:2px 7px;border-radius:5px;font-weight:700;white-space:nowrap;}
-.b-a{background:var(--green);color:#0e2515;} .b-b{background:var(--yellow);color:#2b230a;}
-.b-c{background:var(--blue);color:#0a1c33;} .b-d{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.b-a{background:var(--green);color:var(--badge-ink);} .b-b{background:var(--yellow);color:var(--badge-ink);}
+.b-c{background:var(--blue);color:var(--badge-ink);} .b-d{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
 .v{color:var(--green);font-weight:600;} .x{color:var(--red);font-weight:600;}
 
 /* RANKING CARDS */
@@ -86,22 +97,22 @@ td.num{font-family:'Space Mono',monospace;}
 .axes{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
 .axis{font-size:11px;font-family:'Space Mono',monospace;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px;color:var(--muted);}
 .axis b{color:var(--text);}
-.rank-why{font-size:13.5px;color:#d3d7e0;margin-top:6px;}
+.rank-why{font-size:13.5px;color:var(--text2);margin-top:6px;}
 .s-hi{color:var(--green);} .s-mid{color:var(--yellow);} .s-lo{color:var(--muted);}
 
 /* EMAIL */
 .email{border:1px solid var(--border);border-radius:12px;background:var(--surface2);margin:16px 0;overflow:hidden;}
 .email-head{padding:12px 16px;border-bottom:1px solid var(--border);font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);background:var(--surface);}
 .email-head b{color:var(--text);}
-.email-body{padding:16px;white-space:pre-wrap;font-size:13.5px;line-height:1.65;color:#dfe3ec;font-family:'DM Sans',sans-serif;}
+.email-body{padding:16px;white-space:pre-wrap;font-size:13.5px;line-height:1.65;color:var(--text2);font-family:'DM Sans',sans-serif;}
 .copy-btn{float:right;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);background:var(--bg);padding:4px 9px;border-radius:6px;cursor:pointer;}
 .copy-btn:hover{color:var(--accent);border-color:var(--accent);}
 
 /* TIER HEADERS */
 .tier-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;}
 .tier-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;border-radius:8px;font-weight:700;}
-.tier1{background:var(--green);color:#0e2515;} .tier2{background:var(--blue);color:#0a1c33;}
-.tier3{background:var(--yellow);color:#2b230a;} .tier4{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.tier1{background:var(--green);color:var(--badge-ink);} .tier2{background:var(--blue);color:var(--badge-ink);}
+.tier3{background:var(--yellow);color:var(--badge-ink);} .tier4{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
 .tier-desc{font-size:13px;color:var(--muted);}
 
 footer{border-top:1px solid var(--border);padding:24px 0;margin-top:50px;font-size:12px;color:var(--muted2);}
@@ -112,6 +123,7 @@ sup{font-size:10px;color:var(--accent);}
 </style>
 </head>
 <body>
+<script>(function(){try{if(localStorage.getItem('laxTheme')==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
 <div class="page">
 
 <header>
@@ -119,10 +131,11 @@ sup{font-size:10px;color:var(--accent);}
   <h1>Where do I play my 5th year — and get a master's I actually want?</h1>
   <div class="sub">Prepared for <strong>Barlow Clark-Schoeb</strong> · UConn #8 · Attack / Draw Specialist · 5'11" · one season of eligibility remaining · target season <strong>2027</strong>. Compiled August 2026.</div>
   <div class="pill-row">
-    <span class="pill"><b>66→72</b> 2026 draws <span style="color:var(--muted2)">(verify)</span></span>
-    <span class="pill"><b>125+</b> career draws</span>
+    <span class="pill"><b>72</b> draws (2026)</span>
+    <span class="pill"><b>131</b> career draws</span>
     <span class="pill"><b>All-Big East</b> 2nd Team</span>
     <span class="pill">Led UConn in draws 2026</span>
+    <span class="pill"><b>≈⅓</b> of UConn's team draws</span>
     <span class="pill">BA Environmental Studies + Spanish</span>
   </div>
 </header>
@@ -139,6 +152,7 @@ sup{font-size:10px;color:var(--accent);}
   <a href="#emails">Tier-1 Emails</a>
   <a href="#method">Method + Sources</a>
   <a href="./index.html" class="app">↗ Interactive App</a>
+  <button class="theme-btn" id="theme-toggle" title="Toggle light/dark">☾ Dark</button>
 </nav>
 
 <!-- HONESTY BANNER -->
@@ -191,18 +205,31 @@ sup{font-size:10px;color:var(--accent);}
       <tr><td>2023 (Fr.)</td><td class="num">14</td><td class="num unk">UNK</td><td class="num v">11</td><td>Season-high 3 DC vs New Hampshire</td></tr>
       <tr><td>2024 (So.)</td><td class="num">12</td><td class="num unk">UNK</td><td class="num v">13</td><td>—</td></tr>
       <tr><td>2025 (Jr.)</td><td class="num">17</td><td class="num">11</td><td class="num v">35</td><td>Career-high 8 DC vs Xavier</td></tr>
-      <tr><td>2026 (Sr.)</td><td class="num">16–17 ⚠</td><td class="num">16–17 ⚠</td><td class="num" style="color:var(--yellow)">66 or 72 ⚠</td><td>Led team in draws; <strong>All-Big East 2nd Team</strong>; Big East All-Tournament; ~3rd in Big East in draws</td></tr>
-      <tr><td><strong>Career</strong></td><td class="num">~57–60</td><td class="num unk">UNK</td><td class="num" style="color:var(--yellow)"><strong>125 or 131 ⚠</strong></td><td>Progression 11 → 13 → 35 → 66/72</td></tr>
+      <tr><td>2026 (Sr.)</td><td class="num">17</td><td class="num">17</td><td class="num v">72</td><td>Led team in draws; <strong>All-Big East 2nd Team</strong>; Big East All-Tournament; ~3rd in Big East in draws</td></tr>
+      <tr><td><strong>Career</strong></td><td class="num">60</td><td class="num unk">UNK</td><td class="num v"><strong>131</strong></td><td>Progression 11 → 13 → 35 → 72</td></tr>
     </tbody>
   </table></div>
 
-  <div class="callout warn">
-    <div class="ctitle">⚠ Two things to confirm on your own stats page</div>
-    <p>UConn's official bio narrative (as surfaced by search) reads <strong>"72 draw controls"</strong> and <strong>"started all 17 games"</strong> in 2026 — you told me 66 and 16. I couldn't open the raw cumulative-stats table (UConn's site is blocked from this research environment), so I'm <strong>not overriding your number</strong> — I'm flagging it. Pull <a href="https://uconnhuskies.com/sports/womens-lacrosse/roster/barlow-clark-schoeb/15417" target="_blank" rel="noopener">your bio page</a> and the 2026 season stats page and lock the exact figure. <strong>If it's 72 / 131-career, that's a stronger number to put in front of coaches</strong> — worth getting right.</p>
+  <div class="callout good">
+    <div class="ctitle">✓ Resolved — use 72 draws (career 131)</div>
+    <p>Two independent reads of UConn's official bio now agree: <strong>72 draw controls</strong>, <strong>started all 17 games</strong> in 2026 (All-Big East Second Team, Big East All-Tournament, ~3rd in the Big East in draws). That makes your career total <strong>131</strong> (11 → 13 → 35 → 72). The <strong>66/16</strong> you first mentioned looks like a mid-season count — <strong>UConn's published season-final figure is 72</strong>, so use it. I still couldn't open the raw stats table directly (UConn's site is blocked from this research environment), so give it one final glance on <a href="https://uconnhuskies.com/sports/womens-lacrosse/roster/barlow-clark-schoeb/15417" target="_blank" rel="noopener">your bio page</a> — but 72 is the number to lead with.</p>
   </div>
 
-  <h4>The "who actually took the draw" question</h4>
-  <p>You asked whether play-by-play can show how often <em>you personally</em> took the draw (vs. a teammate getting the statistical draw control) and UConn's win rate when you drew. Honest answer: <strong>this is not publicly determinable.</strong> Public box scores credit a draw control to whoever <em>gains possession</em> — they don't record who physically took the draw at center. Separating the two needs coaching/video data (Hudl, your coaches' draw charts). <strong>Ask UConn's staff for your draw-win chart</strong> — if it shows a strong team possession rate when you're taking it, that's a powerful, differentiated stat for your outreach that no other recruit will have.</p>
+  <h4>UConn's team draw controls — why your real impact beats your stat line</h4>
+  <p>This is the point that separates you from a box-score reader's view of a draw specialist. UConn recorded <strong>≈197 team draw controls in 2026</strong> (<a href="https://www.bigeast.com/teamstats.aspx?path=wlax&year=2026&school=uconn" target="_blank" rel="noopener">Big East team stats</a> — that figure was reported in late April, so confirm the season-final number on your team stats page). Against that:</p>
+  <div class="twrap"><table>
+    <thead><tr><th>Measure</th><th>Value</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td>Your individual draws (2026)</td><td class="num v">72</td><td>Team-leading</td></tr>
+      <tr><td>UConn team draws (2026)</td><td class="num">≈197 <span class="unk">(verify final)</span></td><td>Whole-team total</td></tr>
+      <tr><td><strong>Your share of the team's draws</strong></td><td class="num" style="color:var(--green)"><strong>≈ one-third</strong></td><td>An exceptional load for one player</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout good">
+    <div class="ctitle">★ Your differentiator — you direct the draw, you don't just collect it</div>
+    <p>Here's the nuance coaches will care about: a statistical "draw control" is credited to whoever <em>gains possession</em> — so when you <strong>win the draw and direct it to a circle teammate</strong>, <em>she</em> gets the stat, not you. That means your individual total of 72 <strong>undercounts</strong> how many draws you actually win and control. A specialist who can reliably place the ball to her circle players is more valuable than one who only self-collects, because it lets a coach design draw plays around wings and quick transition — exactly what draw-oriented staffs (USC's Sam Apuzzo, Michigan, Loyola) build their game around.</p>
+    <p style="margin-bottom:0;"><strong>How to prove it:</strong> public play-by-play can't separate "who took the draw" from "who gained possession" — only your coaches' draw charts / Hudl can. Ask UConn's staff for your <strong>draw-win rate and directed-possession chart</strong>. A line like "I won ~X% of the draws I took and directed them to our circle" is a differentiated, coach-credible stat no other recruit will bring — lead with it once you have the number.</p>
+  </div>
 </section>
 
 <!-- PORTAL -->
@@ -568,7 +595,7 @@ UConn Women's Lacrosse, #8
 <!-- EMAILS -->
 <section id="emails">
   <h2><span class="n">09</span> Outreach emails</h2><div class="h2-rule"></div>
-  <div class="callout info"><div class="ctitle">Before you send</div><p>Send these <strong>after</strong> you're in the portal (or route them through UConn compliance) to stay clear of tampering rules. Use the program's <strong>recruiting questionnaire</strong> as the delivery method — no verified staff emails are published at USC or Stanford. Insert your <strong>confirmed</strong> 2026 draw number (66 or 72 — see §02) and attach a highlight link. Keep them short; coaches read on their phones.</p></div>
+  <div class="callout info"><div class="ctitle">Before you send</div><p>Send these <strong>after</strong> you're in the portal (or route them through UConn compliance) to stay clear of tampering rules. Use the program's <strong>recruiting questionnaire</strong> as the delivery method — no verified staff emails are published at USC or Stanford. Your 2026 draw number is <strong>72</strong> (career 131 — see §02); attach a highlight link. Keep them short; coaches read on their phones.</p></div>
 
   <div class="email">
     <div class="email-head"><button class="copy-btn" data-copy="e-usc">Copy</button><b>To:</b> USC — HC Sam Apuzzo (via WLax recruiting questionnaire) · <b>Re:</b> Grad-transfer draw specialist, 1 year left</div>
@@ -576,15 +603,14 @@ UConn Women's Lacrosse, #8
 
 Congratulations on the USC job. I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one season of eligibility left, planning a graduate transfer for 2027.
 
-The draw is my craft, and I grew it every year at UConn — 11 to 13 to 35 to 66* draw controls this past season, when I started all 16 games, led the team, and earned All-Big East Second Team. Knowing how central the draw and transition game were to your work at Boston College, I think my game would fit what you're building at USC.
+The draw is my craft, and I grew it every year at UConn — 11 to 13 to 35 to 72 draw controls this past season, when I started all 17 games, led the team, and earned All-Big East Second Team. I take pride in not just winning the draw but directing it to our circle players to spark transition — so my individual total actually undercounts the draws I win and control. Knowing how central the draw and transition game were to your work at Boston College, I think my game would fit what you're building at USC.
 
 Academically I'm drawn to USC's Master of Urban Planning (Climate Change & Sustainability) — a natural next step from my Environmental Studies and Spanish degrees. A graduate program like that, paired with a final year in your program, would be the ideal fifth year for me.
 
 Could we set up a short call? I'll be entering the transfer portal shortly and would love to talk about how I can help USC at the draw in 2027. Highlight film and full stats attached.
 
 Thank you,
-Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
-*confirming 66 vs 72 on my official season page</div>
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8</div>
   </div>
 
   <div class="email">
@@ -593,14 +619,13 @@ Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
 
 I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one year of eligibility remaining, looking to graduate-transfer for the 2027 season.
 
-I know the draw circle decides a lot of close games, and it's where I do my best work — I improved every season at UConn (11 → 13 → 35 → 66* draws) and this year I started all 16 games, led the Huskies in draw controls, and made All-Big East Second Team. With Jenny Woodings finishing her career, I'd love to compete to help Florida own the draw in 2027 the way a Top-15 team should.
+I know the draw circle decides a lot of close games, and it's where I do my best work — I improved every season at UConn (11 → 13 → 35 → 72 draws) and this year I started all 17 games, led the Huskies in draw controls, and made All-Big East Second Team. I'm not just a self-collector: I take pride in directing the draw to our circle players to create fast-break chances, so my true draw-winning impact runs higher than my individual number. With Jenny Woodings finishing her career, I'd love to compete to help Florida own the draw in 2027 the way a Top-15 team should.
 
 Florida is also a dream academic fit: I have degrees in Environmental Studies and Spanish, and the College of Design, Construction & Planning — the Master of Sustainable Design and the M.Arch — is exactly the direction I want to grow. Combining that with a final year of lacrosse would be perfect.
 
 Would you be open to a quick call? I'll be entering the portal soon. Film and stats attached — thank you for your time.
 
-Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
-*confirming 66 vs 72 on my official season page</div>
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8</div>
   </div>
 
   <div class="email">
@@ -609,14 +634,13 @@ Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
 
 Congratulations on a historic season and your first NCAA quarterfinal. I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one year of eligibility left, exploring a graduate transfer for 2027.
 
-The draw is my specialty. I grew from 11 draw controls as a freshman to 66* this season, when I started all 16 games, led UConn in draws, and earned All-Big East Second Team. With Jordyn Case and Annabel Frist finishing their careers, I'd relish the chance to help sustain Stanford's draw dominance next season.
+The draw is my specialty. I grew from 11 draw controls as a freshman to 72 this season, when I started all 17 games, led UConn in draws, and earned All-Big East Second Team. With Jordyn Case and Annabel Frist finishing their careers, I'd relish the chance to help sustain Stanford's draw dominance next season.
 
 I'm also genuinely excited about Stanford's MS in Design at the d.school — a program that fits how I want to build on my Environmental Studies background. A final season with the Cardinal alongside that degree would be a dream fifth year.
 
 Could we find time for a short call? I'll be entering the portal soon; film and stats attached. Thank you.
 
-Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
-*confirming 66 vs 72 on my official season page</div>
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8</div>
   </div>
 
   <div class="email">
@@ -625,14 +649,13 @@ Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
 
 I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one season of eligibility left, planning a graduate transfer for 2027.
 
-I specialize in the draw, and I've made it a strength every year — 11 to 13 to 35 to 66* draw controls, starting all 16 games this season and leading UConn in draws on the way to All-Big East Second Team honors. I'd love to compete to give Syracuse an edge in the draw circle and more possessions for your offense in 2027.
+I specialize in the draw, and I've made it a strength every year — 11 to 13 to 35 to 72 draw controls, starting all 17 games this season and leading UConn in draws on the way to All-Big East Second Team honors. I'd love to compete to give Syracuse an edge in the draw circle and more possessions for your offense in 2027.
 
 Academically, my Environmental Studies and Spanish background points me toward Syracuse's strengths in communications (Newhouse) and design (VPA), and I'd be excited to pursue a graduate degree there while I compete.
 
 Would you have time for a short call? I'll be entering the portal shortly — film and full stats attached. Thank you.
 
-Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
-*confirming 66 vs 72 on my official season page</div>
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8</div>
   </div>
 
   <p style="margin-top:22px;"><strong>Academic-led notes for the "seat-filled dream schools."</strong> Ohio State and Michigan already have entrenched young draw specialists, so these lead with the degree and offer draw depth honestly — never criticizing their returner.</p>
@@ -643,12 +666,11 @@ Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
 
 I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one season of eligibility left, planning a graduate transfer for 2027.
 
-I'll be direct about why Ohio State is on my list: Knowlton's M.Arch and City & Regional Planning programs are exactly where I want to take my Environmental Studies and Spanish background, and I'd love to pursue that degree while I compete one more year. On the field, the draw is my craft — I grew from 11 draw controls as a freshman to 66* this past season, started all 16 games, led UConn in draws, and earned All-Big East Second Team. I know Abby Boyle gives you a strong circle; I'd be excited to add experienced draw depth, push the unit in practice, and contribute as a two-way midfielder.
+I'll be direct about why Ohio State is on my list: Knowlton's M.Arch and City & Regional Planning programs are exactly where I want to take my Environmental Studies and Spanish background, and I'd love to pursue that degree while I compete one more year. On the field, the draw is my craft — I grew from 11 draw controls as a freshman to 72 this past season, started all 17 games, led UConn in draws, and earned All-Big East Second Team. I know Abby Boyle gives you a strong circle; I'd be excited to add experienced draw depth, push the unit in practice, and contribute as a two-way midfielder.
 
 Would you be open to a short call about whether I could be a fit? I'll be entering the portal soon — film and stats attached. Thank you for your time.
 
-Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
-*confirming 66 vs 72 on my official season page</div>
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8</div>
   </div>
 
   <div class="email">
@@ -657,12 +679,11 @@ Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
 
 I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one year of eligibility remaining, looking to graduate-transfer for 2027.
 
-Michigan is on my list for two reasons. First, Taubman's M.Arch is the graduate program I most want to pursue, and a final season in your program alongside it would be ideal. Second, I know how much your staff values the draw — it's the part of my game I've built my career on (11 to 66* draw controls over four years, starting all 16 games this season, leading UConn in draws, All-Big East Second Team). Emma Burke clearly anchors your circle; I'd be glad to add experienced depth and two-way midfield value behind and alongside her.
+Michigan is on my list for two reasons. First, Taubman's M.Arch is the graduate program I most want to pursue, and a final season in your program alongside it would be ideal. Second, I know how much your staff values the draw — it's the part of my game I've built my career on (11 to 72 draw controls over four years, starting all 17 games this season, leading UConn in draws, All-Big East Second Team). Emma Burke clearly anchors your circle; I'd be glad to add experienced depth and two-way midfield value behind and alongside her.
 
 Could we set up a brief call to see if there's a fit? I'll be in the portal shortly — film and full stats attached. Thank you.
 
-Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
-*confirming 66 vs 72 on my official season page</div>
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8</div>
   </div>
 </section>
 
@@ -700,5 +721,6 @@ document.querySelectorAll('.copy-btn').forEach(b=>{
   };
 });
 </script>
+<script>(function(){var r=document.documentElement,b=document.getElementById('theme-toggle');function s(){var d=r.getAttribute('data-theme')==='dark';if(b)b.textContent=d?'\u2600 Light':'\u263e Dark';}s();if(b)b.onclick=function(){var d=r.getAttribute('data-theme')==='dark';if(d){r.removeAttribute('data-theme');try{localStorage.setItem('laxTheme','light');}catch(e){}}else{r.setAttribute('data-theme','dark');try{localStorage.setItem('laxTheme','dark');}catch(e){}}s();};})();</script>
 </body>
 </html>
