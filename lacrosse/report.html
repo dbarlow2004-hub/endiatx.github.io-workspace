@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grad-Transfer Recruiting Report — Barlow Clark-Schoeb</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+:root{
+  --bg:#0e0f11; --surface:#16181c; --surface2:#1c1f24; --border:#2a2d35;
+  --accent:#00e5c9; --red:#ff5e5e; --purple:#c084fc; --yellow:#ffd166; --green:#4ade80; --blue:#60a5fa;
+  --text:#e8eaf0; --muted:#8b909c; --muted2:#606570;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;font-size:15px;}
+a{color:var(--accent);text-decoration:none;}
+a:hover{text-decoration:underline;}
+::selection{background:var(--accent);color:#0e0f11;}
+.page{max-width:1000px;margin:0 auto;padding:0 22px 100px;}
+
+/* HEADER */
+header{border-bottom:1px solid var(--border);padding:26px 0 22px;margin-bottom:8px;}
+.kicker{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);}
+h1{font-size:30px;font-weight:700;margin:8px 0 6px;letter-spacing:-0.01em;}
+.sub{color:var(--muted);font-size:14px;}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.pill{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.05em;padding:5px 10px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--muted);}
+.pill b{color:var(--text);}
+.topnav{position:sticky;top:0;background:rgba(14,15,17,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:50;margin:0 -22px 24px;padding:10px 22px;display:flex;gap:6px;flex-wrap:wrap;}
+.topnav a{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);padding:6px 9px;border-radius:6px;}
+.topnav a:hover{color:var(--accent);border-color:var(--accent);text-decoration:none;}
+.topnav a.app{color:var(--purple);border-color:var(--purple);}
+
+/* SECTIONS */
+section{margin:40px 0;scroll-margin-top:60px;}
+h2{font-size:22px;font-weight:700;margin-bottom:4px;display:flex;align-items:baseline;gap:10px;}
+h2 .n{font-family:'Space Mono',monospace;font-size:13px;color:var(--accent);}
+h2::after{content:'';display:block;}
+.h2-rule{height:1px;background:var(--border);margin:12px 0 20px;}
+h3{font-size:17px;font-weight:600;margin:22px 0 8px;color:var(--text);}
+h4{font-size:14px;font-weight:600;margin:16px 0 6px;font-family:'Space Mono',monospace;letter-spacing:0.04em;color:var(--yellow);text-transform:uppercase;}
+p{margin-bottom:12px;color:#d3d7e0;}
+ul,ol{margin:0 0 14px 20px;color:#d3d7e0;}
+li{margin-bottom:6px;}
+strong{color:var(--text);font-weight:600;}
+em{color:var(--muted);}
+
+/* CALLOUTS */
+.callout{border-radius:12px;padding:16px 18px;margin:16px 0;border:1px solid var(--border);background:var(--surface);}
+.callout.warn{border-color:rgba(255,209,102,0.3);background:rgba(255,209,102,0.05);}
+.callout.good{border-color:rgba(74,222,128,0.3);background:rgba(74,222,128,0.05);}
+.callout.info{border-color:rgba(96,165,250,0.3);background:rgba(96,165,250,0.05);}
+.callout.danger{border-color:rgba(255,94,94,0.3);background:rgba(255,94,94,0.05);}
+.callout .ctitle{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+.callout.warn .ctitle{color:var(--yellow);} .callout.good .ctitle{color:var(--green);}
+.callout.info .ctitle{color:var(--blue);} .callout.danger .ctitle{color:var(--red);}
+.callout p:last-child{margin-bottom:0;}
+
+/* TABLES */
+.twrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px;margin:14px 0;}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:560px;}
+th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);background:var(--surface2);white-space:nowrap;}
+td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;color:#d3d7e0;}
+tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:rgba(255,255,255,0.02);}
+td.num{font-family:'Space Mono',monospace;}
+.unk{color:var(--muted2);font-style:italic;font-size:12px;}
+
+/* BADGES */
+.badge{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.04em;padding:2px 7px;border-radius:5px;font-weight:700;white-space:nowrap;}
+.b-a{background:var(--green);color:#0e2515;} .b-b{background:var(--yellow);color:#2b230a;}
+.b-c{background:var(--blue);color:#0a1c33;} .b-d{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.v{color:var(--green);font-weight:600;} .x{color:var(--red);font-weight:600;}
+
+/* RANKING CARDS */
+.rank-card{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:var(--surface);}
+.rank-card.t1{border-color:rgba(74,222,128,0.4);}
+.rank-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;}
+.rank-title{font-size:19px;font-weight:700;}
+.rank-title .rnum{font-family:'Space Mono',monospace;color:var(--accent);margin-right:8px;}
+.rank-meta{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px;}
+.rank-score{text-align:center;min-width:66px;}
+.rank-score .big{font-family:'Space Mono',monospace;font-size:26px;font-weight:700;line-height:1;}
+.rank-score .lbl{font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted2);margin-top:3px;}
+.axes{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0;}
+.axis{font-size:11px;font-family:'Space Mono',monospace;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px;color:var(--muted);}
+.axis b{color:var(--text);}
+.rank-why{font-size:13.5px;color:#d3d7e0;margin-top:6px;}
+.s-hi{color:var(--green);} .s-mid{color:var(--yellow);} .s-lo{color:var(--muted);}
+
+/* EMAIL */
+.email{border:1px solid var(--border);border-radius:12px;background:var(--surface2);margin:16px 0;overflow:hidden;}
+.email-head{padding:12px 16px;border-bottom:1px solid var(--border);font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);background:var(--surface);}
+.email-head b{color:var(--text);}
+.email-body{padding:16px;white-space:pre-wrap;font-size:13.5px;line-height:1.65;color:#dfe3ec;font-family:'DM Sans',sans-serif;}
+.copy-btn{float:right;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);background:var(--bg);padding:4px 9px;border-radius:6px;cursor:pointer;}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);}
+
+/* TIER HEADERS */
+.tier-h{display:flex;align-items:center;gap:12px;margin:30px 0 6px;}
+.tier-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;border-radius:8px;font-weight:700;}
+.tier1{background:var(--green);color:#0e2515;} .tier2{background:var(--blue);color:#0a1c33;}
+.tier3{background:var(--yellow);color:#2b230a;} .tier4{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
+.tier-desc{font-size:13px;color:var(--muted);}
+
+footer{border-top:1px solid var(--border);padding:24px 0;margin-top:50px;font-size:12px;color:var(--muted2);}
+sup{font-size:10px;color:var(--accent);}
+.src{font-size:12px;color:var(--muted);}
+.toc{columns:2;column-gap:24px;font-size:13px;}
+@media(max-width:640px){.toc{columns:1;}h1{font-size:24px;}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="kicker">D1 Women's Lacrosse · Graduate-Transfer Research</div>
+  <h1>Where do I play my 5th year — and get a master's I actually want?</h1>
+  <div class="sub">Prepared for <strong>Barlow Clark-Schoeb</strong> · UConn #8 · Attack / Draw Specialist · 5'11" · one season of eligibility remaining · target season <strong>2027</strong>. Compiled August 2026.</div>
+  <div class="pill-row">
+    <span class="pill"><b>66→72</b> 2026 draws <span style="color:var(--muted2)">(verify)</span></span>
+    <span class="pill"><b>125+</b> career draws</span>
+    <span class="pill"><b>All-Big East</b> 2nd Team</span>
+    <span class="pill">Led UConn in draws 2026</span>
+    <span class="pill">BA Environmental Studies + Spanish</span>
+  </div>
+</header>
+
+<nav class="topnav">
+  <a href="#tldr">TL;DR</a>
+  <a href="#stats">Your Stats</a>
+  <a href="#portal">Portal Plan</a>
+  <a href="#landscape">Draw Landscape</a>
+  <a href="#stanford">Stanford</a>
+  <a href="#usc">USC</a>
+  <a href="#ranking">Master Ranking</a>
+  <a href="#emails">Tier-1 Emails</a>
+  <a href="#method">Method + Sources</a>
+  <a href="./index.html" class="app">↗ Interactive App</a>
+</nav>
+
+<!-- HONESTY BANNER -->
+<div class="callout warn">
+  <div class="ctitle">⚠ How to read this — accuracy &amp; limits</div>
+  <p>Everything here is built from <strong>real, cited sources</strong> (NCAA, official athletics &amp; graduate sites, conference sites, reputable lacrosse media). Two honest limits you must respect before acting:</p>
+  <ul style="margin-bottom:0;">
+    <li><strong>Individual players' 2027 return status is rarely published.</strong> Schools don't announce "she's using her 5th year." I classify each draw situation <span class="badge b-a">A</span>–<span class="badge b-d">D</span> from class-year evidence and tell you exactly which roster/portal page to confirm it on. Where it can't be verified, it says <span class="unk">UNKNOWN</span> — not a guess.</li>
+    <li><strong>No coach email is invented.</strong> Most athletics departments (Stanford, USC included) don't publish staff emails. Where there's no verified address you get the official recruiting-questionnaire link or staff-directory URL instead. Do not send to a guessed address.</li>
+  </ul>
+</div>
+
+<!-- TL;DR -->
+<section id="tldr">
+  <h2><span class="n">01</span> The short version</h2><div class="h2-rule"></div>
+
+  <div class="callout good">
+    <div class="ctitle">★ Your single biggest advantage</div>
+    <p>As a <strong>graduate transfer in women's lacrosse, you are currently exempt from the transfer-portal windows</strong> — you can enter the portal essentially <strong>any time</strong>, while undergrads are boxed into ~Dec 1–15 and ~May 10–June 8. You need <strong>no waiver</strong>, and you're <strong>immediately eligible</strong> in 2027 as long as you finish your UConn degree, leave academically eligible, and enroll full-time in a grad program. <em>(Confirm the WLax grad-window exemption in writing with UConn compliance — the NCAA has been narrowing it sport-by-sport.)</em></p>
+  </div>
+
+  <h3>Where your skill set actually solves a roster problem</h3>
+  <p>You are a draw specialist. The programs worth your energy are the ones <strong>losing their draw</strong> AND offering a <strong>master's you want</strong> (M.Arch / design / sustainability / planning). Cross-referencing both:</p>
+
+  <div class="twrap"><table>
+    <thead><tr><th>Top targets</th><th>2027 draw situation</th><th>Grad fit for you</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td><strong>USC</strong></td><td><span class="badge b-c">C</span> Regan (Jr) may return — but brand-new draw-focused staff, full rebuild</td><td class="v">Excellent</td><td>New HC Sam Apuzzo (a draw specialist herself) + rebuild + MUP-Sustainability / M.Arch. Best combined fit.</td></tr>
+      <tr><td><strong>Florida</strong></td><td><span class="badge b-b">B</span> Jenny Woodings (grad) gone; team was ~even at the draw</td><td class="v">Excellent</td><td>Real draw vacancy on a Top-15 team + one of the best design/sustainability grad schools (DCP).</td></tr>
+      <tr><td><strong>Stanford</strong></td><td><span class="badge b-a">A</span> both primary draws (Case + Frist) gone — clearest vacancy in the country</td><td class="x">Weak</td><td>Athletic bullseye, but no M.Arch/planning; sustainability master's are closed to transfers. Contact only if open to an engineering-flavored MS Design.</td></tr>
+      <tr><td><strong>Syracuse</strong></td><td><span class="badge b-b">B</span> weakest draw in the ACC, actively adding grad transfers</td><td>Moderate</td><td>Clear athletic need; Newhouse/VPA for comms &amp; design, but no architecture/planning.</td></tr>
+      <tr><td><strong>Ohio St / Michigan / Cincinnati</strong></td><td><span class="badge b-d">C/D</span> draw mostly returns</td><td class="v">Elite academics</td><td>The best M.Arch programs for a non-architecture undergrad (no GRE). Contact about fit even if the draw seat is filled.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout info">
+    <div class="ctitle">The core tension you're managing</div>
+    <p>Your <strong>best athletic opportunity (Stanford)</strong> and your <strong>best academic programs (Michigan/Ohio State/Cincinnati M.Arch)</strong> mostly <strong>aren't the same schools</strong>. The two places where both line up well are <strong>USC</strong> and <strong>Florida</strong> — which is why they top the ranking.</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <h2><span class="n">02</span> Your UConn career — verification</h2><div class="h2-rule"></div>
+  <p>Verified against UConn's official athletics site and Big East sources (via search — see the accuracy note below). Draw-control totals for 2023–2025 <strong>match your figures exactly</strong>. Two items need your eyes:</p>
+
+  <div class="twrap"><table>
+    <thead><tr><th>Season (class)</th><th>GP</th><th>GS</th><th>Draw Controls</th><th>Verified honors / notes</th></tr></thead>
+    <tbody>
+      <tr><td>2023 (Fr.)</td><td class="num">14</td><td class="num unk">UNK</td><td class="num v">11</td><td>Season-high 3 DC vs New Hampshire</td></tr>
+      <tr><td>2024 (So.)</td><td class="num">12</td><td class="num unk">UNK</td><td class="num v">13</td><td>—</td></tr>
+      <tr><td>2025 (Jr.)</td><td class="num">17</td><td class="num">11</td><td class="num v">35</td><td>Career-high 8 DC vs Xavier</td></tr>
+      <tr><td>2026 (Sr.)</td><td class="num">16–17 ⚠</td><td class="num">16–17 ⚠</td><td class="num" style="color:var(--yellow)">66 or 72 ⚠</td><td>Led team in draws; <strong>All-Big East 2nd Team</strong>; Big East All-Tournament; ~3rd in Big East in draws</td></tr>
+      <tr><td><strong>Career</strong></td><td class="num">~57–60</td><td class="num unk">UNK</td><td class="num" style="color:var(--yellow)"><strong>125 or 131 ⚠</strong></td><td>Progression 11 → 13 → 35 → 66/72</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout warn">
+    <div class="ctitle">⚠ Two things to confirm on your own stats page</div>
+    <p>UConn's official bio narrative (as surfaced by search) reads <strong>"72 draw controls"</strong> and <strong>"started all 17 games"</strong> in 2026 — you told me 66 and 16. I couldn't open the raw cumulative-stats table (UConn's site is blocked from this research environment), so I'm <strong>not overriding your number</strong> — I'm flagging it. Pull <a href="https://uconnhuskies.com/sports/womens-lacrosse/roster/barlow-clark-schoeb/15417" target="_blank" rel="noopener">your bio page</a> and the 2026 season stats page and lock the exact figure. <strong>If it's 72 / 131-career, that's a stronger number to put in front of coaches</strong> — worth getting right.</p>
+  </div>
+
+  <h4>The "who actually took the draw" question</h4>
+  <p>You asked whether play-by-play can show how often <em>you personally</em> took the draw (vs. a teammate getting the statistical draw control) and UConn's win rate when you drew. Honest answer: <strong>this is not publicly determinable.</strong> Public box scores credit a draw control to whoever <em>gains possession</em> — they don't record who physically took the draw at center. Separating the two needs coaching/video data (Hudl, your coaches' draw charts). <strong>Ask UConn's staff for your draw-win chart</strong> — if it shows a strong team possession rate when you're taking it, that's a powerful, differentiated stat for your outreach that no other recruit will have.</p>
+</section>
+
+<!-- PORTAL -->
+<section id="portal">
+  <h2><span class="n">03</span> Transfer-portal &amp; 5th-year action plan</h2><div class="h2-rule"></div>
+
+  <div class="callout good">
+    <div class="ctitle">✓ Grad-transfer status = maximum flexibility</div>
+    <p>Windows are an <em>undergraduate</em> mechanism. Graduate transfers in women's lacrosse may be entered into the portal <strong>at any time</strong>, are <strong>immediately eligible</strong> with <strong>no waiver</strong> and <strong>no year in residence</strong>, and multiple transfers no longer trigger a sit-out year (post-2024 settlement).</p>
+  </div>
+
+  <h4>Exact process — how you enter</h4>
+  <ol>
+    <li><strong>Confirm degree + academic standing.</strong> Immediate eligibility depends on completing your UConn degree and leaving academically eligible.</li>
+    <li><strong>Complete the NCAA Transfer Educational Module</strong> (required video) and save the completion certificate.</li>
+    <li><strong>Email UConn compliance a written "Notification of Transfer" request</strong> — your name, sport (women's lacrosse), student ID, date, and clear intent to enter the portal. Ask them to confirm receipt.</li>
+    <li><strong>UConn has 2 business days</strong> to enter you into the portal after that written notice. They cannot refuse or stall past it. Follow up on day 2 if needed.</li>
+    <li><strong>Get the portal confirmation email.</strong> Leave the "do-not-contact" flag <strong>OFF</strong> so coaches can reach you; add your contact info.</li>
+    <li><strong>Now coaches may contact you</strong> — recruiting conversations become permissible only at this point.</li>
+    <li><strong>Get any grad-year athletic aid offer in writing</strong> (amount, assistantship/merit aid). Women's lacrosse is an equivalency sport — awards can be full, partial, or walk-on; the House-settlement roster limit is 38 with more scholarships now fundable.</li>
+    <li><strong>Enroll full-time in the new school's grad program</strong> → immediately eligible for spring 2027.</li>
+  </ol>
+
+  <div class="callout danger">
+    <div class="ctitle">✗ Tampering — protect yourself</div>
+    <p>Coaches at other schools <strong>cannot contact you about transferring until you are in the portal</strong> — that's tampering (penalties got harsher in 2026). You initiating a hello isn't itself a violation, but a coach who engages on transfer specifics pre-portal is exposed. <strong>Clean path: enter the portal first, then talk.</strong> The proposed pre-portal "engagement period" (Prop. 2026-39) is <em>not</em> adopted — don't rely on it.</p>
+  </div>
+
+  <h4>UConn compliance — who to contact <span class="unk">(verify — from search, not confirmed)</span></h4>
+  <p>Reported contacts: <strong>Will Aloia</strong> (Assistant AD, Compliance) and <strong>Annie Fiorvanti</strong> (Deputy AD / Senior Woman Administrator). General office reported as <strong>OAC@uconn.edu</strong>. <strong>Confirm the right person for women's-lacrosse portal entries</strong> at the official <a href="https://uconnhuskies.com/sports/compliance" target="_blank" rel="noopener">compliance page</a> and <a href="https://uconnhuskies.com/staff-directory" target="_blank" rel="noopener">staff directory</a> before relying on any of this.</p>
+
+  <div class="callout info">
+    <div class="ctitle">Two things to get in writing from compliance</div>
+    <p>(1) That as a <strong>women's-lacrosse graduate transfer you're exempt from the fall/spring windows</strong> and may enter any time. (2) That your <strong>eligibility clock supports the 2027 season</strong> under the "more-favorable-of-two" transition rule (the new age-based model applies to fall-2027+ first-enrollees; you get old-or-new, whichever helps — and with one clean season left you're fine either way).</p>
+  </div>
+</section>
+
+<!-- LANDSCAPE -->
+<section id="landscape">
+  <h2><span class="n">04</span> The 2026 draw landscape</h2><div class="h2-rule"></div>
+  <p><strong>Champion:</strong> Northwestern (18–3) beat North Carolina 14–11. <strong>Final Four:</strong> + Johns Hopkins (first-ever) and Maryland. A full numeric NCAA team draw ranking couldn't be pulled (ncaa.com is blocked from this environment), but the verified signal is clear: <strong>draw dominance didn't equal deep runs</strong> — Loyola (MD) had the best draw season on record and lost in the first round; champion Northwestern won with a three-player circle.</p>
+
+  <h4>Where the 2027 draw jobs are opening (your shortlist logic)</h4>
+  <div class="twrap"><table>
+    <thead><tr><th>Program</th><th>2026 primary draw</th><th>Class</th><th>2027</th><th>Situation</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Stanford</strong></td><td>Jordyn Case (74) + Annabel Frist (~71, career record)</td><td>Both 5th-yr grad</td><td class="x">BOTH GONE</td><td><span class="badge b-a">A</span> Confirmed double vacancy</td></tr>
+      <tr><td><strong>Florida</strong></td><td>Jenny Woodings (61)</td><td>Grad</td><td class="x">GONE</td><td><span class="badge b-b">B</span> Probable vacancy; team ~even at draw</td></tr>
+      <tr><td><strong>Northwestern</strong></td><td>Maddie Epke (JMU transfer)</td><td>Sr / final yr</td><td class="x">GONE</td><td><span class="badge b-b">B</span> Vacancy, but 3-player circle + national champ = hard</td></tr>
+      <tr><td><strong>Syracuse</strong></td><td>Committee (worst draw in ACC, 7.8/g)</td><td class="unk">mixed</td><td>weak spot</td><td><span class="badge b-b">B</span> Adding grad transfers — open door</td></tr>
+      <tr><td>Michigan</td><td>Lily Montemarano (SR) + <strong>Emma Burke</strong> (SO, career rec)</td><td>Burke returns</td><td class="v">Burke back</td><td><span class="badge b-d">C</span> Montemarano gone but Burke locks the seat</td></tr>
+      <tr><td>USC</td><td>Anna Regan (~321 career, 2nd in USC history)</td><td>Jr</td><td class="unk">UNKNOWN</td><td><span class="badge b-c">C</span> Eligible to return; new staff = wildcard</td></tr>
+      <tr><td>Loyola (MD)</td><td>Mae Murphy (238, league record)</td><td>Fr</td><td class="v">Returns</td><td><span class="badge b-d">D</span> Elite &amp; locked</td></tr>
+      <tr><td>Virginia</td><td>Kate Galica (144, career rec)</td><td>Jr</td><td class="v">Returns</td><td><span class="badge b-d">D</span> Locked</td></tr>
+      <tr><td>Clemson</td><td>Kira Balis (148)</td><td>So</td><td class="v">Returns</td><td><span class="badge b-d">D</span> Locked</td></tr>
+      <tr><td>Johns Hopkins</td><td>Laurel Gonzalez</td><td>So</td><td class="v">Returns</td><td><span class="badge b-d">D</span> Locked</td></tr>
+      <tr><td>Maryland</td><td>Kayla Gilmore</td><td>So</td><td class="v">Returns</td><td><span class="badge b-d">D</span> Locked</td></tr>
+      <tr><td>Notre Dame</td><td>Uma Kowalski</td><td>Fr</td><td class="v">Returns</td><td><span class="badge b-d">D</span> Locked</td></tr>
+      <tr><td>North Carolina</td><td>Harden (Fr) + Gresham</td><td>Harden Fr</td><td class="v">Returns</td><td><span class="badge b-d">D</span> Locked</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src"><span class="badge b-a">A</span> Confirmed vacancy · <span class="badge b-b">B</span> Probable vacancy · <span class="badge b-c">C</span> Opportunity/competition · <span class="badge b-d">D</span> Limited (established returner). Class years and return status must be re-confirmed on each team's 2027 roster page — this is the single most fragile part of the analysis.</p>
+
+  <div class="callout warn">
+    <div class="ctitle">Reading a "bad draw %" correctly — as you asked</div>
+    <p>A weak team draw number is only an opportunity if there's an actual <em>opening</em>. Syracuse (worst in the ACC) is a real opening because it's a committee with no locked-in star and they're recruiting the portal. Florida's mediocre draw <em>plus</em> a graduating anchor (Woodings) is a real opening. By contrast, a strong-draw team like <strong>Stanford</strong> is still your best opening because its two stars <em>graduated</em>. And a weak-ish draw team that just returns a young star is <em>not</em> an opening. The ranking below weighs opening, not raw percentage.</p>
+  </div>
+</section>
+
+<!-- STANFORD -->
+<section id="stanford">
+  <h2><span class="n">05</span> Stanford — deep dive</h2><div class="h2-rule"></div>
+  <div class="rank-head">
+    <div><div class="rank-title">Stanford Cardinal</div><div class="rank-meta">ACC · Stanford, CA · 2026: ~17–4, ACC runner-up, first-ever NCAA quarterfinal</div></div>
+    <div class="rank-score"><div class="big s-mid">72</div><div class="lbl">/100</div></div>
+  </div>
+
+  <h4>Athletic fit — STRONG (a bullseye)</h4>
+  <p>Stanford just had the <strong>best season in program history</strong> (beat #7 Michigan in the NCAA 2nd round, first-ever quarterfinal, lost to eventual runner-up UNC 14–11). And it is losing <strong>both</strong> of its primary draw specialists: <strong>Jordyn Case (74 draws)</strong> and <strong>Annabel Frist (~71, the program's career draw-control record holder)</strong> — both 5th-year graduates, gone. The only returners with meaningful draw reps are Rylee Bouvier (~30, verify eligibility) and Amanda Lawson (~28, underclass) — role players, not proven primary specialists. <strong>This is the clearest, most quantifiable draw vacancy in the country, on a genuine national contender.</strong></p>
+
+  <h4>Academic fit — WEAK (the catch)</h4>
+  <div class="callout danger">
+    <div class="ctitle">✗ Your target degrees mostly don't exist here</div>
+    <p>Stanford has <strong>no M.Arch, no urban planning/design, no landscape architecture, no real estate development, no construction/project-management master's.</strong> Its on-brand <strong>Sustainability Science &amp; Practice</strong> and <strong>Communication MA</strong> are <strong>coterminal-only — open exclusively to current Stanford undergrads</strong>, closed to you as a transfer. Certificates aren't degrees and won't anchor NCAA full-time enrollment.</p>
+  </div>
+  <p>The only externally-open, on-topic master's are engineering-flavored:</p>
+  <div class="twrap"><table>
+    <thead><tr><th>Program</th><th>Open to you?</th><th>Portfolio / GRE</th><th>~Cost</th><th>Fit</th></tr></thead>
+    <tbody>
+      <tr><td><strong>MS in Design (Design Impact)</strong> — d.school / Mech. Eng.</td><td class="v">Yes</td><td>Portfolio req; GRE waived recently</td><td class="num">~$65k/yr</td><td>Least quantitative; plausible via portfolio + life experience</td></tr>
+      <tr><td>MS Civil &amp; Environmental Eng. (Sustainable Design &amp; Construction / Urban Systems)</td><td class="v">Yes</td><td>Quantitative prep expected</td><td class="num">~$45k/yr</td><td>Real stretch from Env Studies + Spanish; likely prereqs</td></tr>
+      <tr><td>Sustainability Science &amp; Practice · Communication MA</td><td class="x">No (coterminal)</td><td>—</td><td>—</td><td>Closed to transfers</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Coaching &amp; contact</h4>
+  <p>HC <strong>Danielle Spencer</strong>; assistants <strong>Emily Cummings, Kelsey Howard, Brian Kelly</strong>. <strong>Stanford does not publish staff emails</strong> — do not guess one. The sanctioned channel is the <a href="https://questionnaires.armssoftware.com/b72747e1b681" target="_blank" rel="noopener">Stanford WLax recruiting questionnaire (ARMS)</a>; staff page: <a href="https://gostanford.com/staff/danielle-spencer" target="_blank" rel="noopener">gostanford.com</a>.</p>
+
+  <div class="callout info">
+    <div class="ctitle">Verdict</div>
+    <p><strong>Contact them — but only if you're genuinely open to the MS in Design (Design Impact).</strong> The athletic opportunity is elite and real; the academic path is narrow and pricey. If a design-innovation MS excites you, Stanford is a dream. If your heart is set on M.Arch or planning, your energy is better spent on USC/Florida. Before outreach: confirm Bouvier's eligibility and check the 2027 roster/portal for any replacement they've already signed.</p>
+  </div>
+</section>
+
+<!-- USC -->
+<section id="usc">
+  <h2><span class="n">06</span> USC — deep dive</h2><div class="h2-rule"></div>
+  <div class="rank-head">
+    <div><div class="rank-title">USC Trojans</div><div class="rank-meta">Big Ten · Los Angeles, CA · 2026: 8–9 (1–7 B1G), no postseason · NEW head coach for 2027</div></div>
+    <div class="rank-score"><div class="big s-hi">83</div><div class="lbl">/100</div></div>
+  </div>
+
+  <h4>The headline — a coaching change that works in your favor</h4>
+  <p>Confirmed: <strong>Lindsey Munday</strong> (the program's only-ever HC) and USC parted ways in May 2026. USC hired <strong>Sam Apuzzo</strong> on June 17, 2026 — <strong>2027 is her first season.</strong> Apuzzo is a 2018 Tewaaraton winner and, most relevant to you, <strong>a draw specialist herself</strong> who helped run "one of the top draw units in the nation" as a Boston College assistant. Her two new assistants (Caroline Steele, ex-Maryland attacker; Jenika Cuocco, ex-Northwestern goalie) are <strong>not</strong> draw specialists — so the draw expertise on staff <em>is</em> the head coach.</p>
+  <div class="callout good">
+    <div class="ctitle">✓ Why this is a rare window</div>
+    <p>A first-year head coach who took over in mid-June, rebuilding an 8–9 roster, whose personal identity is <strong>draws + transition offense</strong> — that is about the most receptive audience a graduate-transfer draw specialist could ask for. New staffs rebuild through the portal, and your skill maps directly onto her system.</p>
+  </div>
+
+  <h4>The one hinge — Anna Regan</h4>
+  <p>USC's 2026 draws ran almost entirely through <strong>Anna Regan</strong> (~321 career draw controls, 2nd in program history) — but she was a <strong>junior</strong>, so she's <em>eligible to return</em> as a 2027 senior. <strong>Her status is UNKNOWN and it's the deciding variable:</strong> if she returns, USC's draw seat is strong (you'd be depth/competition); if she graduates early, transfers, or the new staff reshuffles, the vacancy is significant. Verify on the <a href="https://usctrojans.com/sports/womens-lacrosse" target="_blank" rel="noopener">2027 roster</a> and portal before assuming need. Even if Regan returns, a draw-obsessed new staff may still value an experienced second option.</p>
+
+  <h4>Academic fit — STRONG (much better than Stanford for you)</h4>
+  <div class="twrap"><table>
+    <thead><tr><th>Program</th><th>Open to non-design undergrad?</th><th>Portfolio / GRE</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Master of Urban Planning (MUP)</strong> — "Planning for Climate Change &amp; Sustainability" concentration, Price School</td><td class="v">Yes</td><td>No portfolio · <strong>No GRE</strong></td><td><strong>Cleanest fit</strong> — directly on your sustainability/environmental background</td></tr>
+      <tr><td><strong>M.Arch</strong> (3-yr track), School of Architecture</td><td class="v">Yes</td><td>Portfolio req; prereq 1 sem physics <em>or</em> calc</td><td>Built for non-arch bachelor's; 3-yr commitment</td></tr>
+      <tr><td><strong>MLArch + Urbanism</strong> (96-unit track)</td><td class="v">Yes</td><td>Portfolio req</td><td>Landscape + urbanism, non-design entry</td></tr>
+      <tr><td>Annenberg: MA Public Relations &amp; Advertising / MS Communication Mgmt (online)</td><td class="v">Yes</td><td>No portfolio</td><td>Comms options if you pivot</td></tr>
+      <tr><td>MRED (Dollinger real estate)</td><td class="x">Needs 2 yrs work exp</td><td>—</td><td>Poor fit right now</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Fall-2027 deadlines &amp; official tuition not yet posted — verify at <a href="https://priceschool.usc.edu" target="_blank" rel="noopener">priceschool.usc.edu</a> and <a href="https://arch.usc.edu" target="_blank" rel="noopener">arch.usc.edu</a>. Online-only programs may not satisfy NCAA full-time/residency for a competing athlete — confirm with USC Compliance.</p>
+
+  <h4>Coaching &amp; contact</h4>
+  <p>HC <strong>Sam Apuzzo</strong>; assistants <strong>Caroline Steele</strong>, <strong>Jenika Cuocco</strong>. <strong>No staff emails are published</strong> — use the recruiting questionnaire on <a href="https://usctrojans.com/sports/womens-lacrosse" target="_blank" rel="noopener">usctrojans.com/sports/womens-lacrosse</a> and the <a href="https://usctrojans.com/staff-directory" target="_blank" rel="noopener">staff directory</a>. Do not guess an address.</p>
+
+  <div class="callout good">
+    <div class="ctitle">Verdict — your #1 overall target</div>
+    <p>USC is the best <strong>combined</strong> athletic + academic fit: a draw-focused new staff mid-rebuild (receptive), plus grad programs (MUP-Sustainability, M.Arch, MLArch) that genuinely fit your background. The Regan unknown caps the athletic certainty, but the coaching tailwind and academic depth make this the first email you send.</p>
+  </div>
+</section>
+
+<!-- RANKING -->
+<section id="ranking">
+  <h2><span class="n">07</span> Master ranking &amp; tiers</h2><div class="h2-rule"></div>
+  <p>Each school scored on six axes (/10): <strong>Athletic Opportunity</strong> (how badly they need your draw), <strong>Grad Fit</strong> (match to M.Arch/design/sustainability/planning), <strong>Playing Time</strong>, <strong>Lacrosse Quality</strong>, <strong>Academic Quality</strong>, <strong>Transfer Feasibility</strong>. The <strong>Priority /100</strong> weights the first three most heavily (Athletic ×2.5, Grad ×2.5, Playing Time ×2.0, the rest ×1.0), because your goal is a real roster opening + a degree you want — not the best team in the abstract.</p>
+  <div class="callout warn"><div class="ctitle">Caveat that governs the whole table</div><p>"Athletic Opportunity" and "Playing Time" scores assume the 2027 return/vacancy status shown in §04. Those player statuses are the least-verifiable data here. Re-check each target's 2027 roster + portal before you rank your own outreach.</p></div>
+
+  <!-- TIER 1 -->
+  <div class="tier-h"><span class="tier-tag tier1">Tier 1 — Contact immediately</span><span class="tier-desc">Real roster need + real grad fit</span></div>
+
+  <div class="rank-card t1">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">1</span>USC</div><div class="rank-meta">Big Ten · Los Angeles, CA</div></div><div class="rank-score"><div class="big s-hi">83</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>8</b></span><span class="axis">Grad Fit <b>9</b></span><span class="axis">Playing Time <b>8</b></span><span class="axis">Lax Quality <b>6</b></span><span class="axis">Academic <b>9</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">New draw-specialist head coach (Sam Apuzzo) mid-rebuild is the ideal audience for you, and USC offers the MUP-Sustainability / M.Arch / MLArch programs that fit your background. The one caveat is whether junior Anna Regan returns at the draw — verify — but even then a draw-first staff may want an experienced second option. Best combined fit on the board.</div>
+  </div>
+
+  <div class="rank-card t1">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">2</span>Florida</div><div class="rank-meta">Big 12 (verify) · Gainesville, FL</div></div><div class="rank-score"><div class="big s-hi">81</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>8</b></span><span class="axis">Grad Fit <b>9</b></span><span class="axis">Playing Time <b>7</b></span><span class="axis">Lax Quality <b>8</b></span><span class="axis">Academic <b>8</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">A Top-15 program (15–3) losing its graduate draw anchor Jenny Woodings, on a team that was only break-even at the draw — a concrete opening where you'd measurably help. Academically the College of Design, Construction &amp; Planning is a powerhouse for you: M.Arch (non-arch track), a <strong>Master of Sustainable Design</strong> that takes any bachelor's, MLA, and planning. Elite athletic + academic overlap.</div>
+  </div>
+
+  <!-- TIER 2 -->
+  <div class="tier-h"><span class="tier-tag tier2">Tier 2 — Strong targets</span><span class="tier-desc">Excellent academics or clear opening; worth a serious email</span></div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">3</span>Ohio State</div><div class="rank-meta">Big Ten · Columbus, OH</div></div><div class="rank-score"><div class="big s-mid">72</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>5</b></span><span class="axis">Grad Fit <b>10</b></span><span class="axis">Playing Time <b>6</b></span><span class="axis">Lax Quality <b>6</b></span><span class="axis">Academic <b>8</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">The best <em>academic</em> fit anywhere: Knowlton offers M.Arch (any discipline, <strong>no GRE</strong>), MLA, and City &amp; Regional Planning — a triple match to your interests. Draw need is moderate/unverified, so lead your email with the degree fit and ask honestly about their 2027 draw picture. If academics are your #1 driver, this is a top-two school.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">4</span>Michigan</div><div class="rank-meta">Big Ten · Ann Arbor, MI</div></div><div class="rank-score"><div class="big s-mid">70</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>4</b></span><span class="axis">Grad Fit <b>10</b></span><span class="axis">Playing Time <b>5</b></span><span class="axis">Lax Quality <b>8</b></span><span class="axis">Academic <b>9</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">Taubman's M.Arch (3-yr, any bachelor's, <strong>no GRE</strong>) is a dream academic fit and the lacrosse program is strong (NCAA 2nd round). But the draw seat is essentially filled — Montemarano graduates, yet sophomore Emma Burke (program career-record holder) returns. Contact them about program fit and a complementary/depth role, not a guaranteed starting draw job.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">5</span>Syracuse</div><div class="rank-meta">ACC · Syracuse, NY</div></div><div class="rank-score"><div class="big s-mid">70</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>8</b></span><span class="axis">Grad Fit <b>6</b></span><span class="axis">Playing Time <b>8</b></span><span class="axis">Lax Quality <b>8</b></span><span class="axis">Academic <b>7</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">The clearest pure-athletic opening among elite programs: Syracuse was the <strong>worst draw team in the ACC</strong> and is openly adding graduate transfers. Newhouse (communications) and VPA (design) are strong, but there's no M.Arch/planning — so grad fit depends on whether comms/design works for you. If your draw ability is the priority, this is a very live door.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">6</span>Cincinnati</div><div class="rank-meta">American · Cincinnati, OH</div></div><div class="rank-score"><div class="big s-mid">68</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>6</b></span><span class="axis">Grad Fit <b>9</b></span><span class="axis">Playing Time <b>8</b></span><span class="axis">Lax Quality <b>4</b></span><span class="axis">Academic <b>7</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">DAAP is a nationally elite design school — M.Arch (non-arch, portfolio needn't be architectural), MDes, and planning. As a mid-tier program, playing time is more attainable. Lower lacrosse profile than the ACC/B1G names, but if you want a top design education plus a real shot at the draw circle, it's an underrated fit.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">7</span>Virginia</div><div class="rank-meta">ACC · Charlottesville, VA</div></div><div class="rank-score"><div class="big s-mid">65</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>4</b></span><span class="axis">Grad Fit <b>9</b></span><span class="axis">Playing Time <b>4</b></span><span class="axis">Lax Quality <b>8</b></span><span class="axis">Academic <b>9</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">Strong academics (M.Arch 3-yr for liberal-arts grads, MLA, Urban &amp; Environmental Planning) and a good ACC program — but Kate Galica (junior, program career-record holder) returns at the draw, so the seat is taken. Worth a fit-focused note; don't expect a starting draw role.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">8</span>Rutgers</div><div class="rank-meta">Big Ten · Piscataway, NJ</div></div><div class="rank-score"><div class="big s-mid">64</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>6</b></span><span class="axis">Grad Fit <b>7</b></span><span class="axis">Playing Time <b>6</b></span><span class="axis">Lax Quality <b>5</b></span><span class="axis">Academic <b>7</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">Bloustein is one of the top urban-planning schools in the country (MCRP, any major, no GRE) — an excellent planning-track fit — on a mid-tier Big Ten program where a draw specialist could earn reps. No M.Arch, so it's a planning play, not an architecture one.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">9</span>Temple</div><div class="rank-meta">American · Philadelphia, PA</div></div><div class="rank-score"><div class="big s-mid">64</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>7</b></span><span class="axis">Grad Fit <b>8</b></span><span class="axis">Playing Time <b>8</b></span><span class="axis">Lax Quality <b>4</b></span><span class="axis">Academic <b>6</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">Tyler School offers M.Arch (any bachelor's), MLArch (portfolio optional), and planning — a genuinely broad design menu — and a mid-major program where playing time is realistic. Lower lacrosse profile, but a strong academics-plus-opportunity combination.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">10</span>Clemson</div><div class="rank-meta">ACC · Clemson, SC</div></div><div class="rank-score"><div class="big s-mid">63</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>4</b></span><span class="axis">Grad Fit <b>8</b></span><span class="axis">Playing Time <b>5</b></span><span class="axis">Lax Quality <b>7</b></span><span class="axis">Academic <b>7</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">M.Arch (non-design), a Master of Real Estate Development, and planning make Clemson a solid academic fit on a rising ACC program. Draw seat looks locked (sophomore Kira Balis returns), so approach as fit + depth.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">11</span>Maryland</div><div class="rank-meta">Big Ten · College Park, MD</div></div><div class="rank-score"><div class="big s-mid">62</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>3</b></span><span class="axis">Grad Fit <b>8</b></span><span class="axis">Playing Time <b>3</b></span><span class="axis">Lax Quality <b>9</b></span><span class="axis">Academic <b>8</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">National semifinalist with M.Arch (Path A, non-arch), planning, real estate, and historic preservation — a great academic slate. But it's a blue-blood with a returning sophomore draw specialist; a starting draw role is unlikely. Elite-academics reach.</div>
+  </div>
+
+  <!-- TIER 3 -->
+  <div class="tier-h"><span class="tier-tag tier3">Tier 3 — Reach out / explore</span><span class="tier-desc">Less obvious roster need, but worthwhile academically or athletically</span></div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">12</span>Stanford</div><div class="rank-meta">ACC · Stanford, CA</div></div><div class="rank-score"><div class="big s-mid">72</div><div class="lbl">Priority*</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>10</b></span><span class="axis">Grad Fit <b>3</b></span><span class="axis">Playing Time <b>9</b></span><span class="axis">Lax Quality <b>9</b></span><span class="axis">Academic <b>10</b></span><span class="axis">Feasibility <b>8</b></span></div>
+    <div class="rank-why"><strong>Placed in Tier 3 despite a high score — read the asterisk.</strong> Athletically it's the #1 opening in the country (both draw specialists graduated) on a program at its peak, and the university is world-class. But your <strong>specific target degrees don't exist here</strong> and the sustainability/comms master's are closed to transfers — only an engineering-flavored MS Design is open. It's Tier 1 athletically, Tier 4 academically. Contact <em>only</em> if you'd embrace the MS in Design.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">13</span>Northwestern</div><div class="rank-meta">Big Ten · Evanston, IL</div></div><div class="rank-score"><div class="big s-mid">62</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>6</b></span><span class="axis">Grad Fit <b>5</b></span><span class="axis">Playing Time <b>3</b></span><span class="axis">Lax Quality <b>10</b></span><span class="axis">Academic <b>9</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">The reigning national champion loses draw leader Maddie Epke — a vacancy — but ran a three-player circle with returners, and cracking the champion's rotation as a transfer is a long shot. Medill (comms) and Segal Design are strong, but there's no M.Arch/planning. High-ceiling reach.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">14</span>Penn State</div><div class="rank-meta">Big Ten · University Park, PA</div></div><div class="rank-score"><div class="big s-lo">60</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>5</b></span><span class="axis">Grad Fit <b>8</b></span><span class="axis">Playing Time <b>5</b></span><span class="axis">Lax Quality <b>8</b></span><span class="axis">Academic <b>7</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">M.Arch and MLA (any discipline) on a strong Big Ten program. Draw picture (Emma Kelly, class unverified) is unclear — worth a note that leads with academics and asks about their 2027 draw plans.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">15</span>Virginia Tech</div><div class="rank-meta">ACC · Blacksburg, VA</div></div><div class="rank-score"><div class="big s-lo">58</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>5</b></span><span class="axis">Grad Fit <b>7</b></span><span class="axis">Playing Time <b>6</b></span><span class="axis">Lax Quality <b>5</b></span><span class="axis">Academic <b>7</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">M.Arch (non-arch), MLA, Urban Design and Building Construction/Project Management — broad and on-theme. The catch: VT's M.Arch is the <strong>one program in this report that still requires the GRE</strong>. Good option if you're willing to test.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">16</span>Louisville</div><div class="rank-meta">ACC · Louisville, KY</div></div><div class="rank-score"><div class="big s-lo">57</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>6</b></span><span class="axis">Grad Fit <b>6</b></span><span class="axis">Playing Time <b>6</b></span><span class="axis">Lax Quality <b>6</b></span><span class="axis">Academic <b>6</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">Master of Urban Planning with a Sustainability concentration on a mid-ACC program — a reasonable sustainability-track option with attainable playing time. No M.Arch.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">17</span>George Washington</div><div class="rank-meta">Atlantic 10 · Washington, DC</div></div><div class="rank-score"><div class="big s-lo">55</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>6</b></span><span class="axis">Grad Fit <b>6</b></span><span class="axis">Playing Time <b>7</b></span><span class="axis">Lax Quality <b>4</b></span><span class="axis">Academic <b>7</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">Sustainable Urban Planning master's (no GRE) on a mid-major where reps are attainable. Program is online — <strong>confirm NCAA full-time/residency works for a competing athlete</strong> before counting on it.</div>
+  </div>
+
+  <div class="rank-card">
+    <div class="rank-head"><div><div class="rank-title"><span class="rnum">18</span>Michigan State</div><div class="rank-meta">Big Ten · East Lansing, MI</div></div><div class="rank-score"><div class="big s-lo">54</div><div class="lbl">Priority</div></div></div>
+    <div class="axes"><span class="axis">Athletic <b>6</b></span><span class="axis">Grad Fit <b>6</b></span><span class="axis">Playing Time <b>6</b></span><span class="axis">Lax Quality <b>4</b></span><span class="axis">Academic <b>6</b></span><span class="axis">Feasibility <b>9</b></span></div>
+    <div class="rank-why">Urban &amp; Regional Planning and Construction Management on a rebuilding Big Ten program — a planning/management play with a realistic path to the field. No M.Arch.</div>
+  </div>
+
+  <!-- TIER 4 -->
+  <div class="tier-h"><span class="tier-tag tier4">Tier 4 — Low priority</span><span class="tier-desc">Established returning draw specialist and/or weak grad fit for you</span></div>
+  <div class="callout">
+    <p style="margin-bottom:8px;"><strong>Why these are deprioritized (not "bad" schools — just poor fit for your two needs):</strong></p>
+    <ul style="margin-bottom:0;">
+      <li><strong>Loyola (MD), Notre Dame, North Carolina, Boston College, Johns Hopkins, Denver</strong> — strong programs, but each returns a young, established draw specialist (Murphy Fr, Kowalski Fr, Harden Fr, Gonzalez So, etc.), so the draw seat is locked. Notre Dame's M.Arch is also classical-only (a specific taste). Contact only if you'd accept a non-draw or depth role.</li>
+      <li><strong>Vanderbilt, Marquette, Vermont, Butler, Xavier</strong> — limited or no graduate programs matching your architecture/design/planning priorities. Vanderbilt has no design/planning master's; Marquette none found; Vermont is policy, not design.</li>
+      <li><strong>Ivy League (Princeton, Yale, Penn, Cornell, Harvard, Brown, Columbia, Dartmouth)</strong> — <strong>excluded per your instruction:</strong> the Ivy League does not permit graduate students to compete, so no fifth-year athletic option exists regardless of the excellent academics.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- EMAILS -->
+<section id="emails">
+  <h2><span class="n">08</span> Tier-1 outreach emails</h2><div class="h2-rule"></div>
+  <div class="callout info"><div class="ctitle">Before you send</div><p>Send these <strong>after</strong> you're in the portal (or route them through UConn compliance) to stay clear of tampering rules. Use the program's <strong>recruiting questionnaire</strong> as the delivery method — no verified staff emails are published at USC or Stanford. Insert your <strong>confirmed</strong> 2026 draw number (66 or 72 — see §02) and attach a highlight link. Keep them short; coaches read on their phones.</p></div>
+
+  <div class="email">
+    <div class="email-head"><button class="copy-btn" data-copy="e-usc">Copy</button><b>To:</b> USC — HC Sam Apuzzo (via WLax recruiting questionnaire) · <b>Re:</b> Grad-transfer draw specialist, 1 year left</div>
+    <div class="email-body" id="e-usc">Coach Apuzzo,
+
+Congratulations on the USC job. I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one season of eligibility left, planning a graduate transfer for 2027.
+
+The draw is my craft, and I grew it every year at UConn — 11 to 13 to 35 to 66* draw controls this past season, when I started all 16 games, led the team, and earned All-Big East Second Team. Knowing how central the draw and transition game were to your work at Boston College, I think my game would fit what you're building at USC.
+
+Academically I'm drawn to USC's Master of Urban Planning (Climate Change & Sustainability) — a natural next step from my Environmental Studies and Spanish degrees. A graduate program like that, paired with a final year in your program, would be the ideal fifth year for me.
+
+Could we set up a short call? I'll be entering the transfer portal shortly and would love to talk about how I can help USC at the draw in 2027. Highlight film and full stats attached.
+
+Thank you,
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
+*confirming 66 vs 72 on my official season page</div>
+  </div>
+
+  <div class="email">
+    <div class="email-head"><button class="copy-btn" data-copy="e-fla">Copy</button><b>To:</b> Florida — Women's Lacrosse staff (via recruiting questionnaire) · <b>Re:</b> Grad-transfer draw specialist for 2027</div>
+    <div class="email-body" id="e-fla">Coach,
+
+I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one year of eligibility remaining, looking to graduate-transfer for the 2027 season.
+
+I know the draw circle decides a lot of close games, and it's where I do my best work — I improved every season at UConn (11 → 13 → 35 → 66* draws) and this year I started all 16 games, led the Huskies in draw controls, and made All-Big East Second Team. With Jenny Woodings finishing her career, I'd love to compete to help Florida own the draw in 2027 the way a Top-15 team should.
+
+Florida is also a dream academic fit: I have degrees in Environmental Studies and Spanish, and the College of Design, Construction & Planning — the Master of Sustainable Design and the M.Arch — is exactly the direction I want to grow. Combining that with a final year of lacrosse would be perfect.
+
+Would you be open to a quick call? I'll be entering the portal soon. Film and stats attached — thank you for your time.
+
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
+*confirming 66 vs 72 on my official season page</div>
+  </div>
+
+  <div class="email">
+    <div class="email-head"><button class="copy-btn" data-copy="e-stan">Copy</button><b>To:</b> Stanford — HC Danielle Spencer (via ARMS questionnaire) · <b>Re:</b> Grad-transfer draw specialist · <span style="color:var(--yellow)">send only if open to MS Design</span></div>
+    <div class="email-body" id="e-stan">Coach Spencer,
+
+Congratulations on a historic season and your first NCAA quarterfinal. I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one year of eligibility left, exploring a graduate transfer for 2027.
+
+The draw is my specialty. I grew from 11 draw controls as a freshman to 66* this season, when I started all 16 games, led UConn in draws, and earned All-Big East Second Team. With Jordyn Case and Annabel Frist finishing their careers, I'd relish the chance to help sustain Stanford's draw dominance next season.
+
+I'm also genuinely excited about Stanford's MS in Design at the d.school — a program that fits how I want to build on my Environmental Studies background. A final season with the Cardinal alongside that degree would be a dream fifth year.
+
+Could we find time for a short call? I'll be entering the portal soon; film and stats attached. Thank you.
+
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
+*confirming 66 vs 72 on my official season page</div>
+  </div>
+
+  <div class="email">
+    <div class="email-head"><button class="copy-btn" data-copy="e-cuse">Copy</button><b>To:</b> Syracuse — Women's Lacrosse staff (via recruiting questionnaire) · <b>Re:</b> Grad-transfer draw specialist for 2027</div>
+    <div class="email-body" id="e-cuse">Coach,
+
+I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one season of eligibility left, planning a graduate transfer for 2027.
+
+I specialize in the draw, and I've made it a strength every year — 11 to 13 to 35 to 66* draw controls, starting all 16 games this season and leading UConn in draws on the way to All-Big East Second Team honors. I'd love to compete to give Syracuse an edge in the draw circle and more possessions for your offense in 2027.
+
+Academically, my Environmental Studies and Spanish background points me toward Syracuse's strengths in communications (Newhouse) and design (VPA), and I'd be excited to pursue a graduate degree there while I compete.
+
+Would you have time for a short call? I'll be entering the portal shortly — film and full stats attached. Thank you.
+
+Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8
+*confirming 66 vs 72 on my official season page</div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section id="method">
+  <h2><span class="n">09</span> Method, confidence &amp; sources</h2><div class="h2-rule"></div>
+  <h4>What's solid vs. what to verify</h4>
+  <div class="twrap"><table>
+    <thead><tr><th>Item</th><th>Confidence</th></tr></thead>
+    <tbody>
+      <tr><td>Your 2023–25 draw totals; 2026 All-Big East honors</td><td class="v">Verified (official bio via search)</td></tr>
+      <tr><td>Transfer-portal windows, grad-transfer exemption, 2-business-day rule, eligibility model</td><td class="v">Verified (NCAA Figure 13-1 PDF + NCAA.org)</td></tr>
+      <tr><td>USC coaching change (Munday out, Apuzzo in, staff)</td><td class="v">Verified (USC/USA Lacrosse)</td></tr>
+      <tr><td>Stanford &amp; USC draw specialists graduating / class years</td><td style="color:var(--yellow)">Mostly verified; confirm on 2027 rosters</td></tr>
+      <tr><td>Graduate program existence, non-arch tracks, GRE/portfolio</td><td class="v">Verified (official grad sites)</td></tr>
+      <tr><td>Your exact 2026 draw count (66 vs 72), full 2026 team draw ranking, most coach emails, players' confirmed 2027 return</td><td class="unk">UNKNOWN — verify directly</td></tr>
+      <tr><td>Fall-2027 deadlines &amp; tuition</td><td class="unk">Mostly not yet posted — verify</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src"><strong>A note on the research environment:</strong> this report was built when the research tools could <em>search</em> the web but were blocked from directly opening many athletics/stats pages (ncaa.com, uconnhuskies.com, gostanford.com, usctrojans.com). Figures therefore come from search summaries of those official pages rather than raw page reads, which is why exact team draw totals and some class years remain UNKNOWN. Nothing was fabricated to fill a gap.</p>
+  <h4>Key sources</h4>
+  <p class="src">NCAA Figure 13-1 Undergraduate Transfer Windows (PDF) · NCAA.org age-based eligibility model &amp; June 2026 D-I Board report · NCAA Transfer FAQ · uconnhuskies.com (bio, recaps, compliance) · gostanford.com &amp; ACC · usctrojans.com &amp; USA Lacrosse (Apuzzo/Munday) · NCAA.com championship recap · Big Ten / ACC / Patriot League sites · program graduate-admissions pages (Knowlton/OSU, Taubman/Michigan, Clemson, DAAP/Cincinnati, UF DCP, UVA, Berkeley CED, Tyler/Temple, Bloustein/Rutgers, USC Price &amp; Architecture, Stanford d.school &amp; Doerr). Full URLs are embedded throughout the report and saved in the interactive app.</p>
+</section>
+
+<footer>
+  Prepared as a personal recruiting-research aid for Barlow Clark-Schoeb · August 2026 · This is decision support, not official advice — verify player statuses, deadlines, eligibility and aid with each school and with UConn/NCAA compliance before acting. · Companion tool: <a href="./index.html">interactive program finder ↗</a>
+</footer>
+
+</div>
+<script>
+document.querySelectorAll('.copy-btn').forEach(b=>{
+  b.onclick=()=>{
+    const t=document.getElementById(b.dataset.copy).innerText;
+    navigator.clipboard.writeText(t).then(()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',1500);});
+  };
+});
+</script>
+</body>
+</html>

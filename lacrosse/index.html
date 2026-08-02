@@ -114,6 +114,11 @@ select:focus,.txt:focus{border-color:var(--accent);}
 .note{font-size:12px;color:var(--muted);border-left:2px solid var(--border);padding-left:10px;line-height:1.45;}
 .deg-note{font-size:12px;color:#b9a9d0;}
 .deg-note b{color:var(--purple);font-weight:600;}
+.vac-note{font-size:11.5px;color:var(--muted);line-height:1.4;display:flex;gap:7px;align-items:flex-start;}
+.vac-note.vac-est{color:var(--muted2);font-style:italic;}
+.vac-badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;flex-shrink:0;}
+.vb-a{background:var(--green);color:#0e2515;} .vb-b{background:var(--yellow);color:#2b230a;}
+.vb-c{background:var(--blue);color:#0a1c33;} .vb-d{background:var(--surface2);color:var(--muted);border:1px solid var(--border);}
 
 .card-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:4px;}
 .act{font-size:11px;font-family:'Space Mono',monospace;letter-spacing:0.03em;padding:7px 10px;border-radius:7px;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;transition:all 0.15s;text-align:center;}
@@ -163,9 +168,10 @@ footer a{color:var(--muted);}
 <header>
   <div class="brand">
     <div class="logo">DRAW SPECIALIST <span>// FINDER</span></div>
-    <div class="tagline">D1 Women's Lacrosse · 2026-27 grad-transfer research desk</div>
+    <div class="tagline">Barlow Clark-Schoeb · UConn #8 · D1 grad-transfer research · 2027</div>
   </div>
   <div class="header-right">
+    <a class="hdr-btn" href="./report.html" style="color:var(--purple);border-color:var(--purple);text-decoration:none;">📄 Full Report</a>
     <button class="hdr-btn" id="view-all">All Programs</button>
     <button class="hdr-btn" id="view-saved">★ My List (<span id="saved-count">0</span>)</button>
     <button class="hdr-btn" id="open-method">How it works</button>
@@ -173,7 +179,7 @@ footer a{color:var(--muted);}
 </header>
 
 <div class="notice" id="notice">
-  <div>⚠️ <b>Read me first.</b> This is a <b>research starting point</b>, not a live feed. Program lists, conferences and degree tags are hand-curated and the "opportunity" rating is a transparent heuristic (see <a href="#" id="method-link">How it works</a>) — <b>not</b> a confirmed roster need. Always verify current roster, coaching staff, transfer-portal activity and exact degree offerings using the built-in links before you act.</div>
+  <div>⚠️ <b>Companion tool to the <a href="./report.html">full research report</a>.</b> Top targets (USC, Florida, Stanford, Ohio State, Michigan, Syracuse…) carry a real <b>A/B/C/D vacancy class</b> and verified grad-program data from the research; the rest show generic estimates to verify. Player 2027 status is the least-certain data here — always confirm the current roster, portal activity and exact degree offerings via the built-in links before you act. <a href="#" id="method-link">How scoring works</a>.</div>
   <button class="x" id="notice-x">×</button>
 </div>
 
@@ -248,8 +254,8 @@ footer a{color:var(--muted);}
 </div>
 
 <footer>
-  Built as a personal recruiting-research tool · Data is curated & editable, saved locally in your browser (nothing is uploaded) ·
-  Verify everything against official athletics sites, <a href="https://www.ncaa.com/stats/lacrosse-women/d1" target="_blank" rel="noopener">NCAA.com stats</a> and each school's graduate admissions before making decisions.
+  Personal recruiting-research tool for Barlow Clark-Schoeb · Saved schools, statuses & notes stay in your browser (nothing uploaded) · Read the <a href="./report.html">full report</a> for rankings, transfer-portal plan, Stanford/USC deep dives & Tier-1 emails ·
+  Verify everything against official athletics sites, <a href="https://www.ncaa.com/stats/lacrosse-women/d1" target="_blank" rel="noopener">NCAA.com stats</a>, transfer-portal activity and each school's graduate admissions before acting.
 </footer>
 
 <!-- METHODOLOGY MODAL -->
@@ -257,7 +263,8 @@ footer a{color:var(--muted);}
   <div class="modal">
     <button class="close" id="modal-close">CLOSE ×</button>
     <h2>How this tool works</h2>
-    <p>This is a <b>decision-support and tracking desk</b> for a women's lacrosse draw specialist exploring a graduate-transfer year in 2026-27. It does two things: (1) helps you shortlist D1 programs, and (2) cross-references them against graduate degrees that fit your career goals.</p>
+    <p>This is the interactive companion to the <a href="./report.html">full research report</a> — a decision-support and tracking desk for Barlow Clark-Schoeb's 2027 graduate-transfer search. It shortlists D1 programs by (1) draw-role opportunity and (2) fit with your target graduate degrees (M.Arch, planning, landscape, sustainability, design).</p>
+    <p><b>Vacancy classes</b> shown on top-target cards come from the research: <b>A</b> = confirmed vacancy (primary draw specialist definitely gone), <b>B</b> = probable vacancy, <b>C</b> = opportunity/competition, <b>D</b> = limited (established returner). Cards without a class show a generic estimate to verify. Player 2027 status is the least-certain data — always confirm on the school's roster/portal via the <code>◎</code> links.</p>
 
     <h3>The "Match" score</h3>
     <p>Each card gets a 0-100 score computed live from three weighted inputs you control in the sidebar:</p>
@@ -284,14 +291,14 @@ footer a{color:var(--muted);}
    DEGREE CATEGORIES
    ============================================================ */
 const DEGREES = [
-  {id:'design',        label:'Design'},
+  {id:'architecture',  label:'M.Arch'},
+  {id:'landscape',     label:'Landscape Arch'},
+  {id:'urban-planning',label:'Urban Planning'},
   {id:'sustainability',label:'Sustainability'},
+  {id:'design',        label:'Design / MDes'},
+  {id:'real-estate',   label:'Real Estate Dev'},
   {id:'communications',label:'Communications'},
-  {id:'project-mgmt',  label:'Project Mgmt'},
-  {id:'business',      label:'Business / MBA'},
-  {id:'data',          label:'Data / Analytics'},
-  {id:'public-health', label:'Public Health'},
-  {id:'education',     label:'Education'},
+  {id:'project-mgmt',  label:'Project / Constr. Mgmt'},
 ];
 const DEG_LABEL = Object.fromEntries(DEGREES.map(d=>[d.id,d.label]));
 
@@ -305,26 +312,26 @@ const DATA = [
   // ── ACC ──
   {n:"North Carolina", c:"ACC", st:"NC", r:"South", tier:4, need:2, deg:["communications","business","data","public-health","sustainability","design"], dn:"Hussman (Media & Journalism), Kenan-Flagler business, City & Regional Planning"},
   {n:"Boston College", c:"ACC", st:"MA", r:"Northeast", tier:4, need:2, deg:["communications","business","education","design"], dn:"Woods College (Applied Analytics, Leadership), Carroll MBA"},
-  {n:"Syracuse", c:"ACC", st:"NY", r:"Northeast", tier:4, need:2, deg:["communications","design","business","data","sustainability"], dn:"Newhouse (Comms), VPA (Design), Whitman MBA, iSchool"},
-  {n:"Notre Dame", c:"ACC", st:"IN", r:"Midwest", tier:4, need:2, deg:["business","design","sustainability","data"], dn:"Mendoza MBA, School of Architecture, Data Science"},
-  {n:"Virginia", c:"ACC", st:"VA", r:"South", tier:4, need:2, deg:["business","data","sustainability","communications","design"], dn:"Darden MBA, Data Science, Architecture (Design Thinking)"},
-  {n:"Duke", c:"ACC", st:"NC", r:"South", tier:3, need:3, deg:["business","data","sustainability","public-health"], dn:"Fuqua MBA, Nicholas (Environment/Sustainability), Data Science"},
-  {n:"Louisville", c:"ACC", st:"KY", r:"South", tier:2, need:4, deg:["communications","business","design","public-health"], dn:"MBA, Communication, Interior Architecture & Design"},
-  {n:"Virginia Tech", c:"ACC", st:"VA", r:"South", tier:2, need:4, deg:["design","sustainability","project-mgmt","business","communications"], dn:"Architecture+Design, Building Construction (Project Mgmt), Pamplin MBA"},
-  {n:"Clemson", c:"ACC", st:"SC", r:"South", tier:2, need:4, deg:["business","communications","project-mgmt","design"], dn:"MBA, Communication, Construction/Project Mgmt, Architecture"},
-  {n:"California", c:"ACC", st:"CA", r:"West", tier:2, need:4, deg:["design","sustainability","business","data"], dn:"College of Environmental Design, Haas MBA, Data Science"},
-  {n:"Stanford", c:"ACC", st:"CA", r:"West", tier:3, need:3, deg:["design","sustainability","business","data"], dn:"d.school (Design), GSB MBA, Sustainability (Doerr School)"},
+  {n:"Syracuse", c:"ACC", st:"NY", r:"Northeast", tier:4, need:5, vac:"B — WORST draw in ACC (7.8/g), committee, actively adding grad transfers = open door", deg:["communications","design","sustainability"], dn:"Newhouse (Comms), VPA (Design) — strong, but NO M.Arch/planning. Best pure-athletic opening among elites."},
+  {n:"Notre Dame", c:"ACC", st:"IN", r:"Midwest", tier:4, need:2, vac:"D — Uma Kowalski (Fr) returns; seat locked", deg:["architecture"], dn:"M.Arch Path C (REQUIRES non-arch degree) but ⚠ classical/traditional focus + Rome semester — specific taste"},
+  {n:"Virginia", c:"ACC", st:"VA", r:"South", tier:4, need:2, vac:"D — Kate Galica (Jr, career rec) returns; seat locked", deg:["architecture","landscape","urban-planning","sustainability"], dn:"M.Arch 3-yr (liberal-arts welcomed) · MLA · Urban & Environmental Planning — strong academics"},
+  {n:"Duke", c:"ACC", st:"NC", r:"South", tier:3, need:3, vac:"C — Ellie White draw, class unverified", deg:["sustainability","urban-planning"], dn:"Nicholas (Environment/Sustainability) · no M.Arch"},
+  {n:"Louisville", c:"ACC", st:"KY", r:"South", tier:2, need:4, vac:"C — draw unverified", deg:["urban-planning","sustainability","design"], dn:"Master of Urban Planning (Sustainability concentration) · Interior Arch & Design — no M.Arch"},
+  {n:"Virginia Tech", c:"ACC", st:"VA", r:"South", tier:2, need:4, vac:"C — draw unverified", deg:["architecture","landscape","urban-planning","project-mgmt"], dn:"M.Arch (non-arch, ⚠ GRE REQUIRED) · MLA · Urban Design · Building Construction/Project Mgmt"},
+  {n:"Clemson", c:"ACC", st:"SC", r:"South", tier:3, need:2, vac:"D — Kira Balis (So) returns; seat filled", deg:["architecture","real-estate","urban-planning"], dn:"M.Arch I (non-design) · Master of Real Estate Development · City & Regional Planning"},
+  {n:"California", c:"ACC", st:"CA", r:"West", tier:2, need:4, vac:"C — draw unverified", deg:["architecture","landscape","urban-planning","sustainability"], dn:"CED (Berkeley): M.Arch 3-yr (portfolio needn't be arch) · MLA · Master of City Planning"},
+  {n:"Stanford", c:"ACC", st:"CA", r:"West", tier:4, need:5, vac:"A — Case + Frist (both grad) gone; clearest vacancy in the country. BUT no M.Arch/planning; sustainability MA closed to transfers", deg:["design","sustainability"], dn:"⚠ Academic mismatch: only MS Design (d.school, ~$65k/yr, engineering-flavored) open to transfers; NO M.Arch/planning/landscape"},
 
   // ── Big Ten ──
-  {n:"Northwestern", c:"Big Ten", st:"IL", r:"Midwest", tier:4, need:2, deg:["communications","design","business","data"], dn:"Medill (Comms), Segal Design, Kellogg MBA, MS Analytics"},
-  {n:"Maryland", c:"Big Ten", st:"MD", r:"South", tier:4, need:2, deg:["communications","design","sustainability","business","data"], dn:"Architecture/Design, Smith MBA, Sustainability, Journalism"},
-  {n:"Penn State", c:"Big Ten", st:"PA", r:"Northeast", tier:3, need:3, deg:["design","sustainability","project-mgmt","business","communications"], dn:"Stuckeman Design, Smeal MBA, Project & Supply Chain Mgmt"},
-  {n:"Michigan", c:"Big Ten", st:"MI", r:"Midwest", tier:2, need:4, deg:["design","sustainability","business","data","communications"], dn:"Stamps (Design), Ross MBA, SEAS (Sustainability), MS Info"},
+  {n:"Northwestern", c:"Big Ten", st:"IL", r:"Midwest", tier:4, need:3, vac:"B — Maddie Epke (grad) gone, but 3-player circle + national champ = hard to crack", deg:["communications","design"], dn:"Medill (Comms), Segal Design (design-eng) — NO M.Arch/planning. Reigning national champion."},
+  {n:"Maryland", c:"Big Ten", st:"MD", r:"South", tier:4, need:2, vac:"D — Kayla Gilmore (So) returns; blue-blood, seat filled", deg:["architecture","urban-planning","real-estate","sustainability"], dn:"M.Arch Path A (non-arch) · Master of Community Planning · Real Estate Dev · Historic Preservation"},
+  {n:"Penn State", c:"Big Ten", st:"PA", r:"Northeast", tier:3, need:3, vac:"C — Emma Kelly draw, class unverified", deg:["architecture","landscape","sustainability"], dn:"M.Arch · MLA (any discipline) — strong B1G program"},
+  {n:"Michigan", c:"Big Ten", st:"MI", r:"Midwest", tier:3, need:2, vac:"D — Montemarano (Sr) gone but Emma Burke (So, career rec) returns; draw seat filled", deg:["architecture","urban-planning","landscape","sustainability","design"], dn:"Taubman: M.Arch 3-yr (any bachelor's, NO GRE) · MURP planning · Stamps design — elite academics"},
   {n:"Johns Hopkins", c:"Big Ten", st:"MD", r:"South", tier:3, need:3, deg:["communications","business","public-health","design","data"], dn:"Carey MBA, Bloomberg Public Health, Communication, Design Leadership"},
-  {n:"Rutgers", c:"Big Ten", st:"NJ", r:"Northeast", tier:2, need:4, deg:["communications","business","project-mgmt","data","public-health"], dn:"Comm & Info, MBA, Project Mgmt, Data Science"},
-  {n:"Ohio State", c:"Big Ten", st:"OH", r:"Midwest", tier:2, need:4, deg:["design","sustainability","business","communications","project-mgmt"], dn:"Design (Knowlton/Arts), Fisher MBA, Environment & Sustainability"},
-  {n:"USC", c:"Big Ten", st:"CA", r:"West", tier:2, need:4, deg:["communications","design","business","project-mgmt"], dn:"Annenberg (Comms), Roski (Design), Marshall MBA, Project Mgmt (SCE)"},
-  {n:"Michigan State", c:"Big Ten", st:"MI", r:"Midwest", tier:1, need:5, deg:["communications","business","sustainability","project-mgmt","design"], dn:"Comm Arts, Broad MBA, Sustainability, Construction Mgmt, Design"},
+  {n:"Rutgers", c:"Big Ten", st:"NJ", r:"Northeast", tier:2, need:4, vac:"C — mid B1G; draw unverified", deg:["urban-planning","sustainability"], dn:"Bloustein: Master of City & Regional Planning (top-ranked, any major, NO GRE) — planning play (no M.Arch)"},
+  {n:"Ohio State", c:"Big Ten", st:"OH", r:"Midwest", tier:2, need:3, vac:"C/D — draw picture unverified; lead with academics", deg:["architecture","landscape","urban-planning","sustainability"], dn:"Knowlton: M.Arch (any discipline, NO GRE) · MLA (no GRE) · Master of City & Regional Planning — best all-around academic fit"},
+  {n:"USC", c:"Big Ten", st:"CA", r:"West", tier:2, need:4, vac:"C — Anna Regan (Jr) eligible to return; NEW draw-focused HC Sam Apuzzo + full rebuild = receptive", deg:["urban-planning","architecture","landscape","sustainability","communications","real-estate"], dn:"Price MUP (Climate & Sustainability, no GRE/portfolio) · School of Arch M.Arch 3-yr (non-arch) · MLArch+Urbanism · Annenberg comms"},
+  {n:"Michigan State", c:"Big Ten", st:"MI", r:"Midwest", tier:1, need:5, vac:"C — rebuilding; draw unverified", deg:["urban-planning","project-mgmt","sustainability"], dn:"Master of Urban & Regional Planning · MS Construction Mgmt — planning/mgmt play (no M.Arch)"},
 
   // ── Big East ──
   {n:"Denver", c:"Big East", st:"CO", r:"West", tier:3, need:3, deg:["business","project-mgmt","communications","sustainability"], dn:"Daniels MBA, Project Mgmt (University College), Sustainability"},
@@ -359,11 +366,11 @@ const DATA = [
   {n:"Lafayette", c:"Patriot", st:"PA", r:"Northeast", tier:1, need:5, deg:["design","data","communications"], dn:"Engineering/Design, Data Science, Communication"},
 
   // ── American Athletic ──
-  {n:"Florida", c:"American", st:"FL", r:"South", tier:3, need:3, deg:["communications","business","sustainability","project-mgmt","design"], dn:"UF Journalism/Comms, Warrington MBA, Sustainability, Construction Mgmt, Design"},
+  {n:"Florida", c:"Big 12", st:"FL", r:"South", tier:3, need:4, vac:"B — Jenny Woodings (grad) gone; team was ~even at the draw", deg:["architecture","sustainability","landscape","urban-planning","real-estate"], dn:"DCP: M.Arch 3.5-yr (non-arch) · Master of Sustainable Design (any bachelor's) · MLA · Urban & Regional Planning · Real Estate"},
   {n:"Vanderbilt", c:"American", st:"TN", r:"South", tier:2, need:4, deg:["business","education","communications","design"], dn:"Owen MBA, Peabody Education, Communication, Design (adjacent)"},
-  {n:"Temple", c:"American", st:"PA", r:"Northeast", tier:2, need:4, deg:["design","communications","business","project-mgmt"], dn:"Tyler (Design/Art), Klein (Comms), Fox MBA, Project Mgmt"},
+  {n:"Temple", c:"American", st:"PA", r:"Northeast", tier:2, need:4, vac:"C — mid program, playing time attainable", deg:["architecture","landscape","urban-planning","design"], dn:"Tyler: M.Arch 4+3 (any bachelor's) · MLArch (portfolio optional) · MS City & Regional Planning"},
   {n:"East Carolina", c:"American", st:"NC", r:"South", tier:1, need:5, deg:["communications","business","project-mgmt","design"], dn:"Communication, MBA, Construction Mgmt, Art/Design"},
-  {n:"Cincinnati", c:"American", st:"OH", r:"Midwest", tier:1, need:5, deg:["design","sustainability","business","project-mgmt"], dn:"DAAP (top Design school), MBA, Construction/Project Mgmt"},
+  {n:"Cincinnati", c:"American", st:"OH", r:"Midwest", tier:1, need:5, vac:"C — mid program, playing time attainable; draw unverified", deg:["architecture","design","urban-planning"], dn:"DAAP (nationally elite): M.Arch (non-arch, portfolio needn't be arch) · MDes · Master of Community Planning"},
 
   // ── CAA ──
   {n:"Stony Brook", c:"CAA", st:"NY", r:"Northeast", tier:3, need:3, deg:["communications","business","sustainability","data","public-health"], dn:"Communication, MBA, Sustainability, Data Science, Public Health"},
@@ -385,7 +392,7 @@ const DATA = [
   {n:"Massachusetts", c:"Atlantic 10", st:"MA", r:"Northeast", tier:2, need:4, deg:["design","sustainability","business","project-mgmt","communications"], dn:"Architecture/Design, Isenberg MBA, Sustainability, Comms"},
   {n:"Richmond", c:"Atlantic 10", st:"VA", r:"South", tier:2, need:4, deg:["business","communications","data"], dn:"Robins MBA, Communication (SPCS), Data Science"},
   {n:"George Mason", c:"Atlantic 10", st:"VA", r:"South", tier:1, need:5, deg:["design","project-mgmt","business","data","communications"], dn:"College of Visual & Performing Arts (Design), Project Mgmt, MBA"},
-  {n:"George Washington", c:"Atlantic 10", st:"DC", r:"South", tier:1, need:5, deg:["communications","project-mgmt","business","sustainability","design"], dn:"Media & Comms, Project Mgmt, MBA, Sustainability, Corcoran Design"},
+  {n:"George Washington", c:"Atlantic 10", st:"DC", r:"South", tier:1, need:5, vac:"C — mid program, reps attainable", deg:["urban-planning","sustainability"], dn:"MPS Sustainable Urban Planning (no GRE) — ⚠ online, confirm NCAA full-time/residency for a competing athlete"},
   {n:"Davidson", c:"Atlantic 10", st:"NC", r:"South", tier:1, need:5, deg:["communications","business","data"], dn:"Communication Studies, Business, Data Science"},
   {n:"Saint Joseph's", c:"Atlantic 10", st:"PA", r:"Northeast", tier:1, need:5, deg:["business","communications","project-mgmt"], dn:"Haub MBA, Communication, Project/Organization Mgmt"},
   {n:"VCU", c:"Atlantic 10", st:"VA", r:"South", tier:1, need:5, deg:["design","communications","business","public-health"], dn:"VCUarts (top Design), Robertson Comms, MBA, Public Health"},
@@ -421,7 +428,7 @@ const DATA = [
    ============================================================ */
 const LS_KEY = 'draw_finder_v1';
 let store = load();               // {saved:{name:{status,notes}}}
-let selDeg = new Set(['design','sustainability','communications','project-mgmt']);
+let selDeg = new Set(['architecture','urban-planning','sustainability','landscape']);
 let weights = {need:50, deg:50, tier:25};
 let levelPref = 'top';
 let filters = {conf:'', region:'', tier:'', q:''};
@@ -528,6 +535,7 @@ function render(){
       </div>
 
       <div class="meta-row">${degTags}</div>
+      ${p.vac?`<div class="vac-note"><span class="vac-badge vb-${(p.vac[0]||'').toLowerCase()}">${p.vac[0]}</span> ${p.vac.slice(p.vac.indexOf('—')+1||2).trim()}</div>`:`<div class="vac-note vac-est">Draw need = estimate — verify 2027 roster/portal</div>`}
       <div class="deg-note"><b>Grad:</b> ${p.dn}</div>
 
       <div class="card-actions">
