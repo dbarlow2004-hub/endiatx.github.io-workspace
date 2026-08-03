@@ -807,6 +807,11 @@ Barlow Clark-Schoeb · [phone] · [email] · UConn Women's Lacrosse #8</div>
   <div class="email"><div class="email-head"><button class="copy-btn" data-copy="p-vcu">Copy</button><b>VCU</b> — Coach Flores</div><div class="email-body" id="p-vcu">Coach Flores — I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one year of eligibility left, planning a graduate transfer for 2027. I led UConn in draws in 2026 (72, All-Big East Second Team), started all 17 games, and direct them to my circle players for transition, and I can contribute on attack. VCUarts and the Wilder School's urban planning program are a great fit for the design and sustainability work I want to pursue, and I'd love to help VCU keep winning in the A-10. Entering the portal soon; film and stats available.</div></div>
 
   <div class="email"><div class="email-head"><button class="copy-btn" data-copy="p-gw">Copy</button><b>George Washington</b> — Coach McCaffrey</div><div class="email-body" id="p-gw">Coach McCaffrey — I'm Barlow Clark-Schoeb, a 5'11" attack and draw specialist at UConn (#8) with one year of eligibility left, planning a graduate transfer for 2027. I led UConn in draws in 2026 (72, All-Big East Second Team), started all 17 games, and direct them to my circle players for transition, plus contribute on attack. GW's Sustainable Urban Planning program in DC is a strong fit for my Environmental Studies background, and I'd love to help your program at the draw. Entering the portal soon; film and stats available.</div></div>
+
+  <h3>★ One-click Gmail — no permission needed</h3>
+  <p>For the schools that publish an email, each button opens a Gmail compose window <strong>already filled in</strong> (recipient + subject + your message). Just review, add your film link, and send once you're in the portal. Verify the address on the live directory first. <em>(This works in your browser — it doesn't need the Gmail connector approval that's been failing.)</em></p>
+  <div id="gmail-oneclick" style="display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px;"></div>
+  <p class="src">Most email-publishing programs are cold-weather; your warm/fun-city targets (USC, Georgetown, Florida, Vanderbilt, San Diego State, Arizona State, VCU, GW, UVA, Clemson, Stanford) are questionnaire-based — use the Copy buttons above and paste into each form.</p>
 </section>
 
 <!-- CONTACT DIRECTORY -->
@@ -945,5 +950,33 @@ document.querySelectorAll('.copy-btn').forEach(b=>{
 });
 </script>
 <script>(function(){var r=document.documentElement,b=document.getElementById('theme-toggle');function s(){var d=r.getAttribute('data-theme')==='dark';if(b)b.textContent=d?'\u2600 Light':'\u263e Dark';}s();if(b)b.onclick=function(){var d=r.getAttribute('data-theme')==='dark';if(d){r.removeAttribute('data-theme');try{localStorage.setItem('laxTheme','light');}catch(e){}}else{r.setAttribute('data-theme','dark');try{localStorage.setItem('laxTheme','dark');}catch(e){}}s();};})();</script>
+<script>
+(function(){
+  var GMAIL=[
+    {n:"Ohio State",c:"Moore",e:"moore.5113@osu.edu",line:"Knowlton's M.Arch and City & Regional Planning are exactly where I want to take my Environmental Studies background"},
+    {n:"Temple",c:"Rosen",e:"Bonnie.Rosen@temple.edu",line:"Tyler School's M.Arch and design programs are exactly the academic path I want"},
+    {n:"Maryland",c:"Reese",e:"creese@umd.edu",line:"Maryland's M.Arch and Community Planning programs are a great academic fit for my Environmental Studies background"},
+    {n:"Syracuse",c:"Thorpe",e:"rjthorpe@syr.edu",line:"I'd love to help sharpen your draw unit while pursuing a graduate degree at Newhouse or VPA"},
+    {n:"Rutgers",c:"Lehman",e:"emager@scarletknights.com",line:"Bloustein's planning program is a strong fit for my sustainability interests"},
+    {n:"Michigan",c:"Nielsen",e:"lacrosse.w@umich.edu",line:"Taubman's M.Arch is the graduate program I most want to pursue, and I know how much your staff values the draw"},
+    {n:"Delaware",c:"Altig",e:"aaltig@udel.edu",line:"Delaware's Biden School urban-planning and policy programs are a strong fit for my Environmental Studies background"},
+    {n:"Colgate",c:"Guido",e:"aguido@colgate.edu",line:"Colgate would be a great place for my graduate year, and I'd love to compete for you"},
+    {n:"Monmouth",c:"Trautman",e:"jtrautma@monmouth.edu",line:"I'd love to compete for Monmouth on attack and at the draw for my graduate year"},
+    {n:"Navy",c:"Timchal",e:"womenslacrosse@usna.edu",line:"It would be an honor to compete for Navy at the draw and on attack"},
+    {n:"Boston University",c:"Morton",e:"wlax@bu.edu",line:"BU's MS in City Planning is a strong fit for my Environmental Studies background"},
+    {n:"Fairfield",c:"Field",e:"lfield@fairfield.edu",line:"I'd love to bring my draw ability and attack to Fairfield for my graduate year"},
+    {n:"Marquette",c:"Black",e:"meredith.black@marquette.edu",line:"I'd love to help Marquette at the draw and on attack while pursuing my graduate degree"},
+    {n:"Lehigh",c:"Lazo",e:"sala25@lehigh.edu",line:"Lehigh's Environmental Policy and Urban Planning programs are a strong fit for my background"}
+  ];
+  var su="UConn #8 - draw specialist seeking a 5th-year grad transfer (2027)";
+  var sig="\n\nBarlow Clark-Schoeb\nUConn Women's Lacrosse - #8 | Attack / Draw Specialist | 5'11\"\ndbarlow2004@gmail.com | (908) 666-2847\nRecruiting profile: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/recruiting/";
+  var host=document.getElementById('gmail-oneclick');
+  if(host) host.innerHTML=GMAIL.map(function(g){
+    var body="Coach "+g.c+" - I'm Barlow Clark-Schoeb, a 5'11\" attack and draw specialist at UConn (#8) with one year of NCAA eligibility left, planning a graduate transfer for 2027. I led UConn in draw controls in 2026 with 72 (about a third of our team's total), started all 17 games, and made All-Big East Second Team - and I win draws and direct them to my circle players for transition, plus contribute on attack. "+g.line+". I'll be entering the portal soon and would love to connect; film and full stats available."+sig;
+    var url="https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(g.e)+"&su="+encodeURIComponent(su)+"&body="+encodeURIComponent(body);
+    return '<a href="'+url+'" target="_blank" rel="noopener" style="font-family:\'Space Mono\',monospace;font-size:12px;padding:8px 12px;border-radius:8px;background:var(--accent);color:var(--badge-ink);text-decoration:none;font-weight:700;">\u2709 '+g.n+'</a>';
+  }).join('');
+})();
+</script>
 </body>
 </html>
