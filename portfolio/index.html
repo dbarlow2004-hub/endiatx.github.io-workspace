@@ -124,6 +124,8 @@ section{padding:64px 0;border-top:1px solid var(--border);}
 .lightbox-body{flex:0 0 auto;padding:20px 28px;border-top:1px solid var(--border);max-height:32vh;overflow-y:auto;}
 .lightbox-body h3{font-size:19px;font-weight:700;margin-bottom:8px;}
 .lightbox-body p{color:var(--muted);font-size:13px;line-height:1.6;margin-bottom:12px;}
+.image-caption{margin-top:2px;margin-bottom:12px;padding:10px 12px;background:var(--surface2);border-left:2px solid var(--accent);border-radius:0 6px 6px 0;font-size:12.5px;color:var(--text);line-height:1.55;}
+.image-caption-label{display:block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
 .lightbox-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);}
 .lightbox-nav-btn{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);background:none;border:1px solid var(--border);border-radius:8px;padding:8px 14px;cursor:pointer;transition:color 0.15s,border-color 0.15s;}
 .lightbox-nav-btn:hover{color:var(--accent);border-color:var(--accent);}
@@ -324,6 +326,7 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
       <h3 id="lightbox-title"></h3>
       <p id="lightbox-desc"></p>
       <div class="tag-row" id="lightbox-tags"></div>
+      <div class="image-caption" id="image-caption" style="display:none"></div>
       <div class="lightbox-nav">
         <button class="lightbox-nav-btn" id="lightbox-prev">← Prev</button>
         <span class="lightbox-nav-count" id="lightbox-count"></span>
@@ -356,7 +359,7 @@ const PROFILE = {
 
 // Each project's `images` array can hold one or several photos — the lightbox
 // lets visitors click through all of them for a given project.
-function img(name) { return { thumb: `images/${name}.jpg`, full: `images/full/${name}.jpg` }; }
+function img(name, caption) { return { thumb: `images/${name}.jpg`, full: `images/full/${name}.jpg`, caption: caption || '' }; }
 
 const PROJECTS = [
   {
@@ -397,13 +400,26 @@ const PROJECTS = [
     title: "Courtyard Tenement",
     description: "A speculative courtyard tenement exploring daylight access, passive ventilation, and shared green space — studying how urban density can coexist with thermal comfort, social connection, and environmental performance. Harvard GSD, Summer 2025.",
     tags: ["Architecture", "Harvard GSD"],
-    images: [img("courtyard-1"), img("courtyard-2")]
+    images: [
+      img("courtyard-elevation", "Front elevation of the existing tenement building that grounds the project's context."),
+      img("courtyard-plan", "Ground floor plan mapping private, semi-private, and shared circulation space within the building."),
+      img("courtyard-privacy", "A privacy gradient pattern — the density of hatching shows the transition from fully private units to shared public zones."),
+      img("courtyard-1", "Each colored line traces one resident's daily path through the building. Layering all seven residents' routes reveals how different families cross paths, linger, and carve out their own rhythms of use within the same shared courtyard — making visible the boundary between community and privacy."),
+      img("courtyard-2", "Building section studying daylight access, passive ventilation, and shared green space — how density can coexist with thermal comfort and social connection.")
+    ]
   },
   {
     title: "Fallow Urban Plot",
     description: "A landscape intervention turning a vacant lot into shared public space — native plants reinforce soil structure and define gathering areas, while planting, paths, and seating choreograph shared movement and preserve moments of privacy. Includes site context analysis and iterative design process alongside final diagrams. Harvard GSD, Summer 2025.",
     tags: ["Landscape Design", "Harvard GSD"],
-    images: [img("fallow-plan"), img("fallow-process"), img("fallow-icons"), img("fallow-callout-plan"), img("fallow-2"), img("fallow-3")]
+    images: [
+      img("fallow-plan", "Site context plan mapping the surrounding blocks, existing buildings, and street trees around the vacant lot."),
+      img("fallow-process", "Four rounds of design iteration, working from early bubble diagrams toward a resolved planting and seating layout."),
+      img("fallow-icons", "Design strategy legend — shade trees, permeable paths, raised garden beds, and deep-rooted native plants that structure the intervention."),
+      img("fallow-callout-plan", "Detailed planting and circulation plan, annotated with the site furnishings — bird bath, compost bin, rain barrel, seating — that support everyday use."),
+      img("fallow-2", "Isometric section showing how native plantings anchor the soil above a cut-away view of the ground below."),
+      img("fallow-3", "Collage illustrating how planting, paths, and seating choreograph shared movement while preserving moments of privacy.")
+    ]
   },
   {
     title: "Eastie Farm Site Study",
@@ -610,10 +626,18 @@ function renderLightboxImage() {
         dot.addEventListener('click', e => { e.stopPropagation(); galleryIndex = parseInt(dot.dataset.gi); renderLightboxImage(); });
       });
     }
+    const captionEl = document.getElementById('image-caption');
+    if (current.caption) {
+      captionEl.style.display = 'block';
+      captionEl.innerHTML = `<span class="image-caption-label">This Image</span>${escHtml(current.caption)}`;
+    } else {
+      captionEl.style.display = 'none';
+    }
   } else {
     thumb.style.background = `linear-gradient(135deg,${c1},${c2})`;
     thumb.classList.add('has-gradient');
     thumb.innerHTML = escHtml(p.title);
+    document.getElementById('image-caption').style.display = 'none';
   }
 }
 
