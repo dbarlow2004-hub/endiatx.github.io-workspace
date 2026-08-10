@@ -117,12 +117,18 @@
   }
   .glass:hover { transform: translateY(-2px); }
   .glass:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
-  .glass::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 0;
+  .glass .fill {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 0;
     background: var(--water); transition: height .25s ease;
   }
-  .glass.full::after { height: 100%; }
   .water-note { font-size: 13px; color: var(--muted); }
+  .stanley {
+    display: inline-flex; align-items: center; font: inherit; font-size: 14px; font-weight: 600;
+    color: var(--water); background: var(--water-soft); border: 1.5px solid var(--water);
+    border-radius: 999px; padding: 8px 16px; cursor: pointer; align-self: flex-start;
+  }
+  .stanley:hover { filter: brightness(1.05); }
+  .stanley:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
 
   .habit-row { display: flex; gap: 10px; flex-wrap: wrap; }
   .habit {
@@ -264,6 +270,7 @@
   <section class="card">
     <h2>Water <span>tap a glass when you finish it — 8 oz each</span></h2>
     <div class="glasses" id="glasses" role="group" aria-label="Glasses of water"></div>
+    <button type="button" class="stanley" id="add-stanley">+ Stanley (30 oz)</button>
     <div class="water-note" id="water-note">Nothing yet this morning — start with one glass now.</div>
   </section>
 
@@ -280,6 +287,21 @@
       </label>
     </div>
     <div class="water-note" id="act-note">Open WHOOP or the Health app, glance at today's totals, and drop them in — your calorie budget updates instantly.</div>
+  </section>
+
+  <section class="card">
+    <h2>Weight <span>update whenever you weigh in</span></h2>
+    <div class="activity-grid">
+      <label class="field">
+        <span>Current (lb)</span>
+        <input id="wt-now" type="number" step="0.1" min="50" max="1000" placeholder="e.g. 165" />
+      </label>
+      <label class="field">
+        <span>Goal (lb)</span>
+        <input id="wt-goal" type="number" step="0.1" min="50" max="1000" placeholder="e.g. 152" />
+      </label>
+    </div>
+    <div class="water-note" id="wt-note">Enter your current and goal weight to see how far there is to go.</div>
   </section>
 
   <section class="card">
@@ -349,7 +371,21 @@
     if (d.burn == null) d.burn = 0;
     if (d.meds == null) d.meds = false;
     if (d.cream == null) d.cream = false;
+    if (d.oz == null) d.oz = (d.glasses || 0) * GLASS_OZ;
     return d;
+  }
+
+  // v3 migration: water in ounces (supports non-glass containers), plus the
+  // 30 oz Stanley reported on Aug 10, 2026.
+  if (!state.v3) {
+    state.v3 = true;
+    Object.keys(state.days).forEach(function (k) {
+      var dd = state.days[k];
+      if (dd.oz == null) dd.oz = (dd.glasses || 0) * GLASS_OZ;
+    });
+    var aug10 = state.days["2026-08-10"];
+    if (aug10) aug10.oz = Math.max(aug10.oz || 0, 30);
+    save();
   }
 
   // v2 migration: tag the seeded croissant as a treat
@@ -405,34 +441,57 @@
       var val = idx === 0 ? d.steps : d.burn;
       if (document.activeElement !== input) input.value = val > 0 ? val : "";
     });
+
+    // Weight
+    [["wt-now", "weight"], ["wt-goal", "goalWeight"]].forEach(function (pair) {
+      var input = document.getElementById(pair[0]);
+      if (document.activeElement !== input) input.value = state[pair[1]] > 0 ? state[pair[1]] : "";
+    });
+    var wtNote = document.getElementById("wt-note");
+    if (state.weight > 0 && state.goalWeight > 0) {
+      var toGo = Math.round((state.weight - state.goalWeight) * 10) / 10;
+      wtNote.textContent = toGo > 0
+        ? toGo + " lb to go — at a steady 1 lb a week that's about " + Math.ceil(toGo) + " weeks. Slow is what sticks."
+        : "You're at (or past) your goal — hold it here and keep building strength.";
+    } else {
+      wtNote.textContent = "Enter your current and goal weight to see how far there is to go.";
+    }
     document.getElementById("act-note").textContent = d.burn > 0
       ? "Exercise earned you " + fmt.format(d.burn) + " extra calories today — your budget is " + fmt.format(budget) + "."
       : "Open WHOOP or the Health app, glance at today's totals, and drop them in — your calorie budget updates instantly.";
 
     // Water
-    var oz = d.glasses * GLASS_OZ;
+    var oz = d.oz;
+    var waterGoalOz = GLASS_COUNT * GLASS_OZ;
     document.getElementById("water-big").innerHTML = oz + "<small>oz</small>";
-    document.getElementById("water-detail").textContent = d.glasses + " of " + GLASS_COUNT + " glasses";
+    document.getElementById("water-detail").textContent = oz >= waterGoalOz
+      ? "goal hit"
+      : (waterGoalOz - oz) + " oz to go";
     document.getElementById("water-meter").firstElementChild.style.width =
-      Math.min(100, (oz / (GLASS_COUNT * GLASS_OZ)) * 100) + "%";
-    document.getElementById("water-note").textContent = d.glasses === 0
+      Math.min(100, (oz / waterGoalOz) * 100) + "%";
+    document.getElementById("water-note").textContent = oz === 0
       ? "Nothing yet this morning — start with one glass now."
-      : d.glasses >= GLASS_COUNT
+      : oz >= waterGoalOz
         ? "Goal hit — nicely done."
-        : (GLASS_COUNT - d.glasses) + " more to hit 64 oz.";
+        : (waterGoalOz - oz) + " oz to go — about " + Math.ceil((waterGoalOz - oz) / GLASS_OZ) + " more glasses.";
 
     // Glasses
     var glassRow = document.getElementById("glasses");
     glassRow.innerHTML = "";
     for (var i = 0; i < GLASS_COUNT; i++) {
       (function (i) {
+        var fillPct = Math.max(0, Math.min(1, (oz - i * GLASS_OZ) / GLASS_OZ));
         var b = document.createElement("button");
         b.type = "button";
-        b.className = "glass" + (i < d.glasses ? " full" : "");
-        b.setAttribute("aria-label", "Glass " + (i + 1) + (i < d.glasses ? ", full" : ", empty"));
-        b.setAttribute("aria-pressed", i < d.glasses ? "true" : "false");
+        b.className = "glass";
+        b.setAttribute("aria-label", "Glass " + (i + 1) + (fillPct >= 1 ? ", full" : fillPct > 0 ? ", partly full" : ", empty"));
+        b.setAttribute("aria-pressed", fillPct >= 1 ? "true" : "false");
+        var fill = document.createElement("span");
+        fill.className = "fill";
+        fill.style.height = (fillPct * 100) + "%";
+        b.appendChild(fill);
         b.addEventListener("click", function () {
-          d.glasses = (i + 1 === d.glasses) ? i : i + 1;
+          d.oz = (oz >= (i + 1) * GLASS_OZ) ? i * GLASS_OZ : (i + 1) * GLASS_OZ;
           save(); render();
         });
         glassRow.appendChild(b);
@@ -552,6 +611,21 @@
   }
   bindActivityInput("act-steps", "steps");
   bindActivityInput("act-burn", "burn");
+
+  document.getElementById("add-stanley").addEventListener("click", function () {
+    var d = day(todayKey());
+    d.oz += 30;
+    save(); render();
+  });
+
+  [["wt-now", "weight"], ["wt-goal", "goalWeight"]].forEach(function (pair) {
+    var input = document.getElementById(pair[0]);
+    input.addEventListener("input", function () {
+      var n = Number(input.value);
+      state[pair[1]] = (n > 0 && isFinite(n)) ? n : 0;
+      save(); render();
+    });
+  });
 
   [["habit-meds", "meds"], ["habit-cream", "cream"]].forEach(function (pair) {
     document.getElementById(pair[0]).addEventListener("click", function () {
