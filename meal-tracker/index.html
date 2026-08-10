@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Meal &amp; Water Tracker</title>
+<style>
+  :root {
+    --ground: #F7F7F3;
+    --card: #FFFFFF;
+    --ink: #242A24;
+    --muted: #6A736B;
+    --line: #E3E5DE;
+    --accent: #3E7C4F;
+    --accent-soft: #E4EFE7;
+    --water: #2E7DA6;
+    --water-soft: #E1EEF5;
+    --alert: #B23A2E;
+    --alert-soft: #F6E4E1;
+    --accent-contrast: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #171B18;
+      --card: #20261F;
+      --ink: #E8EAE4;
+      --muted: #99A198;
+      --line: #333A32;
+      --accent: #6BB57E;
+      --accent-soft: #26362A;
+      --water: #5BA8CE;
+      --water-soft: #1F3340;
+      --alert: #D96A5D;
+      --alert-soft: #3E2723;
+      --accent-contrast: #14201A;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #171B18;
+    --card: #20261F;
+    --ink: #E8EAE4;
+    --muted: #99A198;
+    --line: #333A32;
+    --accent: #6BB57E;
+    --accent-soft: #26362A;
+    --water: #5BA8CE;
+    --water-soft: #1F3340;
+    --alert: #D96A5D;
+    --alert-soft: #3E2723;
+    --accent-contrast: #14201A;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Seravek", "Gill Sans Nova", "Trebuchet MS", Ubuntu, Calibri, system-ui, sans-serif;
+    line-height: 1.45;
+    padding: 28px 16px 64px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+
+  header .eyebrow {
+    text-transform: uppercase; letter-spacing: 0.14em; font-size: 12px;
+    color: var(--accent); font-weight: 600;
+  }
+  header h1 {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 34px; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance;
+  }
+  header .sub { color: var(--muted); font-size: 15px; margin-top: 2px; }
+
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  .stat {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 18px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .stat .label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--muted); font-weight: 600; display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .stat .goal-edit { letter-spacing: 0; text-transform: none; font-weight: 400; }
+  .stat .goal-edit button {
+    background: none; border: none; color: var(--muted); font: inherit; font-size: 12px;
+    cursor: pointer; text-decoration: underline; text-underline-offset: 2px; padding: 0;
+  }
+  .stat .goal-edit button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .big { font-size: 40px; font-weight: 650; font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: -0.02em; }
+  .big small { font-size: 15px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-left: 4px; }
+  .big.over { color: var(--alert); }
+  .meter { height: 8px; border-radius: 4px; background: var(--accent-soft); overflow: hidden; }
+  .meter > div { height: 100%; border-radius: 4px; background: var(--accent); transition: width .35s ease; }
+  .meter.water-meter { background: var(--water-soft); }
+  .meter.water-meter > div { background: var(--water); }
+  .meter.over-meter > div { background: var(--alert); }
+  .stat .detail { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  h2 { font-size: 16px; font-weight: 650; letter-spacing: -0.01em; }
+  h2 span { color: var(--muted); font-weight: 450; font-size: 13px; margin-left: 6px; font-variant-numeric: tabular-nums; }
+
+  .glasses { display: flex; gap: 8px; flex-wrap: wrap; }
+  .glass {
+    width: 44px; height: 56px; border-radius: 6px 6px 10px 10px;
+    border: 2px solid var(--water); background: var(--card);
+    cursor: pointer; position: relative; overflow: hidden; padding: 0;
+    transition: transform .12s ease;
+  }
+  .glass:hover { transform: translateY(-2px); }
+  .glass:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
+  .glass::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 0;
+    background: var(--water); transition: height .25s ease;
+  }
+  .glass.full::after { height: 100%; }
+  .water-note { font-size: 13px; color: var(--muted); }
+
+  #meal-groups { display: flex; flex-direction: column; gap: 18px; }
+  .meal-group { display: flex; flex-direction: column; gap: 6px; }
+  .meal-group h3 {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--muted); font-weight: 650; padding-bottom: 4px; border-bottom: 1px solid var(--line);
+    display: flex; justify-content: space-between;
+  }
+  .meal-group h3 b { font-variant-numeric: tabular-nums; letter-spacing: 0; }
+  ul.entries { list-style: none; padding: 0; display: flex; flex-direction: column; }
+  ul.entries li {
+    display: flex; align-items: center; gap: 10px; padding: 8px 0;
+    border-bottom: 1px dashed var(--line); font-size: 15px;
+  }
+  ul.entries li:last-child { border-bottom: none; }
+  ul.entries .name { flex: 1; min-width: 0; }
+  ul.entries .cals { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+  ul.entries .del {
+    background: none; border: none; color: var(--muted); cursor: pointer; font-size: 16px;
+    line-height: 1; padding: 4px 6px; border-radius: 6px;
+  }
+  ul.entries .del:hover { color: var(--alert); background: var(--alert-soft); }
+  ul.entries .del:focus-visible { outline: 2px solid var(--alert); outline-offset: 1px; }
+  .empty { color: var(--muted); font-size: 14px; font-style: italic; padding: 4px 0; }
+
+  form.add { display: grid; grid-template-columns: 1fr 92px 118px 88px; gap: 8px; align-items: center; }
+  @media (max-width: 540px) { form.add { grid-template-columns: 1fr 92px; } }
+  form.add input, form.add select {
+    font: inherit; font-size: 15px; color: var(--ink); background: var(--ground);
+    border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; width: 100%;
+  }
+  form.add input:focus-visible, form.add select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+  form.add button {
+    font: inherit; font-size: 15px; font-weight: 600; color: var(--accent-contrast); background: var(--accent);
+    border: none; border-radius: 8px; padding: 9px 12px; cursor: pointer;
+  }
+  form.add button:hover { filter: brightness(1.08); }
+  form.add button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  .history { display: flex; gap: 8px; align-items: flex-end; height: 84px; }
+  .history .day { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; height: 100%; justify-content: flex-end; }
+  .history .bar-track { width: 100%; max-width: 46px; flex: 1; display: flex; align-items: flex-end; }
+  .history .bar { width: 100%; border-radius: 4px 4px 0 0; background: var(--accent-soft); min-height: 3px; }
+  .history .bar.has { background: var(--accent); }
+  .history .bar.over { background: var(--alert); }
+  .history .dow { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .history-note { font-size: 13px; color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .meter > div, .glass, .glass::after { transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Daily log</div>
+    <h1 id="date-heading">Today</h1>
+    <div class="sub">Log every meal and glass of water — small honest numbers add up.</div>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="label">
+        <span>Calories remaining</span>
+        <span class="goal-edit"><button id="edit-goal" type="button">goal <b id="goal-num">1,800</b></button></span>
+      </div>
+      <div class="big" id="cal-remaining">1,800</div>
+      <div class="meter" id="cal-meter"><div style="width:0%"></div></div>
+      <div class="detail" id="cal-detail">0 eaten</div>
+    </div>
+    <div class="stat">
+      <div class="label">
+        <span>Water</span>
+        <span class="goal-edit">goal 64 oz</span>
+      </div>
+      <div class="big" id="water-big">0<small>oz</small></div>
+      <div class="meter water-meter" id="water-meter"><div style="width:0%"></div></div>
+      <div class="detail" id="water-detail">0 of 8 glasses</div>
+    </div>
+  </div>
+
+  <section class="card">
+    <h2>Water <span>tap a glass when you finish it — 8 oz each</span></h2>
+    <div class="glasses" id="glasses" role="group" aria-label="Glasses of water"></div>
+    <div class="water-note" id="water-note">Nothing yet this morning — start with one glass now.</div>
+  </section>
+
+  <section class="card">
+    <h2>Meals</h2>
+    <form class="add" id="add-form">
+      <input id="food-name" type="text" placeholder="What did you eat?" aria-label="Food name" required />
+      <input id="food-cals" type="number" min="0" max="5000" placeholder="cals" aria-label="Calories" required />
+      <select id="food-meal" aria-label="Meal">
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        <option value="Snacks">Snacks</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+    <div id="meal-groups"></div>
+  </section>
+
+  <section class="card">
+    <h2>Last 7 days <span>calories vs. goal</span></h2>
+    <div class="history" id="history"></div>
+    <div class="history-note">Bars fill green as you log; a red bar means the day went over goal.</div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var STORE_KEY = "meal-water-tracker-v1";
+  var MEALS = ["Breakfast", "Lunch", "Dinner", "Snacks"];
+  var GLASS_OZ = 8, GLASS_COUNT = 8;
+
+  function todayKey() {
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY)) || null; } catch (e) { return null; }
+  }
+  function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {} }
+
+  var state = load();
+  if (!state) state = { calGoal: 1800, days: {} };
+
+  // Seed the first day with the Starbucks breakfast from Aug 10, 2026.
+  if (!state.seeded) {
+    state.seeded = true;
+    var seedKey = "2026-08-10";
+    if (!state.days[seedKey]) {
+      state.days[seedKey] = {
+        glasses: 0,
+        entries: [
+          { name: "Brown Sugar Oatmilk Shaken Espresso (grande)", cals: 120, meal: "Breakfast" },
+          { name: "Bacon, Gouda & Egg Sandwich", cals: 360, meal: "Breakfast" },
+          { name: "Chocolate Croissant", cals: 300, meal: "Breakfast" }
+        ]
+      };
+    }
+    save();
+  }
+
+  function day(key) {
+    if (!state.days[key]) state.days[key] = { glasses: 0, entries: [] };
+    return state.days[key];
+  }
+
+  var fmt = new Intl.NumberFormat("en-US");
+
+  function calTotal(d) {
+    return d.entries.reduce(function (s, e) { return s + (Number(e.cals) || 0); }, 0);
+  }
+
+  function render() {
+    var key = todayKey();
+    var d = day(key);
+
+    var heading = new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    document.getElementById("date-heading").textContent = heading;
+
+    // Calories
+    var eaten = calTotal(d);
+    var remaining = state.calGoal - eaten;
+    var calBig = document.getElementById("cal-remaining");
+    calBig.textContent = fmt.format(Math.abs(remaining));
+    calBig.classList.toggle("over", remaining < 0);
+    document.getElementById("goal-num").textContent = fmt.format(state.calGoal);
+    document.getElementById("cal-detail").textContent = remaining < 0
+      ? fmt.format(eaten) + " eaten — " + fmt.format(-remaining) + " over goal"
+      : fmt.format(eaten) + " eaten";
+    var pct = state.calGoal > 0 ? Math.min(100, (eaten / state.calGoal) * 100) : 0;
+    var calMeter = document.getElementById("cal-meter");
+    calMeter.classList.toggle("over-meter", remaining < 0);
+    calMeter.firstElementChild.style.width = pct + "%";
+
+    // Water
+    var oz = d.glasses * GLASS_OZ;
+    document.getElementById("water-big").innerHTML = oz + "<small>oz</small>";
+    document.getElementById("water-detail").textContent = d.glasses + " of " + GLASS_COUNT + " glasses";
+    document.getElementById("water-meter").firstElementChild.style.width =
+      Math.min(100, (oz / (GLASS_COUNT * GLASS_OZ)) * 100) + "%";
+    document.getElementById("water-note").textContent = d.glasses === 0
+      ? "Nothing yet this morning — start with one glass now."
+      : d.glasses >= GLASS_COUNT
+        ? "Goal hit — nicely done."
+        : (GLASS_COUNT - d.glasses) + " more to hit 64 oz.";
+
+    // Glasses
+    var glassRow = document.getElementById("glasses");
+    glassRow.innerHTML = "";
+    for (var i = 0; i < GLASS_COUNT; i++) {
+      (function (i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "glass" + (i < d.glasses ? " full" : "");
+        b.setAttribute("aria-label", "Glass " + (i + 1) + (i < d.glasses ? ", full" : ", empty"));
+        b.setAttribute("aria-pressed", i < d.glasses ? "true" : "false");
+        b.addEventListener("click", function () {
+          d.glasses = (i + 1 === d.glasses) ? i : i + 1;
+          save(); render();
+        });
+        glassRow.appendChild(b);
+      })(i);
+    }
+
+    // Meal groups
+    var groups = document.getElementById("meal-groups");
+    groups.innerHTML = "";
+    MEALS.forEach(function (meal) {
+      var entries = d.entries.filter(function (e) { return e.meal === meal; });
+      if (entries.length === 0 && meal !== "Breakfast" && meal !== "Lunch" && meal !== "Dinner") return;
+      var g = document.createElement("div");
+      g.className = "meal-group";
+      var subtotal = entries.reduce(function (s, e) { return s + (Number(e.cals) || 0); }, 0);
+      var h = document.createElement("h3");
+      h.innerHTML = "<span></span><b></b>";
+      h.firstElementChild.textContent = meal;
+      h.lastElementChild.textContent = entries.length ? fmt.format(subtotal) + " cal" : "";
+      g.appendChild(h);
+      if (entries.length === 0) {
+        var em = document.createElement("div");
+        em.className = "empty";
+        em.textContent = "Nothing logged yet";
+        g.appendChild(em);
+      } else {
+        var ul = document.createElement("ul");
+        ul.className = "entries";
+        entries.forEach(function (e) {
+          var li = document.createElement("li");
+          var name = document.createElement("span"); name.className = "name"; name.textContent = e.name;
+          var cals = document.createElement("span"); cals.className = "cals"; cals.textContent = fmt.format(Number(e.cals) || 0) + " cal";
+          var del = document.createElement("button");
+          del.className = "del"; del.type = "button"; del.textContent = "×";
+          del.setAttribute("aria-label", "Delete " + e.name);
+          del.addEventListener("click", function () {
+            d.entries.splice(d.entries.indexOf(e), 1);
+            save(); render();
+          });
+          li.appendChild(name); li.appendChild(cals); li.appendChild(del);
+          ul.appendChild(li);
+        });
+        g.appendChild(ul);
+      }
+      groups.appendChild(g);
+    });
+
+    // History: last 7 days ending today
+    var hist = document.getElementById("history");
+    hist.innerHTML = "";
+    for (var back = 6; back >= 0; back--) {
+      var dt = new Date();
+      dt.setDate(dt.getDate() - back);
+      var k = dt.getFullYear() + "-" + String(dt.getMonth() + 1).padStart(2, "0") + "-" + String(dt.getDate()).padStart(2, "0");
+      var dd = state.days[k];
+      var total = dd ? calTotal(dd) : 0;
+      var frac = state.calGoal > 0 ? Math.min(1, total / state.calGoal) : 0;
+      var col = document.createElement("div"); col.className = "day";
+      var track = document.createElement("div"); track.className = "bar-track";
+      var bar = document.createElement("div");
+      bar.className = "bar" + (total > 0 ? " has" : "") + (total > state.calGoal ? " over" : "");
+      bar.style.height = Math.max(4, frac * 100) + "%";
+      bar.title = dt.toLocaleDateString("en-US", { month: "short", day: "numeric" }) + ": " + fmt.format(total) + " cal";
+      track.appendChild(bar);
+      var dow = document.createElement("div"); dow.className = "dow";
+      dow.textContent = back === 0 ? "Today" : dt.toLocaleDateString("en-US", { weekday: "short" });
+      col.appendChild(track); col.appendChild(dow);
+      hist.appendChild(col);
+    }
+  }
+
+  document.getElementById("add-form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var name = document.getElementById("food-name").value.trim();
+    var cals = Number(document.getElementById("food-cals").value);
+    var meal = document.getElementById("food-meal").value;
+    if (!name || !(cals >= 0)) return;
+    day(todayKey()).entries.push({ name: name, cals: cals, meal: meal });
+    document.getElementById("food-name").value = "";
+    document.getElementById("food-cals").value = "";
+    document.getElementById("food-name").focus();
+    save(); render();
+  });
+
+  document.getElementById("edit-goal").addEventListener("click", function () {
+    var v = prompt("Daily calorie goal:", state.calGoal);
+    if (v === null) return;
+    var n = Number(v);
+    if (n > 0 && n < 20000) { state.calGoal = Math.round(n); save(); render(); }
+  });
+
+  render();
+  // Refresh at midnight rollover if the tab stays open.
+  setInterval(function () {
+    if (document.getElementById("date-heading").textContent !==
+        new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })) render();
+  }, 60000);
+})();
+</script>
+</body>
+</html>
