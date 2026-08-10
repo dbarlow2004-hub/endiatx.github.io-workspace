@@ -69,8 +69,8 @@
   }
   header .sub { color: var(--muted); font-size: 15px; margin-top: 2px; }
 
-  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media (max-width: 480px) { .stats { grid-template-columns: 1fr; } }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 560px) { .stats { grid-template-columns: 1fr; } }
   .stat {
     background: var(--card); border: 1px solid var(--line); border-radius: 10px;
     padding: 16px 18px; display: flex; flex-direction: column; gap: 8px;
@@ -117,6 +117,20 @@
   }
   .glass.full::after { height: 100%; }
   .water-note { font-size: 13px; color: var(--muted); }
+
+  .activity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 480px) { .activity-grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field > span {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--muted); font-weight: 600;
+  }
+  .field input {
+    font: inherit; font-size: 16px; font-variant-numeric: tabular-nums; color: var(--ink);
+    background: var(--ground); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 12px; width: 100%;
+  }
+  .field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
 
   #meal-groups { display: flex; flex-direction: column; gap: 18px; }
   .meal-group { display: flex; flex-direction: column; gap: 6px; }
@@ -189,6 +203,12 @@
       <div class="detail" id="cal-detail">0 eaten</div>
     </div>
     <div class="stat">
+      <div class="label"><span>Activity burn</span></div>
+      <div class="big" id="burn-big">0<small>cal</small></div>
+      <div class="meter" id="burn-meter"><div style="width:0%"></div></div>
+      <div class="detail" id="burn-detail">no steps logged</div>
+    </div>
+    <div class="stat">
       <div class="label">
         <span>Water</span>
         <span class="goal-edit">goal 64 oz</span>
@@ -203,6 +223,21 @@
     <h2>Water <span>tap a glass when you finish it — 8 oz each</span></h2>
     <div class="glasses" id="glasses" role="group" aria-label="Glasses of water"></div>
     <div class="water-note" id="water-note">Nothing yet this morning — start with one glass now.</div>
+  </section>
+
+  <section class="card">
+    <h2>Activity <span>copy today's numbers from WHOOP or Apple Health</span></h2>
+    <div class="activity-grid">
+      <label class="field">
+        <span>Steps (Apple Health)</span>
+        <input id="act-steps" type="number" min="0" max="200000" placeholder="e.g. 8,500" />
+      </label>
+      <label class="field">
+        <span>Active calories (WHOOP / Health)</span>
+        <input id="act-burn" type="number" min="0" max="10000" placeholder="e.g. 450" />
+      </label>
+    </div>
+    <div class="water-note" id="act-note">Open WHOOP or the Health app, glance at today's totals, and drop them in — your calorie budget updates instantly.</div>
   </section>
 
   <section class="card">
@@ -266,7 +301,10 @@
 
   function day(key) {
     if (!state.days[key]) state.days[key] = { glasses: 0, entries: [] };
-    return state.days[key];
+    var d = state.days[key];
+    if (d.steps == null) d.steps = 0;
+    if (d.burn == null) d.burn = 0;
+    return d;
   }
 
   var fmt = new Intl.NumberFormat("en-US");
@@ -282,20 +320,38 @@
     var heading = new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
     document.getElementById("date-heading").textContent = heading;
 
-    // Calories
+    // Calories: budget = goal + activity burn, so exercise earns calories back
     var eaten = calTotal(d);
-    var remaining = state.calGoal - eaten;
+    var budget = state.calGoal + (Number(d.burn) || 0);
+    var remaining = budget - eaten;
     var calBig = document.getElementById("cal-remaining");
     calBig.textContent = fmt.format(Math.abs(remaining));
     calBig.classList.toggle("over", remaining < 0);
     document.getElementById("goal-num").textContent = fmt.format(state.calGoal);
+    var eatenText = fmt.format(eaten) + " eaten" + (d.burn > 0 ? " − " + fmt.format(d.burn) + " burned" : "");
     document.getElementById("cal-detail").textContent = remaining < 0
-      ? fmt.format(eaten) + " eaten — " + fmt.format(-remaining) + " over goal"
-      : fmt.format(eaten) + " eaten";
-    var pct = state.calGoal > 0 ? Math.min(100, (eaten / state.calGoal) * 100) : 0;
+      ? eatenText + " — " + fmt.format(-remaining) + " over budget"
+      : eatenText;
+    var pct = budget > 0 ? Math.min(100, (eaten / budget) * 100) : 0;
     var calMeter = document.getElementById("cal-meter");
     calMeter.classList.toggle("over-meter", remaining < 0);
     calMeter.firstElementChild.style.width = pct + "%";
+
+    // Activity
+    document.getElementById("burn-big").innerHTML = fmt.format(d.burn) + "<small>cal</small>";
+    document.getElementById("burn-detail").textContent = d.steps > 0
+      ? fmt.format(d.steps) + " steps"
+      : "no steps logged";
+    document.getElementById("burn-meter").firstElementChild.style.width =
+      Math.min(100, (d.steps / 10000) * 100) + "%";
+    ["act-steps", "act-burn"].forEach(function (id, idx) {
+      var input = document.getElementById(id);
+      var val = idx === 0 ? d.steps : d.burn;
+      if (document.activeElement !== input) input.value = val > 0 ? val : "";
+    });
+    document.getElementById("act-note").textContent = d.burn > 0
+      ? "Exercise earned you " + fmt.format(d.burn) + " extra calories today — your budget is " + fmt.format(budget) + "."
+      : "Open WHOOP or the Health app, glance at today's totals, and drop them in — your calorie budget updates instantly.";
 
     // Water
     var oz = d.glasses * GLASS_OZ;
@@ -404,6 +460,17 @@
     document.getElementById("food-name").focus();
     save(); render();
   });
+
+  function bindActivityInput(id, prop) {
+    var input = document.getElementById(id);
+    input.addEventListener("input", function () {
+      var n = Number(input.value);
+      day(todayKey())[prop] = (n >= 0 && isFinite(n)) ? Math.round(n) : 0;
+      save(); render();
+    });
+  }
+  bindActivityInput("act-steps", "steps");
+  bindActivityInput("act-burn", "burn");
 
   document.getElementById("edit-goal").addEventListener("click", function () {
     var v = prompt("Daily calorie goal:", state.calGoal);
