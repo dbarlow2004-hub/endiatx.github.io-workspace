@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#256abf" />
+<title>Rent Payment Record</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #f9f9f7;
+    --card: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --muted: #898781;
+    --line: #e1e0d9;
+    --hairline: rgba(11, 11, 11, 0.10);
+    --accent: #256abf;
+    --accent-soft: #cde2fb;
+    --good: #0ca30c;
+    --good-text: #006300;
+    --good-soft: #e2f3e2;
+    --neutral-soft: #f0efec;
+    --danger: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0d0d0d;
+      --card: #1a1a19;
+      --ink: #ffffff;
+      --ink-2: #c3c2b7;
+      --muted: #898781;
+      --line: #2c2c2a;
+      --hairline: rgba(255, 255, 255, 0.10);
+      --accent: #3987e5;
+      --accent-soft: #10315c;
+      --good: #0ca30c;
+      --good-text: #0ca30c;
+      --good-soft: #12300f;
+      --neutral-soft: #262624;
+      --danger: #e66767;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0d0d0d;
+    --card: #1a1a19;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --muted: #898781;
+    --line: #2c2c2a;
+    --hairline: rgba(255, 255, 255, 0.10);
+    --accent: #3987e5;
+    --accent-soft: #10315c;
+    --good: #0ca30c;
+    --good-text: #0ca30c;
+    --good-soft: #12300f;
+    --neutral-soft: #262624;
+    --danger: #e66767;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 20px 16px 64px; }
+
+  header.page { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+  h1 { font-size: 24px; line-height: 1.2; margin: 0; }
+  .sub { color: var(--ink-2); margin: 4px 0 0; font-size: 14px; }
+  .print-only { display: none; }
+
+  .btn {
+    font: inherit; font-size: 14px; font-weight: 600;
+    border: 1px solid var(--hairline); border-radius: 8px;
+    background: var(--card); color: var(--ink);
+    padding: 8px 14px; cursor: pointer; white-space: nowrap;
+  }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.small { padding: 4px 10px; font-size: 13px; font-weight: 500; }
+  .btn.danger { color: var(--danger); }
+
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 18px 0; }
+  .tile {
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .tile .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .tile .value { font-size: 24px; font-weight: 700; margin-top: 2px; }
+  .tile .hint { font-size: 12px; color: var(--ink-2); margin-top: 2px; }
+
+  section { margin-top: 26px; }
+  h2 { font-size: 16px; margin: 0 0 10px; }
+  .note { font-size: 13px; color: var(--ink-2); margin: 8px 0 0; }
+
+  .months { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 8px; }
+  .month {
+    border: 1px solid var(--hairline); border-radius: 10px; padding: 8px 10px;
+    background: var(--card); font-size: 13px;
+  }
+  .month .m-name { font-weight: 600; }
+  .month .m-status { display: flex; align-items: center; gap: 5px; margin-top: 2px; font-size: 12px; }
+  .month.paid { background: var(--good-soft); border-color: transparent; }
+  .month.paid .m-status { color: var(--good-text); font-weight: 600; }
+  .month.norec .m-status { color: var(--muted); }
+
+  .table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; }
+  table { border-collapse: collapse; width: 100%; min-width: 540px; }
+  th, td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); font-size: 14px; }
+  thead th { border-top: none; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.actions { text-align: right; white-space: nowrap; }
+  tfoot td { font-weight: 700; }
+  .badge {
+    display: inline-block; font-size: 12px; font-weight: 600; border-radius: 999px;
+    padding: 1px 8px; background: var(--neutral-soft); color: var(--ink-2);
+  }
+  .badge.rent { background: var(--accent-soft); color: var(--accent); }
+  .memo { color: var(--ink-2); }
+
+  form.add {
+    background: var(--card); border: 1px solid var(--hairline); border-radius: 12px;
+    padding: 14px; display: grid; gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    align-items: end;
+  }
+  form.add .field { display: flex; flex-direction: column; gap: 4px; }
+  form.add label { font-size: 12px; color: var(--muted); }
+  form.add input, form.add select {
+    font: inherit; font-size: 14px; padding: 8px 10px;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--ground); color: var(--ink); width: 100%;
+  }
+  form.add .full { grid-column: 1 / -1; }
+
+  @media print {
+    :root, :root[data-theme="dark"] {
+      color-scheme: light;
+      --ground: #fff; --card: #fff; --ink: #000; --ink-2: #333;
+      --muted: #555; --line: #ccc; --hairline: #bbb;
+      --accent: #1c5cab; --accent-soft: #e8f0fb;
+      --good-text: #006300; --good-soft: #eef6ee; --neutral-soft: #f2f2f2;
+    }
+    body { font-size: 13px; }
+    main { max-width: none; padding: 0; }
+    .no-print { display: none !important; }
+    .print-only { display: block; }
+    .tile, .month, .table-wrap, table, tr { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header class="page">
+    <div>
+      <h1>Rent Payment Record</h1>
+      <p class="sub">Barlow household &rarr; Min Lin &middot; paid via Venmo (@Min-Lin-20)</p>
+      <p class="sub print-only" id="printDate"></p>
+    </div>
+    <div class="no-print" style="display:flex; gap:8px;">
+      <button class="btn primary" onclick="window.print()">Print / Save PDF</button>
+    </div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section>
+    <h2>Rent months</h2>
+    <div class="months" id="months"></div>
+    <p class="note">&ldquo;No record&rdquo; only means no payment is logged in this tracker for that
+      month &mdash; add any payments made outside Venmo (or not yet entered) below.</p>
+  </section>
+
+  <section>
+    <h2>Payment history</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date paid</th>
+            <th>For</th>
+            <th>Memo</th>
+            <th>Method</th>
+            <th class="num">Amount</th>
+            <th class="no-print"></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">Total paid</td>
+            <td class="num" id="totalCell"></td>
+            <td class="no-print"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section class="no-print">
+    <h2>Add a payment</h2>
+    <form class="add" id="addForm">
+      <div class="field">
+        <label for="fDate">Date paid</label>
+        <input type="date" id="fDate" required />
+      </div>
+      <div class="field">
+        <label for="fAmount">Amount ($)</label>
+        <input type="text" id="fAmount" inputmode="decimal" placeholder="1100.00" required />
+      </div>
+      <div class="field">
+        <label for="fType">Type</label>
+        <select id="fType">
+          <option value="rent">Rent</option>
+          <option value="deposit">Deposit</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fMonth">Rent month</label>
+        <input type="month" id="fMonth" />
+      </div>
+      <div class="field">
+        <label for="fMethod">Method</label>
+        <select id="fMethod">
+          <option>Venmo</option>
+          <option>Zelle</option>
+          <option>Cash</option>
+          <option>Check</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label for="fMemo">Memo</label>
+        <input type="text" id="fMemo" placeholder="e.g. Barlow October rent" />
+      </div>
+      <div class="full" style="display:flex; gap:8px; justify-content:flex-end;">
+        <button type="button" class="btn" id="resetBtn">Reset to Venmo history</button>
+        <button type="submit" class="btn primary">Add payment</button>
+      </div>
+    </form>
+    <p class="note">Entries are saved on this device (browser storage). Use Print / Save PDF to
+      make a copy you can send or hand to your landlady.</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  var STORE_KEY = 'rent-tracker-payments-v1';
+  var MONTHLY_RENT_CENTS = 110000;
+
+  // Payments confirmed from the Venmo "Between You" history with Min Lin.
+  var SEED = [
+    { id: 'venmo-2025-01-31', date: '2025-01-31', amount: 330000, type: 'deposit', forMonth: null, memo: 'Barlow deposit', method: 'Venmo' },
+    { id: 'venmo-2025-08-04', date: '2025-08-04', amount: 110000, type: 'rent', forMonth: '2025-08', memo: 'Barlow August rent', method: 'Venmo' },
+    { id: 'venmo-2025-09-04', date: '2025-09-04', amount: 110000, type: 'rent', forMonth: '2025-09', memo: 'Barlow sept rent', method: 'Venmo' }
+  ];
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch (e) { /* fall through to seed */ }
+    return SEED.map(function (p) { return Object.assign({}, p); });
+  }
+
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(payments)); } catch (e) { /* storage unavailable */ }
+  }
+
+  var payments = load();
+
+  function dollars(cents) {
+    return '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function parseAmount(text) {
+    var n = parseFloat(String(text).replace(/[$,\s]/g, ''));
+    if (!isFinite(n) || n <= 0) return null;
+    return Math.round(n * 100);
+  }
+
+  function fmtDate(iso) {
+    var parts = iso.split('-');
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function fmtMonth(ym) {
+    var parts = ym.split('-');
+    var d = new Date(Number(parts[0]), Number(parts[1]) - 1, 1);
+    return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  }
+
+  function forLabel(p) {
+    if (p.type === 'deposit') return 'Deposit';
+    if (p.type === 'rent' && p.forMonth) return fmtMonth(p.forMonth) + ' rent';
+    if (p.type === 'rent') return 'Rent';
+    return 'Other';
+  }
+
+  function nextId() {
+    return 'p-' + Date.now().toString(36) + '-' + Math.floor(Math.random() * 1e6).toString(36);
+  }
+
+  function render() {
+    var total = 0, rentTotal = 0, depositTotal = 0, rentCount = 0;
+    payments.forEach(function (p) {
+      total += p.amount;
+      if (p.type === 'rent') { rentTotal += p.amount; rentCount++; }
+      if (p.type === 'deposit') depositTotal += p.amount;
+    });
+
+    // Summary tiles
+    var tiles = [
+      { label: 'Total paid', value: dollars(total), hint: payments.length + ' payment' + (payments.length === 1 ? '' : 's') + ' on record' },
+      { label: 'Rent paid', value: dollars(rentTotal), hint: rentCount + ' rent payment' + (rentCount === 1 ? '' : 's') },
+      { label: 'Deposit held', value: dollars(depositTotal), hint: 'paid Jan 31, 2025' },
+      { label: 'Monthly rent', value: dollars(MONTHLY_RENT_CENTS), hint: 'Barlow share' }
+    ];
+    document.getElementById('tiles').innerHTML = tiles.map(function (t) {
+      return '<div class="tile"><div class="label">' + t.label + '</div>' +
+             '<div class="value">' + t.value + '</div>' +
+             '<div class="hint">' + esc(t.hint) + '</div></div>';
+    }).join('');
+
+    // Month grid: earliest rent month through the later of (latest rent month, current month)
+    var rentByMonth = {};
+    payments.forEach(function (p) {
+      if (p.type === 'rent' && p.forMonth) {
+        (rentByMonth[p.forMonth] = rentByMonth[p.forMonth] || []).push(p);
+      }
+    });
+    var monthKeys = Object.keys(rentByMonth).sort();
+    var monthsEl = document.getElementById('months');
+    if (!monthKeys.length) {
+      monthsEl.innerHTML = '<p class="note">No rent payments logged yet.</p>';
+    } else {
+      var now = new Date();
+      var nowKey = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+      var first = monthKeys[0];
+      var last = monthKeys[monthKeys.length - 1] > nowKey ? monthKeys[monthKeys.length - 1] : nowKey;
+      var html = '';
+      var cur = first;
+      while (cur <= last) {
+        var paid = rentByMonth[cur];
+        if (paid) {
+          var when = paid.map(function (p) { return fmtDate(p.date); }).join(', ');
+          html += '<div class="month paid"><div class="m-name">' + fmtMonth(cur) + '</div>' +
+                  '<div class="m-status">&#10003; Paid ' + esc(when) + '</div></div>';
+        } else {
+          html += '<div class="month norec"><div class="m-name">' + fmtMonth(cur) + '</div>' +
+                  '<div class="m-status">&mdash; No record</div></div>';
+        }
+        var y = Number(cur.slice(0, 4)), m = Number(cur.slice(5, 7));
+        m++; if (m > 12) { m = 1; y++; }
+        cur = y + '-' + String(m).padStart(2, '0');
+      }
+      monthsEl.innerHTML = html;
+    }
+
+    // Ledger, newest first
+    var sorted = payments.slice().sort(function (a, b) { return b.date < a.date ? -1 : b.date > a.date ? 1 : 0; });
+    document.getElementById('rows').innerHTML = sorted.map(function (p) {
+      return '<tr>' +
+        '<td>' + fmtDate(p.date) + '</td>' +
+        '<td><span class="badge' + (p.type === 'rent' ? ' rent' : '') + '">' + esc(forLabel(p)) + '</span></td>' +
+        '<td class="memo">' + esc(p.memo || '') + '</td>' +
+        '<td>' + esc(p.method || '') + '</td>' +
+        '<td class="num">' + dollars(p.amount) + '</td>' +
+        '<td class="actions no-print"><button class="btn small danger" data-del="' + p.id + '">Delete</button></td>' +
+        '</tr>';
+    }).join('');
+    document.getElementById('totalCell').textContent = dollars(total);
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  document.getElementById('rows').addEventListener('click', function (e) {
+    var id = e.target && e.target.getAttribute('data-del');
+    if (!id) return;
+    var p = payments.find(function (x) { return x.id === id; });
+    if (!p) return;
+    if (!confirm('Delete the ' + dollars(p.amount) + ' payment from ' + fmtDate(p.date) + '?')) return;
+    payments = payments.filter(function (x) { return x.id !== id; });
+    save();
+    render();
+  });
+
+  var typeEl = document.getElementById('fType');
+  var monthEl = document.getElementById('fMonth');
+  var dateEl = document.getElementById('fDate');
+
+  function syncMonthField() {
+    var isRent = typeEl.value === 'rent';
+    monthEl.disabled = !isRent;
+    if (isRent && !monthEl.value && dateEl.value) monthEl.value = dateEl.value.slice(0, 7);
+    if (!isRent) monthEl.value = '';
+  }
+  typeEl.addEventListener('change', syncMonthField);
+  dateEl.addEventListener('change', syncMonthField);
+
+  document.getElementById('addForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var amount = parseAmount(document.getElementById('fAmount').value);
+    if (!dateEl.value || amount === null) {
+      alert('Please enter a valid date and amount.');
+      return;
+    }
+    payments.push({
+      id: nextId(),
+      date: dateEl.value,
+      amount: amount,
+      type: typeEl.value,
+      forMonth: typeEl.value === 'rent' ? (monthEl.value || dateEl.value.slice(0, 7)) : null,
+      memo: document.getElementById('fMemo').value.trim(),
+      method: document.getElementById('fMethod').value
+    });
+    save();
+    render();
+    e.target.reset();
+    syncMonthField();
+  });
+
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    if (!confirm('Replace everything with the three payments from the Venmo history (deposit + Aug + Sep 2025 rent)? Payments you added here will be removed.')) return;
+    payments = SEED.map(function (p) { return Object.assign({}, p); });
+    save();
+    render();
+  });
+
+  document.getElementById('printDate').textContent =
+    'Record generated ' + new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+  syncMonthField();
+  render();
+})();
+</script>
+</body>
+</html>
