@@ -650,6 +650,22 @@
     if (n > 0 && n < 20000) { state.calGoal = Math.round(n); save(); render(); }
   });
 
+  // Auto-fill today's activity from URL params (?steps=&burn=), so an iPhone
+  // Shortcut reading Apple Health can sync WHOOP/steps data hands-free.
+  try {
+    var params = new URLSearchParams(location.search);
+    var pSteps = Number(params.get("steps"));
+    var pBurn = Number(params.get("burn"));
+    var synced = false;
+    var td = day(todayKey());
+    if (pSteps > 0 && isFinite(pSteps)) { td.steps = Math.round(pSteps); synced = true; }
+    if (pBurn > 0 && isFinite(pBurn)) { td.burn = Math.round(pBurn); synced = true; }
+    if (synced) {
+      save();
+      history.replaceState(null, "", location.pathname);
+    }
+  } catch (e) {}
+
   render();
   // Refresh at midnight rollover if the tab stays open.
   setInterval(function () {
