@@ -136,6 +136,48 @@ section{padding:64px 0;border-top:1px solid var(--border);}
   .lightbox-body{padding:16px 18px;max-height:38vh;}
 }
 
+/* ARCHITECTURE PORTFOLIO (page-through viewer) */
+.arch-viewer{position:relative;background:#000;border-radius:18px;overflow:hidden;max-width:640px;height:min(78vh,680px);margin:0 auto;box-shadow:0 30px 70px -30px rgba(0,0,0,0.6);}
+.arch-scroll{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none;}
+.arch-scroll::-webkit-scrollbar{display:none;}
+.arch-page{height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;align-items:center;justify-content:center;padding:34px 30px;box-sizing:border-box;}
+.arch-card{background:#f4f3ef;color:#161616;width:100%;height:100%;border-radius:2px;padding:30px 28px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;box-sizing:border-box;}
+.arch-card.arch-cover{align-items:center;justify-content:center;text-align:center;background:#f4f3ef;}
+.arch-cover .arch-cover-eyebrow{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#888;margin-bottom:18px;}
+.arch-cover .arch-cover-title{font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-0.01em;}
+.arch-cover .arch-cover-sub{margin-top:18px;font-size:12px;color:#666;font-family:'Space Mono',monospace;}
+.arch-toc{flex-direction:row;gap:26px;align-items:center;}
+.arch-toc-about{flex:0 0 40%;}
+.arch-toc-about .arch-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#888;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #ccc;display:inline-block;}
+.arch-toc-about p{font-size:10.5px;line-height:1.65;color:#444;margin-top:10px;}
+.arch-toc-list{flex:1;display:flex;flex-direction:column;gap:14px;}
+.arch-toc-row{display:flex;align-items:center;gap:12px;}
+.arch-toc-thumb{width:38px;height:38px;border-radius:3px;object-fit:cover;flex:0 0 auto;background:#ddd;}
+.arch-toc-num{font-family:'Space Mono',monospace;font-size:10px;color:#999;flex:0 0 16px;}
+.arch-toc-name{font-size:12.5px;font-weight:700;}
+.arch-toc-desc{font-size:10px;color:#888;margin-top:1px;}
+.arch-card.arch-intro{align-items:flex-start;}
+.arch-intro .arch-intro-num{font-family:'Space Mono',monospace;font-size:11px;color:#999;margin-bottom:10px;}
+.arch-intro .arch-intro-title{font-size:24px;font-weight:800;line-height:1.15;}
+.arch-intro .arch-intro-sub{font-size:12px;color:#777;margin-top:6px;}
+.arch-intro .arch-intro-credits{font-family:'Space Mono',monospace;font-size:9.5px;color:#999;margin-top:14px;padding-top:12px;border-top:1px solid #ddd;}
+.arch-intro .arch-intro-desc{font-size:11.5px;line-height:1.7;color:#333;margin-top:14px;}
+.arch-card.arch-image{padding:26px 24px;justify-content:flex-start;}
+.arch-image-frame{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.arch-image-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;}
+.arch-image-caption{margin-top:12px;font-size:10.5px;line-height:1.55;color:#666;font-style:italic;flex:0 0 auto;}
+.arch-counter{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.14);backdrop-filter:blur(6px);color:#fff;font-family:'Space Mono',monospace;font-size:10.5px;padding:5px 11px;border-radius:20px;z-index:3;pointer-events:none;}
+.arch-dots{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;gap:6px;z-index:3;flex-wrap:wrap;padding:0 40px;}
+.arch-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.3);border:none;padding:0;cursor:pointer;transition:background 0.15s,transform 0.15s;}
+.arch-dot:hover{background:rgba(255,255,255,0.55);}
+.arch-dot.active{background:#fff;transform:scale(1.35);}
+@media(max-width:720px){
+  .arch-viewer{height:min(80vh,620px);border-radius:12px;}
+  .arch-toc{flex-direction:column;align-items:flex-start;}
+  .arch-toc-about{flex:none;}
+  .arch-cover .arch-cover-title{font-size:26px;}
+}
+
 /* RESUME */
 .resume-grid{display:grid;grid-template-columns:2fr 1fr;gap:48px;}
 .timeline{position:relative;padding-left:24px;}
@@ -187,7 +229,7 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
 
 @media print{
   @page{margin:0.45in 0.55in;}
-  header,.hero,.hero-glow,#work,#contact,footer,.nav-cta,.lightbox-overlay{display:none!important;}
+  header,.hero,.hero-glow,#work,#architecture,#contact,footer,.nav-cta,.lightbox-overlay{display:none!important;}
   body{background:#fff;color:#1a1a1a;font-size:10.5pt;line-height:1.38;}
   main{max-width:100%;padding:0;margin:0;}
   section{padding:0;border-top:none;}
@@ -241,6 +283,7 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
     <div class="logo" id="nav-logo">—</div>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
+      <li><a href="#architecture">Architecture</a></li>
       <li><a href="#resume">Resume</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -270,6 +313,19 @@ footer{padding:32px 0 60px;text-align:center;font-size:12px;color:var(--dim);fon
       <div class="section-sub">Startup engineering, medical device prototyping, and hands-on design work, alongside independent creative projects. Click any project to see more.</div>
     </div>
     <div class="project-grid" id="project-grid"></div>
+  </section>
+
+  <section id="architecture" class="reveal">
+    <div class="section-head">
+      <div class="section-label">Harvard GSD Design Discovery Program</div>
+      <div class="section-title">Architecture Portfolio</div>
+      <div class="section-sub">Scroll or swipe through Courtyard Tenement and Fallow Urban Plot, page by page.</div>
+    </div>
+    <div class="arch-viewer">
+      <div class="arch-counter" id="arch-counter"></div>
+      <div class="arch-scroll" id="arch-scroll"></div>
+      <div class="arch-dots" id="arch-dots"></div>
+    </div>
   </section>
 
   <section id="resume" class="reveal">
@@ -397,31 +453,6 @@ const PROJECTS = [
     images: [img("ct-1"), img("ct-2"), img("ct-3")]
   },
   {
-    title: "Courtyard Tenement",
-    description: "A speculative courtyard tenement exploring daylight access, passive ventilation, and shared green space — studying how urban density can coexist with thermal comfort, social connection, and environmental performance. Harvard GSD, Summer 2025.",
-    tags: ["Architecture", "Harvard GSD"],
-    images: [
-      img("courtyard-elevation", "Front elevation of the existing tenement building that grounds the project's context."),
-      img("courtyard-plan", "Ground floor plan mapping private, semi-private, and shared circulation space within the building."),
-      img("courtyard-privacy", "A privacy gradient pattern — the density of hatching shows the transition from fully private units to shared public zones."),
-      img("courtyard-1", "Each colored line traces one resident's daily path through the building. Layering all seven residents' routes reveals how different families cross paths, linger, and carve out their own rhythms of use within the same shared courtyard — making visible the boundary between community and privacy."),
-      img("courtyard-2", "Building section studying daylight access, passive ventilation, and shared green space — how density can coexist with thermal comfort and social connection.")
-    ]
-  },
-  {
-    title: "Fallow Urban Plot",
-    description: "A landscape intervention turning a vacant lot into shared public space — native plants reinforce soil structure and define gathering areas, while planting, paths, and seating choreograph shared movement and preserve moments of privacy. Includes site context analysis and iterative design process alongside final diagrams. Harvard GSD, Summer 2025.",
-    tags: ["Landscape Design", "Harvard GSD"],
-    images: [
-      img("fallow-plan", "Site context plan mapping the surrounding blocks, existing buildings, and street trees around the vacant lot."),
-      img("fallow-process", "Four rounds of design iteration, working from early bubble diagrams toward a resolved planting and seating layout."),
-      img("fallow-icons", "Design strategy legend — shade trees, permeable paths, raised garden beds, and deep-rooted native plants that structure the intervention."),
-      img("fallow-callout-plan", "Detailed planting and circulation plan, annotated with the site furnishings — bird bath, compost bin, rain barrel, seating — that support everyday use."),
-      img("fallow-2", "Isometric section showing how native plantings anchor the soil above a cut-away view of the ground below."),
-      img("fallow-3", "Collage illustrating how planting, paths, and seating choreograph shared movement while preserving moments of privacy.")
-    ]
-  },
-  {
     title: "Eastie Farm Site Study",
     description: "Spatial analysis and architectural site studies focused on circulation and community interaction, developing conceptual interventions that explore adaptive use and environmental design. Completed during the Harvard GSD Design Discovery Program, Summer 2025, alongside the Courtyard Tenement and Fallow Urban Plot projects.",
     tags: ["Site Study", "Adaptive Reuse", "Harvard GSD"]
@@ -445,6 +476,49 @@ const PROJECTS = [
   }
 ];
 const PROJECT_FALLBACK_COLORS = ["#7dd3fc,#38bdf8", "#c084fc,#a855f7", "#4ade80,#22c55e", "#ffd166,#fbbf24", "#fb923c,#f97316"];
+
+// ── ARCHITECTURE PORTFOLIO (page-through viewer) ──
+const ARCH_PROJECTS = [
+  {
+    title: "Courtyard Tenement",
+    subtitle: "Speculative Housing — Harvard GSD",
+    credits: "Harvard GSD Design Discovery Program · Summer 2025",
+    description: "A speculative courtyard tenement exploring daylight access, passive ventilation, and shared green space — studying how urban density can coexist with thermal comfort, social connection, and environmental performance.",
+    thumb: "images/courtyard-elevation.jpg",
+    images: [
+      img("courtyard-elevation", "Front elevation of the existing tenement building that grounds the project's context."),
+      img("courtyard-plan", "Ground floor plan mapping private, semi-private, and shared circulation space within the building."),
+      img("courtyard-privacy", "A privacy gradient pattern — the density of hatching shows the transition from fully private units to shared public zones."),
+      img("courtyard-1", "Each colored line traces one resident's daily path through the building. Layering all seven residents' routes reveals how different families cross paths, linger, and carve out their own rhythms of use within the same shared courtyard — making visible the boundary between community and privacy."),
+      img("courtyard-2", "Building section studying daylight access, passive ventilation, and shared green space — how density can coexist with thermal comfort and social connection.")
+    ]
+  },
+  {
+    title: "Fallow Urban Plot",
+    subtitle: "Landscape Intervention — Harvard GSD",
+    credits: "Harvard GSD Design Discovery Program · Summer 2025",
+    description: "A landscape intervention turning a vacant lot into shared public space — native plants reinforce soil structure and define gathering areas, while planting, paths, and seating choreograph shared movement and preserve moments of privacy. Includes site context analysis and iterative design process alongside final diagrams.",
+    thumb: "images/fallow-plan.jpg",
+    images: [
+      img("fallow-plan", "Site context plan mapping the surrounding blocks, existing buildings, and street trees around the vacant lot."),
+      img("fallow-process", "Four rounds of design iteration, working from early bubble diagrams toward a resolved planting and seating layout."),
+      img("fallow-icons", "Design strategy legend — shade trees, permeable paths, raised garden beds, and deep-rooted native plants that structure the intervention."),
+      img("fallow-callout-plan", "Detailed planting and circulation plan, annotated with the site furnishings — bird bath, compost bin, rain barrel, seating — that support everyday use."),
+      img("fallow-2", "Isometric section showing how native plantings anchor the soil above a cut-away view of the ground below."),
+      img("fallow-3", "Collage illustrating how planting, paths, and seating choreograph shared movement while preserving moments of privacy.")
+    ]
+  }
+];
+
+// Flatten into a single page sequence: cover, about/TOC, then per-project intro + one page per image.
+const ARCH_PAGES = (() => {
+  const pages = [{ type: "cover" }, { type: "toc" }];
+  ARCH_PROJECTS.forEach((proj, pi) => {
+    pages.push({ type: "intro", proj, index: pi });
+    proj.images.forEach(image => pages.push({ type: "image", proj, image, index: pi }));
+  });
+  return pages;
+})();
 
 const EXPERIENCE = [
   {
@@ -698,6 +772,84 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight') images.length > 1 ? shiftGallery(1) : shiftLightbox(1);
 });
 
+// ── ARCHITECTURE PORTFOLIO VIEWER ──
+function renderArchPage(page) {
+  if (page.type === 'cover') {
+    return `<div class="arch-page"><div class="arch-card arch-cover">
+      <div class="arch-cover-eyebrow">Architecture Portfolio</div>
+      <div class="arch-cover-title">Courtyard Tenement<br>&amp; Fallow Urban Plot</div>
+      <div class="arch-cover-sub">${escHtml(PROFILE.name)} — Harvard GSD Design Discovery Program, Summer 2025</div>
+    </div></div>`;
+  }
+  if (page.type === 'toc') {
+    const rows = ARCH_PROJECTS.map((p,i) => `
+      <div class="arch-toc-row">
+        <img class="arch-toc-thumb" src="${p.thumb}" alt="">
+        <div class="arch-toc-num">${String(i+1).padStart(2,'0')}</div>
+        <div>
+          <div class="arch-toc-name">${escHtml(p.title)}</div>
+          <div class="arch-toc-desc">${escHtml(p.subtitle)}</div>
+        </div>
+      </div>`).join('');
+    return `<div class="arch-page"><div class="arch-card arch-toc">
+      <div class="arch-toc-about">
+        <span class="arch-label">About</span>
+        <p>Two speculative interventions from the Harvard GSD Design Discovery Program — a courtyard tenement studying density and privacy, and a landscape intervention reclaiming a vacant lot for shared use.</p>
+      </div>
+      <div class="arch-toc-list">${rows}</div>
+    </div></div>`;
+  }
+  if (page.type === 'intro') {
+    const p = page.proj;
+    return `<div class="arch-page"><div class="arch-card arch-intro">
+      <div class="arch-intro-num">${String(page.index+1).padStart(2,'0')}</div>
+      <div class="arch-intro-title">${escHtml(p.title)}</div>
+      <div class="arch-intro-sub">${escHtml(p.subtitle)}</div>
+      <div class="arch-intro-desc">${escHtml(p.description)}</div>
+      <div class="arch-intro-credits">${escHtml(p.credits)}</div>
+    </div></div>`;
+  }
+  return `<div class="arch-page"><div class="arch-card arch-image">
+    <div class="arch-image-frame"><img src="${page.image.thumb}" alt="${escHtml(page.proj.title)}" loading="lazy"></div>
+    ${page.image.caption ? `<div class="arch-image-caption">${escHtml(page.image.caption)}</div>` : ''}
+  </div></div>`;
+}
+
+const archScroll = document.getElementById('arch-scroll');
+const archCounter = document.getElementById('arch-counter');
+const archDotsEl = document.getElementById('arch-dots');
+
+archScroll.innerHTML = ARCH_PAGES.map(page => renderArchPage(page)).join('');
+archDotsEl.innerHTML = ARCH_PAGES.map((_,i) => `<button class="arch-dot ${i===0?'active':''}" data-i="${i}" aria-label="Page ${i+1}"></button>`).join('');
+archCounter.textContent = `1 / ${ARCH_PAGES.length}`;
+
+const archPageEls = Array.from(archScroll.querySelectorAll('.arch-page'));
+const archDotEls = Array.from(archDotsEl.querySelectorAll('.arch-dot'));
+let archCurrentIndex = 0;
+
+function setArchCurrent(i) {
+  if (i === archCurrentIndex) return;
+  archCurrentIndex = i;
+  archCounter.textContent = `${i+1} / ${ARCH_PAGES.length}`;
+  archDotEls.forEach((d,di) => d.classList.toggle('active', di===i));
+}
+
+const archObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+      setArchCurrent(archPageEls.indexOf(entry.target));
+    }
+  });
+}, { root: archScroll, threshold: 0.6 });
+archPageEls.forEach(el => archObserver.observe(el));
+
+archDotEls.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const target = archPageEls[parseInt(dot.dataset.i)];
+    archScroll.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+  });
+});
+
 // ── PROJECT CARD TILT ──
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!prefersReducedMotion) {
@@ -748,7 +900,7 @@ const spyObserver = new IntersectionObserver(entries => {
     }
   });
 }, { rootMargin: '-45% 0px -50% 0px' });
-['work','resume','contact'].forEach(id => {
+['work','architecture','resume','contact'].forEach(id => {
   const el = document.getElementById(id);
   if (el) spyObserver.observe(el);
 });
