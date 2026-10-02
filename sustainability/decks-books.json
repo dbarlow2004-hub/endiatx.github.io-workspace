@@ -1,0 +1,1474 @@
+{
+ "not-the-end-of-the-world": {
+  "summary": "Hannah Ritchie, lead researcher at Our World in Data, argues that the data on air pollution, climate, deforestation, food, biodiversity, ocean plastics and overfishing shows real progress alongside real problems. She contends that humanity has never been sustainable in the full sense - meeting human needs while protecting the environment - but that ours could be the first generation to achieve it. The book replaces doom with 'urgent optimism' and focuses attention on the actions that matter most rather than well-meaning but low-impact ones.",
+  "takeaways": [
+   "Sustainability has two halves: meet human needs and protect the environment",
+   "Ours could be the first generation to achieve both",
+   "Many rich countries have cut emissions while their economies grew",
+   "What you eat matters far more than how far it traveled",
+   "Nuclear and renewables are far safer than fossil fuels"
+  ],
+  "cards": [
+   {
+    "q": "How does Hannah Ritchie define sustainability in Not the End of the World?",
+    "a": "Meeting everyone's needs today while leaving the environment fit for future generations",
+    "explain": "She argues no past generation has achieved both halves - earlier societies may have had small footprints but failed to meet basic human needs.",
+    "wrong": [
+     "Keeping global population below a fixed planetary carrying capacity",
+     "Returning per-person consumption to pre-industrial levels everywhere",
+     "Reaching net-zero emissions in every country by 2050"
+    ]
+   },
+   {
+    "q": "What is Ritchie's headline claim about our generation?",
+    "a": "We could be the first generation to achieve sustainability",
+    "explain": "Because living standards have risen and clean technologies are now cheap, she argues both halves of sustainability are within reach for the first time.",
+    "wrong": [
+     "We are the last generation able to stop all warming",
+     "We are the first generation to cause environmental damage",
+     "We must accept lower living standards to be sustainable"
+    ]
+   },
+   {
+    "q": "According to Ritchie, how much of a typical food's carbon footprint comes from transport?",
+    "a": "A small share - usually well under 10%",
+    "explain": "Land use and farm-stage emissions dominate, so 'eat local' matters far less than choosing lower-impact foods.",
+    "wrong": [
+     "About half for most foods",
+     "Usually more than 75%",
+     "Exactly the same share as farming"
+    ]
+   },
+   {
+    "q": "Per Ritchie, what is the single biggest dietary lever for cutting food emissions?",
+    "a": "Eating less beef and lamb",
+    "explain": "Ruminant meat has by far the highest emissions and land use per unit of protein; swapping it beats going local or organic.",
+    "wrong": [
+     "Buying only locally grown produce",
+     "Switching all purchases to organic",
+     "Avoiding foods sold in plastic packaging"
+    ]
+   },
+   {
+    "q": "What does Ritchie say about the safety of different energy sources?",
+    "a": "Nuclear and renewables cause far fewer deaths per unit of energy than fossil fuels",
+    "explain": "Most fossil fuel deaths come from air pollution, so coal, oil and gas are orders of magnitude deadlier per unit of electricity.",
+    "wrong": [
+     "Nuclear is the deadliest source per unit of energy",
+     "Natural gas is the safest of all energy sources",
+     "All energy sources have roughly equal death rates"
+    ]
+   },
+   {
+    "q": "Which environmental success does Ritchie use to show global problems can be solved?",
+    "a": "Repairing the ozone layer via the Montreal Protocol",
+    "explain": "Coordinated phase-out of ozone-depleting chemicals put the ozone layer on a path to recovery - proof that international action works.",
+    "wrong": [
+     "Eliminating ocean plastics through the Basel Convention",
+     "Ending tropical deforestation through carbon markets",
+     "Stopping overfishing worldwide through the Kyoto Protocol"
+    ]
+   },
+   {
+    "q": "What does Ritchie highlight about emissions in many rich countries such as the UK?",
+    "a": "They have fallen while their economies kept growing",
+    "explain": "This decoupling of CO2 from GDP undercuts the claim that cutting emissions requires economic decline.",
+    "wrong": [
+     "They have risen in lockstep with economic growth",
+     "They only fell during recessions and then rebounded",
+     "They have stayed flat while their economies shrank"
+    ]
+   },
+   {
+    "q": "Per Ritchie, where does most plastic entering the ocean come from?",
+    "a": "Mismanaged waste in middle-income countries plus fishing gear",
+    "explain": "Rich countries' waste is mostly landfilled or incinerated; much floating ocean plastic by mass is lost fishing nets and gear.",
+    "wrong": [
+     "Plastic straws discarded in Europe and North America",
+     "Microplastics from synthetic clothing washed in rich countries",
+     "Plastic waste shipped by sea from the United States"
+    ]
+   }
+  ]
+ },
+ "how-to-avoid-a-climate-disaster": {
+  "summary": "Bill Gates argues the world must go from about 51 billion tons of greenhouse gases a year to zero, not merely reduce them. He breaks emissions into five activities - making things, plugging in, growing things, getting around, and keeping warm and cool - and shows that electricity is only part of the problem. His central tool is the 'Green Premium', the extra cost of the zero-carbon option, which he says must be driven down through innovation, policy and markets.",
+  "takeaways": [
+   "The goal is zero, not just less: about 51 billion tons a year to net zero",
+   "Making things (cement, steel, plastics) is the largest emissions category",
+   "The Green Premium measures the cost gap between clean and dirty options",
+   "Electrify as much as possible and decarbonize the grid",
+   "Innovation must lower Green Premiums for hard sectors"
+  ],
+  "cards": [
+   {
+    "q": "According to Gates, roughly how many tons of greenhouse gases does the world emit each year?",
+    "a": "About 51 billion tons of CO2-equivalent",
+    "explain": "Gates anchors the book on two numbers: 51 billion (where we are) and zero (where we need to go).",
+    "wrong": [
+     "About 5 billion tons of CO2-equivalent",
+     "About 510 billion tons of CO2-equivalent",
+     "About 15 million tons of CO2-equivalent"
+    ]
+   },
+   {
+    "q": "What does Gates mean by the 'Green Premium'?",
+    "a": "The extra cost of choosing a zero-carbon option over a fossil one",
+    "explain": "Some premiums are already small or negative (e.g., some electricity); others, like cement or jet fuel, are large and need innovation.",
+    "wrong": [
+     "A subsidy paid to fossil fuel producers to close plants",
+     "A tax rebate for households that install solar panels",
+     "The price premium consumers pay for organic food"
+    ]
+   },
+   {
+    "q": "In Gates' breakdown, which activity is the largest share of emissions?",
+    "a": "Making things (cement, steel, plastics) at about 31%",
+    "explain": "Gates stresses that industry is bigger than electricity (about 27%), so clean power alone is not enough.",
+    "wrong": [
+     "Getting around (transportation) at about 47%",
+     "Keeping warm and cool at about 31%",
+     "Growing things (agriculture) at about 52%"
+    ]
+   },
+   {
+    "q": "According to Gates, about what share of emissions comes from electricity ('plugging in')?",
+    "a": "About 27%",
+    "explain": "Electricity is crucial because cleaning it up also enables electrifying cars, heating and some industry.",
+    "wrong": [
+     "About 7%",
+     "About 50%",
+     "About 75%"
+    ]
+   },
+   {
+    "q": "Why does Gates insist the target is zero rather than large reductions?",
+    "a": "CO2 lingers for centuries, so any continued emissions keep warming the planet",
+    "explain": "Because CO2 accumulates, temperatures stop rising only when net additions stop.",
+    "wrong": [
+     "Because zero emissions automatically reverses past warming",
+     "Because the Paris Agreement legally requires zero by 2030",
+     "Because partial cuts make no difference to temperature at all"
+    ]
+   },
+   {
+    "q": "Which question does Gates suggest asking of any climate plan, reflecting industry's importance?",
+    "a": "What's your plan for cement?",
+    "explain": "It is one of his five questions, a reminder that hard-to-abate materials are often ignored in plans focused on cars and power.",
+    "wrong": [
+     "What's your plan for plastic straws?",
+     "What's your plan for paper bags?",
+     "What's your plan for light bulbs?"
+    ]
+   },
+   {
+    "q": "According to Gates, roughly how much CO2 is released per ton of cement produced?",
+    "a": "About one ton of CO2",
+    "explain": "Heating limestone releases CO2 chemically as well as from fuel, which is why cement needs new process innovation.",
+    "wrong": [
+     "About one kilogram of CO2",
+     "About ten tons of CO2",
+     "Essentially none if using clean electricity"
+    ]
+   },
+   {
+    "q": "What is Gates' broad strategy for most sectors?",
+    "a": "Decarbonize electricity and electrify as much as possible",
+    "explain": "Where electrification is impractical, he looks to clean fuels, carbon capture and innovation to lower the Green Premium.",
+    "wrong": [
+     "Ban all fossil fuels immediately worldwide",
+     "Rely mainly on planting trees to offset emissions",
+     "Reduce global population to cut demand"
+    ]
+   }
+  ]
+ },
+ "speed-scale": {
+  "summary": "Venture capitalist John Doerr lays out an action plan to cut global emissions of about 59 gigatons CO2e to net zero by 2050, with roughly half the cuts by 2030. He applies OKRs (Objectives and Key Results) to six big objectives - electrify transportation, decarbonize the grid, fix food, protect nature, clean up industry and remove carbon - plus accelerators like policy, movements, innovation and investment. The book treats climate as an execution problem with measurable targets.",
+  "takeaways": [
+   "Start from about 59 Gt CO2e per year and plan to net zero by 2050",
+   "Use OKRs: objectives plus measurable key results",
+   "Decarbonizing the grid is the biggest single objective",
+   "Carbon removal is needed for the residual emissions",
+   "Policy, movements, innovation and investment accelerate everything"
+  ],
+  "cards": [
+   {
+    "q": "According to Speed & Scale, roughly how many gigatons of CO2e does the world emit per year?",
+    "a": "About 59 gigatons",
+    "explain": "Doerr uses this broader figure (including land use and all greenhouse gases) as the baseline for his net-zero plan.",
+    "wrong": [
+     "About 9 gigatons",
+     "About 159 gigatons",
+     "About 590 gigatons"
+    ]
+   },
+   {
+    "q": "What management framework does Doerr apply to climate action?",
+    "a": "OKRs - Objectives and Key Results",
+    "explain": "Doerr popularized OKRs at Intel and Google; each climate objective gets measurable key results.",
+    "wrong": [
+     "Six Sigma defect reduction",
+     "Balanced scorecard quadrants",
+     "SWOT analysis matrices"
+    ]
+   },
+   {
+    "q": "What are Speed & Scale's timeline targets?",
+    "a": "Cut emissions about in half by 2030 and reach net zero by 2050",
+    "explain": "These milestones track IPCC pathways for limiting warming to about 1.5 degrees C.",
+    "wrong": [
+     "Cut 10% by 2030 and reach net zero by 2100",
+     "Reach net zero by 2030 and go negative by 2035",
+     "Stabilize emissions by 2040 and cut half by 2070"
+    ]
+   },
+   {
+    "q": "Which of the six big objectives in Speed & Scale offers the largest reduction?",
+    "a": "Decarbonize the grid",
+    "explain": "Clean electricity is the largest bucket because it powers both today's demand and the electrification of transport and heat.",
+    "wrong": [
+     "Fix food",
+     "Protect nature",
+     "Electrify transportation"
+    ]
+   },
+   {
+    "q": "Roughly how many gigatons does Speed & Scale assign to carbon removal?",
+    "a": "About 10 gigatons per year",
+    "explain": "Removal (natural and engineered) handles residual emissions that cannot be eliminated by 2050.",
+    "wrong": [
+     "About 1 gigaton per year",
+     "About 30 gigatons per year",
+     "About 59 gigatons per year"
+    ]
+   },
+   {
+    "q": "Which of these is one of Speed & Scale's six big objectives?",
+    "a": "Fix food",
+    "explain": "The six are electrify transportation, decarbonize the grid, fix food, protect nature, clean up industry and remove carbon.",
+    "wrong": [
+     "Plant a trillion trees",
+     "Ban air travel",
+     "Reduce population growth"
+    ]
+   },
+   {
+    "q": "What are the 'accelerators' in Speed & Scale?",
+    "a": "Policy and politics, movements, innovation, and investment",
+    "explain": "They are cross-cutting levers that speed progress across all six sector objectives.",
+    "wrong": [
+     "Tariffs, sanctions, subsidies and quotas",
+     "Solar, wind, hydro and nuclear",
+     "Recycling, reuse, repair and refuse"
+    ]
+   },
+   {
+    "q": "What does the title 'Speed & Scale' stress about climate solutions?",
+    "a": "They must be deployed fast and at massive global scale",
+    "explain": "Doerr argues we have the core technologies; the challenge is deploying them quickly enough and widely enough.",
+    "wrong": [
+     "They should be piloted slowly before any scaling",
+     "Speed matters more than total emissions reduced",
+     "Only small local projects can succeed"
+    ]
+   }
+  ]
+ },
+ "how-the-world-really-works": {
+  "summary": "Vaclav Smil explains the material and energy foundations of modern life - energy, food, materials, globalization, risk and environment - with an emphasis on quantities. He identifies four pillars of modern civilization (ammonia, steel, concrete/cement and plastics) that all depend heavily on fossil fuels. Smil argues that decarbonization is necessary but will be far slower and harder than many targets assume, and he positions himself as neither optimist nor pessimist but a scientist.",
+  "takeaways": [
+   "Ammonia, steel, cement and plastics are the four material pillars",
+   "All four depend heavily on fossil fuels",
+   "Synthetic nitrogen fertilizer feeds roughly half of humanity",
+   "Fossil fuels still supply over 80% of primary energy",
+   "Energy transitions take decades, not years"
+  ],
+  "cards": [
+   {
+    "q": "What does Smil call the four pillars of modern civilization?",
+    "a": "Ammonia, steel, concrete (cement) and plastics",
+    "explain": "Each is produced at enormous scale and depends heavily on fossil fuels as fuel or feedstock.",
+    "wrong": [
+     "Oil, coal, gas and uranium",
+     "Silicon, copper, lithium and cobalt",
+     "Wheat, rice, maize and soybeans"
+    ]
+   },
+   {
+    "q": "Why does Smil consider ammonia arguably the most important material?",
+    "a": "Synthetic nitrogen fertilizer from ammonia feeds roughly half of humanity",
+    "explain": "Without Haber-Bosch nitrogen, Smil estimates the world could not feed about half its current population.",
+    "wrong": [
+     "It is the main fuel for container ships today",
+     "It is the primary ingredient in concrete",
+     "It is the main feedstock for solar panels"
+    ]
+   },
+   {
+    "q": "Which industrial process makes the ammonia Smil highlights?",
+    "a": "The Haber-Bosch process",
+    "explain": "It combines atmospheric nitrogen with hydrogen, today mostly derived from natural gas.",
+    "wrong": [
+     "The Bessemer process",
+     "The Hall-Heroult process",
+     "The Fischer-Tropsch process"
+    ]
+   },
+   {
+    "q": "What does Smil mean when he says we are, in effect, 'eating fossil fuels'?",
+    "a": "Modern food depends on fossil energy for fertilizer, machinery, and transport",
+    "explain": "Fossil inputs run through fertilizer, pesticides, farm machinery, irrigation, processing and distribution.",
+    "wrong": [
+     "Most food now contains petroleum-based additives",
+     "Livestock are fed directly on crude oil byproducts",
+     "Crops absorb fossil carbon from polluted soil"
+    ]
+   },
+   {
+    "q": "Per Smil, why is steelmaking hard to decarbonize?",
+    "a": "Blast furnaces rely on coke from coal to reduce iron ore",
+    "explain": "Carbon acts as both fuel and chemical reducing agent, so substitutes like green hydrogen must work at huge scale.",
+    "wrong": [
+     "Steel can only be made with oil-fired furnaces",
+     "Steel plants are too small to electrify",
+     "Iron ore itself contains large amounts of methane"
+    ]
+   },
+   {
+    "q": "According to Smil, roughly what share of global primary energy still comes from fossil fuels?",
+    "a": "Over 80%",
+    "explain": "Despite rapid growth of wind and solar, the fossil share has declined only slowly - a key reason he expects a long transition.",
+    "wrong": [
+     "About 25%",
+     "About 50%",
+     "Under 10%"
+    ]
+   },
+   {
+    "q": "What is Smil's view of net-zero-by-2050 targets?",
+    "a": "They are very unlikely given the scale and inertia of energy systems",
+    "explain": "He argues past transitions took decades and the material demands of modern life make rapid change very hard.",
+    "wrong": [
+     "They will be easily met ahead of schedule",
+     "They are unnecessary because warming has stopped",
+     "They can be met through efficiency alone by 2030"
+    ]
+   },
+   {
+    "q": "How does Smil describe his own stance on the future?",
+    "a": "Neither optimist nor pessimist - a scientist",
+    "explain": "He rejects both catastrophism and techno-optimism, emphasizing realistic understanding of how things work.",
+    "wrong": [
+     "A committed techno-optimist",
+     "A climate catastrophist",
+     "A degrowth activist"
+    ]
+   }
+  ]
+ },
+ "electrify": {
+  "summary": "Saul Griffith argues that the US can decarbonize mainly by electrifying almost everything - cars, home heating, water heating and cooking - and powering it with clean electricity. Because electric machines avoid the large thermal losses of burning fuels, an electrified economy needs roughly half the primary energy. He frames the challenge as replacing household machines at their end of life and as a financing problem, calling for cheap, long-term 'climate loans' and lower soft costs.",
+  "takeaways": [
+   "Electrify everything and power it with clean electricity",
+   "Electrification cuts primary energy needs by roughly half",
+   "Every machine replacement is a climate decision",
+   "Cheap financing is as important as cheap technology",
+   "Soft costs make US rooftop solar far pricier than Australia's"
+  ],
+  "cards": [
+   {
+    "q": "What is the core thesis of Saul Griffith's Electrify?",
+    "a": "Electrify nearly everything and power it with clean electricity",
+    "explain": "Cars, furnaces, water heaters and stoves become electric, and the grid shifts to wind, solar and other clean sources.",
+    "wrong": [
+     "Capture carbon from every existing power plant",
+     "Cut energy use mainly through lifestyle sacrifice",
+     "Replace oil with hydrogen in all sectors"
+    ]
+   },
+   {
+    "q": "Per Griffith, roughly how much less primary energy would a fully electrified US need?",
+    "a": "About half as much",
+    "explain": "Burning fuels wastes much energy as heat; electric motors and heat pumps are far more efficient.",
+    "wrong": [
+     "About 5% less",
+     "About 90% less",
+     "About the same amount"
+    ]
+   },
+   {
+    "q": "What does Griffith say is the key moment for household decarbonization?",
+    "a": "When each fossil-fueled machine is due for replacement",
+    "explain": "Since cars and furnaces last decades, every replacement must be electric to hit climate goals in time.",
+    "wrong": [
+     "When a household moves to a new city",
+     "When energy prices hit record highs",
+     "When a new president takes office"
+    ]
+   },
+   {
+    "q": "Why does Griffith call decarbonization largely a financing problem?",
+    "a": "Clean machines cost more upfront but less over time, so low-cost loans are key",
+    "explain": "He proposes cheap, long-term 'climate loans' like mortgages so households can afford upfront costs.",
+    "wrong": [
+     "Because clean technologies are always more expensive to run",
+     "Because banks are legally barred from funding solar",
+     "Because fossil fuels have no upfront costs at all"
+    ]
+   },
+   {
+    "q": "Why does Griffith say rooftop solar is far cheaper in Australia than the US?",
+    "a": "Lower soft costs like permitting, inspection and customer acquisition",
+    "explain": "The hardware is similar; US costs are inflated by red tape and paperwork.",
+    "wrong": [
+     "Australian panels are made from cheaper materials",
+     "Australia has more sunlight on every roof",
+     "Australian installers are paid no wages"
+    ]
+   },
+   {
+    "q": "Does Griffith argue Americans must give up big houses and cars?",
+    "a": "No - keep similar comforts but electrify them",
+    "explain": "He argues decarbonization needs no austerity; the same services can be electric.",
+    "wrong": [
+     "Yes - homes must shrink by half",
+     "Yes - private cars must be banned",
+     "Yes - air conditioning must be phased out"
+    ]
+   },
+   {
+    "q": "What nonprofit did Griffith co-found to promote household electrification?",
+    "a": "Rewiring America",
+    "explain": "It promotes electrifying homes and helped shape household incentives in US climate policy.",
+    "wrong": [
+     "Project Drawdown",
+     "Rocky Mountain Institute",
+     "The Sunrise Movement"
+    ]
+   },
+   {
+    "q": "Why are heat pumps central to Griffith's plan?",
+    "a": "They deliver several units of heat per unit of electricity",
+    "explain": "By moving heat rather than making it, heat pumps are 3-4 times more efficient than combustion heaters.",
+    "wrong": [
+     "They run on natural gas more efficiently",
+     "They store electricity like a battery",
+     "They generate electricity from waste heat"
+    ]
+   }
+  ]
+ },
+ "the-new-map": {
+  "summary": "Daniel Yergin maps how energy shapes geopolitics, covering America's shale revolution, Russia's energy strategy, China's rise and its maritime concerns, the turbulent Middle East, and the climate-driven energy transition. He shows how shale turned the US into the world's largest oil and gas producer and changed the global balance of power. Yergin argues the transition will be complex and slower than many expect, with oil and gas remaining central for decades.",
+  "takeaways": [
+   "Shale made the US the top oil and gas producer",
+   "Russia is pivoting energy exports toward China",
+   "China worries about chokepoints like the Strait of Malacca",
+   "OPEC+ reshaped oil market management after 2016",
+   "The energy transition will be gradual and contested"
+  ],
+  "cards": [
+   {
+    "q": "According to The New Map, what transformed the US position in global energy?",
+    "a": "The shale revolution - fracking plus horizontal drilling",
+    "explain": "Shale made the US the world's largest oil and gas producer and an exporter, reshaping geopolitics.",
+    "wrong": [
+     "Building dozens of new nuclear plants",
+     "Discovering vast new oil fields in Alaska",
+     "Massive investments in offshore wind"
+    ]
+   },
+   {
+    "q": "Which two technologies combined to unlock US shale, per Yergin?",
+    "a": "Hydraulic fracturing and horizontal drilling",
+    "explain": "Together they made it economical to extract oil and gas from tight rock formations.",
+    "wrong": [
+     "Deepwater drilling and floating LNG",
+     "Carbon capture and enhanced oil recovery",
+     "Seismic mapping and coal gasification"
+    ]
+   },
+   {
+    "q": "What is China's 'Malacca dilemma' described by Yergin?",
+    "a": "Its oil imports depend on a narrow strait that could be blockaded",
+    "explain": "Much of China's imported oil passes through the Strait of Malacca, a strategic vulnerability.",
+    "wrong": [
+     "Its coal mines are concentrated in one province",
+     "Its solar panels depend on Malaysian silicon",
+     "Its rivers are too shallow for oil tankers"
+    ]
+   },
+   {
+    "q": "What is 'Power of Siberia' in The New Map?",
+    "a": "A gas pipeline carrying Russian gas to China",
+    "explain": "It symbolizes Russia's pivot east as relations with Europe and the West deteriorated.",
+    "wrong": [
+     "A Russian nuclear icebreaker fleet",
+     "A hydropower dam on the Yenisei River",
+     "A Siberian oil refinery complex"
+    ]
+   },
+   {
+    "q": "What is OPEC+, as discussed by Yergin?",
+    "a": "An alliance of OPEC with non-OPEC producers led by Russia",
+    "explain": "Formed around 2016 to coordinate output against US shale and low prices.",
+    "wrong": [
+     "OPEC's plan to invest in renewables",
+     "A US-led group of oil-importing countries",
+     "A futures market for Middle East crude"
+    ]
+   },
+   {
+    "q": "What remarkable event in April 2020 does Yergin describe?",
+    "a": "US WTI oil futures briefly traded below zero",
+    "explain": "COVID-19 crushed demand and storage filled up, so sellers paid buyers to take oil.",
+    "wrong": [
+     "Oil hit an all-time high above $200",
+     "OPEC dissolved after a price war",
+     "The US banned all crude exports"
+    ]
+   },
+   {
+    "q": "Which colonial-era agreement does Yergin cite as shaping Middle East borders?",
+    "a": "The Sykes-Picot Agreement of 1916",
+    "explain": "This British-French deal divided Ottoman territories, leaving borders still contested today.",
+    "wrong": [
+     "The Treaty of Versailles of 1919",
+     "The Yalta Agreement of 1945",
+     "The Camp David Accords of 1978"
+    ]
+   },
+   {
+    "q": "What is Yergin's view on the pace of the energy transition?",
+    "a": "It will be gradual and complex, with oil and gas central for decades",
+    "explain": "He stresses that past transitions took a long time and that today's system is vast.",
+    "wrong": [
+     "Fossil fuels will vanish within ten years",
+     "Oil demand already peaked permanently in 2010",
+     "Nuclear will replace oil by 2030"
+    ]
+   }
+  ]
+ },
+ "the-price-is-wrong": {
+  "summary": "Economic geographer Brett Christophers argues that the falling cost of solar and wind is not enough to drive the energy transition, because investment depends on expected profitability, not price. In liberalized electricity markets, renewable revenues are volatile and low-margin, so private capital hesitates without subsidies or long-term contracts. He concludes that markets alone will not deliver decarbonization fast enough, and argues for a much larger role for the state, including public ownership.",
+  "takeaways": [
+   "Profit, not cost, drives renewable investment",
+   "LCOE ignores revenue and market risk",
+   "Price cannibalization erodes renewable revenues",
+   "Long-term contracts and subsidies make projects bankable",
+   "Christophers calls for a bigger state role, including public ownership"
+  ],
+  "cards": [
+   {
+    "q": "What is the central thesis of The Price Is Wrong?",
+    "a": "Profitability, not cheapness, determines whether renewables get built",
+    "explain": "Low costs mean little if expected revenues are uncertain or margins too thin for investors.",
+    "wrong": [
+     "Renewables are still too expensive to compete",
+     "Fossil fuel subsidies are the only barrier",
+     "Consumers refuse to pay for clean power"
+    ]
+   },
+   {
+    "q": "Why does Christophers critique LCOE as a guide to investment?",
+    "a": "It measures cost per MWh but says nothing about revenue or profit",
+    "explain": "A project with low LCOE can still be unprofitable if market prices are low or volatile.",
+    "wrong": [
+     "It always overstates the cost of solar",
+     "It ignores fuel costs for gas plants",
+     "It only applies to nuclear power plants"
+    ]
+   },
+   {
+    "q": "What is 'price cannibalization' for solar?",
+    "a": "When much solar generates at once, wholesale prices fall at those times",
+    "explain": "As solar grows, it depresses the prices solar itself earns at midday.",
+    "wrong": [
+     "When solar firms undercut each other on panel prices",
+     "When utilities charge solar owners extra fees",
+     "When panel prices rise due to tariffs"
+    ]
+   },
+   {
+    "q": "Per Christophers, why does the cost of capital matter so much for renewables?",
+    "a": "They are capital-intensive with no fuel cost, so financing dominates",
+    "explain": "Nearly all lifetime cost is upfront, so interest rates and risk premiums drive economics.",
+    "wrong": [
+     "They require expensive fuel purchased in advance",
+     "They are financed only through equity, never debt",
+     "They have very short lifetimes of a few years"
+    ]
+   },
+   {
+    "q": "How do PPAs and contracts for difference help renewables, in Christophers' analysis?",
+    "a": "They give stable, predictable revenue that makes projects bankable",
+    "explain": "Locking in a price reduces merchant risk, letting projects borrow on better terms.",
+    "wrong": [
+     "They guarantee the lowest possible panel prices",
+     "They eliminate the need for grid connection",
+     "They let projects sell power above market price forever"
+    ]
+   },
+   {
+    "q": "What kind of electricity markets does Christophers see as problematic for renewable investment?",
+    "a": "Liberalized wholesale markets with volatile prices",
+    "explain": "These were designed around fuel-burning plants and expose renewables to revenue risk.",
+    "wrong": [
+     "Vertically integrated public monopolies",
+     "Markets with fixed regulated tariffs",
+     "Off-grid village microgrids"
+    ]
+   },
+   {
+    "q": "What policy direction does Christophers ultimately favor?",
+    "a": "A much larger state role, including public ownership",
+    "explain": "He argues private markets will not decarbonize fast enough without the state.",
+    "wrong": [
+     "Removing all subsidies and letting markets decide",
+     "Taxing solar to fund fossil plants",
+     "Relying on voluntary corporate pledges"
+    ]
+   },
+   {
+    "q": "Why does Christophers argue subsidies and state support still matter even though solar is cheap?",
+    "a": "Without them, expected profits are often too low or uncertain to attract investment",
+    "explain": "His point is that low generation cost does not guarantee returns, so policy that de-risks revenue drives buildout.",
+    "wrong": [
+     "Solar panels still cost more than coal plants to build",
+     "Subsidies are needed to pay for fuel costs",
+     "Banks are legally barred from financing renewables"
+    ]
+   }
+  ]
+ },
+ "short-circuiting-policy": {
+  "summary": "Political scientist Leah Stokes explains why US states have advanced, stalled or even rolled back clean energy laws such as renewable portfolio standards and net metering. She shows how electric utilities and fossil fuel interests, often aided by groups like ALEC, have fought to weaken these policies after enactment. Her key concept, the 'fog of enactment', explains why opponents often mobilize only after a law passes, leading to retrenchment, as in Ohio, Kansas and Arizona, while Texas shows how policies can succeed.",
+  "takeaways": [
+   "Clean energy laws can be weakened after passage (retrenchment)",
+   "The 'fog of enactment' delays opposition until a law's effects are clear",
+   "Utilities have been central in fighting clean energy policy",
+   "ALEC spread model bills to repeal state RPS laws",
+   "Policy design and organized interests shape outcomes"
+  ],
+  "cards": [
+   {
+    "q": "What is a Renewable Portfolio Standard (RPS), central to Stokes' book?",
+    "a": "A law requiring utilities to source a set share of power from renewables",
+    "explain": "RPS laws were the main US state clean energy policy and a target of utility opposition.",
+    "wrong": [
+     "A tax credit for buying electric vehicles",
+     "A federal ban on new coal plants",
+     "A rule capping household electricity prices"
+    ]
+   },
+   {
+    "q": "What does Stokes mean by the 'fog of enactment'?",
+    "a": "When laws pass, their impacts are unclear, so opponents mobilize later",
+    "explain": "Once costs and winners become clear, opponents organize to weaken the policy.",
+    "wrong": [
+     "Lawmakers deliberately hide bills from the public",
+     "Pollution makes it hard to measure emissions",
+     "Voters forget a law once it is enacted"
+    ]
+   },
+   {
+    "q": "What is 'retrenchment' in Short Circuiting Policy?",
+    "a": "Weakening or repealing a clean energy policy after enactment",
+    "explain": "Stokes documents retrenchment in states like Ohio, Kansas and Arizona.",
+    "wrong": [
+     "Expanding a policy to new sectors",
+     "Increasing renewable targets after success",
+     "Transferring policy authority to the federal government"
+    ]
+   },
+   {
+    "q": "Which state does Stokes present as an RPS success story, signed by George W. Bush?",
+    "a": "Texas",
+    "explain": "Texas's RPS (1999) helped spur a wind boom, and targets were met well ahead of schedule.",
+    "wrong": [
+     "California",
+     "Ohio",
+     "Kansas"
+    ]
+   },
+   {
+    "q": "What did Ohio do to its renewable standard in 2014, as described by Stokes?",
+    "a": "Froze it",
+    "explain": "Ohio's legislature paused its RPS amid pressure from utilities and fossil interests.",
+    "wrong": [
+     "Doubled its target",
+     "Extended it to cover heating",
+     "Made it a constitutional amendment"
+    ]
+   },
+   {
+    "q": "What role does Stokes attribute to ALEC?",
+    "a": "It circulated model bills to repeal or weaken state RPS laws",
+    "explain": "ALEC connected corporate interests with legislators to spread anti-RPS legislation.",
+    "wrong": [
+     "It funded new wind farms in the Midwest",
+     "It drafted the Paris Agreement",
+     "It regulated interstate transmission lines"
+    ]
+   },
+   {
+    "q": "What is net metering, a policy fought over in Stokes' cases?",
+    "a": "Crediting rooftop solar owners for power they send to the grid",
+    "explain": "Utilities often push to weaken net metering because it reduces their sales.",
+    "wrong": [
+     "Charging customers based on peak demand only",
+     "Metering emissions at power plant smokestacks",
+     "Capping how much power a home can use"
+    ]
+   },
+   {
+    "q": "Why do utilities often oppose clean energy policies, per Stokes?",
+    "a": "They threaten utilities' business models and revenues",
+    "explain": "Rooftop solar and competition can reduce utility sales and investment returns.",
+    "wrong": [
+     "Renewables are illegal for utilities to own",
+     "Utilities are legally banned from lobbying",
+     "Clean energy policies always raise utility profits"
+    ]
+   }
+  ]
+ },
+ "the-grid": {
+  "summary": "Anthropologist Gretchen Bakke tells the history of the American power grid, from Edison and the 'war of the currents' through Samuel Insull's regulated monopoly model to deregulation. She argues the grid was built for large, centralized, controllable power plants and is poorly suited to variable renewables and distributed generation. The book frames integrating renewables as a problem of balancing, storage and infrastructure as much as generation.",
+  "takeaways": [
+   "The grid must balance supply and demand instantly",
+   "Insull's utility model favored big central plants and monopolies",
+   "Variable renewables strain a system built for dispatchable power",
+   "Aging infrastructure and weak maintenance cause blackouts",
+   "Storage and smarter grids are key to the future"
+  ],
+  "cards": [
+   {
+    "q": "What fundamental constraint of the grid does Bakke stress?",
+    "a": "Supply and demand must be balanced in real time",
+    "explain": "With little storage, electricity must be generated as it is consumed.",
+    "wrong": [
+     "Power can be stored cheaply for months",
+     "Only one power plant can run per region",
+     "Electricity flows only during daylight"
+    ]
+   },
+   {
+    "q": "Who does Bakke credit with creating the regulated utility monopoly model?",
+    "a": "Samuel Insull",
+    "explain": "Insull built large central plants and accepted state regulation in exchange for monopoly territories.",
+    "wrong": [
+     "Thomas Edison",
+     "Nikola Tesla",
+     "J.P. Morgan"
+    ]
+   },
+   {
+    "q": "What was the 'war of the currents' covered in The Grid?",
+    "a": "Edison's DC versus Westinghouse and Tesla's AC",
+    "explain": "AC won because it could be stepped up for efficient long-distance transmission.",
+    "wrong": [
+     "Coal versus hydropower in the 1920s",
+     "Public versus private ownership of utilities",
+     "Gas lighting versus electric lighting in homes"
+    ]
+   },
+   {
+    "q": "What triggered the 2003 Northeast blackout, per Bakke?",
+    "a": "Lines hitting overgrown trees in Ohio plus an alarm software failure",
+    "explain": "Grid operators didn't see the problem in time, and failures cascaded to 50 million people.",
+    "wrong": [
+     "A cyberattack from overseas",
+     "A hurricane hitting New York City",
+     "A nuclear plant meltdown in Pennsylvania"
+    ]
+   },
+   {
+    "q": "What did PURPA (1978) do, as described by Bakke?",
+    "a": "Required utilities to buy power from independent producers",
+    "explain": "It opened the grid to non-utility generation and set the stage for competition.",
+    "wrong": [
+     "Nationalized all US electric utilities",
+     "Banned the construction of nuclear plants",
+     "Created the federal tax credit for solar"
+    ]
+   },
+   {
+    "q": "Why are variable renewables hard for the grid, per Bakke?",
+    "a": "The grid was designed for steady, controllable central plants",
+    "explain": "Wind and solar output fluctuates, requiring more flexibility, storage and transmission.",
+    "wrong": [
+     "Renewables produce DC power that cannot be used",
+     "Renewables generate too much power at night",
+     "Renewables cannot connect to transmission lines"
+    ]
+   },
+   {
+    "q": "Which crisis does Bakke cite as a deregulation failure?",
+    "a": "The California energy crisis of 2000-2001 with Enron manipulation",
+    "explain": "Market manipulation and flawed design led to blackouts and soaring prices.",
+    "wrong": [
+     "The Texas freeze of 2021",
+     "The 1973 oil embargo",
+     "The Three Mile Island accident"
+    ]
+   },
+   {
+    "q": "Which state does Bakke discuss as an example of high rooftop solar challenging its utility?",
+    "a": "Hawaii",
+    "explain": "High rooftop solar penetration on island grids forced the utility to confront new balancing challenges.",
+    "wrong": [
+     "Alaska",
+     "North Dakota",
+     "West Virginia"
+    ]
+   }
+  ]
+ },
+ "abundance": {
+  "summary": "Ezra Klein and Derek Thompson argue that many of America's problems - expensive housing, slow clean energy buildout, stalled infrastructure - stem from a scarcity created by policy and process. They criticize a liberalism that has prioritized procedures, lawsuits and veto points over results, and call for a politics focused on building more. In energy, they emphasize that permitting delays and transmission bottlenecks slow decarbonization even when money is available.",
+  "takeaways": [
+   "Many shortages are policy choices, not inevitable",
+   "Process and veto points slow building",
+   "'Everything-bagel' programs pile on too many goals",
+   "Transmission and permitting are key clean energy bottlenecks",
+   "Government can build fast when focused on outcomes"
+  ],
+  "cards": [
+   {
+    "q": "What is the core argument of Abundance?",
+    "a": "Many US shortages come from rules and process that block building",
+    "explain": "They argue scarcity in housing, energy and infrastructure is often self-inflicted.",
+    "wrong": [
+     "Americans consume too much and must cut back",
+     "Markets alone will solve housing and energy",
+     "Government should stop funding infrastructure"
+    ]
+   },
+   {
+    "q": "What do Klein and Thompson mean by 'everything-bagel liberalism'?",
+    "a": "Loading programs with so many goals that they fail to deliver",
+    "explain": "Adding requirements to each program slows or stops the main objective.",
+    "wrong": [
+     "Funding programs equally across all states",
+     "Combining federal and state budgets",
+     "Offering free food in public programs"
+    ]
+   },
+   {
+    "q": "Which law do the authors cite as enabling lengthy environmental reviews and litigation?",
+    "a": "The National Environmental Policy Act (NEPA)",
+    "explain": "NEPA reviews and lawsuits can delay projects, including clean energy and transmission.",
+    "wrong": [
+     "The Clean Air Act Amendments of 1990",
+     "The Endangered Species Act",
+     "The Inflation Reduction Act"
+    ]
+   },
+   {
+    "q": "Which project do the authors use as a cautionary tale of costly delays?",
+    "a": "California high-speed rail",
+    "explain": "Its costs ballooned and timelines slipped due to process and politics.",
+    "wrong": [
+     "The Hoover Dam",
+     "The Apollo program",
+     "The interstate highway system"
+    ]
+   },
+   {
+    "q": "What successful example of government speed do the authors highlight?",
+    "a": "Operation Warp Speed for COVID-19 vaccines",
+    "explain": "It showed government can deliver fast when focused on a clear goal.",
+    "wrong": [
+     "The Affordable Care Act website launch",
+     "The Big Dig in Boston",
+     "The FAA's NextGen program"
+    ]
+   },
+   {
+    "q": "Why is transmission a key clean energy bottleneck, per Abundance?",
+    "a": "New lines face years of permitting and local opposition",
+    "explain": "Without new lines, clean power can't reach demand, slowing decarbonization.",
+    "wrong": [
+     "Transmission technology does not yet exist",
+     "Renewables do not need transmission lines",
+     "Transmission lines are banned in most states"
+    ]
+   },
+   {
+    "q": "What do Klein and Thompson call their political vision?",
+    "a": "An abundance agenda: build more of what people need",
+    "explain": "They argue progress should be measured by how much housing, clean energy and infrastructure actually get built.",
+    "wrong": [
+     "A degrowth agenda: consume and produce less",
+     "A deregulation agenda: abolish environmental law",
+     "A scarcity agenda: ration energy and housing"
+    ]
+   },
+   {
+    "q": "Why do the authors say blue states struggle with housing costs?",
+    "a": "Zoning and regulations limit how much housing can be built",
+    "explain": "Restrictive rules constrain supply, raising prices and pushing people out.",
+    "wrong": [
+     "Blue states have too much empty land",
+     "Federal law caps housing prices in blue states",
+     "Builders refuse to work in blue states"
+    ]
+   }
+  ]
+ },
+ "sustainable-energy-without-the-hot-air": {
+  "summary": "Physicist David MacKay teaches readers to evaluate energy claims with simple arithmetic, using kilowatt-hours per day per person as a common unit. He compares a 'consumption stack' with a 'production stack' of sustainable sources for the UK, showing that renewables have low power density and would require country-sized areas. MacKay concludes that any plan must add up, combining efficiency, electrification and large-scale supply from renewables, nuclear or imports.",
+  "takeaways": [
+   "Use kWh per day per person for all energy",
+   "UK consumption is about 125 kWh/d per person",
+   "Renewables need large areas due to low power density",
+   "Small actions like unplugging chargers barely matter",
+   "Plans must add up: 'pro-arithmetic'"
+  ],
+  "cards": [
+   {
+    "q": "What unit does MacKay use throughout the book?",
+    "a": "Kilowatt-hours per day per person (kWh/d)",
+    "explain": "It makes personal, national and technology comparisons intuitive.",
+    "wrong": [
+     "Barrels of oil per year per country",
+     "Megawatts per square kilometer",
+     "Joules per second per household"
+    ]
+   },
+   {
+    "q": "According to MacKay, roughly how much energy does the average UK person use?",
+    "a": "About 125 kWh per day",
+    "explain": "This includes transport, heating, electricity and embodied energy.",
+    "wrong": [
+     "About 12 kWh per day",
+     "About 1,250 kWh per day",
+     "About 2 kWh per day"
+    ]
+   },
+   {
+    "q": "What is MacKay's point about switching off phone chargers?",
+    "a": "It saves trivially little - like bailing the Titanic with a teaspoon",
+    "explain": "Chargers use about 0.01 kWh/d; he wants focus on big items like cars, heating and flying.",
+    "wrong": [
+     "It is the most effective single energy action",
+     "It saves as much as giving up flying",
+     "It cuts household electricity use in half"
+    ]
+   },
+   {
+    "q": "According to MacKay, about how much power per square meter do onshore wind farms deliver?",
+    "a": "About 2 watts per square meter",
+    "explain": "Low power density means wind would need huge land areas to supply much of UK demand.",
+    "wrong": [
+     "About 200 watts per square meter",
+     "About 20 kilowatts per square meter",
+     "About 0.002 watts per square meter"
+    ]
+   },
+   {
+    "q": "What is MacKay's famous line on his stance?",
+    "a": "I'm not pro-nuclear, I'm pro-arithmetic",
+    "explain": "He insists plans must add up, whatever mix of sources is chosen.",
+    "wrong": [
+     "I'm anti-nuclear and pro-renewables",
+     "I'm pro-coal and anti-efficiency",
+     "I'm against all energy growth"
+    ]
+   },
+   {
+    "q": "How does MacKay compare UK energy demand with sustainable supply?",
+    "a": "Two stacks: consumption versus sustainable production",
+    "explain": "Stacking both in kWh/d shows the size of the gap that plans must close.",
+    "wrong": [
+     "A pie chart of fuel costs by year",
+     "A ranking of countries by GDP",
+     "A list of renewable company profits"
+    ]
+   },
+   {
+    "q": "Per MacKay, about how much energy does driving 50 km a day in an average car use?",
+    "a": "About 40 kWh per day",
+    "explain": "Car travel is one of the largest personal energy items.",
+    "wrong": [
+     "About 4 kWh per day",
+     "About 400 kWh per day",
+     "About 0.4 kWh per day"
+    ]
+   },
+   {
+    "q": "What is MacKay's main conclusion about renewables in the UK?",
+    "a": "They need country-sized areas, so plans must combine sources",
+    "explain": "Low power density means renewables alone would cover vast areas; efficiency and other sources are also needed.",
+    "wrong": [
+     "They can easily supply all demand from rooftops",
+     "They are too expensive to ever be used",
+     "They produce more energy than the UK needs"
+    ]
+   }
+  ]
+ },
+ "drawdown": {
+  "summary": "Edited by Paul Hawken, Drawdown ranks 100 existing climate solutions by their potential to reduce or sequester greenhouse gases from 2020 to 2050. 'Drawdown' is the point when atmospheric greenhouse gas concentrations peak and begin to decline. The 2017 ranking surprised many: refrigerant management came first, and food, land and social solutions like reduced food waste, plant-rich diets, and educating girls ranked near the top alongside energy.",
+  "takeaways": [
+   "Drawdown is when greenhouse gas concentrations peak and start declining",
+   "100 solutions are ranked by gigatons reduced, 2020-2050",
+   "Refrigerant management ranked first in 2017",
+   "Food, land and social solutions rank alongside energy",
+   "Educating girls and family planning together rank very high"
+  ],
+  "cards": [
+   {
+    "q": "What does 'drawdown' mean in Hawken's book?",
+    "a": "When atmospheric greenhouse gases peak and begin to decline",
+    "explain": "It is the target point beyond simply reducing emissions.",
+    "wrong": [
+     "When fossil fuel production hits zero",
+     "When global temperatures return to pre-industrial",
+     "When all countries sign a climate treaty"
+    ]
+   },
+   {
+    "q": "Which solution ranked number one in Drawdown (2017)?",
+    "a": "Refrigerant management",
+    "explain": "HFC refrigerants are potent greenhouse gases; controlling leaks and disposal avoids huge emissions.",
+    "wrong": [
+     "Onshore wind turbines",
+     "Rooftop solar",
+     "Electric vehicles"
+    ]
+   },
+   {
+    "q": "Which agreement on HFCs relates to Drawdown's top solution?",
+    "a": "The Kigali Amendment to the Montreal Protocol",
+    "explain": "Adopted in 2016, it phases down HFC refrigerants.",
+    "wrong": [
+     "The Kyoto Protocol",
+     "The Paris Agreement",
+     "The Basel Convention"
+    ]
+   },
+   {
+    "q": "Which two food-related solutions ranked in Drawdown's 2017 top five?",
+    "a": "Reduced food waste and plant-rich diets",
+    "explain": "Food solutions ranked surprisingly high, ahead of many energy technologies.",
+    "wrong": [
+     "Organic farming and local food",
+     "Vertical farming and lab meat",
+     "Fertilizer bans and fish farming"
+    ]
+   },
+   {
+    "q": "What social solutions together ranked very high in Drawdown?",
+    "a": "Educating girls and family planning",
+    "explain": "Combined, they affect population growth and resilience, ranking above any single solution.",
+    "wrong": [
+     "Carbon taxes and cap-and-trade",
+     "Bike lanes and public transit",
+     "Recycling and composting"
+    ]
+   },
+   {
+    "q": "Which energy solution ranked highest in Drawdown (2017)?",
+    "a": "Onshore wind turbines",
+    "explain": "Onshore wind ranked second overall, the top electricity solution.",
+    "wrong": [
+     "Nuclear power",
+     "Coal with carbon capture",
+     "Geothermal power"
+    ]
+   },
+   {
+    "q": "How many solutions did Drawdown rank, and over what period?",
+    "a": "100 solutions from 2020 to 2050",
+    "explain": "Each was modeled for gigatons avoided or sequestered over thirty years.",
+    "wrong": [
+     "50 solutions from 2000 to 2020",
+     "10 solutions from 2030 to 2100",
+     "1,000 solutions from 2017 to 2030"
+    ]
+   },
+   {
+    "q": "What surprised many readers about Drawdown's rankings?",
+    "a": "Many top solutions were food, land and social, not energy",
+    "explain": "It broadened climate thinking beyond power plants and cars.",
+    "wrong": [
+     "Every top solution was a new invention",
+     "Nuclear power ranked first",
+     "Electric cars ranked first overall"
+    ]
+   }
+  ]
+ },
+ "doughnut-economics": {
+  "summary": "Kate Raworth proposes replacing GDP growth as the economy's goal with the 'Doughnut': meeting everyone's needs (social foundation) without overshooting planetary limits (ecological ceiling). The space between is the 'safe and just space for humanity'. She outlines seven ways to think like a 21st-century economist, including designing economies that are regenerative and distributive, and being agnostic about growth.",
+  "takeaways": [
+   "Goal: a safe and just space between social foundation and ecological ceiling",
+   "Ecological ceiling is based on nine planetary boundaries",
+   "Replace GDP growth with meeting needs within limits",
+   "Design economies to be regenerative and distributive",
+   "Be agnostic about growth"
+  ],
+  "cards": [
+   {
+    "q": "What is the Doughnut in Raworth's framework?",
+    "a": "A safe and just space between social needs and planetary limits",
+    "explain": "The inner ring is a social foundation; the outer ring is an ecological ceiling.",
+    "wrong": [
+     "A model of circular recycling loops",
+     "A chart of GDP growth over time",
+     "A ring of trade routes around the globe"
+    ]
+   },
+   {
+    "q": "What does the outer ring of the Doughnut represent?",
+    "a": "The ecological ceiling based on planetary boundaries",
+    "explain": "Overshooting it means exceeding limits like climate change or biodiversity loss.",
+    "wrong": [
+     "The maximum GDP a country can reach",
+     "The social foundation of human needs",
+     "The minimum wage for workers"
+    ]
+   },
+   {
+    "q": "How many planetary boundaries form the ecological ceiling?",
+    "a": "Nine",
+    "explain": "Developed by Rockstrom and colleagues, they include climate change, biodiversity loss and nitrogen cycles.",
+    "wrong": [
+     "Three",
+     "Twelve",
+     "Twenty-five"
+    ]
+   },
+   {
+    "q": "What does the inner ring of the Doughnut represent?",
+    "a": "The social foundation of essential human needs",
+    "explain": "Falling short means deprivation in food, water, health, education and more.",
+    "wrong": [
+     "The ecological ceiling",
+     "Profit margins of businesses",
+     "National debt limits"
+    ]
+   },
+   {
+    "q": "What is Raworth's first 'way to think' like a 21st-century economist?",
+    "a": "Change the goal from GDP growth to the Doughnut",
+    "explain": "She argues GDP growth is a poor goal; the aim should be thriving within limits.",
+    "wrong": [
+     "Maximize GDP growth above all",
+     "Abolish all markets",
+     "Focus only on inflation"
+    ]
+   },
+   {
+    "q": "What is Raworth's stance on economic growth?",
+    "a": "Be agnostic about growth",
+    "explain": "Economies should thrive whether or not they grow, not be addicted to growth.",
+    "wrong": [
+     "Growth must be maximized forever",
+     "Growth must be stopped immediately",
+     "Growth is irrelevant to all policy"
+    ]
+   },
+   {
+    "q": "Raworth critiques which model of human behavior?",
+    "a": "Rational economic man",
+    "explain": "She proposes seeing humans as social, reciprocal and adaptable.",
+    "wrong": [
+     "Homo sapiens as hunters",
+     "The invisible hand of markets",
+     "The tragedy of the commons"
+    ]
+   },
+   {
+    "q": "Which city notably adopted the Doughnut model in 2020?",
+    "a": "Amsterdam",
+    "explain": "Amsterdam used it to guide its post-pandemic recovery and circular economy plans.",
+    "wrong": [
+     "Houston",
+     "Dubai",
+     "Singapore"
+    ]
+   }
+  ]
+ },
+ "cradle-to-cradle": {
+  "summary": "Architect William McDonough and chemist Michael Braungart argue that design should mimic nature, where 'waste equals food'. Rather than making products 'less bad' through eco-efficiency, they call for eco-effectiveness: products designed so materials circulate as biological nutrients returning safely to soil, or technical nutrients cycling in closed industrial loops. The book helped launch circular economy thinking and Cradle to Cradle certification.",
+  "takeaways": [
+   "Waste equals food",
+   "Design for biological and technical nutrient cycles",
+   "Eco-effectiveness beats eco-efficiency",
+   "Downcycling is not true recycling",
+   "Use renewable energy and celebrate diversity"
+  ],
+  "cards": [
+   {
+    "q": "What is the core principle of Cradle to Cradle?",
+    "a": "Waste equals food",
+    "explain": "Design products so materials become nutrients for new cycles instead of waste.",
+    "wrong": [
+     "Reduce, reuse, recycle",
+     "Polluter pays",
+     "Small is beautiful"
+    ]
+   },
+   {
+    "q": "What are the two material cycles in Cradle to Cradle?",
+    "a": "Biological nutrients and technical nutrients",
+    "explain": "Biological materials return safely to nature; technical ones cycle in closed industrial loops.",
+    "wrong": [
+     "Organic and inorganic waste streams",
+     "Primary and secondary energy",
+     "Solid and liquid waste"
+    ]
+   },
+   {
+    "q": "How do McDonough and Braungart contrast eco-efficiency and eco-effectiveness?",
+    "a": "Eco-efficiency is less bad; eco-effectiveness aims to be good",
+    "explain": "Being 'less bad' is not being good - design should create positive impact.",
+    "wrong": [
+     "Eco-efficiency is better because it is cheaper",
+     "They are identical concepts",
+     "Eco-effectiveness means using less energy only"
+    ]
+   },
+   {
+    "q": "What do the authors call recycling that lowers material quality?",
+    "a": "Downcycling",
+    "explain": "Downcycling degrades materials over time, eventually ending in waste.",
+    "wrong": [
+     "Upcycling",
+     "Precycling",
+     "Microcycling"
+    ]
+   },
+   {
+    "q": "What unusual material was Cradle to Cradle printed on?",
+    "a": "A synthetic, waterproof polymer 'paper'",
+    "explain": "It demonstrated a technical nutrient that could be recycled without degrading.",
+    "wrong": [
+     "Recycled newspapers",
+     "Bamboo fiber pages",
+     "Hemp-based paper"
+    ]
+   },
+   {
+    "q": "What does 'cradle to grave' describe, according to the authors?",
+    "a": "A linear product life ending in landfill or incineration",
+    "explain": "They propose cradle to cradle as a cyclical alternative.",
+    "wrong": [
+     "A circular design system",
+     "A biological nutrient cycle",
+     "A renewable energy system"
+    ]
+   },
+   {
+    "q": "Which energy principle do McDonough and Braungart advocate?",
+    "a": "Use current solar income",
+    "explain": "Rely on renewable energy flows like sunlight rather than stored fossil fuels.",
+    "wrong": [
+     "Use coal as transitional energy",
+     "Minimize all energy use",
+     "Store energy for future generations"
+    ]
+   },
+   {
+    "q": "Which Ford facility do the authors highlight for a large green roof?",
+    "a": "The River Rouge plant",
+    "explain": "McDonough redesigned it with a living roof to manage stormwater.",
+    "wrong": [
+     "The Highland Park plant",
+     "The Willow Run plant",
+     "The Dearborn Assembly test track"
+    ]
+   }
+  ]
+ },
+ "saving-us": {
+  "summary": "Climate scientist Katharine Hayhoe argues that the most important thing people can do about climate change is talk about it. She explains how to connect with others through shared values rather than facts alone, noting that most people are not dismissive of climate science. Hayhoe emphasizes that many objections are smokescreens for fear of solutions, and that hope and practical action matter.",
+  "takeaways": [
+   "Talking about climate is the most important action",
+   "Start with shared values, not facts",
+   "Only a small share of people are dismissive",
+   "Objections often hide fear of solutions",
+   "Hope comes from action"
+  ],
+  "cards": [
+   {
+    "q": "What does Hayhoe call the most important thing to do about climate change?",
+    "a": "Talk about it",
+    "explain": "Conversations build awareness and social norms that drive action.",
+    "wrong": [
+     "Buy an electric car",
+     "Plant trees",
+     "Stop flying"
+    ]
+   },
+   {
+    "q": "What framework from Yale does Hayhoe use to describe public views?",
+    "a": "Global Warming's Six Americas",
+    "explain": "It segments people from Alarmed to Dismissive.",
+    "wrong": [
+     "The Five Stages of Grief",
+     "Maslow's hierarchy of needs",
+     "The Overton window"
+    ]
+   },
+   {
+    "q": "About what share of Americans does Hayhoe say are dismissive?",
+    "a": "A small minority, roughly 10% or less",
+    "explain": "Most people are not dismissive, so they can be reached.",
+    "wrong": [
+     "About 50%",
+     "About 75%",
+     "About 90%"
+    ]
+   },
+   {
+    "q": "How does Hayhoe recommend starting climate conversations?",
+    "a": "With shared values and connections",
+    "explain": "Connect on what people already care about, like family or faith.",
+    "wrong": [
+     "With the latest temperature data",
+     "With arguments about blame",
+     "With predictions of catastrophe"
+    ]
+   },
+   {
+    "q": "What does Hayhoe say many science objections really are?",
+    "a": "Smokescreens for fear of solutions",
+    "explain": "People often reject science because they dislike proposed policies.",
+    "wrong": [
+     "Valid scientific critiques",
+     "Misreadings of temperature data",
+     "Questions about model accuracy"
+    ]
+   },
+   {
+    "q": "What is Hayhoe's professional background?",
+    "a": "Atmospheric scientist and evangelical Christian",
+    "explain": "Her faith helps her connect with religious communities.",
+    "wrong": [
+     "Economist and policymaker",
+     "Engineer and entrepreneur",
+     "Journalist and filmmaker"
+    ]
+   },
+   {
+    "q": "What does Hayhoe call climate change because it amplifies other problems?",
+    "a": "A threat multiplier",
+    "explain": "It worsens existing issues like poverty, health and conflict.",
+    "wrong": [
+     "A tipping point",
+     "A runaway effect",
+     "A carbon budget"
+    ]
+   },
+   {
+    "q": "Where does Hayhoe say hope comes from?",
+    "a": "From taking action, not from waiting",
+    "explain": "Action builds efficacy, and efficacy builds hope.",
+    "wrong": [
+     "From new scientific discoveries",
+     "From government promises",
+     "From ignoring bad news"
+    ]
+   }
+  ]
+ },
+ "the-ministry-for-the-future": {
+  "summary": "Kim Stanley Robinson's novel follows a UN-linked agency created in 2025 to advocate for future generations, after a catastrophic heat wave in India kills millions. It explores policy innovations such as carbon coin, central bank action, geoengineering, glacier interventions, and also eco-terrorism. The book depicts a messy but ultimately hopeful path through climate change via institutions, finance and activism.",
+  "takeaways": [
+   "A deadly heat wave triggers global urgency",
+   "Carbon coin rewards sequestration",
+   "Central banks help finance decarbonization",
+   "Geoengineering and glacier slowing appear",
+   "Hope comes from many messy actions"
+  ],
+  "cards": [
+   {
+    "q": "What event opens The Ministry for the Future?",
+    "a": "A deadly heat wave in India killing millions",
+    "explain": "Extreme wet-bulb heat shows the stakes of climate change.",
+    "wrong": [
+     "A hurricane destroying New York",
+     "A nuclear war in Asia",
+     "A pandemic in Europe"
+    ]
+   },
+   {
+    "q": "What is the Ministry for the Future?",
+    "a": "An agency created to advocate for future generations",
+    "explain": "It is linked to the Paris Agreement and based in Zurich.",
+    "wrong": [
+     "A private climate investment fund",
+     "A national environmental ministry",
+     "A military climate task force"
+    ]
+   },
+   {
+    "q": "Who leads the Ministry in the novel?",
+    "a": "Mary Murphy",
+    "explain": "She navigates politics, finance and activism.",
+    "wrong": [
+     "Frank May",
+     "Greta Lindstrom",
+     "Elena Rossi"
+    ]
+   },
+   {
+    "q": "What is 'carbon coin' in the novel?",
+    "a": "A currency rewarding carbon sequestration",
+    "explain": "Central banks back it, paying for verified carbon drawdown.",
+    "wrong": [
+     "A cryptocurrency for oil trading",
+     "A tax on air travel",
+     "A coin given to climate refugees"
+    ]
+   },
+   {
+    "q": "What geoengineering does India attempt?",
+    "a": "Spraying aerosols into the atmosphere",
+    "explain": "It mimics volcanic eruptions to reflect sunlight.",
+    "wrong": [
+     "Seeding oceans with iron",
+     "Building giant mirrors in space",
+     "Planting vast desert forests"
+    ]
+   },
+   {
+    "q": "What intervention slows glaciers in the novel?",
+    "a": "Pumping water from beneath glaciers",
+    "explain": "Removing meltwater reduces sliding and sea-level rise.",
+    "wrong": [
+     "Covering glaciers with white blankets",
+     "Building walls around ice sheets",
+     "Freezing seawater with chemicals"
+    ]
+   },
+   {
+    "q": "What role do central banks play in the novel?",
+    "a": "They back carbon coin and fund decarbonization",
+    "explain": "Monetary policy becomes a climate tool.",
+    "wrong": [
+     "They ban fossil fuel investments",
+     "They print money for oil companies",
+     "They stay neutral on climate"
+    ]
+   },
+   {
+    "q": "What darker form of activism appears in the novel?",
+    "a": "Eco-terrorism by a group called Children of Kali",
+    "explain": "They target polluters, adding pressure for change.",
+    "wrong": [
+     "Peaceful hunger strikes only",
+     "Online petitions only",
+     "Boycotts of electric cars"
+    ]
+   }
+  ]
+ }
+}

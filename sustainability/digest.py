@@ -224,7 +224,12 @@ def pick_of_the_day():
     section, r = pool[datetime.now(timezone.utc).timetuple().tm_yday % len(pool)]
     label = {"books": "Read", "podcasts": "Listen", "documentaries": "Watch"}[section]
     by = f" ({r['by']})" if r.get("by") else ""
-    return f"{label}: {r['title']}{by}"
+    text = f"{label}: {r['title']}{by}"
+    url = os.environ.get("DIGEST_URL")
+    if url:  # deep link into the study app so you can track it and unlock its flashcards
+        item = re.sub(r"[^a-z0-9]+", "-", r["title"].lower()).strip("-")
+        text += f"\n   Track & study: {url.rstrip('/')}/learn.html?item={item}"
+    return text
 
 
 def build_message(articles, max_items):
@@ -293,7 +298,7 @@ def send_email(msg, articles):
             + "".join(rows))
     pick = pick_of_the_day()
     if pick:
-        body += f"<p><b>Today's pick</b> &mdash; {html.escape(pick)}</p>"
+        body += f"<p><b>Today's pick</b> &mdash; {html.escape(pick.splitlines()[0])}</p>"
     if os.environ.get("DIGEST_URL"):
         body += f'<p><a href="{html.escape(os.environ["DIGEST_URL"])}">Open the full hub</a></p>'
     body += "</div>"

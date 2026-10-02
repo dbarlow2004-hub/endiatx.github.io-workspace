@@ -13,6 +13,22 @@ Every morning at about 7:45am Eastern, a GitHub Action runs `digest.py`. It:
 
 Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustainability/
 
+## Study app: track, take notes, flashcards & quizzes
+
+`learn.html` ("🧠 My Library & Study" on the hub) is a Goodreads-plus-Quizlet for everything on the hub:
+
+- **Library:** mark each book, podcast, documentary or YouTube channel as *Want to*, *Reading/Listening/Watching* or *Done*, and rate it 1-5 stars.
+  Add your own items (podcast episodes, articles, courses). Tap **＋ Save** on any headline to add it to the library.
+- **Notes:** each item has a notes box, a summary with key takeaways, and links to find summaries, transcripts, audiobooks or where to watch.
+- **Flashcards:** marking something *Done* unlocks its deck (8 cards per book, 5-6 per podcast or film, plus a 30-card Key Concepts starter deck).
+  Reviews use spaced repetition: Again / Hard / Good / Easy schedules the next review just before you'd forget.
+- **Quiz & Lightning round:** multiple-choice questions with an explanation after each answer. Answer streaks multiply XP; missed questions return to your flashcard reviews.
+- **Game layer:** XP, levels from "Curious" to "Thought Leader", a daily goal ring, a day streak and 13 badges.
+- **AI summaries & cards (optional):** paste your notes or a transcript and Claude writes a summary, takeaways and 8-12 new flashcards.
+  This needs your own Anthropic API key (console.anthropic.com), entered under Home → Settings. The key is stored only in your browser and each request costs a few cents.
+
+Progress is saved in your browser on that device. Use **Export / Import backup** under Settings to move it to another device.
+
 ## Turn on delivery (pick one or more)
 
 Add these under **GitHub repo → Settings → Secrets and variables → Actions → New repository secret**.

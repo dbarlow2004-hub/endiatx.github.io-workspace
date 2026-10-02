@@ -35,6 +35,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
 nav::-webkit-scrollbar{display:none}
 nav a{font-size:13px;color:var(--muted);padding:6px 10px;border-radius:8px;white-space:nowrap}
+nav a.study-link{color:var(--accent);font-weight:600;background:var(--accent-soft)}
 nav a:hover{background:var(--chip);color:var(--text);text-decoration:none}
 
 .hero{padding:36px 0 20px}
@@ -58,6 +59,10 @@ h2 small{font-size:13px;font-weight:400;color:var(--muted)}
 .news a.t{font-weight:600;color:var(--text);font-size:15.5px;line-height:1.35}
 .news a.t:hover{color:var(--accent)}
 .meta{font-size:12.5px;color:var(--muted);margin-top:3px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.save{margin-left:auto;font:inherit;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:8px;padding:2px 9px;cursor:pointer}
+.save:hover{border-color:var(--accent);color:var(--accent)}
+.save[disabled]{color:var(--accent);border-color:transparent;cursor:default}
+.track{font-size:13px;font-weight:600;margin-top:6px}
 .tag{background:var(--chip);border-radius:6px;padding:1px 7px;font-size:11.5px}
 .empty{color:var(--muted);font-size:14px;padding:16px 0}
 .more{margin-top:14px}
@@ -101,6 +106,7 @@ footer code{font-family:'Space Mono',monospace;font-size:12px;background:var(--c
   <div class="wrap bar">
     <span class="logo">Energy Brief</span>
     <nav aria-label="Sections">
+      <a href="learn.html" class="study-link">🧠 My Library &amp; Study</a>
       <a href="#latest">Latest</a>
       <a href="#plan">Become a pro</a>
       <a href="#glossary">Key concepts</a>
@@ -117,6 +123,7 @@ footer code{font-family:'Space Mono',monospace;font-size:12px;background:var(--c
   <div class="hero">
     <h1>Solar, renewables, energy prices &amp; net zero, every morning.</h1>
     <p>Today's headlines from trade press and global news, sent to your phone daily, plus everything to read, hear and watch to know this field cold.</p>
+    <p style="margin-top:14px"><a href="learn.html" style="display:inline-block;background:var(--accent);color:var(--bg);font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none">🧠 Track what you finish &amp; study it →</a></p>
   </div>
 
   <section id="latest">
@@ -210,7 +217,8 @@ function renderNews(){
   $("#news").innerHTML = list.slice(0, shown).map(a => `
     <li><a class="t" href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">${esc(a.title)}</a>
       <div class="meta"><span>${esc(a.source)}</span><span>·</span><span>${ago(a.published || a.added)}</span>
-        ${(a.topics||[]).slice(0,3).map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div></li>`).join("")
+        ${(a.topics||[]).slice(0,3).map(t => `<span class="tag">${esc(t)}</span>`).join("")}
+        <button class="save" data-save="${esc(a.link)}" ${savedLinks.has(a.link) ? "disabled>Saved ✓" : ">＋ Save"}</button></div></li>`).join("")
     || `<li class="empty">${articles.length ? "No headlines match." : "No articles yet. The first brief will fill this in."}</li>`;
   $("#more").hidden = list.length <= shown;
 }
@@ -230,6 +238,21 @@ $("#topics").addEventListener("click", e => {
 $("#q").addEventListener("input", () => { shown = PAGE; renderNews(); });
 $("#more").addEventListener("click", () => { shown += PAGE; renderNews(); });
 
+/* Save an article to the study app's library (learn.html picks it up from this inbox). */
+const INBOX = "energybrief-inbox", SAVED = "energybrief-saved-links";
+const savedLinks = new Set((() => { try { return JSON.parse(localStorage.getItem(SAVED) || "[]"); } catch { return []; } })());
+$("#news").addEventListener("click", e => {
+  const b = e.target.closest("[data-save]"); if (!b) return;
+  const a = articles.find(x => x.link === b.dataset.save); if (!a) return;
+  try {
+    const box = JSON.parse(localStorage.getItem(INBOX) || "[]");
+    box.push({title:a.title, link:a.link, source:a.source});
+    localStorage.setItem(INBOX, JSON.stringify(box));
+    savedLinks.add(a.link); localStorage.setItem(SAVED, JSON.stringify([...savedLinks].slice(-500)));
+  } catch {}
+  b.disabled = true; b.textContent = "Saved ✓";
+});
+
 fetch("feed.json", {cache:"no-cache"}).then(r => r.ok ? r.json() : {articles:[]}).catch(() => ({articles:[]})).then(d => {
   articles = (d.articles || []).slice().sort((a,b) => (b.published||b.added||"").localeCompare(a.published||a.added||""));
   if(d.updated) $("#updated").textContent = "updated " + ago(d.updated);
@@ -238,17 +261,19 @@ fetch("feed.json", {cache:"no-cache"}).then(r => r.ok ? r.json() : {articles:[]}
 
 /* ---------- resources ---------- */
 let books = [], bookFilter = "all";
-function card(title, by, why, badges, url){
+const slug = t => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+function card(title, by, why, badges, url, track){
   const h = url ? `<a href="${esc(safeUrl(url))}" target="_blank" rel="noopener">${esc(title)}</a>` : esc(title);
   return `<div class="card"><h3>${h}</h3>${by ? `<div class="by">${esc(by)}</div>` : ""}
-    ${badges.length ? `<div class="badges">${badges.join("")}</div>` : ""}<p>${esc(why)}</p></div>`;
+    ${badges.length ? `<div class="badges">${badges.join("")}</div>` : ""}<p>${esc(why)}</p>
+    ${track ? `<a class="track" href="learn.html?item=${encodeURIComponent(slug(title))}">Track &amp; study →</a>` : ""}</div>`;
 }
 function renderBooks(){
   const list = books.filter(b => bookFilter === "all" || (bookFilter === "audio" ? b.audio : b.level === bookFilter));
   $("#booklist").innerHTML = list.map(b => card(b.title, `${b.by} · ${b.year}`, b.why, [
     `<span class="badge ${b.level==="Start here"?"lvl-Start":""}">${esc(b.level)}</span>`,
     b.audio ? `<span class="badge audio">Audiobook</span>` : ""
-  ].filter(Boolean), b.url)).join("");
+  ].filter(Boolean), b.url, true)).join("");
 }
 $("#bookfilter").addEventListener("click", e => {
   const b = e.target.closest("[data-f]"); if(!b) return;
@@ -259,8 +284,8 @@ $("#bookfilter").addEventListener("click", e => {
 
 fetch("resources.json").then(r => r.json()).then(r => {
   books = r.books || []; renderBooks();
-  $("#podlist").innerHTML = (r.podcasts||[]).map(p => card(p.title, p.by, p.why, [], p.url)).join("");
-  $("#doclist").innerHTML = (r.documentaries||[]).map(d => card(d.title, [d.year, d.where].filter(Boolean).join(" · "), d.why, [], d.url)).join("");
+  $("#podlist").innerHTML = (r.podcasts||[]).map(p => card(p.title, p.by, p.why, [], p.url, true)).join("");
+  $("#doclist").innerHTML = (r.documentaries||[]).map(d => card(d.title, [d.year, d.where].filter(Boolean).join(" · "), d.why, [], d.url, true)).join("");
   $("#colist").innerHTML = (r.companies||[]).map(c =>
     `<tr><td><b>${esc(c.name)}</b></td><td class="tk">${esc(c.ticker)}</td><td>${esc(c.sector)}</td><td class="why">${esc(c.why)}</td></tr>`).join("");
   $("#srclist").innerHTML = (r.sources||[]).map(s => card(s.name, "", s.why, [], s.url)).join("");
