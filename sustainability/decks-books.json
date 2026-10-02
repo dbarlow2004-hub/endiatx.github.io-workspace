@@ -17,7 +17,8 @@
      "Keeping global population below a fixed planetary carrying capacity",
      "Returning per-person consumption to pre-industrial levels everywhere",
      "Reaching net-zero emissions in every country by 2050"
-    ]
+    ],
+    "pct": 0.06
    },
    {
     "q": "What is Ritchie's headline claim about our generation?",
@@ -27,7 +28,8 @@
      "We are the last generation able to stop all warming",
      "We are the first generation to cause environmental damage",
      "We must accept lower living standards to be sustainable"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "According to Ritchie, how much of a typical food's carbon footprint comes from transport?",
@@ -37,7 +39,8 @@
      "About half for most foods",
      "Usually more than 75%",
      "Exactly the same share as farming"
-    ]
+    ],
+    "pct": 0.55
    },
    {
     "q": "Per Ritchie, what is the single biggest dietary lever for cutting food emissions?",
@@ -47,7 +50,8 @@
      "Buying only locally grown produce",
      "Switching all purchases to organic",
      "Avoiding foods sold in plastic packaging"
-    ]
+    ],
+    "pct": 0.57
    },
    {
     "q": "What does Ritchie say about the safety of different energy sources?",
@@ -57,7 +61,8 @@
      "Nuclear is the deadliest source per unit of energy",
      "Natural gas is the safest of all energy sources",
      "All energy sources have roughly equal death rates"
-    ]
+    ],
+    "pct": 0.35
    },
    {
     "q": "Which environmental success does Ritchie use to show global problems can be solved?",
@@ -67,7 +72,8 @@
      "Eliminating ocean plastics through the Basel Convention",
      "Ending tropical deforestation through carbon markets",
      "Stopping overfishing worldwide through the Kyoto Protocol"
-    ]
+    ],
+    "pct": 0.25
    },
    {
     "q": "What does Ritchie highlight about emissions in many rich countries such as the UK?",
@@ -77,7 +83,8 @@
      "They have risen in lockstep with economic growth",
      "They only fell during recessions and then rebounded",
      "They have stayed flat while their economies shrank"
-    ]
+    ],
+    "pct": 0.35
    },
    {
     "q": "Per Ritchie, where does most plastic entering the ocean come from?",
@@ -87,7 +94,8 @@
      "Plastic straws discarded in Europe and North America",
      "Microplastics from synthetic clothing washed in rich countries",
      "Plastic waste shipped by sea from the United States"
-    ]
+    ],
+    "pct": 0.8
    }
   ]
  },
@@ -109,7 +117,8 @@
      "About 5 billion tons of CO2-equivalent",
      "About 510 billion tons of CO2-equivalent",
      "About 15 million tons of CO2-equivalent"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "What does Gates mean by the 'Green Premium'?",
@@ -119,7 +128,8 @@
      "A subsidy paid to fossil fuel producers to close plants",
      "A tax rebate for households that install solar panels",
      "The price premium consumers pay for organic food"
-    ]
+    ],
+    "pct": 0.2
    },
    {
     "q": "In Gates' breakdown, which activity is the largest share of emissions?",
@@ -129,7 +139,8 @@
      "Getting around (transportation) at about 47%",
      "Keeping warm and cool at about 31%",
      "Growing things (agriculture) at about 52%"
-    ]
+    ],
+    "pct": 0.2
    },
    {
     "q": "According to Gates, about what share of emissions comes from electricity ('plugging in')?",
@@ -139,7 +150,8 @@
      "About 7%",
      "About 50%",
      "About 75%"
-    ]
+    ],
+    "pct": 0.22
    },
    {
     "q": "Why does Gates insist the target is zero rather than large reductions?",
@@ -149,7 +161,8 @@
      "Because zero emissions automatically reverses past warming",
      "Because the Paris Agreement legally requires zero by 2030",
      "Because partial cuts make no difference to temperature at all"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "Which question does Gates suggest asking of any climate plan, reflecting industry's importance?",
@@ -159,7 +172,8 @@
      "What's your plan for plastic straws?",
      "What's your plan for paper bags?",
      "What's your plan for light bulbs?"
-    ]
+    ],
+    "pct": 0.22
    },
    {
     "q": "According to Gates, roughly how much CO2 is released per ton of cement produced?",
@@ -169,7 +183,8 @@
      "About one kilogram of CO2",
      "About ten tons of CO2",
      "Essentially none if using clean electricity"
-    ]
+    ],
+    "pct": 0.38
    },
    {
     "q": "What is Gates' broad strategy for most sectors?",
@@ -179,7 +194,8 @@
      "Ban all fossil fuels immediately worldwide",
      "Rely mainly on planting trees to offset emissions",
      "Reduce global population to cut demand"
-    ]
+    ],
+    "pct": 0.85
    }
   ]
  },
@@ -201,7 +217,8 @@
      "About 9 gigatons",
      "About 159 gigatons",
      "About 590 gigatons"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "What management framework does Doerr apply to climate action?",
@@ -211,7 +228,8 @@
      "Six Sigma defect reduction",
      "Balanced scorecard quadrants",
      "SWOT analysis matrices"
-    ]
+    ],
+    "pct": 0.06
    },
    {
     "q": "What are Speed & Scale's timeline targets?",
@@ -221,7 +239,8 @@
      "Cut 10% by 2030 and reach net zero by 2100",
      "Reach net zero by 2030 and go negative by 2035",
      "Stabilize emissions by 2040 and cut half by 2070"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "Which of the six big objectives in Speed & Scale offers the largest reduction?",
@@ -231,7 +250,8 @@
      "Fix food",
      "Protect nature",
      "Electrify transportation"
-    ]
+    ],
+    "pct": 0.18
    },
    {
     "q": "Roughly how many gigatons does Speed & Scale assign to carbon removal?",
@@ -241,7 +261,8 @@
      "About 1 gigaton per year",
      "About 30 gigatons per year",
      "About 59 gigatons per year"
-    ]
+    ],
+    "pct": 0.5
    },
    {
     "q": "Which of these is one of Speed & Scale's six big objectives?",
@@ -251,7 +272,8 @@
      "Plant a trillion trees",
      "Ban air travel",
      "Reduce population growth"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "What are the 'accelerators' in Speed & Scale?",
@@ -261,7 +283,8 @@
      "Tariffs, sanctions, subsidies and quotas",
      "Solar, wind, hydro and nuclear",
      "Recycling, reuse, repair and refuse"
-    ]
+    ],
+    "pct": 0.6
    },
    {
     "q": "What does the title 'Speed & Scale' stress about climate solutions?",
@@ -271,7 +294,8 @@
      "They should be piloted slowly before any scaling",
      "Speed matters more than total emissions reduced",
      "Only small local projects can succeed"
-    ]
+    ],
+    "pct": 0.05
    }
   ]
  },
@@ -293,7 +317,8 @@
      "Oil, coal, gas and uranium",
      "Silicon, copper, lithium and cobalt",
      "Wheat, rice, maize and soybeans"
-    ]
+    ],
+    "pct": 0.28
    },
    {
     "q": "Why does Smil consider ammonia arguably the most important material?",
@@ -303,7 +328,8 @@
      "It is the main fuel for container ships today",
      "It is the primary ingredient in concrete",
      "It is the main feedstock for solar panels"
-    ]
+    ],
+    "pct": 0.3
    },
    {
     "q": "Which industrial process makes the ammonia Smil highlights?",
@@ -313,7 +339,8 @@
      "The Bessemer process",
      "The Hall-Heroult process",
      "The Fischer-Tropsch process"
-    ]
+    ],
+    "pct": 0.2
    },
    {
     "q": "What does Smil mean when he says we are, in effect, 'eating fossil fuels'?",
@@ -323,7 +350,8 @@
      "Most food now contains petroleum-based additives",
      "Livestock are fed directly on crude oil byproducts",
      "Crops absorb fossil carbon from polluted soil"
-    ]
+    ],
+    "pct": 0.18
    },
    {
     "q": "Per Smil, why is steelmaking hard to decarbonize?",
@@ -333,7 +361,8 @@
      "Steel can only be made with oil-fired furnaces",
      "Steel plants are too small to electrify",
      "Iron ore itself contains large amounts of methane"
-    ]
+    ],
+    "pct": 0.36
    },
    {
     "q": "According to Smil, roughly what share of global primary energy still comes from fossil fuels?",
@@ -343,7 +372,8 @@
      "About 25%",
      "About 50%",
      "Under 10%"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "What is Smil's view of net-zero-by-2050 targets?",
@@ -353,7 +383,8 @@
      "They will be easily met ahead of schedule",
      "They are unnecessary because warming has stopped",
      "They can be met through efficiency alone by 2030"
-    ]
+    ],
+    "pct": 0.85
    },
    {
     "q": "How does Smil describe his own stance on the future?",
@@ -363,7 +394,8 @@
      "A committed techno-optimist",
      "A climate catastrophist",
      "A degrowth activist"
-    ]
+    ],
+    "pct": 0.92
    }
   ]
  },
@@ -385,7 +417,8 @@
      "Capture carbon from every existing power plant",
      "Cut energy use mainly through lifestyle sacrifice",
      "Replace oil with hydrogen in all sectors"
-    ]
+    ],
+    "pct": 0.06
    },
    {
     "q": "Per Griffith, roughly how much less primary energy would a fully electrified US need?",
@@ -395,7 +428,8 @@
      "About 5% less",
      "About 90% less",
      "About the same amount"
-    ]
+    ],
+    "pct": 0.25
    },
    {
     "q": "What does Griffith say is the key moment for household decarbonization?",
@@ -405,7 +439,8 @@
      "When a household moves to a new city",
      "When energy prices hit record highs",
      "When a new president takes office"
-    ]
+    ],
+    "pct": 0.5
    },
    {
     "q": "Why does Griffith call decarbonization largely a financing problem?",
@@ -415,7 +450,8 @@
      "Because clean technologies are always more expensive to run",
      "Because banks are legally barred from funding solar",
      "Because fossil fuels have no upfront costs at all"
-    ]
+    ],
+    "pct": 0.6
    },
    {
     "q": "Why does Griffith say rooftop solar is far cheaper in Australia than the US?",
@@ -425,7 +461,8 @@
      "Australian panels are made from cheaper materials",
      "Australia has more sunlight on every roof",
      "Australian installers are paid no wages"
-    ]
+    ],
+    "pct": 0.65
    },
    {
     "q": "Does Griffith argue Americans must give up big houses and cars?",
@@ -435,7 +472,8 @@
      "Yes - homes must shrink by half",
      "Yes - private cars must be banned",
      "Yes - air conditioning must be phased out"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "What nonprofit did Griffith co-found to promote household electrification?",
@@ -445,7 +483,8 @@
      "Project Drawdown",
      "Rocky Mountain Institute",
      "The Sunrise Movement"
-    ]
+    ],
+    "pct": 0.9
    },
    {
     "q": "Why are heat pumps central to Griffith's plan?",
@@ -455,7 +494,8 @@
      "They run on natural gas more efficiently",
      "They store electricity like a battery",
      "They generate electricity from waste heat"
-    ]
+    ],
+    "pct": 0.45
    }
   ]
  },
@@ -477,7 +517,8 @@
      "Building dozens of new nuclear plants",
      "Discovering vast new oil fields in Alaska",
      "Massive investments in offshore wind"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "Which two technologies combined to unlock US shale, per Yergin?",
@@ -487,7 +528,8 @@
      "Deepwater drilling and floating LNG",
      "Carbon capture and enhanced oil recovery",
      "Seismic mapping and coal gasification"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "What is China's 'Malacca dilemma' described by Yergin?",
@@ -497,7 +539,8 @@
      "Its coal mines are concentrated in one province",
      "Its solar panels depend on Malaysian silicon",
      "Its rivers are too shallow for oil tankers"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "What is 'Power of Siberia' in The New Map?",
@@ -507,7 +550,8 @@
      "A Russian nuclear icebreaker fleet",
      "A hydropower dam on the Yenisei River",
      "A Siberian oil refinery complex"
-    ]
+    ],
+    "pct": 0.3
    },
    {
     "q": "What is OPEC+, as discussed by Yergin?",
@@ -517,7 +561,8 @@
      "OPEC's plan to invest in renewables",
      "A US-led group of oil-importing countries",
      "A futures market for Middle East crude"
-    ]
+    ],
+    "pct": 0.85
    },
    {
     "q": "What remarkable event in April 2020 does Yergin describe?",
@@ -527,7 +572,8 @@
      "Oil hit an all-time high above $200",
      "OPEC dissolved after a price war",
      "The US banned all crude exports"
-    ]
+    ],
+    "pct": 0.97
    },
    {
     "q": "Which colonial-era agreement does Yergin cite as shaping Middle East borders?",
@@ -537,7 +583,8 @@
      "The Treaty of Versailles of 1919",
      "The Yalta Agreement of 1945",
      "The Camp David Accords of 1978"
-    ]
+    ],
+    "pct": 0.55
    },
    {
     "q": "What is Yergin's view on the pace of the energy transition?",
@@ -547,7 +594,8 @@
      "Fossil fuels will vanish within ten years",
      "Oil demand already peaked permanently in 2010",
      "Nuclear will replace oil by 2030"
-    ]
+    ],
+    "pct": 0.9
    }
   ]
  },
@@ -569,7 +617,8 @@
      "Renewables are still too expensive to compete",
      "Fossil fuel subsidies are the only barrier",
      "Consumers refuse to pay for clean power"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "Why does Christophers critique LCOE as a guide to investment?",
@@ -579,7 +628,8 @@
      "It always overstates the cost of solar",
      "It ignores fuel costs for gas plants",
      "It only applies to nuclear power plants"
-    ]
+    ],
+    "pct": 0.2
    },
    {
     "q": "What is 'price cannibalization' for solar?",
@@ -589,7 +639,8 @@
      "When solar firms undercut each other on panel prices",
      "When utilities charge solar owners extra fees",
      "When panel prices rise due to tariffs"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "Per Christophers, why does the cost of capital matter so much for renewables?",
@@ -599,7 +650,8 @@
      "They require expensive fuel purchased in advance",
      "They are financed only through equity, never debt",
      "They have very short lifetimes of a few years"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "How do PPAs and contracts for difference help renewables, in Christophers' analysis?",
@@ -609,7 +661,8 @@
      "They guarantee the lowest possible panel prices",
      "They eliminate the need for grid connection",
      "They let projects sell power above market price forever"
-    ]
+    ],
+    "pct": 0.55
    },
    {
     "q": "What kind of electricity markets does Christophers see as problematic for renewable investment?",
@@ -619,7 +672,8 @@
      "Vertically integrated public monopolies",
      "Markets with fixed regulated tariffs",
      "Off-grid village microgrids"
-    ]
+    ],
+    "pct": 0.3
    },
    {
     "q": "What policy direction does Christophers ultimately favor?",
@@ -629,7 +683,8 @@
      "Removing all subsidies and letting markets decide",
      "Taxing solar to fund fossil plants",
      "Relying on voluntary corporate pledges"
-    ]
+    ],
+    "pct": 0.95
    },
    {
     "q": "Why does Christophers argue subsidies and state support still matter even though solar is cheap?",
@@ -639,7 +694,8 @@
      "Solar panels still cost more than coal plants to build",
      "Subsidies are needed to pay for fuel costs",
      "Banks are legally barred from financing renewables"
-    ]
+    ],
+    "pct": 0.7
    }
   ]
  },
@@ -661,7 +717,8 @@
      "A tax credit for buying electric vehicles",
      "A federal ban on new coal plants",
      "A rule capping household electricity prices"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "What does Stokes mean by the 'fog of enactment'?",
@@ -671,7 +728,8 @@
      "Lawmakers deliberately hide bills from the public",
      "Pollution makes it hard to measure emissions",
      "Voters forget a law once it is enacted"
-    ]
+    ],
+    "pct": 0.12
    },
    {
     "q": "What is 'retrenchment' in Short Circuiting Policy?",
@@ -681,7 +739,8 @@
      "Expanding a policy to new sectors",
      "Increasing renewable targets after success",
      "Transferring policy authority to the federal government"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "Which state does Stokes present as an RPS success story, signed by George W. Bush?",
@@ -691,7 +750,8 @@
      "California",
      "Ohio",
      "Kansas"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "What did Ohio do to its renewable standard in 2014, as described by Stokes?",
@@ -701,7 +761,8 @@
      "Doubled its target",
      "Extended it to cover heating",
      "Made it a constitutional amendment"
-    ]
+    ],
+    "pct": 0.65
    },
    {
     "q": "What role does Stokes attribute to ALEC?",
@@ -711,7 +772,8 @@
      "It funded new wind farms in the Midwest",
      "It drafted the Paris Agreement",
      "It regulated interstate transmission lines"
-    ]
+    ],
+    "pct": 0.6
    },
    {
     "q": "What is net metering, a policy fought over in Stokes' cases?",
@@ -721,7 +783,8 @@
      "Charging customers based on peak demand only",
      "Metering emissions at power plant smokestacks",
      "Capping how much power a home can use"
-    ]
+    ],
+    "pct": 0.75
    },
    {
     "q": "Why do utilities often oppose clean energy policies, per Stokes?",
@@ -731,7 +794,8 @@
      "Renewables are illegal for utilities to own",
      "Utilities are legally banned from lobbying",
      "Clean energy policies always raise utility profits"
-    ]
+    ],
+    "pct": 0.2
    }
   ]
  },
@@ -753,7 +817,8 @@
      "Power can be stored cheaply for months",
      "Only one power plant can run per region",
      "Electricity flows only during daylight"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "Who does Bakke credit with creating the regulated utility monopoly model?",
@@ -763,7 +828,8 @@
      "Thomas Edison",
      "Nikola Tesla",
      "J.P. Morgan"
-    ]
+    ],
+    "pct": 0.25
    },
    {
     "q": "What was the 'war of the currents' covered in The Grid?",
@@ -773,7 +839,8 @@
      "Coal versus hydropower in the 1920s",
      "Public versus private ownership of utilities",
      "Gas lighting versus electric lighting in homes"
-    ]
+    ],
+    "pct": 0.18
    },
    {
     "q": "What triggered the 2003 Northeast blackout, per Bakke?",
@@ -783,7 +850,8 @@
      "A cyberattack from overseas",
      "A hurricane hitting New York City",
      "A nuclear plant meltdown in Pennsylvania"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "What did PURPA (1978) do, as described by Bakke?",
@@ -793,7 +861,8 @@
      "Nationalized all US electric utilities",
      "Banned the construction of nuclear plants",
      "Created the federal tax credit for solar"
-    ]
+    ],
+    "pct": 0.35
    },
    {
     "q": "Why are variable renewables hard for the grid, per Bakke?",
@@ -803,7 +872,8 @@
      "Renewables produce DC power that cannot be used",
      "Renewables generate too much power at night",
      "Renewables cannot connect to transmission lines"
-    ]
+    ],
+    "pct": 0.6
    },
    {
     "q": "Which crisis does Bakke cite as a deregulation failure?",
@@ -813,7 +883,8 @@
      "The Texas freeze of 2021",
      "The 1973 oil embargo",
      "The Three Mile Island accident"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "Which state does Bakke discuss as an example of high rooftop solar challenging its utility?",
@@ -823,7 +894,8 @@
      "Alaska",
      "North Dakota",
      "West Virginia"
-    ]
+    ],
+    "pct": 0.75
    }
   ]
  },
@@ -845,7 +917,8 @@
      "Americans consume too much and must cut back",
      "Markets alone will solve housing and energy",
      "Government should stop funding infrastructure"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "What do Klein and Thompson mean by 'everything-bagel liberalism'?",
@@ -855,7 +928,8 @@
      "Funding programs equally across all states",
      "Combining federal and state budgets",
      "Offering free food in public programs"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "Which law do the authors cite as enabling lengthy environmental reviews and litigation?",
@@ -865,7 +939,8 @@
      "The Clean Air Act Amendments of 1990",
      "The Endangered Species Act",
      "The Inflation Reduction Act"
-    ]
+    ],
+    "pct": 0.3
    },
    {
     "q": "Which project do the authors use as a cautionary tale of costly delays?",
@@ -875,7 +950,8 @@
      "The Hoover Dam",
      "The Apollo program",
      "The interstate highway system"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "What successful example of government speed do the authors highlight?",
@@ -885,7 +961,8 @@
      "The Affordable Care Act website launch",
      "The Big Dig in Boston",
      "The FAA's NextGen program"
-    ]
+    ],
+    "pct": 0.7
    },
    {
     "q": "Why is transmission a key clean energy bottleneck, per Abundance?",
@@ -895,7 +972,8 @@
      "Transmission technology does not yet exist",
      "Renewables do not need transmission lines",
      "Transmission lines are banned in most states"
-    ]
+    ],
+    "pct": 0.35
    },
    {
     "q": "What do Klein and Thompson call their political vision?",
@@ -905,7 +983,8 @@
      "A degrowth agenda: consume and produce less",
      "A deregulation agenda: abolish environmental law",
      "A scarcity agenda: ration energy and housing"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "Why do the authors say blue states struggle with housing costs?",
@@ -915,7 +994,8 @@
      "Blue states have too much empty land",
      "Federal law caps housing prices in blue states",
      "Builders refuse to work in blue states"
-    ]
+    ],
+    "pct": 0.15
    }
   ]
  },
@@ -937,7 +1017,8 @@
      "Barrels of oil per year per country",
      "Megawatts per square kilometer",
      "Joules per second per household"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "According to MacKay, roughly how much energy does the average UK person use?",
@@ -947,7 +1028,8 @@
      "About 12 kWh per day",
      "About 1,250 kWh per day",
      "About 2 kWh per day"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "What is MacKay's point about switching off phone chargers?",
@@ -957,7 +1039,8 @@
      "It is the most effective single energy action",
      "It saves as much as giving up flying",
      "It cuts household electricity use in half"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "According to MacKay, about how much power per square meter do onshore wind farms deliver?",
@@ -967,7 +1050,8 @@
      "About 200 watts per square meter",
      "About 20 kilowatts per square meter",
      "About 0.002 watts per square meter"
-    ]
+    ],
+    "pct": 0.12
    },
    {
     "q": "What is MacKay's famous line on his stance?",
@@ -977,7 +1061,8 @@
      "I'm anti-nuclear and pro-renewables",
      "I'm pro-coal and anti-efficiency",
      "I'm against all energy growth"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "How does MacKay compare UK energy demand with sustainable supply?",
@@ -987,7 +1072,8 @@
      "A pie chart of fuel costs by year",
      "A ranking of countries by GDP",
      "A list of renewable company profits"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "Per MacKay, about how much energy does driving 50 km a day in an average car use?",
@@ -997,7 +1083,8 @@
      "About 4 kWh per day",
      "About 400 kWh per day",
      "About 0.4 kWh per day"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "What is MacKay's main conclusion about renewables in the UK?",
@@ -1007,7 +1094,8 @@
      "They can easily supply all demand from rooftops",
      "They are too expensive to ever be used",
      "They produce more energy than the UK needs"
-    ]
+    ],
+    "pct": 0.9
    }
   ]
  },
@@ -1029,7 +1117,8 @@
      "When fossil fuel production hits zero",
      "When global temperatures return to pre-industrial",
      "When all countries sign a climate treaty"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "Which solution ranked number one in Drawdown (2017)?",
@@ -1039,7 +1128,8 @@
      "Onshore wind turbines",
      "Rooftop solar",
      "Electric vehicles"
-    ]
+    ],
+    "pct": 0.76
    },
    {
     "q": "Which agreement on HFCs relates to Drawdown's top solution?",
@@ -1049,7 +1139,8 @@
      "The Kyoto Protocol",
      "The Paris Agreement",
      "The Basel Convention"
-    ]
+    ],
+    "pct": 0.76
    },
    {
     "q": "Which two food-related solutions ranked in Drawdown's 2017 top five?",
@@ -1059,7 +1150,8 @@
      "Organic farming and local food",
      "Vertical farming and lab meat",
      "Fertilizer bans and fish farming"
-    ]
+    ],
+    "pct": 0.3
    },
    {
     "q": "What social solutions together ranked very high in Drawdown?",
@@ -1069,7 +1161,8 @@
      "Carbon taxes and cap-and-trade",
      "Bike lanes and public transit",
      "Recycling and composting"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "Which energy solution ranked highest in Drawdown (2017)?",
@@ -1079,7 +1172,8 @@
      "Nuclear power",
      "Coal with carbon capture",
      "Geothermal power"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "How many solutions did Drawdown rank, and over what period?",
@@ -1089,7 +1183,8 @@
      "50 solutions from 2000 to 2020",
      "10 solutions from 2030 to 2100",
      "1,000 solutions from 2017 to 2030"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "What surprised many readers about Drawdown's rankings?",
@@ -1099,7 +1194,8 @@
      "Every top solution was a new invention",
      "Nuclear power ranked first",
      "Electric cars ranked first overall"
-    ]
+    ],
+    "pct": 0.76
    }
   ]
  },
@@ -1121,7 +1217,8 @@
      "A model of circular recycling loops",
      "A chart of GDP growth over time",
      "A ring of trade routes around the globe"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "What does the outer ring of the Doughnut represent?",
@@ -1131,7 +1228,8 @@
      "The maximum GDP a country can reach",
      "The social foundation of human needs",
      "The minimum wage for workers"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "How many planetary boundaries form the ecological ceiling?",
@@ -1141,7 +1239,8 @@
      "Three",
      "Twelve",
      "Twenty-five"
-    ]
+    ],
+    "pct": 0.12
    },
    {
     "q": "What does the inner ring of the Doughnut represent?",
@@ -1151,7 +1250,8 @@
      "The ecological ceiling",
      "Profit margins of businesses",
      "National debt limits"
-    ]
+    ],
+    "pct": 0.1
    },
    {
     "q": "What is Raworth's first 'way to think' like a 21st-century economist?",
@@ -1161,7 +1261,8 @@
      "Maximize GDP growth above all",
      "Abolish all markets",
      "Focus only on inflation"
-    ]
+    ],
+    "pct": 0.15
    },
    {
     "q": "What is Raworth's stance on economic growth?",
@@ -1171,7 +1272,8 @@
      "Growth must be maximized forever",
      "Growth must be stopped immediately",
      "Growth is irrelevant to all policy"
-    ]
+    ],
+    "pct": 0.9
    },
    {
     "q": "Raworth critiques which model of human behavior?",
@@ -1181,7 +1283,8 @@
      "Homo sapiens as hunters",
      "The invisible hand of markets",
      "The tragedy of the commons"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "Which city notably adopted the Doughnut model in 2020?",
@@ -1191,7 +1294,8 @@
      "Houston",
      "Dubai",
      "Singapore"
-    ]
+    ],
+    "pct": 0.98
    }
   ]
  },
@@ -1213,7 +1317,8 @@
      "Reduce, reuse, recycle",
      "Polluter pays",
      "Small is beautiful"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "What are the two material cycles in Cradle to Cradle?",
@@ -1223,7 +1328,8 @@
      "Organic and inorganic waste streams",
      "Primary and secondary energy",
      "Solid and liquid waste"
-    ]
+    ],
+    "pct": 0.55
    },
    {
     "q": "How do McDonough and Braungart contrast eco-efficiency and eco-effectiveness?",
@@ -1233,7 +1339,8 @@
      "Eco-efficiency is better because it is cheaper",
      "They are identical concepts",
      "Eco-effectiveness means using less energy only"
-    ]
+    ],
+    "pct": 0.3
    },
    {
     "q": "What do the authors call recycling that lowers material quality?",
@@ -1243,7 +1350,8 @@
      "Upcycling",
      "Precycling",
      "Microcycling"
-    ]
+    ],
+    "pct": 0.25
    },
    {
     "q": "What unusual material was Cradle to Cradle printed on?",
@@ -1253,7 +1361,8 @@
      "Recycled newspapers",
      "Bamboo fiber pages",
      "Hemp-based paper"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "What does 'cradle to grave' describe, according to the authors?",
@@ -1263,7 +1372,8 @@
      "A circular design system",
      "A biological nutrient cycle",
      "A renewable energy system"
-    ]
+    ],
+    "pct": 0.15
    },
    {
     "q": "Which energy principle do McDonough and Braungart advocate?",
@@ -1273,7 +1383,8 @@
      "Use coal as transitional energy",
      "Minimize all energy use",
      "Store energy for future generations"
-    ]
+    ],
+    "pct": 0.75
    },
    {
     "q": "Which Ford facility do the authors highlight for a large green roof?",
@@ -1283,7 +1394,8 @@
      "The Highland Park plant",
      "The Willow Run plant",
      "The Dearborn Assembly test track"
-    ]
+    ],
+    "pct": 0.85
    }
   ]
  },
@@ -1305,7 +1417,8 @@
      "Buy an electric car",
      "Plant trees",
      "Stop flying"
-    ]
+    ],
+    "pct": 0.06
    },
    {
     "q": "What framework from Yale does Hayhoe use to describe public views?",
@@ -1315,7 +1428,8 @@
      "The Five Stages of Grief",
      "Maslow's hierarchy of needs",
      "The Overton window"
-    ]
+    ],
+    "pct": 0.15
    },
    {
     "q": "About what share of Americans does Hayhoe say are dismissive?",
@@ -1325,7 +1439,8 @@
      "About 50%",
      "About 75%",
      "About 90%"
-    ]
+    ],
+    "pct": 0.16
    },
    {
     "q": "How does Hayhoe recommend starting climate conversations?",
@@ -1335,7 +1450,8 @@
      "With the latest temperature data",
      "With arguments about blame",
      "With predictions of catastrophe"
-    ]
+    ],
+    "pct": 0.25
    },
    {
     "q": "What does Hayhoe say many science objections really are?",
@@ -1345,7 +1461,8 @@
      "Valid scientific critiques",
      "Misreadings of temperature data",
      "Questions about model accuracy"
-    ]
+    ],
+    "pct": 0.35
    },
    {
     "q": "What is Hayhoe's professional background?",
@@ -1355,7 +1472,8 @@
      "Economist and policymaker",
      "Engineer and entrepreneur",
      "Journalist and filmmaker"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "What does Hayhoe call climate change because it amplifies other problems?",
@@ -1365,7 +1483,8 @@
      "A tipping point",
      "A runaway effect",
      "A carbon budget"
-    ]
+    ],
+    "pct": 0.5
    },
    {
     "q": "Where does Hayhoe say hope comes from?",
@@ -1375,7 +1494,8 @@
      "From new scientific discoveries",
      "From government promises",
      "From ignoring bad news"
-    ]
+    ],
+    "pct": 0.95
    }
   ]
  },
@@ -1397,7 +1517,8 @@
      "A hurricane destroying New York",
      "A nuclear war in Asia",
      "A pandemic in Europe"
-    ]
+    ],
+    "pct": 0.05
    },
    {
     "q": "What is the Ministry for the Future?",
@@ -1407,7 +1528,8 @@
      "A private climate investment fund",
      "A national environmental ministry",
      "A military climate task force"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "Who leads the Ministry in the novel?",
@@ -1417,7 +1539,8 @@
      "Frank May",
      "Greta Lindstrom",
      "Elena Rossi"
-    ]
+    ],
+    "pct": 0.08
    },
    {
     "q": "What is 'carbon coin' in the novel?",
@@ -1427,7 +1550,8 @@
      "A cryptocurrency for oil trading",
      "A tax on air travel",
      "A coin given to climate refugees"
-    ]
+    ],
+    "pct": 0.4
    },
    {
     "q": "What geoengineering does India attempt?",
@@ -1437,7 +1561,8 @@
      "Seeding oceans with iron",
      "Building giant mirrors in space",
      "Planting vast desert forests"
-    ]
+    ],
+    "pct": 0.2
    },
    {
     "q": "What intervention slows glaciers in the novel?",
@@ -1447,7 +1572,8 @@
      "Covering glaciers with white blankets",
      "Building walls around ice sheets",
      "Freezing seawater with chemicals"
-    ]
+    ],
+    "pct": 0.45
    },
    {
     "q": "What role do central banks play in the novel?",
@@ -1457,7 +1583,8 @@
      "They ban fossil fuel investments",
      "They print money for oil companies",
      "They stay neutral on climate"
-    ]
+    ],
+    "pct": 0.55
    },
    {
     "q": "What darker form of activism appears in the novel?",
@@ -1467,7 +1594,8 @@
      "Peaceful hunger strikes only",
      "Online petitions only",
      "Boycotts of electric cars"
-    ]
+    ],
+    "pct": 0.3
    }
   ]
  }

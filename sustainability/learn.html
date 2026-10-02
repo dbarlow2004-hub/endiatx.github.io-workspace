@@ -111,6 +111,42 @@ h2 small{font-size:12.5px;color:var(--muted);font-weight:400}
 .st.done{background:var(--accent-soft);color:var(--accent)}
 .stars{color:var(--gold);font-size:12px;letter-spacing:1px}
 
+.st.owned{background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold)}
+.st.paused{background:var(--surface2);color:var(--muted)}
+.st.dropped{background:var(--surface2);color:var(--muted);text-decoration:line-through}
+.bar.sm{height:5px;margin-top:5px}
+.chip.sm{font-size:12px;padding:4px 10px}
+.chips.wrap{flex-wrap:wrap;overflow:visible}
+.btn.xs{padding:4px 9px;font-size:12px;border-radius:8px}
+.cov{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;background:var(--surface2)}
+.cov.sq{aspect-ratio:1/1}
+.cov.emo{display:flex;align-items:center;justify-content:center;font-size:40px}
+.item .ico,.today .ico{width:40px;height:auto;background:none;overflow:hidden;border-radius:6px}
+.item .ico .cov.emo,.today .ico .cov.emo{font-size:20px;aspect-ratio:1/1}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+@media (max-width:420px){.tiles{grid-template-columns:1fr 1fr;gap:10px}}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.tile:hover{border-color:var(--accent)}
+.tbtn{background:none;border:none;text-align:left;cursor:pointer;padding:0;width:100%;display:block}
+.tbtn.row{display:flex}
+.tile .cov{border-radius:0}
+.tile .cov.emo{aspect-ratio:3/2;font-size:44px}
+.tile .cov.sq{aspect-ratio:3/2}
+.tbody{padding:10px 11px 11px;display:flex;flex-direction:column;gap:3px;align-items:flex-start}
+.tbody .tt{font-weight:600;font-size:14px;line-height:1.25}
+.tbody .by{font-size:12px;color:var(--muted)}
+.tbody .bar{width:100%}
+.quick{display:flex;gap:5px;flex-wrap:wrap;padding:0 10px 10px;margin-top:auto}
+.today{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:10px 12px}
+.today .tt{font-weight:600;font-size:14.5px;line-height:1.3}
+.today .by{font-size:12.5px;color:var(--muted)}
+.today .row{gap:12px}
+.head{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center;padding-right:40px;margin-bottom:12px}
+.head .cov.emo{font-size:36px}
+.journal{list-style:none;display:flex;flex-direction:column;gap:8px}
+.journal li{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:14px}
+#continueList{display:flex;flex-direction:column;gap:8px}
+
 /* sheet */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:none}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg);border-radius:20px 20px 0 0;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .25s ease;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
@@ -125,7 +161,7 @@ h2 small{font-size:12.5px;color:var(--muted);font-weight:400}
 .rate{display:flex;gap:2px}
 .rate button{background:none;border:none;font-size:28px;cursor:pointer;color:var(--border);padding:0 2px;line-height:1}
 .rate button.on{color:var(--gold)}
-textarea,input[type=text],input[type=url],input[type=password],select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text)}
+textarea,input[type=text],input[type=url],input[type=password],input[type=number],input[type=time],select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text)}
 textarea{min-height:120px;resize:vertical}
 label.f{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin:12px 0 5px}
 .links{display:flex;gap:6px;flex-wrap:wrap}
@@ -230,7 +266,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
     <div class="cta">
       <button class="btn primary" data-go="review"><span>🧠 Review flashcards</span><span class="sub" id="ctaDue"></span></button>
       <button class="btn" data-go="quiz"><span>🎯 Quick quiz</span><span class="sub">10 questions · combos for streaks</span></button>
-      <button class="btn" data-tab="library"><span>📚 Log something you finished</span><span class="sub">unlocks its cards</span></button>
+      <button class="btn" data-tab="library"><span>📚 My shelves</span><span class="sub">start a book · log progress</span></button>
     </div>
 
     <h2>Your progress</h2>
@@ -241,7 +277,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
       <div class="stat"><b id="stAcc">–</b><span>quiz accuracy</span></div>
     </div>
 
-    <h2>Continue</h2>
+    <h2>Today's reading <small>tap Log after each session</small></h2>
     <div class="items" id="continueList"></div>
 
     <h2>Badges <small id="badgeCount"></small></h2>
@@ -269,20 +305,21 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
   <!-- LIBRARY -->
   <section class="view" id="v-library">
     <div class="row" style="justify-content:space-between;margin-bottom:12px">
-      <h1>Library</h1>
+      <h1>My shelves</h1>
       <button class="btn sm primary" id="addBtn">＋ Add</button>
     </div>
+    <div class="chips" id="shelfTabs"></div>
     <div class="toolbar"><input class="search" id="libQ" type="search" placeholder="Search title or author" aria-label="Search library"></div>
-    <div class="chips" id="statusChips"></div>
     <div class="chips" id="typeChips"></div>
-    <div class="items" id="libList"></div>
+    <p class="small muted" id="libHint" style="margin:-4px 0 10px"></p>
+    <div id="libList"></div>
   </section>
 
   <!-- STUDY -->
   <section class="view" id="v-study">
     <div id="studyMenu">
       <h1>Study</h1>
-      <p class="muted small" style="margin:4px 0 14px">Cards unlock when you mark something <b>Done</b>. The Key Concepts deck is open from the start.</p>
+      <p class="muted small" style="margin:4px 0 14px">Book questions unlock page by page as you log your reading; everything else unlocks when you finish it. The Key Concepts deck is open from the start.</p>
       <div class="modes">
         <button class="mode" data-go="review"><span class="e">🧠</span><div><b>Flashcards</b><span id="mDue">Spaced repetition: you see each card again right before you'd forget it.</span></div></button>
         <button class="mode" data-go="quiz"><span class="e">🎯</span><div><b>Quiz</b><span>10 multiple-choice questions. Answer streaks multiply your XP.</span></div></button>
@@ -322,6 +359,7 @@ function load(){
   catch { return blank(); }
 }
 let S = load();
+for (const r of Object.values(S.items)) if (r.status === "doing") r.status = "reading";
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
 
 // Articles saved from the news page land in a small inbox; pull them into the library.
@@ -334,7 +372,7 @@ function ingestInbox(){
       const id = "a-" + slug(a.title || "").slice(0, 48);
       if (!a.title || S.custom[id]) continue;
       S.custom[id] = {id, title:a.title, type:"article", by:a.source || "", url:safeUrl(a.link)};
-      S.items[id] = {status:"want", updated:Date.now()};
+      S.items[id] = {status:a.status === "reading" ? "reading" : "want", updated:Date.now()};
     }
     localStorage.removeItem(INBOX); save();
   } catch {}
@@ -352,14 +390,26 @@ const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { c
    Catalog: resources.json + prebuilt decks
    ========================================================= */
 const TYPES = {
-  book:{label:"Book", icon:"📕", verb:"Read"},
-  podcast:{label:"Podcast", icon:"🎧", verb:"Listened"},
-  episode:{label:"Episode", icon:"🎙️", verb:"Listened"},
-  documentary:{label:"Documentary", icon:"🎬", verb:"Watched"},
-  video:{label:"YouTube", icon:"▶️", verb:"Watched"},
-  article:{label:"Article", icon:"📰", verb:"Read"},
-  course:{label:"Course", icon:"🎓", verb:"Finished"},
+  book:{label:"Book", icon:"📕", verb:"Read", doing:"Reading"},
+  podcast:{label:"Podcast", icon:"🎧", verb:"Listened", doing:"Listening"},
+  episode:{label:"Episode", icon:"🎙️", verb:"Listened", doing:"Listening"},
+  documentary:{label:"Documentary", icon:"🎬", verb:"Watched", doing:"Watching"},
+  video:{label:"YouTube", icon:"▶️", verb:"Watched", doing:"Watching"},
+  article:{label:"Article", icon:"📰", verb:"Read", doing:"Reading"},
+  course:{label:"Course", icon:"🎓", verb:"Finished", doing:"Studying"},
 };
+const tyOf = it => TYPES[it?.type] || TYPES.article;
+// Ravelry-style project statuses
+const STATUSES = {
+  want:{label:"Want to", cls:"want"},
+  owned:{label:"Bought it", cls:"owned"},   // books only: on your shelf, not started
+  reading:{label:"", cls:"doing"},          // "Reading" / "Listening" / "Watching"
+  paused:{label:"Paused", cls:"paused"},
+  done:{label:"", cls:"done"},              // "Read" / "Listened" / "Watched"
+  dropped:{label:"Didn't finish", cls:"dropped"},
+};
+const statusName = (s, it) => s === "reading" ? tyOf(it).doing : s === "done" ? tyOf(it).verb : STATUSES[s]?.label || "";
+const statusesFor = it => it.type === "book" ? ["want","owned","reading","paused","done","dropped"] : ["want","reading","paused","done","dropped"];
 let CATALOG = {};   // id -> item
 let DECKS = {};     // id -> {summary, takeaways, cards}
 
@@ -369,8 +419,8 @@ async function loadCatalog(){
   const [res, books, media] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json")]);
   DECKS = Object.assign({}, books, media);
   const add = (title, o) => { const id = slug(title); CATALOG[id] = {id, title, ...o}; };
-  (res.books||[]).forEach(b => add(b.title, {type:"book", by:b.by, year:b.year, audio:b.audio, url:b.url, why:b.why, level:b.level}));
-  (res.podcasts||[]).forEach(p => add(p.title, {type:"podcast", by:p.by, url:p.url, why:p.why}));
+  (res.books||[]).forEach(b => add(b.title, {type:"book", by:b.by, year:b.year, audio:b.audio, url:b.url, why:b.why, level:b.level, cover:b.cover, pages:b.pages, isbn:b.isbn}));
+  (res.podcasts||[]).forEach(p => add(p.title, {type:"podcast", by:p.by, url:p.url, why:p.why, apple:p.apple, art:p.artwork}));
   (res.documentaries||[]).forEach(d => add(d.title, {type:/youtube/i.test(d.where||"") ? "video" : "documentary", by:[d.year,d.where].filter(Boolean).join(" · "), url:d.url, why:d.why}));
   if (DECKS.concepts) CATALOG.concepts = {id:"concepts", title:"Key Concepts", type:"course", by:"Energy Brief starter deck", why:DECKS.concepts.summary, always:true};
 }
@@ -379,21 +429,38 @@ const getItem = id => allItems()[id];
 const st = id => S.items[id] || {};
 const isDone = id => st(id).status === "done" || getItem(id)?.always;
 
+/* Progress: print/ebook books by page, audiobooks and everything else by percent. */
+const fmtOf = id => st(id).format || "print";
+const totalPages = id => +st(id).totalPages || +getItem(id)?.pages || 0;
+const usesPages = id => getItem(id)?.type === "book" && fmtOf(id) !== "audio" && totalPages(id) > 0;
+function progressFrac(id){
+  const s = st(id);
+  if (s.status === "done") return 1;
+  if (usesPages(id)) return Math.min(1, (+s.page || 0) / totalPages(id));
+  return Math.min(1, (+s.pct || 0) / 100);
+}
+const progressText = id => st(id).status === "done" ? "Finished" : usesPages(id) ? `p. ${st(id).page || 0} of ${totalPages(id)}` : `${Math.round(progressFrac(id) * 100)}%`;
+const isActive = id => ["reading","paused"].includes(st(id).status);
+
 function cardsFor(id){
   const out = [];
   (DECKS[id]?.cards || []).forEach((c, i) => out.push({...c, id:`${id}#${i}`, item:id}));
   (S.aiCards[id] || []).forEach(c => out.push({...c, item:id}));
   return out;
 }
-// Prebuilt cards unlock when the item is Done; cards you generated from your own notes are always unlocked.
+// Book cards unlock as you reach the part of the book where the idea comes up (card.pct);
+// other decks unlock when you finish. Cards you generate from your own notes are always unlocked.
+function isUnlocked(c){
+  if (String(c.id).includes("#ai")) return true;
+  if (isDone(c.item)) return true;
+  return c.pct != null && isActive(c.item) && progressFrac(c.item) >= c.pct;
+}
 function unlockedCards(){
   const out = [];
-  for (const id of Object.keys(allItems())) {
-    const done = isDone(id);
-    cardsFor(id).forEach(c => { if (done || String(c.id).includes("#ai")) out.push(c); });
-  }
+  for (const id of Object.keys(allItems())) cardsFor(id).forEach(c => { if (isUnlocked(c)) out.push(c); });
   return out;
 }
+const nextUnlock = id => cardsFor(id).filter(c => !isUnlocked(c) && c.pct != null).sort((a,b) => a.pct - b.pct)[0];
 
 /* =========================================================
    Spaced repetition (SM-2 style)
@@ -460,6 +527,7 @@ const BADGES = [
   {id:"docs3", e:"🎬", name:"Cinephile (3 films)", test:() => countDone(["documentary","video"]) >= 3},
   {id:"notes5", e:"📝", name:"Note taker (5 notes)", test:() => Object.values(S.items).filter(i => (i.notes||"").trim().length > 40).length >= 5},
   {id:"ai1", e:"🤖", name:"Made your own cards", test:() => Object.keys(S.aiCards).length >= 1},
+  {id:"log7", e:"📍", name:"Logged 7 days", test:() => new Set(Object.values(S.items).flatMap(i => (i.log || []).map(e => e.d))).size >= 7},
   {id:"rev100", e:"🃏", name:"100 reviews", test:() => S.reviews >= 100},
   {id:"rev500", e:"🏋️", name:"500 reviews", test:() => S.reviews >= 500},
   {id:"perfect", e:"🎯", name:"Perfect quiz", test:() => S.quiz.perfect >= 1},
@@ -493,20 +561,61 @@ function confetti(){
     ps.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += .35; p.r += .1; ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); ctx.restore(); });
     if (++f < 110) requestAnimationFrame(tick); else ctx.clearRect(0,0,cv.width,cv.height); })();
 }
-const statusLabel = (id) => {
-  const s = st(id).status, t = TYPES[getItem(id)?.type] || TYPES.article;
-  if (getItem(id)?.always) return `<span class="st done">Unlocked</span>`;
-  return s === "done" ? `<span class="st done">✓ ${t.verb}</span>` : s === "doing" ? `<span class="st doing">In progress</span>` : s === "want" ? `<span class="st want">Want to</span>` : "";
+function thumb(it, size = "M"){
+  if (it.cover) return `<img class="cov" src="https://covers.openlibrary.org/b/id/${encodeURIComponent(it.cover)}-${size}.jpg" alt="" loading="lazy">`;
+  const art = safeUrl(it.art || "");
+  if (art) return `<img class="cov sq" src="${esc(art.replace("100x100", "300x300"))}" alt="" loading="lazy">`;
+  return `<span class="cov emo">${tyOf(it).icon}</span>`;
+}
+const statusLabel = id => {
+  const it = getItem(id);
+  if (it?.always) return `<span class="st done">Unlocked</span>`;
+  const s = st(id).status; if (!STATUSES[s]) return "";
+  return `<span class="st ${STATUSES[s].cls}">${s === "done" ? "✓ " : ""}${esc(statusName(s, it))}</span>`;
 };
 const starStr = n => n ? "★".repeat(n) + "☆".repeat(5-n) : "";
 function itemRow(id){
   const it = getItem(id); if (!it) return "";
-  const t = TYPES[it.type] || TYPES.article, s = st(id), n = cardsFor(id).length;
-  return `<button class="item" data-open="${esc(id)}"><span class="ico">${t.icon}</span>
-    <span style="min-width:0"><div class="tt">${esc(it.title)}</div><div class="by">${esc(it.by || t.label)}${n ? ` · ${n} cards` : ""}</div></span>
+  const s = st(id), n = cardsFor(id).length;
+  return `<button class="item" data-open="${esc(id)}"><span class="ico">${thumb(it, "S")}</span>
+    <span style="min-width:0;flex:1"><div class="tt">${esc(it.title)}</div><div class="by">${esc(it.by || tyOf(it).label)}${n ? ` · ${n} cards` : ""}</div>
+      ${isActive(id) ? `<div class="bar sm"><i style="width:${progressFrac(id) * 100}%"></i></div>` : ""}</span>
     <span class="rt">${statusLabel(id)}${s.rating ? `<span class="stars">${starStr(s.rating)}</span>` : ""}</span></button>`;
 }
-
+// Project tile, like a Ravelry project thumbnail
+function tile(id, quick){
+  const it = getItem(id); if (!it) return "";
+  const s = st(id);
+  const q = quick ? `<div class="quick">${(it.type === "book" ? [["want","🔖 Want"],["owned","🛍️ Bought"],["reading","📖 Start"]] : [["want","🔖 Want"],["reading","▶ Start"]])
+      .map(([k,l]) => `<button class="btn xs" data-quick="${esc(id)}" data-s="${k}">${l}</button>`).join("")}</div>` : "";
+  return `<div class="tile"><button class="tbtn" data-open="${esc(id)}">${thumb(it)}
+    <div class="tbody"><div class="tt">${esc(it.title)}</div><div class="by">${esc(it.by || tyOf(it).label)}</div>
+    ${quick && it.level ? `<span class="st want">${esc(it.level)}</span>` : statusLabel(id)}
+    ${isActive(id) ? `<div class="bar sm"><i style="width:${progressFrac(id) * 100}%"></i></div><div class="by">${esc(progressText(id))}</div>` : ""}
+    ${s.rating ? `<div class="stars">${starStr(s.rating)}</div>` : ""}</div></button>${q}</div>`;
+}
+/* Today's reading goal for an in-progress item */
+const planUnit = id => usesPages(id) ? "pages" : "minutes";
+function todayGoal(id){
+  const s = st(id), p = s.plan;
+  if (!p?.perDay) return "";
+  if (usesPages(id)) {
+    const from = s.dayStart?.d === today() ? s.dayStart.v : (+s.page || 0);
+    const target = Math.min(totalPages(id), from + +p.perDay);
+    return (+s.page || 0) >= target && s.lastLog === today() ? `🎯 Goal met (+${(+s.page || 0) - from} pages today)` : `Read to p. ${target}`;
+  }
+  return `${tyOf(getItem(id)).doing === "Reading" ? "Read" : tyOf(getItem(id)).doing === "Watching" ? "Watch" : "Listen"} ${p.perDay} min`;
+}
+function todayRow(id){
+  const it = getItem(id), s = st(id), logged = s.lastLog === today();
+  const goal = todayGoal(id);
+  return `<div class="today"><button class="tbtn row" data-open="${esc(id)}" style="flex:1;min-width:0">
+      <span class="ico">${thumb(it, "S")}</span>
+      <span style="min-width:0;flex:1"><div class="tt">${esc(it.title)}</div>
+        <div class="by">${esc(progressText(id))}${s.status === "paused" ? " · paused" : ""}${goal ? ` · <b>${esc(goal)}</b>` : ""}</div>
+        <div class="bar sm"><i style="width:${progressFrac(id) * 100}%"></i></div></span></button>
+    <button class="btn sm ${logged ? "" : "primary"}" data-log="${esc(id)}">${logged ? "✓ Logged" : "Log"}</button></div>`;
+}
 /* =========================================================
    Render: top bar + home
    ========================================================= */
@@ -530,11 +639,11 @@ function renderHome(){
   const due = dueQueue().length;
   $("#ctaDue").textContent = due ? `${due} due now` : "all caught up";
   $("#stDone").textContent = countDone();
-  $("#stDoing").textContent = Object.values(S.items).filter(i => i.status === "doing").length;
+  $("#stDoing").textContent = Object.keys(S.items).filter(id => isActive(id) && getItem(id)).length;
   $("#stCards").textContent = learned();
   $("#stAcc").textContent = S.quiz.total ? Math.round(S.quiz.right / S.quiz.total * 100) + "%" : "–";
-  const cont = Object.keys(S.items).filter(id => S.items[id].status === "doing" && getItem(id)).sort((a,b) => (S.items[b].updated||0) - (S.items[a].updated||0)).slice(0, 4);
-  $("#continueList").innerHTML = cont.map(itemRow).join("") || `<div class="empty">Nothing in progress. Open the <a href="#" data-tab="library">Library</a> and mark something you're reading, listening to or watching.</div>`;
+  const cont = Object.keys(S.items).filter(id => isActive(id) && getItem(id)).sort((a,b) => (st(a).status === "paused") - (st(b).status === "paused") || (st(b).updated||0) - (st(a).updated||0)).slice(0, 6);
+  $("#continueList").innerHTML = cont.map(todayRow).join("") || `<div class="empty">Nothing on the go. Open <a href="#" data-tab="library">Library → ✨ Recommended</a> and tap <b>Start</b> or <b>Bought</b> on a book.</div>`;
   const got = BADGES.filter(b => S.badges[b.id]).length;
   $("#badgeCount").textContent = `${got}/${BADGES.length}`;
   $("#badgeList").innerHTML = BADGES.map(b => `<div class="bdg ${S.badges[b.id] ? "" : "locked"}" title="${esc(b.name)}"><span class="e">${b.e}</span>${esc(b.name)}</div>`).join("");
@@ -543,83 +652,196 @@ function renderHome(){
 }
 
 /* =========================================================
-   Library
+   Library (shelves, Ravelry-style)
    ========================================================= */
-let libStatus = "all", libType = "all";
+const SHELVES = [
+  ["reading", "📖 On the go", id => isActive(id)],
+  ["owned", "🛍️ Bought", id => st(id).status === "owned"],
+  ["want", "🔖 Want to", id => st(id).status === "want"],
+  ["finished", "✅ Finished", id => ["done","dropped"].includes(st(id).status)],
+  ["discover", "✨ Recommended", id => !st(id).status && !getItem(id)?.always],
+];
+let shelf = null, libType = "all";
+const LEVEL_ORDER = {"Start here":0, "Core":1, "Pro":2, "Fiction":3};
 function renderLibrary(){
-  const counts = {all:0, want:0, doing:0, done:0, none:0};
-  const items = allItems();
-  Object.keys(items).forEach(id => { counts.all++; counts[st(id).status || "none"]++; });
-  const SC = [["all","All"],["doing","In progress"],["want","Want to"],["done","Done"],["none","Not started"]];
-  $("#statusChips").innerHTML = SC.map(([k,l]) => `<button class="chip" data-st="${k}" aria-pressed="${libStatus===k}">${l} <span style="opacity:.6">${counts[k]}</span></button>`).join("");
-  const types = [...new Set(Object.values(items).map(i => i.type))];
-  $("#typeChips").innerHTML = [["all","All types"], ...types.map(t => [t, (TYPES[t]||TYPES.article).icon + " " + (TYPES[t]||TYPES.article).label])].map(([k,l]) => `<button class="chip" data-ty="${k}" aria-pressed="${libType===k}">${l}</button>`).join("");
+  const items = allItems(), ids = Object.keys(items);
+  if (!shelf) shelf = ids.some(isActive) ? "reading" : "discover";
+  $("#shelfTabs").innerHTML = SHELVES.map(([k,l,f]) => `<button class="chip" data-shelf="${k}" aria-pressed="${shelf===k}">${l} <span style="opacity:.6">${ids.filter(f).length}</span></button>`).join("");
+  const types = [...new Set(Object.values(items).filter(i => !i.always).map(i => i.type))];
+  $("#typeChips").innerHTML = [["all","All"], ...types.map(t => [t, tyOf({type:t}).icon + " " + tyOf({type:t}).label])].map(([k,l]) => `<button class="chip sm" data-ty="${k}" aria-pressed="${libType===k}">${l}</button>`).join("");
   const q = $("#libQ").value.trim().toLowerCase();
-  const order = {doing:0, want:1, done:2};
-  const ids = Object.keys(items).filter(id => {
-    const it = items[id], s = st(id).status || "none";
-    return (libStatus === "all" || s === libStatus) && (libType === "all" || it.type === libType) && (!q || (it.title + " " + (it.by||"")).toLowerCase().includes(q));
-  }).sort((a,b) => (order[st(a).status] ?? 3) - (order[st(b).status] ?? 3));
-  $("#libList").innerHTML = ids.map(itemRow).join("") || `<div class="empty">Nothing here yet.</div>`;
+  const f = SHELVES.find(x => x[0] === shelf)[2];
+  const list = ids.filter(id => f(id) && (libType === "all" || items[id].type === libType) && (!q || (items[id].title + " " + (items[id].by||"")).toLowerCase().includes(q)));
+  const typeRank = {book:0, podcast:1, documentary:2, video:3};
+  list.sort(shelf === "discover"
+    ? (a,b) => (typeRank[items[a].type] ?? 9) - (typeRank[items[b].type] ?? 9) || (LEVEL_ORDER[items[a].level] ?? 5) - (LEVEL_ORDER[items[b].level] ?? 5)
+    : (a,b) => (st(b).updated || 0) - (st(a).updated || 0));
+  const empty = {reading:"Nothing on the go. Pick something from ✨ Recommended and tap Start.", owned:"Books you've bought but haven't started go here.", want:"Your queue is empty.", finished:"Finished books, episodes and films show up here.", discover:"You've added everything we recommend. Nice."}[shelf];
+  $("#libHint").textContent = shelf === "discover" ? "Recommended reading, listening and watching. Books are ordered from beginner to pro." : "";
+  $("#libList").innerHTML = list.length ? `<div class="tiles">${list.map(id => tile(id, shelf === "discover")).join("")}</div>` : `<div class="empty">${empty}</div>`;
 }
-$("#statusChips").addEventListener("click", e => { const b = e.target.closest("[data-st]"); if (b) { libStatus = b.dataset.st; renderLibrary(); } });
+$("#shelfTabs").addEventListener("click", e => { const b = e.target.closest("[data-shelf]"); if (b) { shelf = b.dataset.shelf; renderLibrary(); } });
 $("#typeChips").addEventListener("click", e => { const b = e.target.closest("[data-ty]"); if (b) { libType = b.dataset.ty; renderLibrary(); } });
 $("#libQ").addEventListener("input", renderLibrary);
 
 /* =========================================================
-   Item sheet
+   Status changes
+   ========================================================= */
+function setStatus(id, s){
+  const it = getItem(id), rec = S.items[id] ||= {};
+  const was = rec.status;
+  rec.status = s; rec.updated = Date.now();
+  if (s === "reading") {
+    rec.startedAt ||= today();
+    if (!rec.plan) rec.plan = {perDay: usesPages(id) ? Math.max(10, Math.ceil(Math.max(0, totalPages(id) - (+rec.page || 0)) / 21 / 5) * 5) : 20, time:"20:00"};
+    if (was !== "reading" && was !== "paused") toast(`📖 Started ${it.title}`);
+  }
+  if (s === "owned" && !rec.ownedXp) { rec.ownedXp = 1; addXp(10, "Added to your shelf"); }
+  if (s === "done" && was !== "done") {
+    rec.finishedAt = today();
+    if (usesPages(id)) rec.page = totalPages(id);
+    if (!rec.doneXp) {
+      rec.doneXp = 1; addXp(100, `${tyOf(it).verb} ${it.title}`); confetti();
+      const n = cardsFor(id).length; if (n) setTimeout(() => toast(`🔓 All ${n} cards unlocked`), 300);
+    }
+  }
+  save();
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-quick]"); if (!b) return;
+  e.stopPropagation(); setStatus(b.dataset.quick, b.dataset.s); renderLibrary();
+}, true);
+
+/* =========================================================
+   Links straight to the source
+   ========================================================= */
+function getLinks(it){
+  const q = encodeURIComponent, ta = `${it.title} ${String(it.by || "").split(/[·(]/)[0]}`.trim(), L = [];
+  if (it.type === "book") {
+    if (safeUrl(it.url)) L.push(["📖 Read free online", it.url]);
+    L.push(["🛒 Bookshop.org", `https://bookshop.org/search?keywords=${q(it.isbn || ta)}`]);
+    L.push(["Amazon", `https://www.amazon.com/s?k=${q(it.isbn || ta)}`]);
+    L.push(["🎧 Audible", `https://www.audible.com/search?keywords=${q(ta)}`]);
+    L.push(["🟢 Spotify audiobook", `https://open.spotify.com/search/${q(ta)}/audiobooks`]);
+    L.push(["🏛️ Borrow (library)", it.isbn ? `https://search.worldcat.org/search?q=bn:${it.isbn}` : `https://search.worldcat.org/search?q=${q(ta)}`]);
+  } else if (it.type === "podcast" || it.type === "episode") {
+    if (it.type === "episode" && safeUrl(it.url)) L.push(["▶ Play episode", it.url]);
+    L.push(["🟢 Spotify", `https://open.spotify.com/search/${q(ta)}/podcasts`]);
+    L.push(["🟣 Apple Podcasts", safeUrl(it.apple) || `https://podcasts.apple.com/us/search?term=${q(ta)}`]);
+    if (it.type === "podcast" && safeUrl(it.url)) L.push(["🌐 Website", it.url]);
+  } else if (it.type === "documentary") {
+    L.push(["🍿 Where to stream", `https://www.justwatch.com/us/search?q=${q(it.title)}`]);
+    if (safeUrl(it.url)) L.push(["Official page", it.url]);
+  } else if (it.type === "video") {
+    L.push(["▶ YouTube", safeUrl(it.url) || `https://www.youtube.com/results?search_query=${q(ta)}`]);
+  } else if (safeUrl(it.url)) {
+    L.push([it.type === "article" ? "📰 Open article" : "🔗 Open", it.url]);
+  }
+  return L;
+}
+function findLinks(it){
+  const q = encodeURIComponent, ta = `${it.title} ${String(it.by || "").split(/[·(]/)[0]}`.trim();
+  if (it.type === "book") return [["Summary & key ideas", `https://www.google.com/search?q=${q(`"${it.title}" summary key ideas`)}`], ["Goodreads", `https://www.goodreads.com/search?q=${q(it.isbn || ta)}`]];
+  if (it.type === "podcast" || it.type === "episode") return [["Find transcript", `https://www.google.com/search?q=${q(`"${it.title}" transcript`)}`]];
+  if (it.type === "documentary") return [["Summary & review", `https://www.google.com/search?q=${q(`"${it.title}" documentary summary`)}`]];
+  return [];
+}
+const linkRow = L => `<div class="links">${L.map(([l,u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>`;
+
+/* =========================================================
+   Reminders (Google Calendar / Apple & Outlook .ics)
+   ========================================================= */
+const pad = n => String(n).padStart(2, "0");
+const icsLocal = d => `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+function projectedFinish(id){
+  const p = st(id).plan; if (!usesPages(id) || !p?.perDay) return null;
+  const days = Math.ceil(Math.max(0, totalPages(id) - (+st(id).page || 0)) / p.perDay);
+  return new Date(Date.now() + days * DAY);
+}
+function reminder(id){
+  const it = getItem(id), p = st(id).plan || {perDay:20, time:"20:00"};
+  const [hh, mm] = (p.time || "20:00").split(":").map(Number);
+  const start = new Date(); start.setHours(hh, mm, 0, 0); if (start < new Date()) start.setDate(start.getDate() + 1);
+  const end = new Date(start.getTime() + 30 * 60000);
+  const until = new Date(((projectedFinish(id) || new Date(Date.now() + 60 * DAY)).getTime()) + 7 * DAY);
+  const untilStr = `${until.getUTCFullYear()}${pad(until.getUTCMonth()+1)}${pad(until.getUTCDate())}T235959Z`;
+  const link = `${location.origin}${location.pathname}?item=${encodeURIComponent(id)}&log=1`;
+  const verb = tyOf(it).doing === "Reading" ? "📖 Read" : tyOf(it).doing === "Watching" ? "🎬 Watch" : "🎧 Listen";
+  const title = `${verb}: ${it.title}`;
+  const details = `Today's goal: ${p.perDay} ${planUnit(id)}.\nWhen you're done, log where you are and answer your checkpoint questions:\n${link}`;
+  const rrule = `RRULE:FREQ=DAILY;UNTIL=${untilStr}`;
+  const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(details)}&dates=${icsLocal(start)}/${icsLocal(end)}&recur=${encodeURIComponent(rrule)}&ctz=${encodeURIComponent(Intl.DateTimeFormat().resolvedOptions().timeZone)}`;
+  const icsEsc = s => s.replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
+  const now = new Date();
+  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Energy Brief//Reading reminders//EN","BEGIN:VEVENT",
+    `UID:${id}-${Date.now()}@energy-brief`, `DTSTAMP:${now.getUTCFullYear()}${pad(now.getUTCMonth()+1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}00Z`,
+    `DTSTART:${icsLocal(start)}`, `DTEND:${icsLocal(end)}`, rrule, `SUMMARY:${icsEsc(title)}`, `DESCRIPTION:${icsEsc(details)}`, `URL:${link}`,
+    "BEGIN:VALARM","ACTION:DISPLAY",`DESCRIPTION:${icsEsc(title)}`,"TRIGGER:PT0M","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
+  return {gcal, ics};
+}
+
+/* =========================================================
+   Item page
    ========================================================= */
 function openSheet(html){ $("#sheetBody").innerHTML = html; $("#sheet").classList.add("on"); $("#sheetBg").classList.add("on"); $("#sheet").scrollTop = 0; }
 function closeSheet(){ $("#sheet").classList.remove("on"); $("#sheetBg").classList.remove("on"); refresh(); }
 $("#sheetBg").onclick = closeSheet; $("#sheetClose").onclick = closeSheet;
 
-function findLinks(it){
-  const q = encodeURIComponent, L = [];
-  if (safeUrl(it.url)) L.push([it.type === "article" ? "Open article" : "Official page", it.url]);
-  if (it.type === "book") {
-    L.push(["Summary & key ideas", `https://www.google.com/search?q=${q(`"${it.title}" ${it.by||""} summary key ideas`)}`]);
-    L.push(["Goodreads", `https://www.goodreads.com/search?q=${q(it.title)}`]);
-    L.push(["Audiobook", `https://www.google.com/search?q=${q(`"${it.title}" audiobook`)}`]);
-  } else if (it.type === "podcast" || it.type === "episode") {
-    L.push(["Find transcript", `https://www.google.com/search?q=${q(`"${it.title}" ${it.by||""} transcript`)}`]);
-    L.push(["Apple Podcasts", `https://podcasts.apple.com/search?term=${q(it.title)}`]);
-  } else if (it.type === "documentary") {
-    L.push(["Where to watch", `https://www.justwatch.com/us/search?q=${q(it.title)}`]);
-    L.push(["Summary & review", `https://www.google.com/search?q=${q(`"${it.title}" documentary summary`)}`]);
-  } else if (it.type === "video") {
-    L.push(["YouTube", `https://www.youtube.com/results?search_query=${q(it.title)}`]);
-  } else {
-    L.push(["Search", `https://www.google.com/search?q=${q(it.title)}`]);
-  }
-  return L;
-}
-
 function openItem(id){
   const it = getItem(id); if (!it) return;
-  const t = TYPES[it.type] || TYPES.article, s = st(id), deck = DECKS[id], ai = s.ai;
-  const cards = cardsFor(id), done = isDone(id);
+  const t = tyOf(it), s = st(id), deck = DECKS[id], ai = s.ai;
+  const cards = cardsFor(id), open = cards.filter(isUnlocked), nxt = nextUnlock(id);
   const summary = ai?.summary || deck?.summary || it.why;
   const takeaways = ai?.takeaways?.length ? ai.takeaways : deck?.takeaways || [];
-  const verbNow = it.type === "book" || it.type === "article" ? "Reading" : it.type === "course" ? "Doing" : it.type.match(/podcast|episode/) ? "Listening" : "Watching";
+  const active = isActive(id), isBook = it.type === "book";
+  const fin = projectedFinish(id);
+  const log = (s.log || []).slice().reverse();
   openSheet(`
-    <div class="row" style="padding-right:40px"><span class="ico" style="font-size:30px">${t.icon}</span>
-      <div><div class="small muted">${t.label}${it.level ? " · " + esc(it.level) : ""}${it.audio ? " · audiobook available" : ""}</div>
-      <h1 style="font-size:21px">${esc(it.title)}</h1><div class="muted small">${esc(it.by || "")}</div></div></div>
+    <div class="head">${thumb(it)}
+      <div style="min-width:0"><div class="small muted">${t.icon} ${t.label}${it.level ? " · " + esc(it.level) : ""}${it.pages ? ` · ${it.pages} pages` : ""}</div>
+      <h1 style="font-size:21px">${esc(it.title)}</h1><div class="muted small">${esc(it.by || "")}</div>
+      ${s.startedAt ? `<div class="small muted">Started ${esc(s.startedAt)}${s.finishedAt ? ` · finished ${esc(s.finishedAt)}` : ""}</div>` : ""}</div></div>
+
+    ${linkRow(getLinks(it))}
 
     ${it.always ? "" : `<label class="f">Status</label>
-    <div class="seg" id="segStatus">
-      <button data-s="want" aria-pressed="${s.status==="want"}">Want to</button>
-      <button data-s="doing" aria-pressed="${s.status==="doing"}">${verbNow}</button>
-      <button data-s="done" aria-pressed="${s.status==="done"}">✓ ${t.verb}</button>
-    </div>
-    <label class="f">Your rating</label>
+    <div class="chips wrap" id="segStatus">${statusesFor(it).map(k => `<button class="chip" data-s="${k}" aria-pressed="${s.status===k}">${k==="done" ? "✓ " : ""}${esc(statusName(k, it))}</button>`).join("")}</div>`}
+
+    ${isBook && !it.always ? `<label class="f">Format</label>
+    <div class="seg" id="segFmt">${[["print","📕 Print"],["ebook","📱 Ebook"],["audio","🎧 Audiobook"]].map(([k,l]) => `<button data-f="${k}" aria-pressed="${fmtOf(id)===k}">${l}</button>`).join("")}</div>` : ""}
+
+    ${active || s.status === "done" || s.page || s.pct ? `<div class="card" style="margin-top:14px">
+      <div class="row" style="justify-content:space-between"><b>Progress</b><span class="small muted">${esc(progressText(id))}</span></div>
+      <div class="bar"><i style="width:${progressFrac(id) * 100}%"></i></div>
+      ${s.status !== "done" ? `<button class="btn primary block" data-log="${esc(id)}" style="margin-top:12px">${isBook ? "📍 Log reading" : "📍 Log progress"}</button>` : ""}
+      ${isBook && fmtOf(id) !== "audio" ? `<label class="f" for="totPages">Pages in your edition</label><input type="number" id="totPages" inputmode="numeric" min="1" value="${totalPages(id) || ""}" placeholder="e.g. 320">` : ""}
+    </div>` : ""}
+
+    ${active ? `<div class="card" style="margin-top:10px">
+      <b>⏰ Daily goal &amp; reminder</b>
+      <div class="grid2" style="margin-top:8px">
+        <div><label class="f" for="perDay">${planUnit(id) === "pages" ? "Pages per day" : "Minutes per day"}</label><input type="number" id="perDay" inputmode="numeric" min="1" value="${s.plan?.perDay || ""}"></div>
+        <div><label class="f" for="remTime">Remind me at</label><input type="time" id="remTime" value="${esc(s.plan?.time || "20:00")}"></div>
+      </div>
+      <p class="note" id="finishTxt">${fin ? `At this pace you'll finish around <b>${fin.toLocaleDateString(undefined, {month:"short", day:"numeric"})}</b>.` : ""}</p>
+      <div class="row" style="margin-top:10px;flex-wrap:wrap;gap:8px">
+        <a class="btn sm" id="gcalBtn" target="_blank" rel="noopener">📅 Google Calendar</a>
+        <button class="btn sm" id="icsBtn">🍎 Apple / Outlook</button>
+      </div>
+      <p class="note">Adds a daily reminder on your phone. Tapping it opens this page so you can log where you are and answer questions on what you just read.</p>
+    </div>` : ""}
+
+    ${cards.length ? `<h2>Checkpoint questions <small>${open.length}/${cards.length} unlocked</small></h2>
+      ${open.length ? `<button class="btn primary block" data-go="quiz" data-deck="${esc(id)}">🎯 Quiz me ${isDone(id) ? "on this" : "up to where I am"}</button>
+        <button class="btn block" style="margin-top:8px" data-go="review" data-deck="${esc(id)}">🧠 Flashcards</button>` : ""}
+      ${nxt ? `<div class="lock" style="margin-top:8px">🔒 <span>${usesPages(id) ? `Next question unlocks at <b>p. ${Math.ceil(nxt.pct * totalPages(id))}</b>` : `Next question unlocks at <b>${Math.round(nxt.pct * 100)}%</b>`}. ${isBook && !active ? "Start reading to unlock questions as you go." : ""}</span></div>`
+        : !open.length ? `<div class="lock">🔒 <span>Mark as <b>${t.verb}</b> to unlock ${cards.length} cards (+100 XP).</span></div>` : ""}` : ""}
+
+    ${log.length ? `<h2>Journal <small>${log.length} ${log.length === 1 ? "entry" : "entries"}</small></h2>
+      <ul class="journal">${log.slice(0, 30).map(e => `<li><div class="small muted">${esc(e.d)} · ${esc(e.label || "")}</div>${e.note ? `<div>${esc(e.note)}</div>` : ""}${e.recap ? `<div class="small muted" style="margin-top:3px">🤖 ${esc(e.recap)}</div>` : ""}</li>`).join("")}</ul>` : ""}
+
+    ${it.always ? "" : `<label class="f">Your rating</label>
     <div class="rate" id="rate">${[1,2,3,4,5].map(n => `<button data-r="${n}" class="${(s.rating||0) >= n ? "on" : ""}" aria-label="${n} stars">★</button>`).join("")}</div>`}
-
-    ${summary ? `<label class="f">${ai?.summary ? "Your AI summary" : "Summary"}</label><p style="font-size:14.5px">${esc(summary)}</p>` : ""}
-    ${takeaways.length ? `<label class="f">Key takeaways</label><ul class="takeaways">${takeaways.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-
-    <label class="f">Find notes, summaries &amp; transcripts</label>
-    <div class="links">${findLinks(it).map(([l,u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>
 
     <label class="f" for="notes">My notes</label>
     <textarea id="notes" placeholder="Key ideas, quotes, numbers, what surprised you, questions...">${esc(s.notes || "")}</textarea>
@@ -634,25 +856,40 @@ function openItem(id){
       <p class="note" id="genMsg">${S.apiKey ? "" : "Add your API key under Home → Settings first."}</p>
     </details>
 
-    <h2>Flashcards <small>${cards.length} cards</small></h2>
-    ${cards.length ? (done ? `<button class="btn primary block" data-go="review" data-deck="${esc(id)}">🧠 Study these cards</button>
-      <button class="btn block" style="margin-top:8px" data-go="quiz" data-deck="${esc(id)}">🎯 Quiz me on this</button>`
-      : `<div class="lock">🔒 <span>Mark as <b>${t.verb}</b> to unlock ${cards.length} cards. You'll get +100 XP.</span></div>`) : `<p class="small muted">No cards yet. Add notes and use the 🤖 generator above.</p>`}
-    ${cards.length && done ? `<details><summary>Browse all cards</summary><ul class="cardlist">${cards.map(c => `<li><b>${esc(c.q)}</b>${esc(c.a)}</li>`).join("")}</ul></details>` : ""}
+    ${summary || takeaways.length ? `<details ${isDone(id) ? "open" : ""}><summary>${ai?.summary ? "Your AI summary" : "Summary & key takeaways"}${active && !isDone(id) ? " (spoilers)" : ""}</summary>
+      ${summary ? `<p style="font-size:14.5px;margin-top:8px">${esc(summary)}</p>` : ""}
+      ${takeaways.length ? `<ul class="takeaways">${takeaways.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}</details>` : ""}
+
+    ${findLinks(it).length ? `<label class="f">Find notes, summaries &amp; transcripts</label>${linkRow(findLinks(it))}` : ""}
+    ${open.length ? `<details><summary>Browse unlocked cards</summary><ul class="cardlist">${open.map(c => `<li><b>${esc(c.q)}</b>${esc(c.a)}</li>`).join("")}</ul></details>` : ""}
     ${S.custom[id] ? `<button class="btn sm" id="delItem" style="margin-top:18px;color:var(--bad)">Remove from library</button>` : ""}
   `);
 
   $("#segStatus")?.addEventListener("click", e => {
     const b = e.target.closest("[data-s]"); if (!b) return;
-    const rec = S.items[id] ||= {};
-    const was = rec.status; rec.status = was === b.dataset.s ? undefined : b.dataset.s; rec.updated = Date.now();
-    if (rec.status === "done" && was !== "done" && !rec.doneXp) {
-      rec.doneXp = 1; rec.doneAt = today();
-      addXp(100, `${t.verb} ${it.title}`); confetti();
-      if (cards.length) setTimeout(() => toast(`🔓 ${cards.length} cards unlocked`), 300);
-    }
-    save(); openItem(id);
+    if (st(id).status === b.dataset.s) { S.items[id].status = undefined; save(); }
+    else setStatus(id, b.dataset.s);
+    openItem(id);
   });
+  $("#segFmt")?.addEventListener("click", e => {
+    const b = e.target.closest("[data-f]"); if (!b) return;
+    const rec = S.items[id] ||= {}; rec.format = b.dataset.f; save(); openItem(id);
+  });
+  $("#totPages")?.addEventListener("change", e => { const rec = S.items[id] ||= {}; rec.totalPages = Math.max(1, +e.target.value || 0) || undefined; save(); openItem(id); });
+  const planSave = () => {
+    const rec = S.items[id] ||= {}; rec.plan = {perDay: Math.max(1, +$("#perDay").value || 1), time: $("#remTime").value || "20:00"}; save();
+    const f = projectedFinish(id); $("#finishTxt").innerHTML = f ? `At this pace you'll finish around <b>${f.toLocaleDateString(undefined, {month:"short", day:"numeric"})}</b>.` : "";
+    $("#gcalBtn").href = reminder(id).gcal;
+  };
+  if ($("#perDay")) {
+    $("#gcalBtn").href = reminder(id).gcal;
+    $("#perDay").addEventListener("input", planSave); $("#remTime").addEventListener("input", planSave);
+    $("#icsBtn").onclick = () => {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(new Blob([reminder(id).ics], {type:"text/calendar"}));
+      a.download = `${slug(it.title).slice(0, 40)}-reminder.ics`; a.click();
+    };
+  }
   $("#rate")?.addEventListener("click", e => {
     const b = e.target.closest("[data-r]"); if (!b) return;
     const rec = S.items[id] ||= {}; rec.rating = rec.rating === +b.dataset.r ? 0 : +b.dataset.r; save();
@@ -663,7 +900,6 @@ function openItem(id){
     clearTimeout(tmr);
     tmr = setTimeout(() => {
       const rec = S.items[id] ||= {}; rec.notes = e.target.value; rec.updated = Date.now();
-      if (!rec.status) rec.status = "doing";
       if (!rec.notesXp && rec.notes.trim().length > 40) { rec.notesXp = 1; addXp(20, "Took notes"); }
       save(); $("#notesSaved").textContent = "Saved ✓";
     }, 500);
@@ -674,38 +910,125 @@ function openItem(id){
     delete S.custom[id]; delete S.items[id]; delete S.aiCards[id]; save(); closeSheet();
   });
 }
+
+/* =========================================================
+   Log a reading / listening session → checkpoint questions
+   ========================================================= */
+function openLog(id){
+  const it = getItem(id), s = st(id), pages = usesPages(id);
+  const isShow = it.type === "podcast" || it.type === "video";
+  openSheet(`
+    <div class="head">${thumb(it, "S")}<div><div class="small muted">Log progress</div><h1 style="font-size:20px">${esc(it.title)}</h1><div class="small muted">${esc(progressText(id))}</div></div></div>
+    ${pages ? `<label class="f" for="lgPage">What page are you on now?</label>
+      <div class="row"><input type="number" id="lgPage" inputmode="numeric" min="0" max="${totalPages(id)}" value="${+s.page || 0}" style="max-width:130px"><span class="muted">of ${totalPages(id)}</span></div>
+      <div class="row" style="gap:6px;margin-top:8px">${[10,25,50].map(n => `<button class="btn xs" data-add="${n}">+${n}</button>`).join("")}<button class="btn xs" data-add="end">The end</button></div>`
+    : isShow ? `<label class="f" for="lgEp">Which ${it.type === "video" ? "video" : "episode"}?</label><input type="text" id="lgEp" placeholder="Episode title">`
+    : `<label class="f" for="lgPct">How far through are you?</label>
+      <div class="row"><input type="range" id="lgPct" min="0" max="100" value="${+s.pct || 0}" style="flex:1"><b id="lgPctTxt" style="min-width:44px;text-align:right">${+s.pct || 0}%</b></div>
+      ${it.type === "book" ? `<p class="note">Audiobook apps show your % in the player. Using page numbers? Switch the format to Print.</p>` : ""}`}
+    <label class="f" for="lgNote">What stood out? <span style="font-weight:400">(optional, but it makes better questions)</span></label>
+    <textarea id="lgNote" placeholder="A fact, an argument, a number, a question you have..." style="min-height:90px"></textarea>
+    <button class="btn primary block" id="lgSave" style="margin-top:14px">Save &amp; get my questions</button>
+    <button class="btn block" id="lgCancel" style="margin-top:8px">Cancel</button>`);
+  $("#sheetBody").querySelectorAll("[data-add]").forEach(b => b.onclick = () => {
+    const inp = $("#lgPage"); inp.value = b.dataset.add === "end" ? totalPages(id) : Math.min(totalPages(id), (+inp.value || 0) + +b.dataset.add);
+  });
+  $("#lgPct")?.addEventListener("input", e => $("#lgPctTxt").textContent = e.target.value + "%");
+  $("#lgCancel").onclick = () => openItem(id);
+  $("#lgSave").onclick = () => saveLog(id);
+}
+function saveLog(id){
+  const it = getItem(id), rec = S.items[id] ||= {}, pages = usesPages(id);
+  const before = new Set(cardsFor(id).filter(isUnlocked).map(c => c.id));
+  if (!isActive(id) && rec.status !== "done") setStatus(id, "reading");
+  const note = $("#lgNote").value.trim();
+  let label, gain, from, to;
+  if (pages) {
+    from = +rec.page || 0; to = Math.max(0, Math.min(totalPages(id), +$("#lgPage").value || 0));
+    if (rec.dayStart?.d !== today()) rec.dayStart = {d:today(), v:from};
+    rec.page = to; label = to >= from ? `p. ${from} → ${to} (+${to - from})` : `back to p. ${to}`;
+    gain = Math.max(5, Math.min(60, Math.round((to - from) / 2)));
+  } else if ($("#lgPct")) {
+    from = +rec.pct || 0; to = +$("#lgPct").value;
+    if (rec.dayStart?.d !== today()) rec.dayStart = {d:today(), v:from};
+    rec.pct = to; label = `${from}% → ${to}%`; gain = Math.max(5, Math.min(60, (to - from) * 2));
+  } else {
+    const ep = $("#lgEp").value.trim(); label = ep ? `🎧 ${ep}` : "Listened"; gain = 15;
+  }
+  (rec.log ||= []).push({d:today(), label, note, from, to});
+  if (note) rec.notes = (rec.notes ? rec.notes.trimEnd() + "\n\n" : "") + `[${today()} · ${label}] ${note}`;
+  rec.lastLog = today(); rec.updated = Date.now();
+  save(); addXp(gain, "Logged progress");
+  const fresh = cardsFor(id).filter(c => isUnlocked(c) && !before.has(c.id));
+  const reachedEnd = (pages && rec.page >= totalPages(id)) || (!pages && rec.pct >= 100);
+  checkpoint(id, fresh, {from, to, label, note, reachedEnd});
+}
+function checkpoint(id, fresh, seg){
+  const it = getItem(id), unlocked = cardsFor(id).filter(isUnlocked);
+  const pick = [...fresh, ...shuffle(unlocked.filter(c => !fresh.includes(c)))].filter(c => (c.wrong || []).length).slice(0, 3);
+  const canAI = S.apiKey && (it.type === "book" ? seg.to != null : true);
+  openSheet(`<div class="done-screen" style="padding-top:10px"><div class="big">📍</div>
+    <h1>Logged: ${esc(seg.label)}</h1>
+    <p class="muted">${fresh.length ? `🔓 ${fresh.length} new question${fresh.length > 1 ? "s" : ""} unlocked by what you just read.` : unlocked.length ? "Answer a few questions on what you've read so far." : "No questions for this part yet."}</p>
+    <div class="cta" style="max-width:380px;margin:16px auto 0">
+      ${pick.length ? `<button class="btn primary" id="cpGo"><span>🎯 Answer ${pick.length} question${pick.length > 1 ? "s" : ""}</span><span class="sub">+10 XP each</span></button>` : ""}
+      ${canAI ? `<button class="btn" id="cpAI"><span>🤖 Ask Claude about this section</span><span class="sub">${it.type === "book" && seg.from != null ? (usesPages(id) ? `p. ${seg.from}–${seg.to}` : `${seg.from}–${seg.to}%`) : "from your notes"}</span></button>` : ""}
+      ${seg.reachedEnd && st(id).status !== "done" ? `<button class="btn" id="cpDone"><span>✅ Mark as finished</span><span class="sub">+100 XP</span></button>` : ""}
+      <button class="btn" id="cpBack">Back to ${esc(it.title.length > 24 ? it.title.slice(0, 24) + "…" : it.title)}</button>
+    </div><p class="note" id="genMsg"></p></div>`);
+  if (pick.length) $("#cpGo").onclick = () => { closeSheet(); tab("study"); startSession("quiz", id, pick); };
+  $("#cpAI")?.addEventListener("click", () => generateSection(id, seg));
+  $("#cpDone")?.addEventListener("click", () => { setStatus(id, "done"); openItem(id); });
+  $("#cpBack").onclick = () => openItem(id);
+}
+
 document.addEventListener("click", e => {
+  const l = e.target.closest("[data-log]"); if (l) { e.preventDefault(); openLog(l.dataset.log); return; }
   const o = e.target.closest("[data-open]"); if (o) { openItem(o.dataset.open); return; }
   const t = e.target.closest("[data-tab]"); if (t) { e.preventDefault(); closeSheet(); tab(t.dataset.tab); return; }
   const g = e.target.closest("[data-go]"); if (g) { closeSheet(); tab("study"); startSession(g.dataset.go, g.dataset.deck); }
 });
 
-/* add custom item */
+/* add your own item (book lookup via Open Library) */
 $("#addBtn").onclick = () => {
-  openSheet(`<h1 style="font-size:21px;padding-right:40px">Add to library</h1>
-    <p class="small muted">A podcast episode, article, course, talk, book, anything you want to track.</p>
+  openSheet(`<h1 style="font-size:21px;padding-right:40px">Add to your library</h1>
+    <p class="small muted">A book, podcast episode, article, video or course you want to track.</p>
     <label class="f" for="nType">Type</label>
-    <select id="nType">${Object.entries(TYPES).map(([k,v]) => `<option value="${k}" ${k==="episode"?"selected":""}>${v.icon} ${v.label}</option>`).join("")}</select>
-    <label class="f" for="nTitle">Title</label><input type="text" id="nTitle" placeholder="e.g. Volts: How interconnection queues work">
+    <select id="nType">${Object.entries(TYPES).map(([k,v]) => `<option value="${k}" ${k==="book"?"selected":""}>${v.icon} ${v.label}</option>`).join("")}</select>
+    <label class="f" for="nTitle">Title</label>
+    <div class="row"><input type="text" id="nTitle" placeholder="e.g. The Ministry for the Future"><button class="btn sm" id="nLook">🔍 Look up</button></div>
+    <div id="nFound" class="small muted" style="margin-top:6px"></div>
     <label class="f" for="nBy">Author / show / channel</label><input type="text" id="nBy" placeholder="optional">
     <label class="f" for="nUrl">Link</label><input type="url" id="nUrl" placeholder="https://... (optional)">
     <label class="f">Status</label>
-    <div class="seg" id="nStatus"><button data-s="want" aria-pressed="false">Want to</button><button data-s="doing" aria-pressed="true">In progress</button><button data-s="done" aria-pressed="false">Done</button></div>
+    <div class="chips wrap" id="nStatus">${[["want","Want to"],["owned","Bought it"],["reading","Started"],["done","Finished"]].map(([k,l]) => `<button class="chip" data-s="${k}" aria-pressed="${k==="reading"}">${l}</button>`).join("")}</div>
     <button class="btn primary block" id="nSave" style="margin-top:16px">Add</button>`);
-  let ns = "doing";
+  let ns = "reading", meta = {};
+  const syncType = () => { $("#nLook").hidden = $("#nType").value !== "book"; $("#nStatus [data-s=owned]").hidden = $("#nType").value !== "book"; };
+  $("#nType").onchange = syncType; syncType();
   $("#nStatus").onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; ns = b.dataset.s; $("#nStatus").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); };
+  $("#nLook").onclick = async () => {
+    const q = $("#nTitle").value.trim(); if (!q) return;
+    $("#nFound").textContent = "Searching Open Library...";
+    try {
+      const r = await (await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=1&fields=title,author_name,cover_i,number_of_pages_median,isbn`)).json();
+      const d = r.docs?.[0]; if (!d) { $("#nFound").textContent = "No match found. Fill it in yourself."; return; }
+      meta = {cover:d.cover_i, pages:d.number_of_pages_median, isbn:(d.isbn || []).find(i => /^978[01]/.test(i)) || (d.isbn || [])[0]};
+      $("#nTitle").value = d.title; if (d.author_name?.[0]) $("#nBy").value = d.author_name[0];
+      $("#nFound").innerHTML = `${d.cover_i ? `<img src="https://covers.openlibrary.org/b/id/${encodeURIComponent(d.cover_i)}-S.jpg" alt="" style="height:44px;vertical-align:middle;border-radius:4px;margin-right:8px">` : ""}Found it${meta.pages ? ` · ${meta.pages} pages` : ""}.`;
+    } catch { $("#nFound").textContent = "Couldn't reach Open Library. Fill it in yourself."; }
+  };
   $("#nSave").onclick = () => {
     const title = $("#nTitle").value.trim(); if (!title) { $("#nTitle").focus(); return; }
-    const id = "u-" + Date.now().toString(36);
-    S.custom[id] = {id, title, type:$("#nType").value, by:$("#nBy").value.trim(), url:safeUrl($("#nUrl").value.trim())};
-    S.items[id] = {status:ns, updated:Date.now()};
-    if (ns === "done") { S.items[id].doneXp = 1; S.items[id].doneAt = today(); addXp(100, "Finished " + title); }
-    save(); openItem(id);
+    const id = "u-" + Date.now().toString(36), type = $("#nType").value;
+    S.custom[id] = {id, title, type, by:$("#nBy").value.trim(), url:safeUrl($("#nUrl").value.trim()), ...(type === "book" ? meta : {})};
+    S.items[id] = {updated:Date.now()};
+    setStatus(id, ns);
+    openItem(id);
   };
 };
-
 /* =========================================================
-   Claude: summary + cards from notes / transcript
+   Claude: summaries + cards from notes, transcripts, or the section you just read
    ========================================================= */
 const CARD_SCHEMA = {
   type:"object", additionalProperties:false, required:["summary","takeaways","cards"],
@@ -716,7 +1039,31 @@ const CARD_SCHEMA = {
       properties:{q:{type:"string"}, a:{type:"string"}, explain:{type:"string"}, wrong:{type:"array", items:{type:"string"}}}}}
   }
 };
+const CARD_RULES = `Each card has q (question), a (short correct answer, at most ~15 words), explain (1-2 sentences of context), and wrong (exactly 3 plausible but clearly incorrect answers of similar length and style, for multiple choice). Test understanding, not trivia.`;
 let Anthropic;
+async function askClaude(prompt){
+  Anthropic ||= (await import("https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm")).default;
+  const client = new Anthropic({apiKey:S.apiKey, dangerouslyAllowBrowser:true});
+  const res = await client.beta.messages.create({
+    model:"claude-opus-5-5",
+    max_tokens:16000,
+    betas:["server-side-fallback-2026-07-01"],
+    fallbacks:"default",
+    output_config:{effort:"medium", format:{type:"json_schema", schema:CARD_SCHEMA}},
+    messages:[{role:"user", content:prompt}],
+  });
+  if (res.stop_reason === "refusal") throw new Error("Claude declined this request. Try editing the text.");
+  if (res.stop_reason === "max_tokens") throw new Error("The response was cut off. Try a shorter transcript.");
+  const out = JSON.parse(res.content.filter(b => b.type === "text").map(b => b.text).join(""));
+  const stamp = Date.now().toString(36);
+  out.cards = (out.cards || []).filter(c => c.q && c.a).map((c, i) => ({q:c.q, a:c.a, explain:c.explain || "", wrong:(c.wrong || []).slice(0, 3), id:`ai-${stamp}-${i}`}));
+  return out;
+}
+const aiError = err => err?.status === 401 ? "That API key was rejected. Check it under Settings." :
+                       err?.status === 429 ? "Rate limited. Wait a minute and try again." :
+                       "Couldn't generate: " + (err?.message || err);
+const describe = it => `the ${tyOf(it).label.toLowerCase()} "${it.title}"${it.by ? ` (${it.by})` : ""}`;
+
 async function generate(id){
   const it = getItem(id), notes = $("#notes").value.trim(), src = $("#srcText").value.trim();
   const msg = $("#genMsg"), btn = $("#genBtn");
@@ -724,14 +1071,12 @@ async function generate(id){
   if (!notes && !src) { msg.textContent = "Write some notes or paste a transcript first."; return; }
   btn.disabled = true; btn.innerHTML = `<span class="spin"></span> Thinking...`; msg.textContent = "This takes about 20-60 seconds.";
   try {
-    Anthropic ||= (await import("https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm")).default;
-    const client = new Anthropic({apiKey:S.apiKey, dangerouslyAllowBrowser:true});
-    const prompt = `I'm studying to become a professional in sustainability, renewable energy, energy markets and decarbonization. Help me remember what I learned from this ${TYPES[it.type]?.label || "item"}: "${it.title}"${it.by ? ` by ${it.by}` : ""}.
+    const out = await askClaude(`I'm studying to become a professional in sustainability, renewable energy, energy markets and decarbonization. Help me remember what I learned from ${describe(it)}.
 
 Using the material below (my notes and/or a transcript), write:
 - summary: 3-5 sentences capturing the main argument and why it matters for someone working in energy/sustainability.
 - takeaways: 4-6 short, concrete takeaways (numbers, mechanisms, names worth remembering).
-- cards: 8-12 flashcards that test understanding, not trivia. Each has q (question), a (short correct answer, at most ~15 words), explain (1-2 sentences of context), and wrong (exactly 3 plausible but clearly incorrect answers of similar length and style, for multiple choice).
+- cards: 8-12 flashcards. ${CARD_RULES}
 
 Base everything on the material provided. Where my notes are thin, you may add widely accepted background facts that directly explain the material, but don't invent specifics about what the source said.
 
@@ -741,33 +1086,49 @@ ${notes || "(none)"}
 
 <source_text>
 ${src || "(none)"}
-</source_text>`;
-    const res = await client.beta.messages.create({
-      model:"claude-opus-5-5",
-      max_tokens:16000,
-      betas:["server-side-fallback-2026-07-01"],
-      fallbacks:"default",
-      output_config:{effort:"medium", format:{type:"json_schema", schema:CARD_SCHEMA}},
-      messages:[{role:"user", content:prompt}],
-    });
-    if (res.stop_reason === "refusal") throw new Error("Claude declined this request. Try editing the text.");
-    if (res.stop_reason === "max_tokens") throw new Error("The response was cut off. Try a shorter transcript.");
-    const text = res.content.filter(b => b.type === "text").map(b => b.text).join("");
-    const out = JSON.parse(text);
-    const stamp = Date.now().toString(36);
-    const cards = (out.cards || []).filter(c => c.q && c.a).map((c, i) => ({q:c.q, a:c.a, explain:c.explain || "", wrong:(c.wrong || []).slice(0, 3), id:`${id}#ai-${stamp}-${i}`}));
-    S.aiCards[id] = cards;
+</source_text>`);
+    // replace earlier note-based cards, keep the per-section checkpoint cards
+    S.aiCards[id] = [...(S.aiCards[id] || []).filter(c => c.src === "section"), ...out.cards.map(c => ({...c, id:`${id}#${c.id}`, src:"notes"}))];
     const rec = S.items[id] ||= {};
     rec.ai = {summary:out.summary, takeaways:out.takeaways || [], at:today()};
     if (notes) rec.notes = notes;
     if (!rec.aiXp) { rec.aiXp = 1; addXp(30, "Built your own deck"); }
-    save(); toast(`🤖 ${cards.length} new cards ready`); openItem(id);
+    save(); toast(`🤖 ${out.cards.length} new cards ready`); openItem(id);
   } catch (err) {
-    const status = err?.status;
-    msg.textContent = status === 401 ? "That API key was rejected. Check it under Settings." :
-                      status === 429 ? "Rate limited. Wait a minute and try again." :
-                      "Couldn't generate: " + (err?.message || err);
+    msg.textContent = aiError(err);
     btn.disabled = false; btn.textContent = "Generate summary & cards";
+  }
+}
+
+// Questions about just the part of the book/episode you logged
+async function generateSection(id, seg){
+  const it = getItem(id), msg = $("#genMsg"), btn = $("#cpAI");
+  btn.disabled = true; btn.innerHTML = `<span class="spin"></span> Writing questions...`; msg.textContent = "This takes about 20-60 seconds.";
+  const where = it.type === "book" && seg.from != null
+    ? (usesPages(id) ? `pages ${seg.from} to ${seg.to} of ${totalPages(id)}` : `from ${seg.from}% to ${seg.to}% of the way through the audiobook`)
+    : seg.label;
+  try {
+    const out = await askClaude(`I'm working through ${describe(it)} to build professional knowledge of sustainability and energy. I just finished a session covering ${where}.
+
+Write a short checkpoint for that section:
+- summary: 2-3 sentences recapping what that part covers.
+- takeaways: 3-4 key points from that part.
+- cards: 3-5 questions about that part only. ${CARD_RULES}
+
+Do not ask about anything from later in the work - no spoilers. Only include content you are confident actually appears in that section; if you aren't sure what the section contains, build the questions from my notes below instead and keep them general.
+
+<my_notes_from_this_session>
+${seg.note || "(none)"}
+</my_notes_from_this_session>`);
+    const cards = out.cards.map(c => ({...c, id:`${id}#${c.id}`, src:"section"}));
+    S.aiCards[id] = [...(S.aiCards[id] || []), ...cards];
+    const rec = S.items[id] ||= {}, last = (rec.log || []).at(-1);
+    if (last) last.recap = out.summary;
+    save(); toast(`🤖 ${cards.length} questions on this section`);
+    closeSheet(); tab("study"); startSession("quiz", id, cards);
+  } catch (err) {
+    msg.textContent = aiError(err);
+    btn.disabled = false; btn.textContent = "🤖 Ask Claude about this section";
   }
 }
 
@@ -778,9 +1139,9 @@ const itemName = id => getItem(id)?.title || "";
 let SES = null;
 function endToMenu(){ SES?.timer && clearInterval(SES.timer); SES = null; $("#session").hidden = true; $("#studyMenu").hidden = false; refresh(); }
 
-function startSession(kind, deck){
-  let pool = deck ? cardsFor(deck).filter(c => isDone(deck) || String(c.id).includes("#ai")) : unlockedCards();
-  if (kind === "review") pool = deck ? shuffle(pool) : dueQueue();
+function startSession(kind, deck, list){
+  let pool = list || (deck ? cardsFor(deck).filter(isUnlocked) : unlockedCards());
+  if (kind === "review" && !list) pool = deck ? shuffle(pool) : dueQueue();
   if (!pool.length) {
     $("#studyMenu").hidden = true; $("#session").hidden = false;
     $("#session").innerHTML = `<div class="done-screen"><div class="big">${kind === "review" ? "✅" : "🔒"}</div>
@@ -911,7 +1272,7 @@ document.addEventListener("keydown", e => {
 function renderStudy(){
   const due = dueQueue().length;
   $("#mDue").textContent = due ? `${due} cards due now. Spaced repetition brings each card back right before you'd forget it.` : "All caught up. Cards come back right before you'd forget them.";
-  const ids = Object.keys(allItems()).filter(id => cardsFor(id).length && (isDone(id) || (S.aiCards[id]||[]).length));
+  const ids = Object.keys(allItems()).filter(id => cardsFor(id).some(isUnlocked));
   $("#deckList").innerHTML = ids.map(itemRow).join("") || `<div class="empty">Finish something in the Library to add its deck here.</div>`;
 }
 
@@ -951,8 +1312,8 @@ await loadCatalog();
 ingestInbox();
 const start = location.hash.slice(1);
 tab(["home","library","study"].includes(start) ? start : "home");
-const openId = new URLSearchParams(location.search).get("item");
-if (openId && getItem(openId)) openItem(openId);
+const params = new URLSearchParams(location.search), openId = params.get("item");
+if (openId && getItem(openId)) params.get("log") ? openLog(openId) : openItem(openId);
 </script>
 </body>
 </html>

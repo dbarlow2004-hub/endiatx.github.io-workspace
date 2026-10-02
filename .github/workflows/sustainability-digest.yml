@@ -27,7 +27,7 @@ jobs:
       - name: Fetch articles and send digest
         env:
           DIGEST_URL: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustainability/
-          MAX_ITEMS: "6"
+          MAX_ITEMS: "5"
           # Push notifications (ntfy app) - easiest option
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           # Real SMS via Twilio

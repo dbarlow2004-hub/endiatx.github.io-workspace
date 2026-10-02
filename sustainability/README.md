@@ -8,26 +8,35 @@ Every morning at about 7:45am Eastern, a GitHub Action runs `digest.py`. It:
    sustainable development.
 2. Tags each story by topic (Solar, Wind, Storage & Grid, Energy Prices, Carbon & Net Zero,
    Efficiency, Sustainable Development, Policy, Clean Tech) and skips ones already sent.
-3. Sends you the top 6 headlines plus a daily book, podcast or documentary pick and a link to the hub page.
+3. Sends you the top 5 headlines, each with a short link straight to the article, plus a daily book, podcast or documentary pick (linked into the study app) and a link to the hub page.
 4. Saves the stories to `feed.json`, which the hub page shows with search and topic filters.
 
 Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustainability/
 
-## Study app: track, take notes, flashcards & quizzes
+## Study app: shelves, reading progress, flashcards & quizzes
 
-`learn.html` ("🧠 My Library & Study" on the hub) is a Goodreads-plus-Quizlet for everything on the hub:
+`learn.html` ("🧠 My Library & Study" on the hub) works like Ravelry's project tracker, but for books, podcasts, films and articles:
 
-- **Library:** mark each book, podcast, documentary or YouTube channel as *Want to*, *Reading/Listening/Watching* or *Done*, and rate it 1-5 stars.
-  Add your own items (podcast episodes, articles, courses). Tap **＋ Save** on any headline to add it to the library.
-- **Notes:** each item has a notes box, a summary with key takeaways, and links to find summaries, transcripts, audiobooks or where to watch.
-- **Flashcards:** marking something *Done* unlocks its deck (8 cards per book, 5-6 per podcast or film, plus a 30-card Key Concepts starter deck).
-  Reviews use spaced repetition: Again / Hard / Good / Easy schedules the next review just before you'd forget.
-- **Quiz & Lightning round:** multiple-choice questions with an explanation after each answer. Answer streaks multiply XP; missed questions return to your flashcard reviews.
-- **Game layer:** XP, levels from "Curious" to "Thought Leader", a daily goal ring, a day streak and 13 badges.
-- **AI summaries & cards (optional):** paste your notes or a transcript and Claude writes a summary, takeaways and 8-12 new flashcards.
-  This needs your own Anthropic API key (console.anthropic.com), entered under Home → Settings. The key is stored only in your browser and each request costs a few cents.
+- **Shelves:** 📖 On the go · 🛍️ Bought · 🔖 Want to · ✅ Finished · ✨ Recommended.
+  Recommended lists every book, podcast and film from the hub with covers, books ordered beginner → pro.
+  Tap **Want**, **Bought** or **Start** right on the tile.
+- **Statuses:** Want to, Bought it (books), Reading/Listening/Watching, Paused, Finished, Didn't finish. Pick Print / Ebook / Audiobook per book.
+- **Straight to the source:** each item links to Bookshop.org, Amazon, Audible, Spotify audiobooks and your library (WorldCat) for books.
+  Podcasts link to Spotify and Apple Podcasts, documentaries to where they're streaming, and YouTube channels to the channel.
+  News headlines in the daily text link through `go.html` straight to the article, which is also added to your library as "Reading".
+- **Progress & reminders:** log the page you're on (or % for audiobooks). Each item gets a progress bar, a projected finish date and a reading journal.
+  Set pages (or minutes) per day and a time, then add a daily reminder to **Google Calendar** or **Apple/Outlook (.ics)**.
+  Tapping the reminder opens the log screen for that book.
+- **Checkpoint questions:** book questions unlock page by page as you reach the part where each idea comes up.
+  After each logged session you get up to 3 questions on what you've read, with no spoilers. Podcasts, films and channels unlock their cards when finished.
+- **Flashcards & quizzes:** spaced-repetition flashcards, 10-question quizzes and a 60-second lightning round with streak multipliers.
+  There are 8 cards per book, 5-6 per podcast or film, and a 30-card Key Concepts deck that is open from the start.
+- **Game layer:** XP, levels from "Curious" to "Thought Leader", a daily goal ring, a day streak and 14 badges.
+- **AI (optional):** with your own Anthropic API key (Home → Settings, stored only in your browser), Claude can:
+  - summarize your notes or a pasted transcript into 8-12 flashcards
+  - after a reading session, write 3-5 questions on exactly the pages you just read
 
-Progress is saved in your browser on that device. Use **Export / Import backup** under Settings to move it to another device.
+Progress is saved in your browser on that device. Use **Export / Import backup** under Settings to move it.
 
 ## Turn on delivery (pick one or more)
 
@@ -59,7 +68,7 @@ The daily schedule only runs from the repo's default branch, so merge this branc
 - **Topics / keywords:** edit `TOPICS` in `digest.py`.
 - **Sources:** edit `FEEDS` in `digest.py` (any RSS URL, or `gnews('your search')`).
 - **Time:** edit the `cron` line in `.github/workflows/sustainability-digest.yml` (UTC).
-- **Headlines per text:** `MAX_ITEMS` in the workflow.
+- **Headlines per text:** `MAX_ITEMS` in the workflow (5 keeps a text under Twilio's 1,500-character limit).
 - **Books, podcasts, documentaries, companies, glossary:** `resources.json`.
 
 Test locally without sending anything: `python3 sustainability/digest.py --dry-run`

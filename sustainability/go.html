@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opening article</title>
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#f6f7f4;--text:#16201a;--muted:#5d6a61;--accent:#0a8a6a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0e0f11;--text:#e8eaf0;--muted:#8a909c;--accent:#00e5c9}}
+:root[data-theme="dark"]{--bg:#0e0f11;--text:#e8eaf0;--muted:#8a909c;--accent:#00e5c9}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:16px;box-sizing:border-box;text-align:center}
+a{color:var(--accent)}
+p{color:var(--muted)}
+</style>
+</head>
+<body>
+<div><h1 style="font-size:18px">Opening the article…</h1><p id="msg">If nothing happens, <a href="./">see all of today's stories</a>.</p></div>
+<script>
+// Short links from the daily text: go.html?a=<article id> → the original article.
+// The article is also added to your library ("Reading") so you can track what you've read.
+(async () => {
+  const id = new URLSearchParams(location.search).get("a");
+  try {
+    const feed = await (await fetch("feed.json", {cache: "no-cache"})).json();
+    const a = (feed.articles || []).find(x => x.id === id);
+    if (!a || !/^https?:\/\//i.test(a.link)) throw new Error("not found");
+    try {
+      const box = JSON.parse(localStorage.getItem("energybrief-inbox") || "[]");
+      box.push({title: a.title, link: a.link, source: a.source, status: "reading"});
+      localStorage.setItem("energybrief-inbox", JSON.stringify(box));
+    } catch {}
+    location.replace(a.link);
+  } catch {
+    document.getElementById("msg").innerHTML = 'That story has rotated out. <a href="./">See today\'s stories</a>.';
+  }
+})();
+</script>
+</body>
+</html>

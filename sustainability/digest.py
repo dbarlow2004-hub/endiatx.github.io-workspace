@@ -13,7 +13,7 @@ Delivery channels (set whichever you want as env vars / repo secrets):
   SMS         TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, SMS_TO
   Email       SMTP_USER, SMTP_PASSWORD, EMAIL_TO  (+ SMTP_HOST, SMTP_PORT)
 Optional:     DIGEST_URL  link to the hub page, appended to every message
-              MAX_ITEMS   headlines per message (default 6)
+              MAX_ITEMS   headlines per message (default 5)
 
 Run locally:  python3 sustainability/digest.py --dry-run
 """
@@ -21,6 +21,7 @@ Run locally:  python3 sustainability/digest.py --dry-run
 import argparse
 import base64
 import email.utils
+import hashlib
 import html
 import json
 import os
@@ -172,6 +173,11 @@ def classify(article):
     return topics, len(topics) + title_hits
 
 
+def article_id(link):
+    """Short stable id used in text-message links (go.html?a=<id>)."""
+    return hashlib.sha1(link.encode()).hexdigest()[:7]
+
+
 def norm_title(t):
     return re.sub(r"[^a-z0-9]+", " ", t.lower()).strip()[:80]
 
@@ -201,6 +207,7 @@ def gather(seen_links, seen_titles):
             if not topics:
                 continue
             a["topics"], a["score"] = topics, score
+            a["id"] = article_id(a["link"])
             a["added"] = now.isoformat()
             seen_links.add(a["link"])
             seen_titles.add(norm_title(a["title"]))
@@ -233,12 +240,15 @@ def pick_of_the_day():
 
 
 def build_message(articles, max_items):
-    """Headlines only: Google News links are ~200 chars each, too long for a text.
-    The hub page (DIGEST_URL) has every story as a clickable link."""
+    """Headline + a short link per story. Raw Google News links are ~200 chars, so with
+    DIGEST_URL set each story links through go.html, which forwards to the article."""
     day = datetime.now(timezone.utc).strftime("%b %d")
+    base = (os.environ.get("DIGEST_URL") or "").rstrip("/")
     lines = [f"Energy & Sustainability Brief - {day}", ""]
     for i, a in enumerate(articles[:max_items], 1):
         lines.append(f"{i}. {a['title']} ({a['source']})")
+        if base:
+            lines.append(f"   {base}/go.html?a={a['id']}")
     extra = len(articles) - max_items
     if extra > 0:
         lines.append(f"+{extra} more")
@@ -329,7 +339,7 @@ def main():
 
     if not fresh:
         return
-    max_items = int(os.environ.get("MAX_ITEMS", "6"))
+    max_items = int(os.environ.get("MAX_ITEMS", "5"))
     msg = build_message(fresh, max_items)
     print("\n" + msg + "\n")
     if args.dry_run:
@@ -347,6 +357,8 @@ def main():
     for f in failures:
         print(f"error: {f}", file=sys.stderr)
 
+    for a in old:  # backfill ids on articles saved before ids existed
+        a.setdefault("id", article_id(a["link"]))
     data = {
         "updated": datetime.now(timezone.utc).isoformat(),
         "articles": (fresh + old)[:KEEP_ARTICLES],
