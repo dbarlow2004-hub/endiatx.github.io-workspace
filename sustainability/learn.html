@@ -284,6 +284,21 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
     <div class="badges" id="badgeList"></div>
 
     <h2>Settings</h2>
+    <div class="card" id="notifSetup" style="margin-bottom:10px">
+      <b>📲 Phone notifications</b>
+      <p class="small muted" style="margin-top:4px">Reading reminders arrive as notifications through the free <b>ntfy</b> app, the same one the daily news brief uses.</p>
+      <ol class="small" style="padding-left:18px;margin-top:6px">
+        <li>Install <b>ntfy</b> from the <a href="https://apps.apple.com/app/ntfy/id1625396347" target="_blank" rel="noopener">App Store</a> or <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noopener">Google Play</a> and allow notifications.</li>
+        <li>In the app tap <b>+</b> and subscribe to a hard-to-guess topic name, e.g. <span class="mono" id="topicIdea"></span>. You can use the same topic as your news brief.</li>
+        <li>Enter that topic here and tap Save, then send a test.</li>
+      </ol>
+      <div class="row" style="margin-top:10px">
+        <input type="text" id="ntfyTopic" placeholder="your-topic-name" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="ntfy topic">
+        <button class="btn sm" id="saveTopic">Save</button>
+      </div>
+      <div class="row" style="margin-top:8px"><button class="btn sm" id="testNotif">🔔 Send test notification</button></div>
+      <p class="note" id="topicStatus"></p>
+    </div>
     <div class="card">
       <b>AI notes &amp; cards</b>
       <p class="small muted" style="margin-top:4px">To have Claude summarize your own notes or a transcript and turn them into flashcards, paste an Anthropic API key (from console.anthropic.com). It's saved only on this device, and each summary costs a few cents.</p>
@@ -697,6 +712,7 @@ function setStatus(id, s){
     if (was !== "reading" && was !== "paused") toast(`📖 Started ${it.title}`);
   }
   if (s === "owned" && !rec.ownedXp) { rec.ownedXp = 1; addXp(10, "Added to your shelf"); }
+  if (s !== was) syncReminders();
   if (s === "done" && was !== "done") {
     rec.finishedAt = today();
     if (usesPages(id)) rec.page = totalPages(id);
@@ -749,36 +765,62 @@ function findLinks(it){
 const linkRow = L => `<div class="links">${L.map(([l,u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>`;
 
 /* =========================================================
-   Reminders (Google Calendar / Apple & Outlook .ics)
+   Phone notifications via ntfy (free app: ntfy.sh)
+   Reminders are scheduled up to 3 days ahead (ntfy.sh's limit) with stable
+   ids per book per day, so they can be replaced with fresh page numbers or
+   cancelled. Opening the app (e.g. by tapping a reminder) tops the window up.
    ========================================================= */
-const pad = n => String(n).padStart(2, "0");
-const icsLocal = d => `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+const NTFY = "https://ntfy.sh";
 function projectedFinish(id){
   const p = st(id).plan; if (!usesPages(id) || !p?.perDay) return null;
   const days = Math.ceil(Math.max(0, totalPages(id) - (+st(id).page || 0)) / p.perDay);
   return new Date(Date.now() + days * DAY);
 }
-function reminder(id){
-  const it = getItem(id), p = st(id).plan || {perDay:20, time:"20:00"};
-  const [hh, mm] = (p.time || "20:00").split(":").map(Number);
-  const start = new Date(); start.setHours(hh, mm, 0, 0); if (start < new Date()) start.setDate(start.getDate() + 1);
-  const end = new Date(start.getTime() + 30 * 60000);
-  const until = new Date(((projectedFinish(id) || new Date(Date.now() + 60 * DAY)).getTime()) + 7 * DAY);
-  const untilStr = `${until.getUTCFullYear()}${pad(until.getUTCMonth()+1)}${pad(until.getUTCDate())}T235959Z`;
-  const link = `${location.origin}${location.pathname}?item=${encodeURIComponent(id)}&log=1`;
-  const verb = tyOf(it).doing === "Reading" ? "📖 Read" : tyOf(it).doing === "Watching" ? "🎬 Watch" : "🎧 Listen";
-  const title = `${verb}: ${it.title}`;
-  const details = `Today's goal: ${p.perDay} ${planUnit(id)}.\nWhen you're done, log where you are and answer your checkpoint questions:\n${link}`;
-  const rrule = `RRULE:FREQ=DAILY;UNTIL=${untilStr}`;
-  const gcal = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(details)}&dates=${icsLocal(start)}/${icsLocal(end)}&recur=${encodeURIComponent(rrule)}&ctz=${encodeURIComponent(Intl.DateTimeFormat().resolvedOptions().timeZone)}`;
-  const icsEsc = s => s.replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\n/g, "\\n");
-  const now = new Date();
-  const ics = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Energy Brief//Reading reminders//EN","BEGIN:VEVENT",
-    `UID:${id}-${Date.now()}@energy-brief`, `DTSTAMP:${now.getUTCFullYear()}${pad(now.getUTCMonth()+1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}00Z`,
-    `DTSTART:${icsLocal(start)}`, `DTEND:${icsLocal(end)}`, rrule, `SUMMARY:${icsEsc(title)}`, `DESCRIPTION:${icsEsc(details)}`, `URL:${link}`,
-    "BEGIN:VALARM","ACTION:DISPLAY",`DESCRIPTION:${icsEsc(title)}`,"TRIGGER:PT0M","END:VALARM","END:VEVENT","END:VCALENDAR"].join("\r\n");
-  return {gcal, ics};
+const seqId = (id, day) => `read-${id.replace(/[^A-Za-z0-9-]/g, "").slice(0, 40)}-${day.replace(/-/g, "")}`;
+const logLink = id => `${location.origin}${location.pathname}?item=${encodeURIComponent(id)}&log=1`;
+function reminderText(id){
+  const it = getItem(id), p = st(id).plan || {};
+  const doing = tyOf(it).doing, verb = doing === "Reading" ? "📖 Time to read" : doing === "Watching" ? "🎬 Time to watch" : "🎧 Time to listen";
+  const where = usesPages(id) ? `You're on p. ${+st(id).page || 0} of ${totalPages(id)}.` : `You're ${Math.round(progressFrac(id) * 100)}% through.`;
+  return {title:`${verb}: ${it.title}`, body:`Today's goal: ${p.perDay || 15} ${planUnit(id)}. ${where} Tap to log it and answer your checkpoint questions.`};
 }
+async function ntfyPost(topic, seq, at, id){
+  const {title, body} = reminderText(id);
+  const q = new URLSearchParams({at:String(Math.round(at / 1000)), title, click:logLink(id), tags:"books"});
+  const r = await fetch(`${NTFY}/${encodeURIComponent(topic)}/${seq}?${q}`, {method:"POST", body});
+  if (!r.ok) throw new Error("ntfy " + r.status);
+}
+const ntfyDelete = (topic, seq) => fetch(`${NTFY}/${encodeURIComponent(topic)}/${seq}/delete`).catch(() => {});
+let syncing = null;
+function syncReminders(){ return syncing = (syncing || Promise.resolve()).then(doSync).catch(() => {}); }
+async function doSync(){
+  const now = Date.now(), sched = S.sched ||= {}, topic = S.ntfyTopic || "";
+  const want = {};
+  if (topic) for (const id of Object.keys(S.items)) {
+    const s = st(id); if (!getItem(id) || s.status !== "reading" || !s.plan || s.plan.notify === false) continue; // paused/finished = no reminders
+    const [hh, mm] = (s.plan.time || "20:00").split(":").map(Number);
+    for (let k = 0; k < 4; k++) {
+      const d = new Date(); d.setDate(d.getDate() + k); d.setHours(hh, mm, 0, 0);
+      const at = d.getTime(), day = d.toLocaleDateString("en-CA");
+      if (at < now + 60000 || at > now + 3 * DAY - 60000) continue;
+      if (day === today() && s.lastLog === today()) continue;   // already logged today: no nagging
+      want[seqId(id, day)] = {id, at};
+    }
+  }
+  for (const [seq, v] of Object.entries(sched)) {
+    if (v.at < now) { delete sched[seq]; continue; }
+    if (!want[seq] || v.topic !== topic) { await ntfyDelete(v.topic, seq); delete sched[seq]; }
+  }
+  for (const [seq, v] of Object.entries(want)) {
+    const sig = JSON.stringify([reminderText(v.id), v.at]);
+    if (sched[seq]?.sig === sig) continue;   // unchanged: don't spend ntfy quota
+    try { await ntfyPost(topic, seq, v.at, v.id); sched[seq] = {...v, topic, sig}; } catch { S.ntfyError = today(); }
+  }
+  save();
+}
+const nextReminder = id => Object.values(S.sched || {}).filter(v => v.id === id && v.at > Date.now()).sort((a,b) => a.at - b.at)[0];
+const fmtWhen = t => { const d = new Date(t), tm = d.toLocaleTimeString(undefined, {hour:"numeric", minute:"2-digit"});
+  return d.toLocaleDateString("en-CA") === today() ? `today ${tm}` : d.toLocaleDateString("en-CA") === new Date(Date.now() + DAY).toLocaleDateString("en-CA") ? `tomorrow ${tm}` : `${d.toLocaleDateString(undefined, {weekday:"short"})} ${tm}`; };
 
 /* =========================================================
    Item page
@@ -824,11 +866,9 @@ function openItem(id){
         <div><label class="f" for="remTime">Remind me at</label><input type="time" id="remTime" value="${esc(s.plan?.time || "20:00")}"></div>
       </div>
       <p class="note" id="finishTxt">${fin ? `At this pace you'll finish around <b>${fin.toLocaleDateString(undefined, {month:"short", day:"numeric"})}</b>.` : ""}</p>
-      <div class="row" style="margin-top:10px;flex-wrap:wrap;gap:8px">
-        <a class="btn sm" id="gcalBtn" target="_blank" rel="noopener">📅 Google Calendar</a>
-        <button class="btn sm" id="icsBtn">🍎 Apple / Outlook</button>
-      </div>
-      <p class="note">Adds a daily reminder on your phone. Tapping it opens this page so you can log where you are and answer questions on what you just read.</p>
+      ${S.ntfyTopic ? `<label class="row" style="margin-top:10px;gap:8px;font-size:14.5px;cursor:pointer"><input type="checkbox" id="notifyOn" ${s.plan?.notify === false ? "" : "checked"} style="width:20px;height:20px"> 📲 Send a notification to my phone</label>
+        <p class="note" id="nextRem"></p>`
+      : `<div class="lock" style="margin-top:10px">📲 <span>Get a phone notification at this time each day. <a href="#" data-tab="home" data-scroll="notifSetup">Turn on phone notifications</a> (2 minutes, free).</span></div>`}
     </div>` : ""}
 
     ${cards.length ? `<h2>Checkpoint questions <small>${open.length}/${cards.length} unlocked</small></h2>
@@ -877,18 +917,17 @@ function openItem(id){
   });
   $("#totPages")?.addEventListener("change", e => { const rec = S.items[id] ||= {}; rec.totalPages = Math.max(1, +e.target.value || 0) || undefined; save(); openItem(id); });
   const planSave = () => {
-    const rec = S.items[id] ||= {}; rec.plan = {perDay: Math.max(1, +$("#perDay").value || 1), time: $("#remTime").value || "20:00"}; save();
+    const rec = S.items[id] ||= {}; rec.plan = {...(rec.plan || {}), perDay: Math.max(1, +$("#perDay").value || 1), time: $("#remTime").value || "20:00"}; save();
     const f = projectedFinish(id); $("#finishTxt").innerHTML = f ? `At this pace you'll finish around <b>${f.toLocaleDateString(undefined, {month:"short", day:"numeric"})}</b>.` : "";
-    $("#gcalBtn").href = reminder(id).gcal;
+    clearTimeout(planTmr); planTmr = setTimeout(() => syncReminders().then(showNext), 800);
   };
+  const showNext = () => { const el = $("#nextRem"); if (!el) return; const n = nextReminder(id);
+    el.textContent = st(id).plan?.notify === false ? "Notifications off for this one." : n ? `Next notification: ${fmtWhen(n.at)}.` : st(id).lastLog === today() ? "You've logged today, so the next one comes tomorrow." : "Scheduling..."; };
+  let planTmr;
   if ($("#perDay")) {
-    $("#gcalBtn").href = reminder(id).gcal;
     $("#perDay").addEventListener("input", planSave); $("#remTime").addEventListener("input", planSave);
-    $("#icsBtn").onclick = () => {
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(new Blob([reminder(id).ics], {type:"text/calendar"}));
-      a.download = `${slug(it.title).slice(0, 40)}-reminder.ics`; a.click();
-    };
+    $("#notifyOn")?.addEventListener("change", e => { const rec = S.items[id] ||= {}; rec.plan = {...(rec.plan || {}), notify:e.target.checked}; save(); syncReminders().then(showNext); });
+    syncReminders().then(showNext);
   }
   $("#rate")?.addEventListener("click", e => {
     const b = e.target.closest("[data-r]"); if (!b) return;
@@ -958,7 +997,7 @@ function saveLog(id){
   (rec.log ||= []).push({d:today(), label, note, from, to});
   if (note) rec.notes = (rec.notes ? rec.notes.trimEnd() + "\n\n" : "") + `[${today()} · ${label}] ${note}`;
   rec.lastLog = today(); rec.updated = Date.now();
-  save(); addXp(gain, "Logged progress");
+  save(); addXp(gain, "Logged progress"); syncReminders();
   const fresh = cardsFor(id).filter(c => isUnlocked(c) && !before.has(c.id));
   const reachedEnd = (pages && rec.page >= totalPages(id)) || (!pages && rec.pct >= 100);
   checkpoint(id, fresh, {from, to, label, note, reachedEnd});
@@ -985,7 +1024,7 @@ function checkpoint(id, fresh, seg){
 document.addEventListener("click", e => {
   const l = e.target.closest("[data-log]"); if (l) { e.preventDefault(); openLog(l.dataset.log); return; }
   const o = e.target.closest("[data-open]"); if (o) { openItem(o.dataset.open); return; }
-  const t = e.target.closest("[data-tab]"); if (t) { e.preventDefault(); closeSheet(); tab(t.dataset.tab); return; }
+  const t = e.target.closest("[data-tab]"); if (t) { e.preventDefault(); closeSheet(); tab(t.dataset.tab); if (t.dataset.scroll) document.getElementById(t.dataset.scroll)?.scrollIntoView({behavior:"smooth"}); return; }
   const g = e.target.closest("[data-go]"); if (g) { closeSheet(); tab("study"); startSession(g.dataset.go, g.dataset.deck); }
 });
 
@@ -1288,6 +1327,28 @@ function tab(name){
 }
 function refresh(){ renderHome(); renderLibrary(); if (!SES) renderStudy(); }
 
+$("#topicIdea").textContent = "energy-brief-" + Math.random().toString(36).slice(2, 8);
+const topicOk = t => /^[A-Za-z0-9_-]{1,64}$/.test(t);
+function renderTopic(){
+  $("#ntfyTopic").value = S.ntfyTopic || "";
+  $("#topicStatus").textContent = S.ntfyTopic ? `Reminders go to topic "${S.ntfyTopic}". Turn them on per book under Daily goal & reminder.` : "Not set up yet.";
+}
+$("#saveTopic").onclick = () => {
+  const t = $("#ntfyTopic").value.trim();
+  if (t && !topicOk(t)) { $("#topicStatus").textContent = "Use only letters, numbers, - and _ (no spaces)."; return; }
+  S.ntfyTopic = t; save(); renderTopic(); syncReminders(); toast(t ? "📲 Notifications on" : "Notifications off");
+};
+$("#testNotif").onclick = async () => {
+  const t = ($("#ntfyTopic").value.trim() || S.ntfyTopic || "");
+  if (!topicOk(t)) { $("#topicStatus").textContent = "Enter your topic name first."; return; }
+  try {
+    const q = new URLSearchParams({title:"📖 Energy Brief", click:location.origin + location.pathname, tags:"tada"});
+    const r = await fetch(`${NTFY}/${encodeURIComponent(t)}?${q}`, {method:"POST", body:"Notifications are working. Reading reminders will show up like this."});
+    $("#topicStatus").textContent = r.ok ? "Sent! It should appear on your phone within a few seconds." : r.status === 429 ? "ntfy says too many messages today. Try again tomorrow." : "ntfy returned an error (" + r.status + ").";
+  } catch { $("#topicStatus").textContent = "Couldn't reach ntfy.sh. Check your connection."; }
+};
+renderTopic();
+
 $("#saveKey").onclick = () => {
   const v = $("#apiKey").value.trim();
   if (v.startsWith("••")) return;
@@ -1310,6 +1371,7 @@ window.addEventListener("storage", e => {
 
 await loadCatalog();
 ingestInbox();
+syncReminders();   // top up the 3-day window of scheduled reminders every time the app opens
 const start = location.hash.slice(1);
 tab(["home","library","study"].includes(start) ? start : "home");
 const params = new URLSearchParams(location.search), openId = params.get("item");

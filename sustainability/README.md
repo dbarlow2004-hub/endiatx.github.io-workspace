@@ -25,8 +25,11 @@ Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustaina
   Podcasts link to Spotify and Apple Podcasts, documentaries to where they're streaming, and YouTube channels to the channel.
   News headlines in the daily text link through `go.html` straight to the article, which is also added to your library as "Reading".
 - **Progress & reminders:** log the page you're on (or % for audiobooks). Each item gets a progress bar, a projected finish date and a reading journal.
-  Set pages (or minutes) per day and a time, then add a daily reminder to **Google Calendar** or **Apple/Outlook (.ics)**.
-  Tapping the reminder opens the log screen for that book.
+  Set pages (or minutes) per day and a time, and you get a **phone notification** through the free ntfy app.
+  The notification shows today's goal and where you are; tapping it opens the log screen for that book.
+  Set it up once under Home → Settings → Phone notifications (you can use the same topic as the news brief).
+  Reminders are scheduled up to 3 days ahead (ntfy.sh's limit) and topped up every time you open the app, including by tapping a reminder.
+  Logging that day cancels the day's reminder, and pausing or finishing a book stops them.
 - **Checkpoint questions:** book questions unlock page by page as you reach the part where each idea comes up.
   After each logged session you get up to 3 questions on what you've read, with no spoilers. Podcasts, films and channels unlock their cards when finished.
 - **Flashcards & quizzes:** spaced-repetition flashcards, 10-question quizzes and a 60-second lightning round with streak multipliers.
