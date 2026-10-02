@@ -41,6 +41,15 @@ Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustaina
 
 Progress is saved in your browser on that device. Use **Export / Import backup** under Settings to move it.
 
+## Put it on your home screen
+
+The hub and study app install as one app, "Energy Brief". It has its own icon and works offline.
+
+- **Android (Chrome):** open the study app and tap **📲 Install app** on Home, or Chrome's **⋮ → Install app**.
+  Long-press the icon for shortcuts to Today's reading, Study and News.
+- **iPhone (Safari):** tap **Share → Add to Home Screen → Add**. If an **Open as Web App** switch appears, turn it **off**.
+  iOS keeps a full-screen web app's saved data separate from Safari, and notification taps always open Safari, so leaving it off keeps your progress in one place.
+
 ## Turn on delivery (pick one or more)
 
 Add these under **GitHub repo → Settings → Secrets and variables → Actions → New repository secret**.

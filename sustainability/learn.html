@@ -6,6 +6,15 @@
 <title>Energy Brief Study</title>
 <meta name="description" content="Track the sustainability books, podcasts and documentaries you finish, take notes, and review flashcards and quizzes to remember what you learned.">
 <meta name="theme-color" content="#0e0f11">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-title" content="Energy Brief">
+<script>
+  // On iPhone, notification taps always open in Safari, and a full-screen home-screen app keeps its
+  // saved data separate from Safari's. So on iOS we skip the manifest: the home-screen icon opens the
+  // page in Safari and your progress stays in one place.
+  if (!/iPhone|iPad|iPod/.test(navigator.userAgent) && !(navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1))
+    document.write('<link rel="manifest" href="manifest.webmanifest">');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -250,6 +259,14 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
 <main class="wrap">
   <!-- HOME -->
   <section class="view on" id="v-home">
+    <div class="card" id="installCard" hidden style="margin-bottom:12px;display:flex;gap:12px;align-items:flex-start">
+      <img src="icons/icon-192.png" alt="" style="width:48px;height:48px;border-radius:12px;flex-shrink:0">
+      <div style="flex:1;min-width:0">
+        <b>Put Energy Brief on your home screen</b>
+        <p class="small muted" id="installHow" style="margin-top:3px"></p>
+        <div class="row" style="margin-top:8px;gap:8px"><button class="btn sm primary" id="installBtn" hidden>📲 Install app</button><button class="btn sm" id="installLater">Not now</button></div>
+      </div>
+    </div>
     <div class="card hero">
       <div class="ring" aria-label="Daily goal progress">
         <svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="var(--surface2)" stroke-width="10"/><circle id="ringArc" cx="48" cy="48" r="40" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3" style="transition:stroke-dashoffset .6s"/></svg>
@@ -1349,6 +1366,26 @@ $("#testNotif").onclick = async () => {
 };
 renderTopic();
 
+/* "Add to home screen" card */
+const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const installed = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+let installEvt = null;
+function renderInstall(){
+  const card = $("#installCard");
+  if (installed || S.installDismissed) { card.hidden = true; card.style.display = "none"; return; }
+  card.hidden = false; card.style.display = "flex";
+  $("#installBtn").hidden = !installEvt;
+  $("#installHow").innerHTML = isIOS
+    ? `In Safari, tap <b>Share</b> <span aria-hidden="true">⬆︎</span> → <b>Add to Home Screen</b> → <b>Add</b>. If you see an <b>Open as Web App</b> switch, turn it <b>off</b>, so the icon and your reminder notifications share the same saved progress.`
+    : installEvt ? "Install it as an app: its own icon, full screen, and it works offline."
+    : `In Chrome, open the <b>⋮</b> menu → <b>Install app</b> (or <b>Add to Home screen</b>).`;
+}
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; renderInstall(); });
+addEventListener("appinstalled", () => { S.installDismissed = true; save(); renderInstall(); toast("📲 Installed! Find Energy Brief on your home screen"); });
+$("#installBtn").onclick = async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; renderInstall(); };
+$("#installLater").onclick = () => { S.installDismissed = true; save(); renderInstall(); };
+renderInstall();
+
 $("#saveKey").onclick = () => {
   const v = $("#apiKey").value.trim();
   if (v.startsWith("••")) return;
@@ -1376,6 +1413,7 @@ const start = location.hash.slice(1);
 tab(["home","library","study"].includes(start) ? start : "home");
 const params = new URLSearchParams(location.search), openId = params.get("item");
 if (openId && getItem(openId)) params.get("log") ? openLog(openId) : openItem(openId);
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js");
 </script>
 </body>
 </html>

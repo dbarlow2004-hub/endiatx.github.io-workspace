@@ -5,6 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Energy Brief</title>
 <meta name="description" content="Daily sustainability, renewable energy, energy price and net-zero news, plus books, audiobooks, podcasts, documentaries and companies to follow.">
+<meta name="theme-color" content="#0e0f11">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-title" content="Energy Brief">
+<script>
+  // On iPhone, notification taps always open in Safari, and a full-screen home-screen app keeps its
+  // saved data separate from Safari's. So on iOS we skip the manifest: the home-screen icon opens the
+  // page in Safari and your progress stays in one place.
+  if (!/iPhone|iPad|iPod/.test(navigator.userAgent) && !(navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1))
+    document.write('<link rel="manifest" href="manifest.webmanifest">');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -291,6 +301,7 @@ fetch("resources.json").then(r => r.json()).then(r => {
   $("#srclist").innerHTML = (r.sources||[]).map(s => card(s.name, "", s.why, [], s.url)).join("");
   $("#gloss").innerHTML = (r.glossary||[]).map(g => `<div><dt>${esc(g.term)}</dt><dd>${esc(g.def)}</dd></div>`).join("");
 });
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js");
 </script>
 </body>
 </html>
