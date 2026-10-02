@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Brief</title>
+<meta name="description" content="Daily sustainability, renewable energy, energy price and net-zero news, plus books, audiobooks, podcasts, documentaries and companies to follow.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --border:#dfe3dc; --text:#16201a; --muted:#5d6a61;
+  --accent:#0a8a6a; --accent-soft:#e2f3ec; --chip:#eef1ec; --warn:#a15c00;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e0f11; --surface:#16181c; --border:#2a2d35; --text:#e8eaf0; --muted:#8a909c;
+    --accent:#00e5c9; --accent-soft:#0f2b28; --chip:#1e2127; --warn:#ffd166;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e0f11; --surface:#16181c; --border:#2a2d35; --text:#e8eaf0; --muted:#8a909c;
+  --accent:#00e5c9; --accent-soft:#0f2b28; --chip:#1e2127; --warn:#ffd166;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;-webkit-text-size-adjust:100%}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.bar{display:flex;align-items:center;gap:12px;padding-top:12px;padding-bottom:12px}
+.logo{flex-shrink:0;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+nav::-webkit-scrollbar{display:none}
+nav a{font-size:13px;color:var(--muted);padding:6px 10px;border-radius:8px;white-space:nowrap}
+nav a:hover{background:var(--chip);color:var(--text);text-decoration:none}
+
+.hero{padding:36px 0 20px}
+.hero h1{font-size:clamp(26px,5vw,38px);line-height:1.15;letter-spacing:-.01em}
+.hero p{color:var(--muted);margin-top:8px;max-width:620px}
+
+section{padding:28px 0;border-top:1px solid var(--border)}
+section:first-of-type{border-top:none}
+h2{font-size:20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+h2 small{font-size:13px;font-weight:400;color:var(--muted)}
+.lede{color:var(--muted);font-size:14px;margin:6px 0 16px}
+
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.chip{font:inherit;font-size:13px;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:5px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.search{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);margin-bottom:10px}
+.search:focus{outline:2px solid var(--accent);outline-offset:-1px}
+
+.news{list-style:none;display:flex;flex-direction:column}
+.news li{padding:12px 0;border-bottom:1px solid var(--border)}
+.news a.t{font-weight:600;color:var(--text);font-size:15.5px;line-height:1.35}
+.news a.t:hover{color:var(--accent)}
+.meta{font-size:12.5px;color:var(--muted);margin-top:3px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.tag{background:var(--chip);border-radius:6px;padding:1px 7px;font-size:11.5px}
+.empty{color:var(--muted);font-size:14px;padding:16px 0}
+.more{margin-top:14px}
+.btn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--border);background:var(--surface);color:var(--text);padding:9px 14px;border-radius:10px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.card h3{font-size:15.5px;line-height:1.3}
+.card .by{font-size:13px;color:var(--muted)}
+.card p{font-size:13.5px;color:var(--text);opacity:.85;margin-top:4px}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:2px}
+.badge{font-size:11px;font-weight:600;letter-spacing:.02em;padding:2px 7px;border-radius:6px;background:var(--chip);color:var(--muted)}
+.badge.audio{background:var(--accent-soft);color:var(--accent)}
+.badge.lvl-Start{background:var(--accent-soft);color:var(--accent)}
+
+dl.gloss{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:720px){dl.gloss{grid-template-columns:1fr 1fr}}
+.gloss div{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.gloss dt{font-weight:700;font-size:14.5px}
+.gloss dd{font-size:13.5px;color:var(--muted);margin-top:3px}
+
+ol.plan{list-style:none;counter-reset:w;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+ol.plan li{counter-increment:w;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:13.5px}
+ol.plan li::before{content:"Week " counter(w);display:block;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+ol.plan b{display:block;font-size:14.5px;margin-bottom:2px}
+
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+td.tk{font-family:'Space Mono',monospace;font-size:12px;white-space:nowrap;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+@media (max-width:600px){ td.why{display:none} th.why{display:none} }
+
+footer{color:var(--muted);font-size:13px;padding:30px 0 50px;border-top:1px solid var(--border)}
+footer code{font-family:'Space Mono',monospace;font-size:12px;background:var(--chip);padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <span class="logo">Energy Brief</span>
+    <nav aria-label="Sections">
+      <a href="#latest">Latest</a>
+      <a href="#plan">Become a pro</a>
+      <a href="#glossary">Key concepts</a>
+      <a href="#books">Books</a>
+      <a href="#podcasts">Podcasts</a>
+      <a href="#watch">Watch</a>
+      <a href="#companies">Companies</a>
+      <a href="#sources">Sources</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Solar, renewables, energy prices &amp; net zero, every morning.</h1>
+    <p>Today's headlines from trade press and global news, sent to your phone daily, plus everything to read, hear and watch to know this field cold.</p>
+  </div>
+
+  <section id="latest">
+    <h2>Latest news <small id="updated"></small></h2>
+    <input class="search" id="q" type="search" placeholder="Search headlines (e.g. PJM, perovskite, Scope 3)" aria-label="Search headlines">
+    <div class="chips" id="topics" role="group" aria-label="Filter by topic"></div>
+    <ul class="news" id="news"></ul>
+    <div class="more"><button class="btn" id="more" hidden>Show more</button></div>
+  </section>
+
+  <section id="plan">
+    <h2>Become a pro in 4 weeks</h2>
+    <p class="lede">About an hour a day: one podcast on your commute, 20 pages, a skim of the morning brief.</p>
+    <ol class="plan">
+      <li><b>Foundations</b>Read <i>Not the End of the World</i>. Learn kW vs kWh, capacity factor, Scope 1/2/3. Subscribe to the Carbon Brief daily email.</li>
+      <li><b>Power &amp; prices</b>Read <i>The Grid</i> or <i>The Price Is Wrong</i>. Volts + Shift Key weekly. Look up your state's electricity price on EIA.</li>
+      <li><b>Solutions</b>Read <i>Electrify</i> and skim Drawdown's rankings. Watch <i>Breaking Boundaries</i>. Learn heat pump COP and LCOE.</li>
+      <li><b>Industry</b>Pick 5 companies below and read one earnings-call summary each. Catalyst + Open Circuit. Read <i>How the World Really Works</i>.</li>
+    </ol>
+  </section>
+
+  <section id="glossary">
+    <h2>Key concepts</h2>
+    <p class="lede">The vocabulary that comes up in every energy and sustainability conversation.</p>
+    <dl class="gloss" id="gloss"></dl>
+  </section>
+
+  <section id="books">
+    <h2>Books &amp; audiobooks <small>tip: borrow audiobooks free with your library card on Libby</small></h2>
+    <div class="chips" id="bookfilter" role="group" aria-label="Filter books">
+      <button class="chip" aria-pressed="true" data-f="all">All</button>
+      <button class="chip" aria-pressed="false" data-f="audio">Has audiobook</button>
+      <button class="chip" aria-pressed="false" data-f="Start here">Start here</button>
+      <button class="chip" aria-pressed="false" data-f="Pro">Pro level</button>
+    </div>
+    <div class="grid" id="booklist"></div>
+  </section>
+
+  <section id="podcasts">
+    <h2>Podcasts</h2>
+    <div class="grid" id="podlist"></div>
+  </section>
+
+  <section id="watch">
+    <h2>Documentaries &amp; YouTube</h2>
+    <div class="grid" id="doclist"></div>
+  </section>
+
+  <section id="companies">
+    <h2>Companies to follow</h2>
+    <p class="lede">Public tickers to watch on earnings days, and private companies leading new technologies.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Company</th><th>Ticker</th><th>Area</th><th class="why">Why follow</th></tr></thead>
+      <tbody id="colist"></tbody>
+    </table></div>
+  </section>
+
+  <section id="sources">
+    <h2>Data &amp; news sources</h2>
+    <p class="lede">Where professionals get their numbers. Bookmark these.</p>
+    <div class="grid" id="srclist"></div>
+  </section>
+
+  <footer>
+    The news list updates every morning when the brief is sent (<code>.github/workflows/sustainability-digest.yml</code>). Setup instructions are in <code>sustainability/README.md</code>.
+  </footer>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "#";
+
+function ago(iso){
+  if(!iso) return "";
+  const m = (Date.now() - new Date(iso)) / 60000;
+  if(m < 60) return Math.max(1, Math.round(m)) + "m ago";
+  if(m < 1440) return Math.round(m/60) + "h ago";
+  return Math.round(m/1440) + "d ago";
+}
+
+/* ---------- news ---------- */
+let articles = [], topic = "All", shown = 30;
+const PAGE = 30;
+
+function renderNews(){
+  const q = $("#q").value.trim().toLowerCase();
+  const list = articles.filter(a =>
+    (topic === "All" || (a.topics||[]).includes(topic)) &&
+    (!q || (a.title + " " + a.source + " " + (a.summary||"")).toLowerCase().includes(q)));
+  $("#news").innerHTML = list.slice(0, shown).map(a => `
+    <li><a class="t" href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">${esc(a.title)}</a>
+      <div class="meta"><span>${esc(a.source)}</span><span>·</span><span>${ago(a.published || a.added)}</span>
+        ${(a.topics||[]).slice(0,3).map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div></li>`).join("")
+    || `<li class="empty">${articles.length ? "No headlines match." : "No articles yet. The first brief will fill this in."}</li>`;
+  $("#more").hidden = list.length <= shown;
+}
+
+function renderTopics(){
+  const counts = {};
+  articles.forEach(a => (a.topics||[]).forEach(t => counts[t] = (counts[t]||0) + 1));
+  const names = ["All", ...Object.keys(counts).sort((a,b) => counts[b]-counts[a])];
+  $("#topics").innerHTML = names.map(n =>
+    `<button class="chip" aria-pressed="${n===topic}" data-t="${esc(n)}">${esc(n)}${n==="All"?"":` <span style="opacity:.6">${counts[n]}</span>`}</button>`).join("");
+}
+
+$("#topics").addEventListener("click", e => {
+  const b = e.target.closest("[data-t]"); if(!b) return;
+  topic = b.dataset.t; shown = PAGE; renderTopics(); renderNews();
+});
+$("#q").addEventListener("input", () => { shown = PAGE; renderNews(); });
+$("#more").addEventListener("click", () => { shown += PAGE; renderNews(); });
+
+fetch("feed.json", {cache:"no-cache"}).then(r => r.ok ? r.json() : {articles:[]}).catch(() => ({articles:[]})).then(d => {
+  articles = (d.articles || []).slice().sort((a,b) => (b.published||b.added||"").localeCompare(a.published||a.added||""));
+  if(d.updated) $("#updated").textContent = "updated " + ago(d.updated);
+  renderTopics(); renderNews();
+});
+
+/* ---------- resources ---------- */
+let books = [], bookFilter = "all";
+function card(title, by, why, badges, url){
+  const h = url ? `<a href="${esc(safeUrl(url))}" target="_blank" rel="noopener">${esc(title)}</a>` : esc(title);
+  return `<div class="card"><h3>${h}</h3>${by ? `<div class="by">${esc(by)}</div>` : ""}
+    ${badges.length ? `<div class="badges">${badges.join("")}</div>` : ""}<p>${esc(why)}</p></div>`;
+}
+function renderBooks(){
+  const list = books.filter(b => bookFilter === "all" || (bookFilter === "audio" ? b.audio : b.level === bookFilter));
+  $("#booklist").innerHTML = list.map(b => card(b.title, `${b.by} · ${b.year}`, b.why, [
+    `<span class="badge ${b.level==="Start here"?"lvl-Start":""}">${esc(b.level)}</span>`,
+    b.audio ? `<span class="badge audio">Audiobook</span>` : ""
+  ].filter(Boolean), b.url)).join("");
+}
+$("#bookfilter").addEventListener("click", e => {
+  const b = e.target.closest("[data-f]"); if(!b) return;
+  bookFilter = b.dataset.f;
+  document.querySelectorAll("#bookfilter .chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+  renderBooks();
+});
+
+fetch("resources.json").then(r => r.json()).then(r => {
+  books = r.books || []; renderBooks();
+  $("#podlist").innerHTML = (r.podcasts||[]).map(p => card(p.title, p.by, p.why, [], p.url)).join("");
+  $("#doclist").innerHTML = (r.documentaries||[]).map(d => card(d.title, [d.year, d.where].filter(Boolean).join(" · "), d.why, [], d.url)).join("");
+  $("#colist").innerHTML = (r.companies||[]).map(c =>
+    `<tr><td><b>${esc(c.name)}</b></td><td class="tk">${esc(c.ticker)}</td><td>${esc(c.sector)}</td><td class="why">${esc(c.why)}</td></tr>`).join("");
+  $("#srclist").innerHTML = (r.sources||[]).map(s => card(s.name, "", s.why, [], s.url)).join("");
+  $("#gloss").innerHTML = (r.glossary||[]).map(g => `<div><dt>${esc(g.term)}</dt><dd>${esc(g.def)}</dd></div>`).join("");
+});
+</script>
+</body>
+</html>
