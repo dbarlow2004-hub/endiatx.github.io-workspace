@@ -1,0 +1,58 @@
+name: Sustainability news digest
+
+on:
+  schedule:
+    # 11:45 UTC = 7:45am US Eastern (daylight time) / 6:45am (standard time)
+    - cron: "45 11 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sustainability-digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch articles and send digest
+        env:
+          DIGEST_URL: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustainability/
+          MAX_ITEMS: "5"
+          # Push notifications (ntfy app) - easiest option
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          # Real SMS via Twilio
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_FROM: ${{ secrets.TWILIO_FROM }}
+          SMS_TO: ${{ secrets.SMS_TO }}
+          # Email (Gmail app password)
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        run: python3 sustainability/digest.py
+
+      - name: Save feed for the hub page
+        run: |
+          git config user.name "sustainability-digest[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sustainability/feed.json
+          if git diff --cached --quiet; then
+            echo "No new articles."
+            exit 0
+          fi
+          git commit -m "Update sustainability news feed"
+          for i in 1 2 3; do
+            git pull --rebase origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1

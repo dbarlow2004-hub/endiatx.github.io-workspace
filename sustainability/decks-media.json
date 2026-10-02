@@ -1,0 +1,1897 @@
+{
+ "david-attenborough-a-life-on-our-planet": {
+  "summary": "David Attenborough's 'witness statement' tracing how wild nature has declined over his lifetime as human population and CO2 rose. It ends with a solutions vision built around rewilding the world.",
+  "takeaways": [
+   "Wild places shrank from about two-thirds to about one-third of the land in his lifetime",
+   "Biodiversity loss and climate change are linked crises",
+   "Rewilding land and sea can restore stability",
+   "Raising living standards, eating more plants and renewables are core fixes"
+  ],
+  "cards": [
+   {
+    "q": "Where does the film open, as a symbol of human-caused abandonment?",
+    "a": "The abandoned city of Pripyat near Chernobyl",
+    "explain": "The deserted town near Chernobyl frames the warning that human mistakes can make places uninhabitable.",
+    "wrong": [
+     "A melting glacier in Greenland",
+     "A burning forest in the Amazon",
+     "A flooded street in Miami"
+    ]
+   },
+   {
+    "q": "What does Attenborough call the film?",
+    "a": "His 'witness statement' for the natural world",
+    "explain": "He frames it as first-hand testimony of the decline he has seen across decades of filmmaking.",
+    "wrong": [
+     "His final scientific research paper",
+     "A manifesto for a political party",
+     "A history of the BBC Natural History Unit"
+    ]
+   },
+   {
+    "q": "Roughly how has remaining wilderness changed over his lifetime, per the film?",
+    "a": "From about two-thirds of land to about one-third",
+    "explain": "The film tracks world population, atmospheric CO2 and remaining wilderness at points in his life to show the trend.",
+    "wrong": [
+     "From about one-third of land to about one-half",
+     "Stayed roughly constant at about one-half",
+     "From nearly all land to under five percent"
+    ]
+   },
+   {
+    "q": "Why does the film stress the Holocene?",
+    "a": "Its stable climate allowed agriculture and civilization to flourish",
+    "explain": "The roughly 10,000-year Holocene was unusually stable; the film warns human activity is pushing Earth out of it.",
+    "wrong": [
+     "It was the era when dinosaurs went extinct",
+     "It was a period of rapid ice-age cycles",
+     "It is when fossil fuels first formed"
+    ]
+   },
+   {
+    "q": "What ocean solution does the film highlight?",
+    "a": "No-fishing zones that let fish stocks recover",
+    "explain": "Marine protected areas let populations rebuild and spill over into fished areas, as with the Palau example.",
+    "wrong": [
+     "Farming fish in floating offshore cages",
+     "Adding iron to the ocean to grow plankton",
+     "Banning all shipping on the high seas"
+    ]
+   },
+   {
+    "q": "How does the film suggest slowing population growth?",
+    "a": "Raising living standards, healthcare and education, especially for girls",
+    "explain": "Where people are healthier, wealthier and better educated, family sizes fall and population peaks sooner.",
+    "wrong": [
+     "Mandatory limits on children per family",
+     "Moving people to new cities on other continents",
+     "Reducing access to medical care"
+    ]
+   }
+  ]
+ },
+ "breaking-boundaries-the-science-of-our-planet": {
+  "summary": "Scientist Johan Rockstrom, with narration by David Attenborough, explains the planetary boundaries framework. It shows which Earth-system limits humanity has already crossed and what a 'safe operating space' requires.",
+  "takeaways": [
+   "There are nine planetary boundaries",
+   "Several, including climate and biodiversity, are already crossed",
+   "The ozone layer shows a boundary can be pulled back",
+   "Staying near Holocene conditions keeps Earth resilient"
+  ],
+  "cards": [
+   {
+    "q": "Which scientist presents the planetary boundaries in the film?",
+    "a": "Johan Rockstrom",
+    "explain": "Rockstrom led the team that proposed the planetary boundaries framework in 2009 at the Stockholm Resilience Centre.",
+    "wrong": [
+     "James Hansen",
+     "Michael Mann",
+     "Katharine Hayhoe"
+    ]
+   },
+   {
+    "q": "How many planetary boundaries does the framework define?",
+    "a": "Nine",
+    "explain": "They include climate change, biosphere integrity, land-system change, freshwater, biogeochemical flows, ozone, aerosols, ocean acidification and novel entities.",
+    "wrong": [
+     "Five",
+     "Twelve",
+     "Seventeen"
+    ]
+   },
+   {
+    "q": "What does the 'safe operating space' mean?",
+    "a": "The zone within the boundaries where Earth stays stable for humanity",
+    "explain": "Staying inside the boundaries keeps the planet close to the stable Holocene-like conditions civilization depends on.",
+    "wrong": [
+     "The area of land safe from sea-level rise",
+     "The emissions budget for a single country",
+     "The orbit range of climate satellites"
+    ]
+   },
+   {
+    "q": "Which boundary is presented as a success story of pulling back?",
+    "a": "Stratospheric ozone, thanks to the Montreal Protocol",
+    "explain": "Phasing out CFCs under the 1987 Montreal Protocol is letting the ozone layer recover.",
+    "wrong": [
+     "Climate change, thanks to the Kyoto Protocol",
+     "Biodiversity, thanks to global zoos",
+     "Freshwater, thanks to desalination"
+    ]
+   },
+   {
+    "q": "At the time of the film, how many boundaries were said to be crossed?",
+    "a": "Four, including climate change and biodiversity loss",
+    "explain": "The film cites climate, biodiversity, land-use change and nitrogen/phosphorus flows; a 2023 update said six were crossed.",
+    "wrong": [
+     "None yet, but all are close",
+     "All nine boundaries",
+     "Only one: climate change"
+    ]
+   },
+   {
+    "q": "Why are tipping points such as the Greenland ice sheet and Amazon a concern?",
+    "a": "Crossing them can trigger self-reinforcing, hard-to-reverse change",
+    "explain": "Once past a threshold, feedbacks can keep change going even if pressure is reduced.",
+    "wrong": [
+     "They only matter for local weather",
+     "They reverse quickly once emissions stop",
+     "They cool the planet as they change"
+    ]
+   }
+  ]
+ },
+ "before-the-flood": {
+  "summary": "Leonardo DiCaprio, as a UN Messenger of Peace on climate, travels the world meeting scientists, leaders and affected communities. It covers impacts, drivers like deforestation and beef, and solutions such as carbon pricing and clean energy.",
+  "takeaways": [
+   "Climate impacts are already visible from the Arctic to Miami",
+   "Deforestation for palm oil is a major emissions source",
+   "Diet, especially beef, matters for emissions",
+   "A price on carbon is a key policy lever"
+  ],
+  "cards": [
+   {
+    "q": "What does the title 'Before the Flood' refer to?",
+    "a": "A panel of Bosch's painting 'The Garden of Earthly Delights'",
+    "explain": "The painting, which hung over DiCaprio's crib, shows paradise turning to ruin - a metaphor for climate change.",
+    "wrong": [
+     "The biblical story of Noah's Ark only",
+     "A 2005 hurricane that flooded New Orleans",
+     "A UN report on sea-level rise"
+    ]
+   },
+   {
+    "q": "What does the film show happening to Indonesian rainforests?",
+    "a": "Burned and cleared for palm oil plantations",
+    "explain": "Clearing and burning forests and peatlands releases large amounts of carbon and destroys wildlife habitat.",
+    "wrong": [
+     "Protected as carbon offset reserves",
+     "Replaced by solar farms",
+     "Flooded by new hydropower dams"
+    ]
+   },
+   {
+    "q": "What point is raised in India about responsibility?",
+    "a": "Rich countries' high per-capita consumption versus energy access needs",
+    "explain": "The film highlights that hundreds of millions lack reliable power while wealthy nations consume far more per person.",
+    "wrong": [
+     "India alone must cut emissions first",
+     "Poor countries emit most per person",
+     "Energy access does not affect emissions"
+    ]
+   },
+   {
+    "q": "Why does the film single out beef?",
+    "a": "Cattle need lots of land and emit methane",
+    "explain": "Beef is far more land- and emissions-intensive than most foods, so dietary shifts can cut emissions.",
+    "wrong": [
+     "Beef farming absorbs more CO2 than it emits",
+     "Cattle are mostly raised on solar-powered farms",
+     "Beef has lower emissions than beans"
+    ]
+   },
+   {
+    "q": "What policy solution do economists in the film emphasize?",
+    "a": "A tax or price on carbon emissions",
+    "explain": "Pricing carbon makes polluters pay for damage and shifts markets toward clean options.",
+    "wrong": [
+     "Removing all fuel taxes",
+     "Subsidizing coal exports",
+     "Banning electric vehicles"
+    ]
+   },
+   {
+    "q": "What does the film show in Miami?",
+    "a": "Streets flooding at high tide as seas rise",
+    "explain": "Sea-level rise is causing 'sunny day' flooding, forcing costly road raising and pumps.",
+    "wrong": [
+     "Record snowfall closing highways",
+     "Drought emptying the city's reservoirs",
+     "A heat wave melting roads"
+    ]
+   }
+  ]
+ },
+ "an-inconvenient-sequel-truth-to-power": {
+  "summary": "A decade after An Inconvenient Truth, Al Gore trains climate leaders and works behind the scenes at the 2015 Paris talks. The film highlights worsening impacts alongside the rapid rise and falling cost of solar and wind.",
+  "takeaways": [
+   "Gore trains volunteer climate communicators worldwide",
+   "Solar and wind costs have fallen dramatically",
+   "Clean energy can win on economics, even in conservative places",
+   "The Paris Agreement aims for well below 2C"
+  ],
+  "cards": [
+   {
+    "q": "What major activity of Al Gore does the film follow?",
+    "a": "Training climate leaders through the Climate Reality Project",
+    "explain": "Gore runs trainings that teach volunteers to give climate presentations in their own communities.",
+    "wrong": [
+     "Running for US president again",
+     "Building solar factories in Ohio",
+     "Leading the IPCC science reports"
+    ]
+   },
+   {
+    "q": "Why did Georgetown, Texas move to 100% renewable power in the film?",
+    "a": "Its Republican mayor saw lower, stable prices",
+    "explain": "The city's choice was driven by long-term price certainty from wind and solar contracts, not ideology.",
+    "wrong": [
+     "A federal mandate forced the change",
+     "It lost access to all natural gas",
+     "A climate activist group bought the utility"
+    ]
+   },
+   {
+    "q": "What was a key sticking point with India at the Paris talks?",
+    "a": "Access to solar technology and financing",
+    "explain": "India needed affordable clean-energy tech and finance; Gore helped broker solar technology access.",
+    "wrong": [
+     "India demanded a ban on coal worldwide",
+     "India refused to attend the conference",
+     "India wanted nuclear weapons talks"
+    ]
+   },
+   {
+    "q": "Which earlier prediction does the film say came true in 2012?",
+    "a": "Storm surge flooding the World Trade Center memorial site",
+    "explain": "Hurricane Sandy flooded lower Manhattan, including the 9/11 site Gore had warned about in the first film.",
+    "wrong": [
+     "Arctic sea ice disappearing entirely",
+     "A Category 5 hurricane hitting London",
+     "Sea levels rising ten meters"
+    ]
+   },
+   {
+    "q": "What trend in clean energy does the film celebrate?",
+    "a": "Rapidly falling costs and rising deployment of solar and wind",
+    "explain": "Solar and wind became competitive with fossil power, making the transition economically attractive.",
+    "wrong": [
+     "Rising costs of solar panels",
+     "Nuclear replacing all coal plants",
+     "Decline of electric vehicles"
+    ]
+   },
+   {
+    "q": "What temperature goal came out of the Paris Agreement?",
+    "a": "Well below 2C, pursuing 1.5C",
+    "explain": "Parties agreed to hold warming well below 2C above pre-industrial and pursue efforts to limit it to 1.5C.",
+    "wrong": [
+     "Exactly 3C by 2100",
+     "Below 0.5C by 2030",
+     "No temperature goal was set"
+    ]
+   }
+  ]
+ },
+ "2040": {
+  "summary": "Director Damon Gameau imagines the world his daughter could grow up in by 2040 if solutions that already exist today were fully scaled. It covers decentralized energy, transport, regenerative farming, ocean solutions and empowering women.",
+  "takeaways": [
+   "Only solutions available today are used",
+   "Rooftop solar microgrids can share power peer to peer",
+   "Shared electric transport can free up city space",
+   "Regenerative farming and seaweed can draw down carbon"
+  ],
+  "cards": [
+   {
+    "q": "What rule does the film set for imagining 2040?",
+    "a": "Only use solutions that already exist today",
+    "explain": "Gameau avoids speculative tech, showing what could happen by scaling current solutions.",
+    "wrong": [
+     "Assume fusion power is invented",
+     "Assume humans colonize Mars",
+     "Only use solutions invented after 2030"
+    ]
+   },
+   {
+    "q": "What framing device does the director use?",
+    "a": "A visual letter to his young daughter",
+    "explain": "The film is structured as a message to his daughter about the future she could inherit.",
+    "wrong": [
+     "A debate between two politicians",
+     "A courtroom trial of oil companies",
+     "A diary written by a future robot"
+    ]
+   },
+   {
+    "q": "What energy model does the film show from Bangladesh?",
+    "a": "Home solar microgrids with peer-to-peer power trading",
+    "explain": "Households with small solar systems trade surplus electricity with neighbors, bringing power without a central grid.",
+    "wrong": [
+     "Large coal plants feeding a national grid",
+     "Diesel generators in every village",
+     "Offshore wind farms owned by the state"
+    ]
+   },
+   {
+    "q": "How does the film imagine transport changing?",
+    "a": "Shared, electric, autonomous vehicles reducing car ownership",
+    "explain": "Fewer private cars frees streets and parking for people and green space.",
+    "wrong": [
+     "Everyone owning two private gasoline cars",
+     "Hydrogen airplanes for daily commutes",
+     "Banning all bicycles from cities"
+    ]
+   },
+   {
+    "q": "What ocean solution is featured?",
+    "a": "Marine permaculture: seaweed or kelp platforms",
+    "explain": "Growing seaweed can provide food and habitat and absorb carbon while restoring ocean ecosystems.",
+    "wrong": [
+     "Dumping limestone on coral reefs",
+     "Draining coastal wetlands for farms",
+     "Building more deep-sea oil rigs"
+    ]
+   },
+   {
+    "q": "Which social solution does the film present as a climate solution?",
+    "a": "Educating girls and empowering women",
+    "explain": "Education and access to family planning improve lives and lower population growth, a solution also ranked by Project Drawdown.",
+    "wrong": [
+     "Lowering the voting age to twelve",
+     "Banning international travel",
+     "Closing schools to save energy"
+    ]
+   }
+  ]
+ },
+ "kiss-the-ground": {
+  "summary": "Narrated by Woody Harrelson, the film argues that regenerative agriculture can rebuild soil health and pull carbon from the air into the ground. It covers no-till, cover crops, grazing and composting.",
+  "takeaways": [
+   "Healthy soil can store carbon drawn down by plants",
+   "Tillage and bare soil release carbon and cause erosion",
+   "Cover crops and diverse rotations keep soil alive",
+   "The scale and permanence of soil carbon are debated"
+  ],
+  "cards": [
+   {
+    "q": "What is the film's central claim about soil?",
+    "a": "Healthy soil can pull carbon from the atmosphere and store it",
+    "explain": "Plants capture CO2 by photosynthesis and pass carbon to soil through roots and microbes.",
+    "wrong": [
+     "Soil emits no carbon under any conditions",
+     "Soil only matters for growing food",
+     "Soil carbon cannot be changed by farming"
+    ]
+   },
+   {
+    "q": "Which conventional practice does the film say degrades soil carbon?",
+    "a": "Repeated tillage or plowing",
+    "explain": "Plowing breaks up soil structure, exposes organic matter to oxidation and increases erosion.",
+    "wrong": [
+     "Planting cover crops",
+     "Leaving crop residue on fields",
+     "Rotating diverse crops"
+    ]
+   },
+   {
+    "q": "Why does the film promote cover crops?",
+    "a": "They keep living roots and soil covered year-round",
+    "explain": "Cover crops reduce erosion, feed soil microbes and add organic matter between cash crops.",
+    "wrong": [
+     "They replace the need for any harvest",
+     "They are sprayed to kill soil microbes",
+     "They keep fields bare and dry"
+    ]
+   },
+   {
+    "q": "What historical disaster does the film use as a warning?",
+    "a": "The 1930s Dust Bowl",
+    "explain": "Plowed, drought-stricken Great Plains soils blew away, showing what happens when soil is degraded.",
+    "wrong": [
+     "The 2010 Gulf oil spill",
+     "The 1986 Chernobyl accident",
+     "The 2004 Indian Ocean tsunami"
+    ]
+   },
+   {
+    "q": "Which idea in the film is notably contested by scientists?",
+    "a": "That managed grazing can reverse desertification at large scale",
+    "explain": "Holistic planned grazing is promoted in the film, but evidence for large-scale carbon gains is debated.",
+    "wrong": [
+     "That plants absorb CO2",
+     "That erosion removes topsoil",
+     "That composting reduces landfill waste"
+    ]
+   },
+   {
+    "q": "What urban practice does the film highlight?",
+    "a": "City composting that returns food scraps to farms",
+    "explain": "San Francisco's program turns organic waste into compost that builds farm soil.",
+    "wrong": [
+     "Burning food waste to make electricity",
+     "Shipping trash to other countries",
+     "Paving parks to reduce mud"
+    ]
+   }
+  ]
+ },
+ "chasing-coral": {
+  "summary": "Divers, scientists and photographers use custom time-lapse cameras to document coral bleaching during a global mass bleaching event. It makes ocean warming visible and shows what is at stake for reefs.",
+  "takeaways": [
+   "Bleaching is corals expelling algae under heat stress",
+   "Oceans absorb over 90% of excess heat",
+   "Repeated marine heatwaves are killing reefs worldwide",
+   "Reefs support a huge share of marine life"
+  ],
+  "cards": [
+   {
+    "q": "What is coral bleaching?",
+    "a": "Corals expelling their symbiotic algae under heat stress",
+    "explain": "Without the algae that feed them and give color, corals turn white and can starve if heat persists.",
+    "wrong": [
+     "Corals being covered by sand",
+     "Corals turning white from pollution dye",
+     "Corals growing too fast in warm water"
+    ]
+   },
+   {
+    "q": "Is a bleached coral already dead?",
+    "a": "No, it can recover if temperatures drop soon enough",
+    "explain": "Bleaching is a stress response; prolonged or repeated heat leads to death.",
+    "wrong": [
+     "Yes, bleaching means instant death",
+     "Yes, and it cannot regrow anywhere nearby",
+     "No, bleaching makes corals stronger"
+    ]
+   },
+   {
+    "q": "How did the team document bleaching?",
+    "a": "Custom underwater time-lapse cameras",
+    "explain": "Time-lapse imagery showed reefs bleaching and dying over weeks, making change visible.",
+    "wrong": [
+     "Satellite images only",
+     "Interviews with fishermen only",
+     "Computer simulations only"
+    ]
+   },
+   {
+    "q": "Roughly how much of the extra heat from global warming do oceans absorb?",
+    "a": "Over 90%",
+    "explain": "The ocean is the main heat sink of the climate system, driving marine heatwaves.",
+    "wrong": [
+     "About 10%",
+     "About 25%",
+     "About 50%"
+    ]
+   },
+   {
+    "q": "Which major event does the film capture?",
+    "a": "The 2014-2017 global mass bleaching, including the Great Barrier Reef",
+    "explain": "In 2016 heat stress caused severe bleaching across large parts of the Great Barrier Reef.",
+    "wrong": [
+     "The 1998 discovery of new reefs",
+     "An oil spill in the Caribbean",
+     "A 2010 tsunami damaging reefs"
+    ]
+   },
+   {
+    "q": "Why do reefs matter so much for ocean life?",
+    "a": "They cover under 1% of the seafloor but host about a quarter of marine species",
+    "explain": "Reefs are biodiversity hotspots that also support fisheries, tourism and coastal protection.",
+    "wrong": [
+     "They produce most of Earth's oxygen",
+     "They store most ocean carbon",
+     "They host very few species"
+    ]
+   }
+  ]
+ },
+ "ice-on-fire": {
+  "summary": "An HBO documentary produced and narrated by Leonardo DiCaprio that focuses on drawing carbon down, not just cutting emissions. It covers Arctic methane risks and solutions like direct air capture, biochar and ocean kelp.",
+  "takeaways": [
+   "Cutting emissions is necessary but not sufficient",
+   "Thawing permafrost can release methane and CO2",
+   "Direct air capture, biochar and kelp can remove carbon",
+   "Methane is a powerful short-lived greenhouse gas"
+  ],
+  "cards": [
+   {
+    "q": "What is the film's central message?",
+    "a": "We must cut emissions and also draw carbon down",
+    "explain": "The film argues that removal and natural sinks are needed alongside rapid emissions cuts.",
+    "wrong": [
+     "Cutting emissions alone is enough",
+     "Adaptation makes mitigation unnecessary",
+     "Only nuclear power can help"
+    ]
+   },
+   {
+    "q": "What Arctic risk does the film highlight?",
+    "a": "Thawing permafrost releasing methane and CO2",
+    "explain": "Warming permafrost can release stored carbon, creating a feedback that amplifies warming.",
+    "wrong": [
+     "Arctic ice growing thicker each year",
+     "Polar bears increasing emissions",
+     "Arctic volcanoes cooling the planet"
+    ]
+   },
+   {
+    "q": "What does direct air capture do?",
+    "a": "Uses machines and sorbents to pull CO2 from ambient air",
+    "explain": "Companies like Climeworks capture CO2 from air for storage or use; it remains costly and energy-intensive.",
+    "wrong": [
+     "Filters smoke from factory chimneys only",
+     "Turns CO2 directly into oxygen",
+     "Captures methane from cows' breath"
+    ]
+   },
+   {
+    "q": "What is biochar?",
+    "a": "Charcoal made from biomass that stores carbon in soil",
+    "explain": "Heating biomass with little oxygen (pyrolysis) makes a stable carbon form that can last long in soil.",
+    "wrong": [
+     "A coal-based fertilizer",
+     "A biofuel for jet engines",
+     "Ash from burning trash"
+    ]
+   },
+   {
+    "q": "Why does the film feature kelp and seaweed?",
+    "a": "Ocean forests absorb carbon and restore marine ecosystems",
+    "explain": "Kelp grows fast, takes up carbon and can reduce local acidity while supporting sea life.",
+    "wrong": [
+     "They replace the need for fish",
+     "They block sunlight to cool the sea",
+     "They produce oil for fuel tanks"
+    ]
+   },
+   {
+    "q": "Why is methane a priority in the film?",
+    "a": "It traps far more heat than CO2 over the short term",
+    "explain": "Methane is tens of times more potent than CO2 per ton, so cutting it slows near-term warming.",
+    "wrong": [
+     "It lasts longer in the air than CO2",
+     "It cools the climate",
+     "It is harmless in the atmosphere"
+    ]
+   }
+  ]
+ },
+ "climate-town": {
+  "summary": "A comedic YouTube channel by Rollie Williams explaining how energy, utilities, plastics and marketing shape climate outcomes. It focuses on systems, incentives and greenwashing rather than personal guilt.",
+  "takeaways": [
+   "Utility profit models shape grid decisions",
+   "Most plastic is not actually recycled",
+   "Greenwashing hides real impacts",
+   "Policy and system design matter more than guilt"
+  ],
+  "cards": [
+   {
+    "q": "How do US investor-owned utilities mainly earn profits?",
+    "a": "A regulated rate of return on capital they invest",
+    "explain": "Regulators let them earn a return on the 'rate base', so building more infrastructure tends to increase profit.",
+    "wrong": [
+     "Selling as much fuel as possible to drivers",
+     "Charity donations from customers",
+     "Government grants each year"
+    ]
+   },
+   {
+    "q": "Roughly what share of US plastic waste gets recycled?",
+    "a": "Less than 10%",
+    "explain": "Most plastic is landfilled or burned; many plastic types have no viable recycling market.",
+    "wrong": [
+     "About 50%",
+     "About 75%",
+     "Nearly 100%"
+    ]
+   },
+   {
+    "q": "What is greenwashing?",
+    "a": "Misleading claims that make something seem more eco-friendly",
+    "explain": "Vague labels, cherry-picked data and offset-based claims can hide real environmental impacts.",
+    "wrong": [
+     "Washing clothes in cold water",
+     "Painting buildings green to cool them",
+     "Planting trees around factories"
+    ]
+   },
+   {
+    "q": "Which oil company helped popularize the 'personal carbon footprint'?",
+    "a": "BP, through a mid-2000s ad campaign",
+    "explain": "Critics argue the campaign shifted focus from producers to individual consumers.",
+    "wrong": [
+     "Tesla, through a 2015 car launch",
+     "The UN, through the Kyoto Protocol",
+     "Greenpeace, through a 1970s protest"
+    ]
+   },
+   {
+    "q": "How do parking minimums affect emissions?",
+    "a": "They force extra parking that encourages car dependence",
+    "explain": "Required off-street parking spreads cities out and makes driving the default.",
+    "wrong": [
+     "They reduce driving by limiting cars",
+     "They require solar on every lot",
+     "They have no effect on land use"
+    ]
+   },
+   {
+    "q": "What indoor air concern is raised about gas stoves?",
+    "a": "They emit pollutants like nitrogen dioxide indoors",
+    "explain": "Burning gas releases NO2 and other pollutants linked to respiratory problems, plus methane leaks.",
+    "wrong": [
+     "They emit radiation like microwaves",
+     "They release no combustion products",
+     "They purify indoor air"
+    ]
+   }
+  ]
+ },
+ "technology-connections": {
+  "summary": "Alec Watson's channel explains how everyday appliances really work and use energy. Signature topics include heat pumps, why resistive heating is COP 1, and the refrigeration cycle.",
+  "takeaways": [
+   "Resistive heating turns 1 unit of electricity into 1 unit of heat",
+   "Heat pumps move heat, delivering several units per unit of power",
+   "Refrigerators and air conditioners are heat pumps",
+   "Heat pumps keep working in cold weather, with lower efficiency"
+  ],
+  "cards": [
+   {
+    "q": "Why is resistive electric heating said to have a COP of 1?",
+    "a": "Each unit of electricity becomes exactly one unit of heat",
+    "explain": "Resistive heaters are nearly 100% efficient at making heat, but cannot deliver more heat than the energy put in.",
+    "wrong": [
+     "Half the electricity is lost as light",
+     "It makes three units of heat per unit",
+     "It only works above freezing"
+    ]
+   },
+   {
+    "q": "How can a heat pump deliver more heat than the electricity it uses?",
+    "a": "It moves existing heat from outside rather than creating it",
+    "explain": "Electricity runs a compressor that transfers heat, so delivered heat exceeds input energy (COP above 1).",
+    "wrong": [
+     "It burns a hidden fuel tank",
+     "It breaks the laws of thermodynamics",
+     "It stores heat from summer"
+    ]
+   },
+   {
+    "q": "In a heat pump cycle, what happens when refrigerant evaporates?",
+    "a": "It absorbs heat from its surroundings",
+    "explain": "The refrigerant boils at low pressure to absorb heat, then is compressed and condenses to release it elsewhere.",
+    "wrong": [
+     "It releases heat into the room",
+     "It turns into electricity",
+     "It stops the compressor"
+    ]
+   },
+   {
+    "q": "Can air-source heat pumps work when it is below freezing outside?",
+    "a": "Yes, though efficiency falls as it gets colder",
+    "explain": "Cold air still contains heat; modern cold-climate units work well below freezing at reduced COP.",
+    "wrong": [
+     "No, they stop working below 10C",
+     "Yes, and they get more efficient",
+     "Only if a gas furnace runs too"
+    ]
+   },
+   {
+    "q": "Why is a refrigerator a heat pump?",
+    "a": "It moves heat out of the box and releases it into the room",
+    "explain": "The same refrigeration cycle that cools a fridge can heat a home when run the other way.",
+    "wrong": [
+     "It creates cold using ice",
+     "It destroys heat inside the box",
+     "It vents cold air outdoors"
+    ]
+   },
+   {
+    "q": "Why are heat pump water heaters more efficient than resistive tanks?",
+    "a": "They move heat from the air into the water",
+    "explain": "Moving heat lets them use roughly a third or less of the electricity of standard electric tanks.",
+    "wrong": [
+     "They boil water using gas",
+     "They heat water only at night",
+     "They use thinner pipes"
+    ]
+   }
+  ]
+ },
+ "engineering-with-rosie": {
+  "summary": "An engineer explains how renewables, storage and the power grid actually work. Topics include grid frequency and inertia, pumped hydro, hydrogen, offshore wind and transmission.",
+  "takeaways": [
+   "Grid supply and demand must balance every second",
+   "Pumped hydro is the largest form of grid storage",
+   "Hydrogen loses much of its energy in conversion",
+   "High-voltage lines move power long distances efficiently"
+  ],
+  "cards": [
+   {
+    "q": "Why must a power grid keep frequency near 50 or 60 Hz?",
+    "a": "Frequency drifts when supply and demand fall out of balance",
+    "explain": "Operators keep generation matched to load; large deviations can trip equipment and cause blackouts.",
+    "wrong": [
+     "Frequency sets the price of power",
+     "Frequency controls the voltage of solar panels",
+     "Frequency is fixed by law and never moves"
+    ]
+   },
+   {
+    "q": "What is grid inertia?",
+    "a": "Energy in spinning generators that resists sudden frequency changes",
+    "explain": "Heavy turbines slow frequency changes; inverter-based solar and wind need grid-forming controls to provide similar support.",
+    "wrong": [
+     "The time it takes to build a power plant",
+     "Resistance of wires to current",
+     "The delay in customer billing"
+    ]
+   },
+   {
+    "q": "How does pumped hydro storage work?",
+    "a": "Pumps water uphill when power is cheap and releases it through turbines later",
+    "explain": "It is the largest form of grid-scale energy storage worldwide by capacity.",
+    "wrong": [
+     "Stores electricity inside water molecules",
+     "Freezes water to store energy",
+     "Burns hydrogen from water"
+    ]
+   },
+   {
+    "q": "Why is green hydrogen less efficient than using electricity directly?",
+    "a": "Much energy is lost in electrolysis, compression and conversion back",
+    "explain": "Round-trip power-to-hydrogen-to-power typically recovers well under half of the input energy.",
+    "wrong": [
+     "Hydrogen produces more energy than it takes",
+     "Electrolysis needs no electricity",
+     "Hydrogen cannot be stored at all"
+    ]
+   },
+   {
+    "q": "Why build wind turbines offshore?",
+    "a": "Winds are stronger and steadier at sea",
+    "explain": "Offshore sites give higher capacity factors; floating platforms open deeper waters.",
+    "wrong": [
+     "Seawater cools the blades for free",
+     "Offshore turbines need no maintenance",
+     "Waves generate most of the power"
+    ]
+   },
+   {
+    "q": "Why use high-voltage DC lines for long-distance transmission?",
+    "a": "Lower losses over long distances and undersea cables",
+    "explain": "HVDC loses less energy over very long runs and allows linking unsynchronized grids.",
+    "wrong": [
+     "DC power cannot be converted",
+     "They are cheaper for short distances",
+     "They work without any cables"
+    ]
+   }
+  ]
+ },
+ "undecided-with-matt-ferrell": {
+  "summary": "Matt Ferrell reviews home solar, batteries and emerging energy technology with real-world numbers. Recurring topics include payback math, net metering, battery chemistries and bidirectional charging.",
+  "takeaways": [
+   "Solar payback depends on rates, incentives and export policy",
+   "Weaker net metering favors adding batteries",
+   "LFP batteries trade energy density for safety and cycle life",
+   "EVs can power homes with bidirectional charging"
+  ],
+  "cards": [
+   {
+    "q": "What mainly determines a home solar system's payback time?",
+    "a": "Electricity rates, upfront cost, incentives and export credit policy",
+    "explain": "High rates and good export credits shorten payback; weak incentives or low rates lengthen it.",
+    "wrong": [
+     "The color of the roof",
+     "The brand of inverter only",
+     "The number of people in the house"
+    ]
+   },
+   {
+    "q": "What is net metering?",
+    "a": "Credit for exported solar at or near the retail rate",
+    "explain": "Under net metering the meter effectively runs backward; net billing pays a lower export rate.",
+    "wrong": [
+     "A fee for disconnecting from the grid",
+     "A cap on how much power you use",
+     "A tax on home batteries"
+    ]
+   },
+   {
+    "q": "Why do lower export credits (like California's NEM 3.0) favor home batteries?",
+    "a": "Storing solar for self-use is worth more than exporting it",
+    "explain": "When exports earn little, shifting solar to evening use avoids buying expensive grid power.",
+    "wrong": [
+     "Batteries become free under the rules",
+     "Exports become banned entirely",
+     "Solar panels stop working at night"
+    ]
+   },
+   {
+    "q": "How does LFP compare with NMC battery chemistry?",
+    "a": "Safer and longer-lasting but less energy dense",
+    "explain": "Lithium iron phosphate avoids nickel and cobalt and has more cycles, making it popular for homes and grid storage.",
+    "wrong": [
+     "More energy dense but less safe",
+     "Uses more cobalt and nickel",
+     "Cannot be recharged"
+    ]
+   },
+   {
+    "q": "What is the main appeal of sodium-ion batteries?",
+    "a": "Abundant, cheap materials, despite lower energy density",
+    "explain": "Sodium is plentiful, so these cells suit stationary storage and low-cost vehicles.",
+    "wrong": [
+     "Highest energy density of any battery",
+     "They need rare earth metals",
+     "They never degrade at all"
+    ]
+   },
+   {
+    "q": "What does bidirectional (V2H/V2G) charging allow?",
+    "a": "An EV to send power back to a home or the grid",
+    "explain": "Vehicle-to-home can provide backup power; vehicle-to-grid can support the grid at peak times.",
+    "wrong": [
+     "Charging two cars from one plug",
+     "Driving while charging wirelessly",
+     "Charging an EV from gasoline"
+    ]
+   }
+  ]
+ },
+ "volts": {
+  "summary": "David Roberts' deeply wonky interview show on clean energy, the grid and policy. Core themes include electrifying everything, grid bottlenecks like interconnection and transmission, and distributed energy.",
+  "takeaways": [
+   "Electrifying end uses cuts energy waste and emissions",
+   "Interconnection queues and transmission are key bottlenecks",
+   "Virtual power plants can stand in for new plants",
+   "Existing grids can carry more with smarter tech"
+  ],
+  "cards": [
+   {
+    "q": "Why does 'electrify everything' reduce emissions?",
+    "a": "Electric motors and heat pumps are efficient and the grid keeps getting cleaner",
+    "explain": "Replacing combustion in cars, buildings and industry cuts energy waste and lets clean power reach every use.",
+    "wrong": [
+     "Electricity is always made from renewables",
+     "Burning fuel is more efficient than motors",
+     "It only reduces local noise"
+    ]
+   },
+   {
+    "q": "Why are interconnection queues a bottleneck?",
+    "a": "Projects wait years for grid studies and upgrade costs",
+    "explain": "Large backlogs of proposed generation and storage slow deployment, and many projects drop out.",
+    "wrong": [
+     "There are too few solar panels to install",
+     "Utilities refuse to buy any power",
+     "Projects need no grid studies"
+    ]
+   },
+   {
+    "q": "Why is new transmission so hard to build in the US?",
+    "a": "Multi-state permitting and fights over who pays",
+    "explain": "Long lines cross many jurisdictions and landowners, and cost allocation is contentious.",
+    "wrong": [
+     "Wire is in short global supply",
+     "Transmission is banned by federal law",
+     "Power cannot travel over 50 miles"
+    ]
+   },
+   {
+    "q": "What is a virtual power plant?",
+    "a": "Many distributed devices coordinated to act like a power plant",
+    "explain": "Aggregated batteries, thermostats, EV chargers and solar can supply or reduce demand on command.",
+    "wrong": [
+     "A simulated power plant in software only",
+     "A plant run remotely by robots",
+     "A power plant on a ship"
+    ]
+   },
+   {
+    "q": "What are grid-enhancing technologies and reconductoring?",
+    "a": "Ways to carry more power on existing lines",
+    "explain": "Dynamic line ratings, power-flow controls and advanced conductors expand capacity faster than new lines.",
+    "wrong": [
+     "Building new coal plants near cities",
+     "Burying all power lines underground",
+     "Reducing voltage to save money"
+    ]
+   }
+  ]
+ },
+ "shift-key": {
+  "summary": "Heatmap's weekly show with Robinson Meyer and Princeton modeler Jesse Jenkins on energy and climate policy. It focuses on energy-system modeling, US clean-energy tax credits and their 2025 rollback, and rising power demand.",
+  "takeaways": [
+   "Energy models estimate how policy changes emissions and costs",
+   "The IRA drove clean energy mainly through tax credits",
+   "The 2025 law phases down wind and solar credits",
+   "Clean firm power lowers the cost of deep decarbonization"
+  ],
+  "cards": [
+   {
+    "q": "What do energy-system models like Princeton's REPEAT project do?",
+    "a": "Estimate how policies change emissions, costs and the energy mix",
+    "explain": "Modeling simulates investment and operations to project outcomes under different policies.",
+    "wrong": [
+     "Measure the weather in real time",
+     "Set electricity prices by law",
+     "Count solar panels by satellite"
+    ]
+   },
+   {
+    "q": "How did the 2022 Inflation Reduction Act mainly support clean energy?",
+    "a": "Long-term tax credits for clean power, EVs and manufacturing",
+    "explain": "It was the largest US climate law, largely built on production and investment tax credits.",
+    "wrong": [
+     "A national carbon tax",
+     "A ban on gasoline cars",
+     "A cap on all utility emissions"
+    ]
+   },
+   {
+    "q": "Under the July 2025 US law, how must wind and solar qualify for credits?",
+    "a": "Begin construction by July 4, 2026, or be in service by end of 2027",
+    "explain": "The law phases down wind and solar credits; projects missing these deadlines lose eligibility.",
+    "wrong": [
+     "Be in service by end of 2035",
+     "Begin construction by 2030",
+     "Credits were extended to 2040"
+    ]
+   },
+   {
+    "q": "Which clean-energy credits survived longer under the 2025 law?",
+    "a": "Storage, nuclear and geothermal",
+    "explain": "Firm and storage resources kept credits longer than wind and solar.",
+    "wrong": [
+     "Rooftop solar and onshore wind",
+     "Offshore wind only",
+     "Coal with no capture"
+    ]
+   },
+   {
+    "q": "Why is 'clean firm power' valued in decarbonization studies?",
+    "a": "It runs on demand without emissions, cutting system costs",
+    "explain": "Resources like geothermal, nuclear or gas with capture complement variable renewables and lower total costs.",
+    "wrong": [
+     "It runs only when the sun shines",
+     "It is cheaper than all other options always",
+     "It replaces the need for any grid"
+    ]
+   }
+  ]
+ },
+ "catalyst-with-shayle-kann": {
+  "summary": "Latitude Media's deep-dive show on clean-tech technologies and investing. It explores storage, geothermal, nuclear, data-center power and how new tech gets cheaper.",
+  "takeaways": [
+   "Long-duration storage targets multi-day gaps",
+   "Enhanced geothermal borrows oil and gas drilling tech",
+   "Small modular reactors aim to cut cost through repetition",
+   "Data centers need power faster than the grid can add it"
+  ],
+  "cards": [
+   {
+    "q": "What does 'long-duration energy storage' usually mean?",
+    "a": "Storage lasting beyond about 8-10 hours, up to days",
+    "explain": "Technologies like iron-air batteries aim to cover longer gaps than typical 2-4 hour lithium batteries.",
+    "wrong": [
+     "Batteries that last 50 years",
+     "Storage under one hour",
+     "Storage in gasoline tanks"
+    ]
+   },
+   {
+    "q": "How does enhanced geothermal differ from conventional geothermal?",
+    "a": "It creates reservoirs in hot rock using drilling and fracturing",
+    "explain": "Horizontal drilling and stimulation from oil and gas open geothermal to far more locations.",
+    "wrong": [
+     "It uses volcanoes only",
+     "It burns underground coal",
+     "It needs no drilling"
+    ]
+   },
+   {
+    "q": "What is the pitch for small modular reactors?",
+    "a": "Factory-built, repeatable units to cut cost and build time",
+    "explain": "The goal is learning by repetition; costs at scale are still unproven.",
+    "wrong": [
+     "They use no nuclear fuel",
+     "They are already the cheapest power",
+     "They run only on solar heat"
+    ]
+   },
+   {
+    "q": "What is the core power challenge for new data centers?",
+    "a": "Getting large amounts of power connected quickly",
+    "explain": "'Speed to power' drives on-site generation, flexible operation and new grid deals.",
+    "wrong": [
+     "Data centers need almost no power",
+     "Too much water in the grid",
+     "Power is too cheap to sell"
+    ]
+   },
+   {
+    "q": "What does a learning curve (Wright's law) predict?",
+    "a": "Costs fall by a steady percentage per doubling of production",
+    "explain": "This pattern explains falling solar, battery and wind costs as deployment grows.",
+    "wrong": [
+     "Costs rise with each new unit built",
+     "Costs fall only with new laws",
+     "Costs stay fixed forever"
+    ]
+   }
+  ]
+ },
+ "open-circuit": {
+  "summary": "Latitude Media's weekly roundtable on the business news of the energy transition. Common themes include utility bills, load growth, data-center deals, tariffs and project finance.",
+  "takeaways": [
+   "Rising bills often stem from wires, not fuel",
+   "Load forecasts include speculative data-center requests",
+   "Tariffs and trade rules change project economics",
+   "Tax credit transferability reshaped financing"
+  ],
+  "cards": [
+   {
+    "q": "Why have many US utility bills been rising?",
+    "a": "Higher grid infrastructure, capacity and fuel costs",
+    "explain": "Transmission and distribution spending, wildfire costs, capacity prices and gas prices all push rates up.",
+    "wrong": [
+     "Solar panels are taxed on every bill",
+     "Utilities stopped charging for delivery",
+     "Power plants became free to run"
+    ]
+   },
+   {
+    "q": "Why are data-center load forecasts uncertain?",
+    "a": "Developers file speculative requests in many places",
+    "explain": "Duplicate interconnection requests can inflate expected demand far above what gets built.",
+    "wrong": [
+     "Data centers use a fixed amount of power",
+     "Forecasts are set by federal law",
+     "Data centers never connect to the grid"
+    ]
+   },
+   {
+    "q": "What is a large-load tariff?",
+    "a": "Special terms making big customers cover grid costs and commitments",
+    "explain": "Utilities require minimum payments or long contracts so other customers are not stuck with stranded costs.",
+    "wrong": [
+     "A discount for any large household",
+     "A tax on imported power lines",
+     "A fee for small solar systems"
+    ]
+   },
+   {
+    "q": "How do import tariffs affect clean-energy projects?",
+    "a": "They raise equipment costs, such as solar modules and batteries",
+    "explain": "Much clean-energy hardware is imported, so tariffs and trade rules shift project costs and timelines.",
+    "wrong": [
+     "They lower costs for all projects",
+     "They only affect oil prices",
+     "They have no effect on hardware"
+    ]
+   },
+   {
+    "q": "What did tax credit transferability change?",
+    "a": "Developers can sell clean-energy credits for cash",
+    "explain": "Created by the IRA, it let projects monetize credits without complex tax equity deals.",
+    "wrong": [
+     "Credits can be used as currency",
+     "Credits move to other countries",
+     "Credits are paid only to utilities"
+    ]
+   }
+  ]
+ },
+ "the-energy-gang": {
+  "summary": "A weekly debate show on energy markets, prices and policy. It covers how power prices are set, battery arbitrage, oil supply and the global gas market.",
+  "takeaways": [
+   "The marginal plant sets wholesale power prices",
+   "Prices can go negative when supply floods the grid",
+   "Batteries profit from buying low and selling high",
+   "US gas prices are increasingly linked to global LNG markets"
+  ],
+  "cards": [
+   {
+    "q": "What usually sets the wholesale electricity price at a given hour?",
+    "a": "The cost of the most expensive plant needed",
+    "explain": "Under merit-order dispatch the marginal unit, often gas, sets the clearing price.",
+    "wrong": [
+     "The cheapest plant on the grid",
+     "The average of all plants",
+     "A fixed rate set each year"
+    ]
+   },
+   {
+    "q": "Why can wholesale power prices go negative?",
+    "a": "Supply exceeds demand and some generators still want to run",
+    "explain": "Inflexible plants and output-based subsidies make some sellers pay to keep generating.",
+    "wrong": [
+     "Utilities give refunds for holidays",
+     "Demand exceeds supply sharply",
+     "Fuel prices go negative"
+    ]
+   },
+   {
+    "q": "How do grid batteries earn money in energy markets?",
+    "a": "Charging when prices are low and discharging when high",
+    "explain": "This arbitrage, plus ancillary services, drives rapid storage growth in markets like Texas and California.",
+    "wrong": [
+     "Selling stored fuel to drivers",
+     "Getting paid only to stay idle",
+     "Charging only at peak prices"
+    ]
+   },
+   {
+    "q": "What largely drives global oil supply decisions?",
+    "a": "OPEC+ production choices alongside US shale output",
+    "explain": "Coordinated output targets from OPEC+ and shale growth heavily shape oil prices.",
+    "wrong": [
+     "Electric vehicle sales alone",
+     "Weather in a single country",
+     "Solar panel prices"
+    ]
+   },
+   {
+    "q": "How do LNG exports affect US natural gas prices?",
+    "a": "They link US prices more closely to global demand",
+    "explain": "Exporting liquefied gas adds demand and ties domestic markets to international prices.",
+    "wrong": [
+     "They make US gas free",
+     "They have no effect on prices",
+     "They remove all gas from the US"
+    ]
+   }
+  ]
+ },
+ "columbia-energy-exchange": {
+  "summary": "Columbia's Center on Global Energy Policy covers the policy and geopolitics of energy. Themes include oil markets, energy security, climate diplomacy and critical minerals.",
+  "takeaways": [
+   "Spare capacity gives OPEC+ market power",
+   "Europe reshaped gas supply after 2022",
+   "Climate finance is central to diplomacy",
+   "China dominates mineral processing"
+  ],
+  "cards": [
+   {
+    "q": "Why does OPEC+ spare capacity matter for oil markets?",
+    "a": "It lets producers quickly raise output to ease supply shocks",
+    "explain": "Spare capacity, mostly in Saudi Arabia and the UAE, acts as a buffer and source of market power.",
+    "wrong": [
+     "It stores gasoline for consumers",
+     "It sets electricity prices",
+     "It controls solar panel supply"
+    ]
+   },
+   {
+    "q": "How did Europe respond to losing Russian pipeline gas after 2022?",
+    "a": "Shifted to LNG imports, cut demand and expanded renewables",
+    "explain": "Europe built LNG import capacity, reduced consumption and accelerated clean energy.",
+    "wrong": [
+     "Stopped using gas entirely overnight",
+     "Doubled Russian pipeline imports",
+     "Switched fully to nuclear in one year"
+    ]
+   },
+   {
+    "q": "What are Brent and WTI?",
+    "a": "Benchmark crude oil prices",
+    "explain": "Brent is the main international benchmark; WTI is the US benchmark.",
+    "wrong": [
+     "Types of natural gas pipelines",
+     "Electricity market regions",
+     "Carbon credit registries"
+    ]
+   },
+   {
+    "q": "What was agreed on climate finance at COP29 in 2024?",
+    "a": "At least $300 billion per year by 2035 for developing countries",
+    "explain": "The new finance goal also called for scaling total flows toward $1.3 trillion a year.",
+    "wrong": [
+     "$10 billion total by 2025",
+     "No finance goal at all",
+     "$100 trillion per year by 2030"
+    ]
+   },
+   {
+    "q": "Why are critical minerals a geopolitical concern?",
+    "a": "Processing is concentrated, largely in China",
+    "explain": "China dominates refining of lithium, graphite, rare earths and more, creating supply-chain risk.",
+    "wrong": [
+     "They are evenly spread worldwide",
+     "They are only used in jewelry",
+     "They are not used in batteries"
+    ]
+   }
+  ]
+ },
+ "cleaning-up": {
+  "summary": "Michael Liebreich's long-form interviews with leaders across energy and climate, strong on economics. Recurring ideas include the hydrogen ladder, learning curves, cost of capital and the efficiency of electrification.",
+  "takeaways": [
+   "Use hydrogen where there are few alternatives",
+   "Clean tech costs fall with deployment",
+   "Cheap capital is crucial for renewables",
+   "Electrification needs far less primary energy"
+  ],
+  "cards": [
+   {
+    "q": "What does the 'hydrogen ladder' argue?",
+    "a": "Prioritize hydrogen for uses with few alternatives, not cars or home heat",
+    "explain": "Fertilizer, refining and some steel rank high; direct electrification usually wins for cars and heating.",
+    "wrong": [
+     "Hydrogen is best for all uses",
+     "Hydrogen should only heat homes",
+     "Hydrogen is cheaper than electricity"
+    ]
+   },
+   {
+    "q": "Roughly how much do solar module costs fall with each doubling of production?",
+    "a": "Roughly 20%",
+    "explain": "This steady learning rate helps explain the huge drop in solar costs over decades.",
+    "wrong": [
+     "Roughly 1%",
+     "Roughly 60%",
+     "They rise each doubling"
+    ]
+   },
+   {
+    "q": "Why does the cost of capital matter so much for renewables?",
+    "a": "Most of their cost is upfront, so financing drives price",
+    "explain": "With no fuel costs, interest rates heavily affect LCOE, especially in developing countries.",
+    "wrong": [
+     "Renewables have high fuel costs",
+     "Renewables need no financing",
+     "Interest rates only affect coal"
+    ]
+   },
+   {
+    "q": "What is the 'primary energy fallacy'?",
+    "a": "Assuming clean systems must replace all fossil primary energy",
+    "explain": "Fossil systems waste much energy as heat, so an electrified system needs far less primary energy.",
+    "wrong": [
+     "Thinking solar uses more fuel than coal",
+     "Believing all energy is primary",
+     "Counting batteries as primary energy"
+    ]
+   },
+   {
+    "q": "How does a cap-and-trade system like the EU ETS work?",
+    "a": "Caps total emissions and lets firms trade allowances",
+    "explain": "A declining cap sets a carbon price as companies buy and sell permits.",
+    "wrong": [
+     "Fixes a carbon tax at one price forever",
+     "Bans all emissions immediately",
+     "Pays firms to emit more"
+    ]
+   }
+  ]
+ },
+ "zero": {
+  "summary": "Bloomberg's Akshat Rathi reports on the people and companies racing to net zero. Themes include hard-to-abate sectors like steel and cement, carbon capture, and China's clean-tech manufacturing role.",
+  "takeaways": [
+   "Heavy industry is hard to decarbonize",
+   "Green steel can use hydrogen instead of coal",
+   "Cement emits CO2 from chemistry, not just fuel",
+   "China dominates clean-tech manufacturing"
+  ],
+  "cards": [
+   {
+    "q": "Which sectors are called 'hard to abate'?",
+    "a": "Steel, cement, chemicals, shipping and aviation",
+    "explain": "They need high heat, chemical processes or dense fuels that are hard to electrify.",
+    "wrong": [
+     "Lighting and refrigeration",
+     "Home rooftop solar",
+     "Office computing"
+    ]
+   },
+   {
+    "q": "How can steel be made with far lower emissions?",
+    "a": "Reducing iron ore with green hydrogen instead of coal",
+    "explain": "Hydrogen direct reduction plus electric arc furnaces can replace coal-fired blast furnaces.",
+    "wrong": [
+     "Using more coking coal",
+     "Adding plastic to the furnace",
+     "Painting steel white"
+    ]
+   },
+   {
+    "q": "Why is cement hard to decarbonize?",
+    "a": "Making clinker releases CO2 chemically from limestone",
+    "explain": "Calcination emits CO2 even with clean heat, so options include alternative materials and capture.",
+    "wrong": [
+     "Cement uses only solar power",
+     "Cement absorbs all emissions",
+     "Cement uses no heat at all"
+    ]
+   },
+   {
+    "q": "What is China's role in clean-tech manufacturing?",
+    "a": "The largest producer of solar panels, batteries and EVs",
+    "explain": "China dominates global supply chains, driving down costs worldwide.",
+    "wrong": [
+     "A minor buyer with no factories",
+     "A producer of only wind blades",
+     "It has banned clean tech"
+    ]
+   },
+   {
+    "q": "What is carbon capture and storage (CCS)?",
+    "a": "Capturing CO2 from point sources and storing it underground",
+    "explain": "Applied to industry or power plants, CCS prevents CO2 from reaching the air; costs remain high.",
+    "wrong": [
+     "Planting trees on factory roofs",
+     "Turning CO2 into oxygen",
+     "Storing coal in warehouses"
+    ]
+   }
+  ]
+ },
+ "mcj-podcast": {
+  "summary": "My Climate Journey interviews founders and investors building climate tech. It covers how climate startups are financed, where emissions come from and how new markets get created.",
+  "takeaways": [
+   "Energy use is about three-quarters of global emissions",
+   "First-of-a-kind projects face a financing gap",
+   "The green premium measures clean cost gaps",
+   "Advance purchase commitments can create markets"
+  ],
+  "cards": [
+   {
+    "q": "Roughly what share of global greenhouse gas emissions come from energy use?",
+    "a": "About three-quarters",
+    "explain": "Electricity, heat, transport and industrial fuel use dominate; agriculture and land use make up much of the rest.",
+    "wrong": [
+     "About 10%",
+     "About one-quarter",
+     "Nearly 100%"
+    ]
+   },
+   {
+    "q": "What is the 'valley of death' for climate hardware?",
+    "a": "The funding gap between pilot and first commercial plant",
+    "explain": "First-of-a-kind projects are too big for venture capital and too risky for project finance.",
+    "wrong": [
+     "A desert site for solar farms",
+     "A drop in stock prices",
+     "The final step of recycling"
+    ]
+   },
+   {
+    "q": "What is the 'green premium'?",
+    "a": "The extra cost of a clean option versus the fossil one",
+    "explain": "Tracking green premiums shows where innovation or policy is needed to make clean options cheaper.",
+    "wrong": [
+     "A bonus paid to green employees",
+     "A discount on gas-powered cars",
+     "A tax on solar panels"
+    ]
+   },
+   {
+    "q": "How do advance market commitments help carbon removal?",
+    "a": "Buyers pre-commit to purchase removal, creating demand",
+    "explain": "Groups like Frontier promise future purchases so startups can scale and lower costs.",
+    "wrong": [
+     "Governments ban carbon removal",
+     "Removal companies pay buyers",
+     "Credits are given free forever"
+    ]
+   },
+   {
+    "q": "Why do hardware climate startups need more capital than software ones?",
+    "a": "They build physical plants with long timelines",
+    "explain": "Manufacturing, testing and construction are capital intensive and slow to scale.",
+    "wrong": [
+     "Software needs factories",
+     "Hardware has no costs",
+     "Hardware scales instantly"
+    ]
+   }
+  ]
+ },
+ "outrage-optimism": {
+  "summary": "Christiana Figueres and co-hosts discuss global climate politics from the people who helped negotiate the Paris Agreement. It covers how Paris works, COP diplomacy and what 1.5C requires.",
+  "takeaways": [
+   "Paris relies on national pledges that ratchet up",
+   "Global stocktakes check progress every five years",
+   "1.5C requires roughly halving emissions this decade",
+   "COP decisions require consensus"
+  ],
+  "cards": [
+   {
+    "q": "How does the Paris Agreement structure national commitments?",
+    "a": "Countries set their own pledges (NDCs) and strengthen them every five years",
+    "explain": "Bottom-up nationally determined contributions are meant to ratchet up over time.",
+    "wrong": [
+     "A single global cap enforced by fines",
+     "Binding quotas set by the UN",
+     "Only rich countries make pledges"
+    ]
+   },
+   {
+    "q": "What did the first global stocktake at COP28 call for?",
+    "a": "Transitioning away from fossil fuels in energy systems",
+    "explain": "It was the first COP text to address fossil fuels broadly, along with tripling renewables.",
+    "wrong": [
+     "An immediate ban on all coal",
+     "Doubling oil production",
+     "Ending all climate finance"
+    ]
+   },
+   {
+    "q": "Roughly what does limiting warming to 1.5C require?",
+    "a": "Cutting global emissions about in half by 2030 and net zero CO2 around 2050",
+    "explain": "IPCC pathways show deep cuts this decade and net zero CO2 around mid-century.",
+    "wrong": [
+     "Holding emissions flat until 2050",
+     "Cutting 5% by 2100",
+     "Net zero by 2200"
+    ]
+   },
+   {
+    "q": "What was agreed at COP27 in 2022?",
+    "a": "A fund for loss and damage in vulnerable countries",
+    "explain": "It addresses climate harms that cannot be adapted to, a long-standing demand of developing nations.",
+    "wrong": [
+     "A global carbon tax",
+     "A ban on air travel",
+     "Ending the UNFCCC"
+    ]
+   },
+   {
+    "q": "How are decisions made at UN climate COPs?",
+    "a": "By consensus among parties",
+    "explain": "Any country can block text, which slows progress but gives all parties a voice.",
+    "wrong": [
+     "By simple majority vote",
+     "By the largest emitters alone",
+     "By the UN Secretary-General"
+    ]
+   }
+  ]
+ },
+ "climate-one": {
+  "summary": "The Commonwealth Club's show offers broad conversations on energy, business, justice and culture. It covers climate justice, just transitions, carbon pricing and corporate sustainability.",
+  "takeaways": [
+   "Climate harms fall hardest on those who emit least",
+   "Fossil-dependent workers need a just transition",
+   "Carbon can be priced by tax or cap-and-trade",
+   "The wealthiest emit a disproportionate share"
+  ],
+  "cards": [
+   {
+    "q": "What is climate justice?",
+    "a": "Addressing that those least responsible are often most harmed",
+    "explain": "Low-income and frontline communities face greater impacts despite lower emissions.",
+    "wrong": [
+     "Courts sentencing polluters to prison",
+     "Equal emissions for every company",
+     "Ignoring who causes emissions"
+    ]
+   },
+   {
+    "q": "What is a 'just transition'?",
+    "a": "Supporting workers and communities as fossil industries decline",
+    "explain": "It includes retraining, new investment and protecting pensions in affected regions.",
+    "wrong": [
+     "Moving coal plants to poor areas",
+     "Ending all fossil jobs overnight",
+     "Paying companies to keep polluting"
+    ]
+   },
+   {
+    "q": "What are the two main ways to price carbon?",
+    "a": "A carbon tax or a cap-and-trade system",
+    "explain": "A tax fixes the price; cap-and-trade fixes the quantity and lets the price float.",
+    "wrong": [
+     "Tariffs and subsidies for coal",
+     "Rebates and gas discounts",
+     "Fines and prison terms"
+    ]
+   },
+   {
+    "q": "Roughly what share of global emissions is tied to the richest 10% of people?",
+    "a": "Roughly half",
+    "explain": "Studies find consumption by the wealthiest drives a disproportionate share of emissions.",
+    "wrong": [
+     "About 5%",
+     "About 10%",
+     "Nearly 100%"
+    ]
+   },
+   {
+    "q": "What does ESG stand for in corporate sustainability?",
+    "a": "Environmental, social and governance",
+    "explain": "ESG frameworks assess companies on climate, labor, governance and related risks.",
+    "wrong": [
+     "Energy, solar and gas",
+     "Emissions, savings and growth",
+     "Economy, safety and grid"
+    ]
+   }
+  ]
+ },
+ "the-energy-transition-show": {
+  "summary": "Chris Nelder's technical deep dives on energy markets, grids and resources. Topics include ancillary services, energy-only markets, nodal pricing, EROI and the move from baseload to flexibility.",
+  "takeaways": [
+   "Grids buy more than energy: reserves and regulation too",
+   "Energy-only markets rely on scarcity price spikes",
+   "Nodal prices reflect congestion and losses",
+   "High-renewable grids need flexibility, not baseload"
+  ],
+  "cards": [
+   {
+    "q": "What are ancillary services?",
+    "a": "Grid services like frequency regulation and reserves",
+    "explain": "They keep the grid stable and are bought separately from bulk energy.",
+    "wrong": [
+     "Customer service call centers",
+     "Extra fees for rooftop solar",
+     "Maintenance of power lines"
+    ]
+   },
+   {
+    "q": "How does an energy-only market like ERCOT reward new capacity?",
+    "a": "Through high scarcity price spikes instead of capacity payments",
+    "explain": "Prices can spike to thousands of dollars per MWh during shortages, signaling investment.",
+    "wrong": [
+     "Through fixed annual capacity payments",
+     "Through government ownership",
+     "Through flat rates set yearly"
+    ]
+   },
+   {
+    "q": "What is locational marginal pricing?",
+    "a": "Prices that vary by grid location due to congestion and losses",
+    "explain": "Nodal prices signal where power is scarce and where new resources or lines are most valuable.",
+    "wrong": [
+     "One price nationwide",
+     "Prices that vary by customer income",
+     "Prices set by fuel type"
+    ]
+   },
+   {
+    "q": "What is EROI?",
+    "a": "Energy return on investment: energy delivered per unit invested",
+    "explain": "It compares how much usable energy a source delivers relative to the energy needed to produce it.",
+    "wrong": [
+     "Earnings ratio of investors",
+     "Emissions return on income",
+     "Electric rate of inflation"
+    ]
+   },
+   {
+    "q": "Why are high-renewable grids shifting from 'baseload' to 'flexibility'?",
+    "a": "Variable supply needs resources that ramp up and down",
+    "explain": "Batteries, demand response and flexible plants fit around wind and solar better than inflexible plants.",
+    "wrong": [
+     "Renewables run at constant output",
+     "Baseload plants ramp fastest",
+     "Demand never changes"
+    ]
+   }
+  ]
+ },
+ "concepts": {
+  "summary": "Core vocabulary and mental models for energy and sustainability professionals.",
+  "takeaways": [
+   "kW is power, kWh is energy",
+   "The marginal plant, often gas, sets power prices",
+   "Scope 3 is usually the biggest share of corporate emissions",
+   "Removals and additional PPAs are stronger claims than offsets and unbundled RECs"
+  ],
+  "cards": [
+   {
+    "q": "What is the difference between kW and kWh?",
+    "a": "kW is power (rate); kWh is energy (amount)",
+    "explain": "A 1 kW heater running for 3 hours uses 3 kWh; bills charge per kWh.",
+    "wrong": [
+     "kW is energy; kWh is power",
+     "They are the same unit",
+     "kWh measures voltage"
+    ]
+   },
+   {
+    "q": "What is capacity factor?",
+    "a": "Actual output divided by maximum possible output over time",
+    "explain": "US solar is roughly 20-25%, onshore wind 30-40%, nuclear above 90%.",
+    "wrong": [
+     "Peak output divided by average demand",
+     "Share of time a plant is under repair",
+     "Plant size divided by land area"
+    ]
+   },
+   {
+    "q": "What is LCOE?",
+    "a": "Lifetime cost per MWh of electricity from a plant",
+    "explain": "Levelized cost of energy spreads capital, fuel and operating costs over lifetime output.",
+    "wrong": [
+     "The retail price on a customer bill",
+     "The fuel cost of one hour",
+     "Profit per MWh after taxes"
+    ]
+   },
+   {
+    "q": "On unsubsidized LCOE, how do new utility solar and onshore wind compare with new gas?",
+    "a": "Generally among the cheapest new sources",
+    "explain": "They are typically at or below new gas, though they are variable and need firming.",
+    "wrong": [
+     "Usually several times more expensive",
+     "Always the most expensive option",
+     "Exactly equal everywhere"
+    ]
+   },
+   {
+    "q": "What is a PPA?",
+    "a": "A long-term contract to buy power at a set price",
+    "explain": "Power purchase agreements are how corporations buy renewable power and help projects get financed.",
+    "wrong": [
+     "A government ban on fossil plants",
+     "A one-time power purchase at spot prices",
+     "A permit to emit pollution"
+    ]
+   },
+   {
+    "q": "What is the merit order?",
+    "a": "Dispatching plants from cheapest to most expensive",
+    "explain": "The last plant needed sets the wholesale price for that period.",
+    "wrong": [
+     "Ranking plants by age",
+     "Dispatching the largest plants first",
+     "Paying all plants the same fixed price"
+    ]
+   },
+   {
+    "q": "Why does natural gas often set electricity prices?",
+    "a": "Gas plants are frequently the marginal plant",
+    "explain": "Since the marginal plant sets the price, gas fuel costs pass through to wholesale power prices.",
+    "wrong": [
+     "Gas is always the cheapest fuel",
+     "Gas plants own the grid",
+     "Laws fix power prices to gas"
+    ]
+   },
+   {
+    "q": "What is the duck curve?",
+    "a": "Net demand dips midday with solar, then ramps steeply at sunset",
+    "explain": "Abundant midday solar lowers net load, followed by a sharp evening ramp; batteries help shift solar into the evening.",
+    "wrong": [
+     "Demand peaking at noon every day",
+     "Wind output peaking at dawn",
+     "Prices rising steadily all day"
+    ]
+   },
+   {
+    "q": "What is curtailment?",
+    "a": "Deliberately reducing renewable output the grid cannot use",
+    "explain": "It happens with oversupply or transmission congestion; storage and transmission reduce it.",
+    "wrong": [
+     "Cutting power to customers in heat waves",
+     "Shutting down coal plants permanently",
+     "Reducing customer bills"
+    ]
+   },
+   {
+    "q": "Why can wholesale power prices turn negative?",
+    "a": "Supply exceeds demand and some generators keep running",
+    "explain": "Inflexible plants and output-based incentives make some sellers pay to keep producing.",
+    "wrong": [
+     "Demand is extremely high",
+     "Fuel prices go negative",
+     "Utilities overcharge customers"
+    ]
+   },
+   {
+    "q": "What does a capacity market pay for?",
+    "a": "Availability to supply power in future years",
+    "explain": "Operators like PJM pay resources to be available; recent PJM auctions cleared at record prices as demand grew.",
+    "wrong": [
+     "Energy already delivered today",
+     "Fuel stored in tanks",
+     "Building transmission lines"
+    ]
+   },
+   {
+    "q": "What is an interconnection queue?",
+    "a": "The waiting line to connect new projects to the grid",
+    "explain": "Often years long, it is a major bottleneck for new renewables and storage.",
+    "wrong": [
+     "A line at a utility office",
+     "A list of customers awaiting meters",
+     "The order plants shut down"
+    ]
+   },
+   {
+    "q": "What are Scope 1, 2 and 3 emissions?",
+    "a": "Direct, purchased energy, and value-chain emissions",
+    "explain": "Scope 1 is direct; Scope 2 is purchased electricity and heat; Scope 3 is everything else in the value chain.",
+    "wrong": [
+     "Local, national and global emissions",
+     "Past, present and future emissions",
+     "CO2, methane and nitrous oxide"
+    ]
+   },
+   {
+    "q": "Which scope is usually the largest share of a company's footprint?",
+    "a": "Scope 3",
+    "explain": "Value-chain emissions from suppliers and product use usually dwarf direct operations.",
+    "wrong": [
+     "Scope 1",
+     "Scope 2",
+     "They are always equal"
+    ]
+   },
+   {
+    "q": "What is CO2e?",
+    "a": "Greenhouse gases converted to a CO2 equivalent using GWP",
+    "explain": "Global warming potential weights each gas by its warming effect relative to CO2.",
+    "wrong": [
+     "CO2 emitted by electricity only",
+     "A measure of air quality",
+     "Carbon stored in trees"
+    ]
+   },
+   {
+    "q": "How does methane's GWP differ over 20 vs 100 years?",
+    "a": "Over 80x CO2 over 20 years; about 28-30x over 100",
+    "explain": "Methane is potent but short-lived, so its impact looks larger over shorter timeframes.",
+    "wrong": [
+     "About 1x over both periods",
+     "Higher over 100 years than 20",
+     "About 300x over both periods"
+    ]
+   },
+   {
+    "q": "How does net zero (per SBTi) differ from carbon neutral?",
+    "a": "Net zero cuts about 90% and removes the rest",
+    "explain": "'Carbon neutral' claims often rely mainly on buying offsets rather than deep reductions.",
+    "wrong": [
+     "They mean exactly the same thing",
+     "Net zero relies only on offsets",
+     "Carbon neutral needs 100% cuts"
+    ]
+   },
+   {
+    "q": "What is the difference between avoidance offsets and removals?",
+    "a": "Avoidance prevents emissions; removals pull CO2 from the air",
+    "explain": "Removals (forests, direct air capture, enhanced weathering) are generally higher quality and pricier.",
+    "wrong": [
+     "Removals prevent emissions elsewhere",
+     "They are identical products",
+     "Avoidance pulls CO2 from the air"
+    ]
+   },
+   {
+    "q": "What is a REC?",
+    "a": "A certificate for 1 MWh of renewable generation",
+    "explain": "Renewable energy certificates track the environmental attributes of clean power.",
+    "wrong": [
+     "A rebate for energy efficiency",
+     "A tax on coal",
+     "A permit for 1 ton of CO2"
+    ]
+   },
+   {
+    "q": "Why is additionality important for clean-energy claims?",
+    "a": "A strong claim causes new clean energy that otherwise would not exist",
+    "explain": "Unbundled RECs from existing plants are weak claims; PPAs that finance new projects are stronger.",
+    "wrong": [
+     "It counts energy used twice",
+     "It makes all RECs equal",
+     "It ignores new projects"
+    ]
+   },
+   {
+    "q": "What does a heat pump COP of 3 mean?",
+    "a": "3 units of heat per unit of electricity",
+    "explain": "Modern heat pumps reach roughly 2.5-4, versus about 95% efficiency for a good gas furnace.",
+    "wrong": [
+     "3 times less heat than a furnace",
+     "3 kWh used per hour",
+     "30% efficiency"
+    ]
+   },
+   {
+    "q": "What is energy intensity?",
+    "a": "Energy used per unit of output, such as GDP",
+    "explain": "Falling energy intensity shows efficiency gains in the data.",
+    "wrong": [
+     "Total energy used by a country",
+     "Peak power demand",
+     "Share of renewable energy"
+    ]
+   },
+   {
+    "q": "What are SDG 7 and SDG 13?",
+    "a": "Affordable and clean energy, and climate action",
+    "explain": "They are two of the UN's 17 Sustainable Development Goals for 2015-2030.",
+    "wrong": [
+     "Clean water and life on land",
+     "Zero hunger and quality education",
+     "Gender equality and peace"
+    ]
+   },
+   {
+    "q": "What are the Paris Agreement temperature goals?",
+    "a": "Well below 2C, pursuing 1.5C",
+    "explain": "Measured relative to pre-industrial levels; adopted in 2015.",
+    "wrong": [
+     "Below 3C by 2050",
+     "Exactly 2.5C by 2100",
+     "Below 1C by 2030"
+    ]
+   },
+   {
+    "q": "What does the SBTi do?",
+    "a": "Validates company emissions targets against climate science",
+    "explain": "The Science Based Targets initiative checks targets align with Paris goals and sets a net-zero standard.",
+    "wrong": [
+     "Sells carbon offsets",
+     "Sets national laws",
+     "Runs power markets"
+    ]
+   },
+   {
+    "q": "What duration do most grid-scale lithium batteries provide?",
+    "a": "Typically 2-4 hours",
+    "explain": "They suit daily shifting such as moving solar to the evening peak; longer durations need other tech.",
+    "wrong": [
+     "Typically 2-4 weeks",
+     "About 10 minutes",
+     "A full season"
+    ]
+   },
+   {
+    "q": "What is a virtual power plant?",
+    "a": "Aggregated distributed devices acting like one power plant",
+    "explain": "Batteries, EVs, thermostats and solar can be coordinated to supply power or cut demand on command.",
+    "wrong": [
+     "A power plant simulated in software",
+     "A plant run by remote robots",
+     "A floating power plant"
+    ]
+   },
+   {
+    "q": "What is demand response?",
+    "a": "Customers reducing or shifting use when the grid is strained",
+    "explain": "Paid or price-driven reductions lower peaks and can avoid building peaking plants.",
+    "wrong": [
+     "Utilities raising prices at random",
+     "Building plants to meet all demand",
+     "Responding to customer complaints"
+    ]
+   },
+   {
+    "q": "Why is data-center growth reshaping power planning?",
+    "a": "It drives fast load growth after years of flat demand",
+    "explain": "AI and cloud loads are large and concentrated, straining generation, transmission and capacity markets.",
+    "wrong": [
+     "Data centers reduce grid demand",
+     "They use only on-site solar",
+     "Demand has been falling sharply"
+    ]
+   },
+   {
+    "q": "Under the July 2025 US law, when must wind and solar qualify for tax credits?",
+    "a": "Begin construction by July 4, 2026, or be in service by end of 2027",
+    "explain": "The law phases down wind and solar credits; storage, nuclear and geothermal credits last longer.",
+    "wrong": [
+     "Begin construction by 2035",
+     "Credits were extended to 2040",
+     "Be in service by end of 2030"
+    ]
+   }
+  ]
+ }
+}

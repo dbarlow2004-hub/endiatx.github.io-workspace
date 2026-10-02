@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Energy Brief Study</title>
+<meta name="description" content="Track the sustainability books, podcasts and documentaries you finish, take notes, and review flashcards and quizzes to remember what you learned.">
+<meta name="theme-color" content="#0e0f11">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-title" content="Energy Brief">
+<script>
+  // On iPhone, notification taps always open in Safari, and a full-screen home-screen app keeps its
+  // saved data separate from Safari's. So on iOS we skip the manifest: the home-screen icon opens the
+  // page in Safari and your progress stays in one place.
+  if (!/iPhone|iPad|iPod/.test(navigator.userAgent) && !(navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1))
+    document.write('<link rel="manifest" href="manifest.webmanifest">');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --surface2:#f0f2ee; --border:#dfe3dc; --text:#16201a; --muted:#5d6a61;
+  --accent:#0a8a6a; --accent-soft:#e2f3ec; --on-accent:#ffffff;
+  --good:#1f9d55; --bad:#d64545; --warn:#c27a00; --gold:#c99400; --flame:#e8590c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e0f11; --surface:#16181c; --surface2:#1e2127; --border:#2a2d35; --text:#e8eaf0; --muted:#8a909c;
+    --accent:#00e5c9; --accent-soft:#0f2b28; --on-accent:#0e0f11;
+    --good:#4ade80; --bad:#ff6b6b; --warn:#ffd166; --gold:#ffd166; --flame:#ff8c42;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e0f11; --surface:#16181c; --surface2:#1e2127; --border:#2a2d35; --text:#e8eaf0; --muted:#8a909c;
+  --accent:#00e5c9; --accent-soft:#0f2b28; --on-accent:#0e0f11;
+  --good:#4ade80; --bad:#ff6b6b; --warn:#ffd166; --gold:#ffd166; --flame:#ff8c42;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;line-height:1.5;-webkit-text-size-adjust:100%;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+.mono{font-family:'Space Mono',monospace}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.topbar{display:flex;align-items:center;gap:10px;padding-top:10px;padding-bottom:10px}
+.logo{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;flex-shrink:0}
+.stats{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:13px;font-weight:700}
+.pill{display:flex;align-items:center;gap:4px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.pill .ic{font-size:14px}
+
+/* bottom tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom)}
+.tabs button{position:relative;flex:1;max-width:160px;background:none;border:none;padding:9px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11.5px;color:var(--muted);cursor:pointer}
+.tabs button svg{width:22px;height:22px}
+.tabs button[aria-selected="true"]{color:var(--accent);font-weight:700}
+.tabs .badge-n{position:absolute;top:4px;left:50%;margin-left:6px;background:var(--bad);color:#fff;font-size:10px;font-weight:700;border-radius:999px;padding:0 5px;line-height:16px}
+
+.view{display:none;padding:18px 0 28px}
+.view.on{display:block}
+h1{font-size:24px;line-height:1.2}
+h2{font-size:17px;margin:22px 0 10px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:12.5px;color:var(--muted);font-weight:400}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px}
+.row{display:flex;gap:12px;align-items:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (min-width:640px){.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}}
+@media (max-width:639px){.grid4{display:grid;grid-template-columns:1fr 1fr;gap:10px}}
+
+.btn{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:10px 16px;font-weight:600;font-size:14.5px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.block{width:100%}
+.btn.sm{padding:6px 11px;font-size:13px;border-radius:10px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* home */
+.hero{display:flex;gap:16px;align-items:center}
+.ring{width:96px;height:96px;flex-shrink:0;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .lbl{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:18px;line-height:1.1}
+.ring .lbl span{font-size:10.5px;color:var(--muted);font-weight:500}
+.lvl{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+.bar{height:8px;background:var(--surface2);border-radius:999px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .5s}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px}
+.stat b{display:block;font-size:22px;line-height:1.1}
+.stat span{font-size:12px;color:var(--muted)}
+.cta{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.cta .btn{justify-content:space-between;padding:14px 16px}
+.cta .btn span:first-child{white-space:nowrap}
+.cta .btn .sub{text-align:right;font-weight:400;font-size:12.5px;color:inherit;opacity:.8}
+
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px}
+.bdg{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:10px 6px;text-align:center;font-size:11.5px;line-height:1.25}
+.bdg .e{font-size:26px;display:block;margin-bottom:4px}
+.bdg.locked{opacity:.38;filter:grayscale(1)}
+
+/* library */
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.search{flex:1;min-width:180px;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-bottom:12px}
+.chips::-webkit-scrollbar{display:none}
+.chip{border:1px solid var(--border);background:var(--surface);padding:5px 12px;border-radius:999px;font-size:13px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.items{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;cursor:pointer;text-align:left;width:100%}
+.item:hover{border-color:var(--accent)}
+.item .ico{width:40px;height:40px;border-radius:10px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.item .tt{font-weight:600;font-size:15px;line-height:1.3}
+.item .by{font-size:12.5px;color:var(--muted)}
+.item .rt{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+.st{font-size:11px;font-weight:700;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.st.want{background:var(--surface2);color:var(--muted)}
+.st.doing{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.st.done{background:var(--accent-soft);color:var(--accent)}
+.stars{color:var(--gold);font-size:12px;letter-spacing:1px}
+
+.st.owned{background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold)}
+.st.paused{background:var(--surface2);color:var(--muted)}
+.st.dropped{background:var(--surface2);color:var(--muted);text-decoration:line-through}
+.bar.sm{height:5px;margin-top:5px}
+.chip.sm{font-size:12px;padding:4px 10px}
+.chips.wrap{flex-wrap:wrap;overflow:visible}
+.btn.xs{padding:4px 9px;font-size:12px;border-radius:8px}
+.cov{display:block;width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;background:var(--surface2)}
+.cov.sq{aspect-ratio:1/1}
+.cov.emo{display:flex;align-items:center;justify-content:center;font-size:40px}
+.item .ico,.today .ico{width:40px;height:auto;background:none;overflow:hidden;border-radius:6px}
+.item .ico .cov.emo,.today .ico .cov.emo{font-size:20px;aspect-ratio:1/1}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+@media (max-width:420px){.tiles{grid-template-columns:1fr 1fr;gap:10px}}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.tile:hover{border-color:var(--accent)}
+.tbtn{background:none;border:none;text-align:left;cursor:pointer;padding:0;width:100%;display:block}
+.tbtn.row{display:flex}
+.tile .cov{border-radius:0}
+.tile .cov.emo{aspect-ratio:3/2;font-size:44px}
+.tile .cov.sq{aspect-ratio:3/2}
+.tbody{padding:10px 11px 11px;display:flex;flex-direction:column;gap:3px;align-items:flex-start}
+.tbody .tt{font-weight:600;font-size:14px;line-height:1.25}
+.tbody .by{font-size:12px;color:var(--muted)}
+.tbody .bar{width:100%}
+.quick{display:flex;gap:5px;flex-wrap:wrap;padding:0 10px 10px;margin-top:auto}
+.today{display:flex;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:10px 12px}
+.today .tt{font-weight:600;font-size:14.5px;line-height:1.3}
+.today .by{font-size:12.5px;color:var(--muted)}
+.today .row{gap:12px}
+.head{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center;padding-right:40px;margin-bottom:12px}
+.head .cov.emo{font-size:36px}
+.journal{list-style:none;display:flex;flex-direction:column;gap:8px}
+.journal li{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:14px}
+#continueList{display:flex;flex-direction:column;gap:8px}
+
+/* sheet */
+.sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:none}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg);border-radius:20px 20px 0 0;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .25s ease;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+.sheet.on{transform:none}
+.sheet-bg.on{display:block}
+@media (min-width:760px){.sheet{left:50%;width:720px;margin-left:-360px}}
+.sheet .grab{width:40px;height:4px;border-radius:4px;background:var(--border);margin:10px auto 4px}
+.sheet .close{position:absolute;right:12px;top:10px;background:var(--surface);border:1px solid var(--border);border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:18px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.seg button{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:10px 4px;font-size:13.5px;font-weight:600;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.rate{display:flex;gap:2px}
+.rate button{background:none;border:none;font-size:28px;cursor:pointer;color:var(--border);padding:0 2px;line-height:1}
+.rate button.on{color:var(--gold)}
+textarea,input[type=text],input[type=url],input[type=password],input[type=number],input[type=time],select{width:100%;font:inherit;font-size:15px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text)}
+textarea{min-height:120px;resize:vertical}
+label.f{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin:12px 0 5px}
+.links{display:flex;gap:6px;flex-wrap:wrap}
+.links a{font-size:13px;text-decoration:none;border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:5px 11px}
+.takeaways{padding-left:18px;font-size:14px}
+.takeaways li{margin:4px 0}
+details{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-top:10px}
+details summary{cursor:pointer;font-weight:600;font-size:14.5px}
+.cardlist{list-style:none;margin-top:8px}
+.cardlist li{padding:8px 0;border-top:1px solid var(--border);font-size:13.5px}
+.cardlist b{display:block}
+.lock{display:flex;gap:10px;align-items:center;background:var(--surface2);border-radius:12px;padding:12px;font-size:13.5px}
+
+/* study */
+.modes{display:grid;gap:10px}
+.mode{display:flex;gap:14px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:16px;cursor:pointer;width:100%}
+.mode:hover{border-color:var(--accent)}
+.mode .e{font-size:30px}
+.mode b{display:block;font-size:16px}
+.mode span{font-size:13px;color:var(--muted)}
+.session-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.session-head .bar{flex:1;margin:0}
+.x{background:var(--surface);border:1px solid var(--border);border-radius:999px;width:34px;height:34px;cursor:pointer;font-size:16px;flex-shrink:0}
+
+.flip{perspective:1200px;min-height:300px;cursor:pointer;margin-bottom:14px}
+.flip .inner{position:relative;width:100%;min-height:300px;transition:transform .45s;transform-style:preserve-3d}
+.flip.flipped .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:22px;display:flex;flex-direction:column;justify-content:center;gap:10px;overflow:auto}
+.face.back{transform:rotateY(180deg)}
+.face .src{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700;position:absolute;top:14px;left:22px;right:22px}
+.face .q{font-size:20px;font-weight:600;line-height:1.35}
+.face .a{font-size:20px;font-weight:700;color:var(--accent);line-height:1.3}
+.face .ex{font-size:14.5px;color:var(--muted)}
+.face .hint{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted)}
+.grades{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.grades button{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:10px 4px;cursor:pointer;font-weight:700;font-size:14px;display:flex;flex-direction:column;align-items:center}
+.grades button small{font-weight:400;font-size:11px;color:var(--muted)}
+.grades .g1{border-color:var(--bad);color:var(--bad)}
+.grades .g4{border-color:var(--good);color:var(--good)}
+
+.qcard{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:12px}
+.qcard .q{font-size:19px;font-weight:600;line-height:1.35;margin-top:4px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1.5px solid var(--border);background:var(--surface);border-radius:14px;padding:13px 14px;font-size:15px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.opt .k{font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:0 6px;margin-top:2px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.right{border-color:var(--good);background:color-mix(in srgb,var(--good) 12%,var(--surface))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,var(--surface))}
+.opt:disabled{cursor:default}
+.feedback{margin-top:12px;padding:12px 14px;border-radius:14px;font-size:14px;display:none}
+.feedback.on{display:block}
+.feedback.ok{background:color-mix(in srgb,var(--good) 12%,transparent)}
+.feedback.no{background:color-mix(in srgb,var(--bad) 10%,transparent)}
+.combo{font-weight:700;color:var(--flame);font-size:13px;min-width:60px;text-align:right}
+.combo.pop{animation:pop .35s}
+@keyframes pop{50%{transform:scale(1.4)}}
+
+.done-screen{text-align:center;padding:26px 0}
+.done-screen .big{font-size:56px}
+.done-screen h1{margin:8px 0 4px}
+
+/* toasts & confetti */
+.toasts{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom));left:0;right:0;z-index:60;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+.toast{background:var(--text);color:var(--bg);font-weight:700;font-size:14px;border-radius:999px;padding:8px 16px;box-shadow:0 6px 24px rgba(0,0,0,.25);animation:tin .25s ease,tout .3s ease 1.5s forwards}
+@keyframes tin{from{opacity:0;transform:translateY(-10px)}}
+@keyframes tout{to{opacity:0;transform:translateY(-10px)}}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:70}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;font-size:14px}
+.note{font-size:12.5px;color:var(--muted);margin-top:6px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp 0.8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="wrap topbar">
+    <a class="logo" href="./">Energy Brief</a>
+    <div class="stats">
+      <span class="pill" title="Day streak"><span class="ic">🔥</span><span id="sStreak">0</span></span>
+      <span class="pill" title="Total XP"><span class="ic">⚡</span><span id="sXp">0</span></span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <!-- HOME -->
+  <section class="view on" id="v-home">
+    <div class="card" id="installCard" hidden style="margin-bottom:12px;display:flex;gap:12px;align-items:flex-start">
+      <img src="icons/icon-192.png" alt="" style="width:48px;height:48px;border-radius:12px;flex-shrink:0">
+      <div style="flex:1;min-width:0">
+        <b>Put Energy Brief on your home screen</b>
+        <p class="small muted" id="installHow" style="margin-top:3px"></p>
+        <div class="row" style="margin-top:8px;gap:8px"><button class="btn sm primary" id="installBtn" hidden>📲 Install app</button><button class="btn sm" id="installLater">Not now</button></div>
+      </div>
+    </div>
+    <div class="card hero">
+      <div class="ring" aria-label="Daily goal progress">
+        <svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="var(--surface2)" stroke-width="10"/><circle id="ringArc" cx="48" cy="48" r="40" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3" style="transition:stroke-dashoffset .6s"/></svg>
+        <div class="lbl"><div id="goalTxt">0/50</div><span>today's XP</span></div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div class="lvl" id="lvlName">Level 1</div>
+        <h1 id="lvlTitle">Curious</h1>
+        <div class="bar"><i id="lvlBar" style="width:0"></i></div>
+        <div class="small muted" id="lvlNext" style="margin-top:4px"></div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <button class="btn primary" data-go="review"><span>🧠 Review flashcards</span><span class="sub" id="ctaDue"></span></button>
+      <button class="btn" data-go="quiz"><span>🎯 Quick quiz</span><span class="sub">10 questions · combos for streaks</span></button>
+      <button class="btn" data-tab="library"><span>📚 My shelves</span><span class="sub">start a book · log progress</span></button>
+    </div>
+
+    <h2>Your progress</h2>
+    <div class="grid4">
+      <div class="stat"><b id="stDone">0</b><span>finished</span></div>
+      <div class="stat"><b id="stDoing">0</b><span>in progress</span></div>
+      <div class="stat"><b id="stCards">0</b><span>cards learned</span></div>
+      <div class="stat"><b id="stAcc">–</b><span>quiz accuracy</span></div>
+    </div>
+
+    <h2>Today's reading <small>tap Log after each session</small></h2>
+    <div class="items" id="continueList"></div>
+
+    <h2>Badges <small id="badgeCount"></small></h2>
+    <div class="badges" id="badgeList"></div>
+
+    <h2>Settings</h2>
+    <div class="card" id="notifSetup" style="margin-bottom:10px">
+      <b>📲 Phone notifications</b>
+      <p class="small muted" style="margin-top:4px">Reading reminders arrive as notifications through the free <b>ntfy</b> app, the same one the daily news brief uses.</p>
+      <ol class="small" style="padding-left:18px;margin-top:6px">
+        <li>Install <b>ntfy</b> from the <a href="https://apps.apple.com/app/ntfy/id1625396347" target="_blank" rel="noopener">App Store</a> or <a href="https://play.google.com/store/apps/details?id=io.heckel.ntfy" target="_blank" rel="noopener">Google Play</a> and allow notifications.</li>
+        <li>In the app tap <b>+</b> and subscribe to a hard-to-guess topic name, e.g. <span class="mono" id="topicIdea"></span>. You can use the same topic as your news brief.</li>
+        <li>Enter that topic here and tap Save, then send a test.</li>
+      </ol>
+      <div class="row" style="margin-top:10px">
+        <input type="text" id="ntfyTopic" placeholder="your-topic-name" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="ntfy topic">
+        <button class="btn sm" id="saveTopic">Save</button>
+      </div>
+      <div class="row" style="margin-top:8px"><button class="btn sm" id="testNotif">🔔 Send test notification</button></div>
+      <p class="note" id="topicStatus"></p>
+    </div>
+    <div class="card">
+      <b>AI notes &amp; cards</b>
+      <p class="small muted" style="margin-top:4px">To have Claude summarize your own notes or a transcript and turn them into flashcards, paste an Anthropic API key (from console.anthropic.com). It's saved only on this device, and each summary costs a few cents.</p>
+      <div class="row" style="margin-top:10px">
+        <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off" aria-label="Anthropic API key">
+        <button class="btn sm" id="saveKey">Save</button>
+      </div>
+      <p class="note" id="keyStatus"></p>
+      <hr style="border:none;border-top:1px solid var(--border);margin:16px 0">
+      <b>Backup</b>
+      <p class="small muted" style="margin-top:4px">Your library, notes and progress are saved in this browser. Export a backup to move them to another device.</p>
+      <div class="row" style="margin-top:10px;flex-wrap:wrap">
+        <button class="btn sm" id="exportBtn">⬇ Export backup</button>
+        <label class="btn sm" style="cursor:pointer">⬆ Import backup<input type="file" id="importFile" accept="application/json" hidden></label>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRARY -->
+  <section class="view" id="v-library">
+    <div class="row" style="justify-content:space-between;margin-bottom:12px">
+      <h1>My shelves</h1>
+      <button class="btn sm primary" id="addBtn">＋ Add</button>
+    </div>
+    <div class="chips" id="shelfTabs"></div>
+    <div class="toolbar"><input class="search" id="libQ" type="search" placeholder="Search title or author" aria-label="Search library"></div>
+    <div class="chips" id="typeChips"></div>
+    <p class="small muted" id="libHint" style="margin:-4px 0 10px"></p>
+    <div id="libList"></div>
+  </section>
+
+  <!-- STUDY -->
+  <section class="view" id="v-study">
+    <div id="studyMenu">
+      <h1>Study</h1>
+      <p class="muted small" style="margin:4px 0 14px">Book questions unlock page by page as you log your reading; everything else unlocks when you finish it. The Key Concepts deck is open from the start.</p>
+      <div class="modes">
+        <button class="mode" data-go="review"><span class="e">🧠</span><div><b>Flashcards</b><span id="mDue">Spaced repetition: you see each card again right before you'd forget it.</span></div></button>
+        <button class="mode" data-go="quiz"><span class="e">🎯</span><div><b>Quiz</b><span>10 multiple-choice questions. Answer streaks multiply your XP.</span></div></button>
+        <button class="mode" data-go="lightning"><span class="e">⚡</span><div><b>Lightning round</b><span>60 seconds. Answer as many as you can.</span></div></button>
+      </div>
+      <h2>Decks</h2>
+      <div class="items" id="deckList"></div>
+    </div>
+    <div id="session" hidden></div>
+  </section>
+</main>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" data-tab="home" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
+  <button role="tab" data-tab="library" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h3v18H6a2 2 0 0 1-2-2zM9 3h4v18H9zM14.5 4.2l3.8-1 3.2 16.6-3.8 1z"/></svg>Library</button>
+  <button role="tab" data-tab="study" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>Study<span class="badge-n" id="tabDue" hidden></span></button>
+  <a href="./" role="tab" style="flex:1;max-width:160px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 4px 8px;font-size:11.5px;color:var(--muted);text-decoration:none"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg>News</a>
+</nav>
+
+<div class="sheet-bg" id="sheetBg"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="grab"></div><button class="close" id="sheetClose" aria-label="Close">×</button><div class="wrap" id="sheetBody" style="padding-top:8px"></div></div>
+<div class="toasts" id="toasts"></div>
+<canvas id="confetti"></canvas>
+
+<script type="module">
+/* =========================================================
+   State (localStorage) — shared with the news hub page
+   ========================================================= */
+const KEY = "energybrief-learn-v1";
+const DAY = 86400000;
+const NEW_PER_DAY = 20;
+const GOAL = 50;
+
+function blank(){ return {items:{}, custom:{}, aiCards:{}, srs:{}, xp:0, days:{}, streak:{count:0,last:""}, quiz:{right:0,total:0,perfect:0}, reviews:0, badges:{}, apiKey:""}; }
+function load(){
+  try { return Object.assign(blank(), JSON.parse(localStorage.getItem(KEY)) || {}); }
+  catch { return blank(); }
+}
+let S = load();
+for (const r of Object.values(S.items)) if (r.status === "doing") r.status = "reading";
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch {} }
+
+// Articles saved from the news page land in a small inbox; pull them into the library.
+const INBOX = "energybrief-inbox";
+function ingestInbox(){
+  try {
+    const box = JSON.parse(localStorage.getItem(INBOX) || "[]");
+    if (!box.length) return;
+    for (const a of box) {
+      const id = "a-" + slug(a.title || "").slice(0, 48);
+      if (!a.title || S.custom[id]) continue;
+      S.custom[id] = {id, title:a.title, type:"article", by:a.source || "", url:safeUrl(a.link)};
+      S.items[id] = {status:a.status === "reading" ? "reading" : "want", updated:Date.now()};
+    }
+    localStorage.removeItem(INBOX); save();
+  } catch {}
+}
+
+const today = () => new Date().toLocaleDateString("en-CA");
+const dayRec = () => (S.days[today()] ||= {xp:0, newCards:0});
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "";
+const slug = t => t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+/* =========================================================
+   Catalog: resources.json + prebuilt decks
+   ========================================================= */
+const TYPES = {
+  book:{label:"Book", icon:"📕", verb:"Read", doing:"Reading"},
+  podcast:{label:"Podcast", icon:"🎧", verb:"Listened", doing:"Listening"},
+  episode:{label:"Episode", icon:"🎙️", verb:"Listened", doing:"Listening"},
+  documentary:{label:"Documentary", icon:"🎬", verb:"Watched", doing:"Watching"},
+  video:{label:"YouTube", icon:"▶️", verb:"Watched", doing:"Watching"},
+  article:{label:"Article", icon:"📰", verb:"Read", doing:"Reading"},
+  course:{label:"Course", icon:"🎓", verb:"Finished", doing:"Studying"},
+};
+const tyOf = it => TYPES[it?.type] || TYPES.article;
+// Ravelry-style project statuses
+const STATUSES = {
+  want:{label:"Want to", cls:"want"},
+  owned:{label:"Bought it", cls:"owned"},   // books only: on your shelf, not started
+  reading:{label:"", cls:"doing"},          // "Reading" / "Listening" / "Watching"
+  paused:{label:"Paused", cls:"paused"},
+  done:{label:"", cls:"done"},              // "Read" / "Listened" / "Watched"
+  dropped:{label:"Didn't finish", cls:"dropped"},
+};
+const statusName = (s, it) => s === "reading" ? tyOf(it).doing : s === "done" ? tyOf(it).verb : STATUSES[s]?.label || "";
+const statusesFor = it => it.type === "book" ? ["want","owned","reading","paused","done","dropped"] : ["want","reading","paused","done","dropped"];
+let CATALOG = {};   // id -> item
+let DECKS = {};     // id -> {summary, takeaways, cards}
+
+async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? r.json() : {}; } catch { return {}; } }
+
+async function loadCatalog(){
+  const [res, books, media] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json")]);
+  DECKS = Object.assign({}, books, media);
+  const add = (title, o) => { const id = slug(title); CATALOG[id] = {id, title, ...o}; };
+  (res.books||[]).forEach(b => add(b.title, {type:"book", by:b.by, year:b.year, audio:b.audio, url:b.url, why:b.why, level:b.level, cover:b.cover, pages:b.pages, isbn:b.isbn}));
+  (res.podcasts||[]).forEach(p => add(p.title, {type:"podcast", by:p.by, url:p.url, why:p.why, apple:p.apple, art:p.artwork}));
+  (res.documentaries||[]).forEach(d => add(d.title, {type:/youtube/i.test(d.where||"") ? "video" : "documentary", by:[d.year,d.where].filter(Boolean).join(" · "), url:d.url, why:d.why}));
+  if (DECKS.concepts) CATALOG.concepts = {id:"concepts", title:"Key Concepts", type:"course", by:"Energy Brief starter deck", why:DECKS.concepts.summary, always:true};
+}
+const allItems = () => ({...CATALOG, ...S.custom});
+const getItem = id => allItems()[id];
+const st = id => S.items[id] || {};
+const isDone = id => st(id).status === "done" || getItem(id)?.always;
+
+/* Progress: print/ebook books by page, audiobooks and everything else by percent. */
+const fmtOf = id => st(id).format || "print";
+const totalPages = id => +st(id).totalPages || +getItem(id)?.pages || 0;
+const usesPages = id => getItem(id)?.type === "book" && fmtOf(id) !== "audio" && totalPages(id) > 0;
+function progressFrac(id){
+  const s = st(id);
+  if (s.status === "done") return 1;
+  if (usesPages(id)) return Math.min(1, (+s.page || 0) / totalPages(id));
+  return Math.min(1, (+s.pct || 0) / 100);
+}
+const progressText = id => st(id).status === "done" ? "Finished" : usesPages(id) ? `p. ${st(id).page || 0} of ${totalPages(id)}` : `${Math.round(progressFrac(id) * 100)}%`;
+const isActive = id => ["reading","paused"].includes(st(id).status);
+
+function cardsFor(id){
+  const out = [];
+  (DECKS[id]?.cards || []).forEach((c, i) => out.push({...c, id:`${id}#${i}`, item:id}));
+  (S.aiCards[id] || []).forEach(c => out.push({...c, item:id}));
+  return out;
+}
+// Book cards unlock as you reach the part of the book where the idea comes up (card.pct);
+// other decks unlock when you finish. Cards you generate from your own notes are always unlocked.
+function isUnlocked(c){
+  if (String(c.id).includes("#ai")) return true;
+  if (isDone(c.item)) return true;
+  return c.pct != null && isActive(c.item) && progressFrac(c.item) >= c.pct;
+}
+function unlockedCards(){
+  const out = [];
+  for (const id of Object.keys(allItems())) cardsFor(id).forEach(c => { if (isUnlocked(c)) out.push(c); });
+  return out;
+}
+const nextUnlock = id => cardsFor(id).filter(c => !isUnlocked(c) && c.pct != null).sort((a,b) => a.pct - b.pct)[0];
+
+/* =========================================================
+   Spaced repetition (SM-2 style)
+   ========================================================= */
+function dueQueue(){
+  const now = Date.now(), due = [], fresh = [];
+  for (const c of unlockedCards()) {
+    const r = S.srs[c.id];
+    if (!r) fresh.push(c); else if (r.due <= now) due.push(c);
+  }
+  const newLeft = Math.max(0, NEW_PER_DAY - (S.days[today()]?.newCards || 0));
+  return [...shuffle(due), ...fresh.slice(0, newLeft)];
+}
+function grade(c, g){ // 1 again, 2 hard, 3 good, 4 easy
+  const r = S.srs[c.id] || {ivl:0, ease:2.5, reps:0, lapses:0, due:0};
+  if (!S.srs[c.id]) dayRec().newCards++;
+  if (g === 1) { r.lapses++; r.reps = 0; r.ivl = 0; r.ease = Math.max(1.3, r.ease - .2); r.due = Date.now() + 10*60000; }
+  else {
+    if (g === 2) { r.ivl = Math.max(1, (r.ivl || 1) * 1.2); r.ease = Math.max(1.3, r.ease - .15); }
+    else if (r.reps === 0) r.ivl = g === 4 ? 3 : 1;
+    else if (r.reps === 1) r.ivl = g === 4 ? 6 : 3;
+    else r.ivl = r.ivl * r.ease * (g === 4 ? 1.3 : 1);
+    if (g === 4) r.ease += .15;
+    r.reps++; r.due = Date.now() + r.ivl * DAY;
+  }
+  S.srs[c.id] = r; S.reviews++;
+}
+const ivlLabel = (c, g) => {
+  const r = S.srs[c.id] || {ivl:0, ease:2.5, reps:0};
+  if (g === 1) return "10m";
+  let d = g === 2 ? Math.max(1, (r.ivl||1)*1.2) : r.reps === 0 ? (g === 4 ? 3 : 1) : r.reps === 1 ? (g === 4 ? 6 : 3) : r.ivl * r.ease * (g === 4 ? 1.3 : 1);
+  d = Math.round(d); return d < 30 ? d + "d" : d < 365 ? Math.round(d/30) + "mo" : (d/365).toFixed(1) + "y";
+};
+const learned = () => Object.values(S.srs).filter(r => r.ivl >= 3).length;
+
+/* =========================================================
+   XP, levels, streak, badges
+   ========================================================= */
+const TITLES = [[1,"Curious"],[3,"Informed"],[5,"Analyst"],[8,"Specialist"],[12,"Pro"],[16,"Expert"],[20,"Thought Leader"]];
+const levelOf = xp => Math.floor(Math.sqrt(xp / 40)) + 1;
+const xpFor = lvl => 40 * (lvl - 1) ** 2;
+const titleOf = l => TITLES.filter(([n]) => l >= n).pop()[1];
+
+function addXp(n, why){
+  const before = levelOf(S.xp);
+  S.xp += n; dayRec().xp += n;
+  const t = today();
+  if (S.streak.last !== t) {
+    const y = new Date(Date.now() - DAY).toLocaleDateString("en-CA");
+    S.streak.count = S.streak.last === y ? S.streak.count + 1 : 1;
+    S.streak.last = t;
+  }
+  if (why) toast(`+${n} XP · ${why}`);
+  const after = levelOf(S.xp);
+  if (after > before) { setTimeout(() => toast(`🎉 Level ${after}: ${titleOf(after)}`), 400); confetti(); }
+  checkBadges(); save(); renderTop();
+}
+
+const countDone = type => Object.keys(allItems()).filter(id => st(id).status === "done" && (!type || [].concat(type).includes(getItem(id)?.type))).length;
+const BADGES = [
+  {id:"first", e:"🌱", name:"First finish", test:() => countDone() >= 1},
+  {id:"books3", e:"📚", name:"Bookworm (3 books)", test:() => countDone("book") >= 3},
+  {id:"pods5", e:"🎧", name:"All ears (5 podcasts)", test:() => countDone(["podcast","episode"]) >= 5},
+  {id:"docs3", e:"🎬", name:"Cinephile (3 films)", test:() => countDone(["documentary","video"]) >= 3},
+  {id:"notes5", e:"📝", name:"Note taker (5 notes)", test:() => Object.values(S.items).filter(i => (i.notes||"").trim().length > 40).length >= 5},
+  {id:"ai1", e:"🤖", name:"Made your own cards", test:() => Object.keys(S.aiCards).length >= 1},
+  {id:"log7", e:"📍", name:"Logged 7 days", test:() => new Set(Object.values(S.items).flatMap(i => (i.log || []).map(e => e.d))).size >= 7},
+  {id:"rev100", e:"🃏", name:"100 reviews", test:() => S.reviews >= 100},
+  {id:"rev500", e:"🏋️", name:"500 reviews", test:() => S.reviews >= 500},
+  {id:"perfect", e:"🎯", name:"Perfect quiz", test:() => S.quiz.perfect >= 1},
+  {id:"streak7", e:"🔥", name:"7-day streak", test:() => S.streak.count >= 7},
+  {id:"streak30", e:"☀️", name:"30-day streak", test:() => S.streak.count >= 30},
+  {id:"learn50", e:"🧠", name:"50 cards learned", test:() => learned() >= 50},
+  {id:"pro", e:"🏆", name:"Reached Pro", test:() => levelOf(S.xp) >= 12},
+];
+function checkBadges(){
+  for (const b of BADGES) if (!S.badges[b.id] && b.test()) { S.badges[b.id] = today(); setTimeout(() => toast(`${b.e} Badge: ${b.name}`), 700); confetti(); }
+}
+
+/* =========================================================
+   UI helpers
+   ========================================================= */
+// one toast at a time so they never pile up over the content
+const toastQ = []; let toasting = false;
+function toast(msg){ toastQ.push(msg); if (!toasting) nextToast(); }
+function nextToast(){
+  const msg = toastQ.shift(); if (!msg) { toasting = false; return; }
+  toasting = true;
+  const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; $("#toasts").append(t);
+  setTimeout(() => { t.remove(); nextToast(); }, 1850);
+}
+function confetti(){
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv = $("#confetti"), ctx = cv.getContext("2d"); cv.width = innerWidth; cv.height = innerHeight;
+  const colors = ["#00e5c9","#4ade80","#ffd166","#c084fc","#ff8c42","#0a8a6a"];
+  const ps = Array.from({length:120}, () => ({x:innerWidth/2, y:innerHeight/3, vx:(Math.random()-.5)*14, vy:Math.random()*-12-3, s:Math.random()*6+4, c:colors[Math.random()*colors.length|0], r:Math.random()*6}));
+  let f = 0; (function tick(){ ctx.clearRect(0,0,cv.width,cv.height);
+    ps.forEach(p => { p.x += p.vx; p.y += p.vy; p.vy += .35; p.r += .1; ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); ctx.restore(); });
+    if (++f < 110) requestAnimationFrame(tick); else ctx.clearRect(0,0,cv.width,cv.height); })();
+}
+function thumb(it, size = "M"){
+  if (it.cover) return `<img class="cov" src="https://covers.openlibrary.org/b/id/${encodeURIComponent(it.cover)}-${size}.jpg" alt="" loading="lazy">`;
+  const art = safeUrl(it.art || "");
+  if (art) return `<img class="cov sq" src="${esc(art.replace("100x100", "300x300"))}" alt="" loading="lazy">`;
+  return `<span class="cov emo">${tyOf(it).icon}</span>`;
+}
+const statusLabel = id => {
+  const it = getItem(id);
+  if (it?.always) return `<span class="st done">Unlocked</span>`;
+  const s = st(id).status; if (!STATUSES[s]) return "";
+  return `<span class="st ${STATUSES[s].cls}">${s === "done" ? "✓ " : ""}${esc(statusName(s, it))}</span>`;
+};
+const starStr = n => n ? "★".repeat(n) + "☆".repeat(5-n) : "";
+function itemRow(id){
+  const it = getItem(id); if (!it) return "";
+  const s = st(id), n = cardsFor(id).length;
+  return `<button class="item" data-open="${esc(id)}"><span class="ico">${thumb(it, "S")}</span>
+    <span style="min-width:0;flex:1"><div class="tt">${esc(it.title)}</div><div class="by">${esc(it.by || tyOf(it).label)}${n ? ` · ${n} cards` : ""}</div>
+      ${isActive(id) ? `<div class="bar sm"><i style="width:${progressFrac(id) * 100}%"></i></div>` : ""}</span>
+    <span class="rt">${statusLabel(id)}${s.rating ? `<span class="stars">${starStr(s.rating)}</span>` : ""}</span></button>`;
+}
+// Project tile, like a Ravelry project thumbnail
+function tile(id, quick){
+  const it = getItem(id); if (!it) return "";
+  const s = st(id);
+  const q = quick ? `<div class="quick">${(it.type === "book" ? [["want","🔖 Want"],["owned","🛍️ Bought"],["reading","📖 Start"]] : [["want","🔖 Want"],["reading","▶ Start"]])
+      .map(([k,l]) => `<button class="btn xs" data-quick="${esc(id)}" data-s="${k}">${l}</button>`).join("")}</div>` : "";
+  return `<div class="tile"><button class="tbtn" data-open="${esc(id)}">${thumb(it)}
+    <div class="tbody"><div class="tt">${esc(it.title)}</div><div class="by">${esc(it.by || tyOf(it).label)}</div>
+    ${quick && it.level ? `<span class="st want">${esc(it.level)}</span>` : statusLabel(id)}
+    ${isActive(id) ? `<div class="bar sm"><i style="width:${progressFrac(id) * 100}%"></i></div><div class="by">${esc(progressText(id))}</div>` : ""}
+    ${s.rating ? `<div class="stars">${starStr(s.rating)}</div>` : ""}</div></button>${q}</div>`;
+}
+/* Today's reading goal for an in-progress item */
+const planUnit = id => usesPages(id) ? "pages" : "minutes";
+function todayGoal(id){
+  const s = st(id), p = s.plan;
+  if (!p?.perDay) return "";
+  if (usesPages(id)) {
+    const from = s.dayStart?.d === today() ? s.dayStart.v : (+s.page || 0);
+    const target = Math.min(totalPages(id), from + +p.perDay);
+    return (+s.page || 0) >= target && s.lastLog === today() ? `🎯 Goal met (+${(+s.page || 0) - from} pages today)` : `Read to p. ${target}`;
+  }
+  return `${tyOf(getItem(id)).doing === "Reading" ? "Read" : tyOf(getItem(id)).doing === "Watching" ? "Watch" : "Listen"} ${p.perDay} min`;
+}
+function todayRow(id){
+  const it = getItem(id), s = st(id), logged = s.lastLog === today();
+  const goal = todayGoal(id);
+  return `<div class="today"><button class="tbtn row" data-open="${esc(id)}" style="flex:1;min-width:0">
+      <span class="ico">${thumb(it, "S")}</span>
+      <span style="min-width:0;flex:1"><div class="tt">${esc(it.title)}</div>
+        <div class="by">${esc(progressText(id))}${s.status === "paused" ? " · paused" : ""}${goal ? ` · <b>${esc(goal)}</b>` : ""}</div>
+        <div class="bar sm"><i style="width:${progressFrac(id) * 100}%"></i></div></span></button>
+    <button class="btn sm ${logged ? "" : "primary"}" data-log="${esc(id)}">${logged ? "✓ Logged" : "Log"}</button></div>`;
+}
+/* =========================================================
+   Render: top bar + home
+   ========================================================= */
+function renderTop(){
+  $("#sXp").textContent = S.xp.toLocaleString();
+  const y = new Date(Date.now() - DAY).toLocaleDateString("en-CA");
+  $("#sStreak").textContent = (S.streak.last === today() || S.streak.last === y) ? S.streak.count : 0;
+  const due = dueQueue().length;
+  $("#tabDue").hidden = !due; $("#tabDue").textContent = due > 99 ? "99+" : due;
+}
+function renderHome(){
+  renderTop();
+  const lvl = levelOf(S.xp), lo = xpFor(lvl), hi = xpFor(lvl + 1);
+  $("#lvlName").textContent = `Level ${lvl}`; $("#lvlTitle").textContent = titleOf(lvl);
+  $("#lvlBar").style.width = ((S.xp - lo) / (hi - lo) * 100) + "%";
+  const nextTitle = TITLES.find(([n]) => n > lvl);
+  $("#lvlNext").textContent = `${hi - S.xp} XP to level ${lvl + 1}` + (nextTitle ? ` · "${nextTitle[1]}" at level ${nextTitle[0]}` : "");
+  const dx = S.days[today()]?.xp || 0;
+  $("#goalTxt").textContent = `${Math.min(dx, 999)}/${GOAL}`;
+  $("#ringArc").style.strokeDashoffset = 251.3 * (1 - Math.min(1, dx / GOAL));
+  const due = dueQueue().length;
+  $("#ctaDue").textContent = due ? `${due} due now` : "all caught up";
+  $("#stDone").textContent = countDone();
+  $("#stDoing").textContent = Object.keys(S.items).filter(id => isActive(id) && getItem(id)).length;
+  $("#stCards").textContent = learned();
+  $("#stAcc").textContent = S.quiz.total ? Math.round(S.quiz.right / S.quiz.total * 100) + "%" : "–";
+  const cont = Object.keys(S.items).filter(id => isActive(id) && getItem(id)).sort((a,b) => (st(a).status === "paused") - (st(b).status === "paused") || (st(b).updated||0) - (st(a).updated||0)).slice(0, 6);
+  $("#continueList").innerHTML = cont.map(todayRow).join("") || `<div class="empty">Nothing on the go. Open <a href="#" data-tab="library">Library → ✨ Recommended</a> and tap <b>Start</b> or <b>Bought</b> on a book.</div>`;
+  const got = BADGES.filter(b => S.badges[b.id]).length;
+  $("#badgeCount").textContent = `${got}/${BADGES.length}`;
+  $("#badgeList").innerHTML = BADGES.map(b => `<div class="bdg ${S.badges[b.id] ? "" : "locked"}" title="${esc(b.name)}"><span class="e">${b.e}</span>${esc(b.name)}</div>`).join("");
+  $("#apiKey").value = S.apiKey ? "••••••••" + S.apiKey.slice(-4) : "";
+  $("#keyStatus").textContent = S.apiKey ? "Key saved on this device." : "No key saved. Prebuilt cards work without one.";
+}
+
+/* =========================================================
+   Library (shelves, Ravelry-style)
+   ========================================================= */
+const SHELVES = [
+  ["reading", "📖 On the go", id => isActive(id)],
+  ["owned", "🛍️ Bought", id => st(id).status === "owned"],
+  ["want", "🔖 Want to", id => st(id).status === "want"],
+  ["finished", "✅ Finished", id => ["done","dropped"].includes(st(id).status)],
+  ["discover", "✨ Recommended", id => !st(id).status && !getItem(id)?.always],
+];
+let shelf = null, libType = "all";
+const LEVEL_ORDER = {"Start here":0, "Core":1, "Pro":2, "Fiction":3};
+function renderLibrary(){
+  const items = allItems(), ids = Object.keys(items);
+  if (!shelf) shelf = ids.some(isActive) ? "reading" : "discover";
+  $("#shelfTabs").innerHTML = SHELVES.map(([k,l,f]) => `<button class="chip" data-shelf="${k}" aria-pressed="${shelf===k}">${l} <span style="opacity:.6">${ids.filter(f).length}</span></button>`).join("");
+  const types = [...new Set(Object.values(items).filter(i => !i.always).map(i => i.type))];
+  $("#typeChips").innerHTML = [["all","All"], ...types.map(t => [t, tyOf({type:t}).icon + " " + tyOf({type:t}).label])].map(([k,l]) => `<button class="chip sm" data-ty="${k}" aria-pressed="${libType===k}">${l}</button>`).join("");
+  const q = $("#libQ").value.trim().toLowerCase();
+  const f = SHELVES.find(x => x[0] === shelf)[2];
+  const list = ids.filter(id => f(id) && (libType === "all" || items[id].type === libType) && (!q || (items[id].title + " " + (items[id].by||"")).toLowerCase().includes(q)));
+  const typeRank = {book:0, podcast:1, documentary:2, video:3};
+  list.sort(shelf === "discover"
+    ? (a,b) => (typeRank[items[a].type] ?? 9) - (typeRank[items[b].type] ?? 9) || (LEVEL_ORDER[items[a].level] ?? 5) - (LEVEL_ORDER[items[b].level] ?? 5)
+    : (a,b) => (st(b).updated || 0) - (st(a).updated || 0));
+  const empty = {reading:"Nothing on the go. Pick something from ✨ Recommended and tap Start.", owned:"Books you've bought but haven't started go here.", want:"Your queue is empty.", finished:"Finished books, episodes and films show up here.", discover:"You've added everything we recommend. Nice."}[shelf];
+  $("#libHint").textContent = shelf === "discover" ? "Recommended reading, listening and watching. Books are ordered from beginner to pro." : "";
+  $("#libList").innerHTML = list.length ? `<div class="tiles">${list.map(id => tile(id, shelf === "discover")).join("")}</div>` : `<div class="empty">${empty}</div>`;
+}
+$("#shelfTabs").addEventListener("click", e => { const b = e.target.closest("[data-shelf]"); if (b) { shelf = b.dataset.shelf; renderLibrary(); } });
+$("#typeChips").addEventListener("click", e => { const b = e.target.closest("[data-ty]"); if (b) { libType = b.dataset.ty; renderLibrary(); } });
+$("#libQ").addEventListener("input", renderLibrary);
+
+/* =========================================================
+   Status changes
+   ========================================================= */
+function setStatus(id, s){
+  const it = getItem(id), rec = S.items[id] ||= {};
+  const was = rec.status;
+  rec.status = s; rec.updated = Date.now();
+  if (s === "reading") {
+    rec.startedAt ||= today();
+    if (!rec.plan) rec.plan = {perDay: usesPages(id) ? Math.max(10, Math.ceil(Math.max(0, totalPages(id) - (+rec.page || 0)) / 21 / 5) * 5) : 20, time:"20:00"};
+    if (was !== "reading" && was !== "paused") toast(`📖 Started ${it.title}`);
+  }
+  if (s === "owned" && !rec.ownedXp) { rec.ownedXp = 1; addXp(10, "Added to your shelf"); }
+  if (s !== was) syncReminders();
+  if (s === "done" && was !== "done") {
+    rec.finishedAt = today();
+    if (usesPages(id)) rec.page = totalPages(id);
+    if (!rec.doneXp) {
+      rec.doneXp = 1; addXp(100, `${tyOf(it).verb} ${it.title}`); confetti();
+      const n = cardsFor(id).length; if (n) setTimeout(() => toast(`🔓 All ${n} cards unlocked`), 300);
+    }
+  }
+  save();
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-quick]"); if (!b) return;
+  e.stopPropagation(); setStatus(b.dataset.quick, b.dataset.s); renderLibrary();
+}, true);
+
+/* =========================================================
+   Links straight to the source
+   ========================================================= */
+function getLinks(it){
+  const q = encodeURIComponent, ta = `${it.title} ${String(it.by || "").split(/[·(]/)[0]}`.trim(), L = [];
+  if (it.type === "book") {
+    if (safeUrl(it.url)) L.push(["📖 Read free online", it.url]);
+    L.push(["🛒 Bookshop.org", `https://bookshop.org/search?keywords=${q(it.isbn || ta)}`]);
+    L.push(["Amazon", `https://www.amazon.com/s?k=${q(it.isbn || ta)}`]);
+    L.push(["🎧 Audible", `https://www.audible.com/search?keywords=${q(ta)}`]);
+    L.push(["🟢 Spotify audiobook", `https://open.spotify.com/search/${q(ta)}/audiobooks`]);
+    L.push(["🏛️ Borrow (library)", it.isbn ? `https://search.worldcat.org/search?q=bn:${it.isbn}` : `https://search.worldcat.org/search?q=${q(ta)}`]);
+  } else if (it.type === "podcast" || it.type === "episode") {
+    if (it.type === "episode" && safeUrl(it.url)) L.push(["▶ Play episode", it.url]);
+    L.push(["🟢 Spotify", `https://open.spotify.com/search/${q(ta)}/podcasts`]);
+    L.push(["🟣 Apple Podcasts", safeUrl(it.apple) || `https://podcasts.apple.com/us/search?term=${q(ta)}`]);
+    if (it.type === "podcast" && safeUrl(it.url)) L.push(["🌐 Website", it.url]);
+  } else if (it.type === "documentary") {
+    L.push(["🍿 Where to stream", `https://www.justwatch.com/us/search?q=${q(it.title)}`]);
+    if (safeUrl(it.url)) L.push(["Official page", it.url]);
+  } else if (it.type === "video") {
+    L.push(["▶ YouTube", safeUrl(it.url) || `https://www.youtube.com/results?search_query=${q(ta)}`]);
+  } else if (safeUrl(it.url)) {
+    L.push([it.type === "article" ? "📰 Open article" : "🔗 Open", it.url]);
+  }
+  return L;
+}
+function findLinks(it){
+  const q = encodeURIComponent, ta = `${it.title} ${String(it.by || "").split(/[·(]/)[0]}`.trim();
+  if (it.type === "book") return [["Summary & key ideas", `https://www.google.com/search?q=${q(`"${it.title}" summary key ideas`)}`], ["Goodreads", `https://www.goodreads.com/search?q=${q(it.isbn || ta)}`]];
+  if (it.type === "podcast" || it.type === "episode") return [["Find transcript", `https://www.google.com/search?q=${q(`"${it.title}" transcript`)}`]];
+  if (it.type === "documentary") return [["Summary & review", `https://www.google.com/search?q=${q(`"${it.title}" documentary summary`)}`]];
+  return [];
+}
+const linkRow = L => `<div class="links">${L.map(([l,u]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(l)} ↗</a>`).join("")}</div>`;
+
+/* =========================================================
+   Phone notifications via ntfy (free app: ntfy.sh)
+   Reminders are scheduled up to 3 days ahead (ntfy.sh's limit) with stable
+   ids per book per day, so they can be replaced with fresh page numbers or
+   cancelled. Opening the app (e.g. by tapping a reminder) tops the window up.
+   ========================================================= */
+const NTFY = "https://ntfy.sh";
+function projectedFinish(id){
+  const p = st(id).plan; if (!usesPages(id) || !p?.perDay) return null;
+  const days = Math.ceil(Math.max(0, totalPages(id) - (+st(id).page || 0)) / p.perDay);
+  return new Date(Date.now() + days * DAY);
+}
+const seqId = (id, day) => `read-${id.replace(/[^A-Za-z0-9-]/g, "").slice(0, 40)}-${day.replace(/-/g, "")}`;
+const logLink = id => `${location.origin}${location.pathname}?item=${encodeURIComponent(id)}&log=1`;
+function reminderText(id){
+  const it = getItem(id), p = st(id).plan || {};
+  const doing = tyOf(it).doing, verb = doing === "Reading" ? "📖 Time to read" : doing === "Watching" ? "🎬 Time to watch" : "🎧 Time to listen";
+  const where = usesPages(id) ? `You're on p. ${+st(id).page || 0} of ${totalPages(id)}.` : `You're ${Math.round(progressFrac(id) * 100)}% through.`;
+  return {title:`${verb}: ${it.title}`, body:`Today's goal: ${p.perDay || 15} ${planUnit(id)}. ${where} Tap to log it and answer your checkpoint questions.`};
+}
+async function ntfyPost(topic, seq, at, id){
+  const {title, body} = reminderText(id);
+  const q = new URLSearchParams({at:String(Math.round(at / 1000)), title, click:logLink(id), tags:"books"});
+  const r = await fetch(`${NTFY}/${encodeURIComponent(topic)}/${seq}?${q}`, {method:"POST", body});
+  if (!r.ok) throw new Error("ntfy " + r.status);
+}
+const ntfyDelete = (topic, seq) => fetch(`${NTFY}/${encodeURIComponent(topic)}/${seq}/delete`).catch(() => {});
+let syncing = null;
+function syncReminders(){ return syncing = (syncing || Promise.resolve()).then(doSync).catch(() => {}); }
+async function doSync(){
+  const now = Date.now(), sched = S.sched ||= {}, topic = S.ntfyTopic || "";
+  const want = {};
+  if (topic) for (const id of Object.keys(S.items)) {
+    const s = st(id); if (!getItem(id) || s.status !== "reading" || !s.plan || s.plan.notify === false) continue; // paused/finished = no reminders
+    const [hh, mm] = (s.plan.time || "20:00").split(":").map(Number);
+    for (let k = 0; k < 4; k++) {
+      const d = new Date(); d.setDate(d.getDate() + k); d.setHours(hh, mm, 0, 0);
+      const at = d.getTime(), day = d.toLocaleDateString("en-CA");
+      if (at < now + 60000 || at > now + 3 * DAY - 60000) continue;
+      if (day === today() && s.lastLog === today()) continue;   // already logged today: no nagging
+      want[seqId(id, day)] = {id, at};
+    }
+  }
+  for (const [seq, v] of Object.entries(sched)) {
+    if (v.at < now) { delete sched[seq]; continue; }
+    if (!want[seq] || v.topic !== topic) { await ntfyDelete(v.topic, seq); delete sched[seq]; }
+  }
+  for (const [seq, v] of Object.entries(want)) {
+    const sig = JSON.stringify([reminderText(v.id), v.at]);
+    if (sched[seq]?.sig === sig) continue;   // unchanged: don't spend ntfy quota
+    try { await ntfyPost(topic, seq, v.at, v.id); sched[seq] = {...v, topic, sig}; } catch { S.ntfyError = today(); }
+  }
+  save();
+}
+const nextReminder = id => Object.values(S.sched || {}).filter(v => v.id === id && v.at > Date.now()).sort((a,b) => a.at - b.at)[0];
+const fmtWhen = t => { const d = new Date(t), tm = d.toLocaleTimeString(undefined, {hour:"numeric", minute:"2-digit"});
+  return d.toLocaleDateString("en-CA") === today() ? `today ${tm}` : d.toLocaleDateString("en-CA") === new Date(Date.now() + DAY).toLocaleDateString("en-CA") ? `tomorrow ${tm}` : `${d.toLocaleDateString(undefined, {weekday:"short"})} ${tm}`; };
+
+/* =========================================================
+   Item page
+   ========================================================= */
+function openSheet(html){ $("#sheetBody").innerHTML = html; $("#sheet").classList.add("on"); $("#sheetBg").classList.add("on"); $("#sheet").scrollTop = 0; }
+function closeSheet(){ $("#sheet").classList.remove("on"); $("#sheetBg").classList.remove("on"); refresh(); }
+$("#sheetBg").onclick = closeSheet; $("#sheetClose").onclick = closeSheet;
+
+function openItem(id){
+  const it = getItem(id); if (!it) return;
+  const t = tyOf(it), s = st(id), deck = DECKS[id], ai = s.ai;
+  const cards = cardsFor(id), open = cards.filter(isUnlocked), nxt = nextUnlock(id);
+  const summary = ai?.summary || deck?.summary || it.why;
+  const takeaways = ai?.takeaways?.length ? ai.takeaways : deck?.takeaways || [];
+  const active = isActive(id), isBook = it.type === "book";
+  const fin = projectedFinish(id);
+  const log = (s.log || []).slice().reverse();
+  openSheet(`
+    <div class="head">${thumb(it)}
+      <div style="min-width:0"><div class="small muted">${t.icon} ${t.label}${it.level ? " · " + esc(it.level) : ""}${it.pages ? ` · ${it.pages} pages` : ""}</div>
+      <h1 style="font-size:21px">${esc(it.title)}</h1><div class="muted small">${esc(it.by || "")}</div>
+      ${s.startedAt ? `<div class="small muted">Started ${esc(s.startedAt)}${s.finishedAt ? ` · finished ${esc(s.finishedAt)}` : ""}</div>` : ""}</div></div>
+
+    ${linkRow(getLinks(it))}
+
+    ${it.always ? "" : `<label class="f">Status</label>
+    <div class="chips wrap" id="segStatus">${statusesFor(it).map(k => `<button class="chip" data-s="${k}" aria-pressed="${s.status===k}">${k==="done" ? "✓ " : ""}${esc(statusName(k, it))}</button>`).join("")}</div>`}
+
+    ${isBook && !it.always ? `<label class="f">Format</label>
+    <div class="seg" id="segFmt">${[["print","📕 Print"],["ebook","📱 Ebook"],["audio","🎧 Audiobook"]].map(([k,l]) => `<button data-f="${k}" aria-pressed="${fmtOf(id)===k}">${l}</button>`).join("")}</div>` : ""}
+
+    ${active || s.status === "done" || s.page || s.pct ? `<div class="card" style="margin-top:14px">
+      <div class="row" style="justify-content:space-between"><b>Progress</b><span class="small muted">${esc(progressText(id))}</span></div>
+      <div class="bar"><i style="width:${progressFrac(id) * 100}%"></i></div>
+      ${s.status !== "done" ? `<button class="btn primary block" data-log="${esc(id)}" style="margin-top:12px">${isBook ? "📍 Log reading" : "📍 Log progress"}</button>` : ""}
+      ${isBook && fmtOf(id) !== "audio" ? `<label class="f" for="totPages">Pages in your edition</label><input type="number" id="totPages" inputmode="numeric" min="1" value="${totalPages(id) || ""}" placeholder="e.g. 320">` : ""}
+    </div>` : ""}
+
+    ${active ? `<div class="card" style="margin-top:10px">
+      <b>⏰ Daily goal &amp; reminder</b>
+      <div class="grid2" style="margin-top:8px">
+        <div><label class="f" for="perDay">${planUnit(id) === "pages" ? "Pages per day" : "Minutes per day"}</label><input type="number" id="perDay" inputmode="numeric" min="1" value="${s.plan?.perDay || ""}"></div>
+        <div><label class="f" for="remTime">Remind me at</label><input type="time" id="remTime" value="${esc(s.plan?.time || "20:00")}"></div>
+      </div>
+      <p class="note" id="finishTxt">${fin ? `At this pace you'll finish around <b>${fin.toLocaleDateString(undefined, {month:"short", day:"numeric"})}</b>.` : ""}</p>
+      ${S.ntfyTopic ? `<label class="row" style="margin-top:10px;gap:8px;font-size:14.5px;cursor:pointer"><input type="checkbox" id="notifyOn" ${s.plan?.notify === false ? "" : "checked"} style="width:20px;height:20px"> 📲 Send a notification to my phone</label>
+        <p class="note" id="nextRem"></p>`
+      : `<div class="lock" style="margin-top:10px">📲 <span>Get a phone notification at this time each day. <a href="#" data-tab="home" data-scroll="notifSetup">Turn on phone notifications</a> (2 minutes, free).</span></div>`}
+    </div>` : ""}
+
+    ${cards.length ? `<h2>Checkpoint questions <small>${open.length}/${cards.length} unlocked</small></h2>
+      ${open.length ? `<button class="btn primary block" data-go="quiz" data-deck="${esc(id)}">🎯 Quiz me ${isDone(id) ? "on this" : "up to where I am"}</button>
+        <button class="btn block" style="margin-top:8px" data-go="review" data-deck="${esc(id)}">🧠 Flashcards</button>` : ""}
+      ${nxt ? `<div class="lock" style="margin-top:8px">🔒 <span>${usesPages(id) ? `Next question unlocks at <b>p. ${Math.ceil(nxt.pct * totalPages(id))}</b>` : `Next question unlocks at <b>${Math.round(nxt.pct * 100)}%</b>`}. ${isBook && !active ? "Start reading to unlock questions as you go." : ""}</span></div>`
+        : !open.length ? `<div class="lock">🔒 <span>Mark as <b>${t.verb}</b> to unlock ${cards.length} cards (+100 XP).</span></div>` : ""}` : ""}
+
+    ${log.length ? `<h2>Journal <small>${log.length} ${log.length === 1 ? "entry" : "entries"}</small></h2>
+      <ul class="journal">${log.slice(0, 30).map(e => `<li><div class="small muted">${esc(e.d)} · ${esc(e.label || "")}</div>${e.note ? `<div>${esc(e.note)}</div>` : ""}${e.recap ? `<div class="small muted" style="margin-top:3px">🤖 ${esc(e.recap)}</div>` : ""}</li>`).join("")}</ul>` : ""}
+
+    ${it.always ? "" : `<label class="f">Your rating</label>
+    <div class="rate" id="rate">${[1,2,3,4,5].map(n => `<button data-r="${n}" class="${(s.rating||0) >= n ? "on" : ""}" aria-label="${n} stars">★</button>`).join("")}</div>`}
+
+    <label class="f" for="notes">My notes</label>
+    <textarea id="notes" placeholder="Key ideas, quotes, numbers, what surprised you, questions...">${esc(s.notes || "")}</textarea>
+    <p class="note" id="notesSaved">Saves automatically.</p>
+
+    <details id="aiBox">
+      <summary>🤖 Summarize &amp; make cards from my notes / a transcript</summary>
+      <p class="small muted" style="margin-top:6px">Paste a transcript, show notes or an article (optional). Claude combines it with your notes above to write a summary and new flashcards.</p>
+      <label class="f" for="srcText">Transcript or source text (optional)</label>
+      <textarea id="srcText" placeholder="Paste text here..." style="min-height:90px"></textarea>
+      <button class="btn primary block" id="genBtn" style="margin-top:10px">Generate summary &amp; cards</button>
+      <p class="note" id="genMsg">${S.apiKey ? "" : "Add your API key under Home → Settings first."}</p>
+    </details>
+
+    ${summary || takeaways.length ? `<details ${isDone(id) ? "open" : ""}><summary>${ai?.summary ? "Your AI summary" : "Summary & key takeaways"}${active && !isDone(id) ? " (spoilers)" : ""}</summary>
+      ${summary ? `<p style="font-size:14.5px;margin-top:8px">${esc(summary)}</p>` : ""}
+      ${takeaways.length ? `<ul class="takeaways">${takeaways.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}</details>` : ""}
+
+    ${findLinks(it).length ? `<label class="f">Find notes, summaries &amp; transcripts</label>${linkRow(findLinks(it))}` : ""}
+    ${open.length ? `<details><summary>Browse unlocked cards</summary><ul class="cardlist">${open.map(c => `<li><b>${esc(c.q)}</b>${esc(c.a)}</li>`).join("")}</ul></details>` : ""}
+    ${S.custom[id] ? `<button class="btn sm" id="delItem" style="margin-top:18px;color:var(--bad)">Remove from library</button>` : ""}
+  `);
+
+  $("#segStatus")?.addEventListener("click", e => {
+    const b = e.target.closest("[data-s]"); if (!b) return;
+    if (st(id).status === b.dataset.s) { S.items[id].status = undefined; save(); }
+    else setStatus(id, b.dataset.s);
+    openItem(id);
+  });
+  $("#segFmt")?.addEventListener("click", e => {
+    const b = e.target.closest("[data-f]"); if (!b) return;
+    const rec = S.items[id] ||= {}; rec.format = b.dataset.f; save(); openItem(id);
+  });
+  $("#totPages")?.addEventListener("change", e => { const rec = S.items[id] ||= {}; rec.totalPages = Math.max(1, +e.target.value || 0) || undefined; save(); openItem(id); });
+  const planSave = () => {
+    const rec = S.items[id] ||= {}; rec.plan = {...(rec.plan || {}), perDay: Math.max(1, +$("#perDay").value || 1), time: $("#remTime").value || "20:00"}; save();
+    const f = projectedFinish(id); $("#finishTxt").innerHTML = f ? `At this pace you'll finish around <b>${f.toLocaleDateString(undefined, {month:"short", day:"numeric"})}</b>.` : "";
+    clearTimeout(planTmr); planTmr = setTimeout(() => syncReminders().then(showNext), 800);
+  };
+  const showNext = () => { const el = $("#nextRem"); if (!el) return; const n = nextReminder(id);
+    el.textContent = st(id).plan?.notify === false ? "Notifications off for this one." : n ? `Next notification: ${fmtWhen(n.at)}.` : st(id).lastLog === today() ? "You've logged today, so the next one comes tomorrow." : "Scheduling..."; };
+  let planTmr;
+  if ($("#perDay")) {
+    $("#perDay").addEventListener("input", planSave); $("#remTime").addEventListener("input", planSave);
+    $("#notifyOn")?.addEventListener("change", e => { const rec = S.items[id] ||= {}; rec.plan = {...(rec.plan || {}), notify:e.target.checked}; save(); syncReminders().then(showNext); });
+    syncReminders().then(showNext);
+  }
+  $("#rate")?.addEventListener("click", e => {
+    const b = e.target.closest("[data-r]"); if (!b) return;
+    const rec = S.items[id] ||= {}; rec.rating = rec.rating === +b.dataset.r ? 0 : +b.dataset.r; save();
+    $("#rate").querySelectorAll("button").forEach(x => x.classList.toggle("on", +x.dataset.r <= rec.rating));
+  });
+  let tmr;
+  $("#notes").addEventListener("input", e => {
+    clearTimeout(tmr);
+    tmr = setTimeout(() => {
+      const rec = S.items[id] ||= {}; rec.notes = e.target.value; rec.updated = Date.now();
+      if (!rec.notesXp && rec.notes.trim().length > 40) { rec.notesXp = 1; addXp(20, "Took notes"); }
+      save(); $("#notesSaved").textContent = "Saved ✓";
+    }, 500);
+  });
+  $("#genBtn").addEventListener("click", () => generate(id));
+  $("#delItem")?.addEventListener("click", () => {
+    if (!confirm("Remove this item and its notes?")) return;
+    delete S.custom[id]; delete S.items[id]; delete S.aiCards[id]; save(); closeSheet();
+  });
+}
+
+/* =========================================================
+   Log a reading / listening session → checkpoint questions
+   ========================================================= */
+function openLog(id){
+  const it = getItem(id), s = st(id), pages = usesPages(id);
+  const isShow = it.type === "podcast" || it.type === "video";
+  openSheet(`
+    <div class="head">${thumb(it, "S")}<div><div class="small muted">Log progress</div><h1 style="font-size:20px">${esc(it.title)}</h1><div class="small muted">${esc(progressText(id))}</div></div></div>
+    ${pages ? `<label class="f" for="lgPage">What page are you on now?</label>
+      <div class="row"><input type="number" id="lgPage" inputmode="numeric" min="0" max="${totalPages(id)}" value="${+s.page || 0}" style="max-width:130px"><span class="muted">of ${totalPages(id)}</span></div>
+      <div class="row" style="gap:6px;margin-top:8px">${[10,25,50].map(n => `<button class="btn xs" data-add="${n}">+${n}</button>`).join("")}<button class="btn xs" data-add="end">The end</button></div>`
+    : isShow ? `<label class="f" for="lgEp">Which ${it.type === "video" ? "video" : "episode"}?</label><input type="text" id="lgEp" placeholder="Episode title">`
+    : `<label class="f" for="lgPct">How far through are you?</label>
+      <div class="row"><input type="range" id="lgPct" min="0" max="100" value="${+s.pct || 0}" style="flex:1"><b id="lgPctTxt" style="min-width:44px;text-align:right">${+s.pct || 0}%</b></div>
+      ${it.type === "book" ? `<p class="note">Audiobook apps show your % in the player. Using page numbers? Switch the format to Print.</p>` : ""}`}
+    <label class="f" for="lgNote">What stood out? <span style="font-weight:400">(optional, but it makes better questions)</span></label>
+    <textarea id="lgNote" placeholder="A fact, an argument, a number, a question you have..." style="min-height:90px"></textarea>
+    <button class="btn primary block" id="lgSave" style="margin-top:14px">Save &amp; get my questions</button>
+    <button class="btn block" id="lgCancel" style="margin-top:8px">Cancel</button>`);
+  $("#sheetBody").querySelectorAll("[data-add]").forEach(b => b.onclick = () => {
+    const inp = $("#lgPage"); inp.value = b.dataset.add === "end" ? totalPages(id) : Math.min(totalPages(id), (+inp.value || 0) + +b.dataset.add);
+  });
+  $("#lgPct")?.addEventListener("input", e => $("#lgPctTxt").textContent = e.target.value + "%");
+  $("#lgCancel").onclick = () => openItem(id);
+  $("#lgSave").onclick = () => saveLog(id);
+}
+function saveLog(id){
+  const it = getItem(id), rec = S.items[id] ||= {}, pages = usesPages(id);
+  const before = new Set(cardsFor(id).filter(isUnlocked).map(c => c.id));
+  if (!isActive(id) && rec.status !== "done") setStatus(id, "reading");
+  const note = $("#lgNote").value.trim();
+  let label, gain, from, to;
+  if (pages) {
+    from = +rec.page || 0; to = Math.max(0, Math.min(totalPages(id), +$("#lgPage").value || 0));
+    if (rec.dayStart?.d !== today()) rec.dayStart = {d:today(), v:from};
+    rec.page = to; label = to >= from ? `p. ${from} → ${to} (+${to - from})` : `back to p. ${to}`;
+    gain = Math.max(5, Math.min(60, Math.round((to - from) / 2)));
+  } else if ($("#lgPct")) {
+    from = +rec.pct || 0; to = +$("#lgPct").value;
+    if (rec.dayStart?.d !== today()) rec.dayStart = {d:today(), v:from};
+    rec.pct = to; label = `${from}% → ${to}%`; gain = Math.max(5, Math.min(60, (to - from) * 2));
+  } else {
+    const ep = $("#lgEp").value.trim(); label = ep ? `🎧 ${ep}` : "Listened"; gain = 15;
+  }
+  (rec.log ||= []).push({d:today(), label, note, from, to});
+  if (note) rec.notes = (rec.notes ? rec.notes.trimEnd() + "\n\n" : "") + `[${today()} · ${label}] ${note}`;
+  rec.lastLog = today(); rec.updated = Date.now();
+  save(); addXp(gain, "Logged progress"); syncReminders();
+  const fresh = cardsFor(id).filter(c => isUnlocked(c) && !before.has(c.id));
+  const reachedEnd = (pages && rec.page >= totalPages(id)) || (!pages && rec.pct >= 100);
+  checkpoint(id, fresh, {from, to, label, note, reachedEnd});
+}
+function checkpoint(id, fresh, seg){
+  const it = getItem(id), unlocked = cardsFor(id).filter(isUnlocked);
+  const pick = [...fresh, ...shuffle(unlocked.filter(c => !fresh.includes(c)))].filter(c => (c.wrong || []).length).slice(0, 3);
+  const canAI = S.apiKey && (it.type === "book" ? seg.to != null : true);
+  openSheet(`<div class="done-screen" style="padding-top:10px"><div class="big">📍</div>
+    <h1>Logged: ${esc(seg.label)}</h1>
+    <p class="muted">${fresh.length ? `🔓 ${fresh.length} new question${fresh.length > 1 ? "s" : ""} unlocked by what you just read.` : unlocked.length ? "Answer a few questions on what you've read so far." : "No questions for this part yet."}</p>
+    <div class="cta" style="max-width:380px;margin:16px auto 0">
+      ${pick.length ? `<button class="btn primary" id="cpGo"><span>🎯 Answer ${pick.length} question${pick.length > 1 ? "s" : ""}</span><span class="sub">+10 XP each</span></button>` : ""}
+      ${canAI ? `<button class="btn" id="cpAI"><span>🤖 Ask Claude about this section</span><span class="sub">${it.type === "book" && seg.from != null ? (usesPages(id) ? `p. ${seg.from}–${seg.to}` : `${seg.from}–${seg.to}%`) : "from your notes"}</span></button>` : ""}
+      ${seg.reachedEnd && st(id).status !== "done" ? `<button class="btn" id="cpDone"><span>✅ Mark as finished</span><span class="sub">+100 XP</span></button>` : ""}
+      <button class="btn" id="cpBack">Back to ${esc(it.title.length > 24 ? it.title.slice(0, 24) + "…" : it.title)}</button>
+    </div><p class="note" id="genMsg"></p></div>`);
+  if (pick.length) $("#cpGo").onclick = () => { closeSheet(); tab("study"); startSession("quiz", id, pick); };
+  $("#cpAI")?.addEventListener("click", () => generateSection(id, seg));
+  $("#cpDone")?.addEventListener("click", () => { setStatus(id, "done"); openItem(id); });
+  $("#cpBack").onclick = () => openItem(id);
+}
+
+document.addEventListener("click", e => {
+  const l = e.target.closest("[data-log]"); if (l) { e.preventDefault(); openLog(l.dataset.log); return; }
+  const o = e.target.closest("[data-open]"); if (o) { openItem(o.dataset.open); return; }
+  const t = e.target.closest("[data-tab]"); if (t) { e.preventDefault(); closeSheet(); tab(t.dataset.tab); if (t.dataset.scroll) document.getElementById(t.dataset.scroll)?.scrollIntoView({behavior:"smooth"}); return; }
+  const g = e.target.closest("[data-go]"); if (g) { closeSheet(); tab("study"); startSession(g.dataset.go, g.dataset.deck); }
+});
+
+/* add your own item (book lookup via Open Library) */
+$("#addBtn").onclick = () => {
+  openSheet(`<h1 style="font-size:21px;padding-right:40px">Add to your library</h1>
+    <p class="small muted">A book, podcast episode, article, video or course you want to track.</p>
+    <label class="f" for="nType">Type</label>
+    <select id="nType">${Object.entries(TYPES).map(([k,v]) => `<option value="${k}" ${k==="book"?"selected":""}>${v.icon} ${v.label}</option>`).join("")}</select>
+    <label class="f" for="nTitle">Title</label>
+    <div class="row"><input type="text" id="nTitle" placeholder="e.g. The Ministry for the Future"><button class="btn sm" id="nLook">🔍 Look up</button></div>
+    <div id="nFound" class="small muted" style="margin-top:6px"></div>
+    <label class="f" for="nBy">Author / show / channel</label><input type="text" id="nBy" placeholder="optional">
+    <label class="f" for="nUrl">Link</label><input type="url" id="nUrl" placeholder="https://... (optional)">
+    <label class="f">Status</label>
+    <div class="chips wrap" id="nStatus">${[["want","Want to"],["owned","Bought it"],["reading","Started"],["done","Finished"]].map(([k,l]) => `<button class="chip" data-s="${k}" aria-pressed="${k==="reading"}">${l}</button>`).join("")}</div>
+    <button class="btn primary block" id="nSave" style="margin-top:16px">Add</button>`);
+  let ns = "reading", meta = {};
+  const syncType = () => { $("#nLook").hidden = $("#nType").value !== "book"; $("#nStatus [data-s=owned]").hidden = $("#nType").value !== "book"; };
+  $("#nType").onchange = syncType; syncType();
+  $("#nStatus").onclick = e => { const b = e.target.closest("[data-s]"); if (!b) return; ns = b.dataset.s; $("#nStatus").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); };
+  $("#nLook").onclick = async () => {
+    const q = $("#nTitle").value.trim(); if (!q) return;
+    $("#nFound").textContent = "Searching Open Library...";
+    try {
+      const r = await (await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=1&fields=title,author_name,cover_i,number_of_pages_median,isbn`)).json();
+      const d = r.docs?.[0]; if (!d) { $("#nFound").textContent = "No match found. Fill it in yourself."; return; }
+      meta = {cover:d.cover_i, pages:d.number_of_pages_median, isbn:(d.isbn || []).find(i => /^978[01]/.test(i)) || (d.isbn || [])[0]};
+      $("#nTitle").value = d.title; if (d.author_name?.[0]) $("#nBy").value = d.author_name[0];
+      $("#nFound").innerHTML = `${d.cover_i ? `<img src="https://covers.openlibrary.org/b/id/${encodeURIComponent(d.cover_i)}-S.jpg" alt="" style="height:44px;vertical-align:middle;border-radius:4px;margin-right:8px">` : ""}Found it${meta.pages ? ` · ${meta.pages} pages` : ""}.`;
+    } catch { $("#nFound").textContent = "Couldn't reach Open Library. Fill it in yourself."; }
+  };
+  $("#nSave").onclick = () => {
+    const title = $("#nTitle").value.trim(); if (!title) { $("#nTitle").focus(); return; }
+    const id = "u-" + Date.now().toString(36), type = $("#nType").value;
+    S.custom[id] = {id, title, type, by:$("#nBy").value.trim(), url:safeUrl($("#nUrl").value.trim()), ...(type === "book" ? meta : {})};
+    S.items[id] = {updated:Date.now()};
+    setStatus(id, ns);
+    openItem(id);
+  };
+};
+/* =========================================================
+   Claude: summaries + cards from notes, transcripts, or the section you just read
+   ========================================================= */
+const CARD_SCHEMA = {
+  type:"object", additionalProperties:false, required:["summary","takeaways","cards"],
+  properties:{
+    summary:{type:"string"},
+    takeaways:{type:"array", items:{type:"string"}},
+    cards:{type:"array", items:{type:"object", additionalProperties:false, required:["q","a","explain","wrong"],
+      properties:{q:{type:"string"}, a:{type:"string"}, explain:{type:"string"}, wrong:{type:"array", items:{type:"string"}}}}}
+  }
+};
+const CARD_RULES = `Each card has q (question), a (short correct answer, at most ~15 words), explain (1-2 sentences of context), and wrong (exactly 3 plausible but clearly incorrect answers of similar length and style, for multiple choice). Test understanding, not trivia.`;
+let Anthropic;
+async function askClaude(prompt){
+  Anthropic ||= (await import("https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm")).default;
+  const client = new Anthropic({apiKey:S.apiKey, dangerouslyAllowBrowser:true});
+  const res = await client.beta.messages.create({
+    model:"claude-opus-5-5",
+    max_tokens:16000,
+    betas:["server-side-fallback-2026-07-01"],
+    fallbacks:"default",
+    output_config:{effort:"medium", format:{type:"json_schema", schema:CARD_SCHEMA}},
+    messages:[{role:"user", content:prompt}],
+  });
+  if (res.stop_reason === "refusal") throw new Error("Claude declined this request. Try editing the text.");
+  if (res.stop_reason === "max_tokens") throw new Error("The response was cut off. Try a shorter transcript.");
+  const out = JSON.parse(res.content.filter(b => b.type === "text").map(b => b.text).join(""));
+  const stamp = Date.now().toString(36);
+  out.cards = (out.cards || []).filter(c => c.q && c.a).map((c, i) => ({q:c.q, a:c.a, explain:c.explain || "", wrong:(c.wrong || []).slice(0, 3), id:`ai-${stamp}-${i}`}));
+  return out;
+}
+const aiError = err => err?.status === 401 ? "That API key was rejected. Check it under Settings." :
+                       err?.status === 429 ? "Rate limited. Wait a minute and try again." :
+                       "Couldn't generate: " + (err?.message || err);
+const describe = it => `the ${tyOf(it).label.toLowerCase()} "${it.title}"${it.by ? ` (${it.by})` : ""}`;
+
+async function generate(id){
+  const it = getItem(id), notes = $("#notes").value.trim(), src = $("#srcText").value.trim();
+  const msg = $("#genMsg"), btn = $("#genBtn");
+  if (!S.apiKey) { msg.textContent = "Add your Anthropic API key under Home → Settings first."; return; }
+  if (!notes && !src) { msg.textContent = "Write some notes or paste a transcript first."; return; }
+  btn.disabled = true; btn.innerHTML = `<span class="spin"></span> Thinking...`; msg.textContent = "This takes about 20-60 seconds.";
+  try {
+    const out = await askClaude(`I'm studying to become a professional in sustainability, renewable energy, energy markets and decarbonization. Help me remember what I learned from ${describe(it)}.
+
+Using the material below (my notes and/or a transcript), write:
+- summary: 3-5 sentences capturing the main argument and why it matters for someone working in energy/sustainability.
+- takeaways: 4-6 short, concrete takeaways (numbers, mechanisms, names worth remembering).
+- cards: 8-12 flashcards. ${CARD_RULES}
+
+Base everything on the material provided. Where my notes are thin, you may add widely accepted background facts that directly explain the material, but don't invent specifics about what the source said.
+
+<my_notes>
+${notes || "(none)"}
+</my_notes>
+
+<source_text>
+${src || "(none)"}
+</source_text>`);
+    // replace earlier note-based cards, keep the per-section checkpoint cards
+    S.aiCards[id] = [...(S.aiCards[id] || []).filter(c => c.src === "section"), ...out.cards.map(c => ({...c, id:`${id}#${c.id}`, src:"notes"}))];
+    const rec = S.items[id] ||= {};
+    rec.ai = {summary:out.summary, takeaways:out.takeaways || [], at:today()};
+    if (notes) rec.notes = notes;
+    if (!rec.aiXp) { rec.aiXp = 1; addXp(30, "Built your own deck"); }
+    save(); toast(`🤖 ${out.cards.length} new cards ready`); openItem(id);
+  } catch (err) {
+    msg.textContent = aiError(err);
+    btn.disabled = false; btn.textContent = "Generate summary & cards";
+  }
+}
+
+// Questions about just the part of the book/episode you logged
+async function generateSection(id, seg){
+  const it = getItem(id), msg = $("#genMsg"), btn = $("#cpAI");
+  btn.disabled = true; btn.innerHTML = `<span class="spin"></span> Writing questions...`; msg.textContent = "This takes about 20-60 seconds.";
+  const where = it.type === "book" && seg.from != null
+    ? (usesPages(id) ? `pages ${seg.from} to ${seg.to} of ${totalPages(id)}` : `from ${seg.from}% to ${seg.to}% of the way through the audiobook`)
+    : seg.label;
+  try {
+    const out = await askClaude(`I'm working through ${describe(it)} to build professional knowledge of sustainability and energy. I just finished a session covering ${where}.
+
+Write a short checkpoint for that section:
+- summary: 2-3 sentences recapping what that part covers.
+- takeaways: 3-4 key points from that part.
+- cards: 3-5 questions about that part only. ${CARD_RULES}
+
+Do not ask about anything from later in the work - no spoilers. Only include content you are confident actually appears in that section; if you aren't sure what the section contains, build the questions from my notes below instead and keep them general.
+
+<my_notes_from_this_session>
+${seg.note || "(none)"}
+</my_notes_from_this_session>`);
+    const cards = out.cards.map(c => ({...c, id:`${id}#${c.id}`, src:"section"}));
+    S.aiCards[id] = [...(S.aiCards[id] || []), ...cards];
+    const rec = S.items[id] ||= {}, last = (rec.log || []).at(-1);
+    if (last) last.recap = out.summary;
+    save(); toast(`🤖 ${cards.length} questions on this section`);
+    closeSheet(); tab("study"); startSession("quiz", id, cards);
+  } catch (err) {
+    msg.textContent = aiError(err);
+    btn.disabled = false; btn.textContent = "🤖 Ask Claude about this section";
+  }
+}
+
+/* =========================================================
+   Study sessions
+   ========================================================= */
+const itemName = id => getItem(id)?.title || "";
+let SES = null;
+function endToMenu(){ SES?.timer && clearInterval(SES.timer); SES = null; $("#session").hidden = true; $("#studyMenu").hidden = false; refresh(); }
+
+function startSession(kind, deck, list){
+  let pool = list || (deck ? cardsFor(deck).filter(isUnlocked) : unlockedCards());
+  if (kind === "review" && !list) pool = deck ? shuffle(pool) : dueQueue();
+  if (!pool.length) {
+    $("#studyMenu").hidden = true; $("#session").hidden = false;
+    $("#session").innerHTML = `<div class="done-screen"><div class="big">${kind === "review" ? "✅" : "🔒"}</div>
+      <h1>${kind === "review" ? "All caught up" : "No cards unlocked yet"}</h1>
+      <p class="muted">${kind === "review" ? "Nothing is due right now. Try a quiz, or finish something new to unlock more cards." : "Mark a book, podcast or film as done in the Library to unlock its cards."}</p>
+      <div class="cta" style="max-width:340px;margin:18px auto 0"><button class="btn primary" id="back">Back</button></div></div>`;
+    $("#back").onclick = endToMenu; return;
+  }
+  const quizPool = pool.filter(c => (c.wrong || []).length >= 1);
+  SES = {kind, deck, i:0, right:0, xp:0, combo:0, best:0,
+    queue: kind === "review" ? pool : shuffle(quizPool).slice(0, kind === "lightning" ? 200 : 10)};
+  if (kind !== "review" && !SES.queue.length) { endToMenu(); toast("These cards don't support quizzes"); return; }
+  $("#studyMenu").hidden = true; $("#session").hidden = false;
+  if (kind === "lightning") {
+    SES.left = 60;
+    SES.timer = setInterval(() => { SES.left--; const el = $("#timer"); if (el) el.textContent = SES.left + "s"; if (SES.left <= 0) finish(); }, 1000);
+  }
+  kind === "review" ? showCard() : showQ();
+}
+
+function head(progress, extra = ""){
+  return `<div class="session-head"><button class="x" id="quit" aria-label="End session">×</button>
+    <div class="bar"><i style="width:${progress * 100}%"></i></div>${extra}</div>`;
+}
+function bindQuit(){ $("#quit").onclick = () => SES.i > 0 ? finish() : endToMenu(); }
+
+function showCard(){
+  const c = SES.queue[SES.i];
+  if (!c) return finish();
+  $("#session").innerHTML = head(SES.i / SES.queue.length, `<span class="small muted mono">${SES.i + 1}/${SES.queue.length}</span>`) + `
+    <div class="flip" id="flip" tabindex="0" role="button" aria-label="Flip card"><div class="inner">
+      <div class="face"><div class="src">${esc(itemName(c.item))}</div><div class="q">${esc(c.q)}</div><div class="hint">Tap to reveal · Space</div></div>
+      <div class="face back"><div class="src">${esc(itemName(c.item))}</div><div class="a">${esc(c.a)}</div>${c.explain ? `<div class="ex">${esc(c.explain)}</div>` : ""}</div>
+    </div></div>
+    <div class="grades" id="grades" style="visibility:hidden">
+      ${[[1,"Again"],[2,"Hard"],[3,"Good"],[4,"Easy"]].map(([g,l]) => `<button class="g${g}" data-g="${g}">${l}<small>${ivlLabel(c, g)}</small></button>`).join("")}
+    </div>
+    <p class="small muted" style="text-align:center;margin-top:10px">How well did you know it? Keys 1–4</p>`;
+  bindQuit();
+  const flip = () => { $("#flip").classList.toggle("flipped"); $("#grades").style.visibility = "visible"; };
+  $("#flip").onclick = flip;
+  $("#grades").onclick = e => { const b = e.target.closest("[data-g]"); if (b) rate(+b.dataset.g); };
+}
+function rate(g){
+  const c = SES.queue[SES.i];
+  grade(c, g);
+  if (g === 1) SES.queue.push(c); else SES.right++;
+  const gain = g === 1 ? 2 : 5; SES.xp += gain; addXp(gain);
+  SES.i++; showCard();
+}
+
+function showQ(){
+  const c = SES.queue[SES.i];
+  if (!c || (SES.kind === "quiz" && SES.i >= SES.queue.length)) return finish();
+  const opts = shuffle([c.a, ...(c.wrong || []).slice(0, 3)]);
+  SES.cur = {c, opts};
+  const prog = SES.kind === "lightning" ? SES.left / 60 : SES.i / SES.queue.length;
+  const extra = SES.kind === "lightning" ? `<span class="mono" id="timer" style="font-weight:700">${SES.left}s</span>` : `<span class="small muted mono">${SES.i + 1}/${SES.queue.length}</span>`;
+  $("#session").innerHTML = head(prog, `<span class="combo" id="combo">${SES.combo >= 2 ? `🔥 x${mult()}` : ""}</span>` + extra) + `
+    <div class="qcard"><div class="small muted" style="font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:11.5px">${esc(itemName(c.item))}</div><div class="q">${esc(c.q)}</div></div>
+    <div class="opts" id="opts">${opts.map((o, k) => `<button class="opt" data-k="${k}"><span class="k">${k + 1}</span><span>${esc(o)}</span></button>`).join("")}</div>
+    <div class="feedback" id="fb"></div>
+    <button class="btn primary block" id="next" style="margin-top:12px;display:none">Continue →</button>`;
+  bindQuit();
+  $("#opts").onclick = e => { const b = e.target.closest("[data-k]"); if (b) answer(+b.dataset.k); };
+  $("#next").onclick = () => { SES.i++; showQ(); };
+}
+const mult = () => SES.combo >= 6 ? 3 : SES.combo >= 3 ? 2 : 1;
+function answer(k){
+  const {c, opts} = SES.cur; if (SES.answered === SES.i) return; SES.answered = SES.i;
+  const ok = opts[k] === c.a;
+  document.querySelectorAll(".opt").forEach((b, j) => { b.disabled = true; if (opts[j] === c.a) b.classList.add("right"); else if (j === k) b.classList.add("wrong"); });
+  S.quiz.total++;
+  if (ok) {
+    SES.combo++; SES.best = Math.max(SES.best, SES.combo); SES.right++; S.quiz.right++;
+    const gain = 10 * mult(); SES.xp += gain; addXp(gain);
+    const cb = $("#combo"); if (SES.combo >= 2) { cb.textContent = `🔥 x${mult()}`; cb.classList.remove("pop"); void cb.offsetWidth; cb.classList.add("pop"); }
+  } else {
+    SES.combo = 0; $("#combo").textContent = "";
+    // missed it: bring this card back in flashcard review soon
+    if (S.srs[c.id]) { S.srs[c.id].due = Date.now(); S.srs[c.id].ivl = 0; S.srs[c.id].reps = 0; }
+    save();
+  }
+  if (SES.kind === "lightning") { setTimeout(() => { if (SES) { SES.i++; showQ(); } }, ok ? 350 : 1100); return; }
+  const fb = $("#fb");
+  fb.className = "feedback on " + (ok ? "ok" : "no");
+  fb.innerHTML = `<b>${ok ? "Correct!" : "Not quite."}</b> ${ok ? "" : `Answer: <b>${esc(c.a)}</b>. `}${esc(c.explain || "")}`;
+  $("#next").style.display = "flex";
+  $("#next").focus();
+}
+
+function finish(){
+  if (!SES) return;
+  if (SES.timer) clearInterval(SES.timer);
+  const {kind, right, xp, best} = SES;
+  const total = kind === "review" ? SES.i : kind === "lightning" ? SES.i : SES.queue.length;
+  let title = "Session complete", big = "🎉";
+  if (kind === "quiz") {
+    const pct = right / total;
+    if (right === total && total >= 10) { S.quiz.perfect++; addXp(50, "Perfect quiz bonus"); title = "Perfect score!"; big = "🏆"; confetti(); }
+    else if (pct >= .8) { title = "Great job"; big = "🌟"; } else if (pct < .5) { title = "Keep going"; big = "💪"; }
+  }
+  if (kind === "lightning") { title = `${right} correct in 60 seconds`; big = "⚡"; const prev = S.lightningBest || 0; if (right > prev) { S.lightningBest = right; if (prev) { title += " · new best!"; confetti(); } } }
+  checkBadges(); save();
+  $("#session").innerHTML = `<div class="done-screen"><div class="big">${big}</div><h1>${esc(title)}</h1>
+    <p class="muted">${kind === "review" ? `${total} cards reviewed` : `${right}/${total} correct`}${best >= 3 ? ` · best streak ${best}` : ""} · +${xp} XP</p>
+    ${kind === "lightning" && S.lightningBest ? `<p class="small muted">Personal best: ${S.lightningBest}</p>` : ""}
+    <div class="cta" style="max-width:340px;margin:18px auto 0">
+      <button class="btn primary" id="again">${kind === "review" ? "Take a quiz" : "Play again"}</button>
+      <button class="btn" id="back">Done</button></div></div>`;
+  const deck = SES.deck; SES = null;
+  $("#again").onclick = () => startSession(kind === "review" ? "quiz" : kind, deck);
+  $("#back").onclick = endToMenu;
+  renderTop();
+}
+
+document.addEventListener("keydown", e => {
+  if (!SES || $("#v-study").classList.contains("on") === false || e.target.matches("input,textarea")) return;
+  if (SES.kind === "review") {
+    if (e.key === " " || e.key === "Enter") { e.preventDefault(); $("#flip")?.click(); }
+    else if (/^[1-4]$/.test(e.key) && $("#grades")?.style.visibility === "visible") rate(+e.key);
+  } else {
+    if (/^[1-4]$/.test(e.key)) answer(+e.key - 1);
+    else if (e.key === "Enter" && $("#next")?.style.display === "flex") $("#next").click();
+  }
+});
+
+function renderStudy(){
+  const due = dueQueue().length;
+  $("#mDue").textContent = due ? `${due} cards due now. Spaced repetition brings each card back right before you'd forget it.` : "All caught up. Cards come back right before you'd forget them.";
+  const ids = Object.keys(allItems()).filter(id => cardsFor(id).some(isUnlocked));
+  $("#deckList").innerHTML = ids.map(itemRow).join("") || `<div class="empty">Finish something in the Library to add its deck here.</div>`;
+}
+
+/* =========================================================
+   Tabs, settings, boot
+   ========================================================= */
+function tab(name){
+  document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === "v-" + name));
+  document.querySelectorAll(".tabs [data-tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === name));
+  if (name !== "study" && SES) endToMenu();
+  try { history.replaceState(null, "", "#" + name); } catch {}
+  refresh(); scrollTo(0, 0);
+}
+function refresh(){ renderHome(); renderLibrary(); if (!SES) renderStudy(); }
+
+$("#topicIdea").textContent = "energy-brief-" + Math.random().toString(36).slice(2, 8);
+const topicOk = t => /^[A-Za-z0-9_-]{1,64}$/.test(t);
+function renderTopic(){
+  $("#ntfyTopic").value = S.ntfyTopic || "";
+  $("#topicStatus").textContent = S.ntfyTopic ? `Reminders go to topic "${S.ntfyTopic}". Turn them on per book under Daily goal & reminder.` : "Not set up yet.";
+}
+$("#saveTopic").onclick = () => {
+  const t = $("#ntfyTopic").value.trim();
+  if (t && !topicOk(t)) { $("#topicStatus").textContent = "Use only letters, numbers, - and _ (no spaces)."; return; }
+  S.ntfyTopic = t; save(); renderTopic(); syncReminders(); toast(t ? "📲 Notifications on" : "Notifications off");
+};
+$("#testNotif").onclick = async () => {
+  const t = ($("#ntfyTopic").value.trim() || S.ntfyTopic || "");
+  if (!topicOk(t)) { $("#topicStatus").textContent = "Enter your topic name first."; return; }
+  try {
+    const q = new URLSearchParams({title:"📖 Energy Brief", click:location.origin + location.pathname, tags:"tada"});
+    const r = await fetch(`${NTFY}/${encodeURIComponent(t)}?${q}`, {method:"POST", body:"Notifications are working. Reading reminders will show up like this."});
+    $("#topicStatus").textContent = r.ok ? "Sent! It should appear on your phone within a few seconds." : r.status === 429 ? "ntfy says too many messages today. Try again tomorrow." : "ntfy returned an error (" + r.status + ").";
+  } catch { $("#topicStatus").textContent = "Couldn't reach ntfy.sh. Check your connection."; }
+};
+renderTopic();
+
+/* "Add to home screen" card */
+const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+const installed = matchMedia("(display-mode: standalone)").matches || navigator.standalone;
+let installEvt = null;
+function renderInstall(){
+  const card = $("#installCard");
+  if (installed || S.installDismissed) { card.hidden = true; card.style.display = "none"; return; }
+  card.hidden = false; card.style.display = "flex";
+  $("#installBtn").hidden = !installEvt;
+  $("#installHow").innerHTML = isIOS
+    ? `In Safari, tap <b>Share</b> <span aria-hidden="true">⬆︎</span> → <b>Add to Home Screen</b> → <b>Add</b>. If you see an <b>Open as Web App</b> switch, turn it <b>off</b>, so the icon and your reminder notifications share the same saved progress.`
+    : installEvt ? "Install it as an app: its own icon, full screen, and it works offline."
+    : `In Chrome, open the <b>⋮</b> menu → <b>Install app</b> (or <b>Add to Home screen</b>).`;
+}
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; renderInstall(); });
+addEventListener("appinstalled", () => { S.installDismissed = true; save(); renderInstall(); toast("📲 Installed! Find Energy Brief on your home screen"); });
+$("#installBtn").onclick = async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; renderInstall(); };
+$("#installLater").onclick = () => { S.installDismissed = true; save(); renderInstall(); };
+renderInstall();
+
+$("#saveKey").onclick = () => {
+  const v = $("#apiKey").value.trim();
+  if (v.startsWith("••")) return;
+  S.apiKey = v; save(); renderHome(); toast(v ? "API key saved" : "API key removed");
+};
+$("#exportBtn").onclick = () => {
+  const {apiKey, ...rest} = S;
+  const blob = new Blob([JSON.stringify(rest, null, 1)], {type:"application/json"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `energy-brief-backup-${today()}.json`; a.click();
+};
+$("#importFile").onchange = async e => {
+  const f = e.target.files[0]; if (!f) return;
+  try { const d = JSON.parse(await f.text()); if (!d.items) throw 0; S = Object.assign(blank(), d, {apiKey:S.apiKey}); save(); refresh(); toast("Backup restored"); }
+  catch { toast("That file isn't a valid backup"); }
+};
+window.addEventListener("storage", e => {
+  if (e.key === KEY) { S = load(); refresh(); }
+  else if (e.key === INBOX && e.newValue) { ingestInbox(); refresh(); }
+});
+
+await loadCatalog();
+ingestInbox();
+syncReminders();   // top up the 3-day window of scheduled reminders every time the app opens
+const start = location.hash.slice(1);
+tab(["home","library","study"].includes(start) ? start : "home");
+const params = new URLSearchParams(location.search), openId = params.get("item");
+if (openId && getItem(openId)) params.get("log") ? openLog(openId) : openItem(openId);
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js");
+</script>
+</body>
+</html>
