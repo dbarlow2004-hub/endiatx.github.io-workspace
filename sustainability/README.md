@@ -30,6 +30,10 @@ Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustaina
   Set it up once under Home → Settings → Phone notifications (you can use the same topic as the news brief).
   Reminders are scheduled up to 3 days ahead (ntfy.sh's limit) and topped up every time you open the app, including by tapping a reminder.
   Logging that day cancels the day's reminder, and pausing or finishing a book stops them.
+- **Podcast episodes:** each podcast has its own episode list.
+  - **📥 Browse episodes** pulls the show's episodes from Apple Podcasts; **＋ Add by name** works for anything else.
+  - Check episodes off as you listen. Each episode gets its own notes, rating, Apple/Spotify links and, with an API key, flashcards made from your notes.
+  - Adding an "Episode" from the ＋ Add form lets you file it under one of your podcasts.
 - **Checkpoint questions:** book questions unlock page by page as you reach the part where each idea comes up.
   After each logged session you get up to 3 questions on what you've read, with no spoilers. Podcasts, films and channels unlock their cards when finished.
 - **Flashcards & quizzes:** spaced-repetition flashcards, 10-question quizzes and a 60-second lightning round with streak multipliers.
