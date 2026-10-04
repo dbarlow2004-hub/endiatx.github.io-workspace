@@ -82,7 +82,7 @@
     {"name": "Our World in Data", "url": "https://ourworldindata.org/co2-and-greenhouse-gas-emissions", "why": "Charts for emissions per country, per capita and by sector."},
     {"name": "Lazard LCOE+", "url": "https://www.lazard.com/research-insights/levelized-cost-of-energyplus/", "why": "Annual cost comparison of solar, wind, gas, nuclear and storage."},
     {"name": "IRENA", "url": "https://www.irena.org/", "why": "Global renewable capacity and cost statistics."},
-    {"name": "National Laboratory of the Rockies (formerly NREL)", "url": "https://www.nrel.gov/", "why": "DOE lab; Annual Technology Baseline and solar/efficiency research. Renamed Dec 2025."},
+    {"name": "National Laboratory of the Rockies (formerly NREL)", "url": "https://www.nlr.gov/", "why": "DOE lab; Annual Technology Baseline and solar/efficiency research. Renamed Dec 2025."},
     {"name": "Climate TRACE", "url": "https://climatetrace.org/", "why": "Satellite-based emissions tracking down to individual facilities."},
     {"name": "GHG Protocol", "url": "https://ghgprotocol.org/", "why": "The standard behind corporate Scope 1, 2 and 3 accounting."},
     {"name": "Science Based Targets initiative", "url": "https://sciencebasedtargets.org/", "why": "Validates corporate net-zero targets; check which companies have them."},

@@ -170,6 +170,24 @@ h2 small{font-size:12.5px;color:var(--muted);font-weight:400}
 
 .transcript{white-space:pre-wrap;font-size:14px;line-height:1.6;max-height:420px;overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-top:8px}
 
+.seg.mini{grid-template-columns:repeat(3,1fr);margin-top:8px}
+.seg.mini button{padding:8px 4px;font-size:12.5px}
+.skills{display:flex;flex-direction:column;gap:8px}
+details.skill{margin-top:0;border-left:4px solid var(--border)}
+details.skill.learning,details.skill.studying{border-left-color:var(--warn)}
+details.skill.confident,details.skill.earned{border-left-color:var(--accent)}
+details.skill summary{display:flex;gap:10px;align-items:center;list-style:none}
+details.skill summary::-webkit-details-marker{display:none}
+.sk-ic{width:32px;height:32px;border-radius:8px;background:var(--surface2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+ul.res{list-style:none;display:flex;flex-direction:column;gap:6px;font-size:14px}
+ol.timeline{list-style:none;display:flex;flex-direction:column;gap:8px}
+ol.timeline > li{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:14px}
+ol.timeline ul{padding-left:18px;margin-top:4px;font-size:13.5px}
+
+.cities{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
+.cityp{font-size:11.5px;background:var(--surface2);border-radius:6px;padding:1px 6px;white-space:nowrap}
+.city.yes{color:var(--good);font-weight:800}.city.no{color:var(--bad);font-weight:800}.city.maybe{color:var(--warn);font-weight:800}
+
 /* sheet */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:none}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg);border-radius:20px 20px 0 0;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .25s ease;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
@@ -298,6 +316,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
       <button class="btn primary" data-go="review"><span>🧠 Review flashcards</span><span class="sub" id="ctaDue"></span></button>
       <button class="btn" data-go="quiz"><span>🎯 Quick quiz</span><span class="sub">10 questions · combos for streaks</span></button>
       <button class="btn" data-tab="library"><span>📚 My shelves</span><span class="sub">start a book · log progress</span></button>
+      <button class="btn" data-tab="career" id="ctaJob" hidden><span>💼 Job prep</span><span class="sub" id="ctaJobSub"></span></button>
     </div>
 
     <h2>Your progress</h2>
@@ -361,6 +380,13 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
     <div id="libList"></div>
   </section>
 
+  <!-- CAREER -->
+  <section class="view" id="v-career">
+    <h1>Career prep</h1>
+    <p class="muted small" style="margin:4px 0 14px">Everything to learn to be qualified for the job you're going for. Mark skills as you learn them, finish a portfolio project for each, and practice the interview.</p>
+    <div id="careerBody"></div>
+  </section>
+
   <!-- STUDY -->
   <section class="view" id="v-study">
     <div id="studyMenu">
@@ -382,6 +408,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
   <button role="tab" data-tab="home" aria-selected="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</button>
   <button role="tab" data-tab="library" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h3v18H6a2 2 0 0 1-2-2zM9 3h4v18H9zM14.5 4.2l3.8-1 3.2 16.6-3.8 1z"/></svg>Library</button>
   <button role="tab" data-tab="study" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>Study<span class="badge-n" id="tabDue" hidden></span></button>
+  <button role="tab" data-tab="career" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg>Career</button>
   <a href="./" role="tab" style="flex:1;max-width:160px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 4px 8px;font-size:11.5px;color:var(--muted);text-decoration:none"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg>News</a>
 </nav>
 
@@ -462,8 +489,13 @@ let DECKS = {};     // id -> {summary, takeaways, cards}
 async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? r.json() : {}; } catch { return {}; } }
 
 async function loadCatalog(){
-  const [res, books, media, deb] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json")]);
+  const [res, books, media, deb, car] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json")]);
   DECKS = Object.assign({}, books, media);
+  CAREER = car; JOBS = car.jobs || [];
+  for (const j of JOBS) if (j.cards?.length) {
+    DECKS["career-" + j.id] = {summary:`Flashcards for the ${j.title} role at ${j.company}.`, takeaways:(j.skills || []).map(s => s.area), cards:j.cards};
+    CATALOG["career-" + j.id] = {id:"career-" + j.id, title:`Job prep: ${j.company}`, type:"course", by:j.title, why:j.summary, always:true};
+  }
   if (deb.issues?.length) DECKS.debates = {summary:"Each side's strongest case on the biggest energy and climate-policy debates. Read them all on the News page under Big debates.",
     takeaways:deb.issues.map(x => x.question), cards:deb.issues.flatMap(x => x.cards || [])};
   const add = (title, o) => { const id = slug(title); CATALOG[id] = {id, title, ...o}; };
@@ -584,6 +616,7 @@ const BADGES = [
   {id:"streak7", e:"🔥", name:"7-day streak", test:() => S.streak.count >= 7},
   {id:"streak30", e:"☀️", name:"30-day streak", test:() => S.streak.count >= 30},
   {id:"learn50", e:"🧠", name:"50 cards learned", test:() => learned() >= 50},
+  {id:"job80", e:"💼", name:"Job ready (80%)", test:() => JOBS.length > 0 && readiness() >= 80},
   {id:"pro", e:"🏆", name:"Reached Pro", test:() => levelOf(S.xp) >= 12},
 ];
 function checkBadges(){
@@ -686,6 +719,7 @@ function renderHome(){
   const dx = S.days[today()]?.xp || 0;
   $("#goalTxt").textContent = `${Math.min(dx, 999)}/${GOAL}`;
   $("#ringArc").style.strokeDashoffset = 251.3 * (1 - Math.min(1, dx / GOAL));
+  if (JOBS.length) { $("#ctaJob").hidden = false; $("#ctaJobSub").textContent = `${job().company}: ${readiness()}% ready`; }
   const due = dueQueue().length;
   $("#ctaDue").textContent = due ? `${due} due now` : "all caught up";
   $("#stDone").textContent = countDone();
@@ -1550,6 +1584,181 @@ function aiNotesHtml(n){
 }
 
 /* =========================================================
+   Career prep: what to learn to be qualified for a specific job (career.json)
+   ========================================================= */
+let JOBS = [], jobId = null, CAREER = {};
+const SKILL_STEPS = [["none","Not yet"],["learning","Learning"],["confident","Confident"]];
+const CRED_STEPS = [["none","Not started"],["studying","Studying"],["earned","Earned ✓"]];
+const job = () => JOBS.find(j => j.id === jobId) || JOBS[0];
+const jst = () => { const j = job(); S.career ||= {}; return S.career[j.id] ||= {skills:{}, creds:{}, stages:{}, answers:{}}; };
+function readiness(){
+  const j = job(), c = jst();
+  const sk = (j.skills || []).reduce((n, s) => n + ({learning:.5, confident:1}[c.skills[s.id]?.status] || 0) + (c.skills[s.id]?.project ? .25 : 0), 0);
+  const skMax = (j.skills || []).length * 1.25;
+  const cr = (j.credentials || []).slice(0, 2).reduce((n, x) => n + ({studying:.4, earned:1}[c.creds[x.name]] || 0), 0);
+  const st = (j.stages || []).filter((_, i) => c.stages[i]).length / Math.max(1, (j.stages || []).length);
+  const ans = Object.values(c.answers).filter(a => (a.text || "").trim().length > 80).length / Math.max(1, Math.min(8, (j.questions || []).length));
+  return Math.round(100 * (0.6 * sk / (skMax || 1) + 0.15 * cr / 2 + 0.1 * st + 0.15 * Math.min(1, ans)));
+}
+function renderCareer(){
+  const el = $("#careerBody"); if (!el) return;
+  if (!JOBS.length) { el.innerHTML = `<div class="empty">No jobs saved yet.</div>`; return; }
+  const j = job(), c = jst(), r = readiness();
+  const mark = v => v === "yes" ? `<span class="city yes">✓</span>` : v === "no" ? `<span class="city no">✗</span>` : `<span class="city maybe">?</span>`;
+  const targets = (CAREER.targets || []).length ? `
+    <h2 style="margin-top:4px">Your target companies</h2>
+    ${CAREER.goal ? `<p class="small muted" style="margin:-4px 0 10px">${esc(CAREER.goal)}</p>` : ""}
+    <div class="skills">${CAREER.targets.map(t => `<details class="skill ${Object.values(t.offices || {}).every(v => v === "yes") ? "confident" : "learning"}">
+      <summary><span class="sk-ic">🏢</span><span style="flex:1;min-width:0"><b>${esc(t.company)}</b><span class="small muted" style="display:block">${esc(t.kind || "")}</span>
+        <span class="cities">${(CAREER.cities || []).map(cy => `<span class="cityp">${mark(t.offices?.[cy])} ${esc(cy.replace("San Francisco","SF").replace("Los Angeles","LA").replace("New York","NYC"))}</span>`).join("")}</span></span></summary>
+      ${t.officesNote ? `<p class="small muted" style="margin-top:8px">${esc(t.officesNote)}</p>` : ""}
+      <label class="f">Roles to look for</label><ul class="takeaways">${(t.roles || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <label class="f">What to emphasize for ${esc(t.company)}</label><ul class="takeaways">${(t.emphasize || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap"><a class="btn sm" href="${esc(safeUrl(t.careers))}" target="_blank" rel="noopener">${esc(t.company)} careers ↗</a>
+        ${t.job && JOBS.some(x => x.id === t.job) ? `<button class="btn sm primary" data-job="${esc(t.job)}" data-scrolljob="1">Prep for the open role ↓</button>` : `<span class="small muted" style="align-self:center">The skills below carry over. Paste me a ${esc(t.company)} posting to add a prep plan.</span>`}</div>
+    </details>`).join("")}
+    ${(CAREER.alsoMatch || []).map(a => `<div class="lock" style="margin-top:2px">➕ <span><b>${esc(a.company)}</b>: ${esc(a.note)} <a href="${esc(safeUrl(a.careers))}" target="_blank" rel="noopener">Careers ↗</a></span></div>`).join("")}
+    </div>
+    ${CAREER.europe ? `<details class="skill none" style="margin-top:8px"><summary><span class="sk-ic">🇪🇺</span><span style="flex:1"><b>${esc(CAREER.europe.title)}</b><span class="small muted" style="display:block">Visas, language, and European rules</span></span></summary>
+      <ul class="takeaways" style="margin-top:8px">${CAREER.europe.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <div class="links" style="margin-top:8px">${(CAREER.europe.links || []).map(l => `<a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join("")}</div></details>` : ""}
+    <h2 id="jobPrep">Open role: ${esc(j.company)}</h2>` : "";
+  const segBtns = (steps, cur, attr, id) => `<div class="seg mini" ${attr}="${esc(id)}">${steps.map(([k,l]) => `<button data-v="${k}" aria-pressed="${(cur || "none") === k}">${l}</button>`).join("")}</div>`;
+  el.innerHTML = targets + `
+    ${JOBS.length > 1 ? `<div class="chips">${JOBS.map(x => `<button class="chip" data-job="${esc(x.id)}" aria-pressed="${x.id === j.id}">${esc(x.company)}</button>`).join("")}</div>` : ""}
+    <div class="card hero" style="align-items:flex-start">
+      <div class="ring" aria-label="Job readiness">
+        <svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="var(--surface2)" stroke-width="10"/><circle cx="48" cy="48" r="40" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="${251.3 * (1 - r / 100)}"/></svg>
+        <div class="lbl"><div>${r}%</div><span>ready</span></div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <div class="lvl">${esc(j.company)} · ${esc(j.location)}</div>
+        <h1 style="font-size:20px">${esc(j.title)}</h1>
+        <div class="small muted">${esc(j.pay || "")}${j.ref ? ` · Ref ${esc(j.ref)}` : ""}</div>
+        <div class="row" style="margin-top:8px;gap:8px;flex-wrap:wrap"><a class="btn sm primary" href="${esc(safeUrl(j.apply))}" target="_blank" rel="noopener">Apply ↗</a><button class="btn sm" data-go="quiz" data-deck="career-${esc(j.id)}">🎯 Quiz me</button></div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:10px">${esc(j.summary || "")}</p>
+
+    ${j.plan?.length ? `<h2>Your plan</h2><ol class="timeline">${j.plan.map(p => `<li><b>${esc(p.when)}</b> · ${esc(p.focus)}<ul>${(p.do || []).map(d => `<li>${esc(d)}</li>`).join("")}</ul></li>`).join("")}</ol>` : ""}
+
+    <h2>Skills the job asks for <small>${(j.skills || []).filter(s => c.skills[s.id]?.status === "confident").length}/${(j.skills || []).length} confident</small></h2>
+    <div class="skills">${(j.skills || []).map(s => { const cs = c.skills[s.id] || {};
+      return `<details class="skill ${cs.status || "none"}"><summary><span class="sk-ic">${esc(s.icon || "•")}</span><span style="flex:1;min-width:0"><b>${esc(s.area)}</b>
+        <span class="small muted" style="display:block">${s.level === "Differentiator" ? "⭐ Stands you out" : "Core requirement"} · ${esc((SKILL_STEPS.find(x => x[0] === (cs.status || "none")) || [])[1])}${cs.project ? " · project ✓" : ""}</span></span></summary>
+        <p class="small muted" style="margin:8px 0 4px"><b>The posting asks:</b> ${esc(s.asks)}</p>
+        ${segBtns(SKILL_STEPS, cs.status, "data-skill", s.id)}
+        <label class="f">What to learn</label><ul class="takeaways">${(s.learn || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+        ${(s.resources || []).length ? `<label class="f">Where to learn it</label><ul class="res">${s.resources.map(x => `<li><a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">${esc(x.name)} ↗</a> <span class="small muted">${esc(x.note || "")}</span></li>`).join("")}</ul>` : ""}
+        <label class="f">Portfolio project</label><p style="font-size:14px">${esc(s.project || "")}</p>
+        <label class="row" style="gap:8px;margin-top:6px;font-size:14px;cursor:pointer"><input type="checkbox" data-proj="${esc(s.id)}" ${cs.project ? "checked" : ""} style="width:20px;height:20px"> I finished this project</label>
+        <label class="f">Notes</label><textarea data-sknote="${esc(s.id)}" style="min-height:70px" placeholder="What you learned, links to your work...">${esc(cs.notes || "")}</textarea>
+      </details>`; }).join("")}</div>
+
+    ${(j.credentials || []).length ? `<h2>Credentials</h2><div class="skills">${j.credentials.map(x => `<details class="skill ${c.creds[x.name] === "earned" ? "confident" : c.creds[x.name] || "none"}"><summary><span class="sk-ic">🎓</span><span style="flex:1"><b>${esc(x.name)}</b><span class="small muted" style="display:block">${esc((CRED_STEPS.find(k => k[0] === (c.creds[x.name] || "none")) || [])[1])}</span></span></summary>
+        <p class="small" style="margin:8px 0">${esc(x.why || "")}</p>${segBtns(CRED_STEPS, c.creds[x.name], "data-cred", x.name)}
+        <ol class="takeaways" style="margin-top:8px">${(x.steps || []).map(t => `<li>${esc(t)}</li>`).join("")}</ol>
+        ${safeUrl(x.url) ? `<a class="small" href="${esc(x.url)}" target="_blank" rel="noopener">Official page ↗</a>` : ""}</details>`).join("")}</div>` : ""}
+
+    ${(j.stages || []).length ? `<h2>Hiring process <small>check off when you're ready</small></h2><div class="skills">${j.stages.map((x, i) => `<details class="skill ${c.stages[i] ? "confident" : "none"}"><summary><span class="sk-ic">${c.stages[i] ? "✅" : `${i + 1}`}</span><span style="flex:1"><b>${esc(x.stage)}</b></span></summary>
+        <ul class="takeaways" style="margin-top:8px">${(x.tips || []).map(t => `<li>${esc(t)}</li>`).join("")}</ul>
+        <label class="row" style="gap:8px;margin-top:8px;font-size:14px;cursor:pointer"><input type="checkbox" data-stage="${i}" ${c.stages[i] ? "checked" : ""} style="width:20px;height:20px"> I'm ready for this stage</label></details>`).join("")}</div>` : ""}
+
+    ${(j.questions || []).length ? `<h2>Interview practice <small>${Object.values(c.answers).filter(a => (a.text || "").trim()).length}/${j.questions.length} answered</small></h2>
+      <button class="btn block" id="qRandom" style="margin-bottom:8px">🎲 Give me a random question</button>
+      <div class="items">${j.questions.map((x, i) => `<button class="item" data-iq="${i}"><span class="ico" style="font-size:18px;background:var(--surface2);border-radius:10px;display:flex;align-items:center;justify-content:center;height:40px">${c.answers[i]?.fb ? "⭐" : (c.answers[i]?.text || "").trim() ? "📝" : "💬"}</span>
+        <span style="min-width:0;flex:1"><div class="tt" style="font-size:14.5px">${esc(x.q)}</div><div class="by">${esc(x.type || "")}${c.answers[i]?.fb ? ` · feedback ${c.answers[i].fb.score}/5` : ""}</div></span></button>`).join("")}</div>` : ""}
+  `;
+}
+function careerXp(key, n, why){ const c = jst(); c.xp ||= {}; if (c.xp[key]) return; c.xp[key] = 1; addXp(n, why); }
+document.addEventListener("click", ev => {
+  if (!ev.target.closest("#careerBody")) return;
+  const jb = ev.target.closest("[data-job]"); if (jb) { jobId = jb.dataset.job; renderCareer(); if (jb.dataset.scrolljob) $("#jobPrep")?.scrollIntoView({behavior:"smooth"}); return; }
+  const seg = ev.target.closest("[data-skill] button, [data-cred] button");
+  if (seg) {
+    const box = seg.parentElement, v = seg.dataset.v, c = jst();
+    if (box.dataset.skill) {
+      const s = c.skills[box.dataset.skill] ||= {}; s.status = v;
+      if (v === "learning") careerXp("sk-l-" + box.dataset.skill, 15, "Started learning a job skill");
+      if (v === "confident") careerXp("sk-c-" + box.dataset.skill, 40, "Job skill: confident");
+    } else {
+      c.creds[box.dataset.cred] = v;
+      if (v === "earned") { careerXp("cr-" + box.dataset.cred, 150, "Credential earned"); confetti(); }
+    }
+    save(); const open = box.closest("details"); const idx = [...document.querySelectorAll("#careerBody details")].indexOf(open);
+    renderCareer(); document.querySelectorAll("#careerBody details")[idx]?.setAttribute("open", ""); return;
+  }
+  if (ev.target.closest("#qRandom")) { const n = (job().questions || []).length; openQuestion(Math.floor(Math.random() * n)); return; }
+  const iq = ev.target.closest("[data-iq]"); if (iq) openQuestion(+iq.dataset.iq);
+});
+document.addEventListener("change", ev => {
+  const t = ev.target; if (!t.closest?.("#careerBody")) return;
+  const c = jst();
+  if (t.dataset.proj) { (c.skills[t.dataset.proj] ||= {}).project = t.checked; if (t.checked) careerXp("pj-" + t.dataset.proj, 50, "Portfolio project done"); save(); }
+  if (t.dataset.stage != null) { c.stages[t.dataset.stage] = t.checked; if (t.checked) careerXp("st-" + t.dataset.stage, 10, "Hiring stage ready"); save(); }
+});
+let skNoteTmr;
+document.addEventListener("input", ev => {
+  const t = ev.target; if (!t.dataset?.sknote) return;
+  clearTimeout(skNoteTmr); skNoteTmr = setTimeout(() => { (jst().skills[t.dataset.sknote] ||= {}).notes = t.value; save(); }, 500);
+});
+
+const FEEDBACK_SCHEMA = {type:"object", additionalProperties:false, required:["score","strengths","improve","betterAnswer"],
+  properties:{score:{type:"integer"}, strengths:{type:"array", items:{type:"string"}}, improve:{type:"array", items:{type:"string"}}, betterAnswer:{type:"string"}}};
+function openQuestion(i){
+  const j = job(), x = j.questions[i], c = jst(), a = c.answers[i] ||= {}; if (!x) return;
+  openSheet(`<div class="small muted" style="padding-right:40px">💬 ${esc(x.type || "Interview question")} · ${esc(j.company)}</div>
+    <h1 style="font-size:20px;line-height:1.3;padding-right:40px">${esc(x.q)}</h1>
+    <details style="margin-top:12px"><summary>💡 What a strong answer covers</summary><p style="font-size:14px;margin-top:8px">${esc(x.hint || "")}</p></details>
+    <label class="f" for="ansText">Your answer <span style="font-weight:400">(for stories, try STAR: situation, task, action, result)</span></label>
+    <textarea id="ansText" style="min-height:180px" placeholder="Type or dictate your answer...">${esc(a.text || "")}</textarea>
+    <p class="note" id="ansSaved">Saves automatically.</p>
+    <button class="btn primary block" id="ansFb">🤖 Get feedback</button>
+    <p class="note" id="genMsg">${S.apiKey ? "" : "Add your Anthropic API key under Home → Settings to get feedback."}</p>
+    <div id="fbBox">${a.fb ? fbHtml(a.fb) : ""}</div>
+    <div class="row" style="margin-top:14px;gap:8px"><button class="btn sm" id="qPrev">‹ Previous</button><button class="btn sm" id="qNext" style="margin-left:auto">Next ›</button></div>`);
+  let t; $("#ansText").addEventListener("input", e => { clearTimeout(t); t = setTimeout(() => { a.text = e.target.value; save(); $("#ansSaved").textContent = "Saved ✓"; }, 500); });
+  const n = j.questions.length;
+  $("#qPrev").onclick = () => openQuestion((i - 1 + n) % n); $("#qNext").onclick = () => openQuestion((i + 1) % n);
+  $("#ansFb").onclick = async () => {
+    a.text = $("#ansText").value; save();
+    const msg = $("#genMsg"), btn = $("#ansFb");
+    if (!S.apiKey) { msg.textContent = "Add your Anthropic API key under Home → Settings first."; return; }
+    if (a.text.trim().length < 40) { msg.textContent = "Write a fuller answer first."; return; }
+    btn.disabled = true; btn.innerHTML = `<span class="spin"></span> Reviewing...`; msg.textContent = "";
+    try {
+      const fb = await askClaude(`You are an experienced interviewer for ${j.company}, hiring for "${j.title}" in ${j.location}. ${j.summary || ""}
+The firm looks for: changemakers (passion for sustainable development), innovative minds, growth seekers, adaptable adventurers.
+
+Interview question: ${x.q}
+What a strong answer covers: ${x.hint || ""}
+
+Candidate's answer:
+<answer>
+${a.text}
+</answer>
+
+Give honest, specific, encouraging coaching for a graduate candidate:
+- score: 1-5 (3 = acceptable, 5 = would clearly advance)
+- strengths: 2-4 specific things that work
+- improve: 2-4 specific, actionable fixes (structure, evidence, technical accuracy, link to the role)
+- betterAnswer: a stronger version of their answer in their voice, keeping to facts they gave; mark any detail they need to fill in with [brackets] instead of inventing experience.`, FEEDBACK_SCHEMA);
+      fb.score = Math.max(1, Math.min(5, fb.score | 0)); a.fb = fb; save();
+      careerXp("fb-" + i, 20, "Interview practice");
+      $("#fbBox").innerHTML = fbHtml(fb);
+    } catch (err) { msg.textContent = aiError(err); }
+    btn.disabled = false; btn.textContent = "🤖 Get feedback again";
+  };
+}
+function fbHtml(fb){
+  const li = arr => (arr || []).map(x => `<li>${esc(x)}</li>`).join("");
+  return `<div class="card" style="margin-top:10px"><b>Score: ${"★".repeat(fb.score)}${"☆".repeat(5 - fb.score)} (${fb.score}/5)</b>
+    <label class="f">What works</label><ul class="takeaways">${li(fb.strengths)}</ul>
+    <label class="f">To improve</label><ul class="takeaways">${li(fb.improve)}</ul>
+    <details><summary>A stronger version</summary><p style="font-size:14px;margin-top:8px;white-space:pre-wrap">${esc(fb.betterAnswer)}</p></details></div>`;
+}
+
+/* =========================================================
    Study sessions
    ========================================================= */
 const itemName = id => getItem(id)?.title || "";
@@ -1703,7 +1912,7 @@ function tab(name){
   try { history.replaceState(null, "", "#" + name); } catch {}
   refresh(); scrollTo(0, 0);
 }
-function refresh(){ renderHome(); renderLibrary(); if (!SES) renderStudy(); }
+function refresh(){ renderHome(); renderLibrary(); if (!SES) renderStudy(); if ($("#v-career").classList.contains("on")) renderCareer(); }
 
 $("#topicIdea").textContent = "energy-brief-" + Math.random().toString(36).slice(2, 8);
 const topicOk = t => /^[A-Za-z0-9_-]{1,64}$/.test(t);
@@ -1771,7 +1980,7 @@ await loadCatalog();
 ingestInbox();
 syncReminders();   // top up the 3-day window of scheduled reminders every time the app opens
 const start = location.hash.slice(1);
-tab(["home","library","study"].includes(start) ? start : "home");
+tab(["home","library","study","career"].includes(start) ? start : "home");
 const params = new URLSearchParams(location.search), openId = params.get("item");
 const epParam = params.get("ep"), epMatch = epParam && openId && epsOf(openId).find(e => String(e.trackId) === epParam);
 if (epMatch) openEpisode(openId, epMatch.id);

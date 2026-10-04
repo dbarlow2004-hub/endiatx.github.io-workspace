@@ -28,6 +28,27 @@ Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustaina
   Each has every side's strongest case, who makes it, the evidence they cite and what would settle it. They're on the hub, and the questions form the "Big Debates" deck in the study app.
 - **AI notes and cards** always include how other sides see contested claims.
 
+## Career prep (Career tab)
+
+`career.json` holds your career goals and the job you're preparing for:
+
+- **Target companies:** Gensler, Arup and Arcadis. The goal is a big global firm with offices in Los Angeles, San Francisco, New York, Madrid and Paris.
+  - **Arcadis:** all five cities.
+  - **Arup:** LA, SF, NYC and Madrid; Paris not confirmed.
+  - **Gensler:** LA, SF, NYC and Paris; no Madrid.
+  - **AECOM:** also has all five, as a backup.
+
+  Each company lists roles to look for and what to emphasize. A "Working in Madrid & Paris" section covers internal transfers, EU work authorization, language, BREEAM, CSRD and the EU Taxonomy, France's RE2020 and Spain's CTE.
+- **Open role: Arup Graduate Sustainability Consultant (2027, SF, SAN00013H).**
+  - a readiness meter and a month-by-month plan
+  - 12 skill areas from the posting, each with what to learn, free resources, a portfolio project and notes
+  - credentials: LEED GA, LEED AP BD+C, WELL AP, Fitwel, ENV SP
+  - tips for each hiring stage
+  - 18 interview questions, with optional Claude feedback on your answers
+  - a 40-card "Job prep: Arup" flashcard deck
+
+To prep for another posting, add another entry to `jobs` in `career.json`.
+
 ## Podcast transcripts
 
 On any podcast episode in the study app, tap **📝 Get transcript**.
