@@ -1778,12 +1778,20 @@ function fbHtml(fb){
 const NET_STAGES = [["toContact","To reach out"],["introAsked","Intro requested"],["introduced","Introduced"],["scheduled","Meeting set"],["met","Met"],["thanked","Thank-you sent"]];
 const net = () => (S.network ||= []);
 const netDue = c => c.due && c.status !== "done" && c.due <= today();
-function importContacts(list){
+function importContacts(list, update){
   let added = 0;
   for (const x of list || []) {
     if (!x?.name) continue;
     const ex = net().find(c => c.name.toLowerCase() === String(x.name).toLowerCase() && (c.org || "") === (x.org || ""));
-    if (ex) { Object.keys(x).forEach(k => { if (!ex[k] && x[k]) ex[k] = x[k]; }); continue; }
+    if (ex) {
+      for (const k of Object.keys(x)) {
+        if (k === "log") {   // add log entries that aren't there yet
+          for (const e of x.log || []) if (!(ex.log ||= []).some(y => y.d === e.d && y.text === e.text)) ex.log.push(e);
+          ex.log.sort((a, b) => a.d.localeCompare(b.d));
+        } else if (update || !ex[k]) ex[k] = x[k];   // update links overwrite; plain imports only fill gaps
+      }
+      continue;
+    }
     net().push({id:"c" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), status:"toContact", log:[], added:today(), ...x});
     added++;
   }
@@ -2149,9 +2157,9 @@ function handleImport(){
   try {
     const raw = location.hash.slice(8).replace(/-/g, "+").replace(/_/g, "/");
     const data = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(raw), c => c.charCodeAt(0))));
-    const n = importContacts(data.contacts || []);
-    if (data.me) S.me = {...data.me, ...(S.me || {})};
-    save(); syncReminders(); setTimeout(() => toast(n ? `🤝 Added ${n} contact${n === 1 ? "" : "s"} to My network` : "🤝 Your contacts are already in My network"), 600);
+    const n = importContacts(data.contacts || [], data.update);
+    if (data.me) S.me = data.update ? {...(S.me || {}), ...data.me} : {...data.me, ...(S.me || {})};
+    save(); syncReminders(); setTimeout(() => toast(data.update ? "🤝 My network updated" : n ? `🤝 Added ${n} contact${n === 1 ? "" : "s"} to My network` : "🤝 Your contacts are already in My network"), 600);
   } catch { setTimeout(() => toast("That import link didn't work"), 600); }
   history.replaceState(null, "", location.pathname + "#career");
   return true;
