@@ -2,7 +2,7 @@
 
 Every morning at about 7:45am Eastern, a GitHub Action runs `digest.py`. It:
 
-1. Pulls ~18 feeds: Canary Media, Utility Dive, Inside Climate News, Renewable Energy World,
+1. Pulls ~30 feeds from every viewpoint (see "Every side of the issues" below): Canary Media, Utility Dive, Inside Climate News, Renewable Energy World,
    EIA, Grist, Trellis, Electrek, edie, Carbon Brief, pv magazine, CleanTechnica, and Google News
    searches for solar, energy prices, net zero/emissions, storage and grid, efficiency, and
    sustainable development.
@@ -12,6 +12,40 @@ Every morning at about 7:45am Eastern, a GitHub Action runs `digest.py`. It:
 4. Saves the stories to `feed.json`, which the hub page shows with search and topic filters.
 
 Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustainability/
+
+## Every side of the issues
+
+- **News from every viewpoint.** Each story is tagged:
+  - 🌱 Climate press (Canary Media, Grist, Inside Climate News, Carbon Brief...)
+  - 📈 Business & markets (Reuters, WSJ, Utility Dive, pv magazine...)
+  - 🛢️ Energy industry (Oilprice.com, Rigzone, NGI, POWER)
+  - 🗽 Free-market & skeptic (Robert Bryce, Alex Epstein, AEI, Washington Examiner, Fox Business)
+  - 🔬 Research & data (EIA, Energy Institute at Haas)
+  - ⚖️ All sides (RealClearEnergy)
+  The daily text takes turns across viewpoints, so the top 5 never come from one side, and the hub lets you filter by viewpoint.
+- **Recommendations from every side.** Books and podcasts carry a viewpoint badge. "Other viewpoints" adds books by Alex Epstein, Robert Bryce, Michael Shellenberger, Bjorn Lomborg, Naomi Klein and Jason Hickel, and podcasts Power Hungry, Decouple and Odd Lots.
+- **The big debates** (`debates.json`): 10 contested questions, such as wind and solar pace, nuclear, gas as a bridge, prices, offsets, policy tools, EVs, AI power demand, degrowth and ESG.
+  Each has every side's strongest case, who makes it, the evidence they cite and what would settle it. They're on the hub, and the questions form the "Big Debates" deck in the study app.
+- **AI notes and cards** always include how other sides see contested claims.
+
+## Podcast transcripts
+
+On any podcast episode in the study app, tap **📝 Get transcript**.
+
+1. The app posts a private request to `<your ntfy topic>-transcribe`.
+2. The **Podcast transcripts** workflow (`.github/workflows/podcast-transcripts.yml` + `transcribe.py`) checks every 10 minutes.
+3. It uses the show's own published transcript when the feed has one (`<podcast:transcript>`). Otherwise it transcribes the audio with faster-whisper; a 30-minute episode takes about 2-5 minutes.
+4. It saves the transcript **encrypted with your topic** in `transcripts/`. The repo is public, but only your app can read the transcripts, and file names are hashed.
+5. It sends you a "📝 Transcript ready" notification.
+
+Then tap **🤖 Make notes & cards from transcript**. Claude writes:
+- a summary and key points
+- numbers worth remembering
+- people and companies mentioned
+- "How other sides see it"
+- 8-12 flashcards
+
+You can also paste a transcript yourself. Requirements: the `NTFY_TOPIC` repo secret must match the topic entered in the app, and making notes needs your Anthropic API key.
 
 ## Study app: shelves, reading progress, flashcards & quizzes
 

@@ -47,29 +47,80 @@ def gnews(query):
     return f"https://news.google.com/rss/search?q={q}&hl=en-US&gl=US&ceid=US:en"
 
 
-# (source label, feed url)
+# Viewpoints, so the brief carries more than one side of every issue.
+VIEWS = {
+    "climate": "🌱 Climate press",
+    "markets": "📈 Business & markets",
+    "industry": "🛢️ Energy industry",
+    "freemarket": "🗽 Free-market & skeptic",
+    "research": "🔬 Research & data",
+    "mixed": "⚖️ All sides",
+    "general": "📰 General news",
+}
+
+# (source label, feed url, viewpoint) - viewpoint None means "decide by outlet" (Google News searches)
 FEEDS = [
-    ("Canary Media", "https://www.canarymedia.com/rss.rss"),
-    ("Utility Dive", "https://www.utilitydive.com/feeds/news/"),
-    ("Inside Climate News", "https://insideclimatenews.org/feed/"),
-    ("Renewable Energy World", "https://www.renewableenergyworld.com/feed/"),
-    ("EIA Today in Energy", "https://www.eia.gov/rss/todayinenergy.xml"),
-    ("Grist", "https://grist.org/feed/"),
-    ("Trellis", "https://trellis.net/feed/"),
-    ("Electrek", "https://electrek.co/feed/"),
-    ("edie", "https://www.edie.net/feed/"),
+    # Climate & clean-energy press
+    ("Canary Media", "https://www.canarymedia.com/rss.rss", "climate"),
+    ("Inside Climate News", "https://insideclimatenews.org/feed/", "climate"),
+    ("Grist", "https://grist.org/feed/", "climate"),
+    ("Electrek", "https://electrek.co/feed/", "climate"),
+    ("edie", "https://www.edie.net/feed/", "climate"),
+    ("Trellis", "https://trellis.net/feed/", "climate"),
     # These sites block plain RSS fetches, so read them through Google News.
-    ("Carbon Brief", gnews("site:carbonbrief.org")),
-    ("pv magazine", gnews("site:pv-magazine.com")),
-    ("CleanTechnica", gnews("site:cleantechnica.com")),
-    # Topic searches across all outlets.
-    ("News: solar", gnews('"solar panels" OR "solar power" OR "solar farm"')),
-    ("News: energy prices", gnews('"electricity prices" OR "energy prices" OR "power prices" OR "natural gas prices"')),
-    ("News: net zero", gnews('"net zero" OR "carbon emissions" OR "greenhouse gas emissions"')),
-    ("News: storage & grid", gnews('"battery storage" OR "power grid" OR "transmission line"')),
-    ("News: efficiency", gnews('"energy efficiency" OR "heat pump" OR "building decarbonization"')),
-    ("News: sustainable dev", gnews('"sustainable development" OR ESG OR "sustainability report"')),
+    ("Carbon Brief", gnews("site:carbonbrief.org"), "climate"),
+    ("CleanTechnica", gnews("site:cleantechnica.com"), "climate"),
+    # Business, markets & trade press
+    ("Utility Dive", "https://www.utilitydive.com/feeds/news/", "markets"),
+    ("Renewable Energy World", "https://www.renewableenergyworld.com/feed/", "markets"),
+    ("pv magazine", gnews("site:pv-magazine.com"), "markets"),
+    ("Reuters", gnews("site:reuters.com energy OR electricity OR climate"), "markets"),
+    ("Wall Street Journal", gnews("site:wsj.com energy OR electricity OR climate"), "markets"),
+    # Energy industry (oil, gas, power)
+    ("Oilprice.com", "https://oilprice.com/rss/main", "industry"),
+    ("Rigzone", "https://www.rigzone.com/news/rss/rigzone_latest.aspx", "industry"),
+    ("NGI", "https://www.naturalgasintel.com/feed/", "industry"),
+    ("POWER", "https://www.powermag.com/feed/", "industry"),
+    # Free-market and skeptical-of-climate-policy voices
+    ("Robert Bryce", "https://robertbryce.substack.com/feed", "freemarket"),
+    ("Alex Epstein", "https://alexepstein.substack.com/feed", "freemarket"),
+    ("AEI", "https://www.aei.org/feed/", "freemarket"),
+    ("Washington Examiner", gnews("site:washingtonexaminer.com energy OR climate"), "freemarket"),
+    ("Fox Business", gnews("site:foxbusiness.com energy OR electricity"), "freemarket"),
+    # Research & data
+    ("EIA Today in Energy", "https://www.eia.gov/rss/todayinenergy.xml", "research"),
+    ("Energy Institute at Haas", "https://energyathaas.wordpress.com/feed/", "research"),
+    # Aggregator that deliberately collects pieces from across the spectrum
+    ("RealClearEnergy", "https://www.realclearenergy.org/index.xml", "mixed"),
+    # Topic searches across all outlets (viewpoint decided by outlet below)
+    ("News: solar", gnews('"solar panels" OR "solar power" OR "solar farm"'), None),
+    ("News: energy prices", gnews('"electricity prices" OR "energy prices" OR "power prices" OR "natural gas prices"'), None),
+    ("News: net zero", gnews('"net zero" OR "carbon emissions" OR "greenhouse gas emissions"'), None),
+    ("News: storage & grid", gnews('"battery storage" OR "power grid" OR "transmission line"'), None),
+    ("News: efficiency", gnews('"energy efficiency" OR "heat pump" OR "building decarbonization"'), None),
+    ("News: sustainable dev", gnews('"sustainable development" OR ESG OR "sustainability report"'), None),
 ]
+
+# Outlets that show up in Google News searches, grouped the same way
+OUTLET_VIEWS = {
+    "climate": ["canary media", "inside climate news", "grist", "electrek", "cleantechnica", "carbon brief", "the guardian",
+                "heatmap", "edie", "trellis", "the cool down", "yale climate connections", "e&e news", "eenews"],
+    "markets": ["reuters", "bloomberg", "wall street journal", "wsj", "financial times", "cnbc", "forbes", "axios",
+                "utility dive", "pv magazine", "renewable energy world", "s&p global", "barron", "marketwatch", "business insider"],
+    "industry": ["oilprice", "rigzone", "naturalgasintel", "ngi", "power magazine", "power engineering", "world oil",
+                 "offshore energy", "hart energy", "american oil & gas reporter", "energy voice"],
+    "freemarket": ["fox business", "fox news", "washington examiner", "daily caller", "national review", "the federalist",
+                   "washington free beacon", "aei", "manhattan institute", "heritage", "cato", "realclear", "townhall", "daily signal"],
+    "research": ["eia", "iea", "energy institute at haas", "rmi", "brookings", "resources for the future", "nrel", "lazard"],
+}
+
+
+def view_for(outlet):
+    o = outlet.lower()
+    for view, names in OUTLET_VIEWS.items():
+        if any(n in o for n in names):
+            return view
+    return "general"
 
 # topic -> keywords (lowercase, matched on word boundaries)
 TOPICS = {
@@ -192,7 +243,7 @@ def load_feed():
 def gather(seen_links, seen_titles):
     now = datetime.now(timezone.utc)
     fresh, errors = [], []
-    for source, url in FEEDS:
+    for source, url, view in FEEDS:
         try:
             items = parse_feed(fetch(url), source)
         except Exception as e:  # one dead feed shouldn't kill the digest
@@ -207,6 +258,7 @@ def gather(seen_links, seen_titles):
             if not topics:
                 continue
             a["topics"], a["score"] = topics, score
+            a["view"] = view or view_for(a["source"])
             a["id"] = article_id(a["link"])
             a["added"] = now.isoformat()
             seen_links.add(a["link"])
@@ -214,6 +266,20 @@ def gather(seen_links, seen_titles):
             fresh.append(a)
     fresh.sort(key=lambda a: (a["score"], a["published"] or ""), reverse=True)
     return fresh, errors
+
+
+def balanced(articles, n):
+    """Top stories, taking turns across viewpoints so no single side fills the brief."""
+    buckets = {}
+    for a in articles:  # already sorted best-first
+        buckets.setdefault(a.get("view", "general"), []).append(a)
+    order = sorted(buckets, key=lambda v: (v == "general", -buckets[v][0]["score"]))
+    picked = []
+    while len(picked) < n and any(buckets.values()):
+        for v in order:
+            if buckets[v] and len(picked) < n:
+                picked.append(buckets[v].pop(0))
+    return picked
 
 
 def pick_of_the_day():
@@ -245,8 +311,9 @@ def build_message(articles, max_items):
     day = datetime.now(timezone.utc).strftime("%b %d")
     base = (os.environ.get("DIGEST_URL") or "").rstrip("/")
     lines = [f"Energy & Sustainability Brief - {day}", ""]
-    for i, a in enumerate(articles[:max_items], 1):
-        lines.append(f"{i}. {a['title']} ({a['source']})")
+    for i, a in enumerate(balanced(articles, max_items), 1):
+        icon = VIEWS.get(a.get("view", "general"), "").split(" ")[0]
+        lines.append(f"{i}. {icon} {a['title']} ({a['source']})")
         if base:
             lines.append(f"   {base}/go.html?a={a['id']}")
     extra = len(articles) - max_items
@@ -298,11 +365,11 @@ def send_email(msg, articles):
     if not all([user, pw, to]):
         return None
     rows = []
-    for a in articles[:25]:
+    for a in balanced(articles, 25):
         rows.append(
             f'<p style="margin:0 0 14px"><a href="{html.escape(a["link"])}" style="font-weight:600">'
             f'{html.escape(a["title"])}</a><br><span style="color:#666;font-size:13px">'
-            f'{html.escape(a["source"])} &middot; {html.escape(", ".join(a["topics"]))}</span></p>')
+            f'{html.escape(a["source"])} &middot; {html.escape(VIEWS.get(a.get("view", "general"), ""))} &middot; {html.escape(", ".join(a["topics"]))}</span></p>')
     body = (f'<div style="font-family:sans-serif;max-width:620px">'
             f'<pre style="white-space:pre-wrap;font-family:inherit">{html.escape(msg.split(chr(10))[0])}</pre>'
             + "".join(rows))

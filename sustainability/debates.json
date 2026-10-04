@@ -1,0 +1,690 @@
+{
+ "issues": [
+  {
+   "id": "wind-solar-pace",
+   "question": "How fast can wind and solar replace fossil fuels?",
+   "why": "Solar and wind are now the largest sources of new generating capacity worldwide, while electricity demand is rising again. How quickly grids can lean on them shapes climate targets, power bills and reliability planning.",
+   "positions": [
+    {
+     "label": "Fast transition is feasible",
+     "who": "Climate advocacy groups, many renewable-energy researchers and clean-energy industry groups; e.g. RMI, Ember, Mark Jacobson (Stanford), the Sierra Club.",
+     "case": "Solar, wind and batteries are now the cheapest new sources of electricity in most of the world, and costs keep falling. Intermittency is a solvable engineering problem through batteries, larger transmission networks, demand flexibility and overbuilding. The main barriers are permitting, interconnection queues and political will, not physics or economics, so a rapid build-out is mainly a choice.",
+     "evidence": "They cite steep cost declines in solar modules and batteries, record annual installations led by China, and grids such as South Australia and California that regularly run on very high renewable shares for hours at a time."
+    },
+    {
+     "label": "Reliability first: go slower",
+     "who": "Grid operators and reliability regulators voicing caution, many utilities, energy-industry groups and some conservative or free-market policy analysts; e.g. NERC reliability assessments, the Manhattan Institute's Mark Mills, the Energy Policy Research Foundation.",
+     "case": "Electricity must be available every hour of every season, including long, windless winter stretches that batteries lasting a few hours cannot cover. Retiring dispatchable plants faster than firm replacements arrive risks blackouts and price spikes, which would also erode public support for climate policy. The cheap 'levelized cost' of wind and solar hides the system costs of backup, storage and transmission.",
+     "evidence": "They point to NERC warnings of elevated shortfall risk in several regions, events such as Winter Storm Uri in Texas (2021) and the Iberian blackout of 2025, and Germany's 'Dunkelflaute' periods of low wind and sun."
+    },
+    {
+     "label": "All of the above",
+     "who": "Many energy economists, the IEA in some framings, centrist and bipartisan policymakers, and large diversified utilities.",
+     "case": "Wind and solar should grow quickly, but a least-cost, reliable decarbonized grid likely also needs firm clean power (nuclear, geothermal, hydro, gas with carbon capture) and some existing gas for backup during the transition. Diversity is a hedge against technology, supply-chain and weather risk. Picking a single pathway is riskier than building a portfolio.",
+     "evidence": "They cite modeling studies (e.g. from MIT and Princeton's Net-Zero America project) finding that adding firm low-carbon resources tends to lower total system costs compared with renewables-plus-storage alone at very high clean shares."
+    }
+   ],
+   "watch": "Watch the cost and duration of grid storage (including multi-day storage), transmission and interconnection reforms, and how grids with high renewable shares perform during extreme weather events.",
+   "cards": [
+    {
+     "q": "What do fast-transition advocates see as the main barrier to more wind and solar?",
+     "a": "Permitting, interconnection queues and political will rather than cost.",
+     "explain": "They argue the technology is already cheap enough, so slow approvals and grid connections are the real bottleneck.",
+     "wrong": [
+      "A lack of suitable land anywhere in the world.",
+      "Solar panels being more expensive than coal plants.",
+      "A global shortage of wind turbine engineers."
+     ]
+    },
+    {
+     "q": "What weather pattern do reliability-focused critics often cite as a challenge for wind and solar?",
+     "a": "Long, cold, windless and dark periods, sometimes called Dunkelflaute.",
+     "explain": "Short-duration batteries can cover hours, but critics say multi-day lulls in winter need firm backup.",
+     "wrong": [
+      "Hot sunny summer afternoons with high output.",
+      "Mild spring days with steady breezes.",
+      "Frequent short rain showers in the tropics."
+     ]
+    },
+    {
+     "q": "Why do critics say levelized cost comparisons can flatter wind and solar?",
+     "a": "They leave out system costs like backup, storage and transmission.",
+     "explain": "Critics argue the full cost of keeping the grid reliable rises as variable renewables grow, beyond the plant-level price.",
+     "wrong": [
+      "They ignore the fuel costs of wind and solar.",
+      "They double-count subsidies paid to coal plants.",
+      "They assume panels last only five years."
+     ]
+    },
+    {
+     "q": "What is the core argument of the 'all of the above' camp?",
+     "a": "A diverse portfolio including firm clean power lowers cost and risk.",
+     "explain": "They support rapid renewables growth but argue firm resources like nuclear or geothermal hedge against weather and supply risks.",
+     "wrong": [
+      "Fossil fuels should be expanded with no limits.",
+      "Only wind and solar should receive any investment.",
+      "Electricity demand should be cut in half first."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "nuclear-essential",
+   "question": "Is nuclear power essential to decarbonization?",
+   "why": "Interest in nuclear has revived, with governments pledging to expand capacity, tech companies signing deals for nuclear power, and small modular reactor projects moving forward. Critics question whether new nuclear can be built quickly and cheaply enough to matter.",
+   "positions": [
+    {
+     "label": "Nuclear is essential",
+     "who": "Nuclear advocates, many energy modelers and some climate scientists and environmentalists; e.g. the Breakthrough Institute, Clean Air Task Force, James Hansen, the IEA in its net-zero scenarios.",
+     "case": "Nuclear provides large amounts of firm, around-the-clock, low-carbon power on a small land footprint, which complements variable renewables. France and Sweden decarbonized their grids decades ago largely through nuclear and hydro. Its safety record per unit of energy is among the best of any source, and abandoning it makes deep decarbonization harder and costlier.",
+     "evidence": "They cite lifecycle emissions comparable to wind, mortality-per-energy studies showing nuclear among the safest sources, and Germany's experience where closing reactors coincided with continued coal use."
+    },
+    {
+     "label": "Too slow and costly; renewables are enough",
+     "who": "Many environmental groups and renewable-energy advocates and some energy analysts; e.g. Greenpeace, the World Nuclear Industry Status Report authors, Amory Lovins, Mark Jacobson.",
+     "case": "Recent Western nuclear projects have run years late and billions over budget, while renewables and storage keep getting cheaper and can be built in months. Every dollar spent on expensive, slow nuclear is a dollar not spent on faster emissions cuts. Unresolved issues around waste storage, accident risk and proliferation add further reasons to prioritize other options.",
+     "evidence": "They point to Vogtle in Georgia, Hinkley Point C in the UK, and Flamanville in France, all of which saw major delays and cost overruns, and to cancelled SMR projects such as NuScale's Utah plan."
+    },
+    {
+     "label": "Keep existing plants; let new nuclear prove itself",
+     "who": "Many economists, pragmatic climate analysts and policymakers across parties; e.g. analysts at think tanks such as Resources for the Future and many utility regulators.",
+     "case": "Keeping safe existing reactors running is one of the cheapest sources of clean power, so premature closures are a mistake. New nuclear deserves support for demonstration and learning, but should earn a bigger role by showing it can be built on time and budget. Whether it is 'essential' depends on how cheap storage and other firm options become.",
+     "evidence": "They cite analyses showing that past reactor closures were often followed by higher fossil generation, and the wide range of model results on nuclear's optimal share."
+    }
+   ],
+   "watch": "Watch whether first-of-a-kind SMRs and advanced reactors are delivered on schedule and budget, repeat-build costs for large reactors, and progress on permanent waste repositories like Finland's Onkalo.",
+   "cards": [
+    {
+     "q": "What feature of nuclear power do its supporters emphasize most?",
+     "a": "Firm, around-the-clock low-carbon power on a small land footprint.",
+     "explain": "Supporters argue nuclear complements variable wind and solar by producing steadily regardless of weather.",
+     "wrong": [
+      "It is the cheapest new power in every country.",
+      "It can be built in under one year.",
+      "It produces no waste of any kind."
+     ]
+    },
+    {
+     "q": "Which projects do nuclear critics often cite as evidence of delays and overruns?",
+     "a": "Vogtle, Hinkley Point C and Flamanville.",
+     "explain": "These Western reactor projects ran years late and well over budget, which critics say shows new nuclear is too slow.",
+     "wrong": [
+      "Hoover Dam, Three Gorges and Itaipu.",
+      "Hornsea, London Array and Walney.",
+      "Topaz, Bhadla and Noor Ouarzazate."
+     ]
+    },
+    {
+     "q": "What 'opportunity cost' argument do some critics make against new nuclear?",
+     "a": "Money spent on nuclear could cut more emissions faster via renewables.",
+     "explain": "Critics argue that, per dollar and per year, cheaper and quicker options deliver more near-term emissions reductions.",
+     "wrong": [
+      "Nuclear plants consume more energy than they make.",
+      "Uranium will run out within five years.",
+      "Nuclear raises carbon emissions above coal levels."
+     ]
+    },
+    {
+     "q": "What do many middle-ground analysts say about existing reactors?",
+     "a": "Keeping safe existing plants running is a cheap source of clean power.",
+     "explain": "They note that closures have often been followed by more fossil generation, even if they are cautious about new builds.",
+     "wrong": [
+      "All existing reactors should be closed immediately.",
+      "Existing reactors should be converted to burn coal.",
+      "Existing plants are more dangerous than new ones."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "natural-gas-bridge",
+   "question": "Natural gas: bridge fuel, or a lock-in to avoid?",
+   "why": "Gas is the largest source of US electricity, LNG exports are expanding, and new gas plants are being proposed to meet rising demand. Decisions made now involve infrastructure that can operate for decades.",
+   "positions": [
+    {
+     "label": "Gas is a bridge and a backbone",
+     "who": "The oil and gas industry, many utilities, energy-security analysts and some economists; e.g. the American Petroleum Institute, many Republican and some Democratic policymakers.",
+     "case": "Switching from coal to gas has been the single biggest driver of US power-sector emissions cuts since the mid-2000s. Gas plants can ramp up and down to back up wind and solar, keeping grids reliable at a reasonable cost. LNG exports can help other countries move off coal and gave Europe an alternative to Russian supply, so gas supports both climate and security goals.",
+     "evidence": "They point to the decline in US power-sector CO2 emissions alongside the shale boom, and to Europe's reliance on US LNG after 2022."
+    },
+    {
+     "label": "Gas is a lock-in to avoid",
+     "who": "Climate advocacy groups, many climate scientists and some energy analysts; e.g. Sierra Club's Beyond Gas campaign, Bill McKibben, Robert Howarth (Cornell).",
+     "case": "Methane leaks across the supply chain can erode much or all of gas's climate advantage over coal, because methane is a far more potent short-term greenhouse gas. New pipelines, plants and LNG terminals are designed to run for 30 to 50 years, creating pressure to keep using them or leaving stranded assets. Money spent on gas could instead go to clean alternatives that are increasingly competitive.",
+     "evidence": "They cite satellite and aerial studies finding higher methane leakage than official inventories in some basins, and IPCC pathways in which unabated gas use falls substantially by mid-century."
+    },
+    {
+     "label": "Gas, but cleaner and time-limited",
+     "who": "Many energy economists, the IEA, environmental groups focused on methane, and some industry players; e.g. Environmental Defense Fund, the Oil and Gas Methane Partnership.",
+     "case": "Gas will play a role for some time, especially as backup capacity, so the priority should be sharply cutting methane leaks and planning for declining run-times. Requirements for leak detection, flaring limits and possibly carbon capture can make gas cleaner while it is still used. Policies should avoid building more long-lived infrastructure than needed.",
+     "evidence": "They cite IEA estimates that a large share of oil and gas methane emissions could be avoided with existing technology at low or no net cost."
+    }
+   ],
+   "watch": "Watch measured methane leakage rates (including from satellite monitoring), how often new gas plants actually run, and lifecycle studies comparing LNG exports with coal in importing countries.",
+   "cards": [
+    {
+     "q": "What do gas supporters credit with major US power-sector emissions cuts?",
+     "a": "Switching from coal to cheaper natural gas during the shale boom.",
+     "explain": "Burning gas emits roughly half the CO2 of coal per unit of electricity, which supporters say drove large reductions.",
+     "wrong": [
+      "The complete phase-out of nuclear power.",
+      "A national carbon tax passed in 2009.",
+      "Banning all new electricity demand."
+     ]
+    },
+    {
+     "q": "Why do critics say methane leaks matter for gas's climate case?",
+     "a": "Methane is a potent short-term warmer, so leaks erode gas's advantage.",
+     "explain": "Critics argue that if enough methane escapes, gas may offer little climate benefit over coal in the near term.",
+     "wrong": [
+      "Methane leaks make gas plants explode frequently.",
+      "Methane cools the planet and offsets CO2.",
+      "Leaked methane turns directly into coal."
+     ]
+    },
+    {
+     "q": "What is the 'lock-in' concern raised by gas critics?",
+     "a": "Long-lived gas infrastructure creates pressure to keep burning gas for decades.",
+     "explain": "Pipelines and plants built today can run 30 to 50 years, which critics say risks emissions or stranded assets.",
+     "wrong": [
+      "Gas prices are legally fixed for decades.",
+      "Gas plants cannot ever be turned off once started.",
+      "Utilities are banned from building anything else."
+     ]
+    },
+    {
+     "q": "What do methane-focused middle-ground groups prioritize?",
+     "a": "Cutting leaks with detection, flaring limits and better equipment.",
+     "explain": "They argue many leaks can be fixed cheaply with existing technology while gas remains in use.",
+     "wrong": [
+      "Doubling gas production as fast as possible.",
+      "Replacing gas entirely with coal.",
+      "Ignoring methane and focusing only on CO2."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "renewables-prices",
+   "question": "Do renewables raise or lower electricity prices?",
+   "why": "Electricity bills have risen in many places, and both supporters and critics of renewables blame the other side's policies. The answer affects household budgets, industrial competitiveness and political support for climate policy.",
+   "positions": [
+    {
+     "label": "Renewables lower prices",
+     "who": "Clean-energy researchers, renewable-industry groups and many climate advocates; e.g. Lazard's LCOE studies (as cited), Ember, Lawrence Berkeley National Laboratory researchers, the American Clean Power Association.",
+     "case": "Wind and solar have near-zero fuel costs, so once built they push down wholesale prices by displacing more expensive generators. They also shield consumers from fossil-fuel price shocks, as seen during the 2022 gas crisis. Rising bills mostly reflect gas prices, aging grid infrastructure, wildfire and storm costs, and rising demand, not renewables.",
+     "evidence": "They cite falling levelized costs for new wind and solar and studies showing that high-renewable markets such as Texas's ERCOT see lower wholesale prices during sunny and windy hours."
+    },
+    {
+     "label": "Renewables raise total system costs",
+     "who": "Some energy economists, free-market think tanks and utilities' critics of mandates; e.g. the Institute for Energy Research, the Manhattan Institute, Bjorn Lomborg, analysts pointing to Germany and the UK.",
+     "case": "Cheap generation at the plant level is not the same as cheap electricity at the meter. As variable renewables grow, the system must pay for backup capacity, storage, new transmission, grid-balancing services and subsidies, and those costs land on bills. Regions that pushed hardest on renewables, such as Germany, California and the UK, have some of the highest retail rates.",
+     "evidence": "They point to high household electricity prices in Germany and California, rising transmission and network charges, and studies on the 'value deflation' of solar as more is added."
+    },
+    {
+     "label": "It depends on how it's done",
+     "who": "Many academic economists and grid analysts; e.g. Severin Borenstein (UC Berkeley), Resources for the Future researchers.",
+     "case": "Renewables can lower wholesale energy costs while other parts of bills rise, and retail rates also reflect taxes, wildfire costs, rate design and how policy costs are recovered. Well-designed markets, smart siting and flexible demand can capture savings, while poorly designed mandates and fixed-charge recovery can raise bills. Simple 'renewables raise/lower prices' claims usually hide these details.",
+     "evidence": "They cite research showing California's high rates stem largely from wildfire, transmission and policy cost recovery, while other high-renewable states like Iowa have relatively low rates."
+    }
+   ],
+   "watch": "Watch the split between wholesale energy costs and transmission/distribution charges on bills, storage costs, and price trends in high-renewable grids during extreme weather.",
+   "cards": [
+    {
+     "q": "Why do renewable supporters say wind and solar push down wholesale prices?",
+     "a": "Their fuel is free, so they displace pricier generators once built.",
+     "explain": "With near-zero marginal cost, they undercut gas and coal plants in wholesale markets when producing.",
+     "wrong": [
+      "They are exempt from all electricity taxes.",
+      "They produce power only at night when demand is low.",
+      "They are owned by governments that set prices."
+     ]
+    },
+    {
+     "q": "What examples do critics cite to argue renewables raise bills?",
+     "a": "High retail electricity prices in places like Germany and California.",
+     "explain": "Critics argue that regions pushing hardest on renewables ended up with some of the highest household rates.",
+     "wrong": [
+      "Low prices in coal-heavy Poland and India.",
+      "Free electricity in Norway's hydro towns.",
+      "Falling prices in every country with wind."
+     ]
+    },
+    {
+     "q": "What costs do critics say are hidden behind cheap plant-level renewable costs?",
+     "a": "Backup capacity, storage, transmission and grid-balancing costs.",
+     "explain": "They argue these system-level costs grow as variable renewables increase and show up on consumer bills.",
+     "wrong": [
+      "The cost of mining coal for solar panels.",
+      "Fuel costs for running wind turbines.",
+      "Royalties paid to the sun."
+     ]
+    },
+    {
+     "q": "What do 'it depends' analysts say drives California's high rates?",
+     "a": "Largely wildfire, transmission and policy cost recovery, not just renewables.",
+     "explain": "They note retail bills include many costs beyond generation, and other high-renewable states have low rates.",
+     "wrong": [
+      "Solely the price of imported coal.",
+      "A state ban on all electricity exports.",
+      "Nuclear plants built in the last decade."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "offsets-net-zero",
+   "question": "Carbon offsets and corporate net-zero pledges: real progress or greenwashing?",
+   "why": "Thousands of companies have announced net-zero targets, often relying in part on carbon credits. Investigations into credit quality and new rules on climate claims have put these pledges under scrutiny.",
+   "positions": [
+    {
+     "label": "Pledges and markets drive progress",
+     "who": "Many corporations, carbon-market developers and some climate-finance experts; e.g. the Integrity Council for the Voluntary Carbon Market, Verra, Mark Carney's GFANZ initiative (in its framing).",
+     "case": "Corporate targets create internal accountability, push supply chains to decarbonize and send demand signals for clean technology. High-quality carbon credits channel private money to forest protection, clean cookstoves and carbon removal, often in developing countries that would otherwise get little climate finance. The answer to bad credits is better standards, not abandoning the market.",
+     "evidence": "They cite growing adoption of science-based targets, new integrity labels for credits, and finance flowing to removal technologies like direct air capture."
+    },
+    {
+     "label": "Largely greenwashing",
+     "who": "Investigative journalists, environmental NGOs and some climate scientists; e.g. Carbon Market Watch, NewClimate Institute, reporting by The Guardian and others on rainforest credits.",
+     "case": "Many offsets, especially avoided-deforestation credits, overstate their impact because the forest was never truly at risk or the protection is not permanent. Net-zero pledges let companies claim climate leadership while continuing to grow emissions, with distant targets and vague interim plans. This delays real reductions and misleads consumers and investors.",
+     "evidence": "They point to studies and investigations (e.g. of Verra-certified REDD+ projects) finding that a large share of credits may not represent real reductions, and analyses rating many corporate plans as low integrity."
+    },
+    {
+     "label": "Skeptical of the whole exercise",
+     "who": "Some free-market economists, conservative commentators and shareholder advocates focused on returns; e.g. critics of ESG and voluntary corporate climate commitments.",
+     "case": "Voluntary pledges are often public-relations moves with costs passed on to customers and shareholders, and they do little compared with technology and economic forces. If emissions reduction is a public goal, it should be pursued by elected governments with transparent policy, not by corporate marketing. Many companies have already quietly scaled back targets, showing how shallow they were.",
+     "evidence": "They cite companies weakening or dropping climate targets, departures from net-zero alliances, and the gap between pledges and actual emissions trends."
+    }
+   ],
+   "watch": "Watch whether credit-integrity standards and EU and other green-claims rules raise quality, whether corporate emissions actually fall against interim targets, and the price and volume of durable carbon-removal credits.",
+   "cards": [
+    {
+     "q": "What do supporters of carbon markets say is the fix for bad credits?",
+     "a": "Better standards and integrity rules, not abandoning the market.",
+     "explain": "Supporters argue high-quality credits direct finance to valuable projects, so the solution is tightening quality.",
+     "wrong": [
+      "Banning all corporate climate reporting.",
+      "Printing more credits to lower their price.",
+      "Letting companies grade their own credits."
+     ]
+    },
+    {
+     "q": "What problem do critics most often raise with avoided-deforestation credits?",
+     "a": "The forest may never have been at risk, overstating the benefit.",
+     "explain": "Critics argue inflated baselines and impermanence mean many credits do not reflect real emission reductions.",
+     "wrong": [
+      "Trees absorb too much carbon to measure.",
+      "Forests always burn within one year.",
+      "Credits are priced too high to buy."
+     ]
+    },
+    {
+     "q": "Why do some free-market skeptics oppose voluntary corporate climate pledges?",
+     "a": "Public goals belong to elected governments, not corporate marketing.",
+     "explain": "They argue pledges often impose costs on customers and shareholders without transparent democratic accountability.",
+     "wrong": [
+      "They believe pledges are too ambitious to be legal.",
+      "They want companies to buy more offsets.",
+      "They think pledges cut emissions too fast."
+     ]
+    },
+    {
+     "q": "What do critics say net-zero pledges can allow companies to do?",
+     "a": "Claim climate leadership while near-term emissions keep growing.",
+     "explain": "Critics point to distant target dates and vague interim plans as ways to delay real reductions.",
+     "wrong": [
+      "Avoid paying any corporate taxes.",
+      "Sell electricity without a license.",
+      "Skip financial audits entirely."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "policy-tools",
+   "question": "Best policy tool: carbon pricing, subsidies and industrial policy, regulation, or letting markets and innovation lead?",
+   "why": "The US shifted from talk of carbon taxes to large clean-energy tax credits under the Inflation Reduction Act, and many of those credits were later cut back or phased down. Europe relies more on carbon pricing, and China on state-led industrial policy.",
+   "positions": [
+    {
+     "label": "Carbon pricing",
+     "who": "Most academic economists across the spectrum; e.g. the Climate Leadership Council, the 2019 economists' statement on carbon dividends, William Nordhaus, Greg Mankiw.",
+     "case": "A price on carbon lets every household and firm find the cheapest ways to cut emissions without regulators picking winners. It raises revenue that can be returned as dividends or used to cut other taxes. It is technology-neutral and, in theory, achieves a given reduction at the lowest total cost.",
+     "evidence": "They cite the EU Emissions Trading System's role alongside declining EU power-sector emissions, the US sulfur-dioxide trading program's success, and British Columbia's carbon tax."
+    },
+    {
+     "label": "Subsidies and industrial policy",
+     "who": "Many Democratic policymakers, clean-energy industry, labor-aligned groups and some economists; e.g. architects and supporters of the IRA, Brian Deese, the Roosevelt Institute, Jesse Jenkins' REPEAT project analyses.",
+     "case": "Carbon taxes have repeatedly failed politically, while subsidies offering 'carrots' have proven more durable and build constituencies of workers and manufacturers. Industrial policy can drive down technology costs through learning, build domestic supply chains and compete with China's state-backed clean-tech dominance. Climate action that creates jobs is more likely to survive changes in government.",
+     "evidence": "They point to the surge in announced US clean-manufacturing investment after 2022, China's rapid cost reductions in solar, batteries and EVs, and repeated defeats of carbon-tax ballot measures such as in Washington State."
+    },
+    {
+     "label": "Regulation and standards",
+     "who": "Environmental law groups, many regulators and some climate advocates; e.g. NRDC, Earthjustice, supporters of EPA power-plant and vehicle rules and EU efficiency standards.",
+     "case": "Clear standards for vehicles, appliances, buildings and power plants deliver predictable, enforceable cuts and have a long track record. They don't depend on volatile prices or annual appropriations. Standards for fuel economy and efficiency have quietly saved large amounts of energy and money for decades.",
+     "evidence": "They cite gains from appliance efficiency standards, the Clean Air Act's history, and vehicle emissions standards that helped spur cleaner cars."
+    },
+    {
+     "label": "Markets and innovation lead",
+     "who": "Free-market and libertarian think tanks, many Republican policymakers and some innovation-focused analysts; e.g. the Cato Institute, the Heritage Foundation. Innovation-focused groups such as the Information Technology and Innovation Foundation share the emphasis on technology but favor public R&D funding.",
+     "case": "Mandates and subsidies distort markets, pick winners, burden taxpayers and raise energy costs, often with high cost per ton of emissions avoided. Cheap, abundant energy drives prosperity, and wealthier societies are better able to adapt and innovate. Government should focus on removing permitting barriers and funding basic research, then let competition decide which technologies win.",
+     "evidence": "They cite estimates showing high cost-per-ton figures for some subsidies, the role of private innovation in shale and solar cost declines, and permitting delays that slow all kinds of energy projects."
+    }
+   ],
+   "watch": "Watch emissions and investment outcomes in jurisdictions using different tools, the effects of rollbacks of US clean-energy credits, the EU's carbon border adjustment and ETS2, and permitting reform efforts.",
+   "cards": [
+    {
+     "q": "Why do many economists favor carbon pricing?",
+     "a": "It finds the cheapest cuts without regulators picking winners.",
+     "explain": "A price lets each firm and household choose how to reduce emissions, which in theory minimizes total cost.",
+     "wrong": [
+      "It guarantees every company a subsidy.",
+      "It bans fossil fuels on a fixed date.",
+      "It requires no measurement of emissions."
+     ]
+    },
+    {
+     "q": "What political argument do industrial-policy supporters make against relying on carbon taxes?",
+     "a": "Carbon taxes keep failing politically, while subsidies build lasting constituencies.",
+     "explain": "They argue jobs and investment created by subsidies give climate policy supporters who resist repeal.",
+     "wrong": [
+      "Carbon taxes are unconstitutional everywhere.",
+      "Carbon taxes raise too little money to matter.",
+      "Voters always prefer higher energy taxes."
+     ]
+    },
+    {
+     "q": "What do regulation advocates say is a key strength of standards?",
+     "a": "Predictable, enforceable cuts that don't depend on prices or budgets.",
+     "explain": "They cite decades of efficiency and vehicle standards that delivered savings regardless of market swings.",
+     "wrong": [
+      "They let companies ignore emissions entirely.",
+      "They automatically raise government revenue.",
+      "They require no enforcement agency."
+     ]
+    },
+    {
+     "q": "What do market-led advocates say government should focus on instead of mandates?",
+     "a": "Removing permitting barriers and funding basic research.",
+     "explain": "They argue competition, not subsidies or mandates, should decide which energy technologies win.",
+     "wrong": [
+      "Nationalizing all energy companies.",
+      "Setting a fixed price for every fuel.",
+      "Paying households to use more coal."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ev-emissions-policy",
+   "question": "Electric vehicles: how much do they really cut emissions, and should policy push them?",
+   "why": "EV sales are growing fast in China and Europe but more slowly in the US, where federal incentives and some rules have been rolled back. Debates over mining, grid emissions and consumer choice remain heated.",
+   "positions": [
+    {
+     "label": "EVs are a big win; policy should accelerate them",
+     "who": "Climate advocates, many transport researchers and EV makers; e.g. the International Council on Clean Transportation (ICCT), Transport and Environment, the Union of Concerned Scientists.",
+     "case": "Across their lifetime, EVs produce substantially lower emissions than gasoline cars in almost every region, even counting battery manufacturing, and the advantage grows as grids get cleaner. Policy helps overcome early cost and charging barriers and build industries that will otherwise be dominated by China. EVs also cut urban air pollution and oil dependence.",
+     "evidence": "They cite lifecycle studies from ICCT, Argonne National Laboratory's GREET model and others showing large emission reductions, and falling battery costs."
+    },
+    {
+     "label": "Benefits are overstated; let consumers choose",
+     "who": "Some automakers and dealers, free-market and conservative groups, and skeptics of mandates; e.g. the American Energy Alliance, many Republican lawmakers, some auto-industry executives.",
+     "case": "Battery production requires intensive mining of lithium, cobalt and nickel, with environmental and human-rights costs often borne in other countries and supply chains dominated by China. On coal-heavy grids the emissions advantage shrinks, and EVs remain costly and impractical for many rural or lower-income drivers. Mandates and subsidies force a technology on consumers rather than letting it compete on its merits.",
+     "evidence": "They cite reports on cobalt mining conditions in the DRC, China's dominance of battery mineral processing, slower-than-forecast US EV adoption, and studies showing smaller benefits on carbon-intensive grids."
+    },
+    {
+     "label": "EVs help, but are not the whole answer",
+     "who": "Urban planners, degrowth and public-transit advocates, and some environmental groups; e.g. advocates of walkable cities and transit, some mining-impact researchers.",
+     "case": "Swapping every gasoline car for an electric one still requires enormous mining, road space and energy. Prioritizing public transit, cycling, smaller vehicles and less car-dependent land use could cut emissions and mineral demand more. EVs are better than combustion cars, but policy that only subsidizes private cars, especially large ones, misses cheaper and fairer options.",
+     "evidence": "They cite studies showing that smaller vehicles and reduced car use can sharply lower lithium demand, and the trend toward heavier SUVs and trucks."
+    }
+   ],
+   "watch": "Watch battery costs and chemistries (such as sodium-ion and LFP), recycling rates, grid carbon intensity, EV price parity with gasoline cars, and how US sales respond to reduced incentives.",
+   "cards": [
+    {
+     "q": "What do EV supporters say about emissions from battery manufacturing?",
+     "a": "Lifetime EV emissions are still lower, even counting battery production.",
+     "explain": "Supporters cite lifecycle studies showing the higher manufacturing emissions are repaid over years of driving.",
+     "wrong": [
+      "Batteries produce zero emissions to make.",
+      "Battery emissions are captured by the car itself.",
+      "Manufacturing emissions are not measurable."
+     ]
+    },
+    {
+     "q": "What supply-chain concern do EV skeptics often raise?",
+     "a": "Mining impacts and China's dominance of battery mineral processing.",
+     "explain": "They point to cobalt mining conditions and strategic dependence on Chinese supply chains.",
+     "wrong": [
+      "EVs require imported crude oil to run.",
+      "There is no lithium anywhere on Earth.",
+      "EV parts cannot be made in factories."
+     ]
+    },
+    {
+     "q": "According to skeptics, when does the EV emissions advantage shrink?",
+     "a": "When EVs charge on coal-heavy electricity grids.",
+     "explain": "Their emissions depend partly on how the electricity is generated, which varies by region.",
+     "wrong": [
+      "When EVs are driven in cold climates only.",
+      "When EVs are painted dark colors.",
+      "When EVs are charged during the day."
+     ]
+    },
+    {
+     "q": "What do transit and urban-planning advocates argue EV policy overlooks?",
+     "a": "Transit, cycling and smaller vehicles could cut emissions and mining more.",
+     "explain": "They argue replacing every car one-for-one still demands huge resources, so reducing car dependence matters too.",
+     "wrong": [
+      "EVs are worse than gasoline cars in every way.",
+      "Cars should all run on hydrogen instead.",
+      "Roads should be widened for faster traffic."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai-data-centers",
+   "question": "AI and data-center power demand: threat to climate goals, or driver of clean firm power investment?",
+   "why": "Data centers for AI are a major reason US electricity demand forecasts have jumped, prompting new gas plants, delayed coal retirements and big tech deals for nuclear and geothermal. Forecasts of future demand vary widely.",
+   "positions": [
+    {
+     "label": "A threat to climate goals",
+     "who": "Many climate advocates, some energy researchers and consumer advocates; e.g. researchers like Sasha Luccioni (Hugging Face), groups tracking utility gas expansion, some state consumer advocates.",
+     "case": "Rapid data-center growth is already driving utilities to build new gas plants and keep coal plants running longer, locking in emissions just when they need to fall. Tech companies' own reported emissions have risen despite climate pledges. Ordinary ratepayers may also end up paying for grid upgrades built for data centers.",
+     "evidence": "They cite rising emissions in some tech companies' sustainability reports, utility plans proposing large new gas fleets, and delayed coal retirements tied to load growth."
+    },
+    {
+     "label": "A driver of clean firm power",
+     "who": "Tech companies, nuclear and geothermal developers, some clean-energy analysts and AI optimists; e.g. Microsoft, Google and Amazon in their energy deals, the nuclear industry, some innovation-focused think tanks.",
+     "case": "Large, creditworthy buyers willing to pay a premium for 24/7 clean power are funding nuclear restarts, advanced reactors, enhanced geothermal and storage that might otherwise struggle to find customers. AI could also accelerate grid optimization, materials discovery and scientific research that help climate goals. Demand growth can justify transmission and generation investments the grid needed anyway.",
+     "evidence": "They cite deals such as Microsoft's agreement tied to restarting the Three Mile Island Unit 1 reactor, Google's agreements with Kairos Power and Fervo Energy, and Amazon's SMR investments."
+    },
+    {
+     "label": "Demand forecasts are overhyped",
+     "who": "Some energy analysts, efficiency researchers and utility skeptics; e.g. Jonathan Koomey, some grid-planning analysts and financial analysts questioning AI capital spending.",
+     "case": "Past predictions of runaway IT electricity use repeatedly proved too high because efficiency improved faster than expected. Many proposed data centers are speculative duplicates filed in multiple utility queues. Building costly power plants on inflated forecasts risks stranded assets and higher bills, so planners should be cautious either way.",
+     "evidence": "They cite the early-2000s internet power-use scare that did not materialize, efficiency gains in chips and models, and reports of duplicate interconnection requests from data-center developers."
+    }
+   ],
+   "watch": "Watch actual (not forecast) data-center electricity consumption, what share is met by new clean versus fossil supply, chip and model efficiency trends, and how utilities allocate grid costs to large loads.",
+   "cards": [
+    {
+     "q": "What do climate-focused critics say data-center growth is causing utilities to do?",
+     "a": "Build new gas plants and delay coal retirements.",
+     "explain": "They argue this locks in fossil emissions at a time when emissions need to fall.",
+     "wrong": [
+      "Shut down all nuclear plants early.",
+      "Stop selling electricity to homes.",
+      "Cut electricity demand nationwide."
+     ]
+    },
+    {
+     "q": "Why do optimists say tech companies can help clean firm power?",
+     "a": "They are big buyers willing to pay a premium for 24/7 clean power.",
+     "explain": "Optimists say these deals help finance nuclear restarts, advanced reactors and geothermal projects.",
+     "wrong": [
+      "They are legally required to own all power plants.",
+      "They pay no taxes on electricity.",
+      "They run data centers only on diesel."
+     ]
+    },
+    {
+     "q": "What historical precedent do forecast skeptics cite?",
+     "a": "Past IT power-use predictions proved too high due to efficiency gains.",
+     "explain": "They note that earlier internet-era forecasts overestimated electricity demand growth.",
+     "wrong": [
+      "Data centers used more power in 1950 than today.",
+      "Computers have never improved in efficiency.",
+      "The internet was powered entirely by nuclear."
+     ]
+    },
+    {
+     "q": "Why do skeptics worry about duplicate data-center requests?",
+     "a": "They can inflate forecasts and lead to unneeded, costly plants.",
+     "explain": "Developers may file in several utility queues, so planners risk overbuilding and stranding assets.",
+     "wrong": [
+      "They cause data centers to overheat.",
+      "They make AI models less accurate.",
+      "They lower electricity prices too much."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "green-growth-degrowth",
+   "question": "Green growth vs. degrowth: can economies grow while cutting emissions?",
+   "why": "Many wealthy countries have cut emissions while GDP grew, but critics question whether this 'decoupling' can be fast and broad enough. The debate shapes visions of what a sustainable economy looks like.",
+   "positions": [
+    {
+     "label": "Green growth",
+     "who": "Most mainstream economists, international bodies and many governments; e.g. the OECD, World Bank, IEA, Hannah Ritchie (Our World in Data), Noah Smith.",
+     "case": "More than 30 countries, including the US, UK and much of Europe, have grown their economies while reducing emissions, showing that decoupling is real. Clean technologies are getting cheaper than fossil alternatives, so growth and decarbonization can reinforce each other. Growth also funds innovation and lifts billions out of poverty, which degrowth cannot offer.",
+     "evidence": "They cite data showing absolute decoupling of GDP and emissions in many high-income countries (including consumption-based emissions in several cases) and the rapid cost declines of solar, wind and batteries."
+    },
+    {
+     "label": "Degrowth / post-growth",
+     "who": "Ecological economists and left critics of growth; e.g. Jason Hickel, Giorgos Kallis, Tim Jackson, Kohei Saito.",
+     "case": "Decoupling observed so far is far too slow to meet climate targets and often ignores other ecological limits such as material use and biodiversity. Wealthy nations should deliberately scale back less necessary production and consumption, while guaranteeing well-being through public services, shorter working hours and redistribution. Endless growth on a finite planet is the root problem, not just which energy source powers it.",
+     "evidence": "They cite studies finding decoupling rates in rich countries well below what Paris-aligned pathways require, and research suggesting high well-being is achievable at much lower energy use."
+    },
+    {
+     "label": "Growth matters more than speed of cuts",
+     "who": "Some free-market economists, development advocates and skeptics of aggressive climate policy; e.g. Bjorn Lomborg, Alex Epstein, some Global South leaders.",
+     "case": "Affordable energy is the foundation of prosperity, and billions of people still lack enough of it. Overly aggressive climate policies risk slowing growth and hurting the poor more than moderate warming would. Richer societies are more resilient and innovative, so the priority should be economic development plus cheap clean-energy R&D, not forced cuts or shrinking economies.",
+     "evidence": "They cite the strong correlation between energy use and human development indicators, and economic studies (such as Nordhaus-style models) favoring a more gradual pace of cuts."
+    }
+   ],
+   "watch": "Watch the pace of absolute decoupling (especially consumption-based), emissions trends in fast-growing economies like India, and whether clean technology costs keep falling.",
+   "cards": [
+    {
+     "q": "What evidence do green-growth supporters point to?",
+     "a": "Many countries have grown GDP while cutting emissions.",
+     "explain": "They cite absolute decoupling in dozens of high-income economies as proof growth and cuts can coexist.",
+     "wrong": [
+      "Global emissions have fallen every year since 1950.",
+      "No country has grown since 2000.",
+      "Emissions always rise exactly with GDP."
+     ]
+    },
+    {
+     "q": "What is degrowth advocates' main objection to decoupling?",
+     "a": "It is far too slow to meet climate targets and ignores other limits.",
+     "explain": "They argue observed decoupling falls short of Paris pathways and overlooks material use and biodiversity.",
+     "wrong": [
+      "Decoupling has never happened in any country.",
+      "Decoupling makes emissions rise faster.",
+      "Decoupling only applies to agriculture."
+     ]
+    },
+    {
+     "q": "How do degrowth advocates propose maintaining well-being?",
+     "a": "Public services, shorter working hours and redistribution.",
+     "explain": "They argue well-being can be guaranteed even as rich countries scale back less necessary production.",
+     "wrong": [
+      "Expanding fossil fuel exports.",
+      "Eliminating all public services.",
+      "Increasing working hours for everyone."
+     ]
+    },
+    {
+     "q": "Why do development-focused skeptics prioritize growth?",
+     "a": "Affordable energy underpins prosperity and resilience for billions.",
+     "explain": "They argue aggressive cuts could hurt the poor more than moderate warming, and wealth aids adaptation.",
+     "wrong": [
+      "They believe growth has no link to energy use.",
+      "They think poverty is already eliminated.",
+      "They oppose all forms of clean energy research."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "esg-backlash",
+   "question": "ESG investing and its political backlash: risk management or politics?",
+   "why": "ESG funds grew rapidly, then faced a backlash including state anti-ESG laws, lawsuits, fund outflows and big asset managers leaving climate alliances. The fight is about fiduciary duty, financial returns and who sets values in markets.",
+   "positions": [
+    {
+     "label": "ESG is sound risk management",
+     "who": "Many asset managers, pension funds, sustainable-finance groups and some regulators; e.g. Ceres, the Principles for Responsible Investment (PRI), some large pension funds like CalPERS.",
+     "case": "Climate change, regulation and resource constraints are material financial risks that prudent investors must consider. Ignoring physical risks such as floods and wildfires, or transition risks such as stranded assets, would itself be a breach of fiduciary duty. Better disclosure lets markets price these risks accurately.",
+     "evidence": "They cite rising insured losses from extreme weather, research linking certain ESG factors to lower risk, and investor demand for climate disclosure."
+    },
+    {
+     "label": "ESG is politics in disguise",
+     "who": "Republican state officials, some fund managers and conservative groups; e.g. Vivek Ramaswamy and Strive (its founding pitch), state treasurers and attorneys general in Texas and Florida, the Heritage Foundation.",
+     "case": "ESG lets unelected asset managers use other people's retirement money to push social and political goals, including boycotting legal industries like oil and gas. Ratings are inconsistent and subjective, and evidence of better returns is weak. Investors should focus on returns, and policy on energy and social issues belongs to voters and legislators.",
+     "evidence": "They cite low correlation among ESG rating providers, periods when energy stocks outperformed ESG funds, and antitrust concerns about coordinated climate alliances."
+    },
+    {
+     "label": "ESG is too weak to matter",
+     "who": "Some climate activists, academics and former ESG insiders; e.g. Tariq Fancy (former BlackRock sustainable-investing executive), some environmental finance researchers.",
+     "case": "ESG often amounts to marketing that changes little in the real economy, since selling shares simply passes them to other owners. Labels can mislead savers into thinking they are helping the climate. Real impact requires government regulation and carbon pricing, not voluntary portfolio tweaks.",
+     "evidence": "They cite research suggesting divestment has limited effect on companies' cost of capital, and investigations into funds labeled sustainable holding fossil fuel assets."
+    }
+   ],
+   "watch": "Watch fund flows and performance of ESG versus conventional funds, court rulings on anti-ESG laws and climate alliances, and how mandatory climate-disclosure rules in the EU and elsewhere are implemented.",
+   "cards": [
+    {
+     "q": "Why do ESG supporters say considering climate is part of fiduciary duty?",
+     "a": "Climate risks are material financial risks to portfolios.",
+     "explain": "They argue ignoring physical and transition risks could harm returns, so prudent investors must weigh them.",
+     "wrong": [
+      "Fiduciary duty requires maximizing donations to charity.",
+      "Climate risks are guaranteed to raise every stock.",
+      "Law requires all investors to buy solar stocks."
+     ]
+    },
+    {
+     "q": "What do ESG critics say about ESG ratings?",
+     "a": "They are inconsistent and subjective across providers.",
+     "explain": "Critics cite low correlation among rating agencies as evidence the scores reflect judgment more than facts.",
+     "wrong": [
+      "They are identical across all providers.",
+      "They are set by the US Congress.",
+      "They only measure company profits."
+     ]
+    },
+    {
+     "q": "What core objection do anti-ESG officials raise about asset managers?",
+     "a": "They use others' retirement money to push political goals.",
+     "explain": "Critics argue energy and social policy belongs to voters and legislators, not unelected fund managers.",
+     "wrong": [
+      "They refuse to invest in any stocks.",
+      "They charge no fees on any funds.",
+      "They only invest in government bonds."
+     ]
+    },
+    {
+     "q": "Why do some climate-focused critics call ESG ineffective?",
+     "a": "Selling shares passes them to others and changes little in the real economy.",
+     "explain": "They argue real impact needs regulation or carbon pricing rather than voluntary portfolio changes.",
+     "wrong": [
+      "ESG funds are illegal in most countries.",
+      "ESG investing always reduces global emissions instantly.",
+      "ESG funds only buy oil companies."
+     ]
+    }
+   ]
+  }
+ ]
+}
