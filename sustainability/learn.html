@@ -168,6 +168,8 @@ h2 small{font-size:12.5px;color:var(--muted);font-weight:400}
 .epbody{flex:1;min-width:0;background:none;border:none;text-align:left;cursor:pointer;padding:2px 0}
 .chev{color:var(--muted);font-size:20px}
 
+.transcript{white-space:pre-wrap;font-size:14px;line-height:1.6;max-height:420px;overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-top:8px}
+
 /* sheet */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:none}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg);border-radius:20px 20px 0 0;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .25s ease;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
@@ -460,12 +462,15 @@ let DECKS = {};     // id -> {summary, takeaways, cards}
 async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? r.json() : {}; } catch { return {}; } }
 
 async function loadCatalog(){
-  const [res, books, media] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json")]);
+  const [res, books, media, deb] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json")]);
   DECKS = Object.assign({}, books, media);
+  if (deb.issues?.length) DECKS.debates = {summary:"Each side's strongest case on the biggest energy and climate-policy debates. Read them all on the News page under Big debates.",
+    takeaways:deb.issues.map(x => x.question), cards:deb.issues.flatMap(x => x.cards || [])};
   const add = (title, o) => { const id = slug(title); CATALOG[id] = {id, title, ...o}; };
-  (res.books||[]).forEach(b => add(b.title, {type:"book", by:b.by, year:b.year, audio:b.audio, url:b.url, why:b.why, level:b.level, cover:b.cover, pages:b.pages, isbn:b.isbn}));
-  (res.podcasts||[]).forEach(p => add(p.title, {type:"podcast", by:p.by, url:p.url, why:p.why, apple:p.apple, art:p.artwork}));
+  (res.books||[]).forEach(b => add(b.title, {type:"book", by:b.by, year:b.year, audio:b.audio, url:b.url, why:b.why, level:b.level, cover:b.cover, pages:b.pages, isbn:b.isbn, view:b.view}));
+  (res.podcasts||[]).forEach(p => add(p.title, {type:"podcast", by:p.by, url:p.url, why:p.why, apple:p.apple, art:p.artwork, view:p.view}));
   (res.documentaries||[]).forEach(d => add(d.title, {type:/youtube/i.test(d.where||"") ? "video" : "documentary", by:[d.year,d.where].filter(Boolean).join(" · "), url:d.url, why:d.why}));
+  if (DECKS.debates) CATALOG.debates = {id:"debates", title:"Big Debates: every side", type:"course", by:"Energy Brief debates deck", why:DECKS.debates.summary, always:true, url:"./#debates"};
   if (DECKS.concepts) CATALOG.concepts = {id:"concepts", title:"Key Concepts", type:"course", by:"Energy Brief starter deck", why:DECKS.concepts.summary, always:true};
 }
 const allItems = () => ({...CATALOG, ...S.custom});
@@ -707,7 +712,8 @@ const SHELVES = [
   ["discover", "✨ Recommended", id => !st(id).status && !getItem(id)?.always],
 ];
 let shelf = null, libType = "all";
-const LEVEL_ORDER = {"Start here":0, "Core":1, "Pro":2, "Fiction":3};
+const LEVEL_ORDER = {"Start here":0, "Core":1, "Pro":2, "Other views":3, "Fiction":4};
+const RES_VIEWS = {climate:"🌱 Climate advocate", research:"🔬 Data & research", markets:"📈 Markets & business", left:"✊ Left / degrowth critique", abundance:"🏗️ Pro-building (abundance)", freemarket:"🗽 Free-market & skeptic", nuclear:"⚛️ Pro-nuclear"};
 function renderLibrary(){
   const items = allItems(), ids = Object.keys(items);
   if (!shelf) shelf = ids.some(isActive) ? "reading" : "discover";
@@ -970,7 +976,7 @@ function renderBrowse(id, q){
   });
 }
 
-function openEpisode(pid, eid){
+function openEpisode(pid, eid, keepScroll){
   const it = getItem(pid), e = epsOf(pid).find(x => x.id === eid); if (!e) { openItem(pid); return; }
   const q = encodeURIComponent, cards = (S.aiCards[pid] || []).filter(c => c.ep === eid);
   openSheet(`
@@ -988,13 +994,22 @@ function openEpisode(pid, eid){
     <label class="f" for="epNotes">Notes on this episode</label>
     <textarea id="epNotes" placeholder="Guests, big ideas, numbers, companies mentioned, questions you have...">${esc(e.notes || "")}</textarea>
     <p class="note" id="epSaved">Saves automatically.</p>
-    ${e.summary ? `<details open><summary>🤖 Summary</summary><p style="font-size:14.5px;margin-top:8px">${esc(e.summary)}</p></details>` : ""}
+    <h2>Transcript</h2>
+    <div id="trBox"><p class="small muted"><span class="spin"></span> Checking for a transcript...</p></div>
+    <p class="note" id="trMsg"></p>
+    <details><summary>Paste a transcript instead</summary>
+      <p class="small muted" style="margin-top:6px">Copy it from the show's website or app, paste it here, and Claude will take notes and make cards.</p>
+      <textarea id="trPaste" placeholder="Paste the transcript..." style="min-height:110px;margin-top:6px"></textarea>
+      <button class="btn sm primary" id="trPasteGo" style="margin-top:8px">🤖 Make notes &amp; cards</button></details>
+    ${e.aiNotes ? aiNotesHtml(e.aiNotes) : e.summary ? `<details open><summary>🤖 Summary</summary><p style="font-size:14.5px;margin-top:8px">${esc(e.summary)}</p></details>` : ""}
     <h2>Questions <small>${cards.length} cards</small></h2>
     ${cards.length ? `<button class="btn primary block" id="epQuiz">🎯 Quiz me on this episode</button>` : ""}
     <button class="btn block" id="epGen" style="margin-top:8px">🤖 ${cards.length ? "Remake" : "Make"} cards from my notes</button>
     <p class="note" id="genMsg">${S.apiKey ? "" : "Add your Anthropic API key under Home → Settings to turn your notes into cards."}</p>
-    <button class="btn sm" id="epDel" style="margin-top:18px;color:var(--bad)">Remove episode</button>`);
+    <button class="btn sm" id="epDel" style="margin-top:18px;color:var(--bad)">Remove episode</button>`, keepScroll);
   $("#epBack").onclick = () => openItem(pid);
+  renderTranscriptBox(pid, e);
+  $("#trPasteGo").onclick = () => notesFromTranscript(pid, e, $("#trPaste").value);
   $("#epStatus").onclick = ev => { const b = ev.target.closest("[data-s]"); if (!b) return; setEpisodeHeard(pid, e, b.dataset.s === "done"); openEpisode(pid, eid); };
   $("#epRate").onclick = ev => { const b = ev.target.closest("[data-r]"); if (!b) return; e.rating = e.rating === +b.dataset.r ? 0 : +b.dataset.r; save();
     $("#epRate").querySelectorAll("button").forEach(x => x.classList.toggle("on", +x.dataset.r <= e.rating)); };
@@ -1054,6 +1069,7 @@ function openItem(id, keepScroll){
   openSheet(`
     <div class="head">${thumb(it)}
       <div style="min-width:0"><div class="small muted">${t.icon} ${t.label}${it.level ? " · " + esc(it.level) : ""}${it.pages ? ` · ${it.pages} pages` : ""}</div>
+      ${it.view && RES_VIEWS[it.view] ? `<div style="margin:3px 0"><span class="st owned" style="background:var(--accent-soft);color:var(--accent)">${esc(RES_VIEWS[it.view])}</span></div>` : ""}
       <h1 style="font-size:21px">${esc(it.title)}</h1><div class="muted small">${esc(it.by || "")}</div>
       ${s.startedAt ? `<div class="small muted">Started ${esc(s.startedAt)}${s.finishedAt ? ` · finished ${esc(s.finishedAt)}` : ""}</div>` : ""}</div></div>
 
@@ -1322,9 +1338,9 @@ const CARD_SCHEMA = {
       properties:{q:{type:"string"}, a:{type:"string"}, explain:{type:"string"}, wrong:{type:"array", items:{type:"string"}}}}}
   }
 };
-const CARD_RULES = `Each card has q (question), a (short correct answer, at most ~15 words), explain (1-2 sentences of context), and wrong (exactly 3 plausible but clearly incorrect answers of similar length and style, for multiple choice). Test understanding, not trivia.`;
+const CARD_RULES = `Each card has q (question), a (short correct answer, at most ~15 words), explain (1-2 sentences of context), and wrong (exactly 3 plausible but clearly incorrect answers of similar length and style, for multiple choice). Test understanding, not trivia. When the material makes a contested claim, include at least one card on how other sides see it - attribute views to who holds them and don't present contested claims as settled.`;
 let Anthropic;
-async function askClaude(prompt){
+async function askClaude(prompt, schema = CARD_SCHEMA){
   Anthropic ||= (await import("https://cdn.jsdelivr.net/npm/@anthropic-ai/sdk@0.131.0/+esm")).default;
   const client = new Anthropic({apiKey:S.apiKey, dangerouslyAllowBrowser:true});
   const res = await client.beta.messages.create({
@@ -1332,7 +1348,7 @@ async function askClaude(prompt){
     max_tokens:16000,
     betas:["server-side-fallback-2026-07-01"],
     fallbacks:"default",
-    output_config:{effort:"medium", format:{type:"json_schema", schema:CARD_SCHEMA}},
+    output_config:{effort:"medium", format:{type:"json_schema", schema}},
     messages:[{role:"user", content:prompt}],
   });
   if (res.stop_reason === "refusal") throw new Error("Claude declined this request. Try editing the text.");
@@ -1413,6 +1429,124 @@ ${seg.note || "(none)"}
     msg.textContent = aiError(err);
     btn.disabled = false; btn.textContent = "🤖 Ask Claude about this section";
   }
+}
+
+/* =========================================================
+   Podcast transcripts. Your GitHub robot (transcribe.py) fetches the show's own
+   transcript or transcribes the audio, then encrypts it with your ntfy topic, so
+   only this app (which knows the topic) can read it from the public repo.
+   ========================================================= */
+let TR_INDEX = null;
+async function trIndex(){
+  try { TR_INDEX = await (await fetch("transcripts/index.json", {cache:"no-cache"})).json(); } catch { TR_INDEX = {}; }
+  return TR_INDEX;
+}
+async function trKey(track){
+  const d = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${S.ntfyTopic}:${track}`));
+  return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, "0")).join("").slice(0, 24);
+}
+const b64d = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function loadTranscript(track){
+  const f = await (await fetch(`transcripts/${await trKey(track)}.json`, {cache:"no-cache"})).json();
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(S.ntfyTopic), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey({name:"PBKDF2", salt:b64d(f.salt), iterations:200000, hash:"SHA-256"}, base, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+  return new TextDecoder().decode(await crypto.subtle.decrypt({name:"AES-GCM", iv:b64d(f.iv)}, key, b64d(f.ct)));
+}
+async function ensureTrack(pid, e){   // episodes added by name need their Apple episode id
+  if (e.trackId) return true;
+  const aid = await findAppleId(pid); if (!aid) return false;
+  const r = await (await fetch(`https://itunes.apple.com/lookup?id=${encodeURIComponent(aid)}&entity=podcastEpisode&limit=200`)).json();
+  const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const t = norm(e.title);
+  const hit = (r.results || []).find(x => x.wrapperType === "podcastEpisode" && (norm(x.trackName) === t || (t.length > 12 && norm(x.trackName).includes(t))));
+  if (!hit) return false;
+  Object.assign(e, {trackId:hit.trackId, date:e.date || hit.releaseDate, mins:e.mins || Math.round((hit.trackTimeMillis || 0) / 60000), url:e.url || (hit.trackViewUrl || "").split("?")[0]});
+  save(); return true;
+}
+async function requestTranscript(pid, e){
+  const msg = $("#trMsg");
+  if (!S.ntfyTopic) { msg.innerHTML = `First turn on phone notifications (<a href="#" data-tab="home" data-scroll="notifSetup">Home → Settings</a>). Transcripts use the same private topic.`; return; }
+  msg.textContent = "Finding the episode...";
+  try {
+    if (!(await ensureTrack(pid, e))) { msg.textContent = "Couldn't match this episode in Apple Podcasts. Paste a transcript below instead."; return; }
+    const podcast = await findAppleId(pid);
+    const r = await fetch(`${NTFY}/${encodeURIComponent(S.ntfyTopic)}-transcribe`, {method:"POST", body:JSON.stringify({podcast:+podcast, track:+e.trackId, item:pid})});
+    if (!r.ok) throw new Error(r.status === 429 ? "ntfy says too many messages today" : "ntfy error " + r.status);
+    e.trReq = Date.now(); save(); toast("📝 Transcript requested"); renderTranscriptBox(pid, e);
+  } catch (err) { msg.textContent = "Couldn't send the request: " + (err.message || err); }
+}
+async function renderTranscriptBox(pid, e){
+  const box = $("#trBox"); if (!box) return;
+  const idx = TR_INDEX || await trIndex();
+  const entry = e.trackId && S.ntfyTopic ? idx[await trKey(e.trackId)] : null;
+  if (!$("#trBox")) return;   // sheet changed while we were loading
+  if (entry?.status === "done") {
+    box.innerHTML = `<div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn primary sm" id="trNotes">🤖 Make notes &amp; cards from transcript</button><button class="btn sm" id="trView">📄 Read transcript</button></div>
+      <p class="note">${entry.source === "publisher" ? "The show's own published transcript" : "Transcribed from the audio, so names may be misspelled"} · about ${Math.max(1, Math.round((entry.words || 0) / 150))} min of talk.</p><div id="trText"></div>`;
+    $("#trView").onclick = async () => {
+      const el = $("#trText"); if (el.innerHTML) { el.innerHTML = ""; return; }
+      el.innerHTML = `<p class="small muted"><span class="spin"></span> Unlocking...</p>`;
+      try { el.innerHTML = `<div class="transcript">${esc(await loadTranscript(e.trackId))}</div>`; }
+      catch { el.innerHTML = `<p class="small muted">Couldn't unlock it. Is this app's notification topic the same as the NTFY_TOPIC secret in GitHub?</p>`; }
+    };
+    $("#trNotes").onclick = async () => {
+      $("#trMsg").innerHTML = `<span class="spin"></span> Unlocking transcript...`;
+      try { notesFromTranscript(pid, e, await loadTranscript(e.trackId)); }
+      catch { $("#trMsg").textContent = "Couldn't unlock the transcript. Check that your topic matches the NTFY_TOPIC secret in GitHub."; }
+    };
+  } else if (entry?.status === "failed" && !(e.trReq > entry.at * 1000)) {
+    box.innerHTML = `<p class="small muted">The last attempt didn't work: ${esc(entry.reason || "unknown error")}</p><button class="btn sm" id="trReq">↻ Try again</button>`;
+  } else if (e.trReq && Date.now() - e.trReq < 12 * 3600e3) {
+    box.innerHTML = `<p class="small">⏳ Requested ${esc(fmtWhen(e.trReq))}. It usually takes 10-40 minutes, and you'll get a notification when it's ready.</p><button class="btn sm" id="trCheck">↻ Check now</button>`;
+    $("#trCheck").onclick = () => { TR_INDEX = null; box.innerHTML = `<p class="small muted"><span class="spin"></span> Checking...</p>`; renderTranscriptBox(pid, e); };
+  } else {
+    box.innerHTML = `<button class="btn sm primary" id="trReq">📝 Get transcript</button>
+      <p class="note">Uses the show's published transcript if it has one; otherwise your GitHub robot transcribes the audio. You'll get a notification when it's ready.</p>`;
+  }
+  $("#trReq")?.addEventListener("click", () => requestTranscript(pid, e));
+}
+const NOTES_SCHEMA = {
+  type:"object", additionalProperties:false, required:["summary","takeaways","numbers","people","otherViews","cards"],
+  properties:{
+    summary:{type:"string"}, takeaways:{type:"array", items:{type:"string"}}, numbers:{type:"array", items:{type:"string"}},
+    people:{type:"array", items:{type:"string"}}, otherViews:{type:"array", items:{type:"string"}},
+    cards:CARD_SCHEMA.properties.cards,
+  }
+};
+async function notesFromTranscript(pid, e, text){
+  const it = getItem(pid), msg = $("#trMsg");
+  if (!S.apiKey) { msg.innerHTML = `Add your Anthropic API key under <a href="#" data-tab="home" data-scroll="notifSetup">Home → Settings</a> to make notes and cards.`; return; }
+  if (!text || text.trim().length < 200) { msg.textContent = "That transcript looks empty."; return; }
+  msg.innerHTML = `<span class="spin"></span> Claude is reading the episode... (about a minute)`;
+  try {
+    const out = await askClaude(`I'm building professional knowledge of sustainability and energy, and I want to understand every side of the issues. Here is the transcript of the episode "${e.title}" from the podcast "${it.title}"${it.by ? ` (${it.by})` : ""}. ${e.notes ? "My own notes are included too." : ""}
+
+Take study notes for me:
+- summary: 4-6 sentences on what the episode covered and the main argument.
+- takeaways: 6-10 key points, concrete and specific.
+- numbers: notable figures and statistics mentioned, each with what it refers to.
+- people: people, companies and organizations discussed, each with a few words on their role.
+- otherViews: for the main claims made on the show that are contested, 2-5 short notes on how other sides (industry, environmental groups, economists, free-market critics, etc.) would respond. Attribute these to the sides; don't present contested claims as settled.
+- cards: 8-12 flashcards. ${CARD_RULES}
+
+The transcript may come from speech-to-text, so names can be misspelled; correct them only when you're sure. Base the notes on what was actually said; label any background you add.
+
+<transcript>
+${text}
+</transcript>
+${e.notes ? `\n<my_notes>\n${e.notes}\n</my_notes>` : ""}`, NOTES_SCHEMA);
+    e.aiNotes = {summary:out.summary, takeaways:out.takeaways, numbers:out.numbers, people:out.people, otherViews:out.otherViews, at:today()};
+    e.summary = out.summary;
+    S.aiCards[pid] = [...(S.aiCards[pid] || []).filter(c => c.ep !== e.id), ...out.cards.map(c => ({...c, id:`${pid}#${c.id}`, src:"episode", ep:e.id}))];
+    if (!e.trXp) { e.trXp = 1; addXp(30, "Studied a full episode"); }
+    save(); toast(`🤖 Notes + ${out.cards.length} cards ready`); openEpisode(pid, e.id);
+  } catch (err) { msg.textContent = aiError(err); }
+}
+function aiNotesHtml(n){
+  const sec = (t, arr) => arr?.length ? `<label class="f">${t}</label><ul class="takeaways">${arr.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+  return `<details open><summary>🤖 Notes from the transcript</summary>
+    <p style="font-size:14.5px;margin-top:8px">${esc(n.summary)}</p>
+    ${sec("Key points", n.takeaways)}${sec("Numbers worth remembering", n.numbers)}${sec("People & companies", n.people)}${sec("⚖️ How other sides see it", n.otherViews)}</details>`;
 }
 
 /* =========================================================
@@ -1639,7 +1773,9 @@ syncReminders();   // top up the 3-day window of scheduled reminders every time 
 const start = location.hash.slice(1);
 tab(["home","library","study"].includes(start) ? start : "home");
 const params = new URLSearchParams(location.search), openId = params.get("item");
-if (openId && getItem(openId)) params.get("log") ? openLog(openId) : openItem(openId);
+const epParam = params.get("ep"), epMatch = epParam && openId && epsOf(openId).find(e => String(e.trackId) === epParam);
+if (epMatch) openEpisode(openId, epMatch.id);
+else if (openId && getItem(openId)) params.get("log") ? openLog(openId) : openItem(openId);
 if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js");
 </script>
 </body>

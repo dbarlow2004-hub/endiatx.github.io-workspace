@@ -85,6 +85,16 @@ h2 small{font-size:13px;font-weight:400;color:var(--muted)}
 .card .by{font-size:13px;color:var(--muted)}
 .card p{font-size:13.5px;color:var(--text);opacity:.85;margin-top:4px}
 .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:2px}
+.view{font-size:11.5px;border-radius:6px;padding:1px 7px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+details.debate{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+details.debate summary{cursor:pointer;font-weight:700;font-size:16px;line-height:1.35}
+details.debate .why{color:var(--muted);font-size:14px;margin:8px 0 12px}
+.positions{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.pos{border:1px solid var(--border);border-radius:12px;padding:12px 14px;background:var(--bg)}
+.pos h4{font-size:14.5px;margin-bottom:4px}
+.pos .who{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.pos p{font-size:13.5px;margin-top:6px}
+.watch{font-size:13.5px;margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--chip)}
 .badge{font-size:11px;font-weight:600;letter-spacing:.02em;padding:2px 7px;border-radius:6px;background:var(--chip);color:var(--muted)}
 .badge.audio{background:var(--accent-soft);color:var(--accent)}
 .badge.lvl-Start{background:var(--accent-soft);color:var(--accent)}
@@ -118,6 +128,7 @@ footer code{font-family:'Space Mono',monospace;font-size:12px;background:var(--c
     <nav aria-label="Sections">
       <a href="learn.html" class="study-link">🧠 My Library &amp; Study</a>
       <a href="#latest">Latest</a>
+      <a href="#debates">Big debates</a>
       <a href="#plan">Become a pro</a>
       <a href="#glossary">Key concepts</a>
       <a href="#books">Books</a>
@@ -139,9 +150,16 @@ footer code{font-family:'Space Mono',monospace;font-size:12px;background:var(--c
   <section id="latest">
     <h2>Latest news <small id="updated"></small></h2>
     <input class="search" id="q" type="search" placeholder="Search headlines (e.g. PJM, perovskite, Scope 3)" aria-label="Search headlines">
+    <div class="chips" id="views" role="group" aria-label="Filter by viewpoint"></div>
     <div class="chips" id="topics" role="group" aria-label="Filter by topic"></div>
     <ul class="news" id="news"></ul>
     <div class="more"><button class="btn" id="more" hidden>Show more</button></div>
+  </section>
+
+  <section id="debates">
+    <h2>The big debates <small>every side, in its own best words</small></h2>
+    <p class="lede">Smart people disagree about pace, cost, reliability and the right policy tools. Here is each side's strongest case, who makes it, and what would settle it. The questions are in the study app's Debates deck.</p>
+    <div id="debatelist"></div>
   </section>
 
   <section id="plan">
@@ -168,6 +186,7 @@ footer code{font-family:'Space Mono',monospace;font-size:12px;background:var(--c
       <button class="chip" aria-pressed="false" data-f="audio">Has audiobook</button>
       <button class="chip" aria-pressed="false" data-f="Start here">Start here</button>
       <button class="chip" aria-pressed="false" data-f="Pro">Pro level</button>
+      <button class="chip" aria-pressed="false" data-f="Other views">Other viewpoints</button>
     </div>
     <div class="grid" id="booklist"></div>
   </section>
@@ -216,17 +235,21 @@ function ago(iso){
 }
 
 /* ---------- news ---------- */
-let articles = [], topic = "All", shown = 30;
+let articles = [], topic = "All", view = "all", shown = 30;
+const NEWS_VIEWS = {climate:"🌱 Climate press", markets:"📈 Business & markets", industry:"🛢️ Energy industry", freemarket:"🗽 Free-market & skeptic", research:"🔬 Research & data", mixed:"⚖️ All sides", general:"📰 General news"};
+const RES_VIEWS = {climate:"🌱 Climate advocate", research:"🔬 Data & research", markets:"📈 Markets & business", left:"✊ Left / degrowth critique", abundance:"🏗️ Pro-building (abundance)", freemarket:"🗽 Free-market & skeptic", nuclear:"⚛️ Pro-nuclear"};
 const PAGE = 30;
 
 function renderNews(){
   const q = $("#q").value.trim().toLowerCase();
   const list = articles.filter(a =>
     (topic === "All" || (a.topics||[]).includes(topic)) &&
+    (view === "all" || (a.view || "general") === view) &&
     (!q || (a.title + " " + a.source + " " + (a.summary||"")).toLowerCase().includes(q)));
   $("#news").innerHTML = list.slice(0, shown).map(a => `
     <li><a class="t" href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">${esc(a.title)}</a>
       <div class="meta"><span>${esc(a.source)}</span><span>·</span><span>${ago(a.published || a.added)}</span>
+        <span class="view">${esc(NEWS_VIEWS[a.view || "general"] || "")}</span>
         ${(a.topics||[]).slice(0,3).map(t => `<span class="tag">${esc(t)}</span>`).join("")}
         <button class="save" data-save="${esc(a.link)}" ${savedLinks.has(a.link) ? "disabled>Saved ✓" : ">＋ Save"}</button></div></li>`).join("")
     || `<li class="empty">${articles.length ? "No headlines match." : "No articles yet. The first brief will fill this in."}</li>`;
@@ -241,6 +264,16 @@ function renderTopics(){
     `<button class="chip" aria-pressed="${n===topic}" data-t="${esc(n)}">${esc(n)}${n==="All"?"":` <span style="opacity:.6">${counts[n]}</span>`}</button>`).join("");
 }
 
+function renderViews(){
+  const counts = {};
+  articles.forEach(a => { const v = a.view || "general"; counts[v] = (counts[v]||0) + 1; });
+  $("#views").innerHTML = [["all","⚖️ Every viewpoint"], ...Object.keys(NEWS_VIEWS).filter(k => counts[k]).map(k => [k, NEWS_VIEWS[k]])].map(([k,l]) =>
+    `<button class="chip" aria-pressed="${k===view}" data-v="${k}">${esc(l)}${k==="all" ? "" : ` <span style="opacity:.6">${counts[k]}</span>`}</button>`).join("");
+}
+$("#views").addEventListener("click", e => {
+  const b = e.target.closest("[data-v]"); if(!b) return;
+  view = b.dataset.v; shown = PAGE; renderViews(); renderNews();
+});
 $("#topics").addEventListener("click", e => {
   const b = e.target.closest("[data-t]"); if(!b) return;
   topic = b.dataset.t; shown = PAGE; renderTopics(); renderNews();
@@ -266,8 +299,18 @@ $("#news").addEventListener("click", e => {
 fetch("feed.json", {cache:"no-cache"}).then(r => r.ok ? r.json() : {articles:[]}).catch(() => ({articles:[]})).then(d => {
   articles = (d.articles || []).slice().sort((a,b) => (b.published||b.added||"").localeCompare(a.published||a.added||""));
   if(d.updated) $("#updated").textContent = "updated " + ago(d.updated);
-  renderTopics(); renderNews();
+  renderViews(); renderTopics(); renderNews();
 });
+
+/* ---------- debates ---------- */
+fetch("debates.json").then(r => r.json()).then(d => {
+  $("#debatelist").innerHTML = (d.issues || []).map((x, i) => `<details class="debate" ${i === 0 ? "open" : ""}>
+    <summary>${esc(x.question)}</summary>
+    <p class="why">${esc(x.why)}</p>
+    <div class="positions">${(x.positions || []).map(p => `<div class="pos"><h4>${esc(p.label)}</h4><div class="who">${esc(p.who)}</div><p>${esc(p.case)}</p><p class="who" style="margin-top:6px"><b>Evidence they cite:</b> ${esc(p.evidence)}</p></div>`).join("")}</div>
+    ${x.watch ? `<div class="watch"><b>What would settle it:</b> ${esc(x.watch)}</div>` : ""}
+  </details>`).join("") + `<p style="margin-top:6px"><a href="learn.html#study">🎯 Quiz yourself on every side →</a></p>`;
+}).catch(() => {});
 
 /* ---------- resources ---------- */
 let books = [], bookFilter = "all";
@@ -282,7 +325,8 @@ function renderBooks(){
   const list = books.filter(b => bookFilter === "all" || (bookFilter === "audio" ? b.audio : b.level === bookFilter));
   $("#booklist").innerHTML = list.map(b => card(b.title, `${b.by} · ${b.year}`, b.why, [
     `<span class="badge ${b.level==="Start here"?"lvl-Start":""}">${esc(b.level)}</span>`,
-    b.audio ? `<span class="badge audio">Audiobook</span>` : ""
+    b.audio ? `<span class="badge audio">Audiobook</span>` : "",
+    b.view ? `<span class="view">${esc(RES_VIEWS[b.view] || "")}</span>` : ""
   ].filter(Boolean), b.url, true)).join("");
 }
 $("#bookfilter").addEventListener("click", e => {
@@ -294,7 +338,7 @@ $("#bookfilter").addEventListener("click", e => {
 
 fetch("resources.json").then(r => r.json()).then(r => {
   books = r.books || []; renderBooks();
-  $("#podlist").innerHTML = (r.podcasts||[]).map(p => card(p.title, p.by, p.why, [], p.url, true)).join("");
+  $("#podlist").innerHTML = (r.podcasts||[]).map(p => card(p.title, p.by, p.why, p.view ? [`<span class="view">${esc(RES_VIEWS[p.view] || "")}</span>`] : [], p.url, true)).join("");
   $("#doclist").innerHTML = (r.documentaries||[]).map(d => card(d.title, [d.year, d.where].filter(Boolean).join(" · "), d.why, [], d.url, true)).join("");
   $("#colist").innerHTML = (r.companies||[]).map(c =>
     `<tr><td><b>${esc(c.name)}</b></td><td class="tk">${esc(c.ticker)}</td><td>${esc(c.sector)}</td><td class="why">${esc(c.why)}</td></tr>`).join("");
