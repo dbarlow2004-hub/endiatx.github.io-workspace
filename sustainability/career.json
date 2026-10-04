@@ -1,0 +1,1157 @@
+{
+ "jobs": [
+  {
+   "id": "arup-grad-sustainability-2027",
+   "title": "Graduate Sustainability Consultant (2027)",
+   "company": "Arup",
+   "location": "San Francisco, CA",
+   "pay": "$79,500-$86,500 base + profit share",
+   "apply": "https://jobs.arup.com/",
+   "ref": "SAN00013H",
+   "summary": "An entry-level consulting role in Arup's Americas Sustainability Consulting team, doing energy, carbon, comfort, water and resilience analysis that shapes buildings from single measures to master plans. Strong candidates pair a built-environment master's with hands-on simulation and whole-life carbon skills, rating-system fluency (LEED/WELL), and the ability to explain results clearly to clients and design teams.",
+   "skills": [
+    {
+     "id": "energy-modeling",
+     "area": "Building energy modeling",
+     "icon": "⚡",
+     "asks": "Run building energy and performance optimization studies using simulation tools such as EnergyPlus, OpenStudio and IES VE.",
+     "learn": [
+      "Read an EnergyPlus/OpenStudio model: zones, constructions, schedules, internal loads, HVAC systems",
+      "Pick and read a weather file (EPW) and explain how San Francisco's mild marine climate drives loads",
+      "Build a simple shoebox model and run a parametric sweep (insulation, glazing, WWR, setpoints)",
+      "Interpret outputs: end-use breakdown, EUI, peak loads, unmet hours",
+      "Understand baseline vs proposed modeling logic (ASHRAE 90.1 Appendix G concept) used for LEED energy credits",
+      "Sanity-check results against benchmarks such as ENERGY STAR Portfolio Manager medians or CBECS"
+     ],
+     "resources": [
+      {
+       "name": "EnergyPlus",
+       "url": "https://energyplus.net/",
+       "note": "Free, open-source DOE simulation engine with documentation"
+      },
+      {
+       "name": "OpenStudio",
+       "url": "https://openstudio.net/",
+       "note": "Free SDK and app built on EnergyPlus; measures for parametric runs"
+      },
+      {
+       "name": "IES VE",
+       "url": "https://www.iesve.com/",
+       "note": "Paid commercial suite widely used in consulting; check for student/trial licenses"
+      }
+     ],
+     "project": "Model a typical 3-story San Francisco office shoebox in OpenStudio, run 8-10 efficiency measures, and present an EUI waterfall chart showing which measures matter most in this climate.",
+     "level": "Core"
+    },
+    {
+     "id": "parametric-design",
+     "area": "Rhino + Grasshopper / Ladybug",
+     "icon": "🦗",
+     "asks": "Use Rhino + Grasshopper (and SketchUp) for parametric environmental analysis and visuals.",
+     "learn": [
+      "Grasshopper basics: data trees, sliders, lists, and parametric geometry",
+      "Ladybug: import EPW, sun path, radiation analysis, wind rose, psychrometric chart",
+      "Honeybee: turn massing into thermal zones and daylight grids, run Radiance and EnergyPlus",
+      "Use Colibri or similar design-space exploration to batch options and plot tradeoffs",
+      "Produce clean diagrams that a non-technical architect or client can read in seconds"
+     ],
+     "resources": [
+      {
+       "name": "Ladybug Tools",
+       "url": "https://www.ladybug.tools/",
+       "note": "Free, open-source environmental plugins for Grasshopper"
+      },
+      {
+       "name": "Ladybug Tools Forum",
+       "url": "https://discourse.ladybug.tools/",
+       "note": "Free community Q&A, very active"
+      },
+      {
+       "name": "Rhino",
+       "url": "https://www.rhino3d.com/",
+       "note": "Paid; discounted educational licenses and a free evaluation"
+      }
+     ],
+     "project": "For a real Bay Area infill site, use Ladybug to compare 3 massing options on annual facade radiation and sun hours on the adjacent sidewalk, and deliver a one-page visual comparison.",
+     "level": "Core"
+    },
+    {
+     "id": "daylight-comfort",
+     "area": "Daylight, glare & thermal comfort",
+     "icon": "☀️",
+     "asks": "Thermal simulation for comfort; knowledge of daylighting and external solar shading.",
+     "learn": [
+      "Daylight metrics: sDA, ASE, daylight factor, useful daylight illuminance",
+      "Glare: what DGP measures and when to run point-in-time glare studies",
+      "Thermal comfort: PMV/PPD and the adaptive model (ASHRAE Standard 55 concepts)",
+      "How shading devices, glazing VT and SHGC, and WWR trade off daylight vs solar gain",
+      "Natural ventilation and overheating risk in free-running or mixed-mode buildings"
+     ],
+     "resources": [
+      {
+       "name": "Ladybug Tools",
+       "url": "https://www.ladybug.tools/",
+       "note": "Free; Honeybee runs Radiance daylight and comfort studies"
+      },
+      {
+       "name": "ASHRAE",
+       "url": "https://www.ashrae.org/",
+       "note": "Publisher of Standard 55 (comfort) and student membership"
+      }
+     ],
+     "project": "Take one SF classroom or office floor plate, run sDA/ASE with Honeybee for the existing facade and two shading options, and recommend one with a short annotated graphic.",
+     "level": "Core"
+    },
+    {
+     "id": "hvac-systems",
+     "area": "HVAC, electrification & plant sizing",
+     "icon": "🌀",
+     "asks": "Knowledge of building systems including HVAC and sizing mechanical plant; efficiency and electrification strategies for building MEP.",
+     "learn": [
+      "Core system types: VAV, DOAS + radiant or fan coils, VRF, air-to-water heat pumps",
+      "Heat pump fundamentals: COP, capacity drop at low temperature, refrigerant considerations",
+      "Heat recovery (ERV/HRV) and economizers, and why they matter in a mild climate",
+      "Load calcs: design days, peak heating/cooling load, rule-of-thumb checks (sf/ton)",
+      "Electrification of gas end uses: space heat, domestic hot water, cooking; electrical service implications",
+      "Read an MEP schedule and a single-line HVAC diagram"
+     ],
+     "resources": [
+      {
+       "name": "ASHRAE",
+       "url": "https://www.ashrae.org/",
+       "note": "Standards, Handbook, and discounted student membership"
+      },
+      {
+       "name": "U.S. Department of Energy - Building Technologies",
+       "url": "https://www.energy.gov/eere/buildings/building-technologies-office",
+       "note": "Free DOE research and guides on efficient and electrified buildings"
+      }
+     ],
+     "project": "Write an electrification feasibility memo for a gas-heated 1960s SF apartment building: estimate heating peak load, propose a heat pump space and water heating scheme, and flag electrical panel/service upgrades.",
+     "level": "Core"
+    },
+    {
+     "id": "operational-carbon",
+     "area": "Operational carbon & energy metrics",
+     "icon": "🏭",
+     "asks": "Operational carbon calculations and net-zero strategy for buildings.",
+     "learn": [
+      "EUI and units: kBtu/sf/yr, kWh/m2/yr, site vs source energy",
+      "Grid emission factors: annual average vs hourly/marginal, and why hourly matters for electrified buildings",
+      "Convert a utility bill or model output into tCO2e per year",
+      "Net-zero energy vs net-zero carbon definitions and their boundaries",
+      "Refrigerant leakage as an often-missed operational emission"
+     ],
+     "resources": [
+      {
+       "name": "Architecture 2030",
+       "url": "https://www.architecture2030.org/",
+       "note": "Free resources on zero-carbon building targets"
+      },
+      {
+       "name": "ENERGY STAR Portfolio Manager",
+       "url": "https://www.energystar.gov/buildings",
+       "note": "Free benchmarking tool and national median EUI data"
+      }
+     ],
+     "project": "Benchmark three public SF buildings using published benchmarking data, compute EUI and estimated annual operational carbon, and propose a top-3 decarbonization measure list for the worst performer.",
+     "level": "Core"
+    },
+    {
+     "id": "embodied-carbon",
+     "area": "Embodied & whole-life carbon (LCA)",
+     "icon": "🧱",
+     "asks": "Embodied carbon calculations with whole-life carbon software such as Tally, Athena Impact Estimator and One Click LCA.",
+     "learn": [
+      "Life cycle stages per EN 15978: A1-A3, A4-A5, B1-B7, C1-C4, and Module D",
+      "Read an EPD: declared unit, GWP per stage, product-specific vs industry-average",
+      "Know the biggest levers: structure (concrete mix, steel, mass timber), foundations, envelope",
+      "Run a whole-building LCA and a concrete mix comparison using EC3",
+      "Understand reference service life, biogenic carbon reporting, and comparing to a baseline"
+     ],
+     "resources": [
+      {
+       "name": "EC3 by Building Transparency",
+       "url": "https://www.buildingtransparency.org/",
+       "note": "Free embodied carbon calculator and EPD database"
+      },
+      {
+       "name": "One Click LCA",
+       "url": "https://www.oneclicklca.com/",
+       "note": "Paid LCA platform with student/trial options"
+      },
+      {
+       "name": "Athena Sustainable Materials Institute",
+       "url": "https://www.athenasmi.org/",
+       "note": "Free Impact Estimator for whole-building LCA (North America)"
+      },
+      {
+       "name": "Carbon Leadership Forum",
+       "url": "https://carbonleadershipforum.org/",
+       "note": "Free research and embodied carbon guidance"
+      }
+     ],
+     "project": "Compare embodied carbon (A1-A3) of a 6-story Bay Area residential structure in concrete vs mass timber using Athena or EC3, and present results with assumptions and uncertainty clearly stated.",
+     "level": "Core"
+    },
+    {
+     "id": "lifecycle-cost",
+     "area": "Lifecycle cost & Excel analysis",
+     "icon": "💵",
+     "asks": "Lifecycle cost calculations, analytical and quantitative skills, strong Excel.",
+     "learn": [
+      "Simple payback, NPV, IRR, discount rate and escalation",
+      "Build a clean, auditable Excel model: inputs tab, calcs tab, outputs tab, named ranges",
+      "Include replacement cycles, maintenance and residual value in LCC",
+      "Sensitivity analysis and tornado charts for uncertain inputs (energy price, discount rate)",
+      "Pair LCC with carbon to show cost per tonne avoided"
+     ],
+     "resources": [
+      {
+       "name": "DOE Federal Energy Management Program",
+       "url": "https://www.energy.gov/femp",
+       "note": "Free; home of federal lifecycle cost guidance and the BLCC tool"
+      },
+      {
+       "name": "Whole Building Design Guide",
+       "url": "https://www.wbdg.org/",
+       "note": "Free guides including lifecycle cost analysis"
+      }
+     ],
+     "project": "Build a 25-year LCC spreadsheet comparing a gas boiler replacement vs heat pump retrofit for an SF school, with NPV, payback, carbon, and a sensitivity tab.",
+     "level": "Core"
+    },
+    {
+     "id": "water-balance",
+     "area": "Water balance & site resources",
+     "icon": "💧",
+     "asks": "Water balance calculations as part of building performance analysis.",
+     "learn": [
+      "Estimate indoor water demand by fixture and occupancy",
+      "Rainwater harvesting potential from roof area and local rainfall, including seasonality",
+      "Greywater and blackwater reuse concepts and San Francisco's non-potable water program context",
+      "Tank sizing with a monthly or daily mass balance",
+      "Landscape irrigation demand and drought-tolerant planting"
+     ],
+     "resources": [
+      {
+       "name": "San Francisco Public Utilities Commission",
+       "url": "https://www.sfpuc.gov/",
+       "note": "Local water programs including onsite non-potable water"
+      },
+      {
+       "name": "WaterSense (EPA)",
+       "url": "https://www.epa.gov/watersense",
+       "note": "Free fixture efficiency data and guidance"
+      }
+     ],
+     "project": "Do a monthly water balance for an SF mid-rise: potable demand, rainwater and greywater supply, tank sizing, and percentage of non-potable demand met, in one Excel workbook and a single summary chart.",
+     "level": "Differentiator"
+    },
+    {
+     "id": "der-renewables",
+     "area": "Renewables, storage & grid-interactive buildings",
+     "icon": "🔋",
+     "asks": "Renewable and distributed energy feasibility; on-site renewables and storage; net-zero grid-interactive projects.",
+     "learn": [
+      "PV yield estimates with PVWatts: tilt, azimuth, losses, shading",
+      "Battery storage sizing for bill savings vs resilience backup",
+      "Time-of-use rates, demand charges, and how they change project economics",
+      "Grid-interactive efficient buildings: shed, shift, modulate, generate",
+      "Techno-economic tools such as NREL SAM and REopt for DER optimization",
+      "Microgrids and EV charging load impacts"
+     ],
+     "resources": [
+      {
+       "name": "PVWatts",
+       "url": "https://pvwatts.nlr.gov/",
+       "note": "Free NREL PV production calculator"
+      },
+      {
+       "name": "System Advisor Model (SAM)",
+       "url": "https://sam.nlr.gov/",
+       "note": "Free NREL techno-economic model for PV, storage and more"
+      },
+      {
+       "name": "REopt",
+       "url": "https://reopt.nlr.gov/tool/",
+       "note": "Free NREL tool for optimizing DER mix"
+      }
+     ],
+     "project": "For an SF warehouse or school roof, size a PV + battery system in PVWatts and SAM, estimate annual generation, savings under a time-of-use rate, and hours of critical-load backup.",
+     "level": "Differentiator"
+    },
+    {
+     "id": "rating-systems",
+     "area": "LEED, WELL, Fitwel, LBC & Envision",
+     "icon": "🏅",
+     "asks": "Knowledge of LEED, WELL, Fitwel, Living Building Challenge and Envision; LEED or WELL AP preferred.",
+     "learn": [
+      "LEED credit categories and how energy, water and materials credits link to analysis work",
+      "WELL concepts and the difference between performance testing and design features",
+      "Fitwel's evidence-based, lower-cost health focus",
+      "Living Building Challenge petals and its performance-based, occupied-verification approach",
+      "Envision for infrastructure: categories and credit structure",
+      "Track the LEED v5 transition at a high level and what it emphasizes (decarbonization)"
+     ],
+     "resources": [
+      {
+       "name": "USGBC / LEED",
+       "url": "https://www.usgbc.org/",
+       "note": "LEED rating systems, credit library and education"
+      },
+      {
+       "name": "International WELL Building Institute",
+       "url": "https://www.wellcertified.com/",
+       "note": "WELL standard and WELL AP"
+      },
+      {
+       "name": "International Living Future Institute",
+       "url": "https://living-future.org/",
+       "note": "Living Building Challenge"
+      },
+      {
+       "name": "Institute for Sustainable Infrastructure",
+       "url": "https://sustainableinfrastructure.org/",
+       "note": "Envision rating system and ENV SP"
+      }
+     ],
+     "project": "Run a LEED scorecard pre-assessment on a real Bay Area project you can access (campus building or public project with published info), identifying achievable credits and the analysis each one needs.",
+     "level": "Core"
+    },
+    {
+     "id": "resilience-equity",
+     "area": "Resilience, equity & community health",
+     "icon": "🛡️",
+     "asks": "Resilience assessments and research on sustainability, decarbonization, resilience, equity policy and community health.",
+     "learn": [
+      "Bay Area hazards: earthquake, sea level rise, wildfire smoke, extreme heat events",
+      "Passive survivability and thermal autonomy during power outages",
+      "Climate projections and future weather files for design",
+      "Equity in decarbonization: displacement, energy burden, community engagement",
+      "Local policy: SF Climate Action Plan, all-electric new construction, building performance ordinances"
+     ],
+     "resources": [
+      {
+       "name": "San Francisco Environment Department",
+       "url": "https://www.sfenvironment.org/",
+       "note": "Local climate action and building policy"
+      },
+      {
+       "name": "Cal-Adapt",
+       "url": "https://cal-adapt.org/",
+       "note": "Free California climate projection data and tools"
+      }
+     ],
+     "project": "Write a 4-page resilience brief for an SF neighborhood community center: hazard exposure, a passive survivability simulation of indoor temps during a 3-day outage in a heat event, and 5 prioritized measures.",
+     "level": "Differentiator"
+    },
+    {
+     "id": "communication",
+     "area": "Reports, visuals & workshops",
+     "icon": "🗣️",
+     "asks": "Reports and visuals for technical and non-technical audiences; design charrettes, workshops and client meetings; research/writing/presentation; PowerPoint and interactive PDFs.",
+     "learn": [
+      "Write a one-page executive summary that leads with the recommendation",
+      "Design charts that make one point each (waterfalls, stacked bars, carbon over time)",
+      "Plan and facilitate a charrette: goals, agenda, decision capture",
+      "Build an interactive PDF with bookmarks, links and layers",
+      "Track deliverables, hours and scope on a simple project tracker"
+     ],
+     "resources": [
+      {
+       "name": "Carbon Leadership Forum",
+       "url": "https://carbonleadershipforum.org/",
+       "note": "Examples of clear technical communication on carbon"
+      },
+      {
+       "name": "Arup",
+       "url": "https://www.arup.com/",
+       "note": "Browse Arup projects and published research to study its reporting style"
+      }
+     ],
+     "project": "Turn one of your portfolio projects into a 10-slide client deck and a 2-page interactive PDF summary, then present it in 7 minutes to a non-technical friend and revise from their questions.",
+     "level": "Core"
+    }
+   ],
+   "credentials": [
+    {
+     "name": "LEED Green Associate",
+     "why": "Entry-level USGBC/GBCI credential showing baseline green building and LEED knowledge; a strong, achievable signal for a graduate role.",
+     "steps": [
+      "Create a USGBC account and review the candidate handbook for current eligibility and fees",
+      "Study the LEED core concepts and credit categories using USGBC education or a reputable study guide",
+      "Take practice exams until you score consistently well",
+      "Schedule and pass the exam at a test center or via approved online proctoring",
+      "Maintain it with continuing education hours each reporting period"
+     ],
+     "url": "https://www.usgbc.org/credentials"
+    },
+    {
+     "name": "LEED AP BD+C",
+     "why": "The posting prefers a LEED AP; BD+C (Building Design + Construction) is the specialty most relevant to new-build consulting work.",
+     "steps": [
+      "Check current GBCI requirements (Green Associate first or a combined exam option)",
+      "Study the BD+C reference guide focusing on energy, water, materials and IEQ credits",
+      "Connect credits to analysis you already do (energy model, daylight, LCA, water balance)",
+      "Pass the specialty exam and log continuing education to maintain it"
+     ],
+     "url": "https://www.usgbc.org/credentials"
+    },
+    {
+     "name": "WELL AP",
+     "why": "The posting accepts WELL AP as an alternative; it signals fluency in occupant health topics that pair well with energy and comfort analysis.",
+     "steps": [
+      "Review the WELL standard concepts on the IWBI site",
+      "Use IWBI's official study materials and candidate guidance",
+      "Register for and pass the WELL AP exam",
+      "Maintain via continuing education as required by IWBI"
+     ],
+     "url": "https://www.wellcertified.com/"
+    },
+    {
+     "name": "Fitwel Ambassador",
+     "why": "A lighter-weight health credential that shows breadth across health-focused rating systems named in the posting.",
+     "steps": [
+      "Review Fitwel's scorecards and strategies on fitwel.org",
+      "Complete the Fitwel Ambassador training and exam offered by the Center for Active Design",
+      "Apply it on a practice scorecard for a familiar building"
+     ],
+     "url": "https://www.fitwel.org/"
+    },
+    {
+     "name": "Envision Sustainability Professional (ENV SP)",
+     "why": "Relevant to the infrastructure and master-planning scale of Arup's work; Envision is named in the posting.",
+     "steps": [
+      "Create an account with the Institute for Sustainable Infrastructure",
+      "Complete the ENV SP online training",
+      "Pass the associated exam",
+      "Maintain per ISI requirements"
+     ],
+     "url": "https://sustainableinfrastructure.org/"
+    }
+   ],
+   "stages": [
+    {
+     "stage": "Online application & resume",
+     "tips": [
+      "Mirror the posting's language: name EnergyPlus/OpenStudio, Ladybug/Honeybee, EC3/Athena/One Click LCA, and LEED where you genuinely used them",
+      "Lead each project bullet with a quantified result (e.g. 'identified measures cutting modeled EUI 28%')",
+      "Add a 1-page portfolio link with 3-4 projects from the skills map, ideally on Bay Area buildings",
+      "List coursework explicitly: building science, energy, embodied carbon, resilience, LCC, DERs",
+      "Note LEED Green Associate (or 'exam scheduled') and your availability for a 2027 start",
+      "Keep it to 1 page (2 max for a master's student) and export as a clean PDF"
+     ]
+    },
+    {
+     "stage": "Psychometric testing",
+     "tips": [
+      "Expect numerical, verbal and/or logical reasoning style tests; practice timed sets beforehand",
+      "Brush up on percentages, ratios, unit conversions and reading charts/tables quickly",
+      "Take tests in a quiet place with stable internet, calculator and scratch paper if allowed",
+      "For situational or personality components, answer honestly and consistently rather than guessing the 'ideal'",
+      "Do not over-spend time on one question; accuracy and pace both count"
+     ]
+    },
+    {
+     "stage": "Application review",
+     "tips": [
+      "Make sure your LinkedIn matches your resume and links to your portfolio",
+      "If you know Arup staff through events or alumni, a polite note of interest can help",
+      "Keep building portfolio projects while you wait so you have fresh material to discuss"
+     ]
+    },
+    {
+     "stage": "Case study",
+     "tips": [
+      "Expect a building or site problem: e.g. a decarbonization strategy, a retrofit prioritization, or interpreting data",
+      "Structure: clarify goals and constraints, state assumptions, analyze, recommend, and name next steps",
+      "Do rough numbers out loud (EUI, payback, carbon) and sanity-check units",
+      "Consider tradeoffs across cost, carbon, comfort, resilience and equity - Arup values holistic thinking",
+      "Communicate visually: a simple chart or sketch beats dense text",
+      "Leave time for a crisp 1-minute summary of your recommendation"
+     ]
+    },
+    {
+     "stage": "Interview",
+     "tips": [
+      "Prepare 6-8 STAR stories mapped to Changemakers, Innovative minds, Growth seekers and Adaptable adventurers",
+      "Be ready to walk through one portfolio project in technical depth: inputs, assumptions, limitations",
+      "Know Arup's story: founded by Ove Arup, employee trust ownership, Total Design, SDG alignment",
+      "Research recent Arup Americas sustainability or SF projects and reference one thoughtfully",
+      "Ask good questions: how graduates are mentored, mix of project scales, tools teams use"
+     ]
+    },
+    {
+     "stage": "Offer",
+     "tips": [
+      "Confirm start date, base salary within the posted range, profit share and benefits",
+      "Ask about support for LEED/WELL credential costs and professional development",
+      "Clarify relocation, hybrid working expectations, and graduate development programs",
+      "Respond professionally and on time; negotiate respectfully if you have competing offers"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "q": "Tell me about a time you pushed a team or project toward a more sustainable outcome.",
+     "type": "Behavioral",
+     "hint": "Changemakers. Show initiative, the evidence you used to persuade, and the measurable result. Acknowledge resistance and how you handled it."
+    },
+    {
+     "q": "Describe a problem you solved with a new tool or method you had not used before.",
+     "type": "Behavioral",
+     "hint": "Innovative minds. Explain why the standard approach fell short, how you learned the new tool quickly, and how you validated results."
+    },
+    {
+     "q": "Tell me about feedback that changed how you work.",
+     "type": "Behavioral",
+     "hint": "Growth seekers. Be specific about the feedback, what you changed, and evidence of improvement afterward."
+    },
+    {
+     "q": "Describe a time project requirements changed late. What did you do?",
+     "type": "Behavioral",
+     "hint": "Adaptable adventurers. Show calm reprioritization, communication with stakeholders, and delivering anyway."
+    },
+    {
+     "q": "How do you manage several deadlines across different projects?",
+     "type": "Behavioral",
+     "hint": "Cover a concrete system (tracker, time-blocking), early flagging of conflicts to leads, and a real example of juggling deliverables."
+    },
+    {
+     "q": "Tell me about explaining a technical result to a non-technical audience.",
+     "type": "Behavioral",
+     "hint": "Show audience awareness, simplifying with analogies or a single clear chart, and how you checked understanding."
+    },
+    {
+     "q": "Walk me through how you would set up an energy model for a new office building.",
+     "type": "Technical",
+     "hint": "Geometry and zoning, weather file, constructions, internal loads and schedules, HVAC system, then calibration or sanity checks of EUI and unmet hours. Mention baseline vs proposed if for LEED."
+    },
+    {
+     "q": "What is the difference between operational and embodied carbon, and which matters more?",
+     "type": "Technical",
+     "hint": "Define both with EN 15978 stages. Explain that as grids decarbonize and buildings get efficient, embodied carbon becomes a larger share, and that upfront carbon is emitted now. Answer 'it depends on the project' with reasoning."
+    },
+    {
+     "q": "How would you reduce the embodied carbon of a mid-rise building's structure?",
+     "type": "Technical",
+     "hint": "Build less and reuse first, optimize structural efficiency, lower-carbon concrete mixes (SCMs), recycled steel, mass timber where appropriate, and use EPDs/EC3 to specify limits."
+    },
+    {
+     "q": "A client wants to electrify an existing gas-heated building. What do you look at first?",
+     "type": "Technical",
+     "hint": "Loads and envelope, existing distribution (hydronic temps, ducts), heat pump options, DHW, electrical service capacity, costs and incentives, and phasing with equipment end-of-life."
+    },
+    {
+     "q": "How do you evaluate whether a daylighting design is good?",
+     "type": "Technical",
+     "hint": "Annual metrics like sDA and ASE, glare checks for critical views, balance with solar gain and thermal comfort, and coordination with lighting controls to actually save energy."
+    },
+    {
+     "q": "How would you decide between two efficiency measures with different costs and savings?",
+     "type": "Technical",
+     "hint": "Lifecycle cost with NPV and discount rate, not only simple payback; include maintenance, replacement, carbon value and non-energy benefits; run sensitivity on uncertain inputs."
+    },
+    {
+     "q": "What does a grid-interactive efficient building do, and why does it matter in California?",
+     "type": "Technical",
+     "hint": "Efficiency plus demand flexibility (shed, shift, modulate, generate) using storage, controls and thermal mass; California's solar-heavy grid makes evening peaks and time-varying emissions important."
+    },
+    {
+     "q": "Which LEED credit categories does a sustainability consultant's analysis typically support?",
+     "type": "Technical",
+     "hint": "Energy and Atmosphere (energy modeling), Water Efficiency (water calcs), Materials and Resources (LCA/EPDs), Indoor Environmental Quality (daylight, comfort). Show you know analysis feeds documentation."
+    },
+    {
+     "q": "Why Arup rather than an architecture firm or another engineering consultancy?",
+     "type": "Arup & motivation",
+     "hint": "Multidisciplinary Total Design, employee trust ownership and long-term thinking, scale from buildings to infrastructure, and a specific project or research piece that resonates with you."
+    },
+    {
+     "q": "Which of the UN Sustainable Development Goals matters most to you in your work, and how?",
+     "type": "Arup & motivation",
+     "hint": "Pick one or two (e.g. SDG 7, 11 or 13), link to concrete built-environment actions, and to Arup's stated SDG alignment."
+    },
+    {
+     "q": "Where do you see yourself in five years?",
+     "type": "Arup & motivation",
+     "hint": "Growing technical depth (e.g. energy and carbon specialist), credentials, leading parts of projects, and contributing to Arup's research or skills networks - realistic and tied to the role."
+    },
+    {
+     "q": "Tell us about a recent sustainability policy or trend that will shape our work in the Bay Area.",
+     "type": "Arup & motivation",
+     "hint": "E.g. all-electric building requirements, building performance standards, embodied carbon policy, or resilience planning for sea level rise; explain implications for clients."
+    }
+   ],
+   "plan": [
+    {
+     "when": "Now - Dec 2026",
+     "focus": "Apply and build the core toolkit",
+     "do": [
+      "Submit the application early with a tailored resume and portfolio link",
+      "Finish one energy modeling project (OpenStudio shoebox) and one embodied carbon project (EC3/Athena)",
+      "Practice numerical and verbal reasoning tests 3-4 times a week",
+      "Start LEED Green Associate study"
+     ]
+    },
+    {
+     "when": "Jan - Mar 2027",
+     "focus": "Case study and interview readiness",
+     "do": [
+      "Pass LEED Green Associate",
+      "Write 6-8 STAR stories mapped to Arup's four core attributes",
+      "Do 3 timed mock case studies (retrofit, new build, master plan) and present them aloud",
+      "Add a Ladybug/Honeybee daylight or radiation study to the portfolio",
+      "Research Arup's SF and Americas sustainability projects and publications"
+     ]
+    },
+    {
+     "when": "Apr - Jun 2027",
+     "focus": "Close out the offer and broaden",
+     "do": [
+      "Complete interviews and follow up with thank-you notes",
+      "Finish an LCC spreadsheet project and a PV + storage feasibility study",
+      "Begin LEED AP BD+C or WELL AP study",
+      "Finish thesis/master's coursework strongly; keep GPA and references solid"
+     ]
+    },
+    {
+     "when": "Summer 2027 (pre-start)",
+     "focus": "Get job-ready",
+     "do": [
+      "Deepen one tool you expect to use daily (IES VE trial, OpenStudio measures, or Grasshopper scripting)",
+      "Read up on California Title 24 energy code basics and SF building policy",
+      "Set up a personal knowledge base of rules of thumb and benchmarks",
+      "Confirm logistics: start date, relocation, onboarding paperwork"
+     ]
+    },
+    {
+     "when": "First 3 months at Arup",
+     "focus": "Learn, contribute, connect",
+     "do": [
+      "Ask for feedback early and often; track deliverables carefully",
+      "Join internal skills networks or communities relevant to energy and carbon",
+      "Volunteer for a site visit, charrette, or research task",
+      "Sit the LEED AP or WELL AP exam if not done already"
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "q": "How are U-value and R-value related?",
+     "a": "U-value is the reciprocal of total R-value (U = 1/R).",
+     "explain": "U measures heat flow rate; R measures resistance. Lower U and higher R mean better insulation.",
+     "wrong": [
+      "They are the same quantity in different units",
+      "U-value equals R-value times area",
+      "U-value only applies to glazing, R-value to walls"
+     ]
+    },
+    {
+     "q": "What is a thermal bridge?",
+     "a": "A path of higher conductivity that lets heat bypass insulation.",
+     "explain": "Examples include slab edges, steel studs and balcony connections; they can significantly reduce effective wall R-value.",
+     "wrong": [
+      "A device that moves heat between two buildings",
+      "A layer that blocks moisture migration",
+      "An air gap behind rainscreen cladding"
+     ]
+    },
+    {
+     "q": "What does SHGC measure?",
+     "a": "Fraction of incident solar radiation admitted through a window as heat.",
+     "explain": "Ranges 0 to 1; lower SHGC means less solar heat gain, useful on sunny facades in cooling-dominated spaces.",
+     "wrong": [
+      "Visible light transmitted through glass",
+      "The window's U-value under summer conditions",
+      "Air leakage rate through the window frame"
+     ]
+    },
+    {
+     "q": "What is spatial daylight autonomy (sDA)?",
+     "a": "Percent of floor area meeting a target illuminance for a share of occupied hours.",
+     "explain": "Commonly sDA300/50%: area getting at least 300 lux for at least 50% of occupied hours, from annual simulation.",
+     "wrong": [
+      "Daylight factor measured on an overcast day",
+      "Hours per year with direct sun on a facade",
+      "Ratio of window area to floor area"
+     ]
+    },
+    {
+     "q": "What does ASE (annual sunlight exposure) flag?",
+     "a": "Floor area receiving too much direct sunlight, indicating glare/overheating risk.",
+     "explain": "Typically area receiving over 1000 lux of direct sun for more than 250 occupied hours per year.",
+     "wrong": [
+      "Area with too little daylight",
+      "Annual solar PV generation potential",
+      "Hours when electric lighting is on"
+     ]
+    },
+    {
+     "q": "What is window-to-wall ratio (WWR)?",
+     "a": "Glazed area divided by gross exterior wall area.",
+     "explain": "Higher WWR increases daylight potential but often raises heat loss, solar gain and glare; it is a key early design lever.",
+     "wrong": [
+      "Window area divided by floor area",
+      "Opaque wall U-value over window U-value",
+      "Number of windows per facade"
+     ]
+    },
+    {
+     "q": "What does a heat pump COP of 3 mean?",
+     "a": "It delivers 3 units of heat per 1 unit of electricity.",
+     "explain": "COP is useful output over input energy; heat pumps exceed 1 because they move heat rather than generate it.",
+     "wrong": [
+      "It is 3% more efficient than a furnace",
+      "It operates at 3 kW of capacity",
+      "It needs 3 units of electricity per unit of heat"
+     ]
+    },
+    {
+     "q": "What is a DOAS?",
+     "a": "A dedicated outdoor air system that handles ventilation air separately.",
+     "explain": "DOAS decouples ventilation from heating and cooling, often paired with radiant panels, fan coils or VRF for space loads.",
+     "wrong": [
+      "A rooftop unit with no outdoor air",
+      "A domestic hot water system",
+      "A demand response control protocol"
+     ]
+    },
+    {
+     "q": "Main difference between VAV and radiant systems?",
+     "a": "VAV moves heat with air; radiant uses water through surfaces.",
+     "explain": "Radiant systems condition via surfaces and need separate ventilation (often DOAS); water carries heat more efficiently than air.",
+     "wrong": [
+      "VAV only heats, radiant only cools",
+      "Radiant systems require more fan energy",
+      "VAV uses refrigerant, radiant uses steam"
+     ]
+    },
+    {
+     "q": "ERV vs HRV: what's the difference?",
+     "a": "An ERV transfers heat and moisture; an HRV transfers heat only.",
+     "explain": "Both recover energy from exhaust air to precondition incoming ventilation air.",
+     "wrong": [
+      "An HRV transfers moisture, an ERV does not",
+      "They are different names for an economizer",
+      "An ERV heats air with electric resistance"
+     ]
+    },
+    {
+     "q": "Why size mechanical plant to design-day loads rather than averages?",
+     "a": "Plant must meet peak conditions, not typical ones.",
+     "explain": "Design days represent near-extreme conditions; sizing to averages would leave spaces uncomfortable at peak, while oversizing wastes cost and efficiency.",
+     "wrong": [
+      "Average loads are always higher than peaks",
+      "Codes forbid using peak loads",
+      "Design days only matter for lighting"
+     ]
+    },
+    {
+     "q": "What is EUI?",
+     "a": "Energy use intensity: annual energy use per unit floor area.",
+     "explain": "In the US typically kBtu/sf/yr; used to benchmark and compare buildings of different sizes.",
+     "wrong": [
+      "Energy use per occupant per day",
+      "Peak electrical demand in kW",
+      "Efficiency rating of a single appliance"
+     ]
+    },
+    {
+     "q": "Peak demand vs annual energy: what's the difference?",
+     "a": "Peak is maximum power (kW); annual is total energy over a year (kWh).",
+     "explain": "Peak drives equipment and grid sizing and demand charges; annual energy drives consumption costs and much of carbon.",
+     "wrong": [
+      "They are the same metric in different units",
+      "Peak is measured in kWh, annual in kW",
+      "Annual energy only counts heating"
+     ]
+    },
+    {
+     "q": "Roughly how many kBtu are in one kWh?",
+     "a": "About 3.412 kBtu.",
+     "explain": "Useful for converting electric use into kBtu to compute EUI alongside gas use in therms.",
+     "wrong": [
+      "About 10 kBtu",
+      "About 0.293 kBtu",
+      "About 100 kBtu"
+     ]
+    },
+    {
+     "q": "What is California's Title 24, Part 6?",
+     "a": "California's building energy efficiency standards.",
+     "explain": "Updated on a regular cycle by the California Energy Commission; recent cycles have increasingly favored heat pumps and electrification.",
+     "wrong": [
+      "California's fire code",
+      "A federal appliance standard",
+      "The LEED California supplement"
+     ]
+    },
+    {
+     "q": "What do local all-electric building ordinances generally do?",
+     "a": "Restrict or prohibit new natural gas infrastructure in new construction.",
+     "explain": "Several Bay Area jurisdictions, including San Francisco, adopted all-electric requirements for new buildings; details and legal status vary by jurisdiction.",
+     "wrong": [
+      "Ban all electric heating",
+      "Require on-site gas generators",
+      "Mandate gas backup for heat pumps"
+     ]
+    },
+    {
+     "q": "Operational vs embodied carbon?",
+     "a": "Operational is from running the building; embodied is from materials and construction.",
+     "explain": "Embodied includes extraction, manufacturing, transport, construction, maintenance and end of life; operational comes mainly from energy use.",
+     "wrong": [
+      "Operational covers only refrigerants",
+      "Embodied only covers transportation",
+      "They are two names for the same thing"
+     ]
+    },
+    {
+     "q": "Which EN 15978 modules are the 'product stage'?",
+     "a": "A1-A3: raw material supply, transport, and manufacturing.",
+     "explain": "A1-A3 is often called cradle-to-gate and is the scope most EPDs always report.",
+     "wrong": [
+      "B1-B3",
+      "C1-C4",
+      "Module D only"
+     ]
+    },
+    {
+     "q": "What does EN 15978 module B6 cover?",
+     "a": "Operational energy use during the building's life.",
+     "explain": "B-stage modules cover the use stage; B7 is operational water use.",
+     "wrong": [
+      "Material manufacturing",
+      "Demolition",
+      "Transport to site"
+     ]
+    },
+    {
+     "q": "What do C1-C4 and Module D represent?",
+     "a": "C is end-of-life; D is benefits and loads beyond the system boundary.",
+     "explain": "Module D captures potential reuse, recycling or energy recovery benefits and is reported separately.",
+     "wrong": [
+      "C is construction, D is design",
+      "C is carbon offsets, D is daylight",
+      "C is commissioning, D is decommissioning"
+     ]
+    },
+    {
+     "q": "What is an EPD?",
+     "a": "An Environmental Product Declaration: verified LCA results for a product.",
+     "explain": "Prepared to product category rules and third-party verified; product-specific EPDs are more precise than industry averages.",
+     "wrong": [
+      "An energy performance disclosure for buildings",
+      "An EPA permit for construction",
+      "A design-phase energy model output"
+     ]
+    },
+    {
+     "q": "What is EC3 used for?",
+     "a": "Comparing embodied carbon of materials using an EPD database.",
+     "explain": "EC3 by Building Transparency is a free tool popular for setting and comparing material GWP limits, e.g. concrete mixes.",
+     "wrong": [
+      "Running hourly energy simulations",
+      "Sizing PV systems",
+      "Calculating daylight autonomy"
+     ]
+    },
+    {
+     "q": "Name two whole-building LCA tools from the posting.",
+     "a": "Tally and One Click LCA (also Athena Impact Estimator).",
+     "explain": "Tally works inside Revit; One Click LCA is a web platform; Athena Impact Estimator is a free North American tool.",
+     "wrong": [
+      "EnergyPlus and OpenStudio",
+      "PVWatts and SAM",
+      "Radiance and Daysim"
+     ]
+    },
+    {
+     "q": "What is simple payback?",
+     "a": "Upfront cost divided by annual savings, in years.",
+     "explain": "Easy to communicate but ignores time value of money and savings beyond the payback period.",
+     "wrong": [
+      "Present value of all future savings",
+      "Annual savings divided by upfront cost times 100",
+      "Years until equipment fails"
+     ]
+    },
+    {
+     "q": "What does NPV capture that simple payback ignores?",
+     "a": "Time value of money across the whole analysis period.",
+     "explain": "NPV discounts future costs and savings to today; positive NPV means the investment beats the discount rate.",
+     "wrong": [
+      "Construction duration",
+      "Carbon emissions",
+      "Equipment efficiency"
+     ]
+    },
+    {
+     "q": "Effect of a higher discount rate on long-term savings' present value?",
+     "a": "It reduces their present value.",
+     "explain": "Higher discount rates weight near-term cash flows more, making long-lived measures look less attractive.",
+     "wrong": [
+      "It increases their present value",
+      "It has no effect",
+      "It only affects upfront costs"
+     ]
+    },
+    {
+     "q": "What is a building water balance?",
+     "a": "Comparison of water demand to supplies, including reuse and rainwater.",
+     "explain": "Used to size tanks and estimate how much potable water non-potable sources can offset.",
+     "wrong": [
+      "A test of pipe pressure",
+      "A plumbing fixture count",
+      "Stormwater runoff coefficient only"
+     ]
+    },
+    {
+     "q": "What are distributed energy resources (DERs)?",
+     "a": "Small, local generation, storage or flexible loads connected near use.",
+     "explain": "Examples: rooftop PV, batteries, EV chargers, controllable HVAC; they can serve buildings and support the grid.",
+     "wrong": [
+      "Large central power plants",
+      "Transmission lines",
+      "Only diesel backup generators"
+     ]
+    },
+    {
+     "q": "What does GEB stand for, per DOE?",
+     "a": "Grid-interactive efficient building.",
+     "explain": "Combines efficiency with smart controls and DERs to provide demand flexibility.",
+     "wrong": [
+      "Green energy benchmark",
+      "Geothermal exchange boiler",
+      "Global emissions baseline"
+     ]
+    },
+    {
+     "q": "What are DOE's demand flexibility modes?",
+     "a": "Shed, shift, modulate, and generate.",
+     "explain": "Buildings reduce load, move it in time, adjust it quickly for grid services, or produce power on site.",
+     "wrong": [
+      "Heat, cool, ventilate, light",
+      "Measure, verify, report, certify",
+      "Store, sell, buy, offset"
+     ]
+    },
+    {
+     "q": "What is passive survivability?",
+     "a": "Keeping a building habitable without power or fuel during disruptions.",
+     "explain": "Achieved through envelope performance, shading, natural ventilation and thermal mass so occupants can shelter in place.",
+     "wrong": [
+      "Surviving a fire with sprinklers",
+      "Backup diesel generation",
+      "Structural seismic design"
+     ]
+    },
+    {
+     "q": "Name four LEED credit categories.",
+     "a": "Energy and Atmosphere, Water Efficiency, Materials and Resources, Indoor Environmental Quality.",
+     "explain": "Others include Location and Transportation, Sustainable Sites, Integrative Process, Innovation, Regional Priority.",
+     "wrong": [
+      "Air, Water, Light, Mind",
+      "Place, Water, Energy, Beauty",
+      "Quality of Life, Leadership, Natural World, Climate"
+     ]
+    },
+    {
+     "q": "Who administers LEED certification and credentials?",
+     "a": "USGBC develops LEED; GBCI handles certification and credentials.",
+     "explain": "Green Business Certification Inc. (GBCI) administers LEED project certification and professional exams.",
+     "wrong": [
+      "The EPA",
+      "ASHRAE",
+      "IWBI"
+     ]
+    },
+    {
+     "q": "What is WELL primarily focused on?",
+     "a": "Human health and wellbeing in buildings.",
+     "explain": "WELL v2 organizes features into concepts like Air, Water, Light, Thermal Comfort, Sound and Mind, with performance verification.",
+     "wrong": [
+      "Embodied carbon reduction",
+      "Infrastructure resilience",
+      "Energy code compliance"
+     ]
+    },
+    {
+     "q": "What is Fitwel?",
+     "a": "A health-focused building certification created by CDC and GSA.",
+     "explain": "Now operated by the Center for Active Design; known for evidence-based, relatively accessible strategies.",
+     "wrong": [
+      "A LEED add-on for gyms",
+      "An energy modeling tool",
+      "A European carbon standard"
+     ]
+    },
+    {
+     "q": "What are Living Building Challenge 'petals'?",
+     "a": "Performance areas: Place, Water, Energy, Health and Happiness, Materials, Equity, Beauty.",
+     "explain": "LBC by ILFI requires demonstrated performance over a period of occupancy, not just design intent.",
+     "wrong": [
+      "LEED's credit categories",
+      "WELL's ten concepts",
+      "Envision's five categories"
+     ]
+    },
+    {
+     "q": "What is Envision designed for?",
+     "a": "Rating sustainability of infrastructure projects.",
+     "explain": "Run by the Institute for Sustainable Infrastructure; categories include Quality of Life, Leadership, Resource Allocation, Natural World, Climate and Resilience.",
+     "wrong": [
+      "Interior fit-outs only",
+      "Single-family homes",
+      "Product EPD verification"
+     ]
+    },
+    {
+     "q": "Who founded Arup?",
+     "a": "Sir Ove Arup, an engineer and philosopher.",
+     "explain": "He founded the firm in London in 1946; his 1970 'Key Speech' still frames the firm's values.",
+     "wrong": [
+      "Frank Lloyd Wright",
+      "Buckminster Fuller",
+      "Norman Foster"
+     ]
+    },
+    {
+     "q": "How is Arup owned?",
+     "a": "Held in trust on behalf of its members (employees).",
+     "explain": "There are no external shareholders; members share in profits, supporting long-term, independent decisions.",
+     "wrong": [
+      "Publicly traded on the London Stock Exchange",
+      "Owned by a private equity firm",
+      "A government agency"
+     ]
+    },
+    {
+     "q": "What global framework does Arup align its work with?",
+     "a": "The UN Sustainable Development Goals (SDGs).",
+     "explain": "Arup aligns its strategy and project work with the 17 SDGs, e.g. clean energy, sustainable cities and climate action.",
+     "wrong": [
+      "The Kyoto Protocol only",
+      "ISO 9001 quality standard",
+      "The Montreal Protocol"
+     ]
+    }
+   ]
+  }
+ ],
+ "cities": [
+  "Los Angeles",
+  "San Francisco",
+  "New York",
+  "Madrid",
+  "Paris"
+ ],
+ "goal": "A big global firm with offices in LA, SF, NYC, Madrid and Paris, so you can start in the US and later move between offices.",
+ "targets": [
+  {
+   "company": "Arup",
+   "kind": "Engineering, design & advisory · employee-owned trust",
+   "offices": {
+    "Los Angeles": "yes",
+    "San Francisco": "yes",
+    "New York": "yes",
+    "Madrid": "yes",
+    "Paris": "unconfirmed"
+   },
+   "officesNote": "Arup lists France on its contact page, but I couldn't confirm a Paris office. Check on arup.com before counting on it.",
+   "roles": [
+    "Graduate Sustainability Consultant",
+    "Building performance / energy analyst",
+    "Climate & sustainability consultant",
+    "Building physics"
+   ],
+   "emphasize": [
+    "Energy and daylight simulation (EnergyPlus/OpenStudio, IES VE, Ladybug/Honeybee)",
+    "Operational + embodied carbon calculations",
+    "Distributed energy, PV and storage feasibility",
+    "Clear technical writing for clients"
+   ],
+   "careers": "https://jobs.arup.com/",
+   "job": "arup-grad-sustainability-2027"
+  },
+  {
+   "company": "Gensler",
+   "kind": "Architecture & design · one of the world's largest design firms",
+   "offices": {
+    "Los Angeles": "yes",
+    "San Francisco": "yes",
+    "New York": "yes",
+    "Madrid": "no",
+    "Paris": "yes"
+   },
+   "officesNote": "No Madrid office; Gensler's European offices include London, Paris, Munich and Berlin.",
+   "roles": [
+    "Sustainability / climate action specialist on design teams",
+    "Building performance analyst",
+    "Design resilience researcher"
+   ],
+   "emphasize": [
+    "Design-side tools: Rhino + Grasshopper with Ladybug/Honeybee, Revit, SketchUp",
+    "Early-stage daylight, massing and energy feedback for designers",
+    "LEED and WELL documentation",
+    "A strong visual portfolio of sustainability graphics and diagrams"
+   ],
+   "careers": "https://www.gensler.com/careers"
+  },
+  {
+   "company": "Arcadis",
+   "kind": "Design, engineering & consultancy · global, Netherlands-based",
+   "offices": {
+    "Los Angeles": "yes",
+    "San Francisco": "yes",
+    "New York": "yes",
+    "Madrid": "yes",
+    "Paris": "yes"
+   },
+   "officesNote": "Offices in all five of your cities.",
+   "roles": [
+    "Sustainability / ESG consultant",
+    "Climate resilience & adaptation",
+    "Energy transition / decarbonization consultant",
+    "Environmental consultant"
+   ],
+   "emphasize": [
+    "Infrastructure-scale sustainability: Envision, resilience assessments, water",
+    "Corporate carbon accounting (GHG Protocol Scopes 1-3) and net-zero roadmaps",
+    "EU reporting rules (CSRD, EU Taxonomy) for the Madrid and Paris offices",
+    "Excel modeling and program and project management"
+   ],
+   "careers": "https://www.arcadis.com/en-us/careers"
+  }
+ ],
+ "alsoMatch": [
+  {
+   "company": "AECOM",
+   "note": "Also has offices in all five of your cities, with large sustainability, resilience, buildings and infrastructure practices. A strong backup target.",
+   "careers": "https://aecom.com/careers/"
+  }
+ ],
+ "europe": {
+  "title": "Working in Madrid & Paris",
+  "points": [
+   "The usual route: join the US office, build 2-3 years of experience, then ask for an internal transfer or a mobility assignment. Big firms with offices in all five cities make this possible.",
+   "You'll need the right to work in the EU (a work visa sponsored by the firm, an internal transfer, or EU citizenship). Ask about mobility programs in interviews.",
+   "Language: aim for B2-level Spanish or French. Client meetings and site work there happen in the local language.",
+   "Learn the European frameworks: BREEAM (more common in Europe than LEED), the EU Taxonomy and CSRD sustainability reporting, and the EU buildings directive (EPBD).",
+   "France: RE2020, the environmental regulation for new buildings, limits both energy use and lifecycle (embodied) carbon. It's a great talking point for embodied-carbon work.",
+   "Spain: the Codigo Tecnico de la Edificacion (CTE) sets energy and building requirements. Know that it exists and what its energy section covers."
+  ],
+  "links": [
+   {
+    "name": "BREEAM",
+    "url": "https://www.breeam.com/"
+   },
+   {
+    "name": "Spain's building code (CTE)",
+    "url": "https://www.codigotecnico.org/"
+   }
+  ]
+ }
+}
