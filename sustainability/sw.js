@@ -1,4 +1,4 @@
-const CACHE = "energy-brief-v4";
+const CACHE = "energy-brief-v5";
 const ASSETS = ["./", "./index.html", "./learn.html", "./manifest.webmanifest", "./resources.json",
   "./decks-books.json", "./decks-media.json", "./debates.json", "./career.json", "./icons/icon-180.png", "./icons/icon-192.png", "./icons/icon-512.png"];
 

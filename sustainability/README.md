@@ -49,6 +49,14 @@ Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustaina
 
 To prep for another posting, add another entry to `jobs` in `career.json`.
 
+**My network** (top of the Career tab) tracks the people helping you get hired:
+- each person's stage, from "To reach out" through "Intro requested", "Introduced", "Meeting set" and "Met" to "Thank-you sent"
+- your next step, with a 9am phone reminder on the due date
+- notes and a conversation log
+- with your API key, drafted emails (first message, intro request, a blurb to forward, thank-you, follow-up) and tailored questions for an informational chat
+
+Contacts are stored **only on your device**, never in this public repo. To load contacts from a private link, use `learn.html#import=<base64url JSON>`. The part after `#` is never sent to the server.
+
 ## Podcast transcripts
 
 On any podcast episode in the study app, tap **📝 Get transcript**.

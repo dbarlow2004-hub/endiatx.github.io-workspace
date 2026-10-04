@@ -719,7 +719,8 @@ function renderHome(){
   const dx = S.days[today()]?.xp || 0;
   $("#goalTxt").textContent = `${Math.min(dx, 999)}/${GOAL}`;
   $("#ringArc").style.strokeDashoffset = 251.3 * (1 - Math.min(1, dx / GOAL));
-  if (JOBS.length) { $("#ctaJob").hidden = false; $("#ctaJobSub").textContent = `${job().company}: ${readiness()}% ready`; }
+  if (JOBS.length) { const dueN = (S.network || []).filter(netDue).length;
+    $("#ctaJob").hidden = false; $("#ctaJobSub").textContent = dueN ? `🤝 ${dueN} follow-up${dueN > 1 ? "s" : ""} due` : `${job().company}: ${readiness()}% ready`; }
   const due = dueQueue().length;
   $("#ctaDue").textContent = due ? `${due} due now` : "all caught up";
   $("#stDone").textContent = countDone();
@@ -854,9 +855,14 @@ function reminderText(id){
   const where = usesPages(id) ? `You're on p. ${+st(id).page || 0} of ${totalPages(id)}.` : `You're ${Math.round(progressFrac(id) * 100)}% through.`;
   return {title:`${verb}: ${it.title}`, body:`Today's goal: ${p.perDay || 15} ${planUnit(id)}. ${where} Tap to log it and answer your checkpoint questions.`};
 }
-async function ntfyPost(topic, seq, at, id){
-  const {title, body} = reminderText(id);
-  const q = new URLSearchParams({at:String(Math.round(at / 1000)), title, click:logLink(id), tags:"books"});
+function netReminderText(id){
+  const c = (S.network || []).find(x => x.id === id) || {};
+  return {title:`🤝 Follow up: ${c.name || "contact"}${c.org ? ` (${c.org})` : ""}`, body:c.next ? `Next step: ${c.next}` : "Time to follow up. Tap to open your network."};
+}
+async function ntfyPost(topic, seq, at, id, kind){
+  const {title, body} = kind === "net" ? netReminderText(id) : reminderText(id);
+  const click = kind === "net" ? `${location.origin}${location.pathname}#career` : logLink(id);
+  const q = new URLSearchParams({at:String(Math.round(at / 1000)), title, click, tags:kind === "net" ? "handshake" : "books"});
   const r = await fetch(`${NTFY}/${encodeURIComponent(topic)}/${seq}?${q}`, {method:"POST", body});
   if (!r.ok) throw new Error("ntfy " + r.status);
 }
@@ -877,18 +883,24 @@ async function doSync(){
       want[seqId(id, day)] = {id, at};
     }
   }
+  if (topic) for (const c of S.network || []) {   // networking follow-ups at 9am on the due date
+    if (!c.due || c.status === "thanked" && !c.next) continue;
+    const d = new Date(c.due + "T09:00"), at = d.getTime();
+    if (at < now + 60000 || at > now + 3 * DAY - 60000) continue;
+    want[`net-${c.id}-${c.due.replace(/-/g, "")}`] = {id:c.id, at, kind:"net"};
+  }
   for (const [seq, v] of Object.entries(sched)) {
     if (v.at < now) { delete sched[seq]; continue; }
     if (!want[seq] || v.topic !== topic) { await ntfyDelete(v.topic, seq); delete sched[seq]; }
   }
   for (const [seq, v] of Object.entries(want)) {
-    const sig = JSON.stringify([reminderText(v.id), v.at]);
+    const sig = JSON.stringify([v.kind === "net" ? netReminderText(v.id) : reminderText(v.id), v.at]);
     if (sched[seq]?.sig === sig) continue;   // unchanged: don't spend ntfy quota
-    try { await ntfyPost(topic, seq, v.at, v.id); sched[seq] = {...v, topic, sig}; } catch { S.ntfyError = today(); }
+    try { await ntfyPost(topic, seq, v.at, v.id, v.kind); sched[seq] = {...v, topic, sig}; } catch { S.ntfyError = today(); }
   }
   save();
 }
-const nextReminder = id => Object.values(S.sched || {}).filter(v => v.id === id && v.at > Date.now()).sort((a,b) => a.at - b.at)[0];
+const nextReminder = id => Object.values(S.sched || {}).filter(v => v.id === id && v.kind !== "net" && v.at > Date.now()).sort((a,b) => a.at - b.at)[0];
 const fmtWhen = t => { const d = new Date(t), tm = d.toLocaleTimeString(undefined, {hour:"numeric", minute:"2-digit"});
   return d.toLocaleDateString("en-CA") === today() ? `today ${tm}` : d.toLocaleDateString("en-CA") === new Date(Date.now() + DAY).toLocaleDateString("en-CA") ? `tomorrow ${tm}` : `${d.toLocaleDateString(undefined, {weekday:"short"})} ${tm}`; };
 
@@ -1624,7 +1636,7 @@ function renderCareer(){
       <div class="links" style="margin-top:8px">${(CAREER.europe.links || []).map(l => `<a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join("")}</div></details>` : ""}
     <h2 id="jobPrep">Open role: ${esc(j.company)}</h2>` : "";
   const segBtns = (steps, cur, attr, id) => `<div class="seg mini" ${attr}="${esc(id)}">${steps.map(([k,l]) => `<button data-v="${k}" aria-pressed="${(cur || "none") === k}">${l}</button>`).join("")}</div>`;
-  el.innerHTML = targets + `
+  el.innerHTML = networkHtml() + targets + `
     ${JOBS.length > 1 ? `<div class="chips">${JOBS.map(x => `<button class="chip" data-job="${esc(x.id)}" aria-pressed="${x.id === j.id}">${esc(x.company)}</button>`).join("")}</div>` : ""}
     <div class="card hero" style="align-items:flex-start">
       <div class="ring" aria-label="Job readiness">
@@ -1669,6 +1681,7 @@ function renderCareer(){
       <div class="items">${j.questions.map((x, i) => `<button class="item" data-iq="${i}"><span class="ico" style="font-size:18px;background:var(--surface2);border-radius:10px;display:flex;align-items:center;justify-content:center;height:40px">${c.answers[i]?.fb ? "⭐" : (c.answers[i]?.text || "").trim() ? "📝" : "💬"}</span>
         <span style="min-width:0;flex:1"><div class="tt" style="font-size:14.5px">${esc(x.q)}</div><div class="by">${esc(x.type || "")}${c.answers[i]?.fb ? ` · feedback ${c.answers[i].fb.score}/5` : ""}</div></span></button>`).join("")}</div>` : ""}
   `;
+  bindNetwork(el);
 }
 function careerXp(key, n, why){ const c = jst(); c.xp ||= {}; if (c.xp[key]) return; c.xp[key] = 1; addXp(n, why); }
 document.addEventListener("click", ev => {
@@ -1756,6 +1769,158 @@ function fbHtml(fb){
     <label class="f">What works</label><ul class="takeaways">${li(fb.strengths)}</ul>
     <label class="f">To improve</label><ul class="takeaways">${li(fb.improve)}</ul>
     <details><summary>A stronger version</summary><p style="font-size:14px;margin-top:8px;white-space:pre-wrap">${esc(fb.betterAnswer)}</p></details></div>`;
+}
+
+/* =========================================================
+   My network: people who can help you get hired. Stored only on this device
+   (never in the public repo). Import with a private link: learn.html#import=<data>
+   ========================================================= */
+const NET_STAGES = [["toContact","To reach out"],["introAsked","Intro requested"],["introduced","Introduced"],["scheduled","Meeting set"],["met","Met"],["thanked","Thank-you sent"]];
+const net = () => (S.network ||= []);
+const netDue = c => c.due && c.status !== "done" && c.due <= today();
+function importContacts(list){
+  let added = 0;
+  for (const x of list || []) {
+    if (!x?.name) continue;
+    const ex = net().find(c => c.name.toLowerCase() === String(x.name).toLowerCase() && (c.org || "") === (x.org || ""));
+    if (ex) { Object.keys(x).forEach(k => { if (!ex[k] && x[k]) ex[k] = x[k]; }); continue; }
+    net().push({id:"c" + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), status:"toContact", log:[], added:today(), ...x});
+    added++;
+  }
+  save(); return added;
+}
+function networkHtml(){
+  const list = net(), due = list.filter(netDue);
+  const order = c => NET_STAGES.findIndex(s => s[0] === c.status);
+  return `<h2 style="margin-top:4px">🤝 My network <small>${list.length} ${list.length === 1 ? "person" : "people"}${due.length ? ` · <b style="color:var(--warn)">${due.length} follow-up${due.length > 1 ? "s" : ""} due</b>` : ""}</small></h2>
+    <p class="small muted" style="margin:-4px 0 10px">🔒 Saved only on this phone, never on the website. Use Export backup in Settings to keep a copy.</p>
+    <div class="skills">${list.slice().sort((a,b) => (netDue(b) - netDue(a)) || (a.due || "9").localeCompare(b.due || "9") || order(a) - order(b)).map(c => `
+      <details class="skill ${["met","thanked"].includes(c.status) ? "confident" : ["introduced","scheduled"].includes(c.status) ? "learning" : "none"}" data-cid="${esc(c.id)}">
+        <summary><span class="sk-ic">${esc((c.name || "?").replace(/\([^)]*\)/g, "").split(/\s+/).filter(w => /^[A-Za-z]/.test(w)).map(w => w[0]).join("").slice(0, 2).toUpperCase() || "?")}</span>
+          <span style="flex:1;min-width:0"><b>${esc(c.name)}</b>${c.org ? ` · ${esc(c.org)}` : ""}
+          <span class="small muted" style="display:block">${esc((NET_STAGES.find(s => s[0] === c.status) || [,""])[1])}${c.due ? ` · next ${netDue(c) ? "⚠️ " : ""}${esc(fmtDate(c.due))}` : ""}</span></span></summary>
+        ${c.role ? `<p class="small" style="margin-top:8px">${esc(c.role)}</p>` : ""}
+        ${c.via ? `<p class="small muted">Connection: ${esc(c.via)}</p>` : ""}
+        <div class="chips wrap" style="margin-top:8px" data-nstage="${esc(c.id)}">${NET_STAGES.map(([k,l]) => `<button class="chip sm" data-v="${k}" aria-pressed="${c.status === k}">${l}</button>`).join("")}</div>
+        <div class="grid2" style="margin-top:4px">
+          <div><label class="f">Next step</label><input type="text" data-nf="next" value="${esc(c.next || "")}" placeholder="e.g. Send thank-you"></div>
+          <div><label class="f">By</label><input type="date" data-nf="due" value="${esc(c.due || "")}"></div>
+        </div>
+        <label class="f">Notes</label><textarea data-nf="notes" style="min-height:70px" placeholder="What they work on, what you talked about, people they mentioned...">${esc(c.notes || "")}</textarea>
+        <label class="f">Conversation log</label>
+        ${(c.log || []).length ? `<ul class="journal">${c.log.slice().reverse().map(e => `<li><div class="small muted">${esc(e.d)}</div>${esc(e.text)}</li>`).join("")}</ul>` : ""}
+        <div class="row" style="gap:6px;margin-top:6px"><input type="text" data-nlog placeholder="e.g. 30-min call; she suggested..."><button class="btn sm" data-nlogadd>Add</button></div>
+        <div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap">
+          <select data-ndraft style="width:auto;flex:1;min-width:150px">
+            <option value="outreach">First message</option><option value="intro">Ask for an intro</option><option value="forwardable">Blurb for them to forward</option>
+            <option value="thanks">Thank-you after meeting</option><option value="followup">Follow-up / check-in</option></select>
+          <button class="btn sm primary" data-ndraftgo>🤖 Draft</button>
+          <button class="btn sm" data-nquestions>🤖 Questions to ask</button>
+        </div>
+        <div data-nout></div>
+        <button class="btn sm" data-ndel style="margin-top:12px;color:var(--bad)">Remove</button>
+      </details>`).join("")}</div>
+    <details class="skill none" style="margin-top:8px" id="netAdd"><summary><span class="sk-ic">＋</span><span style="flex:1"><b>Add a person</b></span></summary>
+      <div class="grid2" style="margin-top:8px"><div><label class="f">Name</label><input type="text" id="nnName"></div><div><label class="f">Organization</label><input type="text" id="nnOrg"></div></div>
+      <label class="f">Their role</label><input type="text" id="nnRole" placeholder="e.g. Associate, building performance">
+      <label class="f">How you're connected</label><input type="text" id="nnVia" placeholder="e.g. Intro from a family friend">
+      <button class="btn sm primary" id="nnSave" style="margin-top:10px">Add</button></details>
+    <details class="skill none" style="margin-top:8px"><summary><span class="sk-ic">🙂</span><span style="flex:1"><b>About you</b><span class="small muted" style="display:block">Used to personalize drafted messages</span></span></summary>
+      <div class="grid2" style="margin-top:8px"><div><label class="f">Your name</label><input type="text" data-me="name" value="${esc(S.me?.name || "")}"></div><div><label class="f">Graduating</label><input type="text" data-me="grad" value="${esc(S.me?.grad || "")}" placeholder="e.g. May 2027"></div></div>
+      <label class="f">School & degree</label><input type="text" data-me="school" value="${esc(S.me?.school || "")}" placeholder="e.g. M.S. Sustainable Design, ...">
+      <label class="f">What you're excited about (1-2 lines)</label><textarea data-me="pitch" style="min-height:60px" placeholder="e.g. building decarbonization and embodied carbon; want to start in SF and later work in Madrid or Paris">${esc(S.me?.pitch || "")}</textarea></details>`;
+}
+const cById = id => net().find(c => c.id === id);
+function bindNetwork(root){
+  root.querySelectorAll("[data-nstage] button").forEach(b => b.onclick = () => {
+    const c = cById(b.parentElement.dataset.nstage); const was = c.status; c.status = b.dataset.v;
+    if (c.status === "met" && was !== "met") { (c.log ||= []).push({d:today(), text:"Met"}); if (!c.metXp) { c.metXp = 1; addXp(40, "Networking conversation"); }
+      if (!c.due) { const d = new Date(Date.now() + DAY); c.due = d.toLocaleDateString("en-CA"); c.next ||= "Send a thank-you note"; } }
+    if (c.status === "thanked" && !c.thxXp) { c.thxXp = 1; addXp(15, "Sent a thank-you"); }
+    save(); syncReminders(); rerenderKeepOpen(c.id);
+  });
+  let tmr;
+  root.querySelectorAll("[data-nf]").forEach(inp => inp.addEventListener(inp.type === "date" ? "change" : "input", () => {
+    const c = cById(inp.closest("[data-cid]").dataset.cid); c[inp.dataset.nf] = inp.value;
+    clearTimeout(tmr); tmr = setTimeout(() => { save(); if (inp.dataset.nf !== "notes") syncReminders(); }, 600);
+  }));
+  root.querySelectorAll("[data-nlogadd]").forEach(b => b.onclick = () => {
+    const box = b.closest("[data-cid]"), c = cById(box.dataset.cid), t = box.querySelector("[data-nlog]").value.trim(); if (!t) return;
+    (c.log ||= []).push({d:today(), text:t}); save(); addXp(5); rerenderKeepOpen(c.id);
+  });
+  root.querySelectorAll("[data-ndel]").forEach(b => b.onclick = () => {
+    const c = cById(b.closest("[data-cid]").dataset.cid); if (!confirm(`Remove ${c.name}?`)) return;
+    S.network = net().filter(x => x !== c); save(); syncReminders(); renderCareer();
+  });
+  root.querySelectorAll("[data-ndraftgo]").forEach(b => b.onclick = () => draftMessage(b.closest("[data-cid]")));
+  root.querySelectorAll("[data-nquestions]").forEach(b => b.onclick = () => meetingQuestions(b.closest("[data-cid]")));
+  root.querySelectorAll("[data-me]").forEach(inp => inp.addEventListener("input", () => { (S.me ||= {})[inp.dataset.me] = inp.value; clearTimeout(tmr); tmr = setTimeout(save, 500); }));
+  const add = root.querySelector("#nnSave");
+  if (add) add.onclick = () => {
+    const name = $("#nnName").value.trim(); if (!name) { $("#nnName").focus(); return; }
+    importContacts([{name, org:$("#nnOrg").value.trim(), role:$("#nnRole").value.trim(), via:$("#nnVia").value.trim()}]); renderCareer();
+  };
+}
+function rerenderKeepOpen(cid){ renderCareer(); document.querySelector(`#careerBody [data-cid="${cid}"]`)?.setAttribute("open", ""); }
+const meText = () => { const m = S.me || {}; return [m.name && `Name: ${m.name}`, m.school && `School/degree: ${m.school}`, m.grad && `Graduating: ${m.grad}`, m.pitch && `Interests/goals: ${m.pitch}`].filter(Boolean).join("\n") || "(not provided)"; };
+const careerContext = () => `Career goal: a graduate sustainability role at a big global firm with offices in LA, SF, NYC, Madrid and Paris. Target firms: ${(CAREER.targets || []).map(t => t.company).join(", ")}. Currently preparing for: ${JOBS[0] ? `${JOBS[0].title} at ${JOBS[0].company} (${JOBS[0].location})` : "graduate sustainability roles"}.`;
+const DRAFT_SCHEMA = {type:"object", additionalProperties:false, required:["subject","message","tips"], properties:{subject:{type:"string"}, message:{type:"string"}, tips:{type:"array", items:{type:"string"}}}};
+const QS_SCHEMA = {type:"object", additionalProperties:false, required:["research","questions","ask"], properties:{research:{type:"array", items:{type:"string"}}, questions:{type:"array", items:{type:"string"}}, ask:{type:"string"}}};
+const DRAFT_KIND = {
+  outreach:"a short first email asking for a 20-30 minute informational conversation",
+  intro:"a short, easy-to-say-yes note asking the connector to introduce the student to someone (name who if the notes say)",
+  forwardable:"a 3-5 sentence forwardable blurb the connector can paste into an intro email: who the student is, what they're looking for, why this person specifically",
+  thanks:"a thank-you email sent within 24 hours of a conversation, referencing specifics from the notes and one concrete next step",
+  followup:"a brief follow-up or check-in that shares a relevant update (e.g. a project, an application) without asking for much",
+};
+async function draftMessage(box){
+  const c = cById(box.dataset.cid), kind = box.querySelector("[data-ndraft]").value, out = box.querySelector("[data-nout]");
+  if (!S.apiKey) { out.innerHTML = `<p class="note">Add your Anthropic API key under Home → Settings to draft messages.</p>`; return; }
+  out.innerHTML = `<p class="note"><span class="spin"></span> Drafting...</p>`;
+  try {
+    const r = await askClaude(`Draft ${DRAFT_KIND[kind]} for a student building their network in sustainability consulting and design.
+
+About the student:
+${meText()}
+${careerContext()}
+
+The person:
+Name: ${c.name}
+Organization: ${c.org || "-"}
+Role: ${c.role || "-"}
+How they're connected: ${c.via || "-"}
+Stage: ${(NET_STAGES.find(s => s[0] === c.status) || [,""])[1]}
+Notes: ${c.notes || "-"}
+Recent log: ${(c.log || []).slice(-5).map(e => `${e.d}: ${e.text}`).join("; ") || "-"}
+
+Rules: warm, specific and brief (under 150 words for emails). Respect their time; make the ask small and concrete. Mention the mutual connection naturally when there is one. Don't invent facts about the student. Put anything they need to fill in [in brackets]. Don't flatter. Plain text, no markdown.`, DRAFT_SCHEMA);
+    out.innerHTML = `<div class="card" style="margin-top:10px"><b>${esc(r.subject)}</b><p style="white-space:pre-wrap;font-size:14px;margin-top:6px" data-draft>${esc(r.message)}</p>
+      <div class="row" style="gap:8px;margin-top:8px"><button class="btn sm" data-copy>📋 Copy</button></div>
+      ${r.tips?.length ? `<ul class="takeaways" style="margin-top:8px">${r.tips.map(t => `<li class="small">${esc(t)}</li>`).join("")}</ul>` : ""}</div>`;
+    out.querySelector("[data-copy]").onclick = async () => { try { await navigator.clipboard.writeText(`Subject: ${r.subject}\n\n${r.message}`); toast("📋 Copied"); } catch { toast("Couldn't copy. Select the text instead."); } };
+  } catch (err) { out.innerHTML = `<p class="note">${esc(aiError(err))}</p>`; }
+}
+async function meetingQuestions(box){
+  const c = cById(box.dataset.cid), out = box.querySelector("[data-nout]");
+  if (!S.apiKey) { out.innerHTML = `<p class="note">Add your Anthropic API key under Home → Settings first.</p>`; return; }
+  out.innerHTML = `<p class="note"><span class="spin"></span> Preparing...</p>`;
+  try {
+    const r = await askClaude(`Help a student prepare for an informational conversation.
+
+About the student:
+${meText()}
+${careerContext()}
+
+They're meeting: ${c.name}, ${c.role || "role unknown"} at ${c.org || "-"}. Connection: ${c.via || "-"}. Notes: ${c.notes || "-"}
+
+Give:
+- research: 3-5 things to look up beforehand (their organization's recent projects or initiatives in this area, their team, relevant policy). Don't state specific facts about this person you aren't sure of; phrase these as things to look up.
+- questions: 8-10 thoughtful, specific questions tailored to their role (what their work is really like, skills that matter, how graduates get hired and grow there, advice for the student's goals including LA/SF/NYC/Madrid/Paris mobility where relevant). Avoid questions answerable by a quick web search.
+- ask: one polite, low-pressure closing ask suited to the relationship (e.g. "Is there anyone else you'd suggest I talk to?").`, QS_SCHEMA);
+    out.innerHTML = `<div class="card" style="margin-top:10px"><label class="f" style="margin-top:0">Look up first</label><ul class="takeaways">${r.research.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <label class="f">Questions to ask</label><ol class="takeaways">${r.questions.map(x => `<li>${esc(x)}</li>`).join("")}</ol>
+      <label class="f">Close with</label><p style="font-size:14px">${esc(r.ask)}</p></div>`;
+  } catch (err) { out.innerHTML = `<p class="note">${esc(aiError(err))}</p>`; }
 }
 
 /* =========================================================
@@ -1979,6 +2144,20 @@ window.addEventListener("storage", e => {
 await loadCatalog();
 ingestInbox();
 syncReminders();   // top up the 3-day window of scheduled reminders every time the app opens
+function handleImport(){
+  if (!location.hash.startsWith("#import=")) return false;
+  try {
+    const raw = location.hash.slice(8).replace(/-/g, "+").replace(/_/g, "/");
+    const data = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(raw), c => c.charCodeAt(0))));
+    const n = importContacts(data.contacts || []);
+    if (data.me) S.me = {...data.me, ...(S.me || {})};
+    save(); syncReminders(); setTimeout(() => toast(n ? `🤝 Added ${n} contact${n === 1 ? "" : "s"} to My network` : "🤝 Your contacts are already in My network"), 600);
+  } catch { setTimeout(() => toast("That import link didn't work"), 600); }
+  history.replaceState(null, "", location.pathname + "#career");
+  return true;
+}
+handleImport();
+addEventListener("hashchange", () => { if (handleImport()) tab("career"); });   // link tapped while the app is already open
 const start = location.hash.slice(1);
 tab(["home","library","study","career"].includes(start) ? start : "home");
 const params = new URLSearchParams(location.search), openId = params.get("item");
