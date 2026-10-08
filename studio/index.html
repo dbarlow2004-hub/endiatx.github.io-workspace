@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barlow's Designs — Interior Design &amp; Home Revamps</title>
+<meta name="description" content="Barlow's Designs — interior design and full-room revamps. See recent transformations and get in touch about your space.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Barlow's Designs — Interior Design &amp; Home Revamps">
+<meta property="og:description" content="We turn everyday rooms into the home you pictured. See recent transformations and get in touch about your space.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Barlow's Designs — Interior Design &amp; Home Revamps">
+<meta name="twitter:description" content="We turn everyday rooms into the home you pictured.">
+
+<link rel="icon" href="data:,">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+  --bg:#E2D5C8; --surface:#F7F2EC; --surface2:#EDE2D6; --border:#BEAFA3;
+  --accent:#7191AA; --accent-dim:rgba(113,145,170,0.14);
+  --sage:#8fa888; --taupe:#BEAFA3;
+  --text:#2E3A42; --muted:#4F5B63;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:radial-gradient(ellipse 1200px 800px at 50% -10%, #F7F2EC 0%, var(--bg) 55%);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.55;overflow-x:hidden;min-height:100vh;}
+a{color:inherit;}
+img{max-width:100%;display:block;}
+.mono{font-family:'Space Mono',monospace;}
+@media(prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;}
+}
+
+/* NAV */
+header{position:sticky;top:0;z-index:100;background:rgba(226,213,200,0.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+nav{max-width:1080px;margin:0 auto;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.logo{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text);font-weight:700;}
+.logo span{color:var(--accent);}
+.nav-cta{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#F7F2EC;background:var(--accent);padding:10px 18px;border-radius:20px;text-decoration:none;white-space:nowrap;transition:opacity 0.15s;}
+.nav-cta:hover{opacity:0.85;}
+
+main{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+/* HERO */
+.hero{position:relative;padding:76px 0 54px;text-align:center;}
+.eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+.hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.15;margin-bottom:20px;max-width:760px;margin-left:auto;margin-right:auto;}
+.hero p{font-size:16.5px;color:var(--muted);max-width:560px;margin:0 auto 30px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:24px;font-size:13.5px;font-weight:700;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:opacity 0.15s,border-color 0.15s,background 0.15s;font-family:'Space Mono',monospace;letter-spacing:0.03em;}
+.btn-primary{background:var(--accent);color:#F7F2EC;}
+.btn-primary:hover{opacity:0.85;}
+.btn-ghost{border-color:var(--border);color:var(--text);background:none;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+.hero-visual{margin-top:50px;border-radius:20px;overflow:hidden;position:relative;min-height:340px;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--border);display:flex;align-items:center;justify-content:center;box-shadow:0 30px 60px -28px rgba(46,58,66,0.35);}
+.hero-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero-visual-empty{color:var(--muted);font-size:14.5px;font-style:italic;padding:20px;text-align:center;}
+
+/* SECTION */
+section{padding:60px 0;border-top:1px solid var(--border);}
+.section-head{margin-bottom:34px;text-align:center;}
+.section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.section-title{font-size:28px;font-weight:700;}
+.section-sub{color:var(--muted);font-size:14.5px;margin-top:10px;max-width:520px;margin-left:auto;margin-right:auto;}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+.gallery-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:transform 0.15s ease,border-color 0.15s ease,box-shadow 0.2s ease;}
+.gallery-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 20px 40px -24px rgba(46,58,66,0.4);}
+.gallery-thumb{aspect-ratio:4/3;background:var(--surface2);overflow:hidden;}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover;}
+.gallery-caption{padding:16px 18px 18px;font-size:13.5px;color:var(--muted);line-height:1.6;}
+
+/* ABOUT */
+.about-wrap{max-width:620px;margin:0 auto;text-align:center;}
+.about-wrap p{color:var(--muted);font-size:15.5px;}
+.about-wrap p + p{margin-top:14px;}
+
+/* CONTACT */
+.contact-wrap{text-align:center;}
+.contact-wrap .btn{margin-top:6px;}
+
+footer{padding:36px 28px;text-align:center;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:0.04em;border-top:1px solid var(--border);}
+
+/* LIGHTBOX */
+.lightbox-overlay{position:fixed;inset:0;background:rgba(22,18,14,0.82);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:2000;padding:20px;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+.lightbox-overlay.open{opacity:1;pointer-events:all;}
+.lightbox{background:var(--surface);border-radius:16px;max-width:min(900px,96vw);max-height:92vh;overflow:hidden;position:relative;display:flex;flex-direction:column;transform:scale(0.96);transition:transform 0.22s;}
+.lightbox-overlay.open .lightbox{transform:scale(1);}
+.lightbox img{max-height:72vh;width:100%;object-fit:contain;background:#000;}
+.lightbox-caption{padding:18px 22px;font-size:14px;color:var(--muted);line-height:1.6;}
+.lightbox-close{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;background:rgba(22,18,14,0.6);border:none;color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;}
+
+.empty-state{text-align:center;padding:50px 20px;color:var(--muted);font-size:14.5px;border:1px dashed var(--border);border-radius:14px;}
+
+@media(max-width:600px){
+  nav{padding:14px 18px;}
+  main{padding:0 18px;}
+  .hero{padding:50px 0 40px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">BARLOW'S <span>DESIGNS</span></div>
+    <a class="nav-cta" href="#contact">Get in Touch</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="eyebrow">Interior Design &amp; Home Revamps</div>
+    <h1>We turn everyday rooms into the home you pictured.</h1>
+    <p>Full-room revamps, color &amp; palette direction, and furnishing — from the first before photo to the finished space.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">See the Work</a>
+      <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+    </div>
+    <div class="hero-visual" id="hero-visual">
+      <div class="hero-visual-empty">New work is on the way ✨</div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="section-head">
+      <div class="section-label">Recent Work</div>
+      <div class="section-title">A few favorite transformations</div>
+      <div class="section-sub">A small, curated look at recent projects. Client details stay private — this is just the work.</div>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class="empty-state">Loading…</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <div class="section-label">About</div>
+      <div class="section-title">Barlow's Designs</div>
+    </div>
+    <div class="about-wrap">
+      <p>Barlow's Designs is a boutique interior design studio focused on full-room revamps — taking a space from "it's fine" to "I can't believe this is the same room."</p>
+      <p>Every project starts with how you actually want to live in the space, then builds out a palette, a plan, and a shopping list to get there.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head">
+      <div class="section-label">Let's Talk</div>
+      <div class="section-title">Ready to revamp your space?</div>
+      <div class="section-sub">Reach out with a few photos of the room and what you're hoping for — happy to talk through ideas.</div>
+    </div>
+    <div class="contact-wrap">
+      <a class="btn btn-primary" href="mailto:dbarlow2004@gmail.com?subject=Interior%20Design%20Inquiry">✉ dbarlow2004@gmail.com</a>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="footer-year"></span> Barlow's Designs</footer>
+
+<div class="lightbox-overlay" id="lightbox-overlay" onclick="if(event.target===this)closeLightbox()">
+  <div class="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <img id="lightbox-img" src="" alt=""/>
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+const SUPABASE_URL  = 'https://fnjxxvghoebrpeflkdty.supabase.co';
+const SUPABASE_ANON = 'sb_publishable_dQUzquFXUV-AE34K8PtqPQ_KHt8s1Ia';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+function escHtml(s) {
+  return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+let featured = [];
+
+function openLightbox(i) {
+  const item = featured[i];
+  if (!item) return;
+  document.getElementById('lightbox-img').src = item.image_url;
+  document.getElementById('lightbox-caption').textContent = item.featured_caption || '';
+  document.getElementById('lightbox-overlay').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox-overlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeLightbox(); });
+
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  const heroVisual = document.getElementById('hero-visual');
+
+  if (!featured.length) {
+    grid.innerHTML = `<div class="empty-state">New transformations are being added — check back soon, or reach out and ask to see examples directly.</div>`;
+    return;
+  }
+
+  grid.innerHTML = featured.map((p,i) => `
+    <div class="gallery-card" onclick="openLightbox(${i})">
+      <div class="gallery-thumb"><img src="${p.image_url}" alt="${escHtml(p.featured_caption||'Room transformation')}" loading="lazy"/></div>
+      ${p.featured_caption?`<div class="gallery-caption">${escHtml(p.featured_caption)}</div>`:''}
+    </div>
+  `).join('');
+
+  heroVisual.innerHTML = `<img src="${featured[0].image_url}" alt=""/>`;
+}
+
+async function loadFeatured() {
+  const {data, error} = await sb
+    .from('apt_photos')
+    .select('image_url,featured_caption,created_at')
+    .eq('is_featured', true)
+    .order('created_at', {ascending:false});
+  if (error) { console.error(error); featured = []; } else { featured = data || []; }
+  renderGallery();
+}
+
+loadFeatured();
+</script>
+</body>
+</html>

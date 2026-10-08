@@ -237,6 +237,7 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
 .icon-btn{background:none;border:1px solid var(--border);color:var(--muted);border-radius:6px;padding:6px 9px;cursor:pointer;font-size:14px;}
 .icon-btn:hover{color:var(--accent);border-color:var(--accent);}
 .icon-btn.danger:hover{color:var(--red);border-color:var(--red);}
+.icon-btn.featured{color:var(--accent);border-color:var(--accent);background:var(--accent-dim);}
 
 /* INSPO BOARD */
 .masonry{columns:4 220px;column-gap:14px;}
@@ -573,6 +574,20 @@ header{border-bottom:1px solid var(--border);padding:16px 28px;display:flex;alig
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="closeModal('room-modal-overlay')">Cancel</button>
       <button class="btn btn-primary" onclick="saveRoom()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE (PUBLIC PORTFOLIO) MODAL -->
+<div class="modal-overlay" id="feature-modal-overlay">
+  <div class="modal">
+    <h2>Feature on Public Portfolio</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Shown on your public site. The client's name, address, and other private details are never included — just this image and whatever you write below.</p>
+    <div class="field"><label>Public Caption</label><textarea id="input-feature-caption" rows="3" placeholder="e.g. A sun-washed living room revamp — coastal blues, warm linen, and a custom boucle chair."></textarea></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" id="feature-remove-btn" onclick="removeFeature()" style="display:none;margin-right:auto">Remove from Portfolio</button>
+      <button class="btn btn-ghost" onclick="closeModal('feature-modal-overlay')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveFeature()">Save &amp; Feature</button>
     </div>
   </div>
 </div>
@@ -1927,6 +1942,41 @@ function toggleTaggingMode(photoId) {
   renderRenderings();
 }
 
+let featuringPhotoId = null;
+
+function openFeatureModal(photoId) {
+  if (!isAdmin) return;
+  const p = photos.find(ph=>ph.id===photoId);
+  if (!p) return;
+  featuringPhotoId = photoId;
+  document.getElementById('input-feature-caption').value = p.featured_caption || '';
+  document.getElementById('feature-remove-btn').style.display = p.is_featured ? '' : 'none';
+  document.getElementById('feature-modal-overlay').classList.add('open');
+}
+
+async function saveFeature() {
+  if (!isAdmin || !featuringPhotoId) return;
+  const featured_caption = document.getElementById('input-feature-caption').value.trim() || null;
+  const {error} = await sb.from('apt_photos').update({is_featured:true, featured_caption}).eq('id',featuringPhotoId);
+  if (error) { showToast('Error featuring photo ✗'); return; }
+  closeModal('feature-modal-overlay');
+  featuringPhotoId = null;
+  await loadPhotosAndTags();
+  render();
+  showToast('Featured on public portfolio ✓');
+}
+
+async function removeFeature() {
+  if (!isAdmin || !featuringPhotoId) return;
+  const {error} = await sb.from('apt_photos').update({is_featured:false}).eq('id',featuringPhotoId);
+  if (error) { showToast('Error updating ✗'); return; }
+  closeModal('feature-modal-overlay');
+  featuringPhotoId = null;
+  await loadPhotosAndTags();
+  render();
+  showToast('Removed from portfolio');
+}
+
 function onRenderClick(e, photoId) {
   if (isAdmin && taggingModePhotoId === photoId) {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -2108,6 +2158,7 @@ function renderRenderings() {
           <button class="comment-count-btn" onclick="openCommentsModal('photo','${p.id}','${escHtml(p.caption||'Rendering')}')">💬 Comment</button>
           ${isAdmin?`
           <button class="tag-btn ${isTagging?'active':''}" onclick="toggleTaggingMode('${p.id}')">${isTagging?'✓ Click image to tag':'+ Tag Items'}</button>
+          <button class="icon-btn ${p.is_featured?'featured':''}" title="${p.is_featured?'Featured on public portfolio':'Feature on public portfolio'}" onclick="openFeatureModal('${p.id}')">${p.is_featured?'★':'☆'}</button>
           <button class="icon-btn danger" onclick="deletePhoto('${p.id}')">🗑</button>
           `:''}
         </div>
