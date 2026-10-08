@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Podcast transcripts for the Energy Brief study app.
+"""Podcast transcripts for the Canopy study app.
 
 The app asks for a transcript by posting a small JSON message to the private ntfy
 topic  <NTFY_TOPIC>-transcribe  ({"podcast": <Apple show id>, "track": <Apple episode

@@ -1,8 +1,8 @@
 {
   "id": "./learn.html",
-  "name": "Energy Brief",
-  "short_name": "Energy Brief",
-  "description": "Daily energy & sustainability news, a reading tracker, and flashcards to make it stick.",
+  "name": "Canopy",
+  "short_name": "Canopy",
+  "description": "Canopy: daily energy & sustainability news, a reading tracker, and flashcards to make it stick.",
   "start_url": "learn.html",
   "scope": "./",
   "display": "standalone",
