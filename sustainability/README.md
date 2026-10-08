@@ -1,4 +1,4 @@
-# Energy Brief: daily sustainability news to your phone
+# Canopy: daily sustainability news, study & career prep
 
 Every morning at about 7:45am Eastern, a GitHub Action runs `digest.py`. It:
 
@@ -110,7 +110,7 @@ Progress is saved in your browser on that device. Use **Export / Import backup**
 
 ## Put it on your home screen
 
-The hub and study app install as one app, "Energy Brief". It has its own icon and works offline.
+The hub and study app install as one app, "Canopy". It has its own icon and works offline.
 
 - **Android (Chrome):** open the study app and tap **📲 Install app** on Home, or Chrome's **⋮ → Install app**.
   Long-press the icon for shortcuts to Today's reading, Study and News.

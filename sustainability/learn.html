@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Energy Brief Study</title>
+<title>Canopy</title>
 <meta name="description" content="Track the sustainability books, podcasts and documentaries you finish, take notes, and review flashcards and quizzes to remember what you learned.">
 <meta name="theme-color" content="#0e0f11">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
-<meta name="apple-mobile-web-app-title" content="Energy Brief">
+<meta name="apple-mobile-web-app-title" content="Canopy">
 <script>
   // On iPhone, notification taps always open in Safari, and a full-screen home-screen app keeps its
   // saved data separate from Safari's. So on iOS we skip the manifest: the home-screen icon opens the
@@ -280,7 +280,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
 <body>
 <div class="top">
   <div class="wrap topbar">
-    <a class="logo" href="./">Energy Brief</a>
+    <a class="logo" href="./">Canopy</a>
     <div class="stats">
       <span class="pill" title="Day streak"><span class="ic">🔥</span><span id="sStreak">0</span></span>
       <span class="pill" title="Total XP"><span class="ic">⚡</span><span id="sXp">0</span></span>
@@ -294,7 +294,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
     <div class="card" id="installCard" hidden style="margin-bottom:12px;display:flex;gap:12px;align-items:flex-start">
       <img src="icons/icon-192.png" alt="" style="width:48px;height:48px;border-radius:12px;flex-shrink:0">
       <div style="flex:1;min-width:0">
-        <b>Put Energy Brief on your home screen</b>
+        <b>Put Canopy on your home screen</b>
         <p class="small muted" id="installHow" style="margin-top:3px"></p>
         <div class="row" style="margin-top:8px;gap:8px"><button class="btn sm primary" id="installBtn" hidden>📲 Install app</button><button class="btn sm" id="installLater">Not now</button></div>
       </div>
@@ -502,8 +502,8 @@ async function loadCatalog(){
   (res.books||[]).forEach(b => add(b.title, {type:"book", by:b.by, year:b.year, audio:b.audio, url:b.url, why:b.why, level:b.level, cover:b.cover, pages:b.pages, isbn:b.isbn, view:b.view}));
   (res.podcasts||[]).forEach(p => add(p.title, {type:"podcast", by:p.by, url:p.url, why:p.why, apple:p.apple, art:p.artwork, view:p.view}));
   (res.documentaries||[]).forEach(d => add(d.title, {type:/youtube/i.test(d.where||"") ? "video" : "documentary", by:[d.year,d.where].filter(Boolean).join(" · "), url:d.url, why:d.why}));
-  if (DECKS.debates) CATALOG.debates = {id:"debates", title:"Big Debates: every side", type:"course", by:"Energy Brief debates deck", why:DECKS.debates.summary, always:true, url:"./#debates"};
-  if (DECKS.concepts) CATALOG.concepts = {id:"concepts", title:"Key Concepts", type:"course", by:"Energy Brief starter deck", why:DECKS.concepts.summary, always:true};
+  if (DECKS.debates) CATALOG.debates = {id:"debates", title:"Big Debates: every side", type:"course", by:"Canopy debates deck", why:DECKS.debates.summary, always:true, url:"./#debates"};
+  if (DECKS.concepts) CATALOG.concepts = {id:"concepts", title:"Key Concepts", type:"course", by:"Canopy starter deck", why:DECKS.concepts.summary, always:true};
 }
 const allItems = () => ({...CATALOG, ...S.custom});
 const getItem = id => allItems()[id];
@@ -2087,7 +2087,7 @@ function tab(name){
 }
 function refresh(){ renderHome(); renderLibrary(); if (!SES) renderStudy(); if ($("#v-career").classList.contains("on")) renderCareer(); }
 
-$("#topicIdea").textContent = "energy-brief-" + Math.random().toString(36).slice(2, 8);
+$("#topicIdea").textContent = "canopy-" + Math.random().toString(36).slice(2, 8);
 const topicOk = t => /^[A-Za-z0-9_-]{1,64}$/.test(t);
 function renderTopic(){
   $("#ntfyTopic").value = S.ntfyTopic || "";
@@ -2102,7 +2102,7 @@ $("#testNotif").onclick = async () => {
   const t = ($("#ntfyTopic").value.trim() || S.ntfyTopic || "");
   if (!topicOk(t)) { $("#topicStatus").textContent = "Enter your topic name first."; return; }
   try {
-    const q = new URLSearchParams({title:"📖 Energy Brief", click:location.origin + location.pathname, tags:"tada"});
+    const q = new URLSearchParams({title:"🌿 Canopy", click:location.origin + location.pathname, tags:"tada"});
     const r = await fetch(`${NTFY}/${encodeURIComponent(t)}?${q}`, {method:"POST", body:"Notifications are working. Reading reminders will show up like this."});
     $("#topicStatus").textContent = r.ok ? "Sent! It should appear on your phone within a few seconds." : r.status === 429 ? "ntfy says too many messages today. Try again tomorrow." : "ntfy returned an error (" + r.status + ").";
   } catch { $("#topicStatus").textContent = "Couldn't reach ntfy.sh. Check your connection."; }
@@ -2124,7 +2124,7 @@ function renderInstall(){
     : `In Chrome, open the <b>⋮</b> menu → <b>Install app</b> (or <b>Add to Home screen</b>).`;
 }
 addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; renderInstall(); });
-addEventListener("appinstalled", () => { S.installDismissed = true; save(); renderInstall(); toast("📲 Installed! Find Energy Brief on your home screen"); });
+addEventListener("appinstalled", () => { S.installDismissed = true; save(); renderInstall(); toast("📲 Installed! Find Canopy on your home screen"); });
 $("#installBtn").onclick = async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; renderInstall(); };
 $("#installLater").onclick = () => { S.installDismissed = true; save(); renderInstall(); };
 renderInstall();

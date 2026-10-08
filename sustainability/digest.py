@@ -310,7 +310,7 @@ def build_message(articles, max_items):
     DIGEST_URL set each story links through go.html, which forwards to the article."""
     day = datetime.now(timezone.utc).strftime("%b %d")
     base = (os.environ.get("DIGEST_URL") or "").rstrip("/")
-    lines = [f"Energy & Sustainability Brief - {day}", ""]
+    lines = [f"Canopy · Daily Brief - {day}", ""]
     for i, a in enumerate(balanced(articles, max_items), 1):
         icon = VIEWS.get(a.get("view", "general"), "").split(" ")[0]
         lines.append(f"{i}. {icon} {a['title']} ({a['source']})")
@@ -339,10 +339,11 @@ def send_ntfy(msg, articles):
     if not topic:
         return None
     server = os.environ.get("NTFY_SERVER", "https://ntfy.sh").rstrip("/")
-    headers = {"Title": "Energy & Sustainability Brief", "Tags": "seedling,zap"}
+    # title goes in the query string: HTTP headers can't carry emoji
+    params = {"title": "🌿 Canopy · Daily Brief", "tags": "seedling,zap"}
     if os.environ.get("DIGEST_URL"):
-        headers["Click"] = os.environ["DIGEST_URL"]
-    post(f"{server}/{topic}", msg.encode(), headers)
+        params["click"] = os.environ["DIGEST_URL"]
+    post(f"{server}/{urllib.parse.quote(topic)}?{urllib.parse.urlencode(params)}", msg.encode(), {})
     return "ntfy"
 
 
