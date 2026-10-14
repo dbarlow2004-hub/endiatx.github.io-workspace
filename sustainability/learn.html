@@ -602,7 +602,7 @@ const statusesFor = it => it.type === "book" ? ["want","owned","reading","paused
 let CATALOG = {};   // id -> item
 let DECKS = {};     // id -> {summary, takeaways, cards}
 
-async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? r.json() : {}; } catch { return {}; } }
+async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? await r.json() : {}; } catch { return {}; } }
 
 async function loadCatalog(){
   const [res, books, media, deb, car, vis, sc, g1, g2, g3, cos] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json"), getJSON("visuals.json"), getJSON("scenarios.json"),
@@ -2694,7 +2694,7 @@ function tab(name){
   document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === "v-" + name));
   document.querySelectorAll(".tabs [data-tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === name));
   if (name !== "study" && SES) endToMenu();
-  else if (name !== "study") { $("#session").hidden = true; $("#studyMenu").hidden = false; }
+  else if (!SES) { $("#session").hidden = true; $("#studyMenu").hidden = false; }   // tapping Study goes back to the Study menu (an exam in progress shows a Resume button)
   try { history.replaceState(null, "", "#" + name); } catch {}
   refresh(); scrollTo(0, 0);
 }
