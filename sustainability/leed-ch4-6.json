@@ -1,0 +1,1615 @@
+[
+ {
+  "n": 4,
+  "id": "sustainable-sites",
+  "title": "Sustainable Sites",
+  "intro": "Sustainable Sites (SS) covers how a project treats the land it sits on: understanding the site before design, preventing pollution during construction, protecting habitat, managing rainwater, and limiting heat islands and light pollution. Good site decisions protect ecosystems and reduce the infrastructure burden a building places on its community.",
+  "sections": [
+   {
+    "h": "Site assessment and planning",
+    "body": [
+     "Sustainable site design starts before any drawings exist. A site assessment documents the conditions the design must respond to: topography, hydrology (wetlands, floodplains, drainage paths), climate, vegetation, soils, human use and potential human health effects. Recording these early lets the integrative team place the building and hardscape where they do the least harm and capture the most benefit, such as orienting toward solar access or preserving existing trees.",
+     "Projects are often described by the condition of their land. A greenfield site has not been previously developed or graded and remains in a natural or agricultural state. A previously developed site has been altered by paving, construction or land use. Building on previously developed land generally avoids the habitat loss that comes with greenfield development.",
+     "Some project types carry extra site requirements. In LEED v4, schools and healthcare projects must complete an Environmental Site Assessment (a Phase I assessment, followed by a Phase II if contamination is suspected) and remediate any contamination found, because children and patients are especially vulnerable to pollutants."
+    ],
+    "tip": "Know the difference between site assessment (understanding conditions to guide design) and Environmental Site Assessment (investigating contamination, a prerequisite for schools and healthcare in LEED v4)."
+   },
+   {
+    "h": "Construction activity pollution prevention",
+    "body": [
+     "Construction Activity Pollution Prevention is the Sustainable Sites prerequisite that applies to almost every new construction project. Its intent is to reduce pollution from construction by controlling soil erosion, waterway sedimentation and airborne dust.",
+     "The project must create and implement an erosion and sedimentation control (ESC) plan for all construction activities. In LEED v4 the plan must conform to the erosion and sedimentation requirements of the EPA Construction General Permit (2012) or local standards, whichever is more stringent, and it applies even to projects not otherwise required to obtain a permit.",
+     "Typical measures include silt fencing, sediment traps and basins, storm drain inlet protection, stabilized construction entrances, temporary seeding or mulching of exposed soil, protecting topsoil stockpiles and dust suppression. The general contractor normally carries out the plan and documents it with photos and inspection reports."
+    ],
+    "tip": "Erosion control is required during construction regardless of project size or local permit thresholds. If a question asks which SS requirement is mandatory, it is usually this prerequisite."
+   },
+   {
+    "h": "Habitat protection and open space",
+    "body": [
+     "The Site Development: Protect or Restore Habitat credit aims to conserve existing natural areas and restore damaged ones. Strategies include limiting disturbance to the building footprint and nearby construction zones, staging equipment on areas that will be paved later, preserving healthy soils, and restoring previously disturbed areas with native or adapted vegetation. In LEED v4, a project may alternatively provide financial support to a recognized land trust or conservation organization.",
+     "Native plants evolved in the local region. Adapted plants are not native but grow reliably in the local climate without becoming invasive. Invasive species spread aggressively and crowd out native ecosystems, so they should never be planted. Native and adapted plants also need less irrigation, fertilizer and pesticide, which links this credit to Water Efficiency.",
+     "The Open Space credit encourages outdoor space that supports social interaction, passive recreation, physical activity and connection to nature. Qualifying space is usually pedestrian-oriented hardscape, recreation areas or vegetated areas accessible to occupants; parking lots and service areas do not count."
+    ]
+   },
+   {
+    "h": "Rainwater management",
+    "body": [
+     "Development replaces absorbent soil and vegetation with impervious surfaces such as roofs and paving. Rain that once soaked into the ground runs off quickly, carrying pollutants into waterways, increasing flooding and erosion, and reducing groundwater recharge. The Rainwater Management credit aims to replicate the site's natural hydrology and water balance.",
+     "Low-impact development (LID) and green infrastructure (GI) manage rain close to where it falls instead of piping it away. Common tools include vegetated (green) roofs, rain gardens, bioswales, pervious paving, infiltration trenches, and rainwater harvesting cisterns that store water for reuse in irrigation or toilet flushing.",
+     "In LEED v4, projects typically show they manage on site the runoff from a specified percentile of regional rainfall events, or that they replicate natural land cover hydrology. Dense sites with little open ground often rely on green roofs and cisterns."
+    ],
+    "tip": "Pervious paving, rain gardens and bioswales all work by infiltration. A cistern works by capture and reuse, which also supports Water Efficiency goals."
+   },
+   {
+    "h": "Heat island reduction",
+    "body": [
+     "The heat island effect is the difference in temperature between developed areas and surrounding undeveloped areas. Dark, nonreflective surfaces such as asphalt and dark roofs absorb sunlight and re-radiate heat, raising local temperatures, increasing cooling demand and harming comfort and habitat.",
+     "LEED treats roof and nonroof surfaces separately. Roof strategies include high-reflectance roofing and vegetated roofs. Nonroof strategies include shade from trees or structures (including shading structures topped with solar panels), high-reflectance paving and open-grid pavement. LEED v4 also recognizes placing parking under cover, for example under the building or in a structured garage.",
+     "Material performance is measured with the solar reflectance index (SRI), which combines solar reflectance and thermal emittance into one value. A standard black surface is 0 and a standard white surface is 100, so a higher SRI means a cooler surface. Some newer LEED versions use solar reflectance (SR) values instead."
+    ],
+    "tip": "Higher SRI = cooler surface. White membranes score high; dark asphalt and black roofing score low."
+   },
+   {
+    "h": "Light pollution reduction",
+    "body": [
+     "Poorly designed exterior lighting wastes energy, obscures the night sky, disrupts nocturnal wildlife and spills onto neighboring properties. The Light Pollution Reduction credit aims to increase night sky access, improve nighttime visibility and reduce the consequences of development for wildlife and people.",
+     "LEED v4 evaluates exterior fixtures with the BUG rating system, which describes backlight, uplight and glare. Uplight is light emitted above horizontal toward the sky; light trespass is unwanted light crossing a property boundary. Designers reduce both by using fully shielded fixtures aimed downward, lowering fixture wattage and mounting heights, and adding controls that dim or switch off lights after hours.",
+     "Project-type credits also live in this category: Tenant Design and Construction Guidelines for Core and Shell, Places of Respite and Direct Exterior Access for healthcare, and Joint Use of Facilities for schools."
+    ],
+    "tip": "BUG = Backlight, Uplight, Glare. Remember it as a three-part rating for exterior luminaires."
+   }
+  ],
+  "terms": [
+   {
+    "term": "Construction Activity Pollution Prevention",
+    "def": "SS prerequisite requiring an erosion and sedimentation control plan to limit soil loss, waterway sedimentation and airborne dust during construction."
+   },
+   {
+    "term": "Erosion and sedimentation control (ESC) plan",
+    "def": "Plan of measures such as silt fences and temporary seeding that keeps soil on site; in LEED v4 it follows the EPA Construction General Permit."
+   },
+   {
+    "term": "EPA Construction General Permit (CGP)",
+    "def": "Federal permit standard whose erosion and sedimentation requirements are the LEED v4 baseline for construction pollution control."
+   },
+   {
+    "term": "Site assessment",
+    "def": "Survey of topography, hydrology, climate, vegetation, soils, human use and health effects, completed early to guide design decisions."
+   },
+   {
+    "term": "Environmental Site Assessment (ESA)",
+    "def": "Investigation of a site for contamination; in LEED v4 a prerequisite for schools and healthcare projects."
+   },
+   {
+    "term": "Greenfield",
+    "def": "A site that has not been previously developed or graded and remains in a natural or agricultural state."
+   },
+   {
+    "term": "Previously developed site",
+    "def": "Land altered by paving, construction or land use; building here avoids destroying undisturbed habitat."
+   },
+   {
+    "term": "Native vegetation",
+    "def": "Plants that evolved in a particular region and are adapted to its climate, soils and wildlife."
+   },
+   {
+    "term": "Adapted vegetation",
+    "def": "Non-native plants that grow reliably in the local climate without becoming invasive."
+   },
+   {
+    "term": "Invasive species",
+    "def": "Non-native plants or animals that spread aggressively and harm native ecosystems; never planted on LEED projects."
+   },
+   {
+    "term": "Open space",
+    "def": "Outdoor area, vegetated or pedestrian hardscape, that supports recreation and social interaction; parking and service areas do not qualify."
+   },
+   {
+    "term": "Impervious surface",
+    "def": "A surface such as roofing or conventional paving that prevents water from soaking into the ground, increasing runoff."
+   },
+   {
+    "term": "Low-impact development (LID)",
+    "def": "Stormwater approach that manages rain close to where it falls, mimicking natural hydrology through infiltration, evapotranspiration and reuse."
+   },
+   {
+    "term": "Green infrastructure (GI)",
+    "def": "Soil and vegetation-based systems, such as green roofs and bioswales, that manage rainwater instead of pipes and tanks alone."
+   },
+   {
+    "term": "Rain garden",
+    "def": "Shallow planted depression that collects runoff and lets it infiltrate into the soil."
+   },
+   {
+    "term": "Bioswale",
+    "def": "Vegetated channel that slows, filters and conveys stormwater runoff while allowing infiltration."
+   },
+   {
+    "term": "Pervious paving",
+    "def": "Paving that lets water pass through to the soil below, reducing runoff."
+   },
+   {
+    "term": "Vegetated (green) roof",
+    "def": "Roof covered with growing media and plants that reduces runoff and heat island effect and can provide habitat."
+   },
+   {
+    "term": "Heat island effect",
+    "def": "Higher temperatures in developed areas than in surrounding undeveloped areas, caused by heat-absorbing dark surfaces."
+   },
+   {
+    "term": "Solar reflectance index (SRI)",
+    "def": "Measure of a surface's ability to reject solar heat, combining reflectance and emittance; standard black is 0, standard white 100."
+   },
+   {
+    "term": "Open-grid pavement",
+    "def": "Paving system with open cells filled with vegetation or gravel, letting water infiltrate and reducing heat absorption."
+   },
+   {
+    "term": "BUG rating",
+    "def": "Exterior luminaire classification for Backlight, Uplight and Glare used in LEED v4 light pollution requirements."
+   },
+   {
+    "term": "Light trespass",
+    "def": "Obtrusive light that spills beyond the project boundary onto neighboring property."
+   },
+   {
+    "term": "Uplight",
+    "def": "Light emitted above the horizontal plane toward the sky, a major source of sky glow."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'>\n<rect width='360' height='220' fill='#f7f8f5'/>\n<text x='180' y='16' font-size='12' font-weight='bold' fill='#334155' text-anchor='middle'>Low-impact development: manage rain where it falls</text>\n<g stroke='#2b6cb0' stroke-width='1.5'><line x1='40' y1='26' x2='36' y2='36'/><line x1='90' y1='26' x2='86' y2='36'/><line x1='140' y1='26' x2='136' y2='36'/><line x1='190' y1='26' x2='186' y2='36'/><line x1='240' y1='26' x2='236' y2='36'/><line x1='290' y1='26' x2='286' y2='36'/><line x1='340' y1='26' x2='336' y2='36'/></g>\n<rect x='0' y='160' width='360' height='60' fill='#d97706' opacity='0.15'/>\n<line x1='0' y1='160' x2='360' y2='160' stroke='#334155'/>\n<text x='66' y='62' font-size='10' fill='#0a8a6a' text-anchor='middle' font-weight='bold'>Vegetated roof</text>\n<rect x='22' y='68' width='90' height='8' fill='#0a8a6a'/>\n<rect x='25' y='76' width='84' height='84' fill='#334155'/>\n<text x='67' y='122' font-size='10' fill='#ffffff' text-anchor='middle'>Building</text>\n<polyline points='112,72 124,72 124,118' fill='none' stroke='#2b6cb0' stroke-width='2'/>\n<rect x='114' y='118' width='22' height='42' rx='3' fill='#2b6cb0'/>\n<text x='125' y='176' font-size='10' fill='#2b6cb0' text-anchor='middle' font-weight='bold'>Cistern</text>\n<text x='125' y='188' font-size='10' fill='#334155' text-anchor='middle'>(reuse)</text>\n<text x='194' y='148' font-size='10' fill='#334155' text-anchor='middle' font-weight='bold'>Pervious paving</text>\n<g fill='#334155' opacity='0.6'><rect x='150' y='154' width='12' height='6'/><rect x='165' y='154' width='12' height='6'/><rect x='180' y='154' width='12' height='6'/><rect x='195' y='154' width='12' height='6'/><rect x='210' y='154' width='12' height='6'/><rect x='225' y='154' width='12' height='6'/></g>\n<text x='298' y='132' font-size='10' fill='#0a8a6a' text-anchor='middle' font-weight='bold'>Rain garden</text>\n<text x='298' y='144' font-size='10' fill='#0a8a6a' text-anchor='middle'>/ bioswale</text>\n<path d='M252 160 Q298 192 344 160 Z' fill='#2b6cb0' opacity='0.35'/>\n<g stroke='#0a8a6a' stroke-width='2'><line x1='268' y1='160' x2='266' y2='150'/><line x1='284' y1='162' x2='284' y2='151'/><line x1='312' y1='162' x2='313' y2='151'/><line x1='328' y1='160' x2='330' y2='150'/></g>\n<g stroke='#2b6cb0' stroke-width='1.5'><line x1='172' y1='166' x2='172' y2='184'/><line x1='194' y1='166' x2='194' y2='184'/><line x1='216' y1='166' x2='216' y2='184'/><line x1='286' y1='180' x2='286' y2='194'/><line x1='310' y1='180' x2='310' y2='194'/></g>\n<g fill='#2b6cb0'><polygon points='168,184 176,184 172,190'/><polygon points='190,184 198,184 194,190'/><polygon points='212,184 220,184 216,190'/><polygon points='282,194 290,194 286,200'/><polygon points='306,194 314,194 310,200'/></g>\n<text x='180' y='212' font-size='10' fill='#334155' text-anchor='middle'>Infiltration cuts runoff and recharges groundwater</text>\n</svg>",
+  "svgCaption": "Low-impact development strategies keep rain on site: a vegetated roof slows and absorbs it, a cistern captures it for reuse, and pervious paving and rain gardens let it infiltrate instead of running off.",
+  "questions": [
+   {
+    "q": "Which Sustainable Sites requirement is a prerequisite for nearly all LEED BD+C new construction projects?",
+    "options": [
+     "Heat Island Reduction",
+     "Light Pollution Reduction",
+     "Construction Activity Pollution Prevention",
+     "Rainwater Management"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Construction Activity Pollution Prevention is the SS prerequisite requiring an erosion and sedimentation control plan. The other options are optional credits."
+   },
+   {
+    "q": "In LEED v4, the erosion and sedimentation control plan must conform to which standard, unless local requirements are more stringent?",
+    "options": [
+     "ASHRAE 62.1",
+     "ASHRAE 90.1",
+     "Green Seal GS-37",
+     "EPA Construction General Permit"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "The ESC plan follows the EPA Construction General Permit or local code, whichever is stricter. ASHRAE 90.1 and 62.1 address energy and ventilation, not erosion."
+   },
+   {
+    "q": "A contractor is preparing to grade a sloped site during the rainy season. Which measures would best support the construction pollution prevention prerequisite? (Select TWO)",
+    "options": [
+     "Temporarily seed or mulch exposed soil",
+     "Haul all topsoil off site to be landfilled",
+     "Pave the parking lot first with dark asphalt",
+     "Install silt fencing along the downslope edge",
+     "Delay storm drain inlet protection until occupancy"
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "select": 2,
+    "explain": "Silt fences trap sediment and temporary seeding or mulching stabilizes bare soil. Removing topsoil wastes a resource, and inlet protection is needed during construction, not after."
+   },
+   {
+    "q": "What does the solar reflectance index (SRI) measure?",
+    "options": [
+     "A surface's ability to reject solar heat, combining reflectance and emittance",
+     "How much daylight a window admits",
+     "The brightness of exterior light fixtures",
+     "The percentage of a roof covered by vegetation"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "SRI combines solar reflectance and thermal emittance to show how well a surface stays cool. It is unrelated to windows or light fixtures."
+   },
+   {
+    "q": "A project team on a dense urban site with a zero-lot-line building wants to reduce rainwater runoff. Which strategies are most practical? (Select TWO)",
+    "options": [
+     "Add a large irrigated turf lawn",
+     "Replace a light roof with dark roofing",
+     "Expand surface parking around the building",
+     "Capture roof runoff in a cistern for reuse",
+     "Install a vegetated roof"
+    ],
+    "answer": [
+     3,
+     4
+    ],
+    "select": 2,
+    "explain": "With little or no ground area, the roof is the main opportunity: green roofs absorb rain and cisterns capture it for reuse. A site with no open ground cannot add turf, and more paving increases runoff."
+   },
+   {
+    "q": "Which statement best defines the heat island effect?",
+    "options": [
+     "Higher temperatures in developed areas than in nearby undeveloped areas",
+     "Heat lost through a building envelope in winter",
+     "Heat produced by occupants and plug loads",
+     "Warming caused by refrigerant leaks"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The heat island effect is the temperature difference between built-up areas and their undeveloped surroundings, driven by dark heat-absorbing surfaces."
+   },
+   {
+    "q": "Which roofing material would most likely have the highest SRI?",
+    "options": [
+     "Black EPDM membrane",
+     "Dark asphalt shingles",
+     "White reflective membrane",
+     "Dark brown standing-seam metal"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Light, reflective surfaces have high SRI values. Dark materials absorb solar energy and score low."
+   },
+   {
+    "q": "A retail project wants to reduce the heat island effect from its surface parking lot. Which strategies help? (Select TWO)",
+    "options": [
+     "Plant shade trees over parking and walkways",
+     "Increase the number of parking spaces",
+     "Apply a dark sealcoat to existing pavement",
+     "Use open-grid pavement",
+     "Resurface with fresh black asphalt"
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "select": 2,
+    "explain": "Shading and open-grid pavement both lower surface temperatures. Fresh black asphalt and dark sealcoat absorb more heat."
+   },
+   {
+    "q": "In the BUG rating system for exterior luminaires, what does BUG stand for?",
+    "options": [
+     "Beam, Uplight, Glow",
+     "Backlight, Uniformity, Grid",
+     "Backlight, Uplight, Glare",
+     "Brightness, Uniformity, Glare"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "BUG stands for Backlight, Uplight and Glare, the three components rated for exterior fixtures in LEED v4."
+   },
+   {
+    "q": "Which are intents of the Light Pollution Reduction credit? (Select THREE)",
+    "options": [
+     "Increase night sky access",
+     "Floodlight the facade to improve visibility of signage",
+     "Eliminate all exterior lighting",
+     "Reduce the consequences of development for wildlife and people",
+     "Improve nighttime visibility",
+     "Increase exterior illumination to maximize security"
+    ],
+    "answer": [
+     0,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "The credit aims to restore night sky access, improve visibility and protect wildlife and people. It does not require removing all lighting or adding more light."
+   },
+   {
+    "q": "Which description best defines adapted vegetation?",
+    "options": [
+     "Non-native plants that grow reliably in the local climate and are not invasive",
+     "Non-native plants that spread aggressively",
+     "Plants that evolved only in the project's region",
+     "Any plant that needs permanent irrigation"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Adapted plants are non-native but perform well locally without becoming invasive. Plants that spread aggressively are invasive, which LEED prohibits."
+   },
+   {
+    "q": "Which statement best describes low-impact development (LID)?",
+    "options": [
+     "Piping all stormwater quickly to the municipal sewer",
+     "Managing rainwater as close to its source as possible to mimic natural hydrology",
+     "Building at low density to reduce traffic",
+     "Using low-VOC materials during construction"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "LID manages rain where it falls through infiltration, evapotranspiration and reuse. Piping water away quickly is the conventional approach LID replaces."
+   },
+   {
+    "q": "Which conditions are documented in a LEED site assessment? (Select THREE)",
+    "options": [
+     "Topography",
+     "Soils",
+     "Refrigerant global warming potential",
+     "Hydrology",
+     "Plumbing fixture flow rates",
+     "Interior paint VOC content"
+    ],
+    "answer": [
+     0,
+     1,
+     3
+    ],
+    "select": 3,
+    "explain": "Site assessment covers topography, hydrology, climate, vegetation, soils, human use and health effects. VOCs, refrigerants and fixtures belong to other categories."
+   },
+   {
+    "q": "What is a greenfield?",
+    "options": [
+     "A site that has not been previously developed or graded",
+     "A vegetated roof",
+     "A site formerly used for industry that may be contaminated",
+     "A park that adjoins the project"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "A greenfield is undeveloped land. A former industrial site with possible contamination is a brownfield."
+   },
+   {
+    "q": "A team building on a partially wooded site wants to limit damage to existing habitat during construction. What is the best approach?",
+    "options": [
+     "Clear the entire lot to simplify staging",
+     "Plant invasive groundcover to stabilize soil quickly",
+     "Remove existing topsoil and replace it with imported fill",
+     "Restrict disturbance to the building footprint and adjacent work zones, and stage equipment on areas that will be paved"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Limiting the disturbance area and staging on future hardscape protects soil and vegetation. Invasive species are never acceptable even for erosion control."
+   },
+   {
+    "q": "Which areas would typically count toward the Open Space credit? (Select TWO)",
+    "options": [
+     "A fenced loading dock",
+     "A vegetated garden accessible to occupants",
+     "A rooftop mechanical equipment area",
+     "A surface parking lot",
+     "A pedestrian plaza with seating"
+    ],
+    "answer": [
+     1,
+     4
+    ],
+    "select": 2,
+    "explain": "Open space must be usable outdoor space such as pedestrian hardscape or vegetated areas. Parking, loading and equipment areas do not qualify."
+   },
+   {
+    "q": "What is the primary environmental benefit of pervious paving?",
+    "options": [
+     "It lowers indoor water use",
+     "It allows rainwater to infiltrate, reducing runoff",
+     "It improves acoustic performance",
+     "It eliminates the need for an erosion control plan"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Pervious paving lets water pass into the soil, reducing runoff volume and pollutants. It does not replace the construction ESC plan."
+   },
+   {
+    "q": "The intent of the Rainwater Management credit is best described as:",
+    "options": [
+     "Reducing potable water used for toilet flushing",
+     "Preventing light trespass",
+     "Eliminating all rainwater from the site as quickly as possible",
+     "Replicating the natural hydrology and water balance of the site"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Rainwater Management aims to reduce runoff volume and improve water quality by replicating natural, predevelopment hydrology."
+   },
+   {
+    "q": "A suburban office project wants to reduce light trespass onto neighboring homes. Which strategies are most effective? (Select TWO)",
+    "options": [
+     "Add controls that dim or turn off lights after business hours",
+     "Aim high-wattage floodlights toward the street",
+     "Increase pole heights at the property edge",
+     "Install uplights on trees near the property line",
+     "Use fully shielded fixtures aimed downward"
+    ],
+    "answer": [
+     0,
+     4
+    ],
+    "select": 2,
+    "explain": "Shielding keeps light on target and automatic controls cut unnecessary light at night. Uplighting, floodlights and taller poles increase spill and sky glow."
+   },
+   {
+    "q": "In LEED v4 BD+C, which credit is specific to Core and Shell projects and helps future tenants implement sustainable design?",
+    "options": [
+     "Tenant Design and Construction Guidelines",
+     "Places of Respite",
+     "Direct Exterior Access",
+     "Joint Use of Facilities"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Tenant Design and Construction Guidelines applies to Core and Shell. Joint Use is for schools; Places of Respite and Direct Exterior Access are for healthcare."
+   },
+   {
+    "q": "A school district plans to open the new school's gymnasium and auditorium to community groups after hours. Which LEED v4 Sustainable Sites credit does this support?",
+    "options": [
+     "Joint Use of Facilities",
+     "Tenant Design and Construction Guidelines",
+     "Site Assessment",
+     "Open Space"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Joint Use of Facilities rewards schools that share spaces with the community, reducing the need for duplicate facilities."
+   },
+   {
+    "q": "In LEED v4 BD+C, which Sustainable Sites credits are specific to healthcare projects? (Select TWO)",
+    "options": [
+     "Joint Use of Facilities",
+     "Places of Respite",
+     "Tenant Design and Construction Guidelines",
+     "Building-Level Water Metering",
+     "Direct Exterior Access"
+    ],
+    "answer": [
+     1,
+     4
+    ],
+    "select": 2,
+    "explain": "Places of Respite and Direct Exterior Access give patients and staff access to the outdoors. Joint Use is a schools credit, Tenant Guidelines is Core and Shell, and metering is in Water Efficiency."
+   },
+   {
+    "q": "In LEED v4, which project types must meet the Environmental Site Assessment prerequisite? (Select TWO)",
+    "options": [
+     "Core and Shell",
+     "Warehouses and Distribution Centers",
+     "Healthcare",
+     "Retail",
+     "Schools"
+    ],
+    "answer": [
+     2,
+     4
+    ],
+    "select": 2,
+    "explain": "Schools and healthcare serve especially vulnerable occupants, so LEED v4 requires them to assess and remediate site contamination."
+   },
+   {
+    "q": "A team restoring a previously disturbed area of its site is choosing plants. Which choice best supports habitat restoration?",
+    "options": [
+     "A single species of conventional turfgrass",
+     "Fast-spreading invasive groundcover",
+     "Imported tropical ornamentals needing daily irrigation",
+     "Native and adapted plants appropriate to the local ecosystem"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Native and adapted plants provide habitat and need fewer resources. Turf monocultures offer little habitat, and invasive species are prohibited."
+   },
+   {
+    "q": "Which are benefits of a vegetated roof? (Select THREE)",
+    "options": [
+     "Reduces the rate and volume of stormwater runoff",
+     "Reduces the heat island effect",
+     "Can provide habitat for birds and insects",
+     "Satisfies the construction pollution prevention prerequisite",
+     "Eliminates the need for roof insulation",
+     "Reduces indoor plumbing fixture water use"
+    ],
+    "answer": [
+     0,
+     1,
+     2
+    ],
+    "select": 3,
+    "explain": "Green roofs cool the roof surface, retain rainwater and create habitat. They do not replace insulation, the ESC plan or efficient fixtures."
+   }
+  ]
+ },
+ {
+  "n": 5,
+  "id": "water-efficiency",
+  "title": "Water Efficiency",
+  "intro": "Water Efficiency (WE) addresses how buildings use water outdoors, indoors and in building systems such as cooling towers, and how that use is measured. Reducing potable water demand protects scarce supplies, lowers the energy needed to treat and pump water, and cuts costs for owners.",
+  "sections": [
+   {
+    "h": "Why water efficiency matters",
+    "body": [
+     "Buildings consume large amounts of potable (drinking-quality) water, much of it for uses that do not need drinking-quality water at all, such as irrigation and toilet flushing. Treating, pumping and heating water also takes energy, a link often called the energy-water nexus. Saving hot water saves both water and the energy used to heat it.",
+     "LEED's approach follows a clear sequence: first reduce demand (efficient fixtures, climate-appropriate landscaping), then use alternative nonpotable sources where quality allows, and finally measure use with meters so savings persist over time.",
+     "In LEED v4 BD+C, Water Efficiency has three prerequisites: Outdoor Water Use Reduction, Indoor Water Use Reduction and Building-Level Water Metering. Matching credits reward deeper reductions, along with credits for cooling tower water use and subsystem water metering."
+    ],
+    "tip": "Remember the three v4 WE prerequisites: outdoor reduction, indoor reduction and building-level metering."
+   },
+   {
+    "h": "Outdoor water use",
+    "body": [
+     "Landscape irrigation is often the largest use of water on a site. The most effective strategy is to need less water in the first place by choosing native and adapted plants, limiting turfgrass and grouping plants with similar water needs (hydrozoning). Xeriscaping is a landscaping approach that uses drought-tolerant plants and water-conserving design.",
+     "A landscape's water requirement depends on plant types, planting density, local climate and microclimate, and irrigation efficiency. Evapotranspiration (ET), the water lost through evaporation from soil and transpiration from plants, drives how much water plants need. Drip and micro-irrigation deliver water directly to roots and waste far less than spray irrigation, and smart controllers adjust schedules using weather data or soil moisture sensors.",
+     "In LEED v4, the outdoor prerequisite is met either by showing the landscape needs no permanent irrigation after a short establishment period, or by reducing the landscape water requirement by a set percentage from a calculated baseline for the peak watering month. Alternative water sources such as harvested rainwater can count toward the reduction."
+    ]
+   },
+   {
+    "h": "Indoor water use",
+    "body": [
+     "Indoor water use is calculated by comparing the project's fixtures and fittings to a baseline. Flush fixtures, such as toilets (water closets) and urinals, are rated in gallons per flush (gpf). Flow fixtures, such as lavatory faucets, kitchen faucets and showerheads, are rated in gallons per minute (gpm). The LEED baseline is drawn from Energy Policy Act (EPAct) requirements.",
+     "In LEED v4, the Indoor Water Use Reduction prerequisite requires at least a 20% reduction from the baseline, and eligible new fixtures must be WaterSense labeled where a WaterSense specification exists. Eligible appliances such as clothes washers and dishwashers must be ENERGY STAR qualified, and some process equipment has its own requirements.",
+     "Common strategies include high-efficiency or dual-flush toilets, low-flow or waterless urinals, faucet aerators and sensors, and low-flow showerheads. Usage is estimated with occupancy, gender ratios and daily use assumptions, so the same fixtures produce different totals in different building types."
+    ],
+    "tip": "Flush fixtures use gpf; flow fixtures use gpm. Swapping in a fixture that merely matches the baseline produces no savings."
+   },
+   {
+    "h": "Alternative water sources",
+    "body": [
+     "Not every use needs drinking-quality water. Nonpotable water can serve toilet and urinal flushing, irrigation and cooling tower makeup, freeing potable water for drinking, cooking and hand washing.",
+     "Common alternative sources include harvested rainwater, graywater, municipally supplied reclaimed (recycled) water, and air-conditioner condensate. Graywater is untreated wastewater from sources such as lavatories, showers, bathtubs and clothes washers that has not contacted toilet waste. Blackwater contains toilet waste, and many codes also classify kitchen sink water as blackwater. Definitions vary by jurisdiction, so local code governs.",
+     "Using alternative water supports several categories at once: a cistern reduces runoff for Rainwater Management, cuts potable irrigation demand and can supply toilets."
+    ]
+   },
+   {
+    "h": "Cooling towers and process water",
+    "body": [
+     "Process water is water used for industrial processes and building systems such as cooling towers, boilers and chillers, as well as equipment like commercial kitchen appliances. Cooling towers can be a building's single largest water use because water evaporates as it rejects heat.",
+     "As water evaporates, minerals concentrate in the remaining water. Operators periodically discharge some of it (blowdown) and add fresh makeup water. Cycles of concentration describe how many times water is concentrated before blowdown; more cycles mean less makeup water.",
+     "The Cooling Tower Water Use credit asks teams to analyze the makeup water's chemistry so they can run the maximum number of cycles without exceeding limits that cause scaling or corrosion. Using nonpotable makeup water, such as condensate or rainwater, increases savings further."
+    ],
+    "tip": "Higher cycles of concentration = less blowdown = less makeup water."
+   },
+   {
+    "h": "Water metering",
+    "body": [
+     "You cannot manage what you do not measure. The Building-Level Water Metering prerequisite in LEED v4 requires a permanent meter measuring the building's total potable water use and a commitment to share water consumption data with USGBC for five years, starting from occupancy or certification.",
+     "The Water Metering credit adds permanent submeters on major subsystems, such as irrigation, indoor plumbing fixtures, domestic hot water, boilers, reclaimed water and other process water. Submetering helps operators find leaks, verify that efficiency measures perform as designed and track trends over time."
+    ]
+   }
+  ],
+  "terms": [
+   {
+    "term": "Potable water",
+    "def": "Water that meets drinking water quality standards and is approved for human consumption."
+   },
+   {
+    "term": "Nonpotable water",
+    "def": "Water not suitable for drinking but acceptable for uses such as flushing, irrigation and cooling tower makeup."
+   },
+   {
+    "term": "Energy-water nexus",
+    "def": "The link between water and energy: treating, pumping and heating water uses energy, and generating energy uses water."
+   },
+   {
+    "term": "Energy Policy Act (EPAct)",
+    "def": "U.S. federal law setting maximum fixture water use; the source of LEED's indoor water use baseline."
+   },
+   {
+    "term": "WaterSense",
+    "def": "EPA program that labels water-efficient products, such as toilets and faucets, that meet performance criteria."
+   },
+   {
+    "term": "Gallons per flush (gpf)",
+    "def": "Unit for rating flush fixtures such as toilets and urinals."
+   },
+   {
+    "term": "Gallons per minute (gpm)",
+    "def": "Unit for rating flow fixtures such as faucets and showerheads."
+   },
+   {
+    "term": "Flush fixture",
+    "def": "Fixture that uses a set volume per use, such as a toilet (water closet) or urinal."
+   },
+   {
+    "term": "Flow fixture",
+    "def": "Fixture whose use depends on flow rate and duration, such as a faucet or showerhead."
+   },
+   {
+    "term": "Dual-flush toilet",
+    "def": "Toilet with two flush volumes: a smaller flush for liquid waste and a full flush for solids."
+   },
+   {
+    "term": "Graywater",
+    "def": "Untreated wastewater from lavatories, showers, bathtubs and clothes washers that has not contacted toilet waste; definitions vary by code."
+   },
+   {
+    "term": "Blackwater",
+    "def": "Wastewater containing toilet waste; many codes also include kitchen sink water."
+   },
+   {
+    "term": "Reclaimed water",
+    "def": "Wastewater treated to a level suitable for nonpotable reuse, often supplied by a municipality."
+   },
+   {
+    "term": "Rainwater harvesting",
+    "def": "Capturing and storing rainwater, typically from roofs, for nonpotable uses such as irrigation and flushing."
+   },
+   {
+    "term": "Condensate recovery",
+    "def": "Collecting water that condenses on air-conditioning coils for reuse, such as cooling tower makeup or irrigation."
+   },
+   {
+    "term": "Evapotranspiration (ET)",
+    "def": "Water lost to the atmosphere through evaporation from soil and transpiration from plants."
+   },
+   {
+    "term": "Xeriscaping",
+    "def": "Landscaping with drought-tolerant plants and water-conserving design to reduce or eliminate irrigation."
+   },
+   {
+    "term": "Hydrozoning",
+    "def": "Grouping plants with similar water needs so irrigation can be matched to each zone."
+   },
+   {
+    "term": "Drip irrigation",
+    "def": "Low-pressure system delivering water directly to plant roots, minimizing evaporation and overspray."
+   },
+   {
+    "term": "Smart irrigation controller",
+    "def": "Controller that adjusts watering based on weather data or soil moisture rather than a fixed schedule."
+   },
+   {
+    "term": "Process water",
+    "def": "Water used by building systems and equipment such as cooling towers, boilers, chillers and commercial kitchen appliances."
+   },
+   {
+    "term": "Cycles of concentration",
+    "def": "How many times cooling tower water is concentrated by evaporation before blowdown; more cycles mean less makeup water."
+   },
+   {
+    "term": "Blowdown",
+    "def": "Water deliberately drained from a cooling tower or boiler to remove concentrated minerals."
+   },
+   {
+    "term": "Submeter",
+    "def": "Meter that measures a specific subsystem or end use, such as irrigation or domestic hot water."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'>\n<defs><marker id='ab' viewBox='0 0 6 6' refX='5' refY='3' markerWidth='6' markerHeight='6' orient='auto'><path d='M0 0L6 3L0 6Z' fill='#2b6cb0'/></marker><marker id='ag' viewBox='0 0 6 6' refX='5' refY='3' markerWidth='6' markerHeight='6' orient='auto'><path d='M0 0L6 3L0 6Z' fill='#0a8a6a'/></marker><marker id='ao' viewBox='0 0 6 6' refX='5' refY='3' markerWidth='6' markerHeight='6' orient='auto'><path d='M0 0L6 3L0 6Z' fill='#d97706'/></marker></defs>\n<rect width='360' height='220' fill='#f7f8f5'/>\n<text x='180' y='16' font-size='12' font-weight='bold' fill='#334155' text-anchor='middle'>Match water quality to end use</text>\n<text x='67' y='31' font-size='10' fill='#334155' text-anchor='middle' font-weight='bold'>SOURCES</text>\n<text x='293' y='31' font-size='10' fill='#334155' text-anchor='middle' font-weight='bold'>END USES</text>\n<rect x='12' y='36' width='110' height='34' rx='4' fill='#2b6cb0'/>\n<text x='67' y='50' font-size='10' fill='#fff' text-anchor='middle'>Municipal</text><text x='67' y='63' font-size='10' fill='#fff' text-anchor='middle'>potable water</text>\n<rect x='12' y='92' width='110' height='34' rx='4' fill='#0a8a6a'/>\n<text x='67' y='106' font-size='10' fill='#fff' text-anchor='middle'>Harvested</text><text x='67' y='119' font-size='10' fill='#fff' text-anchor='middle'>rainwater</text>\n<rect x='12' y='148' width='110' height='34' rx='4' fill='#d97706'/>\n<text x='67' y='162' font-size='10' fill='#fff' text-anchor='middle'>Treated</text><text x='67' y='175' font-size='10' fill='#fff' text-anchor='middle'>graywater</text>\n<g fill='#fff' stroke='#334155'><rect x='238' y='36' width='110' height='34' rx='4'/><rect x='238' y='92' width='110' height='34' rx='4'/><rect x='238' y='148' width='110' height='34' rx='4'/></g>\n<g font-size='10' fill='#334155' text-anchor='middle'><text x='293' y='50'>Lavatories, showers,</text><text x='293' y='63'>kitchen sinks</text><text x='293' y='106'>Toilet and urinal</text><text x='293' y='119'>flushing</text><text x='293' y='162'>Irrigation, cooling</text><text x='293' y='175'>tower makeup</text></g>\n<line x1='122' y1='53' x2='236' y2='53' stroke='#2b6cb0' stroke-width='2' marker-end='url(#ab)'/>\n<text x='180' y='47' font-size='10' fill='#2b6cb0' text-anchor='middle'>potable needed</text>\n<line x1='122' y1='104' x2='236' y2='104' stroke='#0a8a6a' stroke-width='2' marker-end='url(#ag)'/>\n<line x1='122' y1='114' x2='236' y2='158' stroke='#0a8a6a' stroke-width='2' marker-end='url(#ag)'/>\n<line x1='122' y1='158' x2='236' y2='114' stroke='#d97706' stroke-width='2' marker-end='url(#ao)'/>\n<line x1='122' y1='170' x2='236' y2='170' stroke='#d97706' stroke-width='2' marker-end='url(#ao)'/>\n<polyline points='348,53 354,53 354,192 6,192 6,165 10,165' fill='none' stroke='#d97706' stroke-width='1.5' stroke-dasharray='4 3' marker-end='url(#ao)'/>\n<text x='180' y='208' font-size='10' fill='#334155' text-anchor='middle'>Dashed: lavatory and shower wastewater becomes graywater</text>\n</svg>",
+  "svgCaption": "Reserve potable water for uses that need it; supply flushing, irrigation and cooling towers with nonpotable sources such as harvested rainwater and treated graywater, which can come from the building's own lavatories and showers.",
+  "questions": [
+   {
+    "q": "LEED's baseline for indoor plumbing fixture water use is derived from which source?",
+    "options": [
+     "ASHRAE 90.1",
+     "Energy Policy Act (EPAct) requirements",
+     "ASHRAE 62.1",
+     "Green Seal standards"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Indoor water baselines come from EPAct fixture requirements. ASHRAE 90.1 is the energy standard and 62.1 the ventilation standard."
+   },
+   {
+    "q": "Which fixtures are rated in gallons per flush (gpf)? (Select TWO)",
+    "options": [
+     "Showerheads",
+     "Toilets (water closets)",
+     "Kitchen faucets",
+     "Urinals",
+     "Lavatory faucets"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "select": 2,
+    "explain": "Toilets and urinals are flush fixtures measured in gpf. Showerheads and faucets are flow fixtures measured in gpm."
+   },
+   {
+    "q": "What is WaterSense?",
+    "options": [
+     "A USGBC credit for water metering",
+     "A smart irrigation controller brand",
+     "A certification for green power purchases",
+     "An EPA program that labels water-efficient products"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "WaterSense is an EPA labeling program for water-efficient products. Green power certification is Green-e, not WaterSense."
+   },
+   {
+    "q": "Which description best defines graywater?",
+    "options": [
+     "Municipally treated drinking water",
+     "Rainwater collected from roofs",
+     "Untreated wastewater from sources such as lavatories, showers and clothes washers that has not contacted toilet waste",
+     "Wastewater containing toilet waste"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Graywater comes from lavatories, showers, bathtubs and clothes washers. Wastewater containing toilet waste is blackwater."
+   },
+   {
+    "q": "Wastewater from which source is classified as blackwater in virtually all jurisdictions?",
+    "options": [
+     "Showers",
+     "Bathroom lavatories",
+     "Clothes washers",
+     "Toilets"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Toilet wastewater is always blackwater. Shower, lavatory and clothes washer water are typically graywater, though local codes vary."
+   },
+   {
+    "q": "A project in an arid climate wants to avoid permanent irrigation entirely. Which strategies best support this goal? (Select TWO)",
+    "options": [
+     "Plant large areas of conventional turfgrass",
+     "Apply xeriscaping principles to the landscape design",
+     "Install an ornamental fountain supplied with potable water",
+     "Use potable water spray irrigation at midday",
+     "Select native and adapted, drought-tolerant plants"
+    ],
+    "answer": [
+     1,
+     4
+    ],
+    "select": 2,
+    "explain": "Native, adapted and drought-tolerant plantings can thrive on natural rainfall after establishment. Turf and midday spray irrigation increase demand."
+   },
+   {
+    "q": "What is evapotranspiration?",
+    "options": [
+     "Water lost through leaks in irrigation piping",
+     "Water removed from a cooling tower during blowdown",
+     "Water lost to the atmosphere through evaporation from soil and transpiration from plants",
+     "Rainwater that runs off impervious surfaces"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Evapotranspiration combines evaporation from soil and transpiration from plants, and determines how much water a landscape needs."
+   },
+   {
+    "q": "Which irrigation type is generally the most efficient?",
+    "options": [
+     "Rotor sprinklers",
+     "Fixed spray heads",
+     "Manual hose watering",
+     "Drip irrigation"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Drip irrigation delivers water directly to roots, minimizing evaporation, wind drift and overspray."
+   },
+   {
+    "q": "Which factors affect how much irrigation water a landscape requires? (Select THREE)",
+    "options": [
+     "Roof solar reflectance index",
+     "Lavatory faucet flow rate",
+     "Number of building occupants",
+     "Irrigation system efficiency",
+     "Plant species selected",
+     "Local climate and evapotranspiration rate"
+    ],
+    "answer": [
+     3,
+     4,
+     5
+    ],
+    "select": 3,
+    "explain": "Plant types, climate and irrigation efficiency drive landscape water demand. Occupancy and fixture flow rates affect indoor water use, and SRI is a heat island metric."
+   },
+   {
+    "q": "A facility manager increases the cycles of concentration in the building's cooling tower within safe chemistry limits. What is the main result?",
+    "options": [
+     "Less makeup water is required because less water is discharged as blowdown",
+     "More makeup water is required",
+     "Indoor fixture water use falls",
+     "Refrigerant leakage is reduced"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "More cycles means the same water is reused longer before blowdown, so less fresh makeup water is needed."
+   },
+   {
+    "q": "What is the first step a team takes to pursue the Cooling Tower Water Use credit?",
+    "options": [
+     "Purchase renewable energy certificates",
+     "Analyze the makeup water's chemistry to determine the maximum cycles achievable without scaling or corrosion",
+     "Install waterless urinals",
+     "Replace the cooling tower with a larger unit"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "The credit centers on a potable water analysis that shows how many cycles the tower can safely run, which minimizes makeup water."
+   },
+   {
+    "q": "In LEED v4, the Indoor Water Use Reduction prerequisite requires what minimum reduction from the calculated baseline?",
+    "options": [
+     "10%",
+     "20%",
+     "50%",
+     "30%"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "LEED v4 requires at least a 20% reduction in indoor fixture and fitting water use from the baseline."
+   },
+   {
+    "q": "Under the LEED v4 Building-Level Water Metering prerequisite, for how long must the project commit to sharing whole-building water data with USGBC?",
+    "options": [
+     "Two years",
+     "Five years",
+     "Ten years",
+     "One year"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "The prerequisite requires a commitment to share water consumption data for five years starting from occupancy or certification."
+   },
+   {
+    "q": "A team pursuing the LEED v4 Water Metering credit must choose subsystems to submeter. Which are eligible water subsystems? (Select TWO)",
+    "options": [
+     "Interior lighting",
+     "Elevators",
+     "Irrigation",
+     "Domestic hot water",
+     "Refrigerant charge"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Eligible subsystems include irrigation, indoor plumbing fixtures, domestic hot water, boilers, reclaimed water and other process water. Lighting and elevators are energy end uses."
+   },
+   {
+    "q": "Which is an example of process water?",
+    "options": [
+     "Water used in lavatory faucets",
+     "Water in a decorative pond fed only by rainfall",
+     "Water used for cooling tower makeup",
+     "Rainwater infiltrating through pervious paving"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Process water serves building systems and equipment such as cooling towers, boilers and commercial kitchen appliances. Lavatory use is fixture water."
+   },
+   {
+    "q": "An office renovation team wants to reduce indoor potable water use. Which actions will produce savings? (Select TWO)",
+    "options": [
+     "Fit lavatory faucets with low-flow aerators or sensors",
+     "Replace old urinals with new models that merely match the baseline flush rate",
+     "Switch irrigation from rainwater to potable water",
+     "Increase cooling tower blowdown",
+     "Install WaterSense-labeled high-efficiency toilets"
+    ],
+    "answer": [
+     0,
+     4
+    ],
+    "select": 2,
+    "explain": "Efficient toilets and low-flow faucets reduce fixture use below the baseline. A fixture that only matches the baseline earns no savings in the calculation."
+   },
+   {
+    "q": "Which sources could supply nonpotable water for toilet flushing? (Select THREE)",
+    "options": [
+     "Treated graywater",
+     "Well water treated to drinking water standards",
+     "Municipal potable water",
+     "Municipally supplied reclaimed water",
+     "Harvested rainwater",
+     "Bottled drinking water"
+    ],
+    "answer": [
+     0,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "Rainwater, graywater and reclaimed water are nonpotable alternatives. Municipal, bottled and treated well water are all potable."
+   },
+   {
+    "q": "Water used for which purpose is addressed by Outdoor Water Use Reduction rather than Indoor Water Use Reduction?",
+    "options": [
+     "Toilet flushing",
+     "Landscape irrigation",
+     "Showers",
+     "Kitchen faucets"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Outdoor Water Use Reduction covers irrigation. Toilets, showers and faucets are indoor fixtures."
+   },
+   {
+    "q": "What does a smart irrigation controller do?",
+    "options": [
+     "Measures potable water entering the building",
+     "Treats graywater for reuse",
+     "Runs irrigation on a fixed daily schedule",
+     "Adjusts watering based on weather data or soil moisture"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Smart controllers skip or shorten watering when rain or soil moisture makes it unnecessary, avoiding waste."
+   },
+   {
+    "q": "Why does reducing hot water use in showers and lavatories also reduce energy use?",
+    "options": [
+     "Hot water fixtures use more refrigerant",
+     "It reduces the heat island effect",
+     "It lowers the building's lighting power density",
+     "Less water must be heated and pumped, saving the energy used to do so"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Water heating and pumping consume energy, so saving hot water saves energy as well; this is the energy-water nexus."
+   },
+   {
+    "q": "Which are principles of xeriscaping? (Select THREE)",
+    "options": [
+     "Maximize lawn area for open space",
+     "Use drought-tolerant plants",
+     "Water with overhead spray in the afternoon",
+     "Limit turfgrass areas",
+     "Plant water-loving exotic species",
+     "Use mulch and soil improvements to retain moisture"
+    ],
+    "answer": [
+     1,
+     3,
+     5
+    ],
+    "select": 3,
+    "explain": "Xeriscaping relies on drought-tolerant plants, reduced turf and moisture-retaining soils and mulch. The other options increase water demand."
+   },
+   {
+    "q": "In LEED v4, eligible residential-type appliances such as clothes washers installed under the Indoor Water Use Reduction prerequisite must carry which label?",
+    "options": [
+     "FSC",
+     "ENERGY STAR",
+     "Green Seal",
+     "Green-e"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "LEED v4 requires eligible appliances to be ENERGY STAR qualified. Green-e covers green power, FSC covers wood and Green Seal covers products such as cleaners."
+   },
+   {
+    "q": "Which approaches satisfy the LEED v4 Outdoor Water Use Reduction prerequisite? (Select TWO)",
+    "options": [
+     "Show the landscape needs no permanent irrigation beyond a short establishment period",
+     "Plant only turfgrass but water it at night",
+     "Reduce the landscape water requirement by the required percentage from the calculated baseline",
+     "Supply a fountain with potable water",
+     "Install a building-level water meter"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "The prerequisite is met with no permanent irrigation or a calculated reduction from the baseline. A meter is a separate prerequisite."
+   },
+   {
+    "q": "A building in a hot, humid climate has large air-handling units. Which alternative water sources could reduce potable cooling tower makeup water? (Select TWO)",
+    "options": [
+     "Municipal potable water",
+     "Untreated blackwater",
+     "Harvested rainwater",
+     "Air-conditioner condensate",
+     "Bottled water"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Condensate is plentiful in humid climates and rainwater can be stored for makeup. Blackwater is not appropriate untreated, and potable sources are what the team is trying to save."
+   },
+   {
+    "q": "Which are benefits of installing water submeters? (Select TWO)",
+    "options": [
+     "Verifying that efficiency measures perform as designed over time",
+     "Detecting leaks and abnormal consumption quickly",
+     "Satisfying the construction pollution prevention prerequisite",
+     "Automatically lowering fixture flow rates",
+     "Earning Green-e certification"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "select": 2,
+    "explain": "Submeters let operators spot leaks and track performance. Meters measure use; they do not change fixture flow rates."
+   }
+  ]
+ },
+ {
+  "n": 6,
+  "id": "energy-and-atmosphere",
+  "title": "Energy and Atmosphere",
+  "intro": "Energy and Atmosphere (EA) is the largest LEED category and addresses how buildings use energy and affect the atmosphere through greenhouse gas emissions and refrigerants. It covers commissioning, energy performance and modeling, metering, demand response, refrigerant management, renewable energy and green power.",
+  "sections": [
+   {
+    "h": "Energy strategy: reduce, then supply",
+    "body": [
+     "Buildings account for a large share of energy use and greenhouse gas emissions, so EA carries more points than any other category. The most cost-effective approach follows an order: first reduce loads through passive design (orientation, daylighting, shading, a high-performance envelope), then meet remaining loads with efficient systems, then generate renewable energy on site, and finally buy green power or carbon offsets.",
+     "Energy use is often compared with energy use intensity (EUI), the annual energy consumed per unit of floor area, such as kBtu per square foot per year. Benchmarking tools such as ENERGY STAR Portfolio Manager let owners compare a building with similar buildings.",
+     "In LEED v4 BD+C, EA has four prerequisites: Fundamental Commissioning and Verification, Minimum Energy Performance, Building-Level Energy Metering and Fundamental Refrigerant Management."
+    ],
+    "tip": "Know the four v4 EA prerequisites: fundamental commissioning, minimum energy performance, building-level energy metering and fundamental refrigerant management."
+   },
+   {
+    "h": "Commissioning",
+    "body": [
+     "Commissioning (Cx) is a quality-focused process that verifies building systems are designed, installed, tested and able to operate according to the owner's project requirements. It reduces defects, change orders and energy waste, and it starts in predesign rather than at the end of construction.",
+     "Key roles and documents: the owner writes the Owner's Project Requirements (OPR), which describe goals and expectations. The design team writes the Basis of Design (BOD), which explains how the design meets the OPR. The commissioning authority (CxA) leads the process, reviews the OPR, BOD and design, writes the Cx plan, oversees installation checks and functional testing, keeps an issues log and prepares the final Cx report.",
+     "Fundamental Cx covers mechanical, electrical, plumbing and renewable energy systems. Enhanced Cx adds submittal review, verification of the systems manual and operator training, seasonal testing, a review of operations about 10 months after substantial completion, and an ongoing Cx plan. It can also include monitoring-based commissioning (continuous metering and analysis) and envelope commissioning. For existing buildings that were never commissioned, retro-commissioning applies the same idea."
+    ],
+    "tip": "Owner writes the OPR; design team writes the BOD; CxA leads and verifies. This is one of the most frequently tested facts in EA."
+   },
+   {
+    "h": "Energy performance and modeling",
+    "body": [
+     "The Minimum Energy Performance prerequisite sets a floor for efficiency. In LEED v4 the reference standard is ASHRAE 90.1-2010. Projects can comply through whole-building energy simulation or, for some projects, prescriptive paths such as the ASHRAE Advanced Energy Design Guides.",
+     "In whole-building energy simulation, the team models the proposed design and compares it with a baseline building that meets the reference standard (ASHRAE 90.1 Appendix G method). The Optimize Energy Performance credit awards points for greater improvement over that baseline.",
+     "Energy modeling is most valuable early. A simple early energy analysis informs massing, orientation and envelope decisions before they are locked in. Loads that do not belong to building systems, such as computers, office equipment, elevators and commercial kitchen and refrigeration equipment, are process or plug loads, and they are included in the model."
+    ]
+   },
+   {
+    "h": "Metering and demand response",
+    "body": [
+     "Building-Level Energy Metering requires meters that measure total building energy use, such as electricity, natural gas and district energy, and a commitment to share consumption data with USGBC for five years. The Advanced Energy Metering credit adds meters on major end uses so operators can see where energy goes and spot waste.",
+     "Demand response (DR) is a change in electricity use by the customer in response to signals from the utility, typically reducing load during periods of high demand or grid stress in exchange for incentives. The Demand Response credit rewards buildings designed and committed to participate in DR programs.",
+     "Reducing peak demand helps utilities avoid running the least efficient, most polluting power plants and can delay the need for new generation."
+    ]
+   },
+   {
+    "h": "Refrigerant management",
+    "body": [
+     "Refrigerants used in cooling and refrigeration can damage the atmosphere in two ways. Ozone depletion potential (ODP) measures harm to the stratospheric ozone layer; global warming potential (GWP) measures contribution to climate change relative to carbon dioxide.",
+     "Chlorofluorocarbons (CFCs) have high ODP and were phased out under the Montreal Protocol. The Fundamental Refrigerant Management prerequisite prohibits CFC-based refrigerants in new HVAC&R systems; existing buildings with CFC equipment must have a phase-out plan.",
+     "Choosing a refrigerant involves tradeoffs. Hydrochlorofluorocarbons (HCFCs) have lower ODP but are also being phased out, and many hydrofluorocarbons (HFCs) have zero ODP but high GWP. The Enhanced Refrigerant Management credit rewards using no refrigerants or refrigerants with low combined ODP and GWP impact, and minimizing leaks. Natural refrigerants such as ammonia, carbon dioxide and water have low environmental impact."
+    ],
+    "tip": "ODP = ozone layer; GWP = climate. A refrigerant with zero ODP can still have a high GWP."
+   },
+   {
+    "h": "Renewable energy, green power and offsets",
+    "body": [
+     "On-site renewable energy systems, such as solar photovoltaic, solar thermal and wind, generate energy where it is used. The Renewable Energy Production credit rewards supplying a share of the building's energy this way.",
+     "Where on-site generation is not practical, owners can buy off-site green power or renewable energy certificates (RECs). A REC represents the environmental attributes of one megawatt-hour of renewable electricity and can be sold separately from the electricity itself. Carbon offsets represent greenhouse gas reductions achieved elsewhere to compensate for a project's emissions.",
+     "LEED looks for third-party verification. Green power and RECs are typically Green-e Energy certified, and carbon offsets are typically Green-e Climate certified or equivalent. In LEED v4, the Green Power and Carbon Offsets credit requires a contract of at least five years."
+    ],
+    "tip": "Green-e Energy = green power and RECs; Green-e Climate = carbon offsets."
+   }
+  ],
+  "terms": [
+   {
+    "term": "Commissioning (Cx)",
+    "def": "Process verifying that building systems are planned, designed, installed, tested and operated to meet the owner's project requirements."
+   },
+   {
+    "term": "Commissioning authority (CxA)",
+    "def": "Person who leads, plans and verifies the commissioning process and reports findings to the owner."
+   },
+   {
+    "term": "Owner's Project Requirements (OPR)",
+    "def": "Owner-written document describing the project's goals, functional requirements and performance expectations."
+   },
+   {
+    "term": "Basis of Design (BOD)",
+    "def": "Design team document explaining the assumptions and decisions used to meet the OPR."
+   },
+   {
+    "term": "Commissioning plan",
+    "def": "Document by the CxA defining Cx scope, roles, schedule, checklists and testing procedures."
+   },
+   {
+    "term": "Functional performance testing",
+    "def": "Tests confirming installed systems operate as intended under a range of conditions."
+   },
+   {
+    "term": "Systems manual",
+    "def": "Guide for operators describing how building systems work, how to maintain them and how to keep them performing."
+   },
+   {
+    "term": "Retro-commissioning",
+    "def": "Commissioning an existing building that was never commissioned, to improve performance and fix operating problems."
+   },
+   {
+    "term": "Monitoring-based commissioning",
+    "def": "Ongoing commissioning that uses permanent meters and analysis software to track system performance and detect problems."
+   },
+   {
+    "term": "ASHRAE 90.1",
+    "def": "Energy standard for buildings except low-rise residential; LEED v4 references the 2010 edition for minimum energy performance."
+   },
+   {
+    "term": "Energy modeling (simulation)",
+    "def": "Computer analysis predicting a building's energy use, used to compare a proposed design with a baseline."
+   },
+   {
+    "term": "Baseline building",
+    "def": "Modeled building that just meets the reference energy standard, used for comparison with the proposed design."
+   },
+   {
+    "term": "Energy use intensity (EUI)",
+    "def": "Annual energy use per unit of floor area, such as kBtu per square foot per year."
+   },
+   {
+    "term": "ENERGY STAR Portfolio Manager",
+    "def": "Free EPA tool for tracking and benchmarking building energy and water use against similar buildings."
+   },
+   {
+    "term": "Process (plug) loads",
+    "def": "Energy used by equipment not part of building systems, such as computers, elevators and commercial kitchen equipment."
+   },
+   {
+    "term": "Demand response (DR)",
+    "def": "Reducing or shifting electricity use in response to utility signals during periods of peak demand or grid stress."
+   },
+   {
+    "term": "Peak demand",
+    "def": "The highest rate of electricity use during a period, which drives utility capacity needs and costs."
+   },
+   {
+    "term": "Ozone depletion potential (ODP)",
+    "def": "A substance's relative ability to destroy stratospheric ozone."
+   },
+   {
+    "term": "Global warming potential (GWP)",
+    "def": "A gas's heat-trapping effect over a set period relative to the same mass of carbon dioxide."
+   },
+   {
+    "term": "Chlorofluorocarbon (CFC)",
+    "def": "Refrigerant with high ozone depletion potential, phased out under the Montreal Protocol; prohibited in new LEED systems."
+   },
+   {
+    "term": "Montreal Protocol",
+    "def": "International treaty phasing out production of ozone-depleting substances such as CFCs and HCFCs."
+   },
+   {
+    "term": "Renewable energy certificate (REC)",
+    "def": "Tradable certificate representing the environmental attributes of one megawatt-hour of renewable electricity."
+   },
+   {
+    "term": "Carbon offset",
+    "def": "A unit of greenhouse gas reduction achieved elsewhere, purchased to compensate for a project's own emissions."
+   },
+   {
+    "term": "Green-e",
+    "def": "Third-party certification program: Green-e Energy for renewable energy and RECs, Green-e Climate for carbon offsets."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'>\n<rect width='360' height='220' fill='#f7f8f5'/>\n<text x='180' y='16' font-size='12' font-weight='bold' fill='#334155' text-anchor='middle'>The commissioning (Cx) process</text>\n<polygon points='6,26 88,26 96,39 88,52 6,52' fill='#0a8a6a'/>\n<polygon points='93,26 175,26 183,39 175,52 93,52 101,39' fill='#2b6cb0'/>\n<polygon points='180,26 262,26 270,39 262,52 180,52 188,39' fill='#0a8a6a'/>\n<polygon points='267,26 354,26 354,52 267,52 275,39' fill='#2b6cb0'/>\n<g font-size='10' font-weight='bold' fill='#fff' text-anchor='middle'><text x='49' y='43'>Predesign</text><text x='138' y='43'>Design</text><text x='225' y='43'>Construction</text><text x='313' y='43'>Occupancy</text></g>\n<g font-size='10' fill='#334155'>\n<text x='10' y='70'>Owner writes</text><text x='10' y='82'>the OPR</text><text x='10' y='100'>Engage CxA</text><text x='10' y='112'>early</text>\n<text x='97' y='70'>Team writes</text><text x='97' y='82'>the BOD</text><text x='97' y='100'>CxA reviews</text><text x='97' y='112'>OPR, BOD and</text><text x='97' y='124'>design</text><text x='97' y='142'>Cx plan; Cx</text><text x='97' y='154'>specs in CDs</text>\n<text x='184' y='100'>Checklists</text><text x='184' y='118'>Functional</text><text x='184' y='130'>testing</text><text x='184' y='148'>Issues log</text>\n<text x='271' y='70'>Final Cx report</text>\n</g>\n<g font-size='10' fill='#d97706' font-weight='bold'>\n<text x='184' y='70'>Submittal</text><text x='184' y='82'>review</text>\n<text x='271' y='88'>Systems manual</text><text x='271' y='106'>Staff training</text><text x='271' y='124'>Seasonal tests</text><text x='271' y='142'>10-month review</text><text x='271' y='160'>Ongoing Cx plan</text>\n</g>\n<line x1='6' y1='180' x2='354' y2='180' stroke='#334155' stroke-width='0.5'/>\n<rect x='40' y='194' width='10' height='10' fill='#334155'/>\n<text x='55' y='203' font-size='10' fill='#334155'>Fundamental (prerequisite)</text>\n<rect x='200' y='194' width='10' height='10' fill='#d97706'/>\n<text x='215' y='203' font-size='10' fill='#d97706' font-weight='bold'>Enhanced (credit)</text>\n</svg>",
+  "svgCaption": "Commissioning runs from predesign through occupancy. Fundamental activities (dark) are required; enhanced activities (amber) such as submittal review, training verification, seasonal testing and the 10-month review earn the Enhanced Commissioning credit.",
+  "questions": [
+   {
+    "q": "Who is responsible for documenting the Owner's Project Requirements (OPR)?",
+    "options": [
+     "The commissioning authority",
+     "The general contractor",
+     "The owner",
+     "The LEED consultant"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "The owner writes the OPR, describing project goals and expectations. The CxA reviews it but does not author it."
+   },
+   {
+    "q": "Which party develops the Basis of Design (BOD)?",
+    "options": [
+     "The design team",
+     "The commissioning authority",
+     "The owner",
+     "GBCI"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The design team writes the BOD to explain how the design meets the OPR. The CxA reviews it."
+   },
+   {
+    "q": "In LEED v4, which systems fall within the scope of Fundamental Commissioning and Verification? (Select THREE)",
+    "options": [
+     "Landscape plant selection",
+     "Renewable energy systems",
+     "Mechanical (HVAC&R) systems",
+     "Interior paint finishes",
+     "Office furniture",
+     "Lighting and daylighting controls"
+    ],
+    "answer": [
+     1,
+     2,
+     5
+    ],
+    "select": 3,
+    "explain": "Fundamental Cx covers mechanical, electrical, plumbing and renewable energy systems. Furniture, plants and finishes are not commissioned systems."
+   },
+   {
+    "q": "Which standard does LEED v4 reference for the Minimum Energy Performance prerequisite?",
+    "options": [
+     "ASHRAE 90.1",
+     "ASHRAE 55",
+     "ASHRAE 62.1",
+     "EPA Construction General Permit"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "ASHRAE 90.1 is the energy standard. ASHRAE 62.1 covers ventilation and ASHRAE 55 covers thermal comfort."
+   },
+   {
+    "q": "In whole-building energy simulation for LEED, the proposed design is compared with what?",
+    "options": [
+     "The national average EUI for all buildings",
+     "A baseline building that meets the reference energy standard",
+     "A building of the same size with no HVAC system",
+     "The previous year's utility bills"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Energy performance is shown as improvement over a modeled baseline building that just meets ASHRAE 90.1."
+   },
+   {
+    "q": "What does the LEED v4 Fundamental Refrigerant Management prerequisite require for new HVAC&R systems?",
+    "options": [
+     "Do not use CFC-based refrigerants",
+     "Install refrigerant leak detection in every room",
+     "Eliminate all refrigerants",
+     "Use only natural refrigerants"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The prerequisite prohibits CFC-based refrigerants in new systems. Eliminating refrigerants or using natural ones are paths to the enhanced credit, not the prerequisite."
+   },
+   {
+    "q": "Refrigerants can harm the atmosphere in which two ways? (Select TWO)",
+    "options": [
+     "Depleting stratospheric ozone",
+     "Causing eutrophication of lakes",
+     "Increasing light pollution",
+     "Increasing the heat island effect",
+     "Contributing to global warming"
+    ],
+    "answer": [
+     0,
+     4
+    ],
+    "select": 2,
+    "explain": "Refrigerant impacts are measured by ozone depletion potential and global warming potential. Eutrophication, light pollution and heat islands are site issues."
+   },
+   {
+    "q": "Which international agreement phased out ozone-depleting substances such as CFCs?",
+    "options": [
+     "Kyoto Protocol",
+     "Paris Agreement",
+     "Montreal Protocol",
+     "Energy Policy Act"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "The Montreal Protocol phases out ozone-depleting substances. Kyoto and Paris address greenhouse gases broadly."
+   },
+   {
+    "q": "What does a renewable energy certificate (REC) represent?",
+    "options": [
+     "A permit to install solar panels",
+     "A carbon credit for planting trees on site",
+     "The environmental attributes of one megawatt-hour of renewable electricity",
+     "A rebate for ENERGY STAR equipment"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "A REC represents the environmental attributes of one MWh of renewable generation and can be sold separately from the electricity."
+   },
+   {
+    "q": "A team plans to purchase off-site green power and carbon offsets. Which certifications should it look for? (Select TWO)",
+    "options": [
+     "Green-e Energy",
+     "WaterSense",
+     "Green-e Climate",
+     "Forest Stewardship Council",
+     "ENERGY STAR"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "Green-e Energy certifies renewable energy and RECs; Green-e Climate certifies carbon offsets. ENERGY STAR and WaterSense label products."
+   },
+   {
+    "q": "What is demand response?",
+    "options": [
+     "Increasing ventilation when CO2 rises",
+     "Replacing equipment when it fails",
+     "Changing electricity use in response to utility signals during peak demand or grid stress",
+     "Responding to occupant comfort complaints"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Demand response reduces or shifts load when the utility signals, often in exchange for incentives. CO2-based ventilation is demand-controlled ventilation, a different concept."
+   },
+   {
+    "q": "Which are part of the commissioning process? (Select THREE)",
+    "options": [
+     "Purchasing Green-e certified RECs",
+     "Completing a Phase I Environmental Site Assessment",
+     "Writing an erosion and sedimentation control plan",
+     "Developing a commissioning plan",
+     "Preparing a final commissioning report",
+     "Functional performance testing"
+    ],
+    "answer": [
+     3,
+     4,
+     5
+    ],
+    "select": 3,
+    "explain": "Cx includes the Cx plan, functional testing and the final report. ESC plans, RECs and site assessments belong to other categories."
+   },
+   {
+    "q": "What does the LEED v4 Building-Level Energy Metering prerequisite require? (Select TWO)",
+    "options": [
+     "Submeters on every electrical circuit",
+     "Hiring an independent energy modeler",
+     "Purchase of renewable energy certificates",
+     "A commitment to share energy consumption data with USGBC for five years",
+     "Meters that measure total building energy consumption"
+    ],
+    "answer": [
+     3,
+     4
+    ],
+    "select": 2,
+    "explain": "The prerequisite requires whole-building meters and a five-year data sharing commitment. End-use submetering is the Advanced Energy Metering credit."
+   },
+   {
+    "q": "A design team is early in schematic design and wants to cut energy use cost-effectively before adding solar panels. What should it do first?",
+    "options": [
+     "Oversize the HVAC system for future flexibility",
+     "Purchase carbon offsets",
+     "Add more exterior lighting",
+     "Reduce loads through orientation, shading, daylighting and a high-performance envelope"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Reducing loads first is usually cheapest and shrinks the size of systems and renewables needed. Offsets come last in the hierarchy."
+   },
+   {
+    "q": "Which are passive design strategies for reducing energy demand? (Select TWO)",
+    "options": [
+     "Specifying a well-insulated, airtight envelope",
+     "Installing a larger chiller",
+     "Orienting the building to control solar gain and capture daylight",
+     "Purchasing renewable energy certificates",
+     "Increasing interior lighting power density"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "Orientation and envelope quality reduce loads without active equipment. Larger chillers and RECs are active or off-site measures."
+   },
+   {
+    "q": "Which are on-site renewable energy systems? (Select THREE)",
+    "options": [
+     "Natural gas cogeneration",
+     "Small wind turbines",
+     "Solar photovoltaic panels",
+     "Diesel backup generator",
+     "Grid electricity from a coal plant",
+     "Solar thermal water heating"
+    ],
+    "answer": [
+     1,
+     2,
+     5
+    ],
+    "select": 3,
+    "explain": "Solar PV, solar thermal and wind are renewable. Natural gas, diesel and coal are fossil fuels even when used on site."
+   },
+   {
+    "q": "What is retro-commissioning?",
+    "options": [
+     "Commissioning an existing building that was never commissioned",
+     "Re-testing only the renewable energy system",
+     "Commissioning a new building twice",
+     "Removing commissioning requirements from a contract"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Retro-commissioning applies the Cx process to an existing building that was not commissioned before, finding and fixing operating problems."
+   },
+   {
+    "q": "Which activities go beyond Fundamental Commissioning and are part of Enhanced Commissioning in LEED v4? (Select TWO)",
+    "options": [
+     "CxA review of contractor submittals",
+     "Functional testing of HVAC systems",
+     "Prohibiting CFC refrigerants",
+     "The owner writing the OPR",
+     "Seasonal testing and a review of operations about 10 months after substantial completion"
+    ],
+    "answer": [
+     0,
+     4
+    ],
+    "select": 2,
+    "explain": "Submittal review, seasonal testing and the 10-month review are enhanced activities. The OPR and functional testing are already part of fundamental Cx."
+   },
+   {
+    "q": "What does energy use intensity (EUI) express?",
+    "options": [
+     "Peak electricity demand in kilowatts",
+     "Cost of energy per occupant",
+     "The share of energy from renewable sources",
+     "Annual energy use per unit of floor area"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "EUI normalizes annual energy use by floor area, such as kBtu per square foot per year, so buildings of different sizes can be compared."
+   },
+   {
+    "q": "An existing building owner wants to compare the building's energy use with similar buildings nationwide. Which tool is designed for this?",
+    "options": [
+     "ENERGY STAR Portfolio Manager",
+     "EPA Construction General Permit",
+     "WaterSense",
+     "Green-e Climate"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Portfolio Manager is EPA's free tool for tracking and benchmarking energy and water use."
+   },
+   {
+    "q": "Which are examples of process or plug loads? (Select TWO)",
+    "options": [
+     "Interior lighting",
+     "Heat loss through the building envelope",
+     "Commercial kitchen and refrigeration equipment",
+     "Computers and office equipment",
+     "Space heating and cooling"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Process and plug loads are equipment loads not tied to building systems. HVAC and lighting are regulated building systems."
+   },
+   {
+    "q": "What is a carbon offset?",
+    "options": [
+     "A renewable energy system installed on site",
+     "A greenhouse gas reduction achieved elsewhere, purchased to compensate for a project's emissions",
+     "A reduction in refrigerant charge",
+     "A discount on utility bills for efficient buildings"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Offsets fund verified emissions reductions outside the project. On-site renewables are a separate strategy."
+   },
+   {
+    "q": "A high-rise project on a heavily shaded urban site cannot fit meaningful on-site solar. How can it still address renewable energy and carbon goals in LEED?",
+    "options": [
+     "Skip commissioning",
+     "Increase the building's lighting levels",
+     "Install a natural gas generator",
+     "Purchase third-party certified green power, RECs or carbon offsets"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Off-site green power, RECs and offsets address renewable and carbon goals when on-site generation is impractical."
+   },
+   {
+    "q": "Why can't a team simply choose the refrigerant with the lowest ozone depletion potential to minimize atmospheric impact?",
+    "options": [
+     "LEED only considers refrigerant cost",
+     "ODP is not measured for refrigerants",
+     "Low-ODP refrigerants are always prohibited",
+     "Many zero-ODP refrigerants have high global warming potential"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Many HFCs have zero ODP but high GWP, so both impacts must be balanced, which is what Enhanced Refrigerant Management rewards."
+   },
+   {
+    "q": "Which are benefits of commissioning? (Select TWO)",
+    "options": [
+     "Verifies systems are installed and perform according to the OPR",
+     "Replaces the need for energy modeling",
+     "Finds problems early, when they are cheaper to correct",
+     "Eliminates the need for operator training",
+     "Guarantees a specific LEED certification level"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "Commissioning confirms performance against the OPR and catches issues early. It does not guarantee certification or replace modeling or training."
+   }
+  ]
+ }
+]

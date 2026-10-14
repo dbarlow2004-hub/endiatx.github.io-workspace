@@ -1,0 +1,1610 @@
+[
+ {
+  "n": 1,
+  "id": "leed-process",
+  "title": "LEED Process",
+  "intro": "This chapter explains who runs LEED, how the rating systems are organized, and how a project moves from registration to certification. It is the backbone of the exam: questions about USGBC vs. GBCI, prerequisites vs. credits, Minimum Program Requirements, and certification levels appear throughout every other domain.",
+  "sections": [
+   {
+    "h": "USGBC, GBCI, and the purpose of LEED",
+    "body": [
+     "LEED (Leadership in Energy and Environmental Design) is a voluntary, consensus-based, market-driven rating system for designing, building, and operating high-performance green buildings and neighborhoods. It gives owners a common, third-party-verified way to show that a project meets defined sustainability goals.",
+     "Two organizations share the work. The U.S. Green Building Council (USGBC) is the nonprofit that develops LEED: its staff and volunteer committees write and update the rating systems, publish reference guides, and offer education. Green Business Certification Inc. (GBCI) is the separate body that administers LEED project certification (reviewing documentation and awarding certification) and the professional credentialing program (LEED Green Associate and LEED AP exams and credential maintenance).",
+     "Rating systems are updated over time through public comment and member ballot. Between major versions, USGBC issues addenda (corrections and clarifications) and LEED Interpretations so that the requirements stay current and consistent."
+    ],
+    "tip": "Remember the split: USGBC writes the rules; GBCI checks projects and people against them. A question asking who \"reviews\" or \"certifies\" a project or who administers the exam is pointing to GBCI."
+   },
+   {
+    "h": "Rating system families and choosing the right one",
+    "body": [
+     "In LEED v4, the rating systems are grouped by project type: Building Design and Construction (BD+C) for new construction and major renovations; Interior Design and Construction (ID+C) for complete interior fit-outs; Building Operations and Maintenance (O+M) for existing buildings undergoing improvement work with little or no construction; Neighborhood Development (ND) for whole neighborhoods or plans; and Homes for single-family and low-rise residential projects.",
+     "Within the families are adaptations for specific space types. BD+C, for example, includes New Construction, Core and Shell, Schools, Retail, Data Centers, Warehouses and Distribution Centers, Hospitality, Healthcare, and multifamily residential adaptations. ID+C includes Commercial Interiors, Retail, and Hospitality.",
+     "When a project mixes uses, LEED v4 guidance uses the 40/60 rule based on gross floor area: if a rating system is appropriate for less than 40% of the floor area, do not use it; if it fits more than 60%, use it; between 40% and 60%, the team may choose. Core and Shell is intended for projects where the developer controls the base building but not a substantial share of the tenant interiors."
+    ],
+    "tip": "Match the scope to the system: new building = BD+C, tenant fit-out = ID+C, existing building with ongoing operations = O+M."
+   },
+   {
+    "h": "How a rating system is built: prerequisites, credits, and points",
+    "body": [
+     "Each rating system is divided into credit categories. In LEED v4 BD+C these are Integrative Process, Location and Transportation, Sustainable Sites, Water Efficiency, Energy and Atmosphere, Materials and Resources, Indoor Environmental Quality, Innovation, and Regional Priority.",
+     "Prerequisites are mandatory requirements that every project must meet; they earn no points, and a project that misses any prerequisite cannot be certified. Credits are optional: the team chooses which ones to pursue, and each one earns points. Total points determine the certification level.",
+     "LEED v4 has 100 base points plus up to 6 Innovation points and 4 Regional Priority points, for 110 possible. Points are weighted toward the strategies with the largest environmental and human-health impact, with climate change receiving the largest share. Regional Priority credits are regular credits that USGBC has identified as especially important in a given region; achieving them earns a bonus point each."
+    ],
+    "tip": "Certification thresholds: Certified 40-49, Silver 50-59, Gold 60-79, Platinum 80+. These are well-established; individual credit point values are less important to memorize."
+   },
+   {
+    "h": "Minimum Program Requirements",
+    "body": [
+     "Minimum Program Requirements (MPRs) are the basic eligibility conditions a project must satisfy to pursue LEED at all. They define what counts as a legitimate LEED project and prevent gaming the system.",
+     "In LEED v4 there are three MPRs: the project must be in a permanent location on existing land (not a movable building or a boat); it must use reasonable LEED boundaries that include all contiguous land associated with the project and are not drawn to cherry-pick favorable areas; and it must comply with the minimum project size requirements for the rating system.",
+     "Separately, projects must comply with applicable environmental laws, and owners agree to share building performance data with USGBC/GBCI under the certification agreement. If a project is found to violate an MPR, GBCI can revoke certification."
+    ],
+    "tip": "If an answer choice describes a performance target (energy savings, a minimum score, hiring a LEED AP), it is NOT an MPR. MPRs are about eligibility: location, boundary, size."
+   },
+   {
+    "h": "The certification process and LEED Online",
+    "body": [
+     "A project begins by registering on LEED Online (USGBC's web platform, now integrated with Arc) and paying a registration fee. Registration gives the team access to credit forms, templates, and a place to assign responsibilities. Early registration lets the team plan which credits to pursue and track progress.",
+     "The team then gathers documentation for each prerequisite and attempted credit. Projects can choose a combined review (everything submitted after construction) or a split review, in which design-phase credits are submitted first and construction-phase credits later. Split review gives early feedback but does not award points until the final review.",
+     "GBCI conducts a preliminary review and returns comments. The team responds to clarifications and resubmits for final review. After final review the team may accept the result or file an appeal (for a fee) on specific credits. Accepted results determine the certification level and the project receives its plaque and certificate."
+    ],
+    "tip": "Know the order: register, document, submit, preliminary review, clarification, final review, then accept or appeal."
+   },
+   {
+    "h": "Interpretations, credentials, and staying current",
+    "body": [
+     "When a team is uncertain how a credit applies to its unusual situation, it can submit a Credit Interpretation Request (CIR) to GBCI. The resulting ruling applies to that project. When USGBC determines a ruling is broadly useful, it publishes it as a LEED Interpretation, which any registered project may apply. Addenda formally correct or clarify the rating system and reference guides.",
+     "LEED professional credentials are administered by GBCI. The LEED Green Associate demonstrates general green building knowledge; the LEED AP with specialty (BD+C, ID+C, O+M, ND, or Homes) demonstrates advanced expertise in one rating system. Credential holders must complete continuing education through the Credential Maintenance Program every two years: 15 hours for Green Associates and 30 hours for LEED APs, including some LEED-specific hours.",
+     "Certification is not the end of the story. Performance tracking platforms such as Arc and the O+M rating system encourage ongoing measurement and periodic recertification so buildings keep performing as designed."
+    ],
+    "tip": "CIR = project-specific question to GBCI. LEED Interpretation = published ruling usable by other projects."
+   }
+  ],
+  "terms": [
+   {
+    "term": "LEED",
+    "def": "Leadership in Energy and Environmental Design: a voluntary, consensus-based, market-driven green building rating system developed by USGBC."
+   },
+   {
+    "term": "USGBC",
+    "def": "U.S. Green Building Council, the nonprofit that develops and maintains the LEED rating systems and provides education."
+   },
+   {
+    "term": "GBCI",
+    "def": "Green Business Certification Inc., which administers LEED project certification reviews and LEED professional credential exams and maintenance."
+   },
+   {
+    "term": "Rating system",
+    "def": "A set of prerequisites and credits tailored to a project type, such as BD+C, ID+C, O+M, ND, or Homes."
+   },
+   {
+    "term": "Adaptation",
+    "def": "A version of a rating system customized for a specific space type, such as Schools, Retail, Healthcare, or Core and Shell."
+   },
+   {
+    "term": "Credit category",
+    "def": "A grouping of related prerequisites and credits, such as Water Efficiency or Energy and Atmosphere."
+   },
+   {
+    "term": "Prerequisite",
+    "def": "A mandatory requirement every project must meet to be certified; prerequisites earn no points."
+   },
+   {
+    "term": "Credit",
+    "def": "An optional strategy that earns points toward certification when its requirements are met."
+   },
+   {
+    "term": "Minimum Program Requirements (MPRs)",
+    "def": "Basic eligibility conditions for any LEED project: permanent location on existing land, reasonable boundaries, and minimum size."
+   },
+   {
+    "term": "LEED project boundary",
+    "def": "The portion of the site submitted for certification; it must include all contiguous land associated with normal building operations."
+   },
+   {
+    "term": "Gross floor area",
+    "def": "The total floor area of all enclosed spaces in a building; used to apply the 40/60 rule and size requirements."
+   },
+   {
+    "term": "40/60 rule",
+    "def": "LEED v4 guidance for mixed-use projects: use a rating system covering over 60% of floor area; team chooses between 40% and 60%."
+   },
+   {
+    "term": "LEED Online",
+    "def": "The web platform where teams register projects, upload documentation, and communicate with GBCI reviewers."
+   },
+   {
+    "term": "Split review",
+    "def": "Submitting design-phase credits for review before construction-phase credits; points are confirmed only at final review."
+   },
+   {
+    "term": "Combined review",
+    "def": "Submitting all design and construction documentation together after construction is complete."
+   },
+   {
+    "term": "Appeal",
+    "def": "A fee-based request after final review asking GBCI to reconsider specific denied prerequisites or credits."
+   },
+   {
+    "term": "Credit Interpretation Request (CIR)",
+    "def": "A formal question to GBCI about how a credit applies to a specific project's circumstances."
+   },
+   {
+    "term": "LEED Interpretation",
+    "def": "A published ruling of broad relevance that any registered project may use to demonstrate compliance."
+   },
+   {
+    "term": "Addenda",
+    "def": "Official corrections, clarifications, and improvements to rating systems and reference guides issued between versions."
+   },
+   {
+    "term": "Regional Priority credit",
+    "def": "An existing credit identified as especially important for a region; achieving it earns a bonus point."
+   },
+   {
+    "term": "Innovation credit",
+    "def": "Points for exemplary performance beyond credit requirements or for new strategies not addressed by the rating system."
+   },
+   {
+    "term": "Certification levels",
+    "def": "Certified (40-49), Silver (50-59), Gold (60-79), and Platinum (80+ points) in LEED v4."
+   },
+   {
+    "term": "Credential Maintenance Program",
+    "def": "GBCI continuing education requirement: credential holders report hours every two years to keep their credential active."
+   },
+   {
+    "term": "LEED AP with specialty",
+    "def": "Advanced credential showing expertise in a specific rating system, such as BD+C or O+M."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'><defs><marker id='a1' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto'><path d='M0,0L10,5L0,10z' fill='#334155'/></marker></defs><rect width='360' height='220' fill='#f7f8f5'/><text x='180' y='18' font-size='12' font-weight='bold' fill='#334155' text-anchor='middle'>The LEED certification path</text><rect x='5' y='30' width='62' height='50' rx='5' fill='#2b6cb0'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='36' y='46.5' font-weight='bold'>1 Register</text><text x='36' y='58.5'>on LEED</text><text x='36' y='70.5'>Online</text></g><line x1='67' y1='55' x2='75' y2='55' stroke='#334155' stroke-width='1.5' marker-end='url(#a1)'/><rect x='75' y='30' width='62' height='50' rx='5' fill='#2b6cb0'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='106' y='46.5' font-weight='bold'>2 Document</text><text x='106' y='58.5'>prereqs +</text><text x='106' y='70.5'>credits</text></g><line x1='137' y1='55' x2='145' y2='55' stroke='#334155' stroke-width='1.5' marker-end='url(#a1)'/><rect x='145' y='30' width='62' height='50' rx='5' fill='#2b6cb0'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='176' y='46.5' font-weight='bold'>3 Submit</text><text x='176' y='58.5'>split or</text><text x='176' y='70.5'>combined</text></g><line x1='207' y1='55' x2='215' y2='55' stroke='#334155' stroke-width='1.5' marker-end='url(#a1)'/><rect x='215' y='30' width='62' height='50' rx='5' fill='#0a8a6a'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='246' y='46.5' font-weight='bold'>4 GBCI</text><text x='246' y='58.5'>reviews</text><text x='246' y='70.5'>documents</text></g><line x1='277' y1='55' x2='285' y2='55' stroke='#334155' stroke-width='1.5' marker-end='url(#a1)'/><rect x='285' y='30' width='62' height='50' rx='5' fill='#0a8a6a'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='316' y='46.5' font-weight='bold'>5 Certify</text><text x='316' y='58.5'>or appeal</text><text x='316' y='70.5'>decision</text></g><text x='180' y='100' font-size='10' fill='#334155' text-anchor='middle'>Preliminary review &#8594; team clarifies &#8594; final review</text><text x='180' y='124' font-size='11' font-weight='bold' fill='#334155' text-anchor='middle'>Certification levels (LEED v4, 110 possible points)</text><rect x='10' y='134' width='83' height='44' rx='5' fill='#0a8a6a'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='51.5' y='153.5' font-weight='bold'>Certified</text><text x='51.5' y='165.5'>40&#8211;49 pts</text></g><rect x='95' y='134' width='83' height='44' rx='5' fill='#64748b'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='136.5' y='153.5' font-weight='bold'>Silver</text><text x='136.5' y='165.5'>50&#8211;59 pts</text></g><rect x='180' y='134' width='83' height='44' rx='5' fill='#d97706'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='221.5' y='153.5' font-weight='bold'>Gold</text><text x='221.5' y='165.5'>60&#8211;79 pts</text></g><rect x='265' y='134' width='83' height='44' rx='5' fill='#334155'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='306.5' y='153.5' font-weight='bold'>Platinum</text><text x='306.5' y='165.5'>80+ pts</text></g><text x='180' y='200' font-size='10' fill='#c53030' text-anchor='middle'>All prerequisites and MPRs must be met before any level is awarded</text></svg>",
+  "svgCaption": "A project registers on LEED Online, documents its prerequisites and credits, and submits them (split or combined) to GBCI, which completes preliminary and final reviews. The final point total sets the certification level shown here for LEED v4.",
+  "questions": [
+   {
+    "q": "Which organization reviews project documentation and awards LEED certification?",
+    "options": [
+     "U.S. Green Building Council (USGBC)",
+     "U.S. Environmental Protection Agency (EPA)",
+     "Green Business Certification Inc. (GBCI)",
+     "ASHRAE"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "GBCI administers third-party certification reviews. USGBC develops the rating systems but does not perform the project reviews."
+   },
+   {
+    "q": "Which organization is responsible for developing and updating the LEED rating systems?",
+    "options": [
+     "The International Code Council",
+     "USGBC, through staff and volunteer committees",
+     "Local building departments",
+     "GBCI"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "USGBC develops LEED through a consensus process with committees and member ballots. GBCI administers certification and credentials, not rating system content."
+   },
+   {
+    "q": "A project team meets every attempted credit for 65 points but fails to meet one prerequisite. What is the outcome?",
+    "options": [
+     "The project earns Silver because a penalty is applied",
+     "The project cannot be certified until the prerequisite is met",
+     "The prerequisite can be replaced with an Innovation credit",
+     "The project earns Gold certification"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Prerequisites are mandatory; missing any one prevents certification regardless of points. Innovation credits cannot substitute for prerequisites."
+   },
+   {
+    "q": "In LEED v4, a project that earns 62 points achieves which certification level?",
+    "options": [
+     "Certified",
+     "Gold",
+     "Silver",
+     "Platinum"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Gold covers 60-79 points. Silver ends at 59 and Platinum starts at 80."
+   },
+   {
+    "q": "A developer is constructing a new office building but tenants will design and build out most of the interior spaces. Which LEED v4 rating system adaptation is intended for this situation?",
+    "options": [
+     "BD+C: Core and Shell Development",
+     "ID+C: Commercial Interiors",
+     "O+M: Existing Buildings",
+     "BD+C: New Construction"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Core and Shell is for projects where the developer controls the base building but not a substantial portion of the tenant fit-out. Commercial Interiors would be used later by a tenant finishing its own space."
+   },
+   {
+    "q": "A company is leasing and completely fitting out two floors of an existing office tower. Which rating system family fits this project best?",
+    "options": [
+     "Neighborhood Development",
+     "Interior Design and Construction",
+     "Homes",
+     "Building Design and Construction"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "ID+C covers complete interior fit-outs. BD+C would apply to the construction of the whole building, not one tenant's interior."
+   },
+   {
+    "q": "The owner of a 15-year-old office building wants to improve operating practices and performance without major construction. Which rating system family applies?",
+    "options": [
+     "O+M",
+     "ID+C",
+     "ND",
+     "BD+C"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "O+M is designed for existing buildings undergoing improvement work with little or no construction. BD+C is for new construction or major renovations."
+   },
+   {
+    "q": "A mixed-use project's gross floor area is 70% office and 30% retail. Under the LEED v4 40/60 rule, how should the team choose a BD+C adaptation?",
+    "options": [
+     "They must use BD+C: New Construction because it applies to more than 60% of the floor area",
+     "They may freely choose either adaptation",
+     "They must certify each use separately",
+     "They must use BD+C: Retail because retail is present"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "When one rating system applies to more than 60% of the gross floor area, the team should use it. The free choice applies only in the 40-60% range."
+   },
+   {
+    "q": "Which of the following is a LEED v4 Minimum Program Requirement?",
+    "options": [
+     "The project must be in a permanent location on existing land",
+     "The project must achieve an ENERGY STAR score of at least 75",
+     "A LEED AP must be on the design team",
+     "The project must be publicly owned"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "MPRs concern eligibility: permanent location, reasonable boundaries, and size. Performance targets and staffing choices are not MPRs."
+   },
+   {
+    "q": "A project team believes a credit's requirements do not clearly address their unusual site conditions. What is the most appropriate step?",
+    "options": [
+     "Skip documentation and request an appeal",
+     "Write their own alternative compliance path",
+     "Ask the local building official to waive the credit",
+     "Submit a Credit Interpretation Request (CIR) to GBCI"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "A CIR is the formal way to ask GBCI how a credit applies to a specific project. Appeals are used only after a final review decision."
+   },
+   {
+    "q": "How does a LEED Interpretation differ from a project-specific CIR ruling?",
+    "options": [
+     "A LEED Interpretation is issued by the local jurisdiction",
+     "A LEED Interpretation is published and may be applied by other registered projects",
+     "A LEED Interpretation applies only to the requesting project",
+     "A LEED Interpretation replaces the need for prerequisites"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "LEED Interpretations are published rulings with broad relevance. A CIR ruling that is not published applies to the project that submitted it."
+   },
+   {
+    "q": "Where does a project team register a project and upload credit documentation?",
+    "options": [
+     "ENERGY STAR Portfolio Manager only",
+     "The local permitting portal",
+     "The ASHRAE website",
+     "LEED Online"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "LEED Online is the platform for registration, documentation, and communication with GBCI. Portfolio Manager is an EPA benchmarking tool, not the LEED submission platform."
+   },
+   {
+    "q": "What is the main purpose of Regional Priority credits?",
+    "options": [
+     "To fund regional USGBC chapters",
+     "To give extra points to projects in large cities",
+     "To reward achievement of existing credits that address geographically specific environmental priorities",
+     "To replace prerequisites that are hard to achieve locally"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Regional Priority identifies already-existing credits that matter most in a given region and awards a bonus point for achieving them. They do not replace prerequisites."
+   },
+   {
+    "q": "A team exceeds a credit's highest threshold by a significant margin. Under which category might it earn additional recognition?",
+    "options": [
+     "Regional Priority, through exemplary performance",
+     "Minimum Program Requirements",
+     "Innovation, through exemplary performance",
+     "Integrative Process"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Exemplary performance is recognized under the Innovation category. Regional Priority rewards specific credits, not performance beyond thresholds."
+   },
+   {
+    "q": "A LEED Green Associate wants to keep the credential active. What must they do?",
+    "options": [
+     "Retake the exam every year",
+     "Nothing; the credential never expires",
+     "Complete 15 continuing education hours every two years through the Credential Maintenance Program",
+     "Certify one project every two years"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Green Associates report 15 CE hours every two-year reporting period, including some LEED-specific hours. Retesting is not required if hours are maintained."
+   },
+   {
+    "q": "Which TWO responsibilities belong to GBCI? (Select TWO)",
+    "options": [
+     "Adopting LEED as a mandatory building code",
+     "Writing new credit language for LEED rating systems",
+     "Administering LEED professional credential exams",
+     "Designing the mechanical systems of LEED projects",
+     "Conducting third-party reviews for LEED project certification"
+    ],
+    "answer": [
+     2,
+     4
+    ],
+    "select": 2,
+    "explain": "GBCI handles project certification and professional credentialing. USGBC writes rating system content, and jurisdictions, not GBCI, decide whether to adopt codes."
+   },
+   {
+    "q": "Which TWO are Minimum Program Requirements in LEED v4? (Select TWO)",
+    "options": [
+     "Use a reasonable LEED project boundary",
+     "Hire a commissioning authority before schematic design",
+     "Comply with the rating system's minimum project size requirements",
+     "Earn at least one point in every credit category",
+     "Achieve at least 20% energy savings"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "The v4 MPRs cover a permanent location, reasonable boundaries, and minimum size. Energy savings and commissioning are addressed by prerequisites and credits, not MPRs."
+   },
+   {
+    "q": "Which TWO statements about prerequisites are correct? (Select TWO)",
+    "options": [
+     "They are optional and earn points",
+     "They apply only to Platinum projects",
+     "They are mandatory for certification",
+     "They can be traded for Regional Priority credits",
+     "They do not earn points"
+    ],
+    "answer": [
+     2,
+     4
+    ],
+    "select": 2,
+    "explain": "Prerequisites are required for every project at every level and carry no point value. They cannot be swapped for other credits."
+   },
+   {
+    "q": "Which TWO statements about the LEED review process are correct? (Select TWO)",
+    "options": [
+     "Projects must submit all documentation before they register",
+     "GBCI reviews only the energy prerequisites",
+     "USGBC volunteer committees review every project's documentation",
+     "After final review, a team may appeal specific credit decisions",
+     "Teams can submit design-phase credits before construction is complete using a split review"
+    ],
+    "answer": [
+     3,
+     4
+    ],
+    "select": 2,
+    "explain": "Split review allows design credits to be reviewed early, and teams may appeal after final review. GBCI, not USGBC committees, reviews the documentation, and registration comes first."
+   },
+   {
+    "q": "Which TWO are adaptations within the LEED v4 BD+C rating system? (Select TWO)",
+    "options": [
+     "Commercial Interiors",
+     "Existing Buildings",
+     "Healthcare",
+     "Schools",
+     "Neighborhood Plan"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Schools and Healthcare are BD+C adaptations. Commercial Interiors belongs to ID+C, Existing Buildings to O+M, and Plan to ND."
+   },
+   {
+    "q": "A project manager wants a smooth certification. Which TWO practices are most helpful? (Select TWO)",
+    "options": [
+     "Skip the preliminary review to save time",
+     "Assign a responsible team member for each prerequisite and credit",
+     "Wait until occupancy to decide which credits to pursue",
+     "Register the project early and set credit goals with the whole team",
+     "Pursue every credit regardless of cost or feasibility"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "select": 2,
+    "explain": "Early registration and clear responsibility assignments keep documentation on track. Deciding late or skipping review steps increases risk of missed requirements."
+   },
+   {
+    "q": "Which TWO are among the system goals (impact categories) that guided point weighting in LEED v4? (Select TWO)",
+    "options": [
+     "Maximize rental income",
+     "Enhance individual human health and well-being",
+     "Reverse contribution to global climate change",
+     "Reduce construction schedule duration",
+     "Increase on-site parking supply"
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "select": 2,
+    "explain": "LEED v4's goals include climate change, human health, water, biodiversity, material resources, a green economy, and community/equity. Financial and schedule goals are not among them."
+   },
+   {
+    "q": "Which THREE are LEED v4 rating system families? (Select THREE)",
+    "options": [
+     "ENERGY STAR Portfolio Manager",
+     "Building Operations and Maintenance",
+     "Green Globes",
+     "Passive House",
+     "Building Design and Construction",
+     "Neighborhood Development"
+    ],
+    "answer": [
+     1,
+     4,
+     5
+    ],
+    "select": 3,
+    "explain": "BD+C, O+M, and ND (along with ID+C and Homes) are LEED rating system families. The others are separate programs or tools from other organizations."
+   },
+   {
+    "q": "Which THREE are credit categories in the LEED v4 BD+C rating system? (Select THREE)",
+    "options": [
+     "Occupant Satisfaction",
+     "Water Efficiency",
+     "Building Automation",
+     "Location and Transportation",
+     "Indoor Environmental Quality",
+     "Cost Efficiency"
+    ],
+    "answer": [
+     1,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "LT, WE, and EQ are BD+C credit categories. Building Automation, Cost Efficiency, and Occupant Satisfaction are not LEED v4 categories."
+   },
+   {
+    "q": "Which THREE steps are part of the LEED certification process? (Select THREE)",
+    "options": [
+     "Obtaining a vote of USGBC's board for each project",
+     "Receiving GBCI's preliminary and final reviews",
+     "Registering the project",
+     "Passing the LEED Green Associate exam as the owner",
+     "Submitting prerequisite and credit documentation",
+     "Having the local building official award points"
+    ],
+    "answer": [
+     1,
+     2,
+     4
+    ],
+    "select": 3,
+    "explain": "Certification flows from registration to documentation to GBCI review. Boards, building officials, and owner credentials play no role in awarding points."
+   }
+  ]
+ },
+ {
+  "n": 2,
+  "id": "integrative-strategies",
+  "title": "Integrative Strategies",
+  "intro": "Integrative strategies are about how a green project is planned, not just what technologies it uses. This chapter covers the integrative process, systems thinking, life-cycle thinking, and the documents and team practices that let a project find synergies and avoid costly late changes.",
+  "sections": [
+   {
+    "h": "What the integrative process is",
+    "body": [
+     "The integrative process is a comprehensive approach to building design that brings together the owner, design professionals, builders, operators, and often occupants from the earliest stages of a project. Instead of each discipline working in isolation, the team explores how building systems interact and sets shared goals.",
+     "In a conventional, linear process, the architect designs the form, then hands it to engineers who size systems to fit, and then to a contractor who builds it. Problems discovered late are expensive to fix. In an integrative process, decisions are made collaboratively and iteratively, so the team can find solutions that serve several goals at once.",
+     "The earlier the team collaborates, the greater its ability to influence performance at low cost. Decisions about site orientation, building massing, and envelope made during pre-design can shape energy and water use for decades."
+    ],
+    "tip": "If an answer choice says \"early,\" \"all disciplines,\" or \"iterative,\" it is likely describing the integrative process. \"Sequential\" or \"hand-off\" describes conventional design."
+   },
+   {
+    "h": "The Integrative Process credit and the discovery phase",
+    "body": [
+     "In LEED v4 BD+C, the Integrative Process credit asks teams to perform analyses during the discovery (pre-design) phase and use the results to inform the owner's project requirements and design.",
+     "For energy-related systems, the team builds a simple preliminary energy model (often called a \"simple box\" model) before schematic design to explore options such as site conditions, massing and orientation, envelope, lighting, thermal comfort ranges, plug and process loads, and programmatic and operational parameters.",
+     "For water-related systems, the team develops a preliminary water budget that estimates indoor, outdoor (irrigation), and process water demand, and identifies nonpotable supply sources such as rainwater or graywater that could meet some of that demand. The point is to show how energy and water decisions affect each other and other credit categories."
+    ],
+    "tip": "The two IP analyses are energy-related systems and water-related systems. Both happen early, in discovery, before schematic design."
+   },
+   {
+    "h": "Systems thinking and feedback loops",
+    "body": [
+     "Systems thinking treats a building as a set of interconnected parts within larger systems: the site, the watershed, the community, and the regional energy grid. A change to one part, such as larger windows, ripples into lighting, heating, cooling, glare, and occupant comfort.",
+     "Feedback loops describe how information or outputs flow back to influence a system. Negative (balancing) feedback loops counteract change and stabilize a system, as a thermostat does when it turns heating off at the setpoint. Positive (reinforcing) feedback loops amplify change, as when melting sea ice exposes darker water that absorbs more heat and causes more melting.",
+     "Leverage points are places in a system where a small intervention produces a large change. Good green design looks for leverage points, such as providing building occupants with real-time energy data, which can shift behavior at very low cost."
+    ],
+    "tip": "Negative feedback = self-correcting (thermostat). Positive feedback = self-reinforcing (runaway growth)."
+   },
+   {
+    "h": "Life-cycle thinking: LCA and life-cycle cost",
+    "body": [
+     "Life-cycle thinking considers a building or product over its whole life: raw material extraction, manufacturing, transport, construction, use and maintenance, and end of life. This avoids solving one problem by creating another somewhere else in the chain.",
+     "Life-cycle assessment (LCA) quantifies environmental impacts such as global warming potential, ozone depletion, and acidification across those stages. Life-cycle cost analysis (LCC) adds up the financial picture: first cost plus energy, water, maintenance, repair, and replacement costs over the analysis period.",
+     "A strategy with a higher first cost can have a lower life-cycle cost. The triple bottom line frames this broadly, asking whether a decision is good for people (social), planet (environmental), and profit (economic)."
+    ],
+    "tip": "LCA measures environmental impacts; LCC measures money over time. Don't mix them up."
+   },
+   {
+    "h": "Goal setting, OPR, BOD, and the project team",
+    "body": [
+     "Integrative projects often begin with a goal-setting charrette: an intensive, facilitated workshop where stakeholders from all disciplines brainstorm, set measurable targets, and identify synergies. Including the facility manager and contractor early brings operations and constructability knowledge into the design.",
+     "The Owner's Project Requirements (OPR) is a written document, developed with the owner, that describes the project's goals, functional requirements, performance expectations, budget, and schedule. The Basis of Design (BOD), prepared by the design team, explains the assumptions, systems, and standards chosen to meet the OPR.",
+     "These documents feed into commissioning, in which a commissioning authority verifies that systems are designed, installed, and performing according to the OPR. Clear, measurable goals let the team check progress at each phase."
+    ],
+    "tip": "OPR = what the owner wants. BOD = how the designers plan to deliver it."
+   },
+   {
+    "h": "Synergies, trade-offs, and the feedback cycle",
+    "body": [
+     "A synergy occurs when one strategy supports others. A high-performance envelope and well-designed daylighting can reduce heating, cooling, and lighting loads enough that the HVAC system can be downsized, offsetting some of the envelope's cost. This idea is sometimes called \"tunneling through the cost barrier.\"",
+     "Trade-offs are the opposite: a choice that helps one goal can hurt another. Large glazed areas may improve views but increase glare and heat gain. An integrative team weighs these trade-offs openly instead of discovering them after construction.",
+     "The integrative process does not end at occupancy. Measuring performance, surveying occupants, and sharing lessons learned create a feedback loop that improves operations and informs the next project."
+    ],
+    "tip": "Scenario questions often describe spending more on one system to save on another; the concept being tested is synergy or integrative design."
+   }
+  ],
+  "terms": [
+   {
+    "term": "Integrative process",
+    "def": "A comprehensive design approach in which all disciplines collaborate from the earliest phases to find synergies across systems."
+   },
+   {
+    "term": "Conventional (linear) design",
+    "def": "A sequential process in which each discipline works separately and hands off its work to the next."
+   },
+   {
+    "term": "Discovery phase",
+    "def": "The earliest pre-design phase when the team researches the site, sets goals, and performs preliminary analyses."
+   },
+   {
+    "term": "Simple box energy model",
+    "def": "A basic preliminary energy model used before schematic design to test massing, orientation, envelope, and system options."
+   },
+   {
+    "term": "Preliminary water budget",
+    "def": "An early estimate of indoor, outdoor, and process water demand and of potential nonpotable supply sources."
+   },
+   {
+    "term": "Charrette",
+    "def": "An intensive, collaborative workshop where stakeholders set goals and develop design ideas together."
+   },
+   {
+    "term": "Owner's Project Requirements (OPR)",
+    "def": "A written document describing the owner's goals, functional needs, performance expectations, budget, and schedule."
+   },
+   {
+    "term": "Basis of Design (BOD)",
+    "def": "The design team's document explaining the systems, assumptions, and standards selected to meet the OPR."
+   },
+   {
+    "term": "Commissioning authority (CxA)",
+    "def": "An independent party who verifies that building systems are designed, installed, and perform according to the OPR."
+   },
+   {
+    "term": "Systems thinking",
+    "def": "Understanding a building as interconnected parts within larger natural and human systems, focusing on relationships and flows."
+   },
+   {
+    "term": "Negative feedback loop",
+    "def": "A balancing loop that counteracts change and stabilizes a system, like a thermostat."
+   },
+   {
+    "term": "Positive feedback loop",
+    "def": "A reinforcing loop that amplifies change, like ice melt exposing darker water that absorbs more heat."
+   },
+   {
+    "term": "Leverage point",
+    "def": "A place in a system where a small intervention can produce a large change in outcomes."
+   },
+   {
+    "term": "Life-cycle thinking",
+    "def": "Considering impacts from raw material extraction through manufacturing, use, and end of life."
+   },
+   {
+    "term": "Life-cycle assessment (LCA)",
+    "def": "A method for quantifying environmental impacts of a product or building across all life-cycle stages."
+   },
+   {
+    "term": "Life-cycle cost (LCC)",
+    "def": "The total cost of owning an asset over its life, including first, operating, maintenance, and replacement costs."
+   },
+   {
+    "term": "First cost",
+    "def": "The initial purchase and installation cost of a product or system, excluding later operating costs."
+   },
+   {
+    "term": "Triple bottom line",
+    "def": "Evaluating decisions by their social, environmental, and economic outcomes: people, planet, profit."
+   },
+   {
+    "term": "Synergy",
+    "def": "When one strategy helps achieve other goals, producing combined benefits greater than separate actions."
+   },
+   {
+    "term": "Trade-off",
+    "def": "When improving performance in one area reduces performance in another, requiring balanced decision-making."
+   },
+   {
+    "term": "Tunneling through the cost barrier",
+    "def": "Investing in efficiency so loads drop enough to downsize or eliminate equipment, offsetting the added cost."
+   },
+   {
+    "term": "Post-occupancy evaluation",
+    "def": "Assessing a building's performance and occupant satisfaction after it is in use to guide improvements."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'><defs><marker id='a2' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto'><path d='M0,0L10,5L0,10z' fill='#334155'/></marker></defs><defs><marker id='a3' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='6' markerHeight='6' orient='auto'><path d='M0,0L10,5L0,10z' fill='#d97706'/></marker></defs><rect width='360' height='220' fill='#f7f8f5'/><text x='180' y='16' font-size='12' font-weight='bold' fill='#334155' text-anchor='middle'>The integrative process loop</text><rect x='125' y='24' width='110' height='38' rx='5' fill='#0a8a6a'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='180' y='40.5' font-weight='bold'>Discovery</text><text x='180' y='52.5'>energy + water analysis</text></g><rect x='262' y='96' width='92' height='38' rx='5' fill='#2b6cb0'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='308' y='112.5' font-weight='bold'>Design</text><text x='308' y='124.5'>OPR &#8594; BOD</text></g><rect x='125' y='172' width='110' height='38' rx='5' fill='#2b6cb0'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='180' y='188.5' font-weight='bold'>Construction</text><text x='180' y='200.5'>commissioning</text></g><rect x='6' y='96' width='92' height='38' rx='5' fill='#334155'/><g font-size='10' fill='#fff' text-anchor='middle'><text x='52' y='112.5' font-weight='bold'>Occupancy</text><text x='52' y='124.5'>measure results</text></g><circle cx='180' cy='115' r='36' fill='#ffffff' stroke='#0a8a6a' stroke-width='2'/><text x='180' y='111' font-size='10' font-weight='bold' fill='#0a8a6a' text-anchor='middle'>Whole team</text><text x='180' y='124' font-size='10' fill='#334155' text-anchor='middle'>collaborates</text><path d='M237,44 Q290,52 302,92' fill='none' stroke='#334155' stroke-width='1.5' marker-end='url(#a2)'/><path d='M302,136 Q290,180 239,190' fill='none' stroke='#334155' stroke-width='1.5' marker-end='url(#a2)'/><path d='M123,190 Q70,180 56,138' fill='none' stroke='#334155' stroke-width='1.5' marker-end='url(#a2)'/><path d='M56,94 Q70,52 121,44' fill='none' stroke='#d97706' stroke-width='2' stroke-dasharray='5,3' marker-end='url(#a3)'/><text x='22' y='62' font-size='10' fill='#d97706' font-weight='bold'>feedback</text><text x='22' y='74' font-size='10' fill='#d97706'>informs next</text><text x='22' y='86' font-size='10' fill='#d97706'>project</text><text x='338' y='62' font-size='10' fill='#334155' text-anchor='end'>goals set</text><text x='338' y='74' font-size='10' fill='#334155' text-anchor='end'>early</text></svg>",
+  "svgCaption": "The integrative process is iterative: the whole team sets goals and runs energy and water analyses in discovery, carries them through design (OPR to BOD) and construction (commissioning), measures results in occupancy, and feeds lessons back into future decisions.",
+  "questions": [
+   {
+    "q": "Which statement best describes the integrative process?",
+    "options": [
+     "The contractor leads design decisions to minimize first cost",
+     "Sustainability features are added after design development is complete",
+     "Each consultant optimizes their own system after the architect completes the design",
+     "Team members from all disciplines collaborate from the earliest phases to identify interactions and synergies"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "The integrative process relies on early, cross-disciplinary collaboration. Adding green features late or working in isolation describes conventional design."
+   },
+   {
+    "q": "When does the LEED v4 Integrative Process credit expect energy and water analyses to begin?",
+    "options": [
+     "During the discovery (pre-design) phase, before schematic design",
+     "During construction documents",
+     "After substantial completion",
+     "During the first year of occupancy"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The credit focuses on analyses in discovery so results can shape the OPR and design. Doing them later removes most of their influence."
+   },
+   {
+    "q": "A team creates a basic model with simple geometry to compare orientation, massing, and envelope options before schematic design. What is this tool commonly called?",
+    "options": [
+     "A commissioning plan",
+     "A full ASHRAE 90.1 performance model",
+     "A simple box energy model",
+     "A life-cycle assessment"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "The simple box model is the preliminary energy analysis used in discovery. A full performance model is developed later for energy credits."
+   },
+   {
+    "q": "For the water-related analysis in the Integrative Process credit, what does the team develop?",
+    "options": [
+     "A list of plumbing fixture manufacturers",
+     "A preliminary water budget for indoor, outdoor, and process demand and potential nonpotable sources",
+     "A stormwater pipe sizing schedule",
+     "A wastewater treatment permit application"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "The water budget estimates demands and identifies supply sources like rainwater or graywater. Fixture lists and permits are not the required analysis."
+   },
+   {
+    "q": "Which is an example of a negative (balancing) feedback loop?",
+    "options": [
+     "Melting sea ice exposing darker water that absorbs more heat",
+     "A thermostat turning off the furnace when the setpoint is reached",
+     "Population growth producing more offspring",
+     "Compound interest increasing a balance"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "A thermostat counteracts change and stabilizes the system. The other examples amplify change, which is positive (reinforcing) feedback."
+   },
+   {
+    "q": "What does a life-cycle cost analysis include that a first-cost comparison does not?",
+    "options": [
+     "Only the purchase price",
+     "The architect's design fees only",
+     "Operating, maintenance, and replacement costs over the asset's life",
+     "Embodied carbon only"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "LCC adds operating and maintenance costs over time to the first cost. Embodied carbon is an environmental impact measured by LCA, not a cost."
+   },
+   {
+    "q": "The triple bottom line evaluates decisions based on which three outcomes?",
+    "options": [
+     "Design, construction, and operations",
+     "Energy, water, and materials",
+     "Social, environmental, and economic",
+     "Cost, schedule, and quality"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "The triple bottom line is people, planet, and profit. The other sets are useful project lenses but are not the triple bottom line."
+   },
+   {
+    "q": "In systems thinking, what is a leverage point?",
+    "options": [
+     "A place where a small change can produce a large effect on the system",
+     "A credit worth the most points",
+     "The heaviest structural member in a building",
+     "The point at which a project's budget is exhausted"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Leverage points allow small interventions to have outsized impact. The other answers misuse the term."
+   },
+   {
+    "q": "A team specifies higher-performance windows and added insulation, which raises envelope costs, but the reduced loads allow a smaller HVAC system. What concept does this illustrate?",
+    "options": [
+     "A positive feedback loop",
+     "Value engineering by removing efficiency features",
+     "A trade-off that should be avoided",
+     "Synergy found through integrative design"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Improving the envelope to downsize HVAC is a classic synergy that integrative design reveals. It is not removing features, and it reduces rather than amplifies loads."
+   },
+   {
+    "q": "What is a design charrette?",
+    "options": [
+     "A contractor's cost estimate",
+     "A type of building energy model",
+     "A post-occupancy survey",
+     "An intensive, collaborative workshop where stakeholders set goals and generate design ideas"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Charrettes bring disciplines together to brainstorm and set goals. They are workshops, not estimates or models."
+   },
+   {
+    "q": "Which document describes the owner's goals, functional requirements, and performance expectations for a project?",
+    "options": [
+     "Owner's Project Requirements (OPR)",
+     "Basis of Design (BOD)",
+     "As-built drawings",
+     "Construction schedule"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The OPR captures what the owner needs. The BOD is the design team's response explaining how the design will meet the OPR."
+   },
+   {
+    "q": "Who typically prepares the Basis of Design (BOD)?",
+    "options": [
+     "The design team",
+     "GBCI reviewers",
+     "The local utility",
+     "The building occupants"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The design team writes the BOD to explain the systems and assumptions chosen to meet the OPR. GBCI reviews LEED documentation but does not write project design documents."
+   },
+   {
+    "q": "A school district is starting a new building. Which participant is MOST often left out of conventional design but adds significant value in an integrative process?",
+    "options": [
+     "The facility manager who will operate the building",
+     "The architect",
+     "The structural engineer",
+     "The owner"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Operators are often excluded from conventional design, yet their knowledge improves maintainability and performance. The architect, engineers, and owner are always involved."
+   },
+   {
+    "q": "Which characteristic describes a conventional, linear design process?",
+    "options": [
+     "Design decisions are revisited iteratively with performance data",
+     "Disciplines work sequentially and hand off completed work to the next",
+     "All stakeholders set shared goals before design begins",
+     "Operators participate in early charrettes"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Linear design relies on sequential hand-offs. The other choices describe integrative practices."
+   },
+   {
+    "q": "What does a life-cycle assessment (LCA) measure?",
+    "options": [
+     "Occupant satisfaction with indoor conditions",
+     "Environmental impacts across a product's or building's life-cycle stages",
+     "The construction schedule's critical path",
+     "The financial return on investment of a building"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "LCA quantifies environmental impacts such as global warming potential from extraction through end of life. Financial analysis over time is LCC."
+   },
+   {
+    "q": "Which TWO analyses does the LEED v4 Integrative Process credit call for during discovery? (Select TWO)",
+    "options": [
+     "Energy-related systems analysis",
+     "Water-related systems analysis",
+     "Traffic impact analysis",
+     "Seismic structural analysis",
+     "Acoustic reverberation analysis"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "select": 2,
+    "explain": "The credit focuses on energy-related and water-related systems. The other analyses may be needed for a project but are not part of the IP credit."
+   },
+   {
+    "q": "Which TWO are benefits of involving the facility manager during early design? (Select TWO)",
+    "options": [
+     "Systems are selected with maintenance and operations in mind",
+     "The design team no longer needs to commission the building",
+     "Construction costs are guaranteed to fall",
+     "LEED prerequisites are automatically waived",
+     "Operational knowledge from similar buildings informs design decisions"
+    ],
+    "answer": [
+     0,
+     4
+    ],
+    "select": 2,
+    "explain": "Facility managers bring operations and maintenance insight. Their participation does not replace commissioning, waive prerequisites, or guarantee lower costs."
+   },
+   {
+    "q": "Which TWO are examples of negative (balancing) feedback loops? (Select TWO)",
+    "options": [
+     "Compound population growth",
+     "Ice melt reducing reflectivity and increasing warming",
+     "The human body sweating to cool itself when overheated",
+     "A thermostat maintaining a room's setpoint",
+     "Widening a highway, which attracts more traffic and more congestion"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Thermostats and sweating counteract change to restore balance. Induced traffic, ice-albedo loss, and compound growth amplify change, making them positive feedback loops."
+   },
+   {
+    "q": "A team adds well-designed daylighting with controls. Which TWO outcomes can this strategy produce? (Select TWO)",
+    "options": [
+     "Reduced electric lighting energy",
+     "Increased glare in every space",
+     "Elimination of all mechanical cooling",
+     "Guaranteed lower first cost",
+     "Improved occupant satisfaction and connection to the outdoors"
+    ],
+    "answer": [
+     0,
+     4
+    ],
+    "select": 2,
+    "explain": "Daylighting with controls reduces lighting energy and improves occupant experience. It does not eliminate cooling or guarantee lower first cost, and good design controls glare."
+   },
+   {
+    "q": "Which TWO items would typically be included in the Owner's Project Requirements? (Select TWO)",
+    "options": [
+     "Functional requirements for how spaces will be used",
+     "Manufacturer shop drawings for air handlers",
+     "The commissioning authority's final report",
+     "The owner's energy and water performance goals",
+     "The contractor's final as-built drawings"
+    ],
+    "answer": [
+     0,
+     3
+    ],
+    "select": 2,
+    "explain": "The OPR states the owner's goals and functional needs. As-builts, shop drawings, and final Cx reports are produced later and are not part of the OPR."
+   },
+   {
+    "q": "Which TWO statements reflect systems thinking? (Select TWO)",
+    "options": [
+     "The site and building should be designed separately",
+     "Only first cost should drive decisions",
+     "Relationships and flows between parts matter as much as the parts",
+     "Each component should be optimized in isolation",
+     "A building is part of larger natural and community systems"
+    ],
+    "answer": [
+     2,
+     4
+    ],
+    "select": 2,
+    "explain": "Systems thinking focuses on interconnections and larger contexts. Optimizing components in isolation or separating site and building is the opposite approach."
+   },
+   {
+    "q": "A team wants to \"tunnel through the cost barrier.\" Which TWO actions support this goal? (Select TWO)",
+    "options": [
+     "Remove insulation during value engineering",
+     "Oversize HVAC equipment to provide a large safety margin",
+     "Select equipment before the envelope is designed",
+     "Right-size the HVAC system based on the reduced loads",
+     "Improve the envelope to reduce heating and cooling loads"
+    ],
+    "answer": [
+     3,
+     4
+    ],
+    "select": 2,
+    "explain": "Reducing loads and then right-sizing equipment lets savings offset efficiency costs. Oversizing or cutting insulation works against the strategy."
+   },
+   {
+    "q": "Which THREE phases are part of the iterative integrative process as described in LEED v4? (Select THREE)",
+    "options": [
+     "Design and construction",
+     "Occupancy, operations, and performance feedback",
+     "Discovery",
+     "Bid leveling only",
+     "Demolition planning only",
+     "Marketing and leasing only"
+    ],
+    "answer": [
+     0,
+     1,
+     2
+    ],
+    "select": 3,
+    "explain": "LEED describes discovery, design and construction, and occupancy/operations with performance feedback. The others are narrow activities, not integrative process phases."
+   },
+   {
+    "q": "Which THREE costs belong in a life-cycle cost analysis of an HVAC system? (Select THREE)",
+    "options": [
+     "Unrelated marketing expenses",
+     "Annual energy cost",
+     "Competitors' rental rates",
+     "Maintenance and replacement costs",
+     "Initial equipment and installation cost",
+     "The owner's personal income tax"
+    ],
+    "answer": [
+     1,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "LCC includes first, operating, and maintenance/replacement costs of the system. The other items are unrelated to the system's ownership costs."
+   },
+   {
+    "q": "Which THREE actions reflect an integrative approach to goal setting? (Select THREE)",
+    "options": [
+     "Letting each consultant set separate, unrelated goals",
+     "Deferring sustainability goals until construction documents",
+     "Revisiting goals at each project phase",
+     "Holding a goal-setting charrette with all disciplines",
+     "Setting measurable performance targets such as energy use intensity",
+     "Finalizing the architecture before engaging engineers"
+    ],
+    "answer": [
+     2,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "Integrative goal setting is collaborative, measurable, and revisited. Separate goals, late engineering input, and deferred sustainability goals reflect conventional design."
+   }
+  ]
+ },
+ {
+  "n": 3,
+  "id": "location-transportation",
+  "title": "Location and Transportation",
+  "intro": "Where a building is located can matter as much as how it is built. This chapter covers site selection, sensitive land, high-priority and infill sites, density and diverse uses, access to transit, and strategies that cut the vehicle travel and emissions generated by building occupants.",
+  "sections": [
+   {
+    "h": "Why location matters",
+    "body": [
+     "Transportation is a major source of greenhouse gas emissions, and much of that travel is generated by where buildings are placed. A highly efficient building on a remote greenfield site can still cause large emissions if every occupant must drive alone to reach it.",
+     "The Location and Transportation (LT) category rewards decisions about site selection and transportation that reduce vehicle miles traveled (VMT), protect undeveloped land, and support walkable, connected communities. It encourages building where infrastructure such as roads, water, sewer, and transit already exist.",
+     "Sprawl, meaning low-density, car-dependent development that spreads into undeveloped land, increases infrastructure costs, habitat loss, impervious surface, and driving. Compact, connected development reverses those trends."
+    ],
+    "tip": "The core LT intent: reduce VMT and avoid developing inappropriate sites. When in doubt, choose the answer that reduces driving or reuses previously developed land."
+   },
+   {
+    "h": "Site selection: sensitive land, high-priority sites, and infill",
+    "body": [
+     "Sensitive land is land that should be protected from development, such as prime farmland, land within the 100-year floodplain, habitat for threatened or endangered species, wetlands, and areas near water bodies. LEED v4's Sensitive Land Protection credit rewards locating the development footprint on previously developed land or avoiding sensitive land.",
+     "Previously developed land has been altered by paving, construction, or land use. Greenfield sites have never been developed (or have been restored to a natural state). An infill site is a vacant or underused lot surrounded largely by existing development.",
+     "High-priority sites include locations in a historic district, sites in priority areas designated by government programs to promote development, and brownfields where the team remediates contamination. A brownfield is property whose reuse may be complicated by the presence or potential presence of a hazardous substance, pollutant, or contaminant."
+    ],
+    "tip": "Brownfield remediation is rewarded; it turns a liability into a community asset while sparing greenfields."
+   },
+   {
+    "h": "Surrounding density and diverse uses",
+    "body": [
+     "Density measures how much development exists in an area, often expressed as floor-area ratio (FAR) for nonresidential space or dwelling units per acre for housing. Higher density supports transit service, local businesses, and shorter trips.",
+     "Diverse uses are everyday destinations such as grocery stores, pharmacies, restaurants, banks, schools, libraries, parks, and medical clinics. In LEED v4, the Surrounding Density and Diverse Uses credit counts uses within a 1/2-mile walking distance of the project's main entrance.",
+     "Walking distance is measured along infrastructure that pedestrians can actually use, such as sidewalks and crosswalks, not as a straight-line radius. A destination across a highway with no crossing may be close on a map but far by walking distance."
+    ],
+    "tip": "Watch for \"walking distance\" versus \"radius\" in answer choices; LEED v4 LT credits use walking distance."
+   },
+   {
+    "h": "Access to quality transit",
+    "body": [
+     "Locating near frequent, reliable transit gives occupants a practical alternative to driving. LEED v4's Access to Quality Transit credit evaluates the number of weekday and weekend transit trips available at stops near the project.",
+     "In LEED v4, bus and streetcar stops count if they are within a 1/4-mile walking distance of a functional entry, while bus rapid transit, light or heavy rail, commuter rail, and ferry stops count within a 1/2-mile walking distance. Service frequency matters: a stop with only a few trips per day provides little benefit.",
+     "Teams can sometimes add shuttle or other qualifying service, but the most effective strategy is choosing a site already well served by transit."
+    ],
+    "tip": "Two distances to remember for LEED v4: 1/4 mile for bus/streetcar, 1/2 mile for rail, BRT, and ferry."
+   },
+   {
+    "h": "Bicycle facilities, parking, and green vehicles",
+    "body": [
+     "Bicycle facilities support cycling for commuting and errands. Strategies include short-term bicycle storage for visitors near entrances, secure long-term storage for regular occupants, and showers and changing facilities. Locating near a connected bicycle network extends the value of these amenities.",
+     "Reduced Parking Footprint encourages providing less parking than local baselines, avoiding exceeding code minimums, and reserving preferred spaces for carpools and vanpools. Excess parking encourages driving, consumes land, and adds impervious surface and heat island effect.",
+     "Green Vehicles strategies include designating preferred parking for low-emitting and fuel-efficient vehicles and installing electric vehicle supply equipment (EVSE). These measures support cleaner vehicles for trips that cannot be shifted to other modes."
+    ],
+    "tip": "Preferred parking means spaces closest to the main entrance (excluding accessible spaces); it is used both for carpools and green vehicles."
+   },
+   {
+    "h": "LEED for Neighborhood Development location",
+    "body": [
+     "LEED for Neighborhood Development (ND) certifies whole neighborhoods based on smart location, neighborhood pattern and design, and green infrastructure. A neighborhood that earns ND certification has already demonstrated good location, density, connectivity, and transit access.",
+     "In LEED v4 BD+C, a building located within a certified LEED ND Plan or Built Project can pursue the LEED for Neighborhood Development Location credit. This credit is an alternative path: projects that pursue it are not eligible to earn points under the other LT credits.",
+     "The ND path rewards building in places that were planned holistically, and it simplifies documentation for teams whose surrounding neighborhood already meets high standards."
+    ],
+    "tip": "LEED ND Location is an either/or path in LEED v4 BD+C: pursue it, or pursue the individual LT credits, but not both."
+   }
+  ],
+  "terms": [
+   {
+    "term": "Vehicle miles traveled (VMT)",
+    "def": "Total miles driven by vehicles in an area or by a building's occupants; a key metric LT aims to reduce."
+   },
+   {
+    "term": "Sprawl",
+    "def": "Low-density, car-dependent development spreading into undeveloped land, increasing driving, infrastructure costs, and habitat loss."
+   },
+   {
+    "term": "Greenfield",
+    "def": "A site that has never been developed for urban use or has been restored to a natural state."
+   },
+   {
+    "term": "Previously developed land",
+    "def": "Land altered by paving, construction, or land use, as opposed to land in a natural state."
+   },
+   {
+    "term": "Infill site",
+    "def": "A vacant or underused lot largely surrounded by existing development and infrastructure."
+   },
+   {
+    "term": "Brownfield",
+    "def": "Property whose reuse may be complicated by the presence or potential presence of hazardous substances, pollutants, or contaminants."
+   },
+   {
+    "term": "Sensitive land",
+    "def": "Land to protect from development, such as prime farmland, floodplains, endangered species habitat, wetlands, and water bodies."
+   },
+   {
+    "term": "Prime farmland",
+    "def": "Land with the best combination of characteristics for producing food, feed, fiber, and oilseed crops."
+   },
+   {
+    "term": "100-year floodplain",
+    "def": "Area with a 1% or greater chance of flooding in any given year."
+   },
+   {
+    "term": "High-priority site",
+    "def": "In LEED v4, a site in a historic district, a government priority designation area, or a remediated brownfield."
+   },
+   {
+    "term": "Development footprint",
+    "def": "The total land area altered by a project, including buildings, hardscape, roads, and parking."
+   },
+   {
+    "term": "Density",
+    "def": "The amount of development in an area, often measured as floor-area ratio or dwelling units per acre."
+   },
+   {
+    "term": "Floor-area ratio (FAR)",
+    "def": "Total building floor area divided by the land area of the site."
+   },
+   {
+    "term": "Diverse uses",
+    "def": "Distinct everyday destinations such as grocery stores, schools, banks, pharmacies, and parks."
+   },
+   {
+    "term": "Walking distance",
+    "def": "The distance a pedestrian must travel along usable infrastructure like sidewalks and crosswalks, not a straight-line radius."
+   },
+   {
+    "term": "Access to quality transit",
+    "def": "Proximity to transit stops with frequent weekday and weekend service near a project's functional entries."
+   },
+   {
+    "term": "Bus rapid transit (BRT)",
+    "def": "High-quality bus service with dedicated lanes or priority features, treated like rail for LEED v4 distance purposes."
+   },
+   {
+    "term": "Short-term bicycle storage",
+    "def": "Non-enclosed bike racks near entrances intended for visitors and brief trips."
+   },
+   {
+    "term": "Long-term bicycle storage",
+    "def": "Secure, covered bike parking for regular occupants such as employees and residents."
+   },
+   {
+    "term": "Preferred parking",
+    "def": "Spaces closest to the main entrance (excluding accessible spaces), reserved for carpools or green vehicles."
+   },
+   {
+    "term": "Electric vehicle supply equipment (EVSE)",
+    "def": "Charging infrastructure that delivers electricity from the grid to electric vehicles."
+   },
+   {
+    "term": "Green vehicle",
+    "def": "A low-emitting, fuel-efficient vehicle, including electric vehicles, eligible for preferred parking."
+   },
+   {
+    "term": "LEED ND",
+    "def": "LEED for Neighborhood Development, which certifies neighborhoods for smart location, design, and green infrastructure."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'><rect width='360' height='220' fill='#f7f8f5'/><circle cx='118' cy='118' r='98' fill='#e6f2ee' stroke='#0a8a6a' stroke-width='1.5' stroke-dasharray='5,3'/><circle cx='118' cy='118' r='44' fill='#dbe7f5' stroke='#2b6cb0' stroke-width='1.5' stroke-dasharray='5,3'/><g font-size='10' text-anchor='middle'><text x='118' y='40' fill='#0a8a6a' font-weight='bold'>&#189; mile</text><text x='118' y='90' fill='#2b6cb0' font-weight='bold'>&#188; mile</text><rect x='106' y='106' width='24' height='24' fill='#334155'/><text x='118' y='143' fill='#334155'>Project</text><rect x='133' y='94' width='22' height='13' rx='2' fill='#2b6cb0'/><text x='144' y='104' fill='#fff'>Bus</text><rect x='80' y='110' width='22' height='13' rx='2' fill='#2b6cb0'/><text x='91' y='120' fill='#fff'>Bus</text><rect x='105' y='181' width='26' height='13' rx='2' fill='#d97706'/><text x='118' y='191' fill='#fff'>Rail</text><circle cx='71' cy='71' r='4' fill='#0a8a6a'/><text x='71' y='66' fill='#334155'>School</text><circle cx='165' cy='71' r='4' fill='#0a8a6a'/><text x='165' y='66' fill='#334155'>Bank</text><circle cx='71' cy='165' r='4' fill='#0a8a6a'/><text x='71' y='179' fill='#334155'>Clinic</text><circle cx='165' cy='165' r='4' fill='#0a8a6a'/><text x='165' y='179' fill='#334155'>Grocery</text></g><text x='228' y='26' font-size='11' font-weight='bold' fill='#334155'>LEED v4 LT radii</text><rect x='228' y='37' width='12' height='10' rx='2' fill='#2b6cb0'/><text x='245' y='46' font-size='10' fill='#334155'>Bus/streetcar stops</text><text x='245' y='58' font-size='10' fill='#64748b'>within &#188; mile</text><rect x='228' y='73' width='12' height='10' rx='2' fill='#d97706'/><text x='245' y='82' font-size='10' fill='#334155'>Rail, BRT, ferry</text><text x='245' y='94' font-size='10' fill='#64748b'>within &#189; mile</text><circle cx='234' cy='114' r='5' fill='#0a8a6a'/><text x='245' y='118' font-size='10' fill='#334155'>Diverse uses</text><text x='245' y='130' font-size='10' fill='#64748b'>within &#189; mile</text><rect x='228' y='145' width='12' height='10' rx='2' fill='#334155'/><text x='245' y='154' font-size='10' fill='#334155'>Project entrance</text><text x='245' y='166' font-size='10' fill='#64748b'>(start point)</text><text x='228' y='196' font-size='10' fill='#c53030'>Measured as walking</text><text x='228' y='208' font-size='10' fill='#c53030'>distance, not radius</text></svg>",
+  "svgCaption": "LEED v4 location credits count destinations by walking distance from the project's entrance: bus and streetcar stops within 1/4 mile, rail, BRT, and ferry stops within 1/2 mile, and diverse uses within 1/2 mile. The circles are illustrative only; actual walking routes are measured along sidewalks and crossings.",
+  "questions": [
+   {
+    "q": "What is the primary intent of the Location and Transportation credit category?",
+    "options": [
+     "Reduce indoor water use",
+     "Increase on-site parking capacity",
+     "Encourage development in locations that reduce vehicle travel and protect undeveloped land",
+     "Improve indoor air quality"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "LT focuses on site selection and transportation choices that cut VMT and spare sensitive or undeveloped land. More parking works against that intent."
+   },
+   {
+    "q": "A developer is comparing four sites for a new office building. Which site best aligns with LT goals?",
+    "options": [
+     "A wooded parcel at the edge of town with new road access",
+     "A greenfield parcel next to a highway interchange",
+     "An infill lot in a downtown core served by frequent bus and rail",
+     "Prime farmland near a regional airport"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "The downtown infill site reuses existing infrastructure and offers transit access. The others require new land and encourage driving."
+   },
+   {
+    "q": "Which site should a team avoid developing to meet the intent of LEED v4's Sensitive Land Protection credit?",
+    "options": [
+     "A greenfield parcel within the 100-year floodplain",
+     "A remediated brownfield",
+     "A vacant lot in a historic district",
+     "A previously developed parking lot"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Floodplains are sensitive land. Previously developed land, remediated brownfields, and historic-district infill are preferred locations."
+   },
+   {
+    "q": "Which best defines a brownfield?",
+    "options": [
+     "A site with no existing infrastructure",
+     "Property whose reuse may be complicated by the presence or potential presence of contaminants",
+     "Any site with clay soils",
+     "Farmland that has been fallow for several years"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Brownfields are defined by real or potential contamination. Soil type, fallow farmland, or lack of infrastructure do not make a site a brownfield."
+   },
+   {
+    "q": "Which describes previously developed land?",
+    "options": [
+     "Land designated as a wildlife refuge",
+     "Land in a natural, undisturbed state",
+     "Land that has been altered by paving, construction, or land use",
+     "Land used only for parks"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Previously developed land has been altered by human development. Undisturbed or refuge land is greenfield or sensitive land."
+   },
+   {
+    "q": "What is an infill site?",
+    "options": [
+     "A site that must be filled with soil before building",
+     "A wetland that has been drained",
+     "A parcel on the edge of a growth boundary",
+     "A vacant or underused lot largely surrounded by existing development"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Infill sites sit within existing development and use existing infrastructure. Filling with soil or draining wetlands has nothing to do with the definition."
+   },
+   {
+    "q": "In LEED v4 Access to Quality Transit, within what walking distance of a functional entry must bus or streetcar stops be located to count?",
+    "options": [
+     "2 miles",
+     "1 mile",
+     "1/4 mile",
+     "1/8 mile"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Bus and streetcar stops count within a 1/4-mile walking distance. Rail, BRT, and ferry stops count within 1/2 mile."
+   },
+   {
+    "q": "How is \"walking distance\" measured for LEED v4 Location and Transportation credits?",
+    "options": [
+     "Along the nearest roadway centerline for vehicles",
+     "Along infrastructure pedestrians can use, such as sidewalks and crosswalks",
+     "As a straight-line radius from the center of the site",
+     "By the time it takes to drive the route"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Walking distance follows actual pedestrian routes. A straight-line radius can overstate access if barriers such as highways block the way."
+   },
+   {
+    "q": "A team wants to pursue Reduced Parking Footprint. Which strategy best supports the credit?",
+    "options": [
+     "Provide less parking than the baseline and designate preferred spaces for carpools",
+     "Provide parking well above the local code minimum",
+     "Add a new surface parking lot for visitors",
+     "Offer free reserved spaces for every employee"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The credit rewards reducing parking capacity and supporting carpools. Adding or giving away parking encourages driving."
+   },
+   {
+    "q": "Which strategy is associated with the LEED v4 Green Vehicles credit?",
+    "options": [
+     "Widening adjacent roads",
+     "Building a drive-through",
+     "Installing electric vehicle supply equipment (EVSE)",
+     "Providing a car wash for occupants"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Green Vehicles rewards EV charging and preferred parking for green vehicles. The other choices do not reduce vehicle emissions."
+   },
+   {
+    "q": "Which combination best describes LEED bicycle facilities?",
+    "options": [
+     "Painted bike symbols in the parking garage only",
+     "Bike racks located a mile from the building",
+     "Short-term storage for visitors, secure long-term storage for occupants, and showers or changing facilities",
+     "A bicycle sales kiosk in the lobby"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "LEED's bicycle facilities strategy combines storage for different users with shower and changing facilities. Remote racks or decorative markings do not serve riders."
+   },
+   {
+    "q": "In LEED v4 BD+C, what is true of a project that pursues the LEED for Neighborhood Development Location credit?",
+    "options": [
+     "It may also earn all other LT credits",
+     "It is exempt from all prerequisites",
+     "It automatically earns Platinum",
+     "It is not eligible to earn points under the other LT credits"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "The ND Location credit is an alternative path to the other LT credits. It does not exempt the project from prerequisites or guarantee any level."
+   },
+   {
+    "q": "Which is an example of a diverse use counted for Surrounding Density and Diverse Uses?",
+    "options": [
+     "A highway on-ramp",
+     "A grocery store",
+     "A vacant lot",
+     "A surface parking lot"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Diverse uses are everyday destinations such as groceries, schools, and pharmacies. Vacant lots and parking are not uses people walk to for services."
+   },
+   {
+    "q": "A project team on a dense urban site wants to reduce single-occupancy vehicle trips by employees. Which combination is MOST effective?",
+    "options": [
+     "Choose a site near frequent transit, add secure bike storage, and limit parking",
+     "Provide only short-term bike racks and free parking",
+     "Relocate to a suburban office park",
+     "Build an oversized garage and offer free parking"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Transit access, bicycle facilities, and limited parking together shift trips away from driving alone. Free, abundant parking does the opposite."
+   },
+   {
+    "q": "Which metric best captures what LT credits aim to reduce?",
+    "options": [
+     "Construction waste",
+     "Energy use intensity",
+     "Indoor water use",
+     "Vehicle miles traveled (VMT)"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "LT strategies aim to cut VMT and the emissions it causes. The other metrics belong to other credit categories."
+   },
+   {
+    "q": "Which TWO are considered sensitive land types in LEED v4? (Select TWO)",
+    "options": [
+     "A previously developed parking lot",
+     "A remediated brownfield",
+     "Land within the 100-year floodplain",
+     "Habitat for threatened or endangered species",
+     "An infill lot downtown"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Floodplains and endangered species habitat are sensitive land. Parking lots, brownfields, and infill lots are preferred places to build."
+   },
+   {
+    "q": "Which TWO sites would qualify as high-priority sites in LEED v4? (Select TWO)",
+    "options": [
+     "Prime farmland at the edge of town",
+     "A site in the 100-year floodplain",
+     "A site within a historic district",
+     "A greenfield next to a highway",
+     "A brownfield where the team remediates contamination"
+    ],
+    "answer": [
+     2,
+     4
+    ],
+    "select": 2,
+    "explain": "High-priority sites include remediated brownfields, historic districts, and government priority areas. Greenfields, farmland, and floodplains are discouraged."
+   },
+   {
+    "q": "Which TWO strategies improve a project's access to quality transit? (Select TWO)",
+    "options": [
+     "Siting the project at a highway interchange",
+     "Locating within walking distance of multiple frequent bus routes",
+     "Building a larger parking garage",
+     "Locating within walking distance of a commuter rail station",
+     "Running a shuttle only between the building and its parking lot"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "select": 2,
+    "explain": "Proximity to frequent bus and rail service improves transit access. More parking or highway-oriented sites encourage driving."
+   },
+   {
+    "q": "Which TWO are components of LEED bicycle facilities strategies? (Select TWO)",
+    "options": [
+     "Bike racks located a mile from the entrance",
+     "Secure long-term bicycle storage for regular occupants",
+     "A bicycle retail kiosk",
+     "Showers and changing facilities",
+     "A car wash for employees"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "select": 2,
+    "explain": "Long-term storage and showers support bike commuting. Distant racks and retail kiosks do not meet the intent."
+   },
+   {
+    "q": "Which TWO are benefits of compact, mixed-use development? (Select TWO)",
+    "options": [
+     "Higher infrastructure cost per resident",
+     "More impervious surface per resident",
+     "More land consumed per building",
+     "Greater walkability and support for local businesses",
+     "Fewer and shorter vehicle trips"
+    ],
+    "answer": [
+     3,
+     4
+    ],
+    "select": 2,
+    "explain": "Compact, mixed-use areas shorten trips and support walking and local commerce. The other choices are typical consequences of sprawl."
+   },
+   {
+    "q": "Which TWO strategies support the Reduced Parking Footprint credit? (Select TWO)",
+    "options": [
+     "Add a surface lot to accommodate peak events",
+     "Designate preferred parking for carpools and vanpools",
+     "Provide fewer parking spaces than the baseline",
+     "Exceed local code minimum parking requirements",
+     "Offer unlimited free parking to all occupants"
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "select": 2,
+    "explain": "Reducing capacity and prioritizing carpools reduce driving and parking land. Exceeding code or adding free parking undermines the intent."
+   },
+   {
+    "q": "Which TWO strategies are associated with the Green Vehicles credit? (Select TWO)",
+    "options": [
+     "Provide free parking for all single-occupancy vehicles",
+     "Create idling zones near entrances",
+     "Designate preferred parking for green vehicles",
+     "Install diesel backup generators",
+     "Install electric vehicle charging equipment"
+    ],
+    "answer": [
+     2,
+     4
+    ],
+    "select": 2,
+    "explain": "EV charging and preferred green-vehicle parking are the core strategies. Free SOV parking and idling zones increase emissions."
+   },
+   {
+    "q": "Which THREE would count as diverse uses near a project? (Select THREE)",
+    "options": [
+     "Public library",
+     "Vacant lot",
+     "Highway interchange",
+     "Surface parking lot",
+     "Grocery store",
+     "Elementary school"
+    ],
+    "answer": [
+     0,
+     4,
+     5
+    ],
+    "select": 3,
+    "explain": "Groceries, libraries, and schools are everyday destinations that reduce driving. Vacant lots, parking, and highways are not destinations."
+   },
+   {
+    "q": "Which THREE site characteristics reduce the environmental impact of a project's location? (Select THREE)",
+    "options": [
+     "Prime farmland",
+     "Requires a new access highway",
+     "Existing water and sewer infrastructure nearby",
+     "Previously developed land",
+     "Frequent transit within walking distance",
+     "Far from other uses"
+    ],
+    "answer": [
+     2,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "Reusing developed land with existing infrastructure and transit limits sprawl and driving. Farmland, new highways, and isolation increase impacts."
+   },
+   {
+    "q": "Which THREE transit types can count toward LEED v4 Access to Quality Transit? (Select THREE)",
+    "options": [
+     "Taxi stand",
+     "Ferry",
+     "Rental car agency",
+     "Light rail",
+     "Private parking-lot shuttle",
+     "Bus"
+    ],
+    "answer": [
+     1,
+     3,
+     5
+    ],
+    "select": 3,
+    "explain": "Bus, rail, and ferry service with qualifying frequency count. Taxis, rental cars, and parking shuttles are not quality transit."
+   }
+  ]
+ }
+]

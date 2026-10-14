@@ -52,7 +52,7 @@
     {"title": "Climate Town", "year": null, "where": "YouTube channel", "why": "Funny, sharp explainers on energy policy, utilities, plastics and greenwashing.", "url": "https://www.youtube.com/@ClimateTown"},
     {"title": "Technology Connections", "year": null, "where": "YouTube channel", "why": "The best explanations of heat pumps, efficiency and how appliances really use energy.", "url": "https://www.youtube.com/@TechnologyConnections"},
     {"title": "Engineering with Rosie", "year": null, "where": "YouTube channel", "why": "An engineer explains renewables, storage and grid tech clearly.", "url": "https://www.youtube.com/@EngineeringwithRosie"},
-    {"title": "Undecided with Matt Ferrell", "year": null, "where": "YouTube channel", "why": "Home solar, batteries and new energy tech reviewed with real-world numbers.", "url": "https://www.youtube.com/@UndecidedMF"}
+    {"title": "Undecided with Matt Ferrell", "year": null, "where": "YouTube channel", "why": "Home solar, batteries and new energy tech reviewed with real-world numbers.", "url": "https://www.youtube.com/@MattFerrell"}
   ],
   "companies": [
     {"name": "NextEra Energy", "ticker": "NEE", "sector": "Utility / renewables developer", "why": "Largest US wind and solar generator; its earnings calls are a read on the whole industry."},

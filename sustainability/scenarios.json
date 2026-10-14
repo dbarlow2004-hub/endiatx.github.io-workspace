@@ -1,0 +1,758 @@
+{
+ "scenarios": [
+  {
+   "id": "utility-bills-oakland-office",
+   "title": "First read of 12 months of utility data",
+   "skill": "operational-carbon",
+   "context": "Week 3 at Arup SF. Your lead forwards a client's 12-month utility data for a 3-story, 30,000 sf office in Oakland and asks for a first read before tomorrow's call. The client wants to know whether the building is 'normal' and where to look for savings.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>Oakland office (30,000 sf) - monthly utility use, 2025</text><text x='48' y='29' font-size='9' text-anchor='start' fill='#5b6168' font-weight='bold'>Electricity (kWh/month)</text><line x1='48' y1='104' x2='350' y2='104' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='107' font-size='9' text-anchor='end' fill='#5b6168'>0</text><line x1='48' y1='84' x2='350' y2='84' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='87' font-size='9' text-anchor='end' fill='#5b6168'>10k</text><line x1='48' y1='64' x2='350' y2='64' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='67' font-size='9' text-anchor='end' fill='#5b6168'>20k</text><line x1='48' y1='44' x2='350' y2='44' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='47' font-size='9' text-anchor='end' fill='#5b6168'>30k</text><rect x='53.1' y='50' width='15' height='54' fill='#4f7cac'/><g data-hot='h-feb'><rect x='73.2' y='30' width='25.2' height='74' fill='transparent' pointer-events='all'/><rect x='78.2' y='54' width='15' height='50' fill='#4f7cac'/></g><rect x='103.4' y='50' width='15' height='54' fill='#4f7cac'/><rect x='128.6' y='52' width='15' height='52' fill='#4f7cac'/><rect x='153.8' y='50' width='15' height='54' fill='#4f7cac'/><rect x='178.9' y='46' width='15' height='58' fill='#4f7cac'/><rect x='204.1' y='42' width='15' height='62' fill='#4f7cac'/><rect x='229.3' y='42' width='15' height='62' fill='#4f7cac'/><g data-hot='h-est'><rect x='249.3' y='30' width='25.2' height='74' fill='transparent' pointer-events='all'/><rect x='254.4' y='44' width='15' height='60' fill='#4f7cac'/><text x='261.9' y='41' font-size='9' text-anchor='middle' fill='#9a3b2e' font-style='italic'>est.</text></g><rect x='279.6' y='48' width='15' height='56' fill='#4f7cac'/><rect x='304.8' y='52' width='15' height='52' fill='#4f7cac'/><rect x='329.9' y='50' width='15' height='54' fill='#4f7cac'/><line x1='48' y1='104' x2='350' y2='104' stroke='#1f2328' stroke-width='1'/><text x='48' y='123' font-size='9' text-anchor='start' fill='#5b6168' font-weight='bold'>Natural gas (therms/month)</text><line x1='48' y1='188' x2='350' y2='188' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='191' font-size='9' text-anchor='end' fill='#5b6168'>0</text><line x1='48' y1='168' x2='350' y2='168' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='171' font-size='9' text-anchor='end' fill='#5b6168'>400</text><line x1='48' y1='148' x2='350' y2='148' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='151' font-size='9' text-anchor='end' fill='#5b6168'>800</text><line x1='48' y1='128' x2='350' y2='128' stroke='#d9d4c7' stroke-width='0.7'/><text x='44' y='131' font-size='9' text-anchor='end' fill='#5b6168'>1,200</text><rect x='53.1' y='133' width='15' height='55' fill='#d0813a'/><rect x='78.2' y='138' width='15' height='50' fill='#d0813a'/><rect x='103.4' y='145.5' width='15' height='42.5' fill='#d0813a'/><rect x='128.6' y='155.5' width='15' height='32.5' fill='#d0813a'/><rect x='153.8' y='158' width='15' height='30' fill='#d0813a'/><rect x='254.4' y='153' width='15' height='35' fill='#d0813a'/><rect x='279.6' y='158' width='15' height='30' fill='#d0813a'/><rect x='304.8' y='148' width='15' height='40' fill='#d0813a'/><g data-hot='h-dec'><rect x='324.8' y='124' width='25.2' height='64' fill='transparent' pointer-events='all'/><rect x='329.9' y='134' width='15' height='54' fill='#d0813a'/></g><g data-hot='h-summer'><rect x='173.8' y='124' width='75.5' height='64' fill='transparent' pointer-events='all'/><rect x='178.9' y='153' width='15' height='35' fill='#d0813a'/><rect x='204.1' y='148' width='15' height='40' fill='#d0813a'/><rect x='229.3' y='147' width='15' height='41' fill='#d0813a'/></g><line x1='48' y1='188' x2='350' y2='188' stroke='#1f2328' stroke-width='1'/><text x='60.6' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>J</text><text x='85.8' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>F</text><text x='110.9' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>M</text><text x='136.1' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>A</text><text x='161.3' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>M</text><text x='186.4' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>J</text><text x='211.6' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>J</text><text x='236.8' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>A</text><text x='261.9' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>S</text><text x='287.1' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>O</text><text x='312.2' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>N</text><text x='337.4' y='200' font-size='9' text-anchor='middle' fill='#5b6168'>D</text><text x='10' y='216' font-size='9' text-anchor='start' fill='#5b6168' font-weight='bold'>Average daily electricity (from 15-min interval data)</text><text x='82' y='230' font-size='9' text-anchor='end' fill='#1f2328'>Weekday</text><rect x='88' y='222' width='153.6' height='10' fill='#4f7cac'/><text x='245.6' y='230' font-size='9' text-anchor='start' fill='#1f2328'>960 kWh/day</text><g data-hot='h-weekend'><rect x='30' y='235' width='290' height='16' fill='transparent' pointer-events='all'/><text x='82' y='246' font-size='9' text-anchor='end' fill='#1f2328'>Weekend</text><rect x='88' y='238' width='130.4' height='10' fill='#4f7cac'/><text x='222.4' y='246' font-size='9' text-anchor='start' fill='#1f2328'>815 kWh/day</text></g><rect x='10' y='256' width='340' height='38' fill='#efebe1' stroke='#c9c4b8' stroke-width='0.8'/><text x='18' y='270' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>2025 totals:  Electricity 334,000 kWh   |   Natural gas 9,700 therms</text><text x='18' y='286' font-size='9' text-anchor='start' fill='#5b6168'>Gross floor area 30,000 sf   |   1 kWh = 3.412 kBtu;  1 therm = 100 kBtu</text></svg>",
+   "caption": "Monthly electricity and gas use for an Oakland office, with weekday vs weekend daily averages and annual totals.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A monthly utility consumption profile (meter data) with an interval-data summary",
+      "An energy model end-use breakdown",
+      "A utility rate tariff schedule",
+      "A degree-day weather normalization chart"
+     ],
+     "answer": 0,
+     "explain": "Monthly bars by fuel straight from utility bills are the classic first artifact in an existing-building assessment. They show actual metered use, so the shape over the year (and weekday vs weekend) tells you how the building is really operated."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-summer",
+       "issue": true,
+       "label": "Summer gas bump (Jun-Aug)",
+       "explain": "In Oakland's mild climate, space-heating gas should bottom out in summer. Gas rising in Jun-Aug points to simultaneous heating and cooling (e.g. VAV reheat running hard, boiler left enabled) or an oversized hot-water load. Worth asking how the reheat and boiler are scheduled."
+      },
+      {
+       "id": "h-weekend",
+       "issue": true,
+       "label": "Weekend use ~85% of weekday",
+       "explain": "An office that is mostly empty on weekends should drop well below weekday use. At 815 vs 960 kWh/day, HVAC, lighting or plug loads are probably running unoccupied. Schedules and night/weekend setbacks are often the cheapest savings available."
+      },
+      {
+       "id": "h-est",
+       "issue": true,
+       "label": "September is an estimated read",
+       "explain": "'est.' means the utility estimated the bill rather than reading the meter. The next actual read usually 'catches up', so one month is too high and the next too low. Note it as a data-quality caveat and check the following bill or the interval data."
+      },
+      {
+       "id": "h-feb",
+       "issue": false,
+       "label": "Lower February electricity",
+       "explain": "February has 28 days (about 10% fewer than a 31-day month), so a lower bar is expected. Normalize by days in the billing period before reading anything into it."
+      },
+      {
+       "id": "h-dec",
+       "issue": false,
+       "label": "High December gas",
+       "explain": "Winter heating peaks in Dec-Jan are exactly what you expect from a gas-heated building. This is the normal part of the gas curve."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "Using the annual totals, what is the site EUI?",
+     "options": [
+      "About 38 kBtu/sf/yr",
+      "About 70 kBtu/sf/yr",
+      "About 32 kBtu/sf/yr",
+      "About 11 kBtu/sf/yr"
+     ],
+     "answer": 1,
+     "explain": "334,000 kWh x 3.412 = ~1,140,000 kBtu, plus 9,700 therms x 100 = 970,000 kBtu, for ~2,110,000 kBtu / 30,000 sf = ~70 kBtu/sf/yr. 38 counts electricity only, 32 counts gas only, and 11 is kWh/sf (wrong units). Around 70 is on the high side for a mild-climate office, which fits the operational red flags."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "First read on the Oakland office: site EUI is ~70 kBtu/sf/yr (334 MWh elec + 9,700 therms over 30,000 sf), which looks high for a mild-climate office. Two operational flags stand out: weekend electricity is ~85% of weekday (815 vs 960 kWh/day), suggesting HVAC/lighting schedules aren't setting back, and gas rises in Jun-Aug, which points to reheat or simultaneous heating and cooling. September is an estimated read, so I'd confirm it against interval data and ask the client for BAS schedules and the boiler/reheat sequence before the call."
+    }
+   ],
+   "takeaway": "Compute the EUI, but read the shape: summer gas and high weekend use are operational problems you can often fix without capital spend."
+  },
+  {
+   "id": "energy-model-unrealistic-inputs",
+   "title": "Sanity-check an energy model summary",
+   "skill": "energy-modeling",
+   "context": "Month 2 at Arup SF. A junior modeler drops a draft results page for a 120,000 sf San Jose office into the project folder; it is going into a client deck on Friday. Your lead asks you to sanity-check it before it goes out.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>Energy model results - proposed design (draft v2)</text><text x='10' y='28' font-size='9' text-anchor='start' fill='#5b6168'>5-story office, San Jose  |  120,000 sf  |  EnergyPlus, CZ 4 weather file</text><text x='10' y='46' font-size='9.5' text-anchor='start' fill='#5b6168' font-weight='bold'>Annual site energy by end use (kBtu/sf/yr)</text><text x='94' y='62' font-size='9' text-anchor='end' fill='#1f2328'>Space heating</text><rect x='100' y='54' width='71.4' height='9' fill='#5b8c6b'/><text x='175.4' y='62' font-size='9' text-anchor='start' fill='#5b6168'>2.1</text><text x='94' y='75' font-size='9' text-anchor='end' fill='#1f2328'>Space cooling</text><rect x='100' y='67' width='115.6' height='9' fill='#5b8c6b'/><text x='219.6' y='75' font-size='9' text-anchor='start' fill='#5b6168'>3.4</text><text x='94' y='88' font-size='9' text-anchor='end' fill='#1f2328'>Fans</text><rect x='100' y='80' width='190.4' height='9' fill='#5b8c6b'/><text x='294.4' y='88' font-size='9' text-anchor='start' fill='#5b6168'>5.6</text><text x='94' y='101' font-size='9' text-anchor='end' fill='#1f2328'>Pumps</text><rect x='100' y='93' width='30.6' height='9' fill='#5b8c6b'/><text x='134.6' y='101' font-size='9' text-anchor='start' fill='#5b6168'>0.9</text><text x='94' y='114' font-size='9' text-anchor='end' fill='#1f2328'>Interior lighting</text><rect x='100' y='106' width='34' height='9' fill='#5b8c6b'/><text x='138' y='114' font-size='9' text-anchor='start' fill='#5b6168'>1.0</text><text x='94' y='127' font-size='9' text-anchor='end' fill='#1f2328'>Plug &amp; equipment</text><rect x='100' y='119' width='20.4' height='9' fill='#5b8c6b'/><text x='124.4' y='127' font-size='9' text-anchor='start' fill='#5b6168'>0.6</text><text x='94' y='140' font-size='9' text-anchor='end' fill='#1f2328'>Hot water</text><rect x='100' y='132' width='27.2' height='9' fill='#5b8c6b'/><text x='131.2' y='140' font-size='9' text-anchor='start' fill='#5b6168'>0.8</text><line x1='100' y1='52' x2='100' y2='145' stroke='#1f2328' stroke-width='1'/><text x='10' y='160' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Total site EUI: 14.4 kBtu/sf/yr   (draft says: \"52% better than baseline\")</text><rect x='10' y='170' width='340' height='17' fill='#e4e0d4' stroke='#b9b3a4' stroke-width='0.8'/><text x='16' y='182' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Key input</text><text x='178' y='182' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Model value</text><text x='262' y='182' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Source</text><g data-hot='h-lpd'><rect x='10' y='187' width='340' height='18' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='199.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Lighting power density</text><text x='178' y='199.5' font-size='9.5' text-anchor='start' fill='#1f2328'>0.10 W/sf</text><text x='262' y='199.5' font-size='9.5' text-anchor='start' fill='#5b6168'>Lighting plan</text></g><g data-hot='h-plug'><rect x='10' y='205' width='340' height='18' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='217.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Plug &amp; equipment load</text><text x='178' y='217.5' font-size='9.5' text-anchor='start' fill='#1f2328'>0.05 W/sf</text><text x='262' y='217.5' font-size='9.5' text-anchor='start' fill='#5b6168'>Assumed</text></g><g data-hot='h-ufac'><rect x='10' y='223' width='340' height='18' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='235.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Window U-factor (assembly)</text><text x='178' y='235.5' font-size='9.5' text-anchor='start' fill='#1f2328'>0.05 Btu/h·ft²·°F</text><text x='262' y='235.5' font-size='9.5' text-anchor='start' fill='#5b6168'>Spec sheet</text></g><g data-hot='h-wwr'><rect x='10' y='241' width='340' height='18' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='253.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Window-to-wall ratio</text><text x='178' y='253.5' font-size='9.5' text-anchor='start' fill='#1f2328'>38%</text><text x='262' y='253.5' font-size='9.5' text-anchor='start' fill='#5b6168'>Elevations</text></g><g data-hot='h-cop'><rect x='10' y='259' width='340' height='18' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='271.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Heat pump heating COP</text><text x='178' y='271.5' font-size='9.5' text-anchor='start' fill='#1f2328'>3.2 (at 47°F)</text><text x='262' y='271.5' font-size='9.5' text-anchor='start' fill='#5b6168'>Mfr. data</text></g><rect x='10' y='277' width='340' height='18' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='289.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Occupant density</text><text x='178' y='289.5' font-size='9.5' text-anchor='start' fill='#1f2328'>200 sf/person</text><text x='262' y='289.5' font-size='9.5' text-anchor='start' fill='#5b6168'>Program</text><line x1='172' y1='170' x2='172' y2='295' stroke='#d6d0c2' stroke-width='0.6'/><line x1='256' y1='170' x2='256' y2='295' stroke='#d6d0c2' stroke-width='0.6'/></svg>",
+   "caption": "Draft energy model output: end-use breakdown, total EUI and a table of key modeling inputs.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "Measured utility data for an existing building",
+      "A whole-building energy simulation results summary with its key inputs",
+      "An ENERGY STAR Portfolio Manager benchmarking report",
+      "A commissioning functional test report"
+     ],
+     "answer": 1,
+     "explain": "An end-use breakdown in kBtu/sf/yr next to a list of input assumptions (LPD, plug loads, U-factors, COP) is the signature of a simulation report. The results are only as good as those inputs, so you always read the inputs table first."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-lpd",
+       "issue": true,
+       "label": "LPD 0.10 W/sf",
+       "explain": "Even very efficient LED office designs typically land around 0.4-0.6 W/sf. 0.10 is probably a typo (0.60?) or a single space's value, and it shrinks the lighting end use and its internal heat gain."
+      },
+      {
+       "id": "h-plug",
+       "issue": true,
+       "label": "Plug load 0.05 W/sf",
+       "explain": "Office plug and equipment loads are commonly in the 0.5-1 W/sf range at peak. 0.05 'assumed' is about 10x too low; plug loads are often one of the largest end uses in an efficient office, and here they are the smallest."
+      },
+      {
+       "id": "h-ufac",
+       "issue": true,
+       "label": "Window U-factor 0.05",
+       "explain": "Whole-window assemblies for good double glazing are roughly 0.25-0.35 Btu/h-ft2-F and triple glazing around 0.15-0.20. 0.05 behaves like an insulated wall and makes heating loads unrealistically small. Likely a center-of-glass or unit (SI vs IP) mix-up."
+      },
+      {
+       "id": "h-wwr",
+       "issue": false,
+       "label": "WWR 38%",
+       "explain": "38% window-to-wall is a typical, reasonable value for a contemporary office and is sourced from the elevations."
+      },
+      {
+       "id": "h-cop",
+       "issue": false,
+       "label": "Heat pump COP 3.2",
+       "explain": "A heating COP around 3 at 47 F is in the normal range for air-source heat pumps and is taken from manufacturer data. Just confirm the model also captures lower COP at colder temperatures."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Send it as-is; a low EUI makes the design look good",
+      "Mark the three inputs, ask the modeler for sources, and request a rerun before anything goes to the client",
+      "Scale the EUI up by 50% to make it look more realistic",
+      "Remove the inputs table from the deck so the client only sees results"
+     ],
+     "answer": 1,
+     "explain": "A 14 kBtu/sf/yr office would be exceptional; with three inputs off by large factors, the result is not credible. Fix the inputs at the source and rerun. Never adjust outputs by hand or hide assumptions."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "I'd hold the draft model results: the 14.4 kBtu/sf/yr EUI is driven by three inputs that look wrong: LPD of 0.10 W/sf (efficient LED designs are usually ~0.4-0.6), plug loads of 0.05 W/sf (typically 0.5-1), and a window U-factor of 0.05 (assemblies are ~0.25-0.35 for double glazing). I've asked the modeler to confirm the sources and rerun; I'd expect the EUI and the '52% better' claim to change materially, so the deck should wait for v3."
+    }
+   ],
+   "takeaway": "Read the inputs before the outputs: an EUI that looks too good is usually an input that is too good."
+  },
+  {
+   "id": "daylight-heatmap-west-glare",
+   "title": "Read a daylight heat map (sDA/ASE)",
+   "skill": "daylight-comfort",
+   "context": "You're supporting a Gensler workplace fit-out team in SF. The daylighting run for Level 4 just came back and the designer wants to know if the desk layout 'works' before the client review. You have 15 minutes before the stand-up.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><defs><pattern id='ase3hatch' width='6' height='6' patternUnits='userSpaceOnUse' patternTransform='rotate(45)'><rect width='6' height='6' fill='transparent'/><line x1='0' y1='0' x2='0' y2='6' stroke='#c0262d' stroke-width='2'/></pattern></defs><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>Level 4 - annual daylight analysis (sDA / ASE)</text><text x='10' y='28' font-size='9' text-anchor='start' fill='#5b6168'>Grid at 30 in AFF | blinds per LM-83 | ref. occupied area only</text><rect x='30' y='40' width='10' height='10' fill='#f6e27a'/><rect x='30' y='50' width='10' height='10' fill='#f6e27a'/><rect x='30' y='60' width='10' height='10' fill='#f6e27a'/><rect x='30' y='70' width='10' height='10' fill='#f6e27a'/><rect x='30' y='80' width='10' height='10' fill='#f6e27a'/><rect x='30' y='90' width='10' height='10' fill='#f6e27a'/><rect x='30' y='100' width='10' height='10' fill='#f6e27a'/><rect x='30' y='110' width='10' height='10' fill='#f6e27a'/><rect x='30' y='120' width='10' height='10' fill='#f6e27a'/><rect x='30' y='130' width='10' height='10' fill='#f6e27a'/><rect x='30' y='140' width='10' height='10' fill='#f6e27a'/><rect x='30' y='150' width='10' height='10' fill='#f6e27a'/><rect x='30' y='160' width='10' height='10' fill='#f6e27a'/><rect x='30' y='170' width='10' height='10' fill='#f6e27a'/><rect x='30' y='180' width='10' height='10' fill='#f6e27a'/><rect x='30' y='190' width='10' height='10' fill='#f6e27a'/><rect x='30' y='200' width='10' height='10' fill='#f6e27a'/><rect x='30' y='210' width='10' height='10' fill='#f6e27a'/><rect x='40' y='40' width='10' height='10' fill='#f6e27a'/><rect x='40' y='50' width='10' height='10' fill='#f6e27a'/><rect x='40' y='60' width='10' height='10' fill='#f6e27a'/><rect x='40' y='70' width='10' height='10' fill='#e8de63'/><rect x='40' y='80' width='10' height='10' fill='#e1db57'/><rect x='40' y='90' width='10' height='10' fill='#b9d054'/><rect x='40' y='100' width='10' height='10' fill='#bed152'/><rect x='40' y='110' width='10' height='10' fill='#cbd54e'/><rect x='40' y='120' width='10' height='10' fill='#a8cb59'/><rect x='40' y='130' width='10' height='10' fill='#c1d251'/><rect x='40' y='140' width='10' height='10' fill='#a8cb59'/><rect x='40' y='150' width='10' height='10' fill='#ccd54e'/><rect x='40' y='160' width='10' height='10' fill='#c2d351'/><rect x='40' y='170' width='10' height='10' fill='#e1dc58'/><rect x='40' y='180' width='10' height='10' fill='#e7dd61'/><rect x='40' y='190' width='10' height='10' fill='#f6e27a'/><rect x='40' y='200' width='10' height='10' fill='#f6e27a'/><rect x='40' y='210' width='10' height='10' fill='#f6e27a'/><rect x='50' y='40' width='10' height='10' fill='#f6e27a'/><rect x='50' y='50' width='10' height='10' fill='#f6e27a'/><rect x='50' y='60' width='10' height='10' fill='#dfdb54'/><rect x='50' y='70' width='10' height='10' fill='#b3ce56'/><rect x='50' y='80' width='10' height='10' fill='#5cb671'/><rect x='50' y='90' width='10' height='10' fill='#53b474'/><rect x='50' y='100' width='10' height='10' fill='#3ca185'/><rect x='50' y='110' width='10' height='10' fill='#3da780'/><rect x='50' y='120' width='10' height='10' fill='#3a988c'/><rect x='50' y='130' width='10' height='10' fill='#3ca384'/><rect x='50' y='140' width='10' height='10' fill='#3a988d'/><rect x='50' y='150' width='10' height='10' fill='#3da780'/><rect x='50' y='160' width='10' height='10' fill='#5cb671'/><rect x='50' y='170' width='10' height='10' fill='#5fb770'/><rect x='50' y='180' width='10' height='10' fill='#aecd57'/><rect x='50' y='190' width='10' height='10' fill='#dcda4f'/><rect x='50' y='200' width='10' height='10' fill='#f6e27a'/><rect x='50' y='210' width='10' height='10' fill='#f6e27a'/><rect x='60' y='40' width='10' height='10' fill='#f6e27a'/><rect x='60' y='50' width='10' height='10' fill='#efe06f'/><rect x='60' y='60' width='10' height='10' fill='#88c263'/><rect x='60' y='70' width='10' height='10' fill='#46b078'/><rect x='60' y='80' width='10' height='10' fill='#378e96'/><rect x='60' y='90' width='10' height='10' fill='#368a99'/><rect x='60' y='100' width='10' height='10' fill='#3175ab'/><rect x='60' y='110' width='10' height='10' fill='#327ba6'/><rect x='60' y='120' width='10' height='10' fill='#34839f'/><rect x='60' y='130' width='10' height='10' fill='#3176aa'/><rect x='60' y='140' width='10' height='10' fill='#34839f'/><rect x='60' y='150' width='10' height='10' fill='#327ba6'/><rect x='60' y='160' width='10' height='10' fill='#378e96'/><rect x='60' y='170' width='10' height='10' fill='#378f95'/><rect x='60' y='180' width='10' height='10' fill='#42af79'/><rect x='60' y='190' width='10' height='10' fill='#79be68'/><rect x='60' y='200' width='10' height='10' fill='#e8de63'/><rect x='60' y='210' width='10' height='10' fill='#f6e27a'/><rect x='70' y='40' width='10' height='10' fill='#f6e27a'/><rect x='70' y='50' width='10' height='10' fill='#ddda51'/><rect x='70' y='60' width='10' height='10' fill='#3fad7b'/><rect x='70' y='70' width='10' height='10' fill='#389292'/><rect x='70' y='80' width='10' height='10' fill='#35869d'/><rect x='70' y='90' width='10' height='10' fill='#2e6cac'/><rect x='70' y='100' width='10' height='10' fill='#2f6dae'/><rect x='70' y='110' width='10' height='10' fill='#2a5e9a'/><rect x='70' y='120' width='10' height='10' fill='#2c65a4'/><rect x='70' y='130' width='10' height='10' fill='#295a96'/><rect x='70' y='140' width='10' height='10' fill='#2c65a4'/><rect x='70' y='150' width='10' height='10' fill='#2b5e9b'/><rect x='70' y='160' width='10' height='10' fill='#2f6fb0'/><rect x='70' y='170' width='10' height='10' fill='#35879c'/><rect x='70' y='180' width='10' height='10' fill='#379093'/><rect x='70' y='190' width='10' height='10' fill='#65b96e'/><rect x='70' y='200' width='10' height='10' fill='#ced64d'/><rect x='70' y='210' width='10' height='10' fill='#f6e27a'/><rect x='80' y='40' width='10' height='10' fill='#f6e27a'/><rect x='80' y='50' width='10' height='10' fill='#b6cf55'/><rect x='80' y='60' width='10' height='10' fill='#3fad7b'/><rect x='80' y='70' width='10' height='10' fill='#327ca5'/><rect x='80' y='80' width='10' height='10' fill='#2f70b0'/><rect x='80' y='90' width='10' height='10' fill='#295793'/><rect x='80' y='100' width='10' height='10' fill='#295995'/><rect x='80' y='110' width='10' height='10' fill='#254982'/><rect x='80' y='120' width='10' height='10' fill='#27518b'/><rect x='80' y='130' width='10' height='10' fill='#2a5a96'/><rect x='80' y='140' width='10' height='10' fill='#27518b'/><rect x='80' y='150' width='10' height='10' fill='#2b5e9c'/><rect x='80' y='160' width='10' height='10' fill='#2a5b97'/><rect x='80' y='170' width='10' height='10' fill='#2f71ae'/><rect x='80' y='180' width='10' height='10' fill='#327aa6'/><rect x='80' y='190' width='10' height='10' fill='#3da880'/><rect x='80' y='200' width='10' height='10' fill='#98c75e'/><rect x='80' y='210' width='10' height='10' fill='#f6e27a'/><rect x='90' y='40' width='10' height='10' fill='#f6e27a'/><rect x='90' y='50' width='10' height='10' fill='#8ec461'/><rect x='90' y='60' width='10' height='10' fill='#3b9d88'/><rect x='90' y='70' width='10' height='10' fill='#2e6cac'/><rect x='90' y='80' width='10' height='10' fill='#2b619e'/><rect x='90' y='90' width='10' height='10' fill='#2a5d9a'/><rect x='90' y='100' width='10' height='10' fill='#254a83'/><rect x='90' y='110' width='10' height='10' fill='#274f89'/><rect x='90' y='120' width='10' height='10' fill='#234279'/><rect x='90' y='130' width='10' height='10' fill='#264b84'/><rect x='90' y='140' width='10' height='10' fill='#234279'/><rect x='90' y='150' width='10' height='10' fill='#275089'/><rect x='90' y='160' width='10' height='10' fill='#264c85'/><rect x='90' y='170' width='10' height='10' fill='#2c62a0'/><rect x='90' y='180' width='10' height='10' fill='#3481a1'/><rect x='90' y='190' width='10' height='10' fill='#39978d'/><rect x='90' y='200' width='10' height='10' fill='#a8cb59'/><rect x='90' y='210' width='10' height='10' fill='#f6e27a'/><rect x='100' y='40' width='10' height='10' fill='#f6e27a'/><rect x='100' y='50' width='10' height='10' fill='#a7cb5a'/><rect x='100' y='60' width='10' height='10' fill='#389193'/><rect x='100' y='70' width='10' height='10' fill='#3176aa'/><rect x='100' y='80' width='10' height='10' fill='#285590'/><rect x='100' y='90' width='10' height='10' fill='#27528c'/><rect x='100' y='100' width='10' height='10' fill='#223f75'/><rect x='100' y='110' width='10' height='10' fill='#24447b'/><rect x='100' y='120' width='10' height='10' fill='#20376b'/><rect x='100' y='130' width='10' height='10' fill='#234076'/><rect x='100' y='140' width='10' height='10' fill='#264b84'/><rect x='100' y='150' width='10' height='10' fill='#24447b'/><rect x='100' y='160' width='10' height='10' fill='#285590'/><rect x='100' y='170' width='10' height='10' fill='#295692'/><rect x='100' y='180' width='10' height='10' fill='#3074ab'/><rect x='100' y='190' width='10' height='10' fill='#368b98'/><rect x='100' y='200' width='10' height='10' fill='#89c363'/><rect x='100' y='210' width='10' height='10' fill='#f1e172'/><rect x='110' y='40' width='10' height='10' fill='#f6e27a'/><rect x='110' y='50' width='10' height='10' fill='#8fc461'/><rect x='110' y='60' width='10' height='10' fill='#35879c'/><rect x='110' y='70' width='10' height='10' fill='#2e6cad'/><rect x='110' y='80' width='10' height='10' fill='#264c85'/><rect x='110' y='90' width='10' height='10' fill='#254981'/><rect x='110' y='100' width='10' height='10' fill='#254b83'/><rect x='110' y='110' width='10' height='10' fill='#213b70'/><rect x='110' y='120' width='10' height='10' fill='#234279'/><rect x='110' y='130' width='10' height='10' fill='#20376b'/><rect x='110' y='140' width='10' height='10' fill='#234279'/><rect x='110' y='150' width='10' height='10' fill='#213b70'/><rect x='110' y='160' width='10' height='10' fill='#264c85'/><rect x='110' y='170' width='10' height='10' fill='#264d87'/><rect x='110' y='180' width='10' height='10' fill='#2e6bab'/><rect x='110' y='190' width='10' height='10' fill='#39988d'/><rect x='110' y='200' width='10' height='10' fill='#71bc6a'/><rect x='110' y='210' width='10' height='10' fill='#f6e27a'/><rect x='120' y='40' width='10' height='10' fill='#f4e176'/><rect x='120' y='50' width='10' height='10' fill='#7bbf67'/><rect x='120' y='60' width='10' height='10' fill='#39958f'/><rect x='120' y='70' width='10' height='10' fill='#2c65a4'/><rect x='120' y='80' width='10' height='10' fill='#295995'/><rect x='120' y='90' width='10' height='10' fill='#234178'/><rect x='120' y='100' width='10' height='10' fill='#24437a'/><rect x='120' y='110' width='10' height='10' fill='#1f3366'/><rect x='120' y='120' width='10' height='10' fill='#213b70'/><rect x='120' y='130' width='10' height='10' fill='#1e2f62'/><rect x='120' y='140' width='10' height='10' fill='#213b70'/><rect x='120' y='150' width='10' height='10' fill='#254880'/><rect x='120' y='160' width='10' height='10' fill='#24457c'/><rect x='120' y='170' width='10' height='10' fill='#2a5b97'/><rect x='120' y='180' width='10' height='10' fill='#2c63a2'/><rect x='120' y='190' width='10' height='10' fill='#378f94'/><rect x='120' y='200' width='10' height='10' fill='#5db671'/><rect x='120' y='210' width='10' height='10' fill='#f4e176'/><rect x='130' y='40' width='10' height='10' fill='#f6e27a'/><rect x='130' y='50' width='10' height='10' fill='#69ba6d'/><rect x='130' y='60' width='10' height='10' fill='#378e95'/><rect x='130' y='70' width='10' height='10' fill='#2b5e9c'/><rect x='130' y='80' width='10' height='10' fill='#28538d'/><rect x='130' y='90' width='10' height='10' fill='#213b70'/><rect x='130' y='100' width='10' height='10' fill='#223c72'/><rect x='130' y='110' width='10' height='10' fill='#234278'/><rect x='130' y='120' width='10' height='10' fill='#203468'/><rect x='130' y='130' width='10' height='10' fill='#223e73'/><rect x='130' y='140' width='10' height='10' fill='#203468'/><rect x='130' y='150' width='10' height='10' fill='#234278'/><rect x='130' y='160' width='10' height='10' fill='#223e74'/><rect x='130' y='170' width='10' height='10' fill='#28548f'/><rect x='130' y='180' width='10' height='10' fill='#2a5d9a'/><rect x='130' y='190' width='10' height='10' fill='#35889a'/><rect x='130' y='200' width='10' height='10' fill='#83c165'/><rect x='130' y='210' width='10' height='10' fill='#f0e070'/><rect x='140' y='40' width='10' height='10' fill='#f6e27a'/><rect x='140' y='50' width='10' height='10' fill='#59b572'/><rect x='140' y='60' width='10' height='10' fill='#35889b'/><rect x='140' y='70' width='10' height='10' fill='#2f6dae'/><rect x='140' y='80' width='10' height='10' fill='#264d86'/><rect x='140' y='90' width='10' height='10' fill='#254a82'/><rect x='140' y='100' width='10' height='10' fill='#20376b'/><rect x='140' y='110' width='10' height='10' fill='#223c71'/><rect x='140' y='120' width='10' height='10' fill='#1e2e60'/><rect x='140' y='130' width='10' height='10' fill='#21386c'/><rect x='140' y='140' width='10' height='10' fill='#1e2e60'/><rect x='140' y='150' width='10' height='10' fill='#223c71'/><rect x='140' y='160' width='10' height='10' fill='#264d86'/><rect x='140' y='170' width='10' height='10' fill='#264e88'/><rect x='140' y='180' width='10' height='10' fill='#2e6cac'/><rect x='140' y='190' width='10' height='10' fill='#3482a0'/><rect x='140' y='200' width='10' height='10' fill='#73bd6a'/><rect x='140' y='210' width='10' height='10' fill='#ecdf6a'/><rect x='150' y='40' width='10' height='10' fill='#f6e27a'/><rect x='150' y='50' width='10' height='10' fill='#82c165'/><rect x='150' y='60' width='10' height='10' fill='#3482a0'/><rect x='150' y='70' width='10' height='10' fill='#2d68a7'/><rect x='150' y='80' width='10' height='10' fill='#254880'/><rect x='150' y='90' width='10' height='10' fill='#24447b'/><rect x='150' y='100' width='10' height='10' fill='#1f3164'/><rect x='150' y='110' width='10' height='10' fill='#20366a'/><rect x='150' y='120' width='10' height='10' fill='#223e73'/><rect x='150' y='130' width='10' height='10' fill='#1f3265'/><rect x='150' y='140' width='10' height='10' fill='#223e73'/><rect x='150' y='150' width='10' height='10' fill='#20376b'/><rect x='150' y='160' width='10' height='10' fill='#25487f'/><rect x='150' y='170' width='10' height='10' fill='#254981'/><rect x='150' y='180' width='10' height='10' fill='#2d66a5'/><rect x='150' y='190' width='10' height='10' fill='#327ca5'/><rect x='150' y='200' width='10' height='10' fill='#65b96e'/><rect x='150' y='210' width='10' height='10' fill='#f6e279'/><rect x='160' y='40' width='10' height='10' fill='#f3e174'/><rect x='160' y='50' width='10' height='10' fill='#75bd69'/><rect x='160' y='60' width='10' height='10' fill='#327ca5'/><rect x='160' y='70' width='10' height='10' fill='#2c63a1'/><rect x='160' y='80' width='10' height='10' fill='#295793'/><rect x='160' y='90' width='10' height='10' fill='#233f75'/><rect x='160' y='100' width='10' height='10' fill='#234177'/><rect x='160' y='110' width='10' height='10' fill='#1f3164'/><rect x='160' y='120' width='10' height='10' fill='#21396d'/><rect x='160' y='130' width='10' height='10' fill='#1e2d5f'/><rect x='160' y='140' width='10' height='10' fill='#21396d'/><rect x='160' y='150' width='10' height='10' fill='#1f3264'/><rect x='160' y='160' width='10' height='10' fill='#234379'/><rect x='160' y='170' width='10' height='10' fill='#295894'/><rect x='160' y='180' width='10' height='10' fill='#2b619f'/><rect x='160' y='190' width='10' height='10' fill='#378d96'/><rect x='160' y='200' width='10' height='10' fill='#57b573'/><rect x='160' y='210' width='10' height='10' fill='#f2e174'/><rect x='170' y='40' width='10' height='10' fill='#f6e27a'/><rect x='170' y='50' width='10' height='10' fill='#68b96d'/><rect x='170' y='60' width='10' height='10' fill='#378e96'/><rect x='170' y='70' width='10' height='10' fill='#2b5e9b'/><rect x='170' y='80' width='10' height='10' fill='#28528d'/><rect x='170' y='90' width='10' height='10' fill='#213a6f'/><rect x='170' y='100' width='10' height='10' fill='#223c71'/><rect x='170' y='110' width='10' height='10' fill='#1e2c5e'/><rect x='170' y='120' width='10' height='10' fill='#203467'/><rect x='170' y='130' width='10' height='10' fill='#223d73'/><rect x='170' y='140' width='10' height='10' fill='#203467'/><rect x='170' y='150' width='10' height='10' fill='#234178'/><rect x='170' y='160' width='10' height='10' fill='#223e73'/><rect x='170' y='170' width='10' height='10' fill='#28548e'/><rect x='170' y='180' width='10' height='10' fill='#2a5c99'/><rect x='170' y='190' width='10' height='10' fill='#35889b'/><rect x='170' y='200' width='10' height='10' fill='#4ab177'/><rect x='170' y='210' width='10' height='10' fill='#efe06f'/><rect x='180' y='40' width='10' height='10' fill='#f6e27a'/><rect x='180' y='50' width='10' height='10' fill='#5bb671'/><rect x='180' y='60' width='10' height='10' fill='#35889a'/><rect x='180' y='70' width='10' height='10' fill='#295995'/><rect x='180' y='80' width='10' height='10' fill='#264e87'/><rect x='180' y='90' width='10' height='10' fill='#254a83'/><rect x='180' y='100' width='10' height='10' fill='#20376b'/><rect x='180' y='110' width='10' height='10' fill='#223c72'/><rect x='180' y='120' width='10' height='10' fill='#1e2f61'/><rect x='180' y='130' width='10' height='10' fill='#21396d'/><rect x='180' y='140' width='10' height='10' fill='#1e2f61'/><rect x='180' y='150' width='10' height='10' fill='#223d72'/><rect x='180' y='160' width='10' height='10' fill='#21396e'/><rect x='180' y='170' width='10' height='10' fill='#274f88'/><rect x='180' y='180' width='10' height='10' fill='#2e6cad'/><rect x='180' y='190' width='10' height='10' fill='#34839f'/><rect x='180' y='200' width='10' height='10' fill='#75bd69'/><rect x='180' y='210' width='10' height='10' fill='#eddf6a'/><rect x='190' y='40' width='10' height='10' fill='#f6e27a'/><rect x='190' y='50' width='10' height='10' fill='#87c264'/><rect x='190' y='60' width='10' height='10' fill='#34849e'/><rect x='190' y='70' width='10' height='10' fill='#2e6aa9'/><rect x='190' y='80' width='10' height='10' fill='#254982'/><rect x='190' y='90' width='10' height='10' fill='#24467d'/><rect x='190' y='100' width='10' height='10' fill='#1f3366'/><rect x='190' y='110' width='10' height='10' fill='#21386c'/><rect x='190' y='120' width='10' height='10' fill='#1d2b5c'/><rect x='190' y='130' width='10' height='10' fill='#203467'/><rect x='190' y='140' width='10' height='10' fill='#233f75'/><rect x='190' y='150' width='10' height='10' fill='#21386d'/><rect x='190' y='160' width='10' height='10' fill='#254982'/><rect x='190' y='170' width='10' height='10' fill='#254a83'/><rect x='190' y='180' width='10' height='10' fill='#2d68a7'/><rect x='190' y='190' width='10' height='10' fill='#337ea3'/><rect x='190' y='200' width='10' height='10' fill='#69ba6d'/><rect x='190' y='210' width='10' height='10' fill='#eade66'/><rect x='200' y='40' width='10' height='10' fill='#f4e177'/><rect x='200' y='50' width='10' height='10' fill='#7cbf67'/><rect x='200' y='60' width='10' height='10' fill='#337fa2'/><rect x='200' y='70' width='10' height='10' fill='#2c65a4'/><rect x='200' y='80' width='10' height='10' fill='#24457d'/><rect x='200' y='90' width='10' height='10' fill='#234278'/><rect x='200' y='100' width='10' height='10' fill='#24437a'/><rect x='200' y='110' width='10' height='10' fill='#203467'/><rect x='200' y='120' width='10' height='10' fill='#213b70'/><rect x='200' y='130' width='10' height='10' fill='#1f3062'/><rect x='200' y='140' width='10' height='10' fill='#213b70'/><rect x='200' y='150' width='10' height='10' fill='#203468'/><rect x='200' y='160' width='10' height='10' fill='#24457c'/><rect x='200' y='170' width='10' height='10' fill='#24467e'/><rect x='200' y='180' width='10' height='10' fill='#2c64a2'/><rect x='200' y='190' width='10' height='10' fill='#379094'/><rect x='200' y='200' width='10' height='10' fill='#5eb770'/><rect x='200' y='210' width='10' height='10' fill='#f4e177'/><rect x='210' y='40' width='10' height='10' fill='#f2e173'/><rect x='210' y='50' width='10' height='10' fill='#72bc6a'/><rect x='210' y='60' width='10' height='10' fill='#389292'/><rect x='210' y='70' width='10' height='10' fill='#2c62a0'/><rect x='210' y='80' width='10' height='10' fill='#295691'/><rect x='210' y='90' width='10' height='10' fill='#223e74'/><rect x='210' y='100' width='10' height='10' fill='#234076'/><rect x='210' y='110' width='10' height='10' fill='#1f3062'/><rect x='210' y='120' width='10' height='10' fill='#21376c'/><rect x='210' y='130' width='10' height='10' fill='#1e2c5e'/><rect x='210' y='140' width='10' height='10' fill='#21376c'/><rect x='210' y='150' width='10' height='10' fill='#24457c'/><rect x='210' y='160' width='10' height='10' fill='#234178'/><rect x='210' y='170' width='10' height='10' fill='#295793'/><rect x='210' y='180' width='10' height='10' fill='#2b609e'/><rect x='210' y='190' width='10' height='10' fill='#368c97'/><rect x='210' y='200' width='10' height='10' fill='#54b473'/><rect x='210' y='210' width='10' height='10' fill='#f2e173'/><rect x='220' y='40' width='10' height='10' fill='#f6e27a'/><rect x='220' y='50' width='10' height='10' fill='#69ba6d'/><rect x='220' y='60' width='10' height='10' fill='#378e95'/><rect x='220' y='70' width='10' height='10' fill='#2b5e9c'/><rect x='220' y='80' width='10' height='10' fill='#28538e'/><rect x='220' y='90' width='10' height='10' fill='#213b70'/><rect x='220' y='100' width='10' height='10' fill='#223d72'/><rect x='220' y='110' width='10' height='10' fill='#234278'/><rect x='220' y='120' width='10' height='10' fill='#203468'/><rect x='220' y='130' width='10' height='10' fill='#223e73'/><rect x='220' y='140' width='10' height='10' fill='#203468'/><rect x='220' y='150' width='10' height='10' fill='#234279'/><rect x='220' y='160' width='10' height='10' fill='#223e74'/><rect x='220' y='170' width='10' height='10' fill='#28548f'/><rect x='220' y='180' width='10' height='10' fill='#2a5d9a'/><rect x='220' y='190' width='10' height='10' fill='#35889a'/><rect x='220' y='200' width='10' height='10' fill='#83c165'/><rect x='220' y='210' width='10' height='10' fill='#f0e070'/><rect x='230' y='40' width='10' height='10' fill='#f6e27a'/><rect x='230' y='50' width='10' height='10' fill='#63b86f'/><rect x='230' y='60' width='10' height='10' fill='#368c97'/><rect x='230' y='70' width='10' height='10' fill='#3071ae'/><rect x='230' y='80' width='10' height='10' fill='#27518b'/><rect x='230' y='90' width='10' height='10' fill='#264d87'/><rect x='230' y='100' width='10' height='10' fill='#213a6f'/><rect x='230' y='110' width='10' height='10' fill='#233f75'/><rect x='230' y='120' width='10' height='10' fill='#1f3265'/><rect x='230' y='130' width='10' height='10' fill='#223c71'/><rect x='230' y='140' width='10' height='10' fill='#1f3265'/><rect x='230' y='150' width='10' height='10' fill='#234076'/><rect x='230' y='160' width='10' height='10' fill='#27518b'/><rect x='230' y='170' width='10' height='10' fill='#27528c'/><rect x='230' y='180' width='10' height='10' fill='#2f6fb0'/><rect x='230' y='190' width='10' height='10' fill='#35869c'/><rect x='230' y='200' width='10' height='10' fill='#7dbf67'/><rect x='230' y='210' width='10' height='10' fill='#eee06d'/><rect x='240' y='40' width='10' height='10' fill='#f6e27a'/><rect x='240' y='50' width='10' height='10' fill='#99c75e'/><rect x='240' y='60' width='10' height='10' fill='#368b98'/><rect x='240' y='70' width='10' height='10' fill='#2f71af'/><rect x='240' y='80' width='10' height='10' fill='#27508a'/><rect x='240' y='90' width='10' height='10' fill='#264d86'/><rect x='240' y='100' width='10' height='10' fill='#213a6e'/><rect x='240' y='110' width='10' height='10' fill='#223f75'/><rect x='240' y='120' width='10' height='10' fill='#24467e'/><rect x='240' y='130' width='10' height='10' fill='#213b70'/><rect x='240' y='140' width='10' height='10' fill='#24467e'/><rect x='240' y='150' width='10' height='10' fill='#233f75'/><rect x='240' y='160' width='10' height='10' fill='#27508a'/><rect x='240' y='170' width='10' height='10' fill='#27518c'/><rect x='240' y='180' width='10' height='10' fill='#2f6fb0'/><rect x='240' y='190' width='10' height='10' fill='#35859d'/><rect x='240' y='200' width='10' height='10' fill='#7cbf67'/><rect x='240' y='210' width='10' height='10' fill='#f6e27a'/><rect x='250' y='40' width='10' height='10' fill='#f6e27a'/><rect x='250' y='50' width='10' height='10' fill='#9fc95c'/><rect x='250' y='60' width='10' height='10' fill='#378d96'/><rect x='250' y='70' width='10' height='10' fill='#3073ad'/><rect x='250' y='80' width='10' height='10' fill='#2d67a6'/><rect x='250' y='90' width='10' height='10' fill='#274f88'/><rect x='250' y='100' width='10' height='10' fill='#27518b'/><rect x='250' y='110' width='10' height='10' fill='#234177'/><rect x='250' y='120' width='10' height='10' fill='#254880'/><rect x='250' y='130' width='10' height='10' fill='#223d72'/><rect x='250' y='140' width='10' height='10' fill='#254880'/><rect x='250' y='150' width='10' height='10' fill='#234178'/><rect x='250' y='160' width='10' height='10' fill='#28528d'/><rect x='250' y='170' width='10' height='10' fill='#2d68a8'/><rect x='250' y='180' width='10' height='10' fill='#3071ae'/><rect x='250' y='190' width='10' height='10' fill='#3b9e87'/><rect x='250' y='200' width='10' height='10' fill='#81c065'/><rect x='250' y='210' width='10' height='10' fill='#f6e27a'/><rect x='260' y='40' width='10' height='10' fill='#f6e27a'/><rect x='260' y='50' width='10' height='10' fill='#b0ce57'/><rect x='260' y='60' width='10' height='10' fill='#3eab7c'/><rect x='260' y='70' width='10' height='10' fill='#327aa7'/><rect x='260' y='80' width='10' height='10' fill='#2f6dae'/><rect x='260' y='90' width='10' height='10' fill='#285590'/><rect x='260' y='100' width='10' height='10' fill='#295792'/><rect x='260' y='110' width='10' height='10' fill='#25477f'/><rect x='260' y='120' width='10' height='10' fill='#274f88'/><rect x='260' y='130' width='10' height='10' fill='#295894'/><rect x='260' y='140' width='10' height='10' fill='#274f88'/><rect x='260' y='150' width='10' height='10' fill='#2a5c99'/><rect x='260' y='160' width='10' height='10' fill='#295995'/><rect x='260' y='170' width='10' height='10' fill='#2f6faf'/><rect x='260' y='180' width='10' height='10' fill='#3178a8'/><rect x='260' y='190' width='10' height='10' fill='#3da581'/><rect x='260' y='200' width='10' height='10' fill='#92c560'/><rect x='260' y='210' width='10' height='10' fill='#f6e27a'/><rect x='270' y='40' width='10' height='10' fill='#f6e27a'/><rect x='270' y='50' width='10' height='10' fill='#d4d84b'/><rect x='270' y='60' width='10' height='10' fill='#5cb671'/><rect x='270' y='70' width='10' height='10' fill='#36899a'/><rect x='270' y='80' width='10' height='10' fill='#327ca5'/><rect x='270' y='90' width='10' height='10' fill='#3178a8'/><rect x='270' y='100' width='10' height='10' fill='#2c65a3'/><rect x='270' y='110' width='10' height='10' fill='#2e6aa9'/><rect x='270' y='120' width='10' height='10' fill='#2a5c99'/><rect x='270' y='130' width='10' height='10' fill='#2d66a5'/><rect x='270' y='140' width='10' height='10' fill='#2a5c99'/><rect x='270' y='150' width='10' height='10' fill='#2e6aaa'/><rect x='270' y='160' width='10' height='10' fill='#2d66a5'/><rect x='270' y='170' width='10' height='10' fill='#337da4'/><rect x='270' y='180' width='10' height='10' fill='#3b9e88'/><rect x='270' y='190' width='10' height='10' fill='#4eb275'/><rect x='270' y='200' width='10' height='10' fill='#dedb52'/><rect x='270' y='210' width='10' height='10' fill='#f6e27a'/><rect x='280' y='40' width='10' height='10' fill='#f6e27a'/><rect x='280' y='50' width='10' height='10' fill='#f5e278'/><rect x='280' y='60' width='10' height='10' fill='#a0c95c'/><rect x='280' y='70' width='10' height='10' fill='#5fb770'/><rect x='280' y='80' width='10' height='10' fill='#39988d'/><rect x='280' y='90' width='10' height='10' fill='#389490'/><rect x='280' y='100' width='10' height='10' fill='#337fa2'/><rect x='280' y='110' width='10' height='10' fill='#35859d'/><rect x='280' y='120' width='10' height='10' fill='#3176aa'/><rect x='280' y='130' width='10' height='10' fill='#3381a1'/><rect x='280' y='140' width='10' height='10' fill='#378d96'/><rect x='280' y='150' width='10' height='10' fill='#35859d'/><rect x='280' y='160' width='10' height='10' fill='#39988d'/><rect x='280' y='170' width='10' height='10' fill='#3a998c'/><rect x='280' y='180' width='10' height='10' fill='#5bb671'/><rect x='280' y='190' width='10' height='10' fill='#92c560'/><rect x='280' y='200' width='10' height='10' fill='#eee06d'/><rect x='280' y='210' width='10' height='10' fill='#f6e27a'/><rect x='290' y='40' width='10' height='10' fill='#f6e27a'/><rect x='290' y='50' width='10' height='10' fill='#f6e27a'/><rect x='290' y='60' width='10' height='10' fill='#e8de63'/><rect x='290' y='70' width='10' height='10' fill='#d7d94b'/><rect x='290' y='80' width='10' height='10' fill='#81c065'/><rect x='290' y='90' width='10' height='10' fill='#78be68'/><rect x='290' y='100' width='10' height='10' fill='#7cbf67'/><rect x='290' y='110' width='10' height='10' fill='#53b374'/><rect x='290' y='120' width='10' height='10' fill='#66b96e'/><rect x='290' y='130' width='10' height='10' fill='#48b177'/><rect x='290' y='140' width='10' height='10' fill='#66b96e'/><rect x='290' y='150' width='10' height='10' fill='#54b474'/><rect x='290' y='160' width='10' height='10' fill='#81c065'/><rect x='290' y='170' width='10' height='10' fill='#84c164'/><rect x='290' y='180' width='10' height='10' fill='#d3d74c'/><rect x='290' y='190' width='10' height='10' fill='#f2e173'/><rect x='290' y='200' width='10' height='10' fill='#f6e27a'/><rect x='290' y='210' width='10' height='10' fill='#f6e27a'/><rect x='300' y='40' width='10' height='10' fill='#f6e27a'/><rect x='300' y='50' width='10' height='10' fill='#f6e27a'/><rect x='300' y='60' width='10' height='10' fill='#f6e27a'/><rect x='300' y='70' width='10' height='10' fill='#f6e27a'/><rect x='300' y='80' width='10' height='10' fill='#f6e27a'/><rect x='300' y='90' width='10' height='10' fill='#f3e174'/><rect x='300' y='100' width='10' height='10' fill='#f4e176'/><rect x='300' y='110' width='10' height='10' fill='#eade66'/><rect x='300' y='120' width='10' height='10' fill='#eee06e'/><rect x='300' y='130' width='10' height='10' fill='#e7dd62'/><rect x='300' y='140' width='10' height='10' fill='#eee06e'/><rect x='300' y='150' width='10' height='10' fill='#f6e27a'/><rect x='300' y='160' width='10' height='10' fill='#f5e278'/><rect x='300' y='170' width='10' height='10' fill='#f6e27a'/><rect x='300' y='180' width='10' height='10' fill='#f6e27a'/><rect x='300' y='190' width='10' height='10' fill='#f6e27a'/><rect x='300' y='200' width='10' height='10' fill='#f6e27a'/><rect x='300' y='210' width='10' height='10' fill='#f6e27a'/><rect x='30' y='40' width='280' height='180' fill='none' stroke='#7fb3d5' stroke-width='3'/><g data-hot='h-north'><rect x='80' y='40' width='220' height='20' fill='transparent' pointer-events='all'/></g><g data-hot='h-west'><rect x='30' y='40' width='40' height='180' fill='transparent' pointer-events='all'/><rect x='30' y='40' width='40' height='180' fill='url(#ase3hatch)' stroke='#c0262d' stroke-width='1.2'/></g><g data-hot='h-interior'><rect x='190' y='96' width='60' height='70' fill='transparent' pointer-events='all'/><rect x='196' y='108' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='196' y='124' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='196' y='140' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='214' y='108' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='214' y='124' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='214' y='140' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='232' y='108' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='232' y='124' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><rect x='232' y='140' width='12' height='8' fill='none' stroke='#ffffff' stroke-width='0.8'/><text x='220' y='166' font-size='9' text-anchor='middle' fill='#ffffff'>Open office</text></g><g data-hot='h-core'><rect x='130' y='100' width='60' height='60' fill='transparent' pointer-events='all'/><rect x='130' y='100' width='60' height='60' fill='#5a5d63' stroke='#33363b' stroke-width='1'/><text x='160' y='127' font-size='9.5' text-anchor='middle' fill='#ffffff' font-weight='bold'>CORE</text><text x='160' y='140' font-size='9' text-anchor='middle' fill='#e9e9e9'>stairs / WC</text></g><g><polygon points='336,6 330,24 336,20 342,24' fill='#1f2328'/><text x='336' y='35' font-size='9.5' text-anchor='middle' fill='#1f2328' font-weight='bold'>N</text></g><defs><linearGradient id='dl3grad' x1='0' x2='1' y1='0' y2='0'><stop offset='0.0' stop-color='#1d2a5b'/><stop offset='0.3' stop-color='#2f6fb0'/><stop offset='0.55' stop-color='#3fae7a'/><stop offset='0.8' stop-color='#d9d94a'/><stop offset='1.0' stop-color='#f6e27a'/></linearGradient></defs><text x='30' y='236' font-size='9' text-anchor='start' fill='#5b6168' font-weight='bold'>% of occupied hours ≥ 300 lux</text><rect x='30' y='241' width='160' height='10' fill='url(#dl3grad)' stroke='#999' stroke-width='0.5'/><text x='30' y='262' font-size='9' text-anchor='start' fill='#5b6168'>0</text><text x='110' y='262' font-size='9' text-anchor='middle' fill='#5b6168'>50</text><text x='190' y='262' font-size='9' text-anchor='end' fill='#5b6168'>100%</text><rect x='30' y='270' width='14' height='12' fill='url(#ase3hatch)' stroke='#c0262d' stroke-width='1'/><text x='50' y='280' font-size='9' text-anchor='start' fill='#1f2328'>ASE: &gt;1000 lux direct sun, &gt;250 h/yr</text><rect x='206' y='230' width='144' height='62' fill='#efebe1' stroke='#c9c4b8' stroke-width='0.8'/><text x='214' y='245' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>Results (reg. occupied area)</text><text x='214' y='262' font-size='10' text-anchor='start' fill='#1f2328'>sDA300/50%:  58%</text><g data-hot='h-ase'><rect x='210' y='268' width='136' height='20' fill='transparent' pointer-events='all'/><text x='214' y='283' font-size='10' text-anchor='start' fill='#1f2328'>ASE1000,250:  17%</text></g></svg>",
+   "caption": "Level 4 floor plan colored by % of occupied hours above 300 lux, with direct-sun (ASE) hatching and summary metrics.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A thermal comfort (PMV) map",
+      "A point-in-time illuminance render at noon on the equinox",
+      "An annual climate-based daylight map showing spatial daylight autonomy and annual sun exposure",
+      "A lighting power density compliance plan"
+     ],
+     "answer": 2,
+     "explain": "A grid colored by % of occupied hours above 300 lux is a daylight autonomy map; the hatched direct-sun zone is ASE (annual sunlight exposure). Together they are the sDA/ASE pair used in LEED v4 and IES LM-83."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-west",
+       "issue": true,
+       "label": "West perimeter ASE zone",
+       "explain": "The hatched band on the west (left, with north up) gets direct sun above 1000 lux for more than 250 hours a year. Low afternoon west sun means glare and heat at those desks; it usually needs exterior shading, better glazing control or a different use for that zone."
+      },
+      {
+       "id": "h-interior",
+       "issue": true,
+       "label": "Desks in the dark interior",
+       "explain": "Desks are planned in a zone that gets almost no useful daylight. That is regularly occupied space counting against sDA. Moving collaboration/storage functions there and desks toward the perimeter would help."
+      },
+      {
+       "id": "h-ase",
+       "issue": true,
+       "label": "ASE 17%",
+       "explain": "LEED v4 daylight credit paths (and good practice) want ASE1000,250 at or below 10% of regularly occupied area. 17% confirms the west glare problem is large enough to fix."
+      },
+      {
+       "id": "h-core",
+       "issue": false,
+       "label": "Dark core",
+       "explain": "Stairs, restrooms and shafts are not regularly occupied, so it is fine (expected) that the core is dark. It should be excluded from the analysis area."
+      },
+      {
+       "id": "h-north",
+       "issue": false,
+       "label": "North perimeter band",
+       "explain": "North light in the northern hemisphere is diffuse and steady: high daylight autonomy without direct sun. This is the ideal zone for desks."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Tell the designer to add more west glazing to raise sDA",
+      "Recommend testing west shading options and swapping desk/support zones, then rerunning the analysis",
+      "Report only the sDA (58%) since it passes, and leave ASE out",
+      "Specify darker tint glass on every facade"
+     ],
+     "answer": 1,
+     "explain": "The fix is targeted: control west sun (fins, overhangs, automated shades, frit) and put desks where daylight is useful and comfortable. Hiding ASE or tinting every facade would trade glare for gloom and lose daylight where it is good."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "Level 4 daylight: sDA is 58%, but ASE is 17%, above the 10% target, almost all from the west perimeter where afternoon sun will cause glare at desks. A cluster of desks also sits in the dark interior east of the core (near 0% hours above 300 lux). I'd suggest testing west shading (fins or automated shades) and swapping those interior desks with support spaces, then rerunning before the client review."
+    }
+   ],
+   "takeaway": "Daylight is a two-sided metric: aim for high sDA where people sit and low ASE where direct sun causes glare."
+  },
+  {
+   "id": "thermal-image-facade",
+   "title": "Read an infrared facade image",
+   "skill": "operational-carbon",
+   "context": "Arcadis is scoping a deep-energy retrofit for a 1970s two-story office in Berkeley. A thermographer shot the north facade at dawn and your lead asks you to mark up the image for the retrofit options workshop.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><defs><linearGradient id='ir4scale' x1='0' x2='0' y1='0' y2='1'><stop offset='0' stop-color='#fffbe0'/><stop offset='0.18' stop-color='#ffd23f'/><stop offset='0.4' stop-color='#f0742b'/><stop offset='0.62' stop-color='#b8287a'/><stop offset='0.82' stop-color='#4a1c80'/><stop offset='1' stop-color='#120b30'/></linearGradient><linearGradient id='ir4slab' x1='0' x2='0' y1='0' y2='1'><stop offset='0' stop-color='#9c2a7e'/><stop offset='0.5' stop-color='#f08a2e'/><stop offset='1' stop-color='#9c2a7e'/></linearGradient><radialGradient id='ir4blob'><stop offset='0' stop-color='#f0742b'/><stop offset='0.6' stop-color='#b8287a'/><stop offset='1' stop-color='#3a1f6b' stop-opacity='0'/></radialGradient><radialGradient id='ir4hot'><stop offset='0' stop-color='#fffbe0'/><stop offset='0.4' stop-color='#ffd23f'/><stop offset='1' stop-color='#f0742b' stop-opacity='0'/></radialGradient><radialGradient id='ir4vent'><stop offset='0' stop-color='#ffd23f'/><stop offset='0.5' stop-color='#f0742b'/><stop offset='1' stop-color='#3a1f6b' stop-opacity='0'/></radialGradient></defs><text x='10' y='14' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>IR survey - north facade, 2-story office, Berkeley</text><text x='10' y='27' font-size='9' text-anchor='start' fill='#5b6168'>06:15, overcast | outdoor 7°C, indoor 21°C (ΔT 14°C) | ε 0.93</text><rect x='10' y='34' width='292' height='258' fill='#120b30'/><rect x='26' y='48' width='260' height='244' fill='#3a1f6b'/><rect x='48' y='74' width='56' height='64' fill='#24154f' stroke='#55358f' stroke-width='3'/><rect x='128' y='74' width='56' height='64' fill='#24154f' stroke='#55358f' stroke-width='3'/><rect x='48' y='184' width='56' height='64' fill='#24154f' stroke='#55358f' stroke-width='3'/><rect x='128' y='184' width='56' height='64' fill='#24154f' stroke='#55358f' stroke-width='3'/><rect x='208' y='184' width='56' height='64' fill='#24154f' stroke='#55358f' stroke-width='3'/><g data-hot='h-slab'><rect x='26' y='46' width='260' height='10' fill='url(#ir4slab)'/><rect x='26' y='156' width='260' height='14' fill='url(#ir4slab)'/></g><g data-hot='h-frame'><rect x='200' y='66' width='72' height='80' fill='transparent' pointer-events='all'/><rect x='208' y='74' width='56' height='64' fill='#24154f' stroke='#55358f' stroke-width='3'/><path d='M206,140 L206,72 L266,72' fill='none' stroke='#ffd23f' stroke-width='4'/><circle cx='208' cy='76' r='10' fill='url(#ir4hot)'/><path d='M266,72 L266,100' fill='none' stroke='#f0742b' stroke-width='3'/></g><g data-hot='h-insul'><rect x='128' y='252' width='66' height='34' fill='transparent' pointer-events='all'/><ellipse cx='160' cy='268' rx='30' ry='14' fill='url(#ir4blob)'/></g><g data-hot='h-reflect'><rect x='58' y='192' width='36' height='30' fill='transparent' pointer-events='all'/><circle cx='76' cy='206' r='9' fill='url(#ir4hot)'/></g><g data-hot='h-vent'><rect x='212' y='250' width='48' height='38' fill='transparent' pointer-events='all'/><rect x='224' y='268' width='24' height='12' fill='#55358f' stroke='#7a5ab0' stroke-width='1'/><ellipse cx='236' cy='262' rx='16' ry='10' fill='url(#ir4vent)'/><line x1='227' y1='271' x2='245' y2='271' stroke='#2a1758' stroke-width='1'/><line x1='227' y1='274' x2='245' y2='274' stroke='#2a1758' stroke-width='1'/><line x1='227' y1='277' x2='245' y2='277' stroke='#2a1758' stroke-width='1'/></g><g><line x1='110' y1='163' x2='122' y2='163' stroke='#ffffff' stroke-width='1'/><line x1='116' y1='157' x2='116' y2='169' stroke='#ffffff' stroke-width='1'/><text x='121' y='159' font-size='9' text-anchor='start' fill='#ffffff'>Sp1</text></g><g><line x1='110' y1='112' x2='122' y2='112' stroke='#ffffff' stroke-width='1'/><line x1='116' y1='106' x2='116' y2='118' stroke='#ffffff' stroke-width='1'/><text x='121' y='108' font-size='9' text-anchor='start' fill='#ffffff'>Sp2</text></g><rect x='28' y='272' width='98' height='16' fill='#000000' fill-opacity='0.45'/><text x='32' y='284' font-size='9' text-anchor='start' fill='#ffffff'>Sp1 12.6°C  Sp2 8.4°C</text><rect x='312' y='44' width='14' height='236' fill='url(#ir4scale)' stroke='#888' stroke-width='0.5'/><text x='330' y='51' font-size='9' text-anchor='start' fill='#1f2328'>16°C</text><text x='330' y='110' font-size='9' text-anchor='start' fill='#1f2328'>13°C</text><text x='330' y='169' font-size='9' text-anchor='start' fill='#1f2328'>10°C</text><text x='330' y='228' font-size='9' text-anchor='start' fill='#1f2328'>7°C</text><text x='330' y='285' font-size='9' text-anchor='start' fill='#1f2328'>4°C</text></svg>",
+   "caption": "False-color exterior thermal image of a two-story facade on a cold morning, with spot readings and a temperature scale (C).",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A daylight false-color render",
+      "An exterior infrared (thermal) image showing facade surface temperatures",
+      "A CFD airflow simulation of the facade",
+      "A solar radiation map of the facade"
+     ],
+     "answer": 1,
+     "explain": "A false-color image with a temperature scale bar, spot meters (Sp1, Sp2), emissivity and indoor/outdoor temperatures is a thermogram. Shot from outside on a cold morning, warm (bright) areas show where heat is leaking out."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-slab",
+       "issue": true,
+       "label": "Warm bands at slab and roof edges",
+       "explain": "Continuous bright horizontal bands at each floor line are classic thermal bridging: the concrete slab edge runs straight through the insulation layer. Sp1 at 12.6 C vs 8.4 C on the wall field shows a lot of heat loss along the full facade length."
+      },
+      {
+       "id": "h-frame",
+       "issue": true,
+       "label": "Hot window frame edge",
+       "explain": "A bright edge concentrated along the frame (strongest at one corner) suggests air leakage or a failed seal around the window, not just conduction through the glass. Follow up with a blower-door or smoke test from inside."
+      },
+      {
+       "id": "h-insul",
+       "issue": true,
+       "label": "Warm patch below lower window",
+       "explain": "An irregular warm blob in an otherwise uniform wall usually means missing, slumped or wet insulation in that cavity. Worth opening up or probing during the retrofit survey."
+      },
+      {
+       "id": "h-reflect",
+       "issue": false,
+       "label": "Bright spot on glass",
+       "explain": "Glass is highly reflective in long-wave infrared, so a bright spot on a pane is usually a reflection (a streetlight, a neighboring building), not a hot spot. Check by moving the camera angle."
+      },
+      {
+       "id": "h-vent",
+       "issue": false,
+       "label": "Warm exhaust vent",
+       "explain": "A vent discharging warm exhaust air is supposed to look warm. It's only a concern if it's running when it should be off or the damper does not close."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Recommend replacing all windows, since windows are the main heat loss",
+      "Mark up the image, pair it with an inside scan/blower-door test, and include slab-edge thermal breaks or continuous exterior insulation in the retrofit options",
+      "Discard the image because the morning was overcast",
+      "Ask the thermographer to reshoot at noon on a sunny day for clearer colors"
+     ],
+     "answer": 1,
+     "explain": "Dawn on an overcast day with a ~14 C indoor-outdoor difference is ideal for IR (no solar loading). Use it to prioritize: continuous exterior insulation over the slab edges, targeted window air sealing, and investigating the cavity. A sunny-noon reshoot would add solar heating noise."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "The north-facade IR (dawn, delta-T 14 C) shows continuous thermal bridging at the floor slab and roof edges (about 12.6 C vs 8.4 C for the wall field), a likely air-leakage path around the upper-right window frame, and a warm patch below a lower window that suggests missing or wet insulation. The bright spot on the lower-left glass is a reflection and the warm vent is normal exhaust. For the workshop I'd frame options around continuous exterior insulation covering the slab edges, plus targeted air sealing confirmed with a blower-door test."
+    }
+   ],
+   "takeaway": "In IR, look for patterns: lines mean thermal bridges, frame edges mean air leaks, blobs mean insulation defects, and spots on glass are usually reflections."
+  },
+  {
+   "id": "concrete-epd-comparison",
+   "title": "Compare concrete EPDs fairly",
+   "skill": "embodied-carbon",
+   "context": "Week 6 at Arup SF, embodied carbon workstream for a mid-rise lab building. A contractor's intern sent a table of five ready-mix EPDs for the Level 2 slab and the client wants to know which mix to push for. Your lead asks you to check the table before it goes into the meeting notes.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>Concrete EPD comparison - L2 slab mix options</text><text x='10' y='28' font-size='9' text-anchor='start' fill='#5b6168'>Spec: f'c 5,000 psi @ 28 days | GWP = A1-A3 (cradle to gate), product EPDs</text><rect x='10' y='36' width='340' height='28' fill='#e4e0d4' stroke='#b9b3a4' stroke-width='0.8'/><text x='30' y='53' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>Mix</text><text x='74' y='53' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>f'c (psi)</text><text x='124' y='48' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>Declared</text><text x='124' y='59' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>unit</text><text x='185' y='48' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>GWP A1-A3</text><text x='185' y='59' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>(kgCO₂e / unit)</text><text x='257' y='48' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>SCM</text><text x='257' y='59' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>replacement</text><text x='322' y='53' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>EPD valid to</text><rect x='10' y='64' width='340' height='24' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='30' y='80' font-size='10' text-anchor='middle' fill='#1f2328'>A</text><text x='74' y='80' font-size='10' text-anchor='middle' fill='#1f2328'>5,000</text><text x='124' y='80' font-size='10' text-anchor='middle' fill='#1f2328'>1 m³</text><g data-hot='h-a-gwp'><rect x='150' y='64' width='70' height='24' fill='transparent' pointer-events='all'/><text x='185' y='80' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>410</text></g><text x='257' y='80' font-size='10' text-anchor='middle' fill='#1f2328'>15% fly ash</text><text x='322' y='80' font-size='10' text-anchor='middle' fill='#1f2328'>2029-06</text><rect x='10' y='88' width='340' height='24' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='30' y='104' font-size='10' text-anchor='middle' fill='#1f2328'>B</text><text x='74' y='104' font-size='10' text-anchor='middle' fill='#1f2328'>5,000</text><text x='124' y='104' font-size='10' text-anchor='middle' fill='#1f2328'>1 m³</text><g data-hot='h-b-gwp'><rect x='150' y='88' width='70' height='24' fill='transparent' pointer-events='all'/><text x='185' y='104' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>265</text></g><text x='257' y='104' font-size='10' text-anchor='middle' fill='#1f2328'>40% slag</text><text x='322' y='104' font-size='10' text-anchor='middle' fill='#1f2328'>2030-02</text><rect x='10' y='112' width='340' height='24' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='30' y='128' font-size='10' text-anchor='middle' fill='#1f2328'>C</text><g data-hot='h-c-fc'><rect x='50' y='112' width='48' height='24' fill='transparent' pointer-events='all'/><text x='74' y='128' font-size='10' text-anchor='middle' fill='#1f2328'>3,000</text></g><text x='124' y='128' font-size='10' text-anchor='middle' fill='#1f2328'>1 m³</text><text x='185' y='128' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>235</text><text x='257' y='128' font-size='10' text-anchor='middle' fill='#1f2328'>25% fly ash</text><text x='322' y='128' font-size='10' text-anchor='middle' fill='#1f2328'>2028-11</text><rect x='10' y='136' width='340' height='24' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='30' y='152' font-size='10' text-anchor='middle' fill='#1f2328'>D</text><text x='74' y='152' font-size='10' text-anchor='middle' fill='#1f2328'>5,000</text><g data-hot='h-d-unit'><rect x='98' y='136' width='52' height='24' fill='transparent' pointer-events='all'/><text x='124' y='152' font-size='10' text-anchor='middle' fill='#1f2328'>1 yd³</text></g><text x='185' y='152' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>300</text><text x='257' y='152' font-size='10' text-anchor='middle' fill='#1f2328'>20% fly ash</text><text x='322' y='152' font-size='10' text-anchor='middle' fill='#1f2328'>2029-09</text><rect x='10' y='160' width='340' height='24' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='30' y='176' font-size='10' text-anchor='middle' fill='#1f2328'>E</text><text x='74' y='176' font-size='10' text-anchor='middle' fill='#1f2328'>5,000</text><text x='124' y='176' font-size='10' text-anchor='middle' fill='#1f2328'>1 m³</text><text x='185' y='176' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>340</text><text x='257' y='176' font-size='10' text-anchor='middle' fill='#1f2328'>25% fly ash</text><g data-hot='h-e-date'><rect x='294' y='160' width='56' height='24' fill='transparent' pointer-events='all'/><text x='322' y='176' font-size='10' text-anchor='middle' fill='#1f2328'>2024-03</text></g><line x1='50' y1='36' x2='50' y2='184' stroke='#d6d0c2' stroke-width='0.6'/><line x1='98' y1='36' x2='98' y2='184' stroke='#d6d0c2' stroke-width='0.6'/><line x1='150' y1='36' x2='150' y2='184' stroke='#d6d0c2' stroke-width='0.6'/><line x1='220' y1='36' x2='220' y2='184' stroke='#d6d0c2' stroke-width='0.6'/><line x1='294' y1='36' x2='294' y2='184' stroke='#d6d0c2' stroke-width='0.6'/><text x='10' y='196' font-size='9' text-anchor='start' fill='#5b6168'>A = current basis of design</text><text x='10' y='216' font-size='9' text-anchor='start' fill='#5b6168' font-weight='bold'>GWP as reported (per declared unit)</text><text x='30' y='231' font-size='9' text-anchor='end' fill='#1f2328'>A</text><rect x='36' y='223' width='209.6' height='9' fill='#8a8f6a'/><text x='249.6' y='231' font-size='9' text-anchor='start' fill='#5b6168'>410</text><text x='30' y='244' font-size='9' text-anchor='end' fill='#1f2328'>B</text><rect x='36' y='236' width='135.4' height='9' fill='#8a8f6a'/><text x='175.4' y='244' font-size='9' text-anchor='start' fill='#5b6168'>265</text><text x='30' y='257' font-size='9' text-anchor='end' fill='#1f2328'>C</text><rect x='36' y='249' width='120.1' height='9' fill='#8a8f6a'/><text x='160.1' y='257' font-size='9' text-anchor='start' fill='#5b6168'>235</text><text x='30' y='270' font-size='9' text-anchor='end' fill='#1f2328'>D</text><rect x='36' y='262' width='153.3' height='9' fill='#8a8f6a'/><text x='193.3' y='270' font-size='9' text-anchor='start' fill='#5b6168'>300</text><text x='30' y='283' font-size='9' text-anchor='end' fill='#1f2328'>E</text><rect x='36' y='275' width='173.8' height='9' fill='#8a8f6a'/><text x='213.8' y='283' font-size='9' text-anchor='start' fill='#5b6168'>340</text><line x1='36' y1='220' x2='36' y2='287' stroke='#1f2328' stroke-width='1'/></svg>",
+   "caption": "Table of five concrete mix EPDs (strength, declared unit, A1-A3 GWP, SCM content, validity) with a bar chart of GWP as reported.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A whole-building life cycle assessment (WBLCA) summary",
+      "A comparison of product-specific Environmental Product Declarations for concrete mixes",
+      "A structural concrete mix design submittal with batch weights",
+      "A Buy Clean California compliance certificate"
+     ],
+     "answer": 1,
+     "explain": "EPDs report environmental impacts (here A1-A3 global warming potential) per declared unit, with validity dates. Comparing EPDs is how teams pick lower-carbon products, but only if the comparison is like-for-like."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-c-fc",
+       "issue": true,
+       "label": "Mix C is 3,000 psi",
+       "explain": "The slab is specified at 5,000 psi. A lower-strength mix naturally has less cement and lower GWP, so Mix C's 235 is not a fair comparison and it can't be substituted without the structural engineer."
+      },
+      {
+       "id": "h-d-unit",
+       "issue": true,
+       "label": "Mix D declared per cubic yard",
+       "explain": "1 yd3 is about 0.765 m3, so 300 kgCO2e/yd3 is about 392 kgCO2e/m3: barely better than the current mix, not the second-best option the chart implies. Normalize every row to the same declared unit."
+      },
+      {
+       "id": "h-e-date",
+       "issue": true,
+       "label": "Mix E EPD expired (2024-03)",
+       "explain": "EPDs are typically valid for 5 years. An expired EPD may not reflect the current plant or mix, and most rating systems and procurement policies won't accept it. Ask the supplier for an updated EPD."
+      },
+      {
+       "id": "h-b-gwp",
+       "issue": false,
+       "label": "Mix B at 265",
+       "explain": "Same strength, same unit, valid EPD, with 40% slag replacing cement: this is a genuine like-for-like reduction of roughly 35% vs the current mix. This is the one to push for (subject to set-time and finishing review)."
+      },
+      {
+       "id": "h-a-gwp",
+       "issue": false,
+       "label": "Mix A at 410",
+       "explain": "Around 400 kgCO2e/m3 is a plausible value for a 5,000 psi mix with modest fly ash. It's a reasonable baseline."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Recommend Mix C because it has the lowest GWP",
+      "Normalize all rows to 1 m3 at 5,000 psi, drop or re-request C and E, and recommend Mix B for review by the structural engineer and contractor",
+      "Average all five values and report that as the project's concrete GWP",
+      "Recommend Mix D because it's the second lowest and has a valid EPD"
+     ],
+     "answer": 1,
+     "explain": "Like-for-like means the same strength class, the same declared unit and life-cycle stages, and valid EPDs. Once normalized, B is clearly lowest. Final selection still needs the structural engineer and the contractor (strength gain, curing, schedule)."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "On the L2 slab EPDs: Mix B (5,000 psi, 40% slag) is the clear like-for-like winner at 265 kgCO2e/m3, about 35% below the current Mix A (410). Mix D looks good only because it's reported per yd3 (~392 kgCO2e/m3 normalized), Mix C is a 3,000 psi mix and not comparable, and Mix E's EPD expired in March 2024. I'd recommend we propose B and ask the structural engineer and contractor to confirm strength gain and finishing schedule."
+    }
+   ],
+   "takeaway": "Before comparing EPDs, check the same strength, the same declared unit and stages, and an unexpired EPD; then the numbers mean something."
+  },
+  {
+   "id": "leed-scorecard-check",
+   "title": "Check a LEED scorecard before it goes out",
+   "skill": "rating-systems",
+   "context": "Week 4 at Arup SF. The architect circulated an updated LEED v4 scorecard for a Mission Bay lab-office and the client's PM is about to report 'on track for Gold' to their board. Your lead asks for a quick check.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>LEED v4 BD+C scorecard - DRAFT (excerpt)</text><text x='10' y='29' font-size='9' text-anchor='start' fill='#5b6168'>Lab-office, Mission Bay SF  |  updated 10/2026</text><g data-hot='h-level'><rect x='262' y='18' width='88' height='16' fill='transparent' pointer-events='all'/><text x='346' y='30' font-size='10' text-anchor='end' fill='#2f6f3e' font-weight='bold'>Target: Gold</text></g><rect x='10' y='38' width='340' height='16' fill='#e4e0d4' stroke='#b9b3a4' stroke-width='0.8'/><text x='16' y='49.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Prerequisites (all required)</text><text x='318' y='49.5' font-size='9.5' text-anchor='middle' fill='#1f2328' font-weight='bold'>Status</text><g data-hot='h-eapre'><rect x='10' y='54' width='340' height='16' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='65.5' font-size='9.5' text-anchor='start' fill='#1f2328'>EA  Minimum Energy Performance</text><text x='318' y='65.5' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>N</text></g><rect x='10' y='70' width='340' height='16' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='81.5' font-size='9.5' text-anchor='start' fill='#1f2328'>WE  Indoor Water Use Reduction</text><text x='318' y='81.5' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>Y</text><rect x='10' y='86' width='340' height='16' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='97.5' font-size='9.5' text-anchor='start' fill='#1f2328'>SS  Construction Activity Pollution Prevention</text><text x='318' y='97.5' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>Y</text><rect x='10' y='112' width='340' height='16' fill='#e4e0d4' stroke='#b9b3a4' stroke-width='0.8'/><text x='16' y='123.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Credit category</text><text x='270' y='123.5' font-size='9.5' text-anchor='middle' fill='#1f2328' font-weight='bold'>Y</text><text x='318' y='123.5' font-size='9.5' text-anchor='middle' fill='#1f2328' font-weight='bold'>?</text><rect x='10' y='128' width='340' height='16' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='139.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Location &amp; Transportation</text><text x='270' y='139.5' font-size='10' text-anchor='middle' fill='#1f2328'>9</text><text x='318' y='139.5' font-size='10' text-anchor='middle' fill='#5b6168'>2</text><rect x='10' y='144' width='340' height='16' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='155.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Sustainable Sites</text><text x='270' y='155.5' font-size='10' text-anchor='middle' fill='#1f2328'>5</text><text x='318' y='155.5' font-size='10' text-anchor='middle' fill='#5b6168'>1</text><rect x='10' y='160' width='340' height='16' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='171.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Water Efficiency</text><text x='270' y='171.5' font-size='10' text-anchor='middle' fill='#1f2328'>6</text><text x='318' y='171.5' font-size='10' text-anchor='middle' fill='#5b6168'>1</text><rect x='10' y='176' width='340' height='16' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='187.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Energy &amp; Atmosphere</text><text x='270' y='187.5' font-size='10' text-anchor='middle' fill='#1f2328'>14</text><text x='318' y='187.5' font-size='10' text-anchor='middle' fill='#5b6168'>2</text><rect x='10' y='192' width='340' height='16' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='203.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Materials &amp; Resources</text><text x='270' y='203.5' font-size='10' text-anchor='middle' fill='#1f2328'>6</text><text x='318' y='203.5' font-size='10' text-anchor='middle' fill='#5b6168'>1</text><rect x='10' y='208' width='340' height='16' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='219.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Indoor Environmental Quality</text><text x='270' y='219.5' font-size='10' text-anchor='middle' fill='#1f2328'>9</text><text x='318' y='219.5' font-size='10' text-anchor='middle' fill='#5b6168'>1</text><rect x='10' y='224' width='340' height='16' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='235.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Innovation</text><text x='270' y='235.5' font-size='10' text-anchor='middle' fill='#1f2328'>4</text><text x='318' y='235.5' font-size='10' text-anchor='middle' fill='#5b6168'>0</text><g data-hot='h-rp'><rect x='10' y='240' width='340' height='16' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='251.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Regional Priority</text><text x='270' y='251.5' font-size='10' text-anchor='middle' fill='#1f2328'>2</text><text x='318' y='251.5' font-size='10' text-anchor='middle' fill='#5b6168'>0</text></g><rect x='10' y='256' width='340' height='20' fill='#e4e0d4' stroke='#8f897b' stroke-width='1'/><text x='16' y='270' font-size='10' text-anchor='start' fill='#1f2328' font-weight='bold'>TOTAL</text><g data-hot='h-total'><rect x='246' y='256' width='48' height='20' fill='transparent' pointer-events='all'/><text x='270' y='270' font-size='10.5' text-anchor='middle' fill='#1f2328' font-weight='bold'>61</text></g><g data-hot='h-maybe'><rect x='296' y='256' width='46' height='20' fill='transparent' pointer-events='all'/><text x='318' y='270' font-size='10.5' text-anchor='middle' fill='#5b6168' font-weight='bold'>8</text></g><line x1='246' y1='112' x2='246' y2='276' stroke='#d6d0c2' stroke-width='0.6'/><line x1='294' y1='112' x2='294' y2='276' stroke='#d6d0c2' stroke-width='0.6'/><text x='10' y='290' font-size='9' text-anchor='start' fill='#5b6168'>Certified 40-49  |  Silver 50-59  |  Gold 60-79  |  Platinum 80+</text></svg>",
+   "caption": "Excerpt of a draft LEED v4 BD+C scorecard: prerequisites, points by category (Y / maybe) and total.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A LEED project scorecard (credit checklist) tracking prerequisites and targeted points",
+      "A LEED certification award letter from GBCI",
+      "A WELL Building Standard feature list",
+      "An energy code compliance form"
+     ],
+     "answer": 0,
+     "explain": "The scorecard is the team's working checklist: prerequisites (pass/fail) plus 'Y', '?' (maybe) and 'N' points by credit category. It is updated through design and is a target, not a certified result."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-eapre",
+       "issue": true,
+       "label": "Energy prerequisite marked N",
+       "explain": "Prerequisites are mandatory; a project cannot certify at any level with one marked N, no matter how many points it has. Find out why (model not run yet? not meeting the minimum?) and fix it first."
+      },
+      {
+       "id": "h-total",
+       "issue": true,
+       "label": "Y total says 61",
+       "explain": "The category Y points add to 9+5+6+14+6+9+4+2 = 55, not 61. A spreadsheet range or hard-coded cell is likely off. Always re-add the column."
+      },
+      {
+       "id": "h-level",
+       "issue": true,
+       "label": "'Target: Gold'",
+       "explain": "With the corrected 55 Y points the project is in the Silver band (50-59). Gold (60+) would need about 5 more points, even if every maybe came through it would be tight, and only once the prerequisite is resolved."
+      },
+      {
+       "id": "h-maybe",
+       "issue": false,
+       "label": "8 maybe points",
+       "explain": "The ? column correctly sums to 8 (2+1+1+2+1+1). Tracking maybes is normal; they just shouldn't be counted toward the target level."
+      },
+      {
+       "id": "h-rp",
+       "issue": false,
+       "label": "Regional Priority 2",
+       "explain": "Regional Priority points are earned by achieving certain credits that USGBC flags as important for the location. 2 is an ordinary value."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Let the PM report Gold; maybes usually come through",
+      "Flag the prerequisite and the tally error to your lead, and suggest reporting 'Silver, with a path to Gold' until fixed",
+      "Change the energy prerequisite to Y so the scorecard looks complete",
+      "Email the client's board directly with the correction"
+     ],
+     "answer": 1,
+     "explain": "Correct the record internally first and give the client accurate framing: 55 Y points is Silver, Gold depends on maybes plus resolving the energy prerequisite. Never change a status without the work behind it, and go through your lead for client communications."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "Quick check of the Mission Bay LEED scorecard before the PM's board update: the Y column adds to 55, not 61, which is Silver (50-59), not Gold. The EA Minimum Energy Performance prerequisite is also marked N, which blocks certification at any level until resolved. I'd suggest the PM report 'Silver with a path to Gold' and we confirm the energy model status with the modeler this week."
+    }
+   ],
+   "takeaway": "On any scorecard, check the prerequisites first, then re-add the totals yourself."
+  },
+  {
+   "id": "rooftop-pv-layout",
+   "title": "Review a rooftop PV layout",
+   "skill": "renewables-storage",
+   "context": "You're on an Arcadis team doing a solar feasibility study for a distribution-center office roof in Fremont. The solar designer posted a first layout maximizing panel count, and your lead wants a quick review before it's priced.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>Roof plan - PV layout (schematic, rev A)</text><rect x='20' y='26' width='280' height='256' fill='#e9e6de' stroke='#55595f' stroke-width='2'/><rect x='25' y='31' width='270' height='246' fill='none' stroke='#55595f' stroke-width='0.8'/><rect x='224' y='31' width='10' height='246' fill='#f4e9e4' stroke='#b4553f' stroke-width='0.8' stroke-dasharray='4 3'/><text x='232.5' y='200' font-size='9' text-anchor='middle' fill='#8a3a2a' transform='rotate(-90 232.5 200)'>FIRE PATHWAY 4 FT</text><rect x='40' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='56' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='72' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='88' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='104' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='120' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='136' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='152' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='168' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='184' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='200' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='252' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='268' y='64' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='40' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='56' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='72' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='88' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='104' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='120' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='136' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='152' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='168' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='184' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='200' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='252' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='268' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='40' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='56' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='72' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='88' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='104' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='120' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='136' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='152' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='168' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='184' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='200' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='252' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='268' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='40' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='56' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='72' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='88' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='104' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='120' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='136' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='152' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='168' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='184' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='200' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='252' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='268' y='124' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='40' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='56' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='72' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='88' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='104' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='120' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='136' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='152' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='168' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='184' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='200' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='252' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='268' y='144' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='40' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='56' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='72' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='88' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='168' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='184' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='200' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='252' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='268' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><g data-hot='h-north'><rect x='38' y='36' width='250' height='20' fill='transparent' pointer-events='all'/><rect x='40' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='56' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='72' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='88' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='104' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='120' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='136' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='152' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='168' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='184' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='200' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='252' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='268' y='44' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/></g><g data-hot='h-path'><rect x='214' y='80' width='36' height='36' fill='transparent' pointer-events='all'/><rect x='216' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='232' y='84' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='216' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='232' y='104' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/></g><g data-hot='h-rtushade'><rect x='102' y='160' width='68' height='20' fill='transparent' pointer-events='all'/><rect x='104' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='120' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='136' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='152' y='164' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/></g><rect x='110' y='194' width='52' height='40' fill='#c9ccd1' stroke='#55595f' stroke-width='1.2'/><line x1='110' y1='194' x2='162' y2='234' stroke='#8b9097' stroke-width='0.6'/><line x1='162' y1='194' x2='110' y2='234' stroke='#8b9097' stroke-width='0.6'/><text x='136' y='246' font-size='9' text-anchor='middle' fill='#1f2328' font-weight='bold'>RTU-1 (6 ft tall)</text><g data-hot='h-parapet'><rect x='168' y='258' width='52' height='20' fill='transparent' pointer-events='all'/><rect x='170' y='266' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='186' y='266' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/><rect x='202' y='266' width='16' height='10' fill='#2e4a7d' stroke='#ffffff' stroke-width='0.6'/></g><g data-hot='h-inv'><rect x='28' y='196' width='58' height='34' fill='transparent' pointer-events='all'/><rect x='30' y='200' width='54' height='24' fill='#f2f2ee' stroke='#55595f' stroke-width='1'/><text x='57' y='216' font-size='9' text-anchor='middle' fill='#1f2328'>INV / DISC</text></g><text x='57' y='241' font-size='9' text-anchor='middle' fill='#5b6168'>at stair</text><g><polygon points='330,30 323,52 330,47 337,52' fill='#1f2328'/><text x='330' y='64' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>N</text></g><text x='306' y='90' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>Modules:</text><text x='306' y='102' font-size='9' text-anchor='start' fill='#1f2328'>ballasted,</text><text x='306' y='114' font-size='9' text-anchor='start' fill='#1f2328'>~5° tilt</text><text x='306' y='140' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>Parapet:</text><text x='306' y='152' font-size='9' text-anchor='start' fill='#1f2328'>42 in high</text><text x='306' y='164' font-size='9' text-anchor='start' fill='#1f2328'>typ.</text><rect x='306' y='262' width='20' height='5' fill='#1f2328'/><rect x='326' y='262' width='20' height='5' fill='#ffffff' stroke='#1f2328' stroke-width='0.8'/><text x='306' y='278' font-size='9' text-anchor='middle' fill='#1f2328'>0</text><text x='346' y='278' font-size='9' text-anchor='middle' fill='#1f2328'>16 ft</text><text x='20' y='294' font-size='9' text-anchor='start' fill='#5b6168'>Sun from south. Roof ~110 x 100 ft.</text></svg>",
+   "caption": "Schematic roof plan with PV module rows, a rooftop unit, a fire-access pathway, parapets, inverter and north arrow.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A roof drainage plan",
+      "A schematic rooftop PV layout plan",
+      "A single-line electrical diagram for the PV system",
+      "A solar irradiance heat map"
+     ],
+     "answer": 1,
+     "explain": "Module rows drawn on a roof outline with obstructions (RTU, parapet), fire pathways, the inverter location and a north arrow make this a PV layout plan. It's used to estimate system size and check shading and code clearances before pricing."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-path",
+       "issue": true,
+       "label": "Modules inside fire pathway",
+       "explain": "Fire codes (and the local AHJ) require clear access pathways on roofs with PV so firefighters can move and ventilate. Modules crossing the dashed pathway will fail plan check; those modules have to be removed or the layout re-gridded."
+      },
+      {
+       "id": "h-rtushade",
+       "issue": true,
+       "label": "Modules just north of RTU-1",
+       "explain": "With the sun to the south, a 6 ft unit casts shadows to the north, and in winter at Bay Area latitudes that shadow can reach roughly 10-12 ft at noon (longer in morning/afternoon). These modules sit ~8 ft away, so they'll be shaded for part of the year and can drag down a whole string."
+      },
+      {
+       "id": "h-parapet",
+       "issue": true,
+       "label": "Row tight to the south parapet",
+       "explain": "The 42 in parapet is directly south of this row, so it will shade the modules, especially in winter. A common rule of thumb is to keep a setback of at least 2-3x the obstruction height on the sun side, or drop these modules."
+      },
+      {
+       "id": "h-north",
+       "issue": false,
+       "label": "Top row near north parapet",
+       "explain": "Shadows fall to the north, so a parapet on the north side doesn't shade modules south of it. Placing modules close to the north edge is fine (subject to any perimeter setback the AHJ requires)."
+      },
+      {
+       "id": "h-inv",
+       "issue": false,
+       "label": "Inverter/disconnect at stair",
+       "explain": "Putting the inverter and disconnect near the roof access stair is a good practice: accessible for maintenance and for firefighters."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Approve it; more panels always means more energy",
+      "Ask the designer to clear the pathway, remove or move the shaded modules, and run a shading analysis before pricing",
+      "Ask the mechanical engineer to remove RTU-1",
+      "Rotate all modules to face west"
+     ],
+     "answer": 1,
+     "explain": "Code clearances are non-negotiable, and shaded modules cost money while producing less (and can reduce output of the rest of the string). A shade study (e.g. in a PV design tool) quantifies the loss so the layout can be optimized."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "Rev A PV layout needs changes before pricing: four modules extend into the 4 ft fire-access pathway and must come out, and two areas will see seasonal shading: the four modules about 8 ft north of the 6 ft RTU-1 and the row right against the 42 in south parapet. I'd ask the designer to remove those (about 11 modules), run a shading study, and confirm string layout so we're not pricing modules that underperform."
+    }
+   ],
+   "takeaway": "On a PV plan, check code pathways first, then look south of every module for anything tall."
+  },
+  {
+   "id": "hvac-schedule-all-electric",
+   "title": "Check an 'all-electric' equipment schedule",
+   "skill": "hvac-electrification",
+   "context": "Month 3 at Arup SF. The owner's project requirements for a 60,000 sf Emeryville office say 'all-electric, no on-site combustion'. The 50% DD mechanical schedule just landed and your lead asks you to check it against the sustainability goals.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>MECHANICAL EQUIPMENT SCHEDULE (M-601) - 50% DD</text><text x='10' y='28' font-size='9' text-anchor='start' fill='#5b6168'>4-story office, Emeryville | 60,000 sf | Basis of design: all-electric (per OPR)</text><rect x='10' y='36' width='340' height='18' fill='#e4e0d4' stroke='#b9b3a4' stroke-width='0.8'/><text x='14' y='48.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Tag</text><text x='60' y='48.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Equipment</text><text x='144' y='48.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Capacity</text><text x='202' y='48.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Power / fuel</text><text x='260' y='48.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Serves / remarks</text><g data-hot='h-hp1'><rect x='10' y='54' width='340' height='30' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='14' y='72' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>HP-1</text><text x='60' y='66.5' font-size='9' text-anchor='start' fill='#1f2328'>Air-to-water</text><text x='60' y='78.5' font-size='9' text-anchor='start' fill='#1f2328'>heat pump</text><text x='144' y='72' font-size='9.5' text-anchor='start' fill='#1f2328'>120 tons</text><text x='202' y='72' font-size='9.5' text-anchor='start' fill='#1f2328'>480V/3ph</text><text x='260' y='66.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Heating + chilled</text><text x='260' y='78.5' font-size='9.5' text-anchor='start' fill='#1f2328'>water; COP 3.1</text></g><g data-hot='h-boiler'><rect x='10' y='84' width='340' height='30' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='14' y='102' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>B-1</text><text x='60' y='96.5' font-size='9' text-anchor='start' fill='#1f2328'>Condensing</text><text x='60' y='108.5' font-size='9' text-anchor='start' fill='#1f2328'>boiler</text><text x='144' y='102' font-size='9.5' text-anchor='start' fill='#1f2328'>1,500 MBH</text><text x='202' y='102' font-size='9.5' text-anchor='start' fill='#1f2328'>Natural gas</text><text x='260' y='96.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Heating hot water</text><text x='260' y='108.5' font-size='9.5' text-anchor='start' fill='#1f2328'>backup / peak</text></g><g data-hot='h-doas'><rect x='10' y='114' width='340' height='30' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='14' y='132' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>DOAS-1</text><text x='60' y='126.5' font-size='9' text-anchor='start' fill='#1f2328'>Dedicated outdoor</text><text x='60' y='138.5' font-size='9' text-anchor='start' fill='#1f2328'>air unit</text><text x='144' y='132' font-size='9.5' text-anchor='start' fill='#1f2328'>9,000 cfm</text><text x='202' y='132' font-size='9.5' text-anchor='start' fill='#1f2328'>480V/3ph</text><text x='260' y='126.5' font-size='9.5' text-anchor='start' fill='#1f2328'>All floors; energy</text><text x='260' y='138.5' font-size='9.5' text-anchor='start' fill='#1f2328'>recovery: none</text></g><g data-hot='h-hp2'><rect x='10' y='144' width='340' height='30' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='14' y='162' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>HP-2</text><text x='60' y='156.5' font-size='9' text-anchor='start' fill='#1f2328'>Packaged</text><text x='60' y='168.5' font-size='9' text-anchor='start' fill='#1f2328'>heat pump</text><text x='144' y='162' font-size='9.5' text-anchor='start' fill='#1f2328'>25 tons</text><text x='202' y='162' font-size='9.5' text-anchor='start' fill='#1f2328'>480V/3ph</text><text x='260' y='156.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Ground-floor lobby</text><text x='260' y='168.5' font-size='9.5' text-anchor='start' fill='#1f2328'>(1,200 sf)</text></g><g data-hot='h-hpwh'><rect x='10' y='174' width='340' height='30' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='14' y='192' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>HPWH-1</text><text x='60' y='186.5' font-size='9' text-anchor='start' fill='#1f2328'>Heat pump</text><text x='60' y='198.5' font-size='9' text-anchor='start' fill='#1f2328'>water heater</text><text x='144' y='192' font-size='9.5' text-anchor='start' fill='#1f2328'>80 gal</text><text x='202' y='192' font-size='9.5' text-anchor='start' fill='#1f2328'>208V/1ph</text><text x='260' y='186.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Restroom DHW;</text><text x='260' y='198.5' font-size='9.5' text-anchor='start' fill='#1f2328'>CO₂ refrigerant</text></g><rect x='10' y='204' width='340' height='30' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='14' y='222' font-size='9' text-anchor='start' fill='#1f2328' font-weight='bold'>EF-1</text><text x='60' y='216.5' font-size='9' text-anchor='start' fill='#1f2328'>Toilet exhaust</text><text x='60' y='228.5' font-size='9' text-anchor='start' fill='#1f2328'>fan</text><text x='144' y='222' font-size='9.5' text-anchor='start' fill='#1f2328'>1,800 cfm</text><text x='202' y='222' font-size='9.5' text-anchor='start' fill='#1f2328'>120V/1ph</text><text x='260' y='216.5' font-size='9.5' text-anchor='start' fill='#1f2328'>Restrooms</text><text x='260' y='228.5' font-size='9.5' text-anchor='start' fill='#1f2328'>L1-L4</text><line x1='56' y1='36' x2='56' y2='234' stroke='#d6d0c2' stroke-width='0.6'/><line x1='140' y1='36' x2='140' y2='234' stroke='#d6d0c2' stroke-width='0.6'/><line x1='198' y1='36' x2='198' y2='234' stroke='#d6d0c2' stroke-width='0.6'/><line x1='256' y1='36' x2='256' y2='234' stroke='#d6d0c2' stroke-width='0.6'/><text x='10' y='250' font-size='9' text-anchor='start' fill='#5b6168' font-weight='bold'>Notes:</text><text x='10' y='263' font-size='9' text-anchor='start' fill='#5b6168'>1. Capacities at design conditions; verify with final load calcs.</text><text x='10' y='276' font-size='9' text-anchor='start' fill='#5b6168'>2. HP-1 sized for full building heating and cooling load.</text><text x='10' y='289' font-size='9' text-anchor='start' fill='#5b6168'>3. Provide BAS points for all equipment.</text></svg>",
+   "caption": "Mechanical equipment schedule listing tags, capacities, power/fuel and remarks for a 4-story office.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A mechanical equipment schedule from the drawing set",
+      "A utility bill summary",
+      "A product cut sheet for a heat pump",
+      "A commissioning issues log"
+     ],
+     "answer": 0,
+     "explain": "Equipment schedules sit on the mechanical drawings (often the M-600 series) and list every major piece of equipment by tag with capacity, power/fuel and what it serves. They are the fastest way to verify design intent like 'all-electric'."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-boiler",
+       "issue": true,
+       "label": "Gas boiler B-1",
+       "explain": "A natural-gas boiler directly contradicts the all-electric OPR, and note 2 says HP-1 already covers the full heating load. Options: remove it, or if backup is truly required, use electric resistance or additional heat pump capacity."
+      },
+      {
+       "id": "h-doas",
+       "issue": true,
+       "label": "DOAS with no energy recovery",
+       "explain": "A 9,000 cfm outdoor-air unit without heat/energy recovery throws away conditioned exhaust air. Energy codes often require recovery above certain airflow thresholds, and on an all-electric project an ERV/HRV meaningfully shrinks heat pump size and energy use."
+      },
+      {
+       "id": "h-hp2",
+       "issue": true,
+       "label": "25 tons for a 1,200 sf lobby",
+       "explain": "That's about 48 sf/ton; even a glassy lobby is more like a few hundred sf per ton. Possibly a typo (2.5 tons?) or a copied row; oversizing raises cost, electrical demand and short-cycling."
+      },
+      {
+       "id": "h-hp1",
+       "issue": false,
+       "label": "HP-1 120 tons, COP 3.1",
+       "explain": "About 500 sf/ton for the whole building is reasonable for a mild Bay Area climate, and a heating COP near 3 is typical for air-to-water heat pumps."
+      },
+      {
+       "id": "h-hpwh",
+       "issue": false,
+       "label": "HPWH with CO2 refrigerant",
+       "explain": "A heat pump water heater using CO2 (a natural refrigerant with very low GWP) is a good all-electric choice for domestic hot water."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Ignore it; the 50% DD set will change anyway",
+      "Log the three items as review comments to the mechanical engineer, referencing the OPR and asking for revisions at 100% DD",
+      "Delete the boiler row from the schedule yourself",
+      "Tell the client the design is no longer all-electric"
+     ],
+     "answer": 1,
+     "explain": "Design review comments, tied to the OPR, are the normal channel: they create a record and give the engineer a chance to explain (e.g. a temporary boiler) or fix it. You don't edit another discipline's drawings or alarm the client before the team responds."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "Reviewed M-601 (50% DD) against the all-electric OPR: B-1 is a 1,500 MBH natural gas boiler, even though note 2 says HP-1 carries the full heating load, so I'd ask for it to be removed or replaced with an electric backup. DOAS-1 (9,000 cfm) has no energy recovery, which likely conflicts with code and will oversize the heat pumps, and HP-2 at 25 tons for a 1,200 sf lobby (~48 sf/ton) looks like a typo. I've drafted these as review comments for the mechanical engineer if you're OK sending them."
+    }
+   ],
+   "takeaway": "Check every schedule row against the project goals: 'all-electric' means checking the fuel column line by line."
+  },
+  {
+   "id": "lcc-heat-pump-vs-furnace",
+   "title": "Check a heat pump payback table",
+   "skill": "lifecycle-cost",
+   "context": "You're supporting an Arcadis portfolio electrification study for a client with 40 small commercial suites in the East Bay. A colleague built the per-suite cost screen below, and your lead wants to use the payback number in tomorrow's client workshop.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fbfaf6' stroke='#c9c4b8' stroke-width='1'/><text x='10' y='15' font-size='11' text-anchor='start' fill='#1f2328' font-weight='bold'>Life-cycle cost screen - HVAC replacement (per suite)</text><text x='10' y='28' font-size='9' text-anchor='start' fill='#5b6168'>3-ton system | small commercial suite, Hayward | simple payback</text><rect x='10' y='36' width='340' height='18' fill='#e4e0d4' stroke='#b9b3a4' stroke-width='0.8'/><text x='16' y='48.5' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Item</text><text x='215' y='48.5' font-size='9.5' text-anchor='middle' fill='#1f2328' font-weight='bold'>Heat pump</text><text x='305' y='48.5' font-size='9.5' text-anchor='middle' fill='#1f2328' font-weight='bold'>Gas furnace + AC</text><rect x='10' y='54' width='340' height='19' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='67' font-size='9.5' text-anchor='start' fill='#1f2328'>Equipment + installation</text><text x='215' y='67' font-size='10' text-anchor='middle' fill='#1f2328'>$16,000</text><text x='305' y='67' font-size='10' text-anchor='middle' fill='#1f2328'>$13,500</text><rect x='10' y='73' width='340' height='19' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='86' font-size='9.5' text-anchor='start' fill='#1f2328'>Utility / state rebate</text><g data-hot='h-rebate'><rect x='172' y='73' width='86' height='19' fill='transparent' pointer-events='all'/><text x='215' y='86' font-size='10' text-anchor='middle' fill='#1f2328'>-$1,500</text></g><text x='305' y='86' font-size='10' text-anchor='middle' fill='#1f2328'>$0</text><rect x='10' y='92' width='340' height='19' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='105' font-size='9.5' text-anchor='start' fill='#1f2328'>Electrical panel upgrade</text><g data-hot='h-panel'><rect x='172' y='92' width='86' height='19' fill='transparent' pointer-events='all'/><text x='215' y='105' font-size='10' text-anchor='middle' fill='#1f2328'>-</text></g><text x='305' y='105' font-size='10' text-anchor='middle' fill='#1f2328'>n/a</text><rect x='10' y='111' width='340' height='19' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='124' font-size='9.5' text-anchor='start' fill='#1f2328' font-weight='bold'>Net first cost</text><text x='215' y='124' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>$14,500</text><text x='305' y='124' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>$13,500</text><rect x='10' y='130' width='340' height='19' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='143' font-size='9.5' text-anchor='start' fill='#1f2328'>Annual energy cost</text><g data-hot='h-energy'><rect x='172' y='130' width='86' height='19' fill='transparent' pointer-events='all'/><text x='215' y='143' font-size='10' text-anchor='middle' fill='#1f2328'>$1,440</text></g><text x='305' y='143' font-size='10' text-anchor='middle' fill='#1f2328'>$1,510</text><rect x='10' y='149' width='340' height='19' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='162' font-size='9.5' text-anchor='start' fill='#1f2328'>Annual maintenance</text><text x='215' y='162' font-size='10' text-anchor='middle' fill='#1f2328'>$200</text><text x='305' y='162' font-size='10' text-anchor='middle' fill='#1f2328'>$280</text><rect x='10' y='168' width='340' height='19' fill='#ffffff' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='181' font-size='9.5' text-anchor='start' fill='#1f2328'>Annual savings (HP vs gas)</text><text x='215' y='181' font-size='10' text-anchor='middle' fill='#1f2328'>$150</text><text x='305' y='181' font-size='10' text-anchor='middle' fill='#1f2328'>-</text><rect x='10' y='187' width='340' height='19' fill='#f4f1ea' stroke='#d6d0c2' stroke-width='0.6'/><text x='16' y='200' font-size='9.5' text-anchor='start' fill='#1f2328'>Incremental first cost</text><text x='215' y='200' font-size='10' text-anchor='middle' fill='#1f2328'>$1,000</text><text x='305' y='200' font-size='10' text-anchor='middle' fill='#1f2328'>-</text><rect x='10' y='206' width='340' height='22' fill='#e4e0d4' stroke='#8f897b' stroke-width='1'/><text x='16' y='221' font-size='10' text-anchor='start' fill='#1f2328' font-weight='bold'>Simple payback</text><g data-hot='h-payback'><rect x='172' y='206' width='176' height='22' fill='transparent' pointer-events='all'/><text x='260' y='221' font-size='10' text-anchor='middle' fill='#1f2328' font-weight='bold'>$1,000 / $150 per yr = 4.7 yrs</text></g><line x1='170' y1='36' x2='170' y2='228' stroke='#d6d0c2' stroke-width='0.6'/><line x1='260' y1='36' x2='260' y2='206' stroke='#d6d0c2' stroke-width='0.6'/><text x='10' y='246' font-size='9.5' text-anchor='start' fill='#5b6168' font-weight='bold'>Site survey notes</text><text x='10' y='260' font-size='9' text-anchor='start' fill='#5b6168'>- Existing 100A panel near capacity; electrician quote</text><text x='10' y='272' font-size='9' text-anchor='start' fill='#5b6168'>  pending (est. $3,000-4,500).</text><text x='10' y='286' font-size='9' text-anchor='start' fill='#5b6168'>- Energy costs from 2026 utility rates; no escalation applied.</text></svg>",
+   "caption": "Side-by-side cost table for a 3-ton heat pump vs gas furnace plus AC, with simple payback and site notes.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A contractor's invoice",
+      "A simple life-cycle cost / payback comparison of two HVAC options",
+      "A utility rebate application form",
+      "A net present value (NPV) cash-flow model with discounting"
+     ],
+     "answer": 1,
+     "explain": "First costs, incentives, annual operating costs and a simple payback for two options is a basic cost screen. It's not a full LCC (no discount rate, escalation, equipment life or replacement), which is fine for screening but should be labeled as such."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 2 issues)",
+     "hotspots": [
+      {
+       "id": "h-payback",
+       "issue": true,
+       "label": "Payback math",
+       "explain": "$1,000 / $150 per year = 6.7 years, not 4.7. Small arithmetic errors are easy to make and very visible in a workshop, so recompute every derived number."
+      },
+      {
+       "id": "h-panel",
+       "issue": true,
+       "label": "Panel upgrade left blank",
+       "explain": "The site notes say the panel is at capacity and a $3,000-4,500 upgrade is likely, but the heat pump column carries no cost. Including a mid-estimate (~$3,750) raises the incremental cost to ~$4,750 and payback to ~30 years, which changes the story (and points toward panel-optimized or 120V solutions, or incentives)."
+      },
+      {
+       "id": "h-rebate",
+       "issue": false,
+       "label": "-$1,500 rebate",
+       "explain": "Netting available incentives against first cost is correct practice. Just confirm the program is still funded and the suites are eligible."
+      },
+      {
+       "id": "h-energy",
+       "issue": false,
+       "label": "HP energy cost only slightly lower",
+       "explain": "This looks surprising but is realistic: in California, electricity is expensive relative to gas, so even an efficient heat pump (COP ~3) often has only modestly lower, or sometimes higher, energy costs than gas heating. The bigger benefits are carbon, cooling efficiency and avoiding future gas infrastructure."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Use 4.7 years; it's close enough for a workshop",
+      "Correct the payback, add the panel upgrade as a range, and present payback with and without it alongside carbon savings",
+      "Drop the heat pump option because the payback is too long",
+      "Remove the site notes so the table looks cleaner"
+     ],
+     "answer": 1,
+     "explain": "Show the honest range (about 6.7 years without the panel, roughly 25-35 years with it) and put it next to non-financial benefits (emissions, cooling, gas phase-out risk). That lets the client make an informed decision and spot where incentives or design changes matter most."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "Two fixes on the per-suite cost screen before the workshop: the simple payback is $1,000 / $150 = 6.7 years (not 4.7), and the heat pump column omits the panel upgrade the site survey flags ($3,000-4,500). With a mid-estimate of ~$3,750 the payback stretches to roughly 30 years, so I'd show both cases alongside the carbon savings and note that panel-optimized equipment or added incentives could close the gap."
+    }
+   ],
+   "takeaway": "In any payback table, recompute the math and check that every cost the site notes mention actually shows up in a column."
+  },
+  {
+   "id": "site-walk-mech-room",
+   "title": "Spot problems on a site walk sketch",
+   "skill": "reports-workshops",
+   "context": "You joined an Arup energy audit walk-through of a 1990s office campus in Sunnyvale. Your notes from Building C's mechanical room and the storage room next door are a quick sketch; your lead wants the walk-through findings added to the audit report draft today.",
+   "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 300' width='100%' font-family='Arial, sans-serif'><rect x='0.5' y='0.5' width='359' height='299' fill='#fffdf2' stroke='#c9c4b8' stroke-width='1'/><line x1='0' y1='42' x2='360' y2='42' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='56' x2='360' y2='56' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='70' x2='360' y2='70' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='84' x2='360' y2='84' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='98' x2='360' y2='98' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='112' x2='360' y2='112' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='126' x2='360' y2='126' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='140' x2='360' y2='140' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='154' x2='360' y2='154' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='168' x2='360' y2='168' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='182' x2='360' y2='182' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='196' x2='360' y2='196' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='210' x2='360' y2='210' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='224' x2='360' y2='224' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='238' x2='360' y2='238' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='252' x2='360' y2='252' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='266' x2='360' y2='266' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='280' x2='360' y2='280' stroke='#dfe7f1' stroke-width='0.6'/><line x1='0' y1='294' x2='360' y2='294' stroke='#dfe7f1' stroke-width='0.6'/><line x1='8' y1='0' x2='8' y2='300' stroke='#f0c4c4' stroke-width='0.8'/><text x='14' y='16' font-size='10' text-anchor='start' fill='#1d3557' font-weight='bold'>Site walk 10/9 - Bldg C mech room + storage (11:00, sunny)</text><line x1='14' y1='36' x2='346' y2='36' stroke='#2b2d42' stroke-width='1.6'/><line x1='14' y1='256' x2='346' y2='256' stroke='#2b2d42' stroke-width='1.6'/><line x1='14' y1='36' x2='14' y2='256' stroke='#2b2d42' stroke-width='1.6'/><line x1='346' y1='36' x2='346' y2='256' stroke='#2b2d42' stroke-width='1.6'/><line x1='214' y1='36' x2='214' y2='150' stroke='#2b2d42' stroke-width='1.6'/><line x1='214' y1='230' x2='214' y2='256' stroke='#2b2d42' stroke-width='1.6'/><text x='110' y='272' font-size='9.5' text-anchor='middle' fill='#2b2d42' font-weight='bold'>MECH ROOM</text><text x='280' y='272' font-size='9.5' text-anchor='middle' fill='#2b2d42' font-weight='bold'>STORAGE (daylit)</text><g data-hot='h-oa'><rect x='12' y='64' width='68' height='96' fill='transparent' pointer-events='all'/><rect x='14' y='76' width='10' height='52' fill='#ffffff' stroke='#2b2d42' stroke-width='1'/><line x1='15' y1='80' x2='23' y2='80' stroke='#2b2d42' stroke-width='0.8'/><line x1='15' y1='86' x2='23' y2='86' stroke='#2b2d42' stroke-width='0.8'/><line x1='15' y1='92' x2='23' y2='92' stroke='#2b2d42' stroke-width='0.8'/><line x1='15' y1='98' x2='23' y2='98' stroke='#2b2d42' stroke-width='0.8'/><line x1='15' y1='104' x2='23' y2='104' stroke='#2b2d42' stroke-width='0.8'/><line x1='15' y1='110' x2='23' y2='110' stroke='#2b2d42' stroke-width='0.8'/><line x1='15' y1='116' x2='23' y2='116' stroke='#2b2d42' stroke-width='0.8'/><line x1='15' y1='122' x2='23' y2='122' stroke='#2b2d42' stroke-width='0.8'/><rect x='26' y='98' width='30' height='30' fill='#e8d8b8' stroke='#2b2d42' stroke-width='1'/><rect x='30' y='70' width='26' height='28' fill='#e8d8b8' stroke='#2b2d42' stroke-width='1'/><rect x='56' y='104' width='18' height='24' fill='#e8d8b8' stroke='#2b2d42' stroke-width='1'/><line x1='26' y1='113' x2='56' y2='113' stroke='#2b2d42' stroke-width='0.6'/><line x1='30' y1='84' x2='56' y2='84' stroke='#2b2d42' stroke-width='0.6'/><rect x='14' y='128' width='64' height='4' fill='#b08d57' stroke='#2b2d42' stroke-width='0.8'/><text x='16' y='146' font-size='9' text-anchor='start' fill='#2b2d42'>OA intake</text><text x='16' y='157' font-size='9' text-anchor='start' fill='#2b2d42'>(AHU-2)</text></g><g data-hot='h-ins'><rect x='28' y='40' width='188' height='30' fill='transparent' pointer-events='all'/><rect x='30' y='44' width='184' height='10' fill='#d9d9d9' stroke='#2b2d42' stroke-width='1'/><line x1='36' y1='44' x2='42' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='48' y1='44' x2='54' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='60' y1='44' x2='66' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='72' y1='44' x2='78' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='84' y1='44' x2='90' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='96' y1='44' x2='102' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='108' y1='44' x2='114' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='120' y1='44' x2='126' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='132' y1='44' x2='138' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='144' y1='44' x2='150' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='156' y1='44' x2='162' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='168' y1='44' x2='174' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='180' y1='44' x2='186' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='192' y1='44' x2='198' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><line x1='204' y1='44' x2='210' y2='54' stroke='#8d8d8d' stroke-width='0.7'/><text x='120' y='66' font-size='9' text-anchor='middle' fill='#2b2d42'>HHWS - insulated, labeled</text></g><rect x='98' y='158' width='46' height='92' fill='#f4f4f4' stroke='#2b2d42' stroke-width='1.3' rx='8'/><text x='121' y='204' font-size='9.5' text-anchor='middle' fill='#2b2d42' font-weight='bold'>WH-1</text><line x1='121' y1='158' x2='121' y2='150' stroke='#2b2d42' stroke-width='2'/><g data-hot='h-pipe'><rect x='114' y='74' width='100' height='40' fill='transparent' pointer-events='all'/><path d='M121,150 L121,90 L214,90' fill='none' stroke='#c46a2c' stroke-width='3'/><text x='166' y='84' font-size='9' text-anchor='middle' fill='#7a3b12'>DHW out ~140°F</text><text x='150' y='104' font-size='9' text-anchor='start' fill='#7a3b12'>bare copper</text></g><g data-hot='h-tp'><rect x='144' y='164' width='66' height='92' fill='transparent' pointer-events='all'/><path d='M144,172 L156,172 L156,242' fill='none' stroke='#2b2d42' stroke-width='2'/><ellipse cx='160' cy='252' rx='9' ry='3' fill='#9aa0a6' stroke='#2b2d42' stroke-width='0.8'/><text x='164' y='200' font-size='9' text-anchor='start' fill='#2b2d42'>pipe ends</text><text x='164' y='211' font-size='9' text-anchor='start' fill='#2b2d42'>6 in above</text><text x='164' y='222' font-size='9' text-anchor='start' fill='#2b2d42'>floor drain</text></g><rect x='256' y='33' width='44' height='6' fill='#cfe8ff' stroke='#2b2d42' stroke-width='1'/><text x='278' y='29' font-size='9' text-anchor='middle' fill='#2b2d42'>skylight</text><line x1='262' y1='40' x2='252' y2='150' stroke='#e9b100' stroke-width='1' stroke-dasharray='4 3'/><line x1='272' y1='40' x2='262' y2='150' stroke='#e9b100' stroke-width='1' stroke-dasharray='4 3'/><line x1='282' y1='40' x2='272' y2='150' stroke='#e9b100' stroke-width='1' stroke-dasharray='4 3'/><line x1='292' y1='40' x2='282' y2='150' stroke='#e9b100' stroke-width='1' stroke-dasharray='4 3'/><ellipse cx='268' cy='252' rx='34' ry='4' fill='#ffe58a' opacity='0.8'/><text x='268' y='244' font-size='9' text-anchor='middle' fill='#8a6d00'>sun patch</text><g data-hot='h-lights'><rect x='218' y='34' width='126' height='42' fill='transparent' pointer-events='all'/><rect x='222' y='36' width='20' height='5' fill='#ffffff' stroke='#2b2d42' stroke-width='1'/><line x1='226' y1='44' x2='220' y2='54' stroke='#e9b100' stroke-width='1.2'/><line x1='232' y1='44' x2='232' y2='54' stroke='#e9b100' stroke-width='1.2'/><line x1='238' y1='44' x2='244' y2='54' stroke='#e9b100' stroke-width='1.2'/><rect x='314' y='36' width='20' height='5' fill='#ffffff' stroke='#2b2d42' stroke-width='1'/><line x1='318' y1='44' x2='312' y2='54' stroke='#e9b100' stroke-width='1.2'/><line x1='324' y1='44' x2='324' y2='54' stroke='#e9b100' stroke-width='1.2'/><line x1='330' y1='44' x2='336' y2='54' stroke='#e9b100' stroke-width='1.2'/><text x='318' y='70' font-size='9' text-anchor='middle' fill='#8a6d00' font-weight='bold'>lights ON</text><text x='232' y='70' font-size='9' text-anchor='middle' fill='#8a6d00' font-weight='bold'>ON</text></g><text x='300' y='186' font-size='9' text-anchor='middle' fill='#2b2d42'>shelving,</text><text x='300' y='198' font-size='9' text-anchor='middle' fill='#2b2d42'>occupied ~2 h/day</text></svg>",
+   "caption": "Hand sketch (section) of a mechanical room and adjacent daylit storage room from an energy audit site walk.",
+   "steps": [
+    {
+     "type": "identify",
+     "q": "What are you looking at?",
+     "options": [
+      "A construction shop drawing",
+      "A site-walk field sketch (section view) from an energy audit",
+      "A piping and instrumentation diagram (P&ID)",
+      "A fire egress plan"
+     ],
+     "answer": 1,
+     "explain": "Quick hand sketches with time, conditions and short notes are how auditors capture observations on a walk-through (ASHRAE Level 1/2 audits). They become the evidence behind no-cost and low-cost recommendations, so annotate what you see and when."
+    },
+    {
+     "type": "flag",
+     "q": "Tap everything you'd flag (there are 3 issues)",
+     "hotspots": [
+      {
+       "id": "h-pipe",
+       "issue": true,
+       "label": "Bare hot-water pipe",
+       "explain": "An uninsulated ~140 F domestic hot water line loses heat continuously and makes the water heater work harder. Pipe insulation is cheap, quick and usually required by energy code for hot piping."
+      },
+      {
+       "id": "h-oa",
+       "issue": true,
+       "label": "Boxes blocking OA intake",
+       "explain": "Stored boxes in front of the AHU-2 outdoor-air louver restrict ventilation air, which can starve the unit of fresh air (indoor air quality) and upset building pressure. It's a housekeeping fix, but also a sign of a storage problem to raise with facilities."
+      },
+      {
+       "id": "h-lights",
+       "issue": true,
+       "label": "Lights on in a sunlit storage room",
+       "explain": "At 11:00 on a sunny day the skylight is providing plenty of light in a room occupied about 2 hours a day, yet both fixtures are on. Occupancy sensors (vacancy mode) and daylight controls would cut most of this use."
+      },
+      {
+       "id": "h-tp",
+       "issue": false,
+       "label": "T&P pipe ending above the drain",
+       "explain": "Looks like a pipe going nowhere, but this is the water heater's temperature-and-pressure relief discharge. Codes require it to terminate a short distance above a floor drain with an air gap so a discharge is visible and safe. This is correct."
+      },
+      {
+       "id": "h-ins",
+       "issue": false,
+       "label": "Insulated, labeled HHWS pipe",
+       "explain": "Insulated and labeled with service and flow: this is what good looks like, and a useful comparison for the bare pipe below it."
+      }
+     ]
+    },
+    {
+     "type": "choice",
+     "q": "What do you do next?",
+     "options": [
+      "Move the boxes yourself and turn off the lights before leaving",
+      "Photograph and note each item with location and time, and write them up as low-cost measures with a rough savings estimate",
+      "Recommend replacing WH-1 since the T&P pipe looks wrong",
+      "Only report items that need capital funding"
+     ],
+     "answer": 1,
+     "explain": "On an audit you document rather than intervene (you don't own the building, and there may be reasons you don't know about). No-cost and low-cost measures like insulation, controls and housekeeping are often the highest-return items in the report."
+    },
+    {
+     "type": "write",
+     "q": "Write the 2-3 sentence note you'd send your lead.",
+     "model": "Bldg C walk-through findings for the audit draft: (1) about 10 ft of bare ~140 F copper DHW pipe leaving WH-1, recommend insulating as a low-cost measure; (2) stored boxes blocking the AHU-2 outdoor-air louver, flag to facilities as an IAQ and housekeeping item; (3) both fixtures on in the skylit storage room at 11:00 on a sunny day, recommend vacancy sensors and daylight controls. The T&P discharge to the floor drain looked unusual but is correct; photos are in the project folder."
+    }
+   ],
+   "takeaway": "On a site walk, document what is wasting energy right now; the cheapest fixes are often insulation, controls and clearing what's in the way."
+  }
+ ]
+}

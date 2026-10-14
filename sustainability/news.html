@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canopy Daily</title>
+<meta name="description" content="Today's energy, climate and sustainability news from every viewpoint, laid out like a newspaper front page.">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800;900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--paper:#fff;--ink:#121212;--muted:#5a5a5a;--rule:#dfdfdf;--rule-strong:#121212;--accent:#326891;--chip:#f3f3f3}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121212;--paper:#121212;--ink:#ececec;--muted:#a3a3a3;--rule:#333;--rule-strong:#ececec;--accent:#8fb8d8;--chip:#1e1e1e}}
+:root[data-theme="dark"]{--bg:#121212;--paper:#121212;--ink:#ececec;--muted:#a3a3a3;--rule:#333;--rule-strong:#ececec;--accent:#8fb8d8;--chip:#1e1e1e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,"Times New Roman",serif;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+a:hover .hl{text-decoration:underline;text-decoration-thickness:1px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.sans{font-family:"Libre Franklin",system-ui,sans-serif}
+
+/* masthead */
+.utility{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-family:"Libre Franklin",sans-serif;font-size:12px;gap:8px}
+.utility a{font-weight:600}
+.utility .app{background:var(--ink);color:var(--bg);border-radius:3px;padding:6px 10px;font-weight:700;white-space:nowrap}
+.mast{text-align:center;padding:4px 0 10px}
+.mast h1{font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:clamp(38px,8vw,74px);letter-spacing:-.01em;line-height:1}
+.dateline{display:flex;justify-content:space-between;align-items:center;gap:8px;border-top:1px solid var(--rule-strong);border-bottom:3px double var(--rule-strong);padding:7px 0;font-family:"Libre Franklin",sans-serif;font-size:12px;font-weight:600}
+.dateline span:nth-child(2){text-align:center;flex:1}
+.sections{display:flex;gap:18px;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;padding:10px 0;border-bottom:1px solid var(--rule);font-family:"Libre Franklin",sans-serif;font-size:13px;font-weight:500;white-space:nowrap}
+.sections::-webkit-scrollbar{display:none}
+.sections > :first-child{margin-left:auto}.sections > :last-child{margin-right:auto}   /* centered when it fits, scrollable when it doesn't */
+.sections a[aria-current="true"]{font-weight:800;text-decoration:underline;text-underline-offset:4px}
+
+/* front page grid */
+.front{display:grid;grid-template-columns:1fr;gap:0;padding-top:16px}
+@media (min-width:900px){.front{grid-template-columns:2fr 1fr}.front > .lead-col{padding-right:20px;border-right:1px solid var(--rule)}.front > .side-col{padding-left:20px}}
+.kicker{font-family:"Libre Franklin",sans-serif;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.kicker .view{color:var(--accent)}
+.story{padding:14px 0;border-bottom:1px solid var(--rule)}
+.story:last-child{border-bottom:none}
+.hl{font-weight:700;line-height:1.18;letter-spacing:-.005em}
+.lead .hl{font-size:clamp(26px,4.2vw,38px);line-height:1.12}
+.second .hl{font-size:21px}
+.small .hl{font-size:17px;line-height:1.25}
+.sum{font-size:16px;line-height:1.5;color:var(--muted);margin-top:8px}
+.meta{font-family:"Libre Franklin",sans-serif;font-size:11.5px;color:var(--muted);margin-top:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.meta .save{font:inherit;font-weight:700;background:none;border:1px solid var(--rule);color:var(--ink);border-radius:3px;padding:2px 8px;cursor:pointer}
+.meta .save[disabled]{border-color:transparent;color:var(--accent);cursor:default}
+.lead-grid{display:grid;grid-template-columns:1fr;gap:0}
+@media (min-width:700px){.lead-grid{grid-template-columns:1fr 1fr;column-gap:20px}.lead-grid .story.lead{grid-column:1 / -1}}
+.label{font-family:"Libre Franklin",sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;border-top:2px solid var(--rule-strong);padding-top:8px;margin-top:6px;display:flex;justify-content:space-between;align-items:baseline}
+.label a{font-weight:600;font-size:12px;text-transform:none;letter-spacing:0;color:var(--muted)}
+
+/* section blocks below the fold */
+.blocks{display:grid;grid-template-columns:1fr;gap:6px 24px;margin-top:22px}
+@media (min-width:700px){.blocks{grid-template-columns:1fr 1fr}}
+@media (min-width:1050px){.blocks{grid-template-columns:repeat(3,1fr)}}
+.opinion{background:var(--chip);padding:12px 14px;margin-top:22px}
+.opinion .grid{display:grid;grid-template-columns:1fr;gap:0 24px}
+@media (min-width:700px){.opinion .grid{grid-template-columns:repeat(3,1fr)}}
+.opinion .story .hl{font-style:italic;font-weight:600;font-size:17px}
+.watch{display:flex;gap:12px;align-items:center;justify-content:space-between;border:1px solid var(--rule);padding:12px 14px;margin:18px 0}
+.watch b{font-family:"Playfair Display",serif;font-size:20px}
+.watch a{font-family:"Libre Franklin",sans-serif;font-weight:700;font-size:13px;background:var(--ink);color:var(--bg);padding:8px 12px;border-radius:3px;white-space:nowrap}
+footer{border-top:3px double var(--rule-strong);margin:30px 0 40px;padding-top:12px;font-family:"Libre Franklin",sans-serif;font-size:12px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;justify-content:space-between}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="utility"><a href="./">Guide &amp; resources</a><a class="app" href="learn.html">Open Canopy app</a></div>
+  <header class="mast"><h1>Canopy Daily</h1></header>
+  <div class="dateline"><span id="dateL"></span><span>Energy · Climate · Buildings · Every viewpoint</span><span id="updated"></span></div>
+  <nav class="sections" id="sections" aria-label="Sections"></nav>
+  <main id="paper"><p class="empty">Loading today's paper...</p></main>
+  <footer><span>Headlines link to the original publishers. Viewpoint labels describe the outlet, not the story.</span><a href="watch.html">▶ Watch</a></footer>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "#";
+const VIEWS = {climate:"Climate press", markets:"Business & markets", industry:"Energy industry", freemarket:"Free-market & skeptic", research:"Research & data", mixed:"All sides", general:"General news"};
+const SECTIONS = ["Energy Prices","Solar","Storage & Grid","Carbon & Net Zero","Policy","Efficiency","Wind","Clean Tech","Sustainable Development"];
+const INBOX = "energybrief-inbox", SAVED = "energybrief-saved-links";
+const saved = new Set((() => { try { return JSON.parse(localStorage.getItem(SAVED) || "[]"); } catch { return []; } })());
+let articles = [], section = "Front page";
+
+$("#dateL").textContent = new Date().toLocaleDateString(undefined, {weekday:"long", month:"long", day:"numeric", year:"numeric"});
+function ago(iso){ if (!iso) return ""; const m = (Date.now() - new Date(iso)) / 60000;
+  return m < 60 ? `${Math.max(1, Math.round(m))} min ago` : m < 1440 ? `${Math.round(m / 60)}h ago` : `${Math.round(m / 1440)}d ago`; }
+// Google News summaries just repeat the headline; only show real summaries.
+const summaryOf = a => { const s = (a.summary || "").trim(); if (!s || s.length < 60) return ""; const t = a.title.slice(0, 40).toLowerCase(); return s.toLowerCase().startsWith(t) ? "" : s; };
+
+function story(a, size){
+  const sum = size !== "small" ? summaryOf(a) : "";
+  return `<article class="story ${size}"><div class="kicker"><span>${esc((a.topics || [])[0] || "News")}</span><span class="view">${esc(VIEWS[a.view || "general"])}</span></div>
+    <a href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener"><h2 class="hl">${esc(a.title)}</h2></a>
+    ${sum ? `<p class="sum">${esc(sum)}</p>` : ""}
+    <div class="meta"><span>${esc(a.source)}</span><span>${esc(ago(a.published || a.added))}</span>
+      <button class="save" data-save="${esc(a.link)}" ${saved.has(a.link) ? "disabled>Saved ✓" : ">Save"}</button></div></article>`;
+}
+function pickVaried(list, n){   // a front page with more than one viewpoint on it
+  const out = [], used = new Set();
+  for (const a of list) { if (out.length >= n) break; if (!used.has(a.view)) { out.push(a); used.add(a.view); } }
+  for (const a of list) { if (out.length >= n) break; if (!out.includes(a)) out.push(a); }
+  return out;
+}
+function render(){
+  const recent = articles.slice(0, 400);
+  $("#sections").innerHTML = ["Front page", ...SECTIONS].map(s => `<a href="#" data-sec="${esc(s)}" aria-current="${s === section}">${esc(s)}</a>`).join("");
+  if (!recent.length) { $("#paper").innerHTML = `<p class="empty">No stories yet. The first edition arrives tomorrow morning.</p>`; return; }
+  if (section !== "Front page") {
+    const list = recent.filter(a => (a.topics || []).includes(section));
+    $("#paper").innerHTML = `<div class="label" style="margin-top:16px">${esc(section)} <a href="#" data-sec="Front page">Front page →</a></div>
+      <div class="lead-grid">${list.slice(0, 1).map(a => story(a, "lead")).join("")}${list.slice(1, 40).map(a => story(a, "second")).join("")}</div>` + (list.length ? "" : `<p class="empty">No ${esc(section)} stories today.</p>`);
+    return;
+  }
+  // front page: stories from the curated outlets in the last 2 days first, then the strongest topic match
+  const fresh = a => Date.now() - new Date(a.published || a.added || 0) < 2 * 86400000;
+  const rank = a => (a.view && a.view !== "general" ? 2 : 0) + (fresh(a) ? 1 : 0);
+  const scored = recent.slice().sort((a, b) => rank(b) - rank(a) || (b.score || 0) - (a.score || 0) || (b.published || "").localeCompare(a.published || ""));
+  const top = pickVaried(scored.filter(a => a.view !== "freemarket" || true), 7);
+  const lead = top[0], seconds = top.slice(1, 3), rail = top.slice(3, 7);
+  const usedLinks = new Set(top.map(a => a.link));
+  const views = ["climate", "markets", "freemarket"].map(v => recent.find(a => a.view === v && !usedLinks.has(a.link))).filter(Boolean);
+  views.forEach(a => usedLinks.add(a.link));
+  const blocks = SECTIONS.map(sec => {
+    const items = recent.filter(a => (a.topics || []).includes(sec) && !usedLinks.has(a.link)).slice(0, 4);
+    items.forEach(a => usedLinks.add(a.link));
+    return items.length ? `<div><div class="label">${esc(sec)} <a href="#" data-sec="${esc(sec)}">More →</a></div>${items.map((a, i) => story(a, i ? "small" : "second")).join("")}</div>` : "";
+  }).join("");
+  $("#paper").innerHTML = `
+    <div class="front">
+      <div class="lead-col"><div class="lead-grid">${story(lead, "lead")}${seconds.map(a => story(a, "second")).join("")}</div></div>
+      <aside class="side-col"><div class="label">Also today</div>${rail.map(a => story(a, "small")).join("")}</aside>
+    </div>
+    ${views.length ? `<section class="opinion"><div class="label" style="border-color:var(--ink)">Every side <a href="./#debates">The big debates →</a></div><div class="grid">${views.map(a => story(a, "small")).join("")}</div></section>` : ""}
+    <div class="watch"><div><b>Today on Watch</b><div class="sans" style="font-size:13px;color:var(--muted)">Short videos from Arup, Gensler, Arcadis and climate explainers</div></div><a href="watch.html">▶ Watch</a></div>
+    <section class="blocks">${blocks}</section>`;
+}
+document.addEventListener("click", e => {
+  const s = e.target.closest("[data-sec]"); if (s) { e.preventDefault(); section = s.dataset.sec; render(); scrollTo({top:0}); return; }
+  const b = e.target.closest("[data-save]"); if (!b) return;
+  const a = articles.find(x => x.link === b.dataset.save); if (!a) return;
+  try {
+    const box = JSON.parse(localStorage.getItem(INBOX) || "[]"); box.push({title:a.title, link:a.link, source:a.source});
+    localStorage.setItem(INBOX, JSON.stringify(box)); saved.add(a.link); localStorage.setItem(SAVED, JSON.stringify([...saved].slice(-500)));
+  } catch {}
+  b.disabled = true; b.textContent = "Saved ✓";
+});
+fetch("feed.json", {cache:"no-cache"}).then(r => r.ok ? r.json() : {articles:[]}).catch(() => ({articles:[]})).then(d => {
+  articles = (d.articles || []).slice().sort((a, b) => (b.published || b.added || "").localeCompare(a.published || a.added || ""));
+  if (d.updated) $("#updated").textContent = "Updated " + ago(d.updated);
+  render();
+});
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) navigator.serviceWorker.register("sw.js");
+</script>
+</body>
+</html>

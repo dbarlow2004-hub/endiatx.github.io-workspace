@@ -1,0 +1,1358 @@
+{
+ "companies": [
+  {
+   "id": "arup",
+   "name": "Arup",
+   "tagline": "Trust-owned global engineering, design and advisory consultancy working across 150+ disciplines in the built environment.",
+   "facts": [
+    {
+     "k": "Founded",
+     "v": "1946 in London by engineer Ove Arup (as Ove N. Arup Consulting Engineers)"
+    },
+    {
+     "k": "Headquarters",
+     "v": "London, UK"
+    },
+    {
+     "k": "Ownership",
+     "v": "Owned since 1979 by trusts whose beneficiaries are current and former employees; no external investors"
+    },
+    {
+     "k": "Size",
+     "v": "~17,500 members (17,464 at FY2024/25 year end, Arup annual report)"
+    },
+    {
+     "k": "Revenue",
+     "v": "~GBP 2.16bn (year to 31 March 2025)"
+    },
+    {
+     "k": "Reach",
+     "v": "100 offices; projects in 136 countries (FY2024/25)"
+    },
+    {
+     "k": "Leadership",
+     "v": "CEO Jerome Frost; Non-Executive Chair Hilde Tonne"
+    },
+    {
+     "k": "Offices in your cities",
+     "v": "Los Angeles: yes. San Francisco: yes (first US office, 1985; Oakland too). New York: yes. Madrid: yes (in Spain since 1993). Paris: not confirmed on arup.com - ask."
+    }
+   ],
+   "overview": [
+    "Arup is an independent consultancy that plans, engineers and advises on buildings, infrastructure, cities and energy. It describes itself as a global consultancy with advisory and technical expertise across more than 150 disciplines, and its stated purpose is to 'guide, plan and design the future of the built environment.' It is famous for structural engineering on landmark buildings, but much of its work today is advisory: climate, resilience, energy, water, transport planning and economics.",
+    "Arup has been owned by employee trusts since 1979, so there are no outside shareholders. Staff are called 'members' and share in the firm's profits. In FY2024/25 (year to 31 March 2025) Arup reported about GBP 2.16bn revenue, about 17,500 members and 100 offices, after a restructuring that reduced headcount by 810. In the US it has 13 offices and over 2,000 people; San Francisco, opened in 1985, was the first.",
+    "What makes Arup distinctive is that its culture still runs on founder Ove Arup's 1970 'Key Speech', which set out six values including 'social usefulness' and 'Total Architecture' (integrating every design decision through one team). The firm says sustainable development 'lies at the heart' of its approach, and it has taken visible stances such as refusing new hydrocarbon energy commissions since April 2022."
+   ],
+   "sustainability": [
+    "Net zero: in 2020 Arup committed to net zero across its operations by 2030 with SBTi-validated targets; its commitments page now frames the goal as becoming a science-based net zero organisation by 2040 (financial year ending March 2040).",
+    "Progress: Arup's FY2024/25 global footprint was 109,802 tCO2e, a 39% cut from its FY2018/19 baseline; emissions per member are down 48%.",
+    "Fossil fuel stance: at COP26 Arup committed not to pursue work supporting extraction, refining or transport of hydrocarbon fuels; since 1 April 2022 it takes no new such energy commissions (hydrogen manufacture excepted) and says its renewables work has more than doubled.",
+    "Whole life carbon: also at COP26, Arup committed to whole life carbon assessments for all its building projects, new build and retrofit, and reported progress in March 2024.",
+    "Pledges and networks: Race to Zero, The Climate Pledge, WorldGBC Net Zero Carbon Buildings Commitment, WEF Alliance of CEO Climate Leaders, Business for Nature Call to Action, and the UN Global Compact (signatory since 2010).",
+    "Resilience research: with support from the Rockefeller Foundation, Arup developed the City Resilience Framework and City Resilience Index (52 indicators, 156 questions, 12 goals) for cities to self-assess resilience.",
+    "Social value: in FY2024/25 members gave 41,305 pro bono community engagement hours and Arup invested GBP 4m in community engagement."
+   ],
+   "projects": [
+    {
+     "name": "Sydney Opera House",
+     "where": "Sydney, Australia",
+     "why": "Arup was appointed engineer in 1957 and solved the roof shells with repeatable, prefabricated geometry; it still works on the building's care 60+ years later."
+    },
+    {
+     "name": "Centre Pompidou",
+     "where": "Paris, France",
+     "why": "Arup engineered the 1977 inside-out building with Renzo Piano and Richard Rogers, a defining example of exposed structure and services."
+    },
+    {
+     "name": "California Academy of Sciences",
+     "where": "San Francisco, USA",
+     "why": "Arup led engineering and sustainability: LEED Platinum, a 2.5-acre living roof, ~34% less energy and ~77% less water."
+    },
+    {
+     "name": "Beijing National Aquatics Centre (Water Cube)",
+     "where": "Beijing, China",
+     "why": "A 2008 Olympic venue whose structure is based on Weaire-Phelan foam and wrapped in ETFE pillows to act as an insulated, daylit greenhouse."
+    },
+    {
+     "name": "BIQ House SolarLeaf facade",
+     "where": "Hamburg, Germany",
+     "why": "Arup co-developed the first full-scale microalgae bioreactor facade (2013), producing biomass and heat while shading the building."
+    },
+    {
+     "name": "City Resilience Index",
+     "where": "Global (with the Rockefeller Foundation)",
+     "why": "A self-assessment tool that gives cities a baseline resilience profile across 52 indicators to plan and track improvements."
+    }
+   ],
+   "culture": [
+    "Six guiding values from Ove Arup's 1970 Key Speech: quality of work, Total Architecture, humane organisation, straight and honourable dealings, social usefulness, and reasonable prosperity of members.",
+    "Employee trust ownership: no external shareholders, staff are 'members', and the firm frames this as freedom to choose work that matters.",
+    "Strongly multidisciplinary: 150+ disciplines; teams mix engineers, planners, scientists, economists and designers ('Total Architecture').",
+    "FY2024/25 people stats: 81% of members said they are proud to work at Arup; the Executive Board was 50/50 gender balanced.",
+    "Early careers: Arup hires 'hundreds of graduates globally' each year and offers internships; its early careers page stresses collaboration across disciplines, continuous learning and lasting environmental and social impact.",
+    "Mobility: 2.7% of members were on international assignment in FY2024/25, so moving between offices (e.g. US to Madrid) is a known path."
+   ],
+   "lookFor": [
+    "Collaboration across backgrounds and disciplines - show you can work with engineers and translate between technical and non-technical people.",
+    "Open-mindedness, adaptability and continuous learning (named on Arup's early careers page).",
+    "Creative problem solving and a commitment to high-quality work ('quality of work' is a founding value).",
+    "Genuine motivation to create lasting environmental and social impact - link your environmental studies work to 'social usefulness'.",
+    "Ability to frame sustainability as evidence and analysis (carbon, resilience, data) that clients can act on, since much of Arup's climate work is advisory."
+   ],
+   "questions": [
+    "Since Arup stopped taking new hydrocarbon commissions in 2022, how has the energy and advisory work in your office changed?",
+    "How do whole life carbon assessments actually influence design decisions on a typical San Francisco project?",
+    "Which teams in the SF or Oakland offices do the most climate and resilience work, and how do graduates join them?",
+    "How does trust ownership show up day to day - for example in which projects Arup chooses to pursue?",
+    "What does the first two years look like for a graduate consultant with a science rather than an engineering background?",
+    "How is the City Resilience Index or similar resilience work used with US cities today?",
+    "What skills (GIS, carbon accounting, data analysis, policy) would make me useful to your team fastest?",
+    "How common are moves between US offices and Europe, such as Madrid, for early-career members?",
+    "What is a recent project you're proud of because of its sustainability outcome?",
+    "How does Arup balance 'reasonable prosperity' with being selective about clients and projects?"
+   ],
+   "talkingPoints": [
+    "Ove Arup's 1970 Key Speech and the value of 'social usefulness' - and why that matches why you studied environmental studies.",
+    "Arup's COP26 commitments: whole life carbon assessments on all building projects and no new hydrocarbon commissions from April 2022.",
+    "The California Academy of Sciences in SF: LEED Platinum, 2.5-acre living roof, about 77% less water.",
+    "Arup's FY2024/25 carbon footprint was 39% below its 2018/19 baseline, while pursuing a science-based net zero target.",
+    "The City Resilience Index built with the Rockefeller Foundation, as an example of research turned into a practical tool.",
+    "Arup has been trust-owned since 1979 and opened its first US office in San Francisco in 1985."
+   ],
+   "newsKeywords": [
+    "Arup",
+    "Arup Group",
+    "Ove Arup",
+    "Jerome Frost"
+   ],
+   "careers": "https://jobs.arup.com/",
+   "sources": [
+    {
+     "name": "Arup - About us",
+     "url": "https://www.arup.com/about-us/"
+    },
+    {
+     "name": "Arup - Our story",
+     "url": "https://www.arup.com/about-us/our-story/"
+    },
+    {
+     "name": "Arup - Our leadership",
+     "url": "https://www.arup.com/about-us/our-leadership/"
+    },
+    {
+     "name": "Arup Annual Report 2024/25 - Year in numbers",
+     "url": "https://www.arup.com/about-us/corporate-reports/annual-report-2024-25/year-in-numbers/"
+    },
+    {
+     "name": "Arup - Results FY2024/25",
+     "url": "https://www.arup.com/news/arup-sets-course-for-growth-after-delivering-resilient-performance/"
+    },
+    {
+     "name": "Arup - Our commitments",
+     "url": "https://www.arup.com/about-us/our-commitments/"
+    },
+    {
+     "name": "Arup - Financial results (COP26 commitments)",
+     "url": "https://www.arup.com/news/arups-financial-results-show-return-to-growth/"
+    },
+    {
+     "name": "Arup - United States offices",
+     "url": "https://www.arup.com/offices/united-states-of-america"
+    },
+    {
+     "name": "Arup - 30 years in Spain",
+     "url": "https://www.arup.com/news/arup-celebrates-its-30th-anniversary-in-spain/"
+    },
+    {
+     "name": "Arup - Early careers (US)",
+     "url": "https://www.arup.com/en-us/careers/early-careers/"
+    },
+    {
+     "name": "Arup - Sydney Opera House",
+     "url": "https://www.arup.com/projects/sydney-opera-house"
+    },
+    {
+     "name": "Arup - California Academy of Sciences",
+     "url": "https://www.arup.com/projects/california-academy-of-sciences/"
+    },
+    {
+     "name": "Arup - SolarLeaf",
+     "url": "https://www.arup.com/projects/solarleaf"
+    },
+    {
+     "name": "Arup - City Resilience Index",
+     "url": "https://www.arup.com/insights/city-resilience-index/"
+    },
+    {
+     "name": "Architecture Australia - Engineering the Water Cube",
+     "url": "https://architectureau.com/articles/practice-23/"
+    },
+    {
+     "name": "Wikipedia - Arup Group",
+     "url": "https://en.wikipedia.org/wiki/Arup_Group"
+    }
+   ],
+   "cards": [
+    {
+     "q": "In what year did Ove Arup found his practice?",
+     "a": "1946",
+     "explain": "Arup's own history starts in 1946, when Ove Arup set up his consulting engineering practice in London.",
+     "wrong": [
+      "1936",
+      "1957",
+      "1963"
+     ]
+    },
+    {
+     "q": "In which city was Arup founded and headquartered?",
+     "a": "London",
+     "explain": "Arup was founded in London and is still headquartered there, although it now works in 100 offices worldwide.",
+     "wrong": [
+      "Copenhagen",
+      "Newcastle",
+      "Sydney"
+     ]
+    },
+    {
+     "q": "Who owns Arup?",
+     "a": "Trusts whose beneficiaries are current and former employees",
+     "explain": "Arup is trust-owned with no external investors, which it says gives it independence in choosing its work.",
+     "wrong": [
+      "Public shareholders on the London Stock Exchange",
+      "A private equity consortium",
+      "The Arup family"
+     ]
+    },
+    {
+     "q": "Since what year has Arup been owned by employee trusts?",
+     "a": "1979",
+     "explain": "Arup's leadership page says the firm has been owned by trusts for employees since 1979.",
+     "wrong": [
+      "1946",
+      "1970",
+      "2001"
+     ]
+    },
+    {
+     "q": "What did Ove Arup set out in his 1970 'Key Speech'?",
+     "a": "The firm's aims and the principles for achieving them",
+     "explain": "Delivered in Winchester in 1970, the Key Speech still defines Arup's six guiding values.",
+     "wrong": [
+      "A plan to list Arup on the stock market",
+      "The engineering of the Sydney Opera House roof",
+      "A merger with a rival engineering firm"
+     ]
+    },
+    {
+     "q": "Which of these is one of Arup's six guiding values?",
+     "a": "Social usefulness",
+     "explain": "The six values are quality of work, Total Architecture, humane organisation, straight and honourable dealings, social usefulness and reasonable prosperity.",
+     "wrong": [
+      "Shareholder value",
+      "Speed to market",
+      "Signature design"
+     ]
+    },
+    {
+     "q": "What does Arup mean by 'Total Architecture'?",
+     "a": "Considering all design decisions together, integrated by one team",
+     "explain": "It is Ove Arup's idea that every relevant discipline should be integrated into a whole by a well-organised team.",
+     "wrong": [
+      "Arup only designs complete buildings",
+      "Architects lead every Arup project",
+      "Putting architecture ahead of engineering"
+     ]
+    },
+    {
+     "q": "What does Arup call its employees?",
+     "a": "Members",
+     "explain": "Because the firm is trust-owned, staff are called members and share in its profits.",
+     "wrong": [
+      "Partners",
+      "Associates",
+      "Fellows"
+     ]
+    },
+    {
+     "q": "About how many members did Arup have at the end of FY2024/25?",
+     "a": "About 17,500 (17,464)",
+     "explain": "The FY2024/25 annual report gives 17,464 members after a restructuring that cut 810 roles.",
+     "wrong": [
+      "About 6,000",
+      "About 34,000",
+      "About 50,000"
+     ]
+    },
+    {
+     "q": "What was Arup's revenue for the year to 31 March 2025?",
+     "a": "About GBP 2.16 billion",
+     "explain": "Revenue was GBP 2.16bn, down about 2% on the prior year, with an operating margin of about 2.7%.",
+     "wrong": [
+      "About GBP 500 million",
+      "About GBP 5 billion",
+      "About GBP 10 billion"
+     ]
+    },
+    {
+     "q": "Where and when did Arup open its first US office?",
+     "a": "San Francisco, 1985",
+     "explain": "Arup's US page says its first US office opened in San Francisco in 1985; the US now has 13 offices.",
+     "wrong": [
+      "New York, 1970",
+      "Los Angeles, 1995",
+      "Chicago, 1980"
+     ]
+    },
+    {
+     "q": "In 2020, what net zero target did Arup set for its own operations?",
+     "a": "Net zero by 2030",
+     "explain": "The 2020 pledge targeted 2030; Arup's commitments page now frames a science-based net zero goal for 2040.",
+     "wrong": [
+      "Net zero by 2050",
+      "Net zero by 2045",
+      "Net zero by 2060"
+     ]
+    },
+    {
+     "q": "Which body validated Arup's emissions reduction targets?",
+     "a": "The Science Based Targets initiative (SBTi)",
+     "explain": "Arup says its targets align with 1.5C pathways and were reviewed and validated by the SBTi.",
+     "wrong": [
+      "The UN Global Compact",
+      "The US Green Building Council",
+      "CDP"
+     ]
+    },
+    {
+     "q": "What work has Arup refused to take on since 1 April 2022?",
+     "a": "New hydrocarbon fuel extraction, refining or transport commissions",
+     "explain": "Announced at COP26; Arup says it has taken no new hydrocarbon projects since and renewables work has more than doubled.",
+     "wrong": [
+      "All energy sector projects",
+      "Nuclear power projects",
+      "Offshore wind projects"
+     ]
+    },
+    {
+     "q": "What exception did Arup keep in its hydrocarbon policy?",
+     "a": "Hydrogen manufacture",
+     "explain": "Arup treats hydrogen production as part of the energy transition, so it is excluded from the ban.",
+     "wrong": [
+      "Natural gas power plants",
+      "LNG import terminals",
+      "Coal gasification"
+     ]
+    },
+    {
+     "q": "At which climate summit did Arup commit to whole life carbon assessments on buildings?",
+     "a": "COP26 (Glasgow, 2021)",
+     "explain": "At COP26 Arup committed to whole life carbon assessments on all its building projects, new and retrofit.",
+     "wrong": [
+      "COP21 in Paris",
+      "COP28 in Dubai",
+      "The 1992 Rio Earth Summit"
+     ]
+    },
+    {
+     "q": "By FY2024/25, how far had Arup cut its global carbon footprint from its 2018/19 baseline?",
+     "a": "39%",
+     "explain": "Its footprint was 109,802 tCO2e, 39% below baseline; emissions per member were down 48%.",
+     "wrong": [
+      "10%",
+      "75%",
+      "100%"
+     ]
+    },
+    {
+     "q": "Which foundation supported Arup in creating the City Resilience Index?",
+     "a": "The Rockefeller Foundation",
+     "explain": "Arup developed the City Resilience Framework and Index with support from the Rockefeller Foundation.",
+     "wrong": [
+      "The Gates Foundation",
+      "Bloomberg Philanthropies",
+      "The Ford Foundation"
+     ]
+    },
+    {
+     "q": "How many indicators does Arup's City Resilience Index use?",
+     "a": "52 indicators (assessed through 156 questions)",
+     "explain": "Results are grouped under 12 goals, giving a city a resilience profile and a baseline to track progress.",
+     "wrong": [
+      "10 indicators",
+      "100 indicators",
+      "12 indicators"
+     ]
+    },
+    {
+     "q": "In what year was Arup appointed engineer for the Sydney Opera House?",
+     "a": "1957",
+     "explain": "Arup provided structural engineering for the foundations, precast roof shells, concourse and glass walls.",
+     "wrong": [
+      "1946",
+      "1966",
+      "1973"
+     ]
+    },
+    {
+     "q": "Which Paris landmark did Arup engineer with Renzo Piano and Richard Rogers?",
+     "a": "Centre Pompidou",
+     "explain": "The Centre Georges Pompidou opened in 1977 and is one of Arup's signature projects.",
+     "wrong": [
+      "The Louvre Pyramid",
+      "Fondation Louis Vuitton",
+      "La Defense Grande Arche"
+     ]
+    },
+    {
+     "q": "What LEED rating did the California Academy of Sciences achieve?",
+     "a": "LEED Platinum",
+     "explain": "Arup led engineering and sustainability consulting and documented the strategies needed for Platinum.",
+     "wrong": [
+      "LEED Gold",
+      "LEED Silver",
+      "LEED Certified"
+     ]
+    },
+    {
+     "q": "What tops the California Academy of Sciences in San Francisco?",
+     "a": "A 2.5-acre living roof with 1.7 million native plants",
+     "explain": "The living roof is part of a design that cut water use about 77% and energy use about 34%.",
+     "wrong": [
+      "A 10-acre solar farm",
+      "A rooftop wind turbine array",
+      "A rainwater reservoir lake"
+     ]
+    },
+    {
+     "q": "What is SolarLeaf on Hamburg's BIQ House?",
+     "a": "The first full-scale microalgae bioreactor facade",
+     "explain": "Co-developed by Arup's Berlin office, it produces biomass and heat while also shading the building.",
+     "wrong": [
+      "A solar photovoltaic roof",
+      "A living green wall of ivy",
+      "A wind turbine cladding system"
+     ]
+    },
+    {
+     "q": "What natural pattern inspired the structure of Beijing's Water Cube?",
+     "a": "Foam bubbles (Weaire-Phelan geometry)",
+     "explain": "The steel frame follows foam geometry and is clad in ETFE pillows acting as an insulated, daylit greenhouse.",
+     "wrong": [
+      "Honeycomb hexagons",
+      "A Fibonacci spiral",
+      "Snowflake crystals"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gensler",
+   "name": "Gensler",
+   "tagline": "The world's largest architecture and design firm, a privately held, employee-owned practice founded in San Francisco.",
+   "facts": [
+    {
+     "k": "Founded",
+     "v": "1965 in San Francisco by Art Gensler, Drue Gensler and James (Jim) Follett"
+    },
+    {
+     "k": "Headquarters",
+     "v": "San Francisco, California"
+    },
+    {
+     "k": "Ownership",
+     "v": "Privately held and employee-owned"
+    },
+    {
+     "k": "Size",
+     "v": "~6,000 people (gensler.com, 2026)"
+    },
+    {
+     "k": "Offices",
+     "v": "58 offices in 16 countries (gensler.com, 2026)"
+    },
+    {
+     "k": "Revenue",
+     "v": "~US$1.88bn (2024, reported; often ranked largest architecture firm by revenue)"
+    },
+    {
+     "k": "Leadership",
+     "v": "Co-CEOs Jordan Goldstein and Julia Simet (since Jan 2024); Global Co-Chairs Andy Cohen and Diane Hoskins"
+    },
+    {
+     "k": "Mission",
+     "v": "\"To create a better world through the power of design\""
+    },
+    {
+     "k": "Offices in your cities",
+     "v": "Los Angeles: yes. San Francisco: yes (HQ; also Oakland, San Jose). New York: yes. Paris: yes. Madrid: no (European offices are Berlin, Birmingham, London, Munich, Paris)."
+    }
+   ],
+   "overview": [
+    "Gensler is a global architecture, interior design, planning and consulting firm. It began in 1965 as a one-room San Francisco office focused on corporate interiors and grew into the largest architecture firm in the world by revenue, with about 6,000 people in 58 offices across 16 countries. It works across 33 practice areas, from workplace, aviation and mixed-use to cities, real estate strategy and building conversions.",
+    "The firm is organized as one connected global practice rather than a set of separate offices: Art Gensler deliberately built a collaborative 'one-firm firm' culture instead of a star-architect model, reinforced by employee ownership. Since January 2024 it has been led by co-CEOs Jordan Goldstein and Julia Simet, with long-time co-CEOs Andy Cohen and Diane Hoskins as global co-chairs.",
+    "What makes Gensler distinctive for sustainability is scale plus data. It says it touches over 1.25 billion square feet of buildings each year, so its 2030 net zero portfolio pledge (GC3), its open-source product sustainability standards and its research institute can shift the whole industry. Its consulting side advises clients on workplace and real estate portfolio strategy, which is where decisions to renovate, consolidate, convert or build get made."
+   ],
+   "sustainability": [
+    "Gensler Cities Climate Challenge (GC3): launched in 2019 at the UN Climate Action Summit; the firm pledges to eliminate all net emissions associated with its work by 2030, covering both operational and embodied carbon.",
+    "Scale of influence: Gensler says it touches over 1.25 billion square feet of buildings and spaces each year, more than any other design firm.",
+    "Progress reporting: an annual report (formerly Impact by Design, now Climate Action Through Design) tracks the portfolio; Gensler estimates a recent portfolio would avoid 8.9 million metric tons CO2e, a 68% cut in operational carbon (self-reported).",
+    "Gensler Product Sustainability (GPS) Standards: introduced in 2023 and required on US, Canadian and European projects from January 2024; v2.0 launched in 2025 as an open-source framework with an interactive table for material criteria.",
+    "Pledges and partnerships: signed the Paris Pledge for Action at COP21 (2015) and, at COP28 (Dec 2023), agreed with IFC to promote EDGE green building certification and train Gensler design leaders in it.",
+    "Gensler Research Institute: six research pillars (Workplace, Cities, Health, Lifestyle, Equity, Resilience), 50+ research grants a year, and studies such as a Global Climate Action survey.",
+    "Reuse over new build: Gensler's building conversion tool has analyzed more than 1,300 buildings for office-to-residential and other conversions.",
+    "Recognition: ranked #1 on Interior Design's 2026 Sustainability Giants list and repeatedly ENR's #1 Top Green Design Firm."
+   ],
+   "projects": [
+    {
+     "name": "Shanghai Tower",
+     "where": "Shanghai, China",
+     "why": "Gensler's 632-meter supertall earned LEED Platinum and China Green Building Three Star ratings, with a double-skin facade that buffers heating and cooling loads."
+    },
+    {
+     "name": "SFO Harvey Milk Terminal 1",
+     "where": "San Francisco, USA",
+     "why": "Gensler reports a 79% cut in 50-year total carbon and a 70% cut in energy use intensity under SFO's Triple Zero (carbon, energy, waste) framework."
+    },
+    {
+     "name": "SFO Terminal 2 renovation",
+     "where": "San Francisco, USA",
+     "why": "Reopened in 2011 as the first US airport terminal certified LEED Gold, reusing most of the 1954 structure."
+    },
+    {
+     "name": "The Old Post Office",
+     "where": "Chicago, USA",
+     "why": "Gensler led the adaptive reuse of a 2.8-million-square-foot historic post office into offices, reopened in 2019 - a model of reusing embodied carbon."
+    },
+    {
+     "name": "160 Water Street (office-to-residential conversion)",
+     "where": "New York, USA",
+     "why": "Converting a downtown office tower into 588 homes shows how reuse can tackle housing shortages and avoid new construction."
+    }
+   ],
+   "culture": [
+    "'One-firm firm': Art Gensler rejected the star-architect model for a team-based 'we, not me' culture and a client-first approach.",
+    "Employee-owned and privately held, which the firm links to a shared-ownership identity.",
+    "Research-driven: the Gensler Research Institute funds 50+ research grants a year and publishes the Design Forecast and Global Workplace Survey.",
+    "Early careers: 3,500+ interns hosted from 60+ schools; a traditional internship in offices and a research-focused Summer Fellowship on the future of cities.",
+    "Sustainability mantra 'Every Person, Every Project, Every Place' - climate goals apply across every practice area, not just a specialist team.",
+    "Planned leadership succession: co-CEOs Goldstein and Simet took over in January 2024 after nearly 20 years of Cohen and Hoskins."
+   ],
+   "lookFor": [
+    "'Bold and bright' people from a wide range of backgrounds (Gensler's internships page) - environmental studies is a differentiator, not a gap.",
+    "Research and analytical skills: surveys, data analysis and clear writing match the Research Institute and Summer Fellowship model.",
+    "For consulting/strategy roles, Gensler posts for design analysts in workplace strategy, real estate portfolio strategy, change management and utilization analysis.",
+    "Fluency in carbon and materials: operational vs embodied carbon, EPDs and certifications (LEED, EDGE, Fitwel) used under GC3 and GPS.",
+    "Ability to tie sustainability to client value - cost, risk, asset performance and people's experience of space."
+   ],
+   "questions": [
+    "In enterprise portfolio strategy, how do you weigh embodied carbon when a client is choosing between consolidating, renovating and building new?",
+    "How does climate risk or resilience show up in the capital plans you help clients build today?",
+    "When a client has surplus office space, how often does the conversion analysis change the portfolio decision?",
+    "What data most persuades a CFO or real estate committee to fund a lower-carbon option?",
+    "How is GC3 tracking against the 2030 goal, and is embodied carbon the hardest part?",
+    "How have suppliers responded to the GPS Standards being required on projects?",
+    "Where in Gensler would someone with an environmental studies background add the most value early on?",
+    "How do early-career people get involved in Gensler Research Institute work?",
+    "How has the IFC EDGE partnership changed work in fast-growing markets?",
+    "What would you want a new analyst on a portfolio strategy team to master in their first year?"
+   ],
+   "talkingPoints": [
+    "GC3, launched in 2019, commits Gensler's entire portfolio to net zero by 2030, including embodied carbon - and Gensler touches 1.25 billion sq ft a year.",
+    "The GPS Standards became mandatory on US, Canadian and European projects in January 2024 and are open source, so the whole industry can use them.",
+    "SFO's Harvey Milk Terminal 1: Gensler reports a 79% cut in 50-year total carbon - a local SF example.",
+    "Building reuse: the Old Post Office in Chicago and the 160 Water Street conversion in NYC, plus a conversion tool that has assessed 1,300+ buildings.",
+    "At COP28 Gensler partnered with IFC to train its designers in EDGE certification and expand green finance.",
+    "The Gensler Research Institute's six pillars include Resilience and Equity, connecting climate to people."
+   ],
+   "newsKeywords": [
+    "Gensler",
+    "Gensler Research Institute",
+    "Jordan Goldstein",
+    "Julia Simet",
+    "Diane Hoskins",
+    "Andy Cohen"
+   ],
+   "careers": "https://www.gensler.com/careers",
+   "sources": [
+    {
+     "name": "Gensler - Firm profile",
+     "url": "https://www.gensler.com/about"
+    },
+    {
+     "name": "Gensler - Offices",
+     "url": "https://www.gensler.com/offices"
+    },
+    {
+     "name": "Gensler - Next generation leadership (press release)",
+     "url": "https://gensler.com/press-releases/gensler-next-generation-leadership"
+    },
+    {
+     "name": "Gensler - Gensler Cities Climate Challenge",
+     "url": "https://www.gensler.com/the-gensler-cities-climate-challenge"
+    },
+    {
+     "name": "Gensler - Accelerating climate action with every project, every place",
+     "url": "https://www.gensler.com/blog/accelerating-climate-action-with-every-project-every-place"
+    },
+    {
+     "name": "Gensler - 3 ways Gensler is designing for a zero-carbon future",
+     "url": "https://www.gensler.com/blog/3-ways-gensler-is-designing-for-a-zero-carbon-future"
+    },
+    {
+     "name": "Gensler - GPS Standards overview",
+     "url": "https://www.gensler.com/gensler-product-sustainability-standards-overview"
+    },
+    {
+     "name": "Gensler - GPS Standards v1.1",
+     "url": "https://www.gensler.com/gensler-product-sustainability-standards-1-1"
+    },
+    {
+     "name": "Gensler - IFC EDGE and Gensler join forces at COP28",
+     "url": "https://www.gensler.com/press-releases/ifc-edge-gensler-join-forces-cop28"
+    },
+    {
+     "name": "Gensler - Research and insight",
+     "url": "https://www.gensler.com/research-insight"
+    },
+    {
+     "name": "Gensler - Internships",
+     "url": "https://www.gensler.com/internships"
+    },
+    {
+     "name": "Gensler - Art Gensler legacy",
+     "url": "https://www.gensler.com/art-gensler-legacy"
+    },
+    {
+     "name": "Gensler - Shanghai Tower",
+     "url": "https://gensler.com/projects/shanghai-tower"
+    },
+    {
+     "name": "Gensler - Harvey Milk Terminal 1 case study",
+     "url": "https://www.gensler.com/case-study/harvey-milk-terminal-1-renovation"
+    },
+    {
+     "name": "FMLink - SFO Terminal 2 first US terminal awarded LEED Gold",
+     "url": "https://fmlink.com/articles/sfos-terminal-2-is-first-u-s-airport-terminal-awarded-leed-gold"
+    },
+    {
+     "name": "Gensler - Building conversions",
+     "url": "https://gensler.com/building-conversions"
+    },
+    {
+     "name": "BDC Network - Plans for Chicago's historic Post Office (601W and Gensler)",
+     "url": "https://bdcnetwork.com/plans-chicagos-historic-post-office-building-revealed-601w-companies-and-gensler"
+    },
+    {
+     "name": "Dezeen - Art Gensler obituary",
+     "url": "https://www.dezeen.com/2021/05/11/architect-art-gensler-obituary/"
+    },
+    {
+     "name": "Wikipedia - Gensler",
+     "url": "https://en.wikipedia.org/wiki/Gensler"
+    }
+   ],
+   "cards": [
+    {
+     "q": "In what year was Gensler founded?",
+     "a": "1965",
+     "explain": "Art and Drue Gensler and Jim Follett started the firm in a one-room San Francisco office in 1965.",
+     "wrong": [
+      "1946",
+      "1888",
+      "1979"
+     ]
+    },
+    {
+     "q": "Who founded Gensler?",
+     "a": "Art Gensler, Drue Gensler and James Follett",
+     "explain": "Art, his wife Drue and colleague Jim Follett co-founded M. Arthur Gensler Jr. & Associates.",
+     "wrong": [
+      "Art Gensler and Andy Cohen",
+      "Diane Hoskins and Art Gensler",
+      "Art Gensler alone"
+     ]
+    },
+    {
+     "q": "Where is Gensler headquartered?",
+     "a": "San Francisco",
+     "explain": "Gensler was founded and is still headquartered in San Francisco.",
+     "wrong": [
+      "New York",
+      "Los Angeles",
+      "Chicago"
+     ]
+    },
+    {
+     "q": "What type of work did Gensler originally focus on?",
+     "a": "Corporate interiors",
+     "explain": "Early work was interiors for new San Francisco office buildings such as the Bank of America Building.",
+     "wrong": [
+      "Airports",
+      "Hospitals",
+      "Supertall towers"
+     ]
+    },
+    {
+     "q": "What is Gensler's stated mission?",
+     "a": "To create a better world through the power of design",
+     "explain": "The mission appears on Gensler's firm profile and its internships page.",
+     "wrong": [
+      "To build the tallest towers on every continent",
+      "Engineering excellence for a sustainable planet",
+      "Improving quality of life through creativity and science"
+     ]
+    },
+    {
+     "q": "Who became Gensler's co-CEOs in January 2024?",
+     "a": "Jordan Goldstein and Julia Simet",
+     "explain": "They were previously co-managing principals overseeing US and international regions.",
+     "wrong": [
+      "Andy Cohen and Diane Hoskins",
+      "Art Gensler and Jim Follett",
+      "Jerome Frost and Hilde Tonne"
+     ]
+    },
+    {
+     "q": "What role do Andy Cohen and Diane Hoskins hold now?",
+     "a": "Global co-chairs",
+     "explain": "After nearly 20 years as co-CEOs, they became Gensler's first global co-chairs in 2024.",
+     "wrong": [
+      "Co-CEOs",
+      "Chairs of the Research Institute",
+      "Retired founders"
+     ]
+    },
+    {
+     "q": "About how many people work at Gensler?",
+     "a": "About 6,000",
+     "explain": "Gensler's firm profile cites a team of about 6,000 professionals.",
+     "wrong": [
+      "About 1,500",
+      "About 17,500",
+      "About 34,000"
+     ]
+    },
+    {
+     "q": "How many offices does Gensler have?",
+     "a": "58 offices in 16 countries",
+     "explain": "The offices page lists 58 offices, including Los Angeles, San Francisco, New York and Paris.",
+     "wrong": [
+      "12 offices in 5 countries",
+      "250 offices in 30 countries",
+      "100 offices in 136 countries"
+     ]
+    },
+    {
+     "q": "What culture did Art Gensler build instead of a star-architect model?",
+     "a": "A collaborative 'one-firm firm' culture",
+     "explain": "He favored a team-based 'we, not me' approach in which the firm, not individuals, takes credit.",
+     "wrong": [
+      "A franchise of independent studios",
+      "Total Architecture",
+      "People first, always"
+     ]
+    },
+    {
+     "q": "How is Gensler owned?",
+     "a": "Privately held and employee-owned",
+     "explain": "Gensler is private and employee-owned, which reinforces its shared 'one-firm firm' identity.",
+     "wrong": [
+      "Listed on the New York Stock Exchange",
+      "Owned by a private equity fund",
+      "Owned by employee trusts since 1979"
+     ]
+    },
+    {
+     "q": "Where and when was the Gensler Cities Climate Challenge (GC3) launched?",
+     "a": "At the 2019 UN Climate Action Summit",
+     "explain": "GC3 was launched in New York at the UN Climate Action Summit in 2019.",
+     "wrong": [
+      "At COP21 in Paris, 2015",
+      "At COP28 in Dubai, 2023",
+      "At Greenbuild in 2010"
+     ]
+    },
+    {
+     "q": "What is the goal of GC3?",
+     "a": "Net zero carbon across Gensler's entire portfolio by 2030",
+     "explain": "Gensler pledges to eliminate all net emissions associated with its work within a decade of 2019.",
+     "wrong": [
+      "Net zero offices only by 2050",
+      "50% less energy by 2040",
+      "Carbon neutral headquarters by 2025"
+     ]
+    },
+    {
+     "q": "Which carbon does GC3 cover?",
+     "a": "Both operational and embodied carbon",
+     "explain": "The pledge explicitly covers energy in use and the carbon in materials and construction.",
+     "wrong": [
+      "Only operational carbon",
+      "Only Gensler's office travel",
+      "Only embodied carbon in steel"
+     ]
+    },
+    {
+     "q": "How much building area does Gensler say it touches each year?",
+     "a": "Over 1.25 billion square feet",
+     "explain": "Gensler argues this scale means its climate commitments can move the whole industry.",
+     "wrong": [
+      "About 10 million square feet",
+      "About 100 million square feet",
+      "About 50 billion square feet"
+     ]
+    },
+    {
+     "q": "What are the GPS Standards?",
+     "a": "Gensler's open-source product sustainability criteria for building materials",
+     "explain": "Gensler Product Sustainability Standards set criteria by product category, with an interactive table.",
+     "wrong": [
+      "A GPS tracking tool for site visits",
+      "A LEED rating level",
+      "A carbon offset registry"
+     ]
+    },
+    {
+     "q": "When did the GPS Standards become required on Gensler's US, Canadian and European projects?",
+     "a": "January 2024",
+     "explain": "Introduced in 2023, they became required in January 2024; version 2.0 followed in 2025.",
+     "wrong": [
+      "January 2019",
+      "January 2030",
+      "They are voluntary only"
+     ]
+    },
+    {
+     "q": "What did Gensler sign at COP21 in 2015?",
+     "a": "The Paris Pledge for Action",
+     "explain": "Gensler committed to the Paris Pledge in 2015 and later launched GC3 in 2019.",
+     "wrong": [
+      "The Montreal Protocol",
+      "The Kyoto Protocol",
+      "The Glasgow Climate Pact"
+     ]
+    },
+    {
+     "q": "At COP28, which certification did Gensler agree to promote with IFC?",
+     "a": "EDGE green building certification",
+     "explain": "Gensler will promote IFC's EDGE program and train its design leaders to apply it, especially in fast-growing markets.",
+     "wrong": [
+      "LEED v5",
+      "BREEAM Outstanding",
+      "Passive House"
+     ]
+    },
+    {
+     "q": "How many research pillars does the Gensler Research Institute have?",
+     "a": "Six: Workplace, Cities, Health, Lifestyle, Equity, Resilience",
+     "explain": "The institute funds 50+ grants a year and publishes the Design Forecast and Global Workplace Survey.",
+     "wrong": [
+      "Two: Workplace and Cities",
+      "Four: Planet, People, Profit, Progress",
+      "Twelve, one per region"
+     ]
+    },
+    {
+     "q": "What green ratings does Gensler's Shanghai Tower hold?",
+     "a": "LEED Platinum and China Green Building Three Star",
+     "explain": "The 632-meter tower is China's tallest building and uses a double-skin facade.",
+     "wrong": [
+      "LEED Silver only",
+      "BREEAM Outstanding",
+      "Living Building Challenge"
+     ]
+    },
+    {
+     "q": "What was notable about SFO's Terminal 2 when it reopened in 2011?",
+     "a": "First US airport terminal certified LEED Gold",
+     "explain": "Gensler's renovation reused most of the 1954 structure, avoiding new steel and its carbon.",
+     "wrong": [
+      "World's first net zero terminal",
+      "First terminal built from mass timber",
+      "First US terminal with no air conditioning"
+     ]
+    },
+    {
+     "q": "What total carbon reduction does Gensler report for SFO's Harvey Milk Terminal 1?",
+     "a": "79% over 50 years (operating plus embodied)",
+     "explain": "It also reports a 70% cut in energy use intensity under SFO's Triple Zero framework.",
+     "wrong": [
+      "10%",
+      "40%",
+      "100%"
+     ]
+    },
+    {
+     "q": "What is 160 Water Street in New York?",
+     "a": "An office tower Gensler converted into 588 homes",
+     "explain": "Office-to-residential conversion reuses an existing building and adds housing.",
+     "wrong": [
+      "A new net zero office tower",
+      "A flood barrier in Lower Manhattan",
+      "Gensler's New York headquarters"
+     ]
+    },
+    {
+     "q": "What does Gensler's building conversion tool assess?",
+     "a": "Whether office buildings can be converted to housing or other uses",
+     "explain": "Gensler says it has analyzed more than 1,300 buildings, scoring form, floor plate, servicing, envelope and site.",
+     "wrong": [
+      "A building's LEED score",
+      "A tenant's credit risk",
+      "Flood risk to coastal assets"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "arcadis",
+   "name": "Arcadis",
+   "tagline": "Dutch-founded, Euronext-listed design, engineering and consultancy firm focused on resilience, places and mobility.",
+   "facts": [
+    {
+     "k": "Founded",
+     "v": "1888 in the Netherlands as the Nederlandsche Heidemaatschappij, reclaiming wetlands for farming; Arcadis name from 1997"
+    },
+    {
+     "k": "Headquarters",
+     "v": "Amsterdam, Netherlands (US HQ: Highlands Ranch, Colorado)"
+    },
+    {
+     "k": "Ownership",
+     "v": "Publicly listed on Euronext Amsterdam (left NASDAQ in 2007); the Lovinklaan Foundation is its largest shareholder (per 2020 UN-Habitat release)"
+    },
+    {
+     "k": "Size",
+     "v": "34,000+ employees ('Arcadians') in 30+ countries (arcadis.com, 2026)"
+    },
+    {
+     "k": "Revenue",
+     "v": "~EUR 4.87bn gross / ~EUR 3.76bn net revenues (2025)"
+    },
+    {
+     "k": "Leadership",
+     "v": "CEO Heather Polinsky (from 1 March 2026, confirmed by shareholders May 2026); succeeded Alan Brookes"
+    },
+    {
+     "k": "Structure",
+     "v": "Global Business Areas: Resilience, Places, Mobility (Intelligence folded mainly into Mobility from Jan 2026)"
+    },
+    {
+     "k": "Offices in your cities",
+     "v": "Madrid: yes (Torre Rioja). Paris: yes (rue Raymond Losserand). Los Angeles, San Francisco, New York: appear as office locations in Arcadis job postings (250+ offices worldwide)."
+    }
+   ],
+   "overview": [
+    "Arcadis is a global design, engineering and consultancy company that says it 'puts imagination to work to solve critical infrastructure and environmental challenges.' It started in 1888 turning Dutch wetlands into farmland, and water and environment are still at its core. Today it has 34,000+ employees in 30+ countries and reported about EUR 3.8bn net revenues in 2025.",
+    "Since 2022 Arcadis has been organized into Global Business Areas. Resilience covers water, environmental restoration, energy transition, climate adaptation and permitting; Places covers buildings, property and investment advisory and technology facilities; Mobility covers transport infrastructure. Its digital 'Intelligence' products are being folded mostly into Mobility from January 2026. It grew through acquisitions such as Malcolm Pirnie (water, 2009), EC Harris (2011), Hyder and Callison (2014) and IBI Group (2022).",
+    "Arcadis is in transition: Heather Polinsky, who previously ran the Resilience business (its most profitable area), became CEO in March 2026 after a mixed 2025 that included cutting about 1,100 roles. She plans to present a new three-year strategy at a Capital Markets Day in November 2026, so this is a good moment to ask where the firm is heading."
+   ],
+   "sustainability": [
+    "Net zero 2035: Arcadis commits to net zero greenhouse gas emissions across its value chain by 2035, with SBTi-approved targets.",
+    "Interim targets: cut absolute scope 1 and 2 emissions 70% by 2026 and scope 3 emissions 45% by 2029 (both vs 2019); electric company fleet by 2030; 100% renewable electricity for offices.",
+    "Nature: aims to halt and reverse nature loss by 2030, with no net biodiversity loss at its sites and a 10% net biodiversity gain at sites with significant green space by 2030.",
+    "Resilience business: energy transition, climate adaptation, water optimization, environmental restoration and permitting; its Climate Risk Nexus tool with Jupiter Intelligence grew from 2 pilots in 2024 to 20 projects in 2025.",
+    "Sustainable Cities Index: Arcadis' research ranking of 100 cities on Planet, People and Profit; the 2024 edition (6th since 2015) added a Progress pillar and ranked Amsterdam first.",
+    "Shelter program: a pro bono partnership with UN-Habitat since 2010 supporting sustainable urban planning, water, climate adaptation and disaster recovery (120+ missions by 2020).",
+    "Disclosure: publishes a Climate Transition Plan (2024), annual integrated reports and CDP climate responses; Sustainalytics rates it in the top 2% of its industry for ESG performance."
+   ],
+   "projects": [
+    {
+     "name": "Financial District and Seaport Climate Resilience Master Plan",
+     "where": "New York, USA",
+     "why": "Arcadis helped NYC plan extending Lower Manhattan's shoreline up to 500 feet and raising it 20+ feet to protect against storm surge and sea level rise."
+    },
+    {
+     "name": "Ohio Creek Watershed coastal resilience",
+     "where": "Norfolk, Virginia, USA",
+     "why": "Arcadis helped Norfolk win HUD National Disaster Resilience funding, combining flood protection, landscape and urban design in one neighborhood-scale plan."
+    },
+    {
+     "name": "Marker Wadden islands",
+     "where": "Lake Markermeer, Netherlands",
+     "why": "Arcadis helped design one of Western Europe's largest ecosystem restoration projects, building islands to restore a degraded lake."
+    },
+    {
+     "name": "Buzi District flood resilience (with UN-Habitat)",
+     "where": "Mozambique",
+     "why": "Through the Shelter program, Arcadis mapped flood risk and proposed raised refuge platforms so communities can live with cyclone floods."
+    },
+    {
+     "name": "Henrico County water supply",
+     "where": "Virginia, USA",
+     "why": "A long-term water supply solution that raises system capacity by nearly 50% while preserving the surrounding natural environment."
+    }
+   ],
+   "culture": [
+    "Four operating principles: 'People first, always', 'Turn intent into achievement', 'Build unwavering trust' and 'Impact beyond business'.",
+    "Employees call themselves 'Arcadians'; the careers site highlights flexibility, remote options and a globally connected community.",
+    "North America hires 300+ new graduates and 100+ interns in a typical year; internships last 10-12 weeks and most are hired in May and June.",
+    "Development support includes mentoring, help with professional certifications and conference presentations, and a 'Your Voice' feedback survey.",
+    "Recognized as a leading ambassador in the Workplace Pride Global Benchmark for LGBTIQ+ inclusion and among Fast Company's Most Innovative Companies 2024.",
+    "A period of change: new CEO in 2026, a simplification push and a new strategy due in November 2026."
+   ],
+   "lookFor": [
+    "Core early-career majors are environmental science, geology and engineering - environmental studies graduates fit environmental consulting and permitting roles.",
+    "Arcadis is widening its graduate pipeline to urban planning and digital roles.",
+    "A passion for improving quality of life and making a positive impact (the firm's purpose is improving quality of life).",
+    "Fresh thinking and new perspectives - people who will challenge the status quo.",
+    "Practical field and data skills (GIS, sampling, regulatory knowledge) that support remediation, water and climate adaptation projects."
+   ],
+   "questions": [
+    "With Heather Polinsky coming from Resilience, how do you expect the November 2026 strategy to change priorities?",
+    "Which Resilience services are growing fastest in your region - climate adaptation, energy transition or water?",
+    "How are clients using Climate Risk Nexus, and who on the team works with it day to day?",
+    "Where do environmental studies graduates usually start - environmental restoration, permitting, or advisory?",
+    "How is Arcadis tracking against its own 2026 and 2029 emissions targets?",
+    "How do the nature and biodiversity commitments show up in client projects, not just Arcadis sites?",
+    "Can early-career staff get involved in the UN-Habitat Shelter program or the Sustainable Cities Index?",
+    "How common are transfers between US offices and Madrid or Paris?",
+    "What does a strong first year look like for a new graduate here?"
+   ],
+   "talkingPoints": [
+    "Arcadis started in 1888 reclaiming Dutch wetlands - water and land have been its DNA for over 135 years.",
+    "Its net zero target is 2035 across the whole value chain, earlier than many peers, with SBTi-approved targets.",
+    "The Lower Manhattan Climate Resilience Master Plan: extend the shoreline up to 500 feet and raise it 20+ feet.",
+    "The 2024 Sustainable Cities Index ranked Amsterdam first and added a Progress pillar.",
+    "The UN-Habitat Shelter program, running since 2010, e.g. flood refuge platforms in Mozambique.",
+    "New CEO Heather Polinsky previously led Resilience, the firm's most profitable business area."
+   ],
+   "newsKeywords": [
+    "Arcadis",
+    "Heather Polinsky",
+    "Sustainable Cities Index"
+   ],
+   "careers": "https://www.arcadis.com/en-us/careers",
+   "sources": [
+    {
+     "name": "Arcadis - About us",
+     "url": "https://www.arcadis.com/en/about-us"
+    },
+    {
+     "name": "Arcadis - Company profile",
+     "url": "https://arcadis.com/en/about-us/company-profile"
+    },
+    {
+     "name": "Arcadis - Our history",
+     "url": "https://www.arcadis.com/en/about-us/our-history"
+    },
+    {
+     "name": "Arcadis - Sustainability",
+     "url": "https://www.arcadis.com/en/about-us/sustainability"
+    },
+    {
+     "name": "Arcadis - Q4 and full year 2025 results",
+     "url": "https://www.arcadis.com/en/news/global/2026/arcadis-q4-and-full-year-2025-results/"
+    },
+    {
+     "name": "Arcadis - Announces Heather Polinsky as new CEO",
+     "url": "https://www.arcadis.com/en/news/global/2025/arcadis-announces-heather-polinsky-as-new-ceo/"
+    },
+    {
+     "name": "Arcadis - Shareholders appoint board members (May 2026)",
+     "url": "https://www.arcadis.com/en/news/global/2026/arcadis-shareholders-appoint-board-members-and-approve-dividend/"
+    },
+    {
+     "name": "Arcadis Annual Integrated Report 2025 - Global Business Areas",
+     "url": "https://annualreport.arcadis.com/annual-integrated-report-2025/global-business-areas"
+    },
+    {
+     "name": "Arcadis - New global structure (2022)",
+     "url": "https://www.arcadis.com/en/news/global/2022/2382412-arcadis-announces-new-global-structure-to-better-serve-the-needs-of-its-growing-client-base/"
+    },
+    {
+     "name": "Arcadis - Sustainable Cities Index 2024",
+     "url": "https://www.arcadis.com/en/news/global/2024/6/cities-have-just-2000-days-left-to-achieve-critical-sustainability-goals"
+    },
+    {
+     "name": "UN-Habitat - Arcadis and UN-Habitat partnership (2020)",
+     "url": "https://unhabitat.org/after-ten-years-working-together-arcadis-and-un-habitat-pledge-to-continue-their-successful"
+    },
+    {
+     "name": "Arcadis - FiDi and Seaport Climate Resilience Master Plan",
+     "url": "https://www.arcadis.com/en-us/projects/north-america/united-states/fidi-climate-resilience-master-plan"
+    },
+    {
+     "name": "Arcadis - Coastal resilience for Norfolk, VA",
+     "url": "https://www.arcadis.com/en/projects/north-america/united-states/redefining-adaptation-to-build-a-fit-for-future-coastal-community/"
+    },
+    {
+     "name": "Arcadis - The Marker Wadden islands",
+     "url": "https://www.arcadis.com/en-gb/projects/europe/netherlands/the-marker-wadden-islands"
+    },
+    {
+     "name": "Arcadis - Climate resilience in Mozambique",
+     "url": "https://www.arcadis.com/en/improving-quality-of-life/building-climate-resilience-and-adaptation-in-mozambique"
+    },
+    {
+     "name": "Arcadis - Office locations (US)",
+     "url": "https://www.arcadis.com/en-us/office-locations"
+    },
+    {
+     "name": "Arcadis - Office locations (Spain)",
+     "url": "https://www.arcadis.com/es-es/office-locations"
+    },
+    {
+     "name": "Arcadis - Contacts (France)",
+     "url": "https://www.arcadis.com/fr-fr/contacts"
+    },
+    {
+     "name": "Arcadis Careers - North America early careers",
+     "url": "https://careers.arcadis.com/locations/na/early-careers/"
+    }
+   ],
+   "cards": [
+    {
+     "q": "In what year was Arcadis founded?",
+     "a": "1888",
+     "explain": "Arcadis traces its roots to 1888 in the Netherlands, giving it 135+ years of history.",
+     "wrong": [
+      "1946",
+      "1965",
+      "1997"
+     ]
+    },
+    {
+     "q": "What was Arcadis' original purpose?",
+     "a": "Turning unusable Dutch wetlands into farmland",
+     "explain": "It began as a land reclamation business converting wetlands into productive farms.",
+     "wrong": [
+      "Building Amsterdam's canal bridges",
+      "Designing Dutch railways",
+      "Constructing colonial ports"
+     ]
+    },
+    {
+     "q": "What was Arcadis' original name?",
+     "a": "Nederlandsche Heidemaatschappij (later Heidemij)",
+     "explain": "The Heidemaatschappij split in 1974; the Heidemij business later became Arcadis.",
+     "wrong": [
+      "Royal HaskoningDHV",
+      "Rijkswaterstaat",
+      "Lovinklaan"
+     ]
+    },
+    {
+     "q": "When was the Arcadis name introduced?",
+     "a": "1997",
+     "explain": "The name arrived in 1997; the brand was rolled out globally in 2015 as legacy brands were phased out.",
+     "wrong": [
+      "1888",
+      "1974",
+      "2022"
+     ]
+    },
+    {
+     "q": "Where is Arcadis headquartered?",
+     "a": "Amsterdam, Netherlands",
+     "explain": "Arcadis N.V. is based in Amsterdam; its US headquarters is in Highlands Ranch, Colorado.",
+     "wrong": [
+      "Rotterdam",
+      "The Hague",
+      "London"
+     ]
+    },
+    {
+     "q": "Where are Arcadis shares listed?",
+     "a": "Euronext Amsterdam",
+     "explain": "Arcadis voluntarily delisted from NASDAQ in 2007 and trades on Euronext.",
+     "wrong": [
+      "New York Stock Exchange",
+      "London Stock Exchange",
+      "It is employee-owned and unlisted"
+     ]
+    },
+    {
+     "q": "Which of these is an Arcadis operating principle?",
+     "a": "People first, always",
+     "explain": "The four principles are People first always, Turn intent into achievement, Build unwavering trust, Impact beyond business.",
+     "wrong": [
+      "Total Architecture",
+      "One-firm firm",
+      "Move fast and break things"
+     ]
+    },
+    {
+     "q": "Which 2009 acquisition gave Arcadis a leading global position in water?",
+     "a": "Malcolm Pirnie",
+     "explain": "Malcolm Pirnie was a US water specialist; other deals included EC Harris (2011) and Hyder (2014).",
+     "wrong": [
+      "EC Harris",
+      "Callison",
+      "Langdon & Seah"
+     ]
+    },
+    {
+     "q": "Which Canadian firm did Arcadis acquire in 2022?",
+     "a": "IBI Group",
+     "explain": "Arcadis bought IBI Group, DPS Group and Giftge Consulting in 2022.",
+     "wrong": [
+      "Hyder Consulting",
+      "RTKL",
+      "Stantec"
+     ]
+    },
+    {
+     "q": "About how many employees does Arcadis have?",
+     "a": "34,000+",
+     "explain": "Arcadis' own site cites 34,000+ Arcadians in 30+ countries.",
+     "wrong": [
+      "About 6,000",
+      "About 17,500",
+      "About 100,000"
+     ]
+    },
+    {
+     "q": "What do Arcadis employees call themselves?",
+     "a": "Arcadians",
+     "explain": "The company profile describes its people as 34,000+ Arcadians.",
+     "wrong": [
+      "Members",
+      "Heidemijers",
+      "Partners"
+     ]
+    },
+    {
+     "q": "What were Arcadis' net revenues in 2025?",
+     "a": "About EUR 3.8 billion",
+     "explain": "Net revenues were EUR 3.76bn, down 0.5% organically; gross revenues were about EUR 4.87bn.",
+     "wrong": [
+      "About EUR 0.8 billion",
+      "About EUR 10 billion",
+      "About EUR 25 billion"
+     ]
+    },
+    {
+     "q": "Who became Arcadis CEO on 1 March 2026?",
+     "a": "Heather Polinsky",
+     "explain": "She succeeded Alan Brookes; shareholders confirmed her appointment on 20 May 2026.",
+     "wrong": [
+      "Alan Brookes",
+      "Peter Oosterveer",
+      "Jordan Goldstein"
+     ]
+    },
+    {
+     "q": "Which business did Heather Polinsky lead before becoming CEO?",
+     "a": "Resilience",
+     "explain": "Arcadis describes Resilience as its most profitable Global Business Area.",
+     "wrong": [
+      "Mobility",
+      "Places",
+      "Intelligence"
+     ]
+    },
+    {
+     "q": "What are Arcadis' main Global Business Areas in 2026?",
+     "a": "Resilience, Places and Mobility",
+     "explain": "Intelligence products are being integrated into these areas, mostly Mobility, from January 2026.",
+     "wrong": [
+      "Water, Energy and Transport",
+      "Architecture, Engineering and Planning",
+      "Planet, People and Profit"
+     ]
+    },
+    {
+     "q": "By what year does Arcadis aim for net zero across its value chain?",
+     "a": "2035",
+     "explain": "The target covers scopes 1, 2 and 3 and is approved by the Science Based Targets initiative.",
+     "wrong": [
+      "2030",
+      "2040",
+      "2050"
+     ]
+    },
+    {
+     "q": "What is Arcadis' interim target for scope 1 and 2 emissions?",
+     "a": "70% absolute cut by 2026 vs 2019",
+     "explain": "Scope 3 has a separate target of a 45% cut by 2029 from the same 2019 baseline.",
+     "wrong": [
+      "30% cut by 2030",
+      "50% cut by 2040",
+      "100% cut by 2025"
+     ]
+    },
+    {
+     "q": "What biodiversity gain does Arcadis target at sites with significant green space?",
+     "a": "10% net gain by 2030",
+     "explain": "It also aims for no net biodiversity loss at all sites and to halt and reverse nature loss by 2030.",
+     "wrong": [
+      "30% net gain by 2030",
+      "50% net gain by 2050",
+      "No target, only offsets"
+     ]
+    },
+    {
+     "q": "Which UN agency partners with Arcadis on the Shelter program?",
+     "a": "UN-Habitat",
+     "explain": "Since 2010 Arcadis has provided pro bono expertise on UN-Habitat projects, from planning to disaster recovery.",
+     "wrong": [
+      "UNEP",
+      "UNICEF",
+      "The World Bank"
+     ]
+    },
+    {
+     "q": "What does Arcadis' Sustainable Cities Index measure?",
+     "a": "How sustainable 100 global cities are",
+     "explain": "It ranks cities on Planet, People and Profit; the 2024 edition added a Progress pillar.",
+     "wrong": [
+      "Arcadis office energy use",
+      "Green building certifications by country",
+      "City credit ratings"
+     ]
+    },
+    {
+     "q": "Which city ranked first in the 2024 Sustainable Cities Index?",
+     "a": "Amsterdam",
+     "explain": "Amsterdam topped the 2024 index, with Copenhagen third and Munich fifth.",
+     "wrong": [
+      "Copenhagen",
+      "Singapore",
+      "Oslo"
+     ]
+    },
+    {
+     "q": "Which company co-developed Arcadis' Climate Risk Nexus tool?",
+     "a": "Jupiter Intelligence",
+     "explain": "The climate risk analytics tool grew from 2 pilots in 2024 to 20 active projects in 2025.",
+     "wrong": [
+      "Esri",
+      "Bentley Systems",
+      "Autodesk"
+     ]
+    },
+    {
+     "q": "What did Arcadis' Lower Manhattan resilience master plan propose?",
+     "a": "Extending the shoreline up to 500 feet and raising it 20+ feet",
+     "explain": "The plan for the Financial District and Seaport aims to protect against storm surge and sea level rise.",
+     "wrong": [
+      "A movable surge barrier across New York Harbor",
+      "Relocating residents away from the waterfront",
+      "Deep underground stormwater tunnels only"
+     ]
+    },
+    {
+     "q": "What is the Marker Wadden project Arcadis worked on?",
+     "a": "Islands built to restore Lake Markermeer's ecosystem",
+     "explain": "Arcadis helped design the islands and managed licensing for this large ecosystem restoration in the Netherlands.",
+     "wrong": [
+      "A new Rotterdam container port",
+      "An offshore wind farm",
+      "A North Sea storm surge barrier"
+     ]
+    },
+    {
+     "q": "What did Arcadis propose for flood-prone Buzi District, Mozambique?",
+     "a": "A network of raised refuge platforms",
+     "explain": "Working with UN-Habitat, it proposed elevated sites like schools that stay dry so life continues during floods.",
+     "wrong": [
+      "A 50 km concrete sea wall",
+      "Permanent relocation of all residents",
+      "A large upstream dam"
+     ]
+    }
+   ]
+  }
+ ]
+}

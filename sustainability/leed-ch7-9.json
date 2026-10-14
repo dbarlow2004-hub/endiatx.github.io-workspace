@@ -1,0 +1,1594 @@
+[
+ {
+  "n": 7,
+  "id": "materials-resources",
+  "title": "Materials and Resources",
+  "intro": "Materials and Resources (MR) looks at the environmental and health impacts of everything that goes into, and comes out of, a building: from raw-material extraction and manufacturing through construction, operations, and end of life. It rewards teams for reducing waste, reusing what already exists, and choosing products whose impacts and ingredients are transparently disclosed and improved.",
+  "sections": [
+   {
+    "h": "Life-cycle thinking and the waste hierarchy",
+    "body": [
+     "Every building material carries impacts that are invisible once it is installed: energy and water used to extract and process it, emissions from transport, and the waste it becomes at the end of its useful life. MR asks teams to think across the full life cycle rather than only about first cost or appearance.",
+     "The waste hierarchy ranks strategies from most to least preferred: source reduction (use less in the first place), reuse, recycling and composting, recovery (such as waste-to-energy), and finally landfill or incineration without energy recovery. The higher a strategy sits, the more impact it avoids.",
+     "Two life-cycle phrases appear often. Cradle to grave covers a product from extraction to disposal. Cradle to cradle describes a closed loop in which materials at end of life become feedstock for new products, as either technical or biological nutrients."
+    ],
+    "tip": "When a question asks for the MOST effective waste strategy, look for source reduction or reuse before recycling."
+   },
+   {
+    "h": "Collecting recyclables during operations",
+    "body": [
+     "In LEED v4, the Storage and Collection of Recyclables prerequisite requires dedicated, accessible areas for collecting and storing recyclable materials for the whole building. The core streams are mixed paper, corrugated cardboard, glass, plastics, and metals.",
+     "The prerequisite also asks teams to take measures for safe collection, storage, and disposal of hazardous streams such as batteries, mercury-containing lamps, and electronic waste. Planning space for these streams during design avoids awkward retrofits after occupancy.",
+     "In existing buildings, a waste stream audit identifies what the building actually throws away and establishes a baseline for setting diversion goals and tracking improvement."
+    ],
+    "tip": "Recycling storage is a prerequisite, so it is required for every project in rating systems that include it; it earns no points on its own."
+   },
+   {
+    "h": "Construction and demolition waste",
+    "body": [
+     "Construction and demolition (C&D) debris is one of the largest waste streams in the built environment. LEED v4 requires a C&D waste management plan that sets diversion goals, identifies target materials, and describes whether materials will be separated onsite or commingled and sent to a sorting facility.",
+     "Diversion means keeping material out of landfills and incinerators by salvaging it for reuse, donating it, or recycling it (for example, crushing concrete into aggregate). Strategies that avoid waste altogether include prefabrication, designing to standard material dimensions, and accurate ordering.",
+     "Some streams are typically excluded from diversion calculations in LEED v4, such as hazardous waste and land-clearing debris, and material used as alternative daily cover at a landfill does not count as diverted."
+    ],
+    "tip": "Separated (source-separated) and commingled recycling can both count; what matters is that materials are documented as diverted."
+   },
+   {
+    "h": "Reusing buildings and reducing embodied impacts",
+    "body": [
+     "The greenest building is often the one that already exists. Reusing structure, envelope, and interior elements avoids the embodied impacts of producing new materials, and LEED rewards both historic and non-historic building reuse.",
+     "For new structures, a whole-building life-cycle assessment (LCA) compares the proposed design to a baseline building across impact categories such as global warming potential, ozone depletion, acidification, eutrophication, smog formation, and nonrenewable energy depletion.",
+     "Embodied carbon is the greenhouse gas emitted in making, transporting, installing, maintaining, and disposing of materials. Structural systems such as concrete and steel dominate it, so strategies like reusing structure, using supplementary cementitious materials, and optimizing structural design have a large effect."
+    ],
+    "tip": "Embodied carbon is separate from operational carbon, which comes from the energy used to run the building."
+   },
+   {
+    "h": "Product disclosure and optimization",
+    "body": [
+     "LEED v4 shifted MR from simply counting recycled content toward transparency. Teams are rewarded for choosing products that disclose their impacts and then for products that show improved performance.",
+     "An Environmental Product Declaration (EPD) is a standardized, third-party verified (Type III, per ISO 14025) report of a product's life-cycle environmental impacts, prepared using Product Category Rules (PCRs) so products in the same category can be compared. A Health Product Declaration (HPD) and labels such as Declare disclose a product's chemical ingredients and associated health hazards.",
+     "Responsible sourcing covers recycled content, salvaged or reused materials, bio-based materials, extended producer responsibility (take-back) programs, and certified wood such as Forest Stewardship Council (FSC) wood. In LEED v4, recycled content is calculated as postconsumer content plus one-half of preconsumer content."
+    ],
+    "tip": "EPD = environmental impacts across the life cycle. HPD = ingredients and human-health hazards. Don't mix them up."
+   },
+   {
+    "h": "Purchasing and waste in operations",
+    "body": [
+     "In operating buildings, MR shifts to purchasing policies and waste performance. Ongoing consumables are items bought regularly and used up, such as paper, toner, and batteries. Durable goods, such as furniture, computers, and appliances, are replaced infrequently.",
+     "Policies favor products with recycled content, third-party certifications, and take-back programs, plus programs to reduce, reuse, and recycle what leaves the building, including durable goods and facility renovation waste.",
+     "Tracking purchases and waste over time links MR to the broader LEED theme of measuring performance rather than assuming it."
+    ]
+   }
+  ],
+  "terms": [
+   {
+    "term": "Waste hierarchy",
+    "def": "Ranking of waste strategies from most to least preferred: reduce, reuse, recycle/compost, recover, dispose."
+   },
+   {
+    "term": "Source reduction",
+    "def": "Reducing the amount of material used or waste generated in the first place; the top of the waste hierarchy."
+   },
+   {
+    "term": "Diversion",
+    "def": "Keeping waste out of landfills and incinerators through reuse, salvage, donation, or recycling."
+   },
+   {
+    "term": "Construction and demolition (C&D) waste",
+    "def": "Debris produced by building, renovating, or demolishing structures, such as concrete, wood, metals, drywall, and packaging."
+   },
+   {
+    "term": "Commingled recycling",
+    "def": "Collecting mixed recyclables in one container for sorting at an offsite facility, rather than separating them onsite."
+   },
+   {
+    "term": "Alternative daily cover (ADC)",
+    "def": "Material used to cover landfill waste each day; in LEED v4 it does not count as diverted."
+   },
+   {
+    "term": "Waste stream audit",
+    "def": "Study of the types and amounts of waste a building produces, used to set a baseline and diversion goals."
+   },
+   {
+    "term": "Life-cycle assessment (LCA)",
+    "def": "Analysis of a product's or building's environmental impacts across all life stages, from extraction to end of life."
+   },
+   {
+    "term": "Cradle to grave",
+    "def": "Life-cycle scope covering a product from raw-material extraction through use and final disposal."
+   },
+   {
+    "term": "Cradle to gate",
+    "def": "Life-cycle scope from raw-material extraction to the point the product leaves the factory."
+   },
+   {
+    "term": "Cradle to cradle",
+    "def": "Closed-loop concept in which end-of-life materials become technical or biological nutrients for new products."
+   },
+   {
+    "term": "Embodied carbon",
+    "def": "Greenhouse gas emissions from extracting, manufacturing, transporting, installing, maintaining, and disposing of materials, separate from operating energy."
+   },
+   {
+    "term": "Global warming potential (GWP)",
+    "def": "LCA impact category expressing a product's contribution to climate change, usually in kilograms of CO2 equivalent."
+   },
+   {
+    "term": "Environmental Product Declaration (EPD)",
+    "def": "Third-party verified Type III declaration (ISO 14025) reporting a product's life-cycle environmental impacts."
+   },
+   {
+    "term": "Product Category Rules (PCR)",
+    "def": "Rules that define how LCAs and EPDs are performed for a product category so results are comparable."
+   },
+   {
+    "term": "Health Product Declaration (HPD)",
+    "def": "Standard format disclosing a product's chemical ingredients and their associated human-health hazards."
+   },
+   {
+    "term": "Postconsumer recycled content",
+    "def": "Material recovered after use by consumers or businesses, such as used beverage cans or office paper."
+   },
+   {
+    "term": "Preconsumer recycled content",
+    "def": "Material diverted from a manufacturing waste stream, such as fly ash or sawdust, excluding scrap reused in the same process."
+   },
+   {
+    "term": "Extended producer responsibility (EPR)",
+    "def": "Manufacturer takes back its products at end of life for reuse or recycling."
+   },
+   {
+    "term": "Salvaged material",
+    "def": "Building material recovered from existing buildings or sites and reused, such as doors, brick, or timber."
+   },
+   {
+    "term": "Bio-based material",
+    "def": "Product made wholly or largely from renewable biological sources, such as bamboo, cork, wool, or agricultural fiber."
+   },
+   {
+    "term": "Forest Stewardship Council (FSC)",
+    "def": "Independent organization certifying wood from responsibly managed forests and tracking it through chain of custody."
+   },
+   {
+    "term": "Ongoing consumables",
+    "def": "Low-cost items purchased and replaced regularly, such as paper, toner cartridges, and batteries."
+   },
+   {
+    "term": "Durable goods",
+    "def": "Items replaced infrequently, such as furniture, office equipment, and appliances."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'>\n<rect width='360' height='220' fill='#f7f8f5'/>\n<text x='180' y='20' font-size='13' font-weight='bold' fill='#334155' text-anchor='middle'>Product life cycle and LCA boundaries</text>\n<defs><marker id='a' markerWidth='8' markerHeight='8' refX='6' refY='4' orient='auto'><path d='M0,0 L8,4 L0,8 z' fill='#334155'/></marker></defs>\n<g font-size='10' text-anchor='middle' fill='#fff'>\n<rect x='8' y='72' width='60' height='40' rx='5' fill='#0a8a6a'/><text x='38' y='89'>Raw</text><text x='38' y='102'>materials</text>\n<rect x='78' y='72' width='60' height='40' rx='5' fill='#0a8a6a'/><text x='108' y='89'>Manu-</text><text x='108' y='102'>facturing</text>\n<rect x='148' y='72' width='60' height='40' rx='5' fill='#2b6cb0'/><text x='178' y='89'>Transport +</text><text x='178' y='102'>construction</text>\n<rect x='218' y='72' width='60' height='40' rx='5' fill='#2b6cb0'/><text x='248' y='89'>Use +</text><text x='248' y='102'>maintenance</text>\n<rect x='288' y='72' width='64' height='40' rx='5' fill='#c53030'/><text x='320' y='89'>End of life</text><text x='320' y='102'>(disposal)</text>\n</g>\n<g stroke='#334155' stroke-width='1.5' marker-end='url(#a)'>\n<line x1='68' y1='92' x2='76' y2='92'/><line x1='138' y1='92' x2='146' y2='92'/><line x1='208' y1='92' x2='216' y2='92'/><line x1='278' y1='92' x2='286' y2='92'/>\n</g>\n<path d='M320,70 C320,48 38,48 38,68' fill='none' stroke='#d97706' stroke-width='2' stroke-dasharray='5 3' marker-end='url(#a)'/>\n<text x='180' y='40' font-size='10' fill='#d97706' text-anchor='middle' font-weight='bold'>Cradle to cradle: recover, reuse, recycle</text>\n<g fill='none' stroke='#334155' stroke-width='1.5'>\n<path d='M8,126 v6 h130 v-6'/><path d='M8,160 v6 h344 v-6'/>\n</g>\n<g font-size='10' fill='#334155' text-anchor='middle'>\n<text x='73' y='146'>Cradle to gate</text><text x='73' y='158' fill='#0a8a6a'>(typical EPD scope)</text>\n<text x='180' y='180'>Cradle to grave (whole-building LCA)</text>\n<text x='180' y='206' font-size='10'>Operating energy is counted separately from embodied impacts</text>\n</g>\n</svg>",
+  "svgCaption": "Life-cycle stages of a building product. Cradle-to-gate (the usual EPD scope) ends at the factory; cradle-to-grave adds construction, use, and disposal; cradle to cradle closes the loop by turning end-of-life materials into new feedstock.",
+  "questions": [
+   {
+    "q": "In LEED v4, which prerequisite requires dedicated areas for collecting and storing recyclable materials for the entire building?",
+    "options": [
+     "Storage and Collection of Recyclables",
+     "Building Life-Cycle Impact Reduction",
+     "Sourcing of Raw Materials",
+     "Construction and Demolition Waste Management Planning"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Storage and Collection of Recyclables is the operations-focused prerequisite. C&D Waste Management Planning is also a prerequisite, but it covers construction debris, not occupant recycling."
+   },
+   {
+    "q": "A project team is planning recycling areas for a new office building. Which materials are core streams the LEED v4 recycling storage prerequisite expects the building to collect? (Select THREE)",
+    "options": [
+     "Land-clearing debris",
+     "Glass",
+     "Yard trimmings",
+     "Food scraps for compost",
+     "Corrugated cardboard",
+     "Metals"
+    ],
+    "answer": [
+     1,
+     4,
+     5
+    ],
+    "select": 3,
+    "explain": "The core streams are mixed paper, corrugated cardboard, glass, plastics, and metals. Composting food scraps is a good practice but not one of the required streams."
+   },
+   {
+    "q": "Which strategy sits at the top of the waste hierarchy?",
+    "options": [
+     "Waste-to-energy recovery",
+     "Composting",
+     "Recycling",
+     "Source reduction"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Reducing the amount of material used avoids every downstream impact. Recycling is valuable but still requires energy for collection and reprocessing."
+   },
+   {
+    "q": "A contractor is tracking diversion for a LEED v4 project. Which activities count as diverting construction waste? (Select TWO)",
+    "options": [
+     "Sending debris to a landfill as alternative daily cover",
+     "Landfilling waste paint and solvents",
+     "Incinerating mixed debris without energy recovery",
+     "Crushing demolished concrete for use as aggregate",
+     "Salvaging interior doors for reuse in another project"
+    ],
+    "answer": [
+     3,
+     4
+    ],
+    "select": 2,
+    "explain": "Salvage and recycling keep material out of disposal. Alternative daily cover is still landfilling and does not count as diversion, and hazardous waste is excluded."
+   },
+   {
+    "q": "In LEED v4, a carpet product contains 20% postconsumer and 20% preconsumer recycled content by weight. What is its recycled content value?",
+    "options": [
+     "10%",
+     "30%",
+     "20%",
+     "40%"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "LEED v4 values recycled content as postconsumer plus one-half preconsumer: 20% + (0.5 x 20%) = 30%. Simply adding both (40%) is the tempting mistake."
+   },
+   {
+    "q": "Which are examples of preconsumer recycled content? (Select TWO)",
+    "options": [
+     "Sawdust from a lumber mill used in particleboard",
+     "Fly ash from coal power plants used in concrete",
+     "Salvaged brick reused in a new wall",
+     "Used newspapers made into cellulose insulation",
+     "Used carpet recycled into new carpet backing"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "select": 2,
+    "explain": "Preconsumer content comes from a manufacturing waste stream. Newspapers and old carpet have already been used by consumers (postconsumer), and salvaged brick is reuse, not recycled content."
+   },
+   {
+    "q": "Which best describes an Environmental Product Declaration (EPD)?",
+    "options": [
+     "A certification that wood came from responsibly managed forests",
+     "A third-party verified report of a product's life-cycle environmental impacts based on Product Category Rules",
+     "A label disclosing every chemical ingredient and its health hazards",
+     "A manufacturer's self-declared claim of recycled content"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "An EPD is a Type III declaration (ISO 14025) built on LCA and PCRs. Ingredient and health-hazard disclosure is the role of an HPD."
+   },
+   {
+    "q": "What is the primary purpose of a Health Product Declaration (HPD)?",
+    "options": [
+     "To certify that a product contains no recycled content",
+     "To disclose a product's ingredients and associated human-health hazards",
+     "To report a product's global warming potential",
+     "To verify a product was manufactured within a set distance of the site"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "The HPD standard format focuses on content and health hazards. Global warming potential is reported in an EPD."
+   },
+   {
+    "q": "A team is performing a whole-building life-cycle assessment for LEED v4. Which are impact categories typically evaluated? (Select TWO)",
+    "options": [
+     "Indoor noise levels",
+     "Acidification of land and water",
+     "Potable water use intensity",
+     "Global warming potential",
+     "Annual daylight autonomy"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "select": 2,
+    "explain": "LEED v4 whole-building LCA considers categories such as global warming potential, ozone depletion, acidification, eutrophication, smog formation, and nonrenewable energy depletion. Noise and daylight are IEQ topics."
+   },
+   {
+    "q": "An owner is deciding between demolishing a sound 1970s office building and renovating it. From an MR perspective, what is the main benefit of reuse?",
+    "options": [
+     "It avoids the embodied impacts of manufacturing and installing a new structure and envelope",
+     "It reduces operational energy more than any other strategy",
+     "It automatically earns LEED certification",
+     "It eliminates the need for any new materials"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Reusing structure and envelope avoids the extraction, manufacturing, and construction impacts of new materials. Some new materials are still needed, and reuse does not guarantee operational savings."
+   },
+   {
+    "q": "A designer wants to specify wood from responsibly managed forests that is tracked through a chain of custody. Which certification should be specified?",
+    "options": [
+     "Green Seal",
+     "WaterSense",
+     "ENERGY STAR",
+     "Forest Stewardship Council (FSC)"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "FSC certifies forest management and chain of custody for wood products. The other labels address energy, cleaning products, and water fixtures."
+   },
+   {
+    "q": "Which concept describes materials designed so that at end of life they become technical or biological nutrients for new products?",
+    "options": [
+     "Gate to gate",
+     "Cradle to grave",
+     "Cradle to gate",
+     "Cradle to cradle"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Cradle to cradle is a closed loop. Cradle to grave ends in disposal, and cradle to gate stops at the factory."
+   },
+   {
+    "q": "Which best defines embodied carbon?",
+    "options": [
+     "Emissions from heating and cooling a building during occupancy",
+     "Emissions offset by purchasing renewable energy certificates",
+     "Emissions from extracting, manufacturing, transporting, installing, and disposing of building materials",
+     "Carbon stored in landscape plantings onsite"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Embodied carbon covers material-related emissions across the life cycle. Heating and cooling emissions are operational carbon."
+   },
+   {
+    "q": "A carpet manufacturer offers to collect the project's old carpet at the end of its life and recycle it into new products. This is an example of:",
+    "options": [
+     "Building reuse",
+     "Alternative daily cover",
+     "Extended producer responsibility",
+     "Source reduction"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "When the manufacturer takes responsibility for its product at end of life through a take-back program, that is extended producer responsibility."
+   },
+   {
+    "q": "Which items belong in a construction and demolition waste management plan? (Select TWO)",
+    "options": [
+     "Whether materials will be separated onsite or commingled",
+     "MERV ratings for air handler filters",
+     "The materials targeted for diversion",
+     "VOC limits for adhesives and sealants",
+     "Interior lighting power density targets"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "A C&D plan sets diversion goals, identifies target materials, and describes how they will be handled. VOC limits and filters are IEQ topics."
+   },
+   {
+    "q": "A facility manager is writing an operations purchasing policy. Which items are considered durable goods rather than ongoing consumables? (Select TWO)",
+    "options": [
+     "Copy paper",
+     "Computers and monitors",
+     "Batteries",
+     "Toner cartridges",
+     "Desks and chairs"
+    ],
+    "answer": [
+     1,
+     4
+    ],
+    "select": 2,
+    "explain": "Durable goods such as furniture and electronics are replaced infrequently. Paper, toner, and batteries are bought and used up regularly, which makes them ongoing consumables."
+   },
+   {
+    "q": "An existing building wants to improve its recycling rate. What should the team do FIRST?",
+    "options": [
+     "Conduct a waste stream audit to establish a baseline",
+     "Ban all disposable products immediately",
+     "Purchase new recycling bins for every desk",
+     "Switch to a different waste hauler"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "A waste stream audit shows what is actually in the waste and sets a baseline for goals and tracking. Buying bins without data may target the wrong streams."
+   },
+   {
+    "q": "Which product is an example of a bio-based material?",
+    "options": [
+     "Mineral wool insulation",
+     "Vinyl composition tile",
+     "Aluminum curtain wall",
+     "Bamboo flooring"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Bamboo comes from a renewable biological source. Vinyl, aluminum, and mineral wool are petroleum- or mineral-based."
+   },
+   {
+    "q": "A team wants to reduce the quantity of framing lumber needed for a wood-frame building. Which strategy is an example of source reduction?",
+    "options": [
+     "Sending offcuts to a recycler",
+     "Specifying lumber from a nearby mill",
+     "Buying lumber with recycled content",
+     "Using advanced framing with optimized stud spacing"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Advanced framing uses less material in the first place. Recycling offcuts and sourcing choices are useful but come lower in the hierarchy or address a different issue."
+   },
+   {
+    "q": "A general contractor wants to minimize the amount of construction waste sent to landfill. Which strategies help? (Select THREE)",
+    "options": [
+     "Donating surplus materials to a reuse organization",
+     "Ordering 20% extra of every material as a safety margin",
+     "Prefabricating components offsite to reduce cutoffs",
+     "Placing all debris in a single landfill-bound container",
+     "Deconstructing and salvaging materials before demolition",
+     "Incinerating wood scraps without energy recovery"
+    ],
+    "answer": [
+     0,
+     2,
+     4
+    ],
+    "select": 3,
+    "explain": "Salvage, donation, and prefabrication avoid or divert waste. Over-ordering creates surplus waste, and landfilling or incinerating without energy recovery is disposal."
+   },
+   {
+    "q": "Which documents help a team evaluate the human-health hazards of chemicals in a product? (Select TWO)",
+    "options": [
+     "Environmental Product Declaration (EPD)",
+     "Health Product Declaration (HPD)",
+     "Declare label",
+     "ENERGY STAR label",
+     "FSC chain-of-custody certificate"
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "select": 2,
+    "explain": "HPDs and Declare labels disclose ingredients and hazards. An EPD reports environmental impacts such as global warming potential, not chemical health hazards."
+   },
+   {
+    "q": "Beyond common recyclables, the LEED v4 recycling storage prerequisite also addresses safe collection of which type of waste?",
+    "options": [
+     "Yard trimmings",
+     "Batteries",
+     "Office paper",
+     "Corrugated cardboard"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Hazardous streams such as batteries, mercury-containing lamps, and electronic waste need safe collection and disposal. Cardboard and paper are core recyclables."
+   },
+   {
+    "q": "Why are Product Category Rules (PCRs) important for EPDs?",
+    "options": [
+     "They determine the LEED points a product earns",
+     "They set legal limits for product emissions",
+     "They certify that products are free of hazardous chemicals",
+     "They define consistent LCA methods for a product category so EPDs can be compared"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "PCRs make sure all EPDs in a category use the same rules, so comparisons are meaningful. They do not set legal limits or certify ingredients."
+   },
+   {
+    "q": "A cradle-to-gate life-cycle assessment includes which stages?",
+    "options": [
+     "Manufacturing through installation in the building",
+     "Building use and maintenance only",
+     "Raw-material extraction through manufacturing, up to the factory gate",
+     "Raw-material extraction through final disposal"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Cradle to gate ends when the product leaves the factory. Extraction through disposal is cradle to grave."
+   },
+   {
+    "q": "A structural engineer wants to reduce the embodied carbon of a concrete-framed building. Which strategies are most effective? (Select TWO)",
+    "options": [
+     "Adding larger windows for daylight",
+     "Using concrete mixes with supplementary cementitious materials such as fly ash or slag",
+     "Increasing outdoor air ventilation rates",
+     "Reusing an existing structure where possible",
+     "Installing high-efficiency chillers"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "select": 2,
+    "explain": "Replacing some cement and reusing structure directly cut material emissions. Chillers, ventilation, and daylight affect operational energy and IEQ, not embodied carbon."
+   }
+  ]
+ },
+ {
+  "n": 8,
+  "id": "indoor-environmental-quality",
+  "title": "Indoor Environmental Quality",
+  "intro": "People spend most of their time indoors, so the quality of indoor air, light, temperature, and sound directly affects health, comfort, and productivity. Indoor Environmental Quality (IEQ) covers ventilation, tobacco smoke control, low-emitting materials, construction-phase air quality, thermal comfort, lighting, daylight, views, and acoustics.",
+  "sections": [
+   {
+    "h": "Indoor air quality foundations",
+    "body": [
+     "Indoor air can contain higher concentrations of some pollutants than outdoor air, from sources such as building materials, furnishings, cleaning products, occupants, and outdoor air drawn in near pollution sources. Poor indoor air quality is linked to sick building syndrome, where occupants experience symptoms that ease when they leave the building.",
+     "In LEED v4, the Minimum Indoor Air Quality Performance prerequisite requires ventilation that meets ASHRAE Standard 62.1 for mechanically ventilated spaces (or its natural ventilation procedure), plus outdoor airflow monitoring.",
+     "The Environmental Tobacco Smoke (ETS) Control prerequisite prohibits smoking inside the building and, in LEED v4, outside within 25 feet of entries, outdoor air intakes, and operable windows, with signage to communicate the policy."
+    ],
+    "tip": "ASHRAE 62.1 = ventilation and indoor air quality. ASHRAE 55 = thermal comfort. ASHRAE 90.1 = energy. Memorize the trio."
+   },
+   {
+    "h": "Enhanced IAQ strategies",
+    "body": [
+     "Beyond minimum ventilation, teams can keep pollutants out and dilute what remains. Permanent entryway systems (grates, grilles, or walk-off mats) at regularly used entrances trap dirt and particles before they are tracked inside.",
+     "High-efficiency filtration, such as MERV 13 filters on outdoor air, removes fine particles. Rooms where hazardous gases or chemicals are present, such as janitor closets and copy rooms, should be separately exhausted, enclosed with deck-to-deck partitions or hard-lid ceilings, and kept under negative pressure with self-closing doors.",
+     "Carbon dioxide (CO2) monitoring in densely occupied spaces indicates whether ventilation is keeping up with occupancy, and increased ventilation or demand-controlled ventilation can respond accordingly."
+    ],
+    "tip": "Higher MERV numbers mean finer filtration. Exhaust pollutant-generating rooms directly outside; never recirculate their air."
+   },
+   {
+    "h": "Low-emitting materials",
+    "body": [
+     "Volatile organic compounds (VOCs) are carbon-based chemicals that evaporate (off-gas) at room temperature from paints, coatings, adhesives, sealants, flooring, composite wood, and furniture. Some, like formaldehyde, are irritants or known carcinogens.",
+     "In LEED v4, products are evaluated for VOC emissions using the California Department of Public Health (CDPH) Standard Method, and for wet-applied products, VOC content limits such as those from SCAQMD and CARB. Categories include paints and coatings, adhesives and sealants, flooring, composite wood, ceilings, walls, insulation, and furniture.",
+     "Composite wood should use no-added formaldehyde or ultra-low-emitting formaldehyde resins. Choosing low-emitting products reduces pollutant sources rather than relying only on ventilation to dilute them."
+    ],
+    "tip": "Source control (low-emitting products) is more effective than trying to ventilate pollutants away after installation."
+   },
+   {
+    "h": "Construction IAQ management and pre-occupancy",
+    "body": [
+     "Construction generates dust, fumes, and moisture that can contaminate HVAC systems and absorptive materials. A construction IAQ management plan typically follows the SMACNA IAQ Guidelines for Occupied Buildings Under Construction, which cover HVAC protection, source control, pathway interruption, housekeeping, and scheduling.",
+     "Teams protect stored and installed absorptive materials (such as insulation, carpet, and ceiling tile) from moisture to prevent mold, and avoid running permanent air handlers during construction unless they are protected with appropriate filtration that is replaced before occupancy.",
+     "Before occupancy, an indoor air quality assessment either flushes out the building with large volumes of outdoor air or tests the air to confirm contaminant concentrations are below limits."
+    ],
+    "tip": "The two pre-occupancy IAQ paths are flush-out and air testing. Commissioning is a separate Energy and Atmosphere process."
+   },
+   {
+    "h": "Thermal comfort and occupant control",
+    "body": [
+     "Thermal comfort is defined by ASHRAE Standard 55, which considers air temperature, radiant temperature, humidity, and air speed, together with personal factors: metabolic rate (activity) and clothing insulation.",
+     "Giving occupants control, through individual thermostats, operable windows, task fans, or adjustable diffusers, improves satisfaction because comfort preferences vary from person to person.",
+     "Occupant comfort surveys are a common way in operating buildings to find problems and verify that systems are performing as intended."
+    ]
+   },
+   {
+    "h": "Lighting, daylight, views, and acoustics",
+    "body": [
+     "Good interior lighting provides adequate illumination with individual and multi-occupant controls, good color rendering (CRI), and minimal glare. Daylighting connects occupants to natural rhythms and, combined with daylight-responsive controls, reduces electric lighting energy.",
+     "In LEED v4, daylight can be evaluated with simulation metrics: spatial daylight autonomy (sDA) measures how much floor area receives sufficient daylight, while annual sunlight exposure (ASE) flags areas with too much direct sun that may cause glare or overheating. Glare control devices such as blinds, light shelves, and exterior shading help.",
+     "Quality views give occupants a direct line of sight to the outdoors through vision glazing. Acoustic performance addresses background noise from HVAC systems, sound isolation between spaces (rated by STC), reverberation time, and sound masking or reinforcement where needed."
+    ],
+    "tip": "sDA = enough daylight; ASE = too much direct sun. A good design scores high on sDA and low on ASE."
+   }
+  ],
+  "terms": [
+   {
+    "term": "Indoor air quality (IAQ)",
+    "def": "Nature of air inside a building as it affects occupant health, comfort, and well-being."
+   },
+   {
+    "term": "ASHRAE Standard 62.1",
+    "def": "Standard setting minimum ventilation rates and practices for acceptable indoor air quality."
+   },
+   {
+    "term": "ASHRAE Standard 55",
+    "def": "Standard defining conditions for thermal comfort based on environmental and personal factors."
+   },
+   {
+    "term": "Environmental tobacco smoke (ETS)",
+    "def": "Secondhand smoke from burning tobacco and exhaled smoke; LEED prohibits smoking indoors and near entries and intakes."
+   },
+   {
+    "term": "Sick building syndrome",
+    "def": "Occupant symptoms such as headaches or irritation that appear in a building and ease after leaving it."
+   },
+   {
+    "term": "Volatile organic compounds (VOCs)",
+    "def": "Carbon-based chemicals that evaporate at room temperature from many building products and can harm health."
+   },
+   {
+    "term": "Off-gassing",
+    "def": "Release of chemicals such as VOCs from materials into the air over time."
+   },
+   {
+    "term": "MERV",
+    "def": "Minimum Efficiency Reporting Value; filter rating from 1 to 16 where higher numbers capture finer particles."
+   },
+   {
+    "term": "Entryway system",
+    "def": "Permanent grates, grilles, or mats at building entrances that capture dirt and particles before they enter."
+   },
+   {
+    "term": "Demand-controlled ventilation",
+    "def": "Adjusting outdoor air supply based on actual occupancy, often measured by CO2 sensors."
+   },
+   {
+    "term": "Densely occupied space",
+    "def": "Area with high occupant density, such as a conference room or classroom, where CO2 monitoring is useful."
+   },
+   {
+    "term": "CDPH Standard Method",
+    "def": "California Department of Public Health test method for VOC emissions from products, referenced in LEED v4."
+   },
+   {
+    "term": "Urea-formaldehyde",
+    "def": "Resin binder in some composite wood that emits formaldehyde; avoided with no-added or ultra-low-emitting resins."
+   },
+   {
+    "term": "SMACNA IAQ Guidelines",
+    "def": "Construction IAQ guidance covering HVAC protection, source control, pathway interruption, housekeeping, and scheduling."
+   },
+   {
+    "term": "Building flush-out",
+    "def": "Supplying large volumes of outdoor air before or during early occupancy to dilute construction-related contaminants."
+   },
+   {
+    "term": "Thermal comfort",
+    "def": "Condition of mind expressing satisfaction with the thermal environment; affected by temperature, humidity, air speed, activity, clothing."
+   },
+   {
+    "term": "Daylighting",
+    "def": "Controlled use of natural light to illuminate interior spaces."
+   },
+   {
+    "term": "Spatial daylight autonomy (sDA)",
+    "def": "Percentage of floor area receiving sufficient daylight for a specified share of operating hours."
+   },
+   {
+    "term": "Annual sunlight exposure (ASE)",
+    "def": "Percentage of floor area receiving too much direct sunlight, indicating risk of glare or overheating."
+   },
+   {
+    "term": "Glare",
+    "def": "Excessive brightness contrast in the field of view that causes discomfort or reduced visibility."
+   },
+   {
+    "term": "Color rendering index (CRI)",
+    "def": "Measure of how accurately a light source shows colors compared with a reference source; higher is better."
+   },
+   {
+    "term": "Vision glazing",
+    "def": "Window area between roughly desk and head height that provides views to the outdoors."
+   },
+   {
+    "term": "Sound transmission class (STC)",
+    "def": "Rating of how well a wall or floor assembly reduces airborne sound passing through it."
+   },
+   {
+    "term": "Reverberation time",
+    "def": "Time it takes sound to decay in a room; long times reduce speech intelligibility."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'>\n<rect width='360' height='220' fill='#f7f8f5'/>\n<text x='180' y='18' font-size='13' font-weight='bold' fill='#334155' text-anchor='middle'>IEQ strategies in one building section</text>\n<path d='M110,70 L180,36 L250,70 Z' fill='#334155'/>\n<rect x='110' y='70' width='140' height='120' fill='#fff' stroke='#334155' stroke-width='2'/>\n<line x1='110' y1='130' x2='250' y2='130' stroke='#334155' stroke-width='1.5'/>\n<rect x='216' y='82' width='26' height='34' fill='#bfe3f5' stroke='#2b6cb0' stroke-width='1.5'/>\n<rect x='216' y='142' width='26' height='34' fill='#bfe3f5' stroke='#2b6cb0' stroke-width='1.5'/>\n<rect x='124' y='152' width='18' height='38' fill='#d97706'/>\n<rect x='112' y='188' width='44' height='4' fill='#c53030'/>\n<rect x='162' y='46' width='16' height='12' fill='#0a8a6a'/>\n<circle cx='160' cy='100' r='6' fill='#2b6cb0'/>\n<rect x='186' y='94' width='10' height='14' rx='2' fill='#0a8a6a'/>\n<rect x='150' y='186' width='70' height='4' fill='#d97706' opacity='0.5'/>\n<g font-size='10' fill='#334155'>\n<text x='6' y='50'>Outdoor air intake</text><text x='6' y='62' fill='#0a8a6a'>+ MERV 13 filter</text>\n<line x1='96' y1='54' x2='160' y2='52' stroke='#0a8a6a'/>\n<text x='6' y='98'>CO2 sensor</text><text x='6' y='110' fill='#2b6cb0'>(dense spaces)</text>\n<line x1='76' y1='100' x2='153' y2='100' stroke='#2b6cb0'/>\n<text x='6' y='176'>Entryway grille</text><text x='6' y='188' fill='#c53030'>traps dirt</text>\n<line x1='80' y1='180' x2='112' y2='190' stroke='#c53030'/>\n<text x='262' y='92'>Daylight +</text><text x='262' y='104' fill='#2b6cb0'>quality views</text>\n<line x1='260' y1='96' x2='243' y2='99' stroke='#2b6cb0'/>\n<text x='262' y='150'>Glare control</text><text x='262' y='162' fill='#2b6cb0'>(blinds)</text>\n<line x1='260' y1='152' x2='243' y2='158' stroke='#2b6cb0'/>\n<text x='262' y='54'>Thermal comfort</text><text x='262' y='66' fill='#0a8a6a'>control</text>\n<line x1='262' y1='70' x2='197' y2='98' stroke='#0a8a6a'/>\n<text x='160' y='210' text-anchor='middle'>Low-emitting paints, adhesives, flooring</text>\n<line x1='185' y1='200' x2='185' y2='191' stroke='#d97706'/>\n</g>\n</svg>",
+  "svgCaption": "Typical IEQ strategies in one building: filtered outdoor air, CO2 sensing in dense spaces, entryway systems, low-emitting finishes, occupant thermal controls, and windows that provide daylight and views with glare control.",
+  "questions": [
+   {
+    "q": "Which standard is referenced in LEED for minimum ventilation rates and acceptable indoor air quality?",
+    "options": [
+     "ASHRAE Standard 90.1",
+     "ASHRAE Standard 189.1",
+     "ASHRAE Standard 55",
+     "ASHRAE Standard 62.1"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "ASHRAE 62.1 covers ventilation for acceptable IAQ. ASHRAE 55 is thermal comfort and 90.1 is energy efficiency."
+   },
+   {
+    "q": "A designer is assessing whether occupants will be thermally comfortable. Which standard should guide the design?",
+    "options": [
+     "SMACNA IAQ Guidelines",
+     "ASHRAE Standard 90.1",
+     "ASHRAE Standard 55",
+     "ASHRAE Standard 62.1"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "ASHRAE 55 defines thermal comfort conditions. ASHRAE 62.1 is often confused with it but addresses ventilation."
+   },
+   {
+    "q": "An office building is pursuing LEED v4 certification. Which approach best meets the intent of Environmental Tobacco Smoke Control?",
+    "options": [
+     "Allow smoking in a ventilated lounge on each floor",
+     "Install high-MERV filters to remove smoke",
+     "Prohibit smoking inside and designate outdoor smoking areas away from entries, air intakes, and operable windows",
+     "Allow smoking only after business hours"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "The prerequisite prohibits smoking indoors and near entries, intakes, and operable windows (25 feet in LEED v4). Filtration does not prevent exposure."
+   },
+   {
+    "q": "Which strategies are enhanced indoor air quality measures that reduce pollutants entering occupied spaces? (Select TWO)",
+    "options": [
+     "Reducing outdoor air rates below code minimum",
+     "Recirculating air from copy rooms",
+     "Permanent entryway systems at regularly used entrances",
+     "MERV 13 or higher filtration of outdoor air",
+     "Carpeting the entry vestibule with standard carpet"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Entryway systems capture tracked-in dirt, and high-MERV filters remove fine particles. Recirculating copy-room air spreads pollutants."
+   },
+   {
+    "q": "Why do LEED rating systems address volatile organic compounds (VOCs)?",
+    "options": [
+     "They off-gas at room temperature from many products and can harm occupant health",
+     "They reduce daylight levels",
+     "They increase a building's embodied carbon",
+     "They are the main cause of thermal discomfort"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "VOCs evaporate from paints, adhesives, flooring, and other products and can cause irritation and other health effects."
+   },
+   {
+    "q": "In LEED v4, which method is used to test VOC emissions from products such as flooring and wall finishes?",
+    "options": [
+     "ENERGY STAR Portfolio Manager",
+     "ASHRAE Standard 90.1 Appendix G",
+     "ISO 14025",
+     "California Department of Public Health (CDPH) Standard Method"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "The CDPH Standard Method is the emissions test referenced in LEED v4. ISO 14025 governs EPDs, which are an MR topic."
+   },
+   {
+    "q": "A contractor is preparing a construction IAQ management plan based on the SMACNA guidelines. Which are SMACNA control measures? (Select THREE)",
+    "options": [
+     "Increasing lighting levels",
+     "Water metering",
+     "HVAC protection",
+     "Source control",
+     "Pathway interruption",
+     "Refrigerant management"
+    ],
+    "answer": [
+     2,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "SMACNA's measures are HVAC protection, source control, pathway interruption, housekeeping, and scheduling. Refrigerant management and metering belong to EA and WE."
+   },
+   {
+    "q": "During construction, why should absorptive materials such as ceiling tiles and insulation be protected from moisture?",
+    "options": [
+     "To prevent mold growth that can harm indoor air quality",
+     "To reduce their embodied carbon",
+     "To increase their recycled content",
+     "To improve their color rendering"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Wet absorptive materials can grow mold and later release spores and odors into occupied spaces."
+   },
+   {
+    "q": "Before occupancy, a team wants to address construction-related contaminants. Which approaches satisfy an indoor air quality assessment in LEED v4? (Select TWO)",
+    "options": [
+     "Building flush-out with outdoor air",
+     "Blower door testing",
+     "Air testing for contaminant concentrations",
+     "Daylight simulation",
+     "Fundamental commissioning"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "Flush-out and air testing are the two pre-occupancy IAQ paths. Commissioning and blower door tests check systems and envelope tightness, not contaminant levels."
+   },
+   {
+    "q": "What is the main purpose of CO2 monitoring in densely occupied spaces?",
+    "options": [
+     "To measure VOC emissions from furniture",
+     "To indicate whether ventilation is adequate for the number of occupants",
+     "To control lighting levels",
+     "To detect refrigerant leaks"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Occupants exhale CO2, so rising levels signal that outdoor air is not keeping up with occupancy."
+   },
+   {
+    "q": "A daylight simulation shows high annual sunlight exposure (ASE) in a perimeter office. What does this indicate?",
+    "options": [
+     "The space meets ventilation requirements",
+     "The space receives too much direct sunlight and may have glare or overheating",
+     "The space receives too little daylight",
+     "The space has excellent views"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "ASE flags excessive direct sun. Sufficient daylight is measured by spatial daylight autonomy (sDA)."
+   },
+   {
+    "q": "Occupants near a west-facing curtain wall complain of glare in the late afternoon. Which strategies help? (Select TWO)",
+    "options": [
+     "Increasing interior lighting power",
+     "Replacing carpet with hard flooring",
+     "Adjustable interior blinds",
+     "Exterior shading devices",
+     "Removing all perimeter windows"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Blinds and exterior shading control direct sun while keeping daylight and views. Removing windows sacrifices daylight and views."
+   },
+   {
+    "q": "Which design feature best supports quality views in LEED?",
+    "options": [
+     "Artwork depicting nature on interior walls",
+     "A direct line of sight to the outdoors through vision glazing",
+     "Skylights over interior corridors",
+     "Clerestory windows above head height only"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Quality views require a line of sight to the outdoors through vision glazing. Clerestories and skylights add daylight but not views."
+   },
+   {
+    "q": "According to ASHRAE Standard 55, which environmental factors affect thermal comfort? (Select THREE)",
+    "options": [
+     "Humidity",
+     "Air temperature",
+     "Ambient noise level",
+     "Air speed",
+     "VOC concentration",
+     "Lighting color temperature"
+    ],
+    "answer": [
+     0,
+     1,
+     3
+    ],
+    "select": 3,
+    "explain": "ASHRAE 55 considers air temperature, radiant temperature, humidity, and air speed, plus metabolic rate and clothing. Noise, light color, and VOCs are other IEQ factors."
+   },
+   {
+    "q": "Providing individual lighting controls to occupants primarily supports which goal?",
+    "options": [
+     "Reducing embodied carbon",
+     "Occupant comfort, productivity, and satisfaction",
+     "Meeting ventilation requirements",
+     "Reducing refrigerant emissions"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Controls let occupants adjust light levels to their tasks and preferences, which improves comfort and satisfaction."
+   },
+   {
+    "q": "Which are acoustic performance considerations for an office or classroom? (Select TWO)",
+    "options": [
+     "VOC content of paints",
+     "Color rendering index of lamps",
+     "Sound transmission between rooms",
+     "Background noise from HVAC systems",
+     "Annual sunlight exposure"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Acoustic design addresses HVAC background noise, sound isolation (STC), and reverberation. The other choices are lighting and air quality topics."
+   },
+   {
+    "q": "What does the color rendering index (CRI) describe?",
+    "options": [
+     "How much energy a lamp uses",
+     "How long a lamp lasts",
+     "How much daylight reaches the floor",
+     "How accurately a light source shows colors compared with a reference source"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "CRI measures color accuracy; higher values show colors more naturally. Energy use is measured as lighting power density."
+   },
+   {
+    "q": "A building has a janitor's closet and a high-volume copy room. Which design measures reduce pollutant spread from these rooms? (Select TWO)",
+    "options": [
+     "Exhaust each room directly outdoors with no air recirculation",
+     "Enclose the rooms with deck-to-deck partitions or hard-lid ceilings",
+     "Return their air to the central air handler for redistribution",
+     "Keep their doors propped open for airflow",
+     "Locate them next to outdoor air intakes"
+    ],
+    "answer": [
+     0,
+     1
+    ],
+    "select": 2,
+    "explain": "Direct exhaust, negative pressure, and full enclosures keep chemicals contained. Recirculating air or locating rooms near intakes spreads pollutants."
+   },
+   {
+    "q": "A school adds operable windows to classrooms that also have mechanical ventilation. What is the main IEQ benefit?",
+    "options": [
+     "Greater occupant control over thermal comfort and fresh air",
+     "Elimination of the need for ASHRAE 62.1 compliance",
+     "Reduced need for daylight controls",
+     "Lower embodied carbon"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Operable windows give occupants control, which improves comfort. Mechanically ventilated spaces still must meet ventilation requirements."
+   },
+   {
+    "q": "In an operating building, which practice best supports IEQ through cleaning?",
+    "options": [
+     "Using the strongest available solvents",
+     "Cleaning only once per month",
+     "Using cleaning products certified to third-party environmental standards such as Green Seal",
+     "Storing chemicals in occupied break rooms"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Green cleaning uses certified, lower-toxicity products and good practices to reduce occupant exposure."
+   },
+   {
+    "q": "Which best describes sick building syndrome?",
+    "options": [
+     "A building with high energy use intensity",
+     "Mold visible on exterior walls",
+     "A building that fails commissioning",
+     "Occupant symptoms linked to time spent in a building that ease after leaving it"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Sick building syndrome refers to acute discomfort or health effects tied to time in a building, often linked to poor IAQ."
+   },
+   {
+    "q": "An owner asks why investing in IEQ makes business sense. Which benefits are commonly associated with improved IEQ? (Select TWO)",
+    "options": [
+     "Lower potable water use",
+     "Lower embodied carbon of the structure",
+     "Reduced absenteeism",
+     "Improved occupant productivity",
+     "Reduced stormwater runoff"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Better air, light, and comfort are linked to productivity and fewer sick days. The other benefits belong to MR, SS, and WE strategies."
+   },
+   {
+    "q": "In LEED v4, which product categories are evaluated in the Low-Emitting Materials credit? (Select TWO)",
+    "options": [
+     "Exterior site paving",
+     "Structural steel",
+     "Roof drainage piping",
+     "Flooring",
+     "Composite wood"
+    ],
+    "answer": [
+     3,
+     4
+    ],
+    "select": 2,
+    "explain": "Interior categories such as paints, adhesives, flooring, composite wood, ceilings, walls, insulation, and furniture are evaluated. Steel and site paving are not interior emission sources."
+   },
+   {
+    "q": "How can daylighting reduce a building's energy use?",
+    "options": [
+     "By lowering the building's embodied carbon",
+     "By increasing outdoor air rates",
+     "When paired with daylight-responsive controls, it reduces electric lighting use",
+     "By eliminating the need for HVAC systems"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "Daylight saves energy only when lighting controls dim or switch off lights. Without controls, lights often stay on regardless."
+   },
+   {
+    "q": "A team specifies cabinetry made from composite wood. Which specification best reduces formaldehyde exposure?",
+    "options": [
+     "Locally manufactured particleboard",
+     "Composite wood with no-added formaldehyde or ultra-low-emitting formaldehyde resins",
+     "FSC-certified solid wood veneer over urea-formaldehyde particleboard",
+     "Composite wood with high recycled content"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Formaldehyde comes from resin binders, so specifying NAF or ULEF resins addresses the source. Recycled content and local sourcing do not change emissions."
+   }
+  ]
+ },
+ {
+  "n": 9,
+  "id": "project-surroundings-public-outreach",
+  "title": "Project Surroundings and Public Outreach",
+  "intro": "This chapter steps back from individual credits to the context every LEED project sits in: the environmental impact of buildings, the values behind sustainable design, regional and climate-responsive design, and the codes that set mandatory minimums. It also covers how projects share what they learn with occupants and the public, which helps transform the wider market.",
+  "sections": [
+   {
+    "h": "Environmental impacts of the built environment",
+    "body": [
+     "Buildings use large shares of energy, water, and raw materials, and they generate significant greenhouse gas emissions and waste over their lifetimes. Their effects reach beyond the property line, through stormwater runoff, heat islands, habitat loss, light pollution, and the transportation patterns their locations create.",
+     "Because buildings last for decades, choices made during design lock in impacts for a long time. That is why LEED focuses on integrative design, measurement, and continuous improvement across the whole life of a building."
+    ],
+    "tip": "When a question asks about building impacts, think broadly: energy and GHG emissions, water, materials and waste, land use, and human health."
+   },
+   {
+    "h": "Values of sustainable design",
+    "body": [
+     "Sustainable design balances the triple bottom line: people (social equity and health), planet (environmental protection), and profit (economic prosperity). A green building should perform well on all three, not just one.",
+     "Life-cycle costing compares options based on total cost of ownership, including operating, maintenance, and replacement costs, rather than first cost alone. Strategies that cost more up front often pay back through lower utility bills and better occupant performance.",
+     "Systems thinking recognizes that a building is a set of connected systems inside larger natural and community systems. Changing one element, such as glazing, affects daylight, heating and cooling, and comfort."
+    ],
+    "tip": "Owners' benefits usually include lower operating costs, healthier occupants, and higher asset value. LEED never exempts a project from codes."
+   },
+   {
+    "h": "Regional and climate-responsive design",
+    "body": [
+     "What counts as a green strategy depends on place. Passive design responds to local climate through building orientation, massing, shading, thermal mass, natural ventilation, and daylighting before relying on mechanical systems.",
+     "In hot, dry climates, shading, thermal mass, light-colored surfaces, and native, drought-tolerant landscaping are effective. In cold climates in the northern hemisphere, compact forms, high insulation, and south-facing glazing for passive solar gain help.",
+     "LEED recognizes regional differences through Regional Priority credits. USGBC identifies credits that address geographically specific environmental priorities based on project location, and in LEED v4 projects can earn up to four bonus points by achieving up to four of the six credits identified for their area."
+    ],
+    "tip": "Regional Priority points are earned by achieving existing LEED credits that are flagged for the project's location, not by writing new credits."
+   },
+   {
+    "h": "Codes, standards, and rating systems",
+    "body": [
+     "Building codes set the legal minimum for safety and performance and are enforced by the authority having jurisdiction (AHJ). They include building, plumbing, mechanical, electrical, fire, and energy codes. Zoning codes separately regulate land use, density, height, setbacks, and parking.",
+     "Energy codes are commonly based on the International Energy Conservation Code (IECC) or ASHRAE Standard 90.1. Green codes raise the baseline further: the International Green Construction Code (IgCC), which now incorporates ASHRAE Standard 189.1 (the standard for high-performance green buildings), and California's CALGreen, the first statewide green building code in the United States.",
+     "LEED is a voluntary, market-driven rating system that rewards performance beyond code. It does not replace codes: projects must still comply with all applicable laws, and many LEED prerequisites reference the same standards that codes use. Some jurisdictions do require LEED certification for certain buildings through policy."
+    ],
+    "tip": "Code = mandatory minimum. LEED = voluntary leadership. A higher LEED level never overrides local code requirements."
+   },
+   {
+    "h": "Innovation, education, and public outreach",
+    "body": [
+     "Projects can earn Innovation points for exemplary performance (substantially exceeding an existing credit's requirements), for achieving LEED pilot credits, or for innovative strategies not addressed elsewhere in the rating system. A separate point is available when at least one principal participant is a LEED AP with specialty.",
+     "Education and outreach help occupants and visitors understand and support green features. Examples include comprehensive signage, guided tours, case studies, websites, and occupant manuals. Engaging neighbors and stakeholders early, through community meetings or design charrettes, builds support and surfaces local priorities.",
+     "Sharing results publicly is part of market transformation, USGBC's mission to change how buildings are designed, built, and operated so that green building becomes the norm."
+    ],
+    "tip": "A one-time press release or a plaque is not a meaningful education program; look for ongoing, comprehensive outreach."
+   }
+  ],
+  "terms": [
+   {
+    "term": "Triple bottom line",
+    "def": "Framework balancing social (people), environmental (planet), and economic (profit) outcomes."
+   },
+   {
+    "term": "Life-cycle costing",
+    "def": "Evaluating total cost of ownership, including first, operating, maintenance, and replacement costs, over a building's life."
+   },
+   {
+    "term": "Systems thinking",
+    "def": "Understanding a building as interconnected systems within larger natural and community systems."
+   },
+   {
+    "term": "Market transformation",
+    "def": "Shifting industry practice so green building becomes standard; central to USGBC's mission."
+   },
+   {
+    "term": "Passive design",
+    "def": "Using orientation, massing, shading, daylight, and natural ventilation to meet needs without mechanical systems."
+   },
+   {
+    "term": "Climate-responsive design",
+    "def": "Design that adapts strategies to the local climate, such as shading in hot regions."
+   },
+   {
+    "term": "Regional Priority credit",
+    "def": "Existing LEED credit flagged as a local environmental priority; achieving it earns a bonus point."
+   },
+   {
+    "term": "Building code",
+    "def": "Legally enforceable minimum requirements for construction, safety, and performance adopted by a jurisdiction."
+   },
+   {
+    "term": "Authority having jurisdiction (AHJ)",
+    "def": "Agency or official responsible for enforcing codes and approving permits, such as a local building department."
+   },
+   {
+    "term": "Zoning code",
+    "def": "Local regulations controlling land use, density, height, setbacks, and parking."
+   },
+   {
+    "term": "Energy code",
+    "def": "Code setting minimum energy efficiency requirements, commonly based on IECC or ASHRAE 90.1."
+   },
+   {
+    "term": "IECC",
+    "def": "International Energy Conservation Code, a model energy code published by the International Code Council."
+   },
+   {
+    "term": "ASHRAE Standard 90.1",
+    "def": "Energy standard for buildings except low-rise residential; used in many energy codes and as LEED's baseline."
+   },
+   {
+    "term": "Green building code",
+    "def": "Code requiring sustainability measures beyond conventional codes, such as IgCC or CALGreen."
+   },
+   {
+    "term": "IgCC",
+    "def": "International Green Construction Code, a model green code that now incorporates ASHRAE Standard 189.1."
+   },
+   {
+    "term": "ASHRAE Standard 189.1",
+    "def": "Standard for the design of high-performance green buildings, written in code-ready language."
+   },
+   {
+    "term": "CALGreen",
+    "def": "California Green Building Standards Code; the first statewide green building code in the United States."
+   },
+   {
+    "term": "Voluntary rating system",
+    "def": "Market-driven program like LEED that recognizes performance beyond code; not legally required unless adopted by policy."
+   },
+   {
+    "term": "Exemplary performance",
+    "def": "Substantially exceeding an existing credit's requirements, which can earn an Innovation point."
+   },
+   {
+    "term": "Pilot credit",
+    "def": "Credit being tested in the LEED Pilot Credit Library; projects can earn Innovation points for achieving it."
+   },
+   {
+    "term": "LEED AP with specialty",
+    "def": "Credential holder whose participation as a principal team member can earn a LEED Innovation point."
+   },
+   {
+    "term": "Charrette",
+    "def": "Intensive, collaborative workshop bringing stakeholders together to develop design ideas and goals."
+   },
+   {
+    "term": "Stakeholder engagement",
+    "def": "Involving owners, occupants, neighbors, and community members to inform goals and build support."
+   }
+  ],
+  "svg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 220' width='100%' font-family='Arial, sans-serif'>\n<rect width='360' height='220' fill='#f7f8f5'/>\n<text x='180' y='18' font-size='13' font-weight='bold' fill='#334155' text-anchor='middle'>Codes set the floor; LEED rewards leadership</text>\n<line x1='34' y1='180' x2='346' y2='180' stroke='#334155' stroke-width='1.5'/>\n<line x1='34' y1='180' x2='34' y2='34' stroke='#334155' stroke-width='1.5'/>\n<text x='0' y='0' font-size='10' fill='#334155' transform='translate(24,150) rotate(-90)'>Performance</text>\n<rect x='48' y='140' width='86' height='40' fill='#334155'/>\n<rect x='146' y='102' width='86' height='78' fill='#2b6cb0'/>\n<rect x='244' y='42' width='92' height='138' fill='#0a8a6a'/>\n<g font-size='10' fill='#fff' text-anchor='middle'>\n<text x='91' y='157'>Building +</text><text x='91' y='170'>energy code</text>\n<text x='189' y='130'>Green codes</text><text x='189' y='144'>IgCC / 189.1</text><text x='189' y='158'>CALGreen</text>\n<text x='290' y='66'>Platinum</text><text x='290' y='92'>Gold</text><text x='290' y='118'>Silver</text><text x='290' y='144'>Certified</text>\n</g>\n<g stroke='#fff' stroke-width='1' opacity='0.6'><line x1='244' y1='74' x2='336' y2='74'/><line x1='244' y1='100' x2='336' y2='100'/><line x1='244' y1='126' x2='336' y2='126'/></g>\n<g font-size='10' text-anchor='middle'>\n<text x='91' y='195' fill='#c53030' font-weight='bold'>Mandatory</text><text x='91' y='208' fill='#334155'>minimum (AHJ)</text>\n<text x='189' y='195' fill='#d97706' font-weight='bold'>Mandatory if adopted</text><text x='189' y='208' fill='#334155'>higher baseline</text>\n<text x='290' y='195' fill='#0a8a6a' font-weight='bold'>Voluntary</text><text x='290' y='208' fill='#334155'>rating system</text>\n</g>\n</svg>",
+  "svgCaption": "Building and energy codes set a mandatory minimum enforced by the authority having jurisdiction. Green codes such as IgCC/ASHRAE 189.1 and CALGreen raise that baseline where adopted, and LEED is a voluntary rating system that rewards performance beyond code at four certification levels.",
+  "questions": [
+   {
+    "q": "Which statement best describes the relationship between building codes and LEED?",
+    "options": [
+     "Codes and LEED are both enforced by GBCI",
+     "Codes set mandatory minimums, while LEED is a voluntary system rewarding performance beyond code",
+     "LEED certification replaces the need for code compliance",
+     "LEED applies only to buildings not covered by codes"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "Codes are legal minimums enforced by the AHJ; LEED is voluntary and recognizes leadership. LEED never replaces code compliance."
+   },
+   {
+    "q": "Which is a model green building code published for adoption by jurisdictions?",
+    "options": [
+     "International Green Construction Code (IgCC)",
+     "ENERGY STAR Portfolio Manager",
+     "Green Seal GS-37",
+     "LEED v4 BD+C"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "The IgCC is a model code written for adoption. LEED is a voluntary rating system, and the others are a benchmarking tool and a product standard."
+   },
+   {
+    "q": "ASHRAE Standard 189.1 is best described as:",
+    "options": [
+     "A standard for ventilation and indoor air quality",
+     "A standard for thermal comfort",
+     "A standard for the design of high-performance green buildings written in code-ready language",
+     "A standard for testing VOC emissions"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "ASHRAE 189.1 covers high-performance green buildings and is incorporated into the IgCC. Thermal comfort is ASHRAE 55 and ventilation is ASHRAE 62.1."
+   },
+   {
+    "q": "Which was the first statewide green building code in the United States?",
+    "options": [
+     "CALGreen",
+     "IgCC",
+     "ASHRAE 90.1",
+     "IECC"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "CALGreen, the California Green Building Standards Code, was the first statewide green building code. IgCC is a model code, not a state code."
+   },
+   {
+    "q": "Which are typically adopted by jurisdictions as enforceable requirements? (Select TWO)",
+    "options": [
+     "WELL Building Standard certification",
+     "LEED Platinum certification",
+     "A local building code",
+     "An energy code based on the IECC or ASHRAE 90.1",
+     "ENERGY STAR product labeling"
+    ],
+    "answer": [
+     2,
+     3
+    ],
+    "select": 2,
+    "explain": "Building and energy codes are adopted and enforced by the AHJ. Rating systems and labels are voluntary unless a specific policy requires them."
+   },
+   {
+    "q": "The triple bottom line balances which three areas?",
+    "options": [
+     "Energy, water, and materials",
+     "Owners, architects, and contractors",
+     "Design, construction, and operations",
+     "People, planet, and profit"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "The triple bottom line weighs social, environmental, and economic outcomes. The other answers list building resources, project phases, or team members."
+   },
+   {
+    "q": "What is the purpose of LEED Regional Priority credits?",
+    "options": [
+     "To give extra points to projects in large cities",
+     "To create new credits written by each local government",
+     "To replace prerequisites in certain regions",
+     "To reward achieving existing credits that address environmental priorities specific to the project's location"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Regional Priority points are bonus points for achieving existing credits flagged as important in the project's area. They never replace prerequisites."
+   },
+   {
+    "q": "In LEED v4, how many Regional Priority points can a project earn?",
+    "options": [
+     "Up to 4",
+     "Up to 10",
+     "Up to 6",
+     "Up to 2"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Six credits are identified for each location, and a project can earn up to four bonus points by achieving up to four of them."
+   },
+   {
+    "q": "A project is located in a hot, arid climate. Which strategies are most climate-appropriate? (Select TWO)",
+    "options": [
+     "Native, drought-tolerant landscaping",
+     "Dark-colored roofing",
+     "Exterior shading on east and west facades",
+     "Turf grass irrigated with potable water",
+     "Large unshaded west-facing glazing"
+    ],
+    "answer": [
+     0,
+     2
+    ],
+    "select": 2,
+    "explain": "Shading and native landscaping reduce cooling loads and water use. Unshaded west glass, dark roofs, and turf work against a hot, dry climate."
+   },
+   {
+    "q": "A project team in a cold northern-hemisphere climate wants to reduce heating loads through passive design. Which strategy is most appropriate?",
+    "options": [
+     "Orient major glazing to the south for passive solar gain",
+     "Maximize north-facing glazing",
+     "Eliminate insulation in exterior walls",
+     "Use a spread-out building form with many exterior corners"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "In the northern hemisphere, south glazing captures low winter sun. Northern glazing and a spread-out form increase heat loss."
+   },
+   {
+    "q": "A team wants to earn an Innovation point for a green building education program. Which elements would best support it? (Select TWO)",
+    "options": [
+     "Displaying the LEED plaque in the lobby",
+     "A recurring guided tour program or published case study",
+     "Comprehensive signage explaining the building's sustainable features",
+     "A single press release announcing certification",
+     "Adding a green logo to company letterhead"
+    ],
+    "answer": [
+     1,
+     2
+    ],
+    "select": 2,
+    "explain": "Education programs should be ongoing and informative, such as signage and tours. A press release, plaque, or logo alone does not teach occupants or visitors."
+   },
+   {
+    "q": "Which are ways a LEED project can earn Innovation points? (Select TWO)",
+    "options": [
+     "Meeting all prerequisites",
+     "Paying for expedited review",
+     "Achieving exemplary performance in an existing credit",
+     "Earning a Regional Priority credit",
+     "Achieving a LEED pilot credit"
+    ],
+    "answer": [
+     2,
+     4
+    ],
+    "select": 2,
+    "explain": "Innovation points come from exemplary performance, pilot credits, or new innovative strategies. Regional Priority is a separate category, and prerequisites earn no points."
+   },
+   {
+    "q": "Under LEED v4, what is required to earn the LEED Accredited Professional point in the Innovation category?",
+    "options": [
+     "Every team member must hold a LEED Green Associate credential",
+     "At least one principal participant on the project team must be a LEED AP with specialty",
+     "The owner must attend a LEED training course",
+     "The project must be registered by a LEED AP"
+    ],
+    "answer": [
+     1
+    ],
+    "select": 1,
+    "explain": "The credit requires at least one principal participant who is a LEED AP with specialty. A Green Associate credential alone does not qualify."
+   },
+   {
+    "q": "A design team brings the owner, architects, engineers, facility staff, and community members together for an intensive multi-day workshop to set project goals. This is called a:",
+    "options": [
+     "Charrette",
+     "Design review by GBCI",
+     "Commissioning review",
+     "Value engineering session"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "A charrette is a collaborative workshop that aligns stakeholders early. Value engineering focuses on cutting cost and often happens later."
+   },
+   {
+    "q": "Which are significant environmental impacts associated with conventional buildings? (Select THREE)",
+    "options": [
+     "Improved occupant productivity",
+     "Increased onsite biodiversity",
+     "Greenhouse gas emissions from energy use",
+     "Potable water consumption",
+     "Reduced urban heat island effect",
+     "Raw material extraction and waste generation"
+    ],
+    "answer": [
+     2,
+     3,
+     5
+    ],
+    "select": 3,
+    "explain": "Buildings drive energy-related emissions, water use, and material use and waste. The other options are benefits that green strategies aim to achieve."
+   },
+   {
+    "q": "Who is responsible for enforcing local building codes and issuing permits?",
+    "options": [
+     "GBCI",
+     "The LEED project administrator",
+     "The authority having jurisdiction (AHJ)",
+     "USGBC"
+    ],
+    "answer": [
+     2
+    ],
+    "select": 1,
+    "explain": "The AHJ, such as a city building department, enforces codes. GBCI certifies LEED projects but does not enforce codes."
+   },
+   {
+    "q": "A developer wants to know the maximum building height, required setbacks, and parking requirements for a site. Which document should they consult?",
+    "options": [
+     "The LEED reference guide",
+     "The plumbing code",
+     "ASHRAE Standard 62.1",
+     "The local zoning code"
+    ],
+    "answer": [
+     3
+    ],
+    "select": 1,
+    "explain": "Zoning codes regulate land use, height, setbacks, density, and parking. Building and plumbing codes cover how structures are built."
+   },
+   {
+    "q": "An owner is evaluating the business case for green building. Which benefits are commonly cited? (Select TWO)",
+    "options": [
+     "Exemption from local building codes",
+     "Lower operating costs over the building's life",
+     "Guaranteed LEED certification at registration",
+     "Elimination of the need for commissioning",
+     "Healthier, more satisfied occupants"
+    ],
+    "answer": [
+     1,
+     4
+    ],
+    "select": 2,
+    "explain": "Green buildings typically lower operating costs and support occupant health. They are never exempt from codes, and certification is earned through review, not registration."
+   },
+   {
+    "q": "An owner compares two HVAC systems: one has a lower first cost, the other lower energy and maintenance costs over 25 years. Which method compares them fairly?",
+    "options": [
+     "Life-cycle cost analysis",
+     "Selecting the system with the shortest installation time",
+     "Payback based only on equipment price",
+     "First-cost comparison"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Life-cycle costing includes first, operating, maintenance, and replacement costs over the system's life. First cost alone ignores long-term savings."
+   },
+   {
+    "q": "A jurisdiction's energy code is commonly based on which documents? (Select TWO)",
+    "options": [
+     "ASHRAE Standard 62.1",
+     "ASHRAE Standard 90.1",
+     "ASHRAE Standard 55",
+     "International Energy Conservation Code (IECC)",
+     "Green Seal GS-37"
+    ],
+    "answer": [
+     1,
+     3
+    ],
+    "select": 2,
+    "explain": "Energy codes are typically based on the IECC or ASHRAE 90.1. ASHRAE 62.1 covers ventilation, ASHRAE 55 covers thermal comfort, and GS-37 covers cleaning products."
+   },
+   {
+    "q": "A building owner wants to benchmark the energy and water use of an existing building against similar buildings. Which tool is commonly used?",
+    "options": [
+     "ENERGY STAR Portfolio Manager",
+     "SMACNA IAQ Guidelines",
+     "ISO 14025",
+     "CALGreen"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Portfolio Manager is a free benchmarking tool for tracking energy and water use. The others are a code, a construction IAQ guideline, and an EPD standard."
+   },
+   {
+    "q": "Which statements correctly describe codes and LEED? (Select TWO)",
+    "options": [
+     "GBCI inspects projects for building code compliance",
+     "A LEED project must still comply with all applicable local codes",
+     "Achieving LEED Gold supersedes local code requirements",
+     "LEED can only be pursued in jurisdictions without a green code",
+     "Many LEED prerequisites reference standards also used in codes, such as ASHRAE 90.1 and 62.1"
+    ],
+    "answer": [
+     1,
+     4
+    ],
+    "select": 2,
+    "explain": "LEED builds on code standards and never overrides them. GBCI reviews LEED documentation, not code compliance, and LEED can be pursued anywhere."
+   },
+   {
+    "q": "A team wants to reduce mechanical loads through passive design before sizing HVAC equipment. Which strategies apply? (Select THREE)",
+    "options": [
+     "Oversizing HVAC equipment for safety",
+     "Adding shading devices to control solar gain",
+     "Specifying single-pane glazing",
+     "Designing for natural ventilation where climate allows",
+     "Optimizing building orientation",
+     "Increasing lighting power density"
+    ],
+    "answer": [
+     1,
+     3,
+     4
+    ],
+    "select": 3,
+    "explain": "Orientation, shading, and natural ventilation reduce loads without mechanical systems. Oversizing equipment and single-pane glass increase energy use."
+   },
+   {
+    "q": "A new library is planned in an established neighborhood. What is the most effective way to build community support and capture local priorities?",
+    "options": [
+     "Hold community meetings early in design to gather input",
+     "Announce the design after construction documents are complete",
+     "Limit communication to the building permit notice",
+     "Wait until opening day to share sustainability features"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Early engagement lets community input shape the design and builds support. Communicating late leaves no room to respond to concerns."
+   },
+   {
+    "q": "How does a project team find out which credits count as Regional Priority credits?",
+    "options": [
+     "They are determined by project location, using USGBC's regional priority lookup",
+     "The team chooses any six credits it prefers",
+     "They are the same for every project worldwide",
+     "GBCI assigns them after the final review"
+    ],
+    "answer": [
+     0
+    ],
+    "select": 1,
+    "explain": "Regional Priority credits vary by location and are identified through USGBC resources based on where the project is. Teams cannot choose them freely."
+   }
+  ]
+ }
+]
