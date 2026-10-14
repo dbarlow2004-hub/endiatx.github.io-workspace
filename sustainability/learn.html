@@ -188,6 +188,26 @@ ol.timeline ul{padding-left:18px;margin-top:4px;font-size:13.5px}
 .cityp{font-size:11.5px;background:var(--surface2);border-radius:6px;padding:1px 6px;white-space:nowrap}
 .city.yes{color:var(--good);font-weight:800}.city.no{color:var(--bad);font-weight:800}.city.maybe{color:var(--warn);font-weight:800}
 
+.flip.tall,.flip.tall .inner{min-height:470px}
+.card-vis{margin-top:10px;border-radius:10px;overflow:hidden}
+.card-vis svg,.scen-img svg,.scen-thumb svg{display:block;width:100%;height:auto}
+.yours{font-size:13.5px;border-radius:10px;padding:8px 10px;margin-top:10px;background:var(--surface2)}
+.yours.right{background:color-mix(in srgb,var(--good) 14%,var(--surface))}
+.yours.partial{background:color-mix(in srgb,var(--warn) 16%,var(--surface))}
+.yours.wrong{background:color-mix(in srgb,var(--bad) 12%,var(--surface))}
+.grades button.suggest{box-shadow:0 0 0 3px var(--accent);transform:translateY(-1px)}
+.scen-img{background:#fff;border:1px solid var(--border);border-radius:14px;padding:6px;margin:0;overflow:hidden}
+.scen-thumb{background:#fff;aspect-ratio:3/2;overflow:hidden;display:flex;align-items:center}
+.flagging [data-hot]{cursor:pointer}
+.hot-mark{fill:none;stroke-width:3;pointer-events:none}
+.hot-mark.flagged{stroke:#e11d48;stroke-dasharray:6 3;fill:rgba(225,29,72,.08)}
+.hot-mark.found{stroke:#16a34a;fill:rgba(22,163,74,.12)}
+.hot-mark.missed{stroke:#d97706;stroke-dasharray:4 3;fill:rgba(217,119,6,.12)}
+.hot-mark.falseflag{stroke:#e11d48;fill:rgba(225,29,72,.10)}
+.flaglist{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:6px}
+.flagrow{padding:8px 10px;border-radius:10px;background:var(--surface);border-left:4px solid var(--border)}
+.flagrow.found{border-left-color:var(--good)}.flagrow.missed{border-left-color:var(--warn)}.flagrow.falseflag{border-left-color:var(--bad)}
+
 /* sheet */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:none}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg);border-radius:20px 20px 0 0;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .25s ease;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
@@ -395,6 +415,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
       <div class="modes">
         <button class="mode" data-go="review"><span class="e">🧠</span><div><b>Flashcards</b><span id="mDue">Spaced repetition: you see each card again right before you'd forget it.</span></div></button>
         <button class="mode" data-go="quiz"><span class="e">🎯</span><div><b>Quiz</b><span>10 multiple-choice questions. Answer streaks multiply your XP.</span></div></button>
+        <button class="mode" data-go="scenarios"><span class="e">🏗️</span><div><b>Real-world scenarios</b><span>Practice with what you'd be handed at work: spot what it is, flag problems, decide next steps.</span></div></button>
         <button class="mode" data-go="lightning"><span class="e">⚡</span><div><b>Lightning round</b><span>60 seconds. Answer as many as you can.</span></div></button>
       </div>
       <h2>Decks</h2>
@@ -489,7 +510,8 @@ let DECKS = {};     // id -> {summary, takeaways, cards}
 async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? r.json() : {}; } catch { return {}; } }
 
 async function loadCatalog(){
-  const [res, books, media, deb, car] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json")]);
+  const [res, books, media, deb, car, vis, sc] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json"), getJSON("visuals.json"), getJSON("scenarios.json")]);
+  VIS = vis || {}; SCEN = sc.scenarios || [];
   DECKS = Object.assign({}, books, media);
   CAREER = car; JOBS = car.jobs || [];
   for (const j of JOBS) if (j.cards?.length) {
@@ -616,6 +638,7 @@ const BADGES = [
   {id:"streak7", e:"🔥", name:"7-day streak", test:() => S.streak.count >= 7},
   {id:"streak30", e:"☀️", name:"30-day streak", test:() => S.streak.count >= 30},
   {id:"learn50", e:"🧠", name:"50 cards learned", test:() => learned() >= 50},
+  {id:"field5", e:"🏗️", name:"5 work scenarios", test:() => Object.keys(S.scen || {}).length >= 5},
   {id:"job80", e:"💼", name:"Job ready (80%)", test:() => JOBS.length > 0 && readiness() >= 80},
   {id:"pro", e:"🏆", name:"Reached Pro", test:() => levelOf(S.xp) >= 12},
 ];
@@ -1662,6 +1685,7 @@ function renderCareer(){
         ${segBtns(SKILL_STEPS, cs.status, "data-skill", s.id)}
         <label class="f">What to learn</label><ul class="takeaways">${(s.learn || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
         ${(s.resources || []).length ? `<label class="f">Where to learn it</label><ul class="res">${s.resources.map(x => `<li><a href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">${esc(x.name)} ↗</a> <span class="small muted">${esc(x.note || "")}</span></li>`).join("")}</ul>` : ""}
+        ${SCEN.filter(x => x.skill === s.id).map(x => `<button class="btn sm" data-go="scenarios" data-deck="${esc(x.id)}" style="margin:8px 6px 0 0">🏗️ Practice: ${esc(x.title)}${S.scen?.[x.id] ? ` · ${S.scen[x.id].best}%` : ""}</button>`).join("")}
         <label class="f">Portfolio project</label><p style="font-size:14px">${esc(s.project || "")}</p>
         <label class="row" style="gap:8px;margin-top:6px;font-size:14px;cursor:pointer"><input type="checkbox" data-proj="${esc(s.id)}" ${cs.project ? "checked" : ""} style="width:20px;height:20px"> I finished this project</label>
         <label class="f">Notes</label><textarea data-sknote="${esc(s.id)}" style="min-height:70px" placeholder="What you learned, links to your work...">${esc(cs.notes || "")}</textarea>
@@ -1932,6 +1956,163 @@ Give:
 }
 
 /* =========================================================
+   Diagrams on cards (visuals.json) + real-world scenarios (scenarios.json)
+   ========================================================= */
+let VIS = {}, SCEN = [];
+// Our own SVG files, but parse them as data anyway: drop scripts, event handlers and external links.
+function safeSvg(markup){
+  try {
+    const doc = new DOMParser().parseFromString(markup, "image/svg+xml");
+    const svg = doc.documentElement; if (svg.nodeName !== "svg") return null;
+    svg.querySelectorAll("script, foreignObject").forEach(n => n.remove());
+    svg.querySelectorAll("*").forEach(n => [...n.attributes].forEach(a => {
+      if (/^on/i.test(a.name) || (/href$/i.test(a.name) && !a.value.startsWith("#"))) n.removeAttribute(a.name);
+    }));
+    svg.setAttribute("width", "100%"); svg.removeAttribute("height");
+    return document.importNode(svg, true);
+  } catch { return null; }
+}
+const visualFor = c => VIS[c.id] || null;
+function mountSvgs(root){
+  root.querySelectorAll("[data-svg]").forEach(el => {
+    const key = el.dataset.svg, markup = key.startsWith("scen:") ? (SCEN.find(s => s.id === key.slice(5)) || {}).svg : VIS[key];
+    const node = markup && safeSvg(markup); if (node) el.replaceChildren(node);
+  });
+}
+
+/* ----- typed answers: a local check that suggests a grade (no AI needed) ----- */
+const STOPW = new Set("a an the of to in on for and or is are be by with as at it its that this from than into per vs about it's their they".split(" "));
+const toks = s => String(s || "").toLowerCase().replace(/[^a-z0-9.%\- ]+/g, " ").split(/\s+/)
+  .map(w => w.replace(/^[-.]+|[-.]+$/g, "")).filter(w => w && !STOPW.has(w)).map(w => /\d/.test(w) ? w : w.replace(/(ing|ed|es|s)$/, "") || w);
+function checkTyped(user, c){
+  const u = new Set(toks(user)); if (!u.size) return null;
+  const a = toks(c.a), hit = a.filter(w => u.has(w)).length / Math.max(1, a.length);
+  const numsOk = a.filter(w => /\d/.test(w)).every(n => u.has(n));
+  const wrongBest = Math.max(0, ...(c.wrong || []).map(w => { const ws = toks(w); return ws.filter(x => u.has(x)).length / Math.max(1, ws.length); }));
+  let v = hit >= .6 && numsOk ? "right" : hit >= .3 ? "partial" : "wrong";
+  if (v !== "wrong" && wrongBest > hit + .2) v = "wrong";
+  return v;
+}
+const VERDICT = {right:["✓ Looks right", 3], partial:["≈ Partly there", 2], wrong:["✗ Not quite", 1]};
+const JUDGE_SCHEMA = {type:"object", additionalProperties:false, required:["verdict","feedback"], properties:{verdict:{type:"string", enum:["right","partial","wrong"]}, feedback:{type:"string"}}};
+
+/* ----- scenarios ----- */
+const SKILL_NAMES = () => Object.fromEntries((JOBS[0]?.skills || []).map(s => [s.id, s.area]));
+function scenarioMenu(){
+  $("#studyMenu").hidden = true; $("#session").hidden = false;
+  const done = S.scen || {}, names = SKILL_NAMES();
+  $("#session").innerHTML = `<div class="session-head"><button class="x" id="scBack" aria-label="Back">×</button><b style="flex:1">🏗️ Real-world scenarios</b><span class="small muted">${Object.keys(done).length}/${SCEN.length} done</span></div>
+    <p class="small muted" style="margin-bottom:12px">What you'd actually be handed at work. Figure out what you're looking at, tap to flag problems, choose a next step, and write the note to your lead.</p>
+    <div class="tiles">${SCEN.map(s => `<div class="tile"><button class="tbtn" data-scen="${esc(s.id)}"><div class="scen-thumb" data-svg="scen:${esc(s.id)}"></div>
+      <div class="tbody"><div class="tt">${esc(s.title)}</div><div class="by">${esc(names[s.skill] || s.skill || "")}</div>
+      ${done[s.id] ? `<span class="st done">✓ Best ${done[s.id].best}%</span>` : `<span class="st want">New</span>`}</div></button></div>`).join("")}</div>`;
+  mountSvgs($("#session"));
+  $("#scBack").onclick = endToMenu;
+  $("#session").querySelectorAll("[data-scen]").forEach(b => b.onclick = () => playScenario(b.dataset.scen));
+}
+let SC = null;
+function playScenario(id){
+  const s = SCEN.find(x => x.id === id); if (!s) return;
+  SC = {s, step:0, pts:0, max:0, flags:new Set()};
+  renderScenario();
+}
+function renderScenario(){
+  const {s, step} = SC, st = s.steps[step];
+  if (!st) return finishScenario();
+  $("#session").innerHTML = `<div class="session-head"><button class="x" id="scQuit" aria-label="Back to scenarios">×</button>
+      <div class="bar"><i style="width:${step / s.steps.length * 100}%"></i></div><span class="small muted mono">${step + 1}/${s.steps.length}</span></div>
+    <div class="small muted" style="font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:11.5px">${esc(s.title)}</div>
+    ${step === 0 ? `<p style="font-size:14.5px;margin:4px 0 10px">${esc(s.context)}</p>` : `<details style="margin:4px 0 10px"><summary class="small">The situation</summary><p class="small" style="margin-top:6px">${esc(s.context)}</p></details>`}
+    <figure class="scen-img ${st.type === "flag" ? "flagging" : ""}" id="scImg" data-svg="scen:${esc(s.id)}"></figure>
+    ${s.caption && step > 0 ? `<p class="note" style="text-align:center;margin-top:-4px">${esc(s.caption)}</p>` : ""}
+    <div class="qcard" style="margin-top:10px"><div class="q" style="font-size:17px">${esc(st.q)}</div></div>
+    <div id="scBody"></div>
+    <div class="feedback" id="fb"></div>
+    <button class="btn primary block" id="scNext" style="margin-top:12px;display:none">Continue →</button>`;
+  mountSvgs($("#session"));
+  $("#scQuit").onclick = scenarioMenu;
+  $("#scNext").onclick = () => { SC.step++; SC.flags = new Set(); renderScenario(); };
+  const body = $("#scBody"), fb = $("#fb"), next = $("#scNext");
+  const done = () => { next.style.display = "flex"; next.focus(); };
+  if (st.type === "identify" || st.type === "choice") {
+    SC.max += 10;
+    body.innerHTML = `<div class="opts">${st.options.map((o, k) => `<button class="opt" data-k="${k}"><span class="k">${k + 1}</span><span>${esc(o)}</span></button>`).join("")}</div>`;
+    body.onclick = e => { const b = e.target.closest("[data-k]"); if (!b || body.dataset.done) return; body.dataset.done = 1;
+      const k = +b.dataset.k, ok = k === st.answer;
+      body.querySelectorAll(".opt").forEach((x, j) => { x.disabled = true; if (j === st.answer) x.classList.add("right"); else if (j === k) x.classList.add("wrong"); });
+      if (ok) { SC.pts += 10; addXp(10); }
+      fb.className = "feedback on " + (ok ? "ok" : "no"); fb.innerHTML = `<b>${ok ? "Correct!" : "Not quite."}</b> ${esc(st.explain || "")}`; done(); };
+  } else if (st.type === "flag") {
+    const real = st.hotspots.filter(h => h.issue).length; SC.max += real * 10;
+    body.innerHTML = `<p class="small muted" style="margin-bottom:8px">Tap the parts of the image you'd flag; tap again to unflag. <b id="flagN">0</b> flagged.</p>
+      <button class="btn primary block" id="flagGo">Check my flags</button>`;
+    const svg = $("#scImg svg"); if (!svg) { body.innerHTML = `<p class="note">Image failed to load.</p>`; done(); return; }
+    const mark = (el, cls) => {   // outline drawn in the hotspot's own coordinate space
+      const bb = el.getBBox(), r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      Object.entries({x:bb.x - 3, y:bb.y - 3, width:bb.width + 6, height:bb.height + 6, rx:4, class:"hot-mark " + cls}).forEach(([k, v]) => r.setAttribute(k, v));
+      if (el.getAttribute("transform")) r.setAttribute("transform", el.getAttribute("transform"));
+      r.dataset.markFor = el.dataset.hot; el.after(r); return r;
+    };
+    svg.addEventListener("click", e => {
+      if (body.dataset.done) return;
+      const h = e.target.closest("[data-hot]"); if (!h || !svg.contains(h)) return;
+      const id = h.dataset.hot;
+      if (SC.flags.has(id)) { SC.flags.delete(id); svg.querySelector(`[data-mark-for="${CSS.escape(id)}"]`)?.remove(); }
+      else { SC.flags.add(id); mark(h, "flagged"); }
+      $("#flagN").textContent = SC.flags.size;
+    });
+    $("#flagGo").onclick = () => {
+      body.dataset.done = 1; svg.querySelectorAll(".hot-mark").forEach(m => m.remove());
+      let found = 0, wrongFlags = 0;
+      const rows = st.hotspots.map(h => {
+        const el = svg.querySelector(`[data-hot="${CSS.escape(h.id)}"]`), flagged = SC.flags.has(h.id);
+        const cls = h.issue ? (flagged ? "found" : "missed") : (flagged ? "falseflag" : "");
+        if (h.issue && flagged) found++; if (!h.issue && flagged) wrongFlags++;
+        if (el && cls) mark(el, cls);
+        if (!h.issue && !flagged) return "";
+        return `<li class="flagrow ${cls}"><b>${h.issue ? (flagged ? "✓ Found" : "⚠ Missed") : "✗ Not a problem"}: ${esc(h.label)}</b><br><span class="small">${esc(h.explain)}</span></li>`;
+      }).join("");
+      const decoys = st.hotspots.filter(h => !h.issue && !SC.flags.has(h.id)).map(h => `<li class="flagrow"><b>👍 Fine as is: ${esc(h.label)}</b><br><span class="small">${esc(h.explain)}</span></li>`).join("");
+      const gained = Math.max(0, found * 10 - wrongFlags * 5); SC.pts += gained; addXp(Math.max(2, gained));
+      fb.className = "feedback on " + (found === real && !wrongFlags ? "ok" : "no");
+      fb.innerHTML = `<b>You found ${found} of ${real} issue${real === 1 ? "" : "s"}${wrongFlags ? `, with ${wrongFlags} false flag${wrongFlags > 1 ? "s" : ""}` : ""}.</b><ul class="flaglist">${rows}${decoys}</ul>`;
+      $("#flagGo").remove(); done();
+    };
+  } else if (st.type === "write") {
+    body.innerHTML = `<textarea id="scWrite" style="min-height:120px" placeholder="Write it the way you'd actually send it...">${esc(SC.written || "")}</textarea>
+      <div class="row" style="gap:8px;margin-top:8px;flex-wrap:wrap"><button class="btn primary" id="scModel">Compare with a model answer</button>${S.apiKey ? `<button class="btn" id="scAI">🤖 Get feedback</button>` : ""}</div>`;
+    const show = () => { SC.written = $("#scWrite").value; fb.className = "feedback on ok"; fb.innerHTML = `<b>A strong version:</b><br>${esc(st.model)}<p class="small" style="margin-top:6px">Check yours for: what you found, the numbers, why it matters, and a clear next step.</p>`; if ($("#scWrite").value.trim().length > 40 && !SC.wroteXp) { SC.wroteXp = 1; addXp(15, "Wrote your note"); } done(); };
+    $("#scModel").onclick = show;
+    $("#scAI")?.addEventListener("click", async () => {
+      const text = $("#scWrite").value.trim(); if (text.length < 30) { $("#scWrite").focus(); return; }
+      const b = $("#scAI"); b.disabled = true; b.innerHTML = `<span class="spin"></span> Reviewing...`;
+      try {
+        const r = await askClaude(`A graduate sustainability consultant is practicing workplace writing. Situation: ${s.context}
+Task: ${st.q}
+A strong model answer: ${st.model}
+Their note:
+<note>
+${text}
+</note>
+Give a verdict (right = strong and ready to send, partial = right idea but missing key specifics, wrong = misses the main point) and 2-4 sentences of specific, encouraging feedback on content, numbers, clarity and next step.`, JUDGE_SCHEMA);
+        show(); fb.innerHTML = `<b>${esc(VERDICT[r.verdict]?.[0] || "")}</b> ${esc(r.feedback)}<hr style="border:none;border-top:1px solid var(--border);margin:8px 0"><b>A strong version:</b><br>${esc(st.model)}`;
+      } catch (err) { b.disabled = false; b.textContent = "🤖 Get feedback"; fb.className = "feedback on no"; fb.textContent = aiError(err); }
+    });
+  }
+}
+function finishScenario(){
+  const {s, pts, max} = SC, pct = max ? Math.round(pts / max * 100) : 100;
+  S.scen ||= {}; const prev = S.scen[s.id];
+  S.scen[s.id] = {best:Math.max(pct, prev?.best || 0), last:today()};
+  if (!prev) addXp(25, "Finished a scenario"); checkBadges(); save();
+  $("#session").innerHTML = `<div class="done-screen"><div class="big">${pct >= 80 ? "🏆" : pct >= 50 ? "🌟" : "💪"}</div><h1>${pct}% on "${esc(s.title)}"</h1>
+    <p class="muted" style="max-width:420px;margin:6px auto 0"><b>Remember:</b> ${esc(s.takeaway || "")}</p>
+    <div class="cta" style="max-width:340px;margin:18px auto 0"><button class="btn primary" id="scMore">Next scenario</button><button class="btn" id="scAgain">Try this one again</button><button class="btn" id="scDone">Done</button></div></div>`;
+  const nextS = SCEN.find(x => !S.scen[x.id]) || SCEN[(SCEN.indexOf(s) + 1) % SCEN.length];
+  $("#scMore").onclick = () => playScenario(nextS.id); $("#scAgain").onclick = () => playScenario(s.id); $("#scDone").onclick = scenarioMenu;
+}
+
+/* =========================================================
    Study sessions
    ========================================================= */
 const itemName = id => getItem(id)?.title || "";
@@ -1939,6 +2120,7 @@ let SES = null;
 function endToMenu(){ SES?.timer && clearInterval(SES.timer); SES = null; $("#session").hidden = true; $("#studyMenu").hidden = false; refresh(); }
 
 function startSession(kind, deck, list){
+  if (kind === "scenarios") { $("#studyMenu").hidden = true; $("#session").hidden = false; deck ? playScenario(deck) : scenarioMenu(); return; }
   let pool = list || (deck ? cardsFor(deck).filter(isUnlocked) : unlockedCards());
   if (kind === "review" && !list) pool = deck ? shuffle(pool) : dueQueue();
   if (!pool.length) {
@@ -1970,18 +2152,44 @@ function bindQuit(){ $("#quit").onclick = () => SES.i > 0 ? finish() : endToMenu
 function showCard(){
   const c = SES.queue[SES.i];
   if (!c) return finish();
+  const typing = S.typeAnswers !== false, vis = visualFor(c);
   $("#session").innerHTML = head(SES.i / SES.queue.length, `<span class="small muted mono">${SES.i + 1}/${SES.queue.length}</span>`) + `
-    <div class="flip" id="flip" tabindex="0" role="button" aria-label="Flip card"><div class="inner">
-      <div class="face"><div class="src">${esc(itemName(c.item))}</div><div class="q">${esc(c.q)}</div><div class="hint">Tap to reveal · Space</div></div>
-      <div class="face back"><div class="src">${esc(itemName(c.item))}</div><div class="a">${esc(c.a)}</div>${c.explain ? `<div class="ex">${esc(c.explain)}</div>` : ""}</div>
+    <div class="flip ${vis ? "tall" : ""}" id="flip" tabindex="0" role="button" aria-label="Flip card"><div class="inner">
+      <div class="face"><div class="src">${esc(itemName(c.item))}</div><div class="q">${esc(c.q)}</div><div class="hint">${typing ? "Type your answer below, then tap Check" : "Tap to reveal · Space"}</div></div>
+      <div class="face back"><div class="src">${esc(itemName(c.item))}</div><div class="a">${esc(c.a)}</div>${c.explain ? `<div class="ex">${esc(c.explain)}</div>` : ""}
+        ${vis ? `<div class="card-vis" data-svg="${esc(c.id)}"></div>` : ""}<div id="yourAns"></div></div>
     </div></div>
+    ${typing ? `<div id="typeBox"><textarea id="typed" placeholder="Type your answer..." style="min-height:64px" enterkeyhint="done"></textarea>
+      <div class="row" style="gap:8px;margin-top:8px"><button class="btn primary" id="checkBtn" style="flex:1">Check</button><button class="btn" id="skipType">I don't know</button></div></div>` : ""}
     <div class="grades" id="grades" style="visibility:hidden">
       ${[[1,"Again"],[2,"Hard"],[3,"Good"],[4,"Easy"]].map(([g,l]) => `<button class="g${g}" data-g="${g}">${l}<small>${ivlLabel(c, g)}</small></button>`).join("")}
     </div>
-    <p class="small muted" style="text-align:center;margin-top:10px">How well did you know it? Keys 1–4</p>`;
+    <p class="small muted" style="text-align:center;margin-top:10px">${typing ? "" : "How well did you know it? Keys 1–4 · "}<label style="cursor:pointer"><input type="checkbox" id="typeToggle" ${typing ? "checked" : ""}> Type my answers</label></p>`;
+  mountSvgs($("#session"));
   bindQuit();
-  const flip = () => { $("#flip").classList.toggle("flipped"); $("#grades").style.visibility = "visible"; };
-  $("#flip").onclick = flip;
+  let flipped = false;
+  const suggest = g => $("#grades").querySelectorAll("button").forEach(b => b.classList.toggle("suggest", +b.dataset.g === g));
+  const reveal = () => {
+    if (flipped) { $("#flip").classList.toggle("flipped"); return; }
+    flipped = true; $("#flip").classList.add("flipped"); $("#grades").style.visibility = "visible";
+    if (!typing) return;
+    const text = $("#typed").value.trim(); $("#typeBox").hidden = true;
+    const v = text ? checkTyped(text, c) : "wrong";
+    const show = (v, note) => { $("#yourAns").innerHTML = `<div class="yours ${v}"><b>${VERDICT[v][0]}</b>${text ? ` · You wrote: "${esc(text)}"` : ""}${note ? `<div style="margin-top:4px">${esc(note)}</div>` : ""}
+        ${text && S.apiKey && !note ? `<button class="btn xs" id="aiJudge" style="margin-top:6px">🤖 Double-check</button>` : ""}</div>`;
+      suggest(VERDICT[v][1]);
+      $("#aiJudge")?.addEventListener("click", async ev => { ev.stopPropagation(); const b = ev.currentTarget; b.disabled = true; b.innerHTML = `<span class="spin"></span>`;
+        try { const r = await askClaude(`Flashcard question: ${c.q}\nCorrect answer: ${c.a}\nContext: ${c.explain || ""}\nStudent's answer: ${text}\nJudge whether the student's answer means the same thing (wording can differ). right = correct, partial = partly correct or vague, wrong = incorrect. Feedback: one or two short sentences.`, JUDGE_SCHEMA); show(r.verdict, r.feedback); }
+        catch (err) { b.textContent = "Couldn't check"; } }); };
+    show(v);
+  };
+  $("#flip").onclick = () => typing && !flipped ? $("#typed").focus() : reveal();
+  if (typing) {
+    $("#checkBtn").onclick = reveal; $("#skipType").onclick = () => { $("#typed").value = ""; reveal(); };
+    $("#typed").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); reveal(); } });
+    setTimeout(() => $("#typed")?.focus({preventScroll:true}), 50);
+  }
+  $("#typeToggle").onchange = e => { S.typeAnswers = e.target.checked; save(); showCard(); };
   $("#grades").onclick = e => { const b = e.target.closest("[data-g]"); if (b) rate(+b.dataset.g); };
 }
 function rate(g){
@@ -2027,7 +2235,8 @@ function answer(k){
   if (SES.kind === "lightning") { setTimeout(() => { if (SES) { SES.i++; showQ(); } }, ok ? 350 : 1100); return; }
   const fb = $("#fb");
   fb.className = "feedback on " + (ok ? "ok" : "no");
-  fb.innerHTML = `<b>${ok ? "Correct!" : "Not quite."}</b> ${ok ? "" : `Answer: <b>${esc(c.a)}</b>. `}${esc(c.explain || "")}`;
+  fb.innerHTML = `<b>${ok ? "Correct!" : "Not quite."}</b> ${ok ? "" : `Answer: <b>${esc(c.a)}</b>. `}${esc(c.explain || "")}${visualFor(c) ? `<div class="card-vis" data-svg="${esc(c.id)}"></div>` : ""}`;
+  mountSvgs(fb);
   $("#next").style.display = "flex";
   $("#next").focus();
 }
@@ -2082,6 +2291,7 @@ function tab(name){
   document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === "v-" + name));
   document.querySelectorAll(".tabs [data-tab]").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === name));
   if (name !== "study" && SES) endToMenu();
+  else if (name !== "study") { $("#session").hidden = true; $("#studyMenu").hidden = false; }
   try { history.replaceState(null, "", "#" + name); } catch {}
   refresh(); scrollTo(0, 0);
 }
