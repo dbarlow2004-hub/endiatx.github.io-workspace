@@ -208,6 +208,96 @@ ol.timeline ul{padding-left:18px;margin-top:4px;font-size:13.5px}
 .flagrow{padding:8px 10px;border-radius:10px;background:var(--surface);border-left:4px solid var(--border)}
 .flagrow.found{border-left-color:var(--good)}.flagrow.missed{border-left-color:var(--warn)}.flagrow.falseflag{border-left-color:var(--bad)}
 
+/* Quizlet-style set */
+.qz-modes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.qz-modes button{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 4px;font-weight:700;font-size:13px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
+.qz-modes button span{font-size:20px}
+.qz-modes button:hover{border-color:var(--accent)}
+.qz-card{position:relative;perspective:1400px;min-height:260px;cursor:pointer;margin-bottom:10px}
+.qz-inner{position:relative;min-height:260px;transition:transform .45s;transform-style:preserve-3d}
+.qz-card.flipped .qz-inner{transform:rotateX(180deg)}
+.qz-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surface);border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,.18);padding:28px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:auto;gap:8px}
+.qz-face.back{transform:rotateX(180deg)}
+.qz-text{font-size:21px;font-weight:600;line-height:1.35}
+.qz-text.small{font-size:18px}
+.qz-ex{font-size:14px;color:var(--muted)}
+.qz-face .card-vis{width:100%;max-width:420px}
+.qz-star{position:absolute;top:10px;right:12px;font-size:22px;background:none;border:none;color:var(--gold);cursor:pointer;z-index:2}
+.qz-nav{display:flex;align-items:center;justify-content:center;gap:22px;margin:6px 0 10px}
+.qz-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:var(--surface);font-size:24px;cursor:pointer}
+.qz-list{display:flex;flex-direction:column;gap:8px}
+.qz-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr) auto;gap:12px;align-items:start;background:var(--surface);border-radius:12px;padding:12px 14px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.qz-row .t{font-weight:600;font-size:14.5px;border-right:2px solid var(--surface2);padding-right:12px}
+.qz-row .d{font-size:14px}
+.qz-rstar{background:none;border:none;font-size:18px;color:var(--gold);cursor:pointer}
+@media (max-width:520px){.qz-row{grid-template-columns:1fr auto}.qz-row .t{border-right:none;padding-right:0;grid-column:1}.qz-row .d{grid-column:1}.qz-rstar{grid-row:1;grid-column:2}}
+.card-vis.mini{max-width:260px;margin-top:6px}
+/* Match */
+.match{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media (min-width:640px){.match{grid-template-columns:repeat(4,1fr)}}
+.mt{min-height:96px;background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:8px;font-size:12.5px;line-height:1.3;cursor:pointer;transition:opacity .25s,transform .25s}
+.mt.q{font-weight:700}
+.mt.sel{border-color:var(--accent);background:var(--accent-soft)}
+.mt.bad{border-color:var(--bad);animation:shake .4s}
+.mt.gone{opacity:0;transform:scale(.85);pointer-events:none}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+/* LEED book */
+.book-cover{background:linear-gradient(135deg,var(--accent-soft),var(--surface));border:1px solid var(--border);border-radius:16px;padding:18px}
+.book-cover .kick,.book .kick{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.book-cover h1{font-family:Georgia,"Times New Roman",serif;font-size:28px;margin:4px 0 6px}
+.book-cover p{font-size:13.5px;color:var(--muted)}
+.exam-facts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.exam-facts span{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:6px 10px;font-size:13px}
+.exam-facts b{font-size:16px}
+ol.toc{list-style:none;display:flex;flex-direction:column;gap:6px}
+ol.toc button{width:100%;display:flex;gap:12px;align-items:center;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer}
+ol.toc .num{width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--on-accent);font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:Georgia,serif}
+.book{font-family:Georgia,"Times New Roman",serif;max-width:680px;margin:0 auto}
+.book h1{font-size:30px;line-height:1.15;margin:4px 0 10px}
+.book h2{font-family:inherit;font-size:21px;margin:26px 0 8px;display:block;border-bottom:1px solid var(--border);padding-bottom:4px}
+.book p{font-size:16.5px;line-height:1.65;margin-bottom:12px}
+.book .lede{font-size:18px;font-style:italic;color:var(--muted)}
+.book .inthis{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-family:'DM Sans',system-ui,sans-serif;font-size:14px}
+.book .inthis ol{padding-left:20px;margin-top:4px}
+.book .inthis a{text-decoration:none}
+.book .tip{border-left:4px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--surface));padding:10px 14px;border-radius:0 10px 10px 0;font-family:'DM Sans',system-ui,sans-serif;font-size:14.5px;margin:12px 0}
+.book .fig{margin:16px 0}
+.book .fig div{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.book .fig svg{display:block;width:100%;height:auto}
+.book figcaption{font-size:13px;color:var(--muted);margin-top:6px;font-style:italic}
+.book .qz-list,.book .btn{font-family:'DM Sans',system-ui,sans-serif}
+/* exam */
+.exam-bar{position:sticky;top:52px;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:10px;background:#1f2937;color:#fff;border-radius:10px;padding:10px 14px;margin-bottom:12px;font-size:14px}
+.exam-bar .mono{font-size:16px;font-weight:700}
+.exam-bar .low{color:#fca5a5}
+.exam-q{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+.exam-stem{font-size:17px;line-height:1.5;margin:8px 0 12px}
+.exam-opts{display:flex;flex-direction:column;gap:8px}
+.eo{display:flex;gap:10px;align-items:flex-start;text-align:left;border:1.5px solid var(--border);background:var(--bg);border-radius:10px;padding:11px 12px;font-size:15px;cursor:pointer}
+.eo .ltr{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--muted);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.eo.on{border-color:var(--accent);background:var(--accent-soft)}
+.eo.on .ltr{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.exam-nav{display:flex;gap:8px;margin-top:12px}
+.exam-nav .btn{flex:1}
+.exam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px}
+.exam-grid button{height:38px;border-radius:8px;border:1.5px solid var(--border);background:var(--bg);font-weight:700;font-size:13px;cursor:pointer;position:relative}
+.exam-grid button.ans{background:var(--accent-soft);border-color:var(--accent)}
+.exam-grid button.flg::after{content:"🚩";position:absolute;top:-8px;right:-4px;font-size:11px}
+.bars{display:flex;flex-direction:column;gap:6px}
+.barrow{display:grid;grid-template-columns:minmax(0,1.6fr) 2fr auto;gap:8px;align-items:center;font-size:13px}
+.barrow .bt{height:10px;background:var(--surface2);border-radius:6px;overflow:hidden}
+.barrow .bt i{display:block;height:100%}
+ol.exam-review{list-style:none;display:flex;flex-direction:column;gap:10px}
+ol.exam-review > li{background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--good);border-radius:10px;padding:12px 14px;font-size:14px}
+ol.exam-review > li.no{border-left-color:var(--bad)}
+ol.exam-review ul{list-style:none;margin:6px 0;display:flex;flex-direction:column;gap:3px}
+ol.exam-review li.right{color:var(--good);font-weight:700}
+ol.exam-review li.wrong{color:var(--bad);text-decoration:line-through}
+table.facts{width:100%;border-collapse:collapse;font-size:14px}
+table.facts th{text-align:left;color:var(--muted);font-weight:600;padding:6px 10px 6px 0;vertical-align:top;width:38%;border-bottom:1px solid var(--border)}
+table.facts td{padding:6px 0;border-bottom:1px solid var(--border)}
+.book-mode{border-color:var(--accent);background:var(--accent-soft)}
+
 /* sheet */
 .sheet-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:40;display:none}
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;background:var(--bg);border-radius:20px 20px 0 0;max-height:92vh;overflow-y:auto;transform:translateY(100%);transition:transform .25s ease;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
@@ -335,6 +425,8 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
     <div class="cta">
       <button class="btn primary" data-go="review"><span>🧠 Review flashcards</span><span class="sub" id="ctaDue"></span></button>
       <button class="btn" data-go="quiz"><span>🎯 Quick quiz</span><span class="sub">10 questions · combos for streaks</span></button>
+      <button class="btn" data-guide><span>📘 LEED study guide</span><span class="sub">chapters · terms · practice exam</span></button>
+      <a class="btn" href="watch.html" style="text-decoration:none;color:inherit"><span>▶ Watch</span><span class="sub">short videos · companies & explainers</span></a>
       <button class="btn" data-tab="library"><span>📚 My shelves</span><span class="sub">start a book · log progress</span></button>
       <button class="btn" data-tab="career" id="ctaJob" hidden><span>💼 Job prep</span><span class="sub" id="ctaJobSub"></span></button>
     </div>
@@ -413,6 +505,8 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
       <h1>Study</h1>
       <p class="muted small" style="margin:4px 0 14px">Book questions unlock page by page as you log your reading; everything else unlocks when you finish it. The Key Concepts deck is open from the start.</p>
       <div class="modes">
+        <button class="mode book-mode" data-guide><span class="e">📘</span><div><b>LEED Green Associate study guide</b><span>Nine chapters in book order: reading, key terms, exam tips and chapter reviews.</span></div></button>
+        <button class="mode" data-exam-start="full"><span class="e">📝</span><div><b>Practice exam</b><span>Real format: 100 questions, 2 hours, select-two and select-three questions, scored at the end.</span></div></button>
         <button class="mode" data-go="review"><span class="e">🧠</span><div><b>Flashcards</b><span id="mDue">Spaced repetition: you see each card again right before you'd forget it.</span></div></button>
         <button class="mode" data-go="quiz"><span class="e">🎯</span><div><b>Quiz</b><span>10 multiple-choice questions. Answer streaks multiply your XP.</span></div></button>
         <button class="mode" data-go="scenarios"><span class="e">🏗️</span><div><b>Real-world scenarios</b><span>Practice with what you'd be handed at work: spot what it is, flag problems, decide next steps.</span></div></button>
@@ -430,7 +524,7 @@ details summary{cursor:pointer;font-weight:600;font-size:14.5px}
   <button role="tab" data-tab="library" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5a2 2 0 0 1 2-2h3v18H6a2 2 0 0 1-2-2zM9 3h4v18H9zM14.5 4.2l3.8-1 3.2 16.6-3.8 1z"/></svg>Library</button>
   <button role="tab" data-tab="study" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>Study<span class="badge-n" id="tabDue" hidden></span></button>
   <button role="tab" data-tab="career" aria-selected="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg>Career</button>
-  <a href="./" role="tab" style="flex:1;max-width:160px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 4px 8px;font-size:11.5px;color:var(--muted);text-decoration:none"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg>News</a>
+  <a href="news.html" role="tab" style="flex:1;max-width:160px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:9px 4px 8px;font-size:11.5px;color:var(--muted);text-decoration:none"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg>News</a>
 </nav>
 
 <div class="sheet-bg" id="sheetBg"></div>
@@ -463,10 +557,11 @@ function ingestInbox(){
     const box = JSON.parse(localStorage.getItem(INBOX) || "[]");
     if (!box.length) return;
     for (const a of box) {
-      const id = "a-" + slug(a.title || "").slice(0, 48);
-      if (!a.title || S.custom[id]) continue;
-      S.custom[id] = {id, title:a.title, type:"article", by:a.source || "", url:safeUrl(a.link)};
-      S.items[id] = {status:a.status === "reading" ? "reading" : "want", updated:Date.now()};
+      const type = a.type === "video" ? "video" : "article", id = (type === "video" ? "v-" : "a-") + slug(a.title || "").slice(0, 48);
+      if (!a.title) continue;
+      if (S.custom[id]) { if (a.notes) { const rec = S.items[id] ||= {}; rec.notes = (rec.notes ? rec.notes.trimEnd() + "\n\n" : "") + a.notes; rec.updated = Date.now(); } continue; }
+      S.custom[id] = {id, title:a.title, type, by:a.source || "", url:safeUrl(a.link)};
+      S.items[id] = {status:["reading","done"].includes(a.status) ? a.status : "want", updated:Date.now(), ...(a.notes ? {notes:a.notes} : {})};
     }
     localStorage.removeItem(INBOX); save();
   } catch {}
@@ -510,13 +605,30 @@ let DECKS = {};     // id -> {summary, takeaways, cards}
 async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? r.json() : {}; } catch { return {}; } }
 
 async function loadCatalog(){
-  const [res, books, media, deb, car, vis, sc] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json"), getJSON("visuals.json"), getJSON("scenarios.json")]);
+  const [res, books, media, deb, car, vis, sc, g1, g2, g3, cos] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json"), getJSON("visuals.json"), getJSON("scenarios.json"),
+    getJSON("leed-ch1-3.json"), getJSON("leed-ch4-6.json"), getJSON("leed-ch7-9.json"), getJSON("companies.json")]);
   VIS = vis || {}; SCEN = sc.scenarios || [];
+  const chapters = [g1, g2, g3].flatMap(x => Array.isArray(x) ? x : []).sort((a, b) => a.n - b.n);
+  if (chapters.length) LEED = {chapters, exam:{questions:100, minutes:120, pass:170, scale:[125, 200],
+    handbook:"https://www.usgbc.org/resources/leed-v4-green-associate-candidate-handbook",
+    note:"Format from usgbc.org: 2 hours, 100 multiple-choice questions, 170 out of 200 to pass. The current candidate handbook covers LEED v4. LEED v5 launched in 2025, so check which version your exam date uses."}};
+  COMPANIES = cos.companies || [];
   DECKS = Object.assign({}, books, media);
+  for (const c of [g1, g2, g3].flatMap(x => Array.isArray(x) ? x : [])) {   // LEED chapters, in book order
+    const defs = (c.terms || []).map(t => t.def);
+    DECKS[`leed-ch${c.n}`] = {summary:c.intro, takeaways:(c.sections || []).map(s => s.h),
+      cards:(c.terms || []).map(t => ({q:t.term, a:t.def, explain:"", wrong:shuffle(defs.filter(d => d !== t.def)).slice(0, 3)}))};
+    CATALOG[`leed-ch${c.n}`] = {id:`leed-ch${c.n}`, title:`LEED ${c.n}. ${c.title}`, type:"course", by:"LEED Green Associate study guide", why:c.intro, always:true, chapter:c.n};
+  }
+  CATALOG["leed-missed"] = {id:"leed-missed", title:"LEED: questions I missed", type:"course", by:"From your practice exams", why:"Every question you miss on a practice exam lands here for review.", always:true};
+  for (const co of (cos.companies || [])) {   // company packs: studied only on purpose
+    DECKS[`co-${co.id}`] = {summary:co.tagline, takeaways:[], cards:co.cards || []};
+    CATALOG[`co-${co.id}`] = {id:`co-${co.id}`, title:`${co.name} prep pack`, type:"course", by:"Company pack · study before you talk with them", why:co.tagline, always:true, scoped:true, company:co.id};
+  }
   CAREER = car; JOBS = car.jobs || [];
   for (const j of JOBS) if (j.cards?.length) {
     DECKS["career-" + j.id] = {summary:`Flashcards for the ${j.title} role at ${j.company}.`, takeaways:(j.skills || []).map(s => s.area), cards:j.cards};
-    CATALOG["career-" + j.id] = {id:"career-" + j.id, title:`Job prep: ${j.company}`, type:"course", by:j.title, why:j.summary, always:true};
+    CATALOG["career-" + j.id] = {id:"career-" + j.id, title:`Job prep: ${j.company}`, type:"course", by:j.title, why:j.summary, always:true, scoped:true};
   }
   if (deb.issues?.length) DECKS.debates = {summary:"Each side's strongest case on the biggest energy and climate-policy debates. Read them all on the News page under Big debates.",
     takeaways:deb.issues.map(x => x.question), cards:deb.issues.flatMap(x => x.cards || [])};
@@ -561,7 +673,8 @@ function isUnlocked(c){
 }
 function unlockedCards(){
   const out = [];
-  for (const id of Object.keys(allItems())) cardsFor(id).forEach(c => { if (isUnlocked(c)) out.push(c); });
+  for (const id of Object.keys(allItems())) { if (getItem(id)?.scoped) continue;   // company packs: only when you choose
+    cardsFor(id).forEach(c => { if (isUnlocked(c)) out.push(c); }); }
   return out;
 }
 const nextUnlock = id => cardsFor(id).filter(c => !isUnlocked(c) && c.pct != null).sort((a,b) => a.pct - b.pct)[0];
@@ -1649,7 +1762,7 @@ function renderCareer(){
       ${t.officesNote ? `<p class="small muted" style="margin-top:8px">${esc(t.officesNote)}</p>` : ""}
       <label class="f">Roles to look for</label><ul class="takeaways">${(t.roles || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
       <label class="f">What to emphasize for ${esc(t.company)}</label><ul class="takeaways">${(t.emphasize || []).map(x => `<li>${esc(x)}</li>`).join("")}</ul>
-      <div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap"><a class="btn sm" href="${esc(safeUrl(t.careers))}" target="_blank" rel="noopener">${esc(t.company)} careers ↗</a>
+      <div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap">${companyFor(t.company) ? `<button class="btn sm primary" data-company="${esc(companyFor(t.company).id)}">📘 Study the ${esc(t.company)} pack</button>` : ""}<a class="btn sm" href="${esc(safeUrl(t.careers))}" target="_blank" rel="noopener">${esc(t.company)} careers ↗</a>
         ${t.job && JOBS.some(x => x.id === t.job) ? `<button class="btn sm primary" data-job="${esc(t.job)}" data-scrolljob="1">Prep for the open role ↓</button>` : `<span class="small muted" style="align-self:center">The skills below carry over. Paste me a ${esc(t.company)} posting to add a prep plan.</span>`}</div>
     </details>`).join("")}
     ${(CAREER.alsoMatch || []).map(a => `<div class="lock" style="margin-top:2px">➕ <span><b>${esc(a.company)}</b>: ${esc(a.note)} <a href="${esc(safeUrl(a.careers))}" target="_blank" rel="noopener">Careers ↗</a></span></div>`).join("")}
@@ -1848,6 +1961,7 @@ function networkHtml(){
             <option value="thanks">Thank-you after meeting</option><option value="followup">Follow-up / check-in</option></select>
           <button class="btn sm primary" data-ndraftgo>🤖 Draft</button>
           <button class="btn sm" data-nquestions>🤖 Questions to ask</button>
+          ${companyFor(c.org) ? `<button class="btn sm" data-company="${esc(companyFor(c.org).id)}">📘 Prep: ${esc(companyFor(c.org).name)} pack</button>` : ""}
         </div>
         <div data-nout></div>
         <button class="btn sm" data-ndel style="margin-top:12px;color:var(--bad)">Remove</button>
@@ -2113,6 +2227,279 @@ function finishScenario(){
 }
 
 /* =========================================================
+   Quizlet-style sets, Match, LEED study guide (book order), exam simulator,
+   and company prep packs
+   ========================================================= */
+let LEED = null, COMPANIES = [];
+const showStudyPage = html => { $("#studyMenu").hidden = true; $("#session").hidden = false; $("#session").innerHTML = html; scrollTo(0, 0); };
+const deckTitle = d => getItem(d)?.title || d;
+
+/* ---------- Quizlet-style set page ---------- */
+let SET = null;
+function openSet(deck){
+  if (!$("#v-study").classList.contains("on")) tab("study");
+  const n = cardsFor(deck).length; if (!n) { toast("This set has no cards yet"); return; }
+  SET = {deck, order:[...Array(n).keys()], i:0, starredOnly:false, flipped:false};
+  renderSet();
+}
+function setCards(){ const all = cardsFor(SET.deck), st = S.stars || {}; return SET.order.map(k => all[k]).filter(c => c && (!SET.starredOnly || st[c.id])); }
+function renderSet(){
+  const all = cardsFor(SET.deck), list = setCards(), stars = S.stars || {};
+  if (SET.i >= list.length) SET.i = 0;
+  const c = list[SET.i], vis = c && visualFor(c);
+  showStudyPage(`
+    <div class="session-head"><button class="x" id="setBack" aria-label="Back">×</button><b style="flex:1;min-width:0">${esc(deckTitle(SET.deck))}</b><span class="small muted">${all.length} terms</span></div>
+    <div class="qz-modes">
+      <button data-qm="learn"><span>🧠</span>Learn</button><button data-qm="test"><span>📝</span>Test</button><button data-qm="match"><span>🧩</span>Match</button><button data-qm="quiz"><span>🎯</span>Quiz</button>
+    </div>
+    ${c ? `<div class="qz-card ${SET.flipped ? "flipped" : ""}" id="qzCard" role="button" tabindex="0" aria-label="Flip card">
+      <div class="qz-inner"><div class="qz-face"><div class="qz-text">${esc(c.q)}</div></div>
+      <div class="qz-face back"><div class="qz-text small">${esc(c.a)}</div>${c.explain ? `<div class="qz-ex">${esc(c.explain)}</div>` : ""}${vis ? `<div class="card-vis" data-svg="${esc(c.id)}"></div>` : ""}</div></div>
+      <button class="qz-star ${stars[c.id] ? "on" : ""}" data-star="${esc(c.id)}" aria-label="Star">${stars[c.id] ? "★" : "☆"}</button></div>
+    <div class="qz-nav"><button id="qzPrev" aria-label="Previous">‹</button><span class="mono">${SET.i + 1} / ${list.length}</span><button id="qzNext" aria-label="Next">›</button></div>`
+    : `<div class="empty">No starred terms yet. Tap ☆ on a card to star it.</div>`}
+    <div class="row" style="justify-content:center;gap:8px;margin-top:4px;flex-wrap:wrap">
+      <button class="chip" id="qzShuffle" aria-pressed="${SET.shuffled ? "true" : "false"}">🔀 Shuffle</button>
+      <button class="chip" id="qzStarOnly" aria-pressed="${SET.starredOnly}">★ Starred only</button></div>
+    <h2>Terms in this set <small>${all.length}</small></h2>
+    <div class="qz-list">${all.map(x => `<div class="qz-row"><div class="t">${esc(x.q)}</div><div class="d">${esc(x.a)}${visualFor(x) ? `<div class="card-vis mini" data-svg="${esc(x.id)}"></div>` : ""}</div>
+      <button class="qz-rstar ${stars[x.id] ? "on" : ""}" data-star="${esc(x.id)}" aria-label="Star">${stars[x.id] ? "★" : "☆"}</button></div>`).join("")}</div>`);
+  mountSvgs($("#session"));
+  $("#setBack").onclick = endToMenu;
+  const go = d => { SET.flipped = false; SET.i = (SET.i + d + list.length) % list.length; renderSet(); };
+  if (c) { $("#qzCard").onclick = e => { if (e.target.closest("[data-star]")) return; SET.flipped = !SET.flipped; $("#qzCard").classList.toggle("flipped"); };
+    $("#qzPrev").onclick = () => go(-1); $("#qzNext").onclick = () => go(1);
+    let x0 = null; $("#qzCard").addEventListener("touchstart", e => x0 = e.touches[0].clientX, {passive:true});
+    $("#qzCard").addEventListener("touchend", e => { if (x0 == null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1); x0 = null; }); }
+  $("#qzShuffle").onclick = () => { SET.shuffled = !SET.shuffled; SET.order = SET.shuffled ? shuffle(SET.order) : [...SET.order].sort((a, b) => a - b); SET.i = 0; renderSet(); };
+  $("#qzStarOnly").onclick = () => { SET.starredOnly = !SET.starredOnly; SET.i = 0; renderSet(); };
+  $("#session").querySelectorAll("[data-star]").forEach(b => b.onclick = e => { e.stopPropagation(); const id = b.dataset.star; (S.stars ||= {})[id] = !S.stars[id]; if (!S.stars[id]) delete S.stars[id]; save(); renderSet(); });
+  $("#session").querySelectorAll("[data-qm]").forEach(b => b.onclick = () => {
+    const m = b.dataset.qm, d = SET.deck, ch = /^leed-ch(\d+)$/.exec(d);
+    if (m === "learn") startSession("review", d);
+    else if (m === "quiz") startSession("quiz", d);
+    else if (m === "match") startMatch(d);
+    else if (m === "test") ch && LEED ? startExam({mode:"chapter", ch:+ch[1]}) : startSession("quiz", d);
+  });
+}
+document.addEventListener("keydown", e => {
+  if (!SET || $("#session").hidden || !$("#qzCard") || e.target.matches("input,textarea")) return;
+  if (e.key === "ArrowRight") $("#qzNext").click(); else if (e.key === "ArrowLeft") $("#qzPrev").click();
+  else if (e.key === " ") { e.preventDefault(); $("#qzCard").click(); }
+});
+
+/* ---------- Match (tap a term, then its definition, against the clock) ---------- */
+function startMatch(deck){
+  const pool = shuffle(cardsFor(deck).filter(c => c.a && c.a.length <= 90)).slice(0, 6);
+  if (pool.length < 3) { toast("Not enough short cards for Match"); return; }
+  const tiles = shuffle(pool.flatMap((c, k) => [{k, text:c.q, side:"q"}, {k, text:c.a, side:"a"}]));
+  const t0 = Date.now(); let sel = null, left = pool.length, penalty = 0, timer;
+  showStudyPage(`<div class="session-head"><button class="x" id="mBack" aria-label="Back">×</button><b style="flex:1">🧩 Match</b><span class="mono" id="mTime">0.0s</span></div>
+    <p class="small muted" style="margin-bottom:10px">Tap a term, then its matching definition. Wrong pairs add 1 second.</p>
+    <div class="match">${tiles.map((t, i) => `<button class="mt ${t.side}" data-i="${i}">${esc(t.text.length > 110 ? t.text.slice(0, 107) + "..." : t.text)}</button>`).join("")}</div>`);
+  timer = setInterval(() => { const el = $("#mTime"); if (!el) return clearInterval(timer); el.textContent = ((Date.now() - t0) / 1000 + penalty).toFixed(1) + "s"; }, 100);
+  $("#mBack").onclick = () => { clearInterval(timer); SET && SET.deck === deck ? renderSet() : endToMenu(); };
+  $("#session").querySelector(".match").onclick = e => {
+    const b = e.target.closest(".mt"); if (!b || b.classList.contains("gone")) return;
+    const t = tiles[+b.dataset.i];
+    if (!sel) { sel = {b, t}; b.classList.add("sel"); return; }
+    if (sel.b === b) { b.classList.remove("sel"); sel = null; return; }
+    if (sel.t.k === t.k && sel.t.side !== t.side) {
+      [sel.b, b].forEach(x => { x.classList.remove("sel"); x.classList.add("gone"); }); sel = null;
+      if (--left === 0) {
+        clearInterval(timer); const secs = +((Date.now() - t0) / 1000 + penalty).toFixed(1);
+        S.matchBest ||= {}; const best = S.matchBest[deck]; const record = !best || secs < best; if (record) S.matchBest[deck] = secs;
+        addXp(20, "Match complete"); if (record && best) confetti(); save();
+        $("#session").querySelector(".match").outerHTML = `<div class="done-screen"><div class="big">${record ? "🏆" : "🧩"}</div><h1>${secs}s</h1><p class="muted">${record ? (best ? "New personal best!" : "First finish!") : `Your best: ${best}s`}</p>
+          <div class="cta" style="max-width:320px;margin:16px auto 0"><button class="btn primary" id="mAgain">Play again</button><button class="btn" id="mDone">Back to set</button></div></div>`;
+        $("#mAgain").onclick = () => startMatch(deck); $("#mDone").onclick = () => SET && SET.deck === deck ? renderSet() : openSet(deck);
+      }
+    } else {
+      penalty += 1; const a = sel.b; [a, b].forEach(x => { x.classList.remove("sel"); x.classList.add("bad"); setTimeout(() => x.classList.remove("bad"), 450); }); sel = null;
+    }
+  };
+}
+
+/* ---------- LEED Green Associate study guide (book order) ---------- */
+function leedProgress(n){
+  const ch = LEED.chapters.find(c => c.n === n), g = (S.guide ||= {})[n] || {};
+  const terms = cardsFor(`leed-ch${n}`), learned = terms.filter(c => (S.srs[c.id]?.ivl || 0) >= 3).length;
+  return {read:!!g.read, learned, total:terms.length, best:g.best, ch};
+}
+function openGuide(){
+  if (!LEED) { toast("The study guide is still loading"); return; }
+  if (!$("#v-study").classList.contains("on")) tab("study");
+  const ex = LEED.exam || {}, hist = (S.exams || []).slice(-3).reverse();
+  showStudyPage(`<div class="session-head"><button class="x" id="gBack" aria-label="Back">×</button><b style="flex:1">📘 Study guide</b></div>
+    <div class="book-cover"><div class="kick">Exam prep</div><h1>LEED Green Associate</h1><p>${esc(ex.note || "")}</p>
+      <div class="exam-facts"><span><b>${ex.questions || 100}</b> questions</span><span><b>${(ex.minutes || 120) / 60}</b> hours</span><span><b>${ex.pass || 170}</b>/200 to pass</span></div>
+      <div class="row" style="gap:8px;flex-wrap:wrap;margin-top:12px"><button class="btn primary" data-exam="full">📝 Full practice exam</button><button class="btn" data-exam="half">Half exam (50)</button>
+        ${ex.handbook ? `<a class="btn" href="${esc(safeUrl(ex.handbook))}" target="_blank" rel="noopener">Official handbook ↗</a>` : ""}</div>
+      ${hist.length ? `<p class="small" style="margin-top:10px">Recent: ${hist.map(h => `${esc(h.d)} ${h.mode} · <b>${h.scaled}</b> (${h.pct}%)`).join(" · ")}</p>` : ""}</div>
+    <h2>Contents</h2>
+    <ol class="toc">${LEED.chapters.map(c => { const p = leedProgress(c.n); return `<li><button data-ch="${c.n}"><span class="num">${c.n}</span>
+      <span style="flex:1;min-width:0"><b>${esc(c.title)}</b><span class="small muted" style="display:block">${p.read ? "✓ Read · " : ""}${p.learned}/${p.total} terms learned${p.best != null ? ` · quiz best ${p.best}%` : ""}</span></span><span class="chev">›</span></button></li>`; }).join("")}</ol>`);
+  $("#gBack").onclick = endToMenu;
+  $("#session").querySelectorAll("[data-ch]").forEach(b => b.onclick = () => openChapter(+b.dataset.ch));
+  $("#session").querySelectorAll("[data-exam]").forEach(b => b.onclick = () => startExam({mode:b.dataset.exam}));
+}
+function openChapter(n){
+  const c = LEED.chapters.find(x => x.n === n); if (!c) return openGuide();
+  const p = leedProgress(n), terms = cardsFor(`leed-ch${n}`), prev = LEED.chapters.find(x => x.n === n - 1), next = LEED.chapters.find(x => x.n === n + 1);
+  showStudyPage(`<div class="session-head"><button class="x" id="cBack" aria-label="Contents">×</button><b style="flex:1">Chapter ${n} of ${LEED.chapters.length}</b></div>
+    <article class="book">
+      <div class="kick">Chapter ${n}</div><h1>${esc(c.title)}</h1>
+      <p class="lede">${esc(c.intro)}</p>
+      <nav class="inthis"><b>In this chapter</b><ol>${c.sections.map((s, i) => `<li><a href="#sec${i}">${esc(s.h)}</a></li>`).join("")}<li><a href="#terms">Key terms</a></li><li><a href="#review">Chapter review</a></li></ol></nav>
+      ${c.sections.map((s, i) => `<section id="sec${i}"><h2>${n}.${i + 1} ${esc(s.h)}</h2>${s.body.map(para => `<p>${esc(para)}</p>`).join("")}
+        ${s.tip ? `<aside class="tip"><b>📝 Exam tip</b> ${esc(s.tip)}</aside>` : ""}
+        ${i === 0 && c.svg ? `<figure class="fig"><div data-svg="leedfig:${n}"></div><figcaption>Figure ${n}.1 · ${esc(c.svgCaption || "")}</figcaption></figure>` : ""}</section>`).join("")}
+      <section id="terms"><h2>Key terms</h2>
+        <div class="qz-list">${terms.slice(0, 8).map(x => `<div class="qz-row"><div class="t">${esc(x.q)}</div><div class="d">${esc(x.a)}</div></div>`).join("")}</div>
+        <button class="btn primary block" id="chSet" style="margin-top:10px">🗂️ Study all ${terms.length} terms (flashcards, learn, match)</button></section>
+      <section id="review"><h2>Chapter review</h2><p>${c.questions.length} questions in exam format: no hints until you finish, and some ask you to select two or three answers.</p>
+        <button class="btn primary block" id="chQuiz">📝 Start chapter review</button></section>
+      <label class="row" style="gap:8px;margin-top:16px;cursor:pointer"><input type="checkbox" id="chRead" ${p.read ? "checked" : ""} style="width:20px;height:20px"> I've read this chapter</label>
+      <div class="row" style="justify-content:space-between;margin-top:18px;gap:8px">${prev ? `<button class="btn sm" data-ch="${prev.n}">‹ ${esc(prev.title)}</button>` : "<span></span>"}${next ? `<button class="btn sm" data-ch="${next.n}">${esc(next.title)} ›</button>` : ""}</div>
+    </article>`);
+  // chapter figures live in LEED data, not VIS
+  $("#session").querySelectorAll('[data-svg^="leedfig:"]').forEach(el => { const node = safeSvg(c.svg); if (node) el.replaceChildren(node); el.removeAttribute("data-svg"); });
+  $("#cBack").onclick = openGuide;
+  $("#session").querySelectorAll(".inthis a").forEach(a => a.onclick = e => { e.preventDefault(); document.querySelector(a.getAttribute("href"))?.scrollIntoView({behavior:"smooth"}); });
+  $("#session").querySelectorAll("[data-ch]").forEach(b => b.onclick = () => openChapter(+b.dataset.ch));
+  $("#chSet").onclick = () => openSet(`leed-ch${n}`);
+  $("#chQuiz").onclick = () => startExam({mode:"chapter", ch:n});
+  $("#chRead").onchange = e => { const g = (S.guide ||= {})[n] ||= {}; g.read = e.target.checked; if (g.read && !g.readXp) { g.readXp = 1; addXp(40, `Read chapter ${n}`); } save(); };
+}
+
+/* ---------- Exam simulator (real exam format: timed, no feedback until the end) ---------- */
+let EX = null;
+function startExam(opt){
+  if (!LEED) return;
+  const chs = LEED.chapters, mode = opt.mode;
+  let qs = [];
+  const tag = (q, c, i) => ({...q, ch:c.n, key:`leed${c.n}-${i}`});
+  if (mode === "chapter") { const c = chs.find(x => x.n === opt.ch); qs = shuffle(c.questions.map((q, i) => tag(q, c, i))); }
+  else {
+    const want = mode === "half" ? 50 : (LEED.exam?.questions || 100), per = Math.floor(want / chs.length);
+    const pools = chs.map(c => shuffle(c.questions.map((q, i) => tag(q, c, i))));
+    pools.forEach(p => qs.push(...p.splice(0, per)));
+    const rest = shuffle(pools.flat()); while (qs.length < want && rest.length) qs.push(rest.pop());
+    qs = shuffle(qs);
+  }
+  const minutes = mode === "chapter" ? 30 : mode === "half" ? 60 : (LEED.exam?.minutes || 120);
+  EX = {mode, ch:opt.ch, qs:qs.map(q => ({...q, opts:shuffle(q.options.map((o, k) => ({o, k})))})), ans:{}, flag:{}, i:0, end:Date.now() + minutes * 60000, minutes, review:false};
+  clearInterval(EX.timer); EX.timer = setInterval(tickExam, 1000);
+  renderExam();
+}
+const fmtClock = ms => { const s = Math.max(0, Math.floor(ms / 1000)); return `${String(Math.floor(s / 3600)).padStart(2, "0")}:${String(Math.floor(s % 3600 / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`; };
+function tickExam(){ if (!EX) return; const left = EX.end - Date.now(); const el = $("#exClock"); if (el) { el.textContent = fmtClock(left); el.classList.toggle("low", left < 5 * 60000); } if (left <= 0) submitExam(true); }
+function renderExam(){
+  const q = EX.qs[EX.i], sel = EX.ans[EX.i] || [], n = EX.qs.length, multi = (q.select || 1) > 1;
+  const title = EX.mode === "chapter" ? `Chapter ${EX.ch} review` : EX.mode === "half" ? "Practice exam (half)" : "LEED Green Associate practice exam";
+  showStudyPage(`<div class="exam-bar"><b>${esc(title)}</b><span class="mono" id="exClock">${fmtClock(EX.end - Date.now())}</span></div>
+    ${EX.review ? examReviewGrid() : `
+    <div class="exam-q"><div class="small muted">Question ${EX.i + 1} of ${n}</div>
+      <p class="exam-stem">${esc(q.q)}</p>
+      ${multi ? `<p class="small" style="margin-bottom:8px"><b>Select ${q.select === 2 ? "TWO" : "THREE"}.</b> (${sel.length}/${q.select} selected)</p>` : ""}
+      <div class="exam-opts">${q.opts.map((x, j) => `<button class="eo ${sel.includes(x.k) ? "on" : ""}" data-k="${x.k}" role="${multi ? "checkbox" : "radio"}" aria-checked="${sel.includes(x.k)}"><span class="ltr">${"ABCDEF"[j]}</span><span>${esc(x.o)}</span></button>`).join("")}</div>
+      <label class="row" style="gap:8px;margin-top:12px;cursor:pointer;font-size:14px"><input type="checkbox" id="exFlag" ${EX.flag[EX.i] ? "checked" : ""}> 🚩 Flag for review</label>
+    </div>
+    <div class="exam-nav"><button class="btn" id="exPrev" ${EX.i ? "" : "disabled"}>‹ Previous</button><button class="btn" id="exRev">Review</button><button class="btn primary" id="exNext">${EX.i === n - 1 ? "Review & end" : "Next ›"}</button></div>`}`);
+  if (EX.review) {
+    $("#session").querySelectorAll("[data-goq]").forEach(b => b.onclick = () => { EX.review = false; EX.i = +b.dataset.goq; renderExam(); });
+    $("#exBack").onclick = () => { EX.review = false; renderExam(); };
+    $("#exEnd").onclick = () => { const un = n - Object.values(EX.ans).filter(a => a.length).length; if (confirm(un ? `${un} question${un > 1 ? "s are" : " is"} unanswered. End the exam anyway?` : "End the exam and see your score?")) submitExam(false); };
+    return;
+  }
+  $("#session").querySelector(".exam-opts").onclick = e => {
+    const b = e.target.closest("[data-k]"); if (!b) return; const k = +b.dataset.k; let cur = EX.ans[EX.i] || [];
+    if (multi) { cur = cur.includes(k) ? cur.filter(x => x !== k) : cur.length < q.select ? [...cur, k] : cur; } else cur = [k];
+    EX.ans[EX.i] = cur; renderExam();
+  };
+  $("#exFlag").onchange = e => { EX.flag[EX.i] = e.target.checked; };
+  $("#exPrev").onclick = () => { EX.i--; renderExam(); };
+  $("#exNext").onclick = () => { if (EX.i === n - 1) { EX.review = true; } else EX.i++; renderExam(); };
+  $("#exRev").onclick = () => { EX.review = true; renderExam(); };
+}
+function examReviewGrid(){
+  const n = EX.qs.length, answered = Object.values(EX.ans).filter(a => a.length).length;
+  return `<div class="exam-q"><b>Review your answers</b><p class="small muted" style="margin:4px 0 10px">${answered}/${n} answered · ${Object.values(EX.flag).filter(Boolean).length} flagged. Tap a number to go back to it.</p>
+    <div class="exam-grid">${EX.qs.map((q, i) => `<button data-goq="${i}" class="${(EX.ans[i] || []).length ? "ans" : ""} ${EX.flag[i] ? "flg" : ""}">${i + 1}</button>`).join("")}</div>
+    <p class="small muted" style="margin-top:8px">■ answered · □ not answered · 🚩 flagged</p></div>
+    <div class="exam-nav"><button class="btn" id="exBack">‹ Back to questions</button><button class="btn primary" id="exEnd">End exam</button></div>`;
+}
+function submitExam(timeUp){
+  if (!EX) return; clearInterval(EX.timer);
+  const res = EX.qs.map((q, i) => { const a = (EX.ans[i] || []).slice().sort(), c = q.answer.slice().sort(); return {q, a, ok:a.length === c.length && a.every((x, j) => x === c[j])}; });
+  const right = res.filter(r => r.ok).length, n = res.length, pct = Math.round(right / n * 100);
+  const scaled = Math.round(125 + 75 * right / n), pass = scaled >= (LEED.exam?.pass || 170);
+  const byCh = {}; res.forEach(r => { const b = byCh[r.q.ch] ||= {r:0, n:0}; b.n++; if (r.ok) b.r++; });
+  (S.exams ||= []).push({d:today(), mode:EX.mode === "chapter" ? `Ch.${EX.ch}` : EX.mode, scaled, pct});
+  if (EX.mode === "chapter") { const g = (S.guide ||= {})[EX.ch] ||= {}; g.best = Math.max(g.best || 0, pct); }
+  // every missed question becomes a flashcard in "LEED: questions I missed"
+  const missed = res.filter(r => !r.ok && r.a.length).map(r => ({q:r.q.q, a:r.q.answer.map(k => r.q.options[k]).join(" + "), explain:r.q.explain,
+    wrong:r.q.options.filter((_, k) => !r.q.answer.includes(k)).slice(0, 3), id:`leed-missed#ai-${r.q.key}`}));
+  const prevM = S.aiCards["leed-missed"] || []; S.aiCards["leed-missed"] = [...prevM.filter(c => !missed.some(m => m.id === c.id)), ...missed];
+  addXp(Math.max(10, right * 2), "Practice exam"); if (pass && EX.mode !== "chapter") confetti(); checkBadges(); save();
+  const chs = LEED.chapters;
+  showStudyPage(`<div class="exam-bar"><b>Results</b><span></span></div>
+    <div class="done-screen" style="padding:16px 0 8px"><div class="big">${pass ? "🏆" : "📈"}</div>
+      <h1>${right}/${n} correct (${pct}%)</h1>
+      <p class="muted">${timeUp ? "Time ran out. " : ""}${EX.mode === "chapter" ? "" : `Estimated scaled score <b>${scaled}</b>, and ${pass ? "<b>that would pass</b>" : `${LEED.exam?.pass || 170} is needed to pass`}. `}This estimate is rough: GBCI doesn't publish how raw scores map to scaled scores.</p></div>
+    <h2>By chapter</h2>
+    <div class="bars">${Object.entries(byCh).sort((a, b) => a[0] - b[0]).map(([k, v]) => { const p = Math.round(v.r / v.n * 100), c = chs.find(x => x.n === +k);
+      return `<div class="barrow"><span class="bl">${k}. ${esc(c?.title || "")}</span><span class="bt"><i style="width:${p}%;background:${p >= 70 ? "var(--good)" : p >= 50 ? "var(--warn)" : "var(--bad)"}"></i></span><span class="mono small">${v.r}/${v.n}</span></div>`; }).join("")}</div>
+    <p class="small muted" style="margin-top:8px">${missed.length ? `${missed.length} missed question${missed.length > 1 ? "s were" : " was"} added to the "LEED: questions I missed" deck for review.` : res.some(r => !r.ok) ? "Unanswered questions weren't added to your review deck." : "No misses. Nice!"}</p>
+    <div class="row" style="gap:8px;margin:12px 0;flex-wrap:wrap"><button class="btn primary" id="rsGuide">📘 Back to guide</button><button class="chip" id="rsMissed" aria-pressed="true">Show missed only</button></div>
+    <ol class="exam-review" id="exReview"></ol>`);
+  let onlyMissed = true;
+  const list = () => { $("#exReview").innerHTML = res.map((r, i) => (onlyMissed && r.ok) ? "" : `<li class="${r.ok ? "ok" : "no"}"><div class="small muted">Q${i + 1} · Chapter ${r.q.ch} · ${r.ok ? "✓ Correct" : "✗ Incorrect"}</div><p><b>${esc(r.q.q)}</b></p>
+    <ul>${r.q.options.map((o, k) => `<li class="${r.q.answer.includes(k) ? "right" : r.a.includes(k) ? "wrong" : ""}">${r.q.answer.includes(k) ? "✓" : r.a.includes(k) ? "✗" : "·"} ${esc(o)}</li>`).join("")}</ul>
+    <p class="small">${esc(r.q.explain || "")}</p></li>`).join("") || `<li class="small muted">Nothing to show.</li>`; };
+  list();
+  $("#rsMissed").onclick = e => { onlyMissed = !onlyMissed; e.currentTarget.setAttribute("aria-pressed", onlyMissed); list(); };
+  $("#rsGuide").onclick = openGuide;
+  EX = null;
+}
+
+/* ---------- Company prep packs (studied only on purpose, before a conversation) ---------- */
+const companyFor = org => COMPANIES.find(c => String(org || "").toLowerCase().includes(c.name.toLowerCase()));
+function openCompany(id){
+  const co = COMPANIES.find(c => c.id === id); if (!co) { toast("That company pack is still being written"); return; }
+  const people = net().filter(c => companyFor(c.org)?.id === id);
+  const kw = (co.newsKeywords || [co.name]).map(k => k.toLowerCase());
+  getJSON("feed.json").then(f => {
+    const news = (f.articles || []).filter(a => kw.some(k => a.title.toLowerCase().includes(k))).slice(0, 5);
+    const el = $("#coNews"); if (el) el.innerHTML = news.length ? news.map(a => `<li><a href="${esc(safeUrl(a.link))}" target="_blank" rel="noopener">${esc(a.title)}</a> <span class="small muted">${esc(a.source)}</span></li>`).join("") : `<li class="small muted">Nothing in the news feed right now.</li>`;
+  });
+  const job = JOBS.find(j => j.company.toLowerCase() === co.name.toLowerCase());
+  const li = a => (a || []).map(x => `<li>${esc(x)}</li>`).join("");
+  openSheet(`<div class="small muted" style="padding-right:40px">🏢 Company prep pack · study before you talk with them</div>
+    <h1 style="font-size:24px;padding-right:40px">${esc(co.name)}</h1><p class="muted small">${esc(co.tagline || "")}</p>
+    <div class="row" style="gap:8px;flex-wrap:wrap;margin-top:12px">
+      <button class="btn sm primary" data-coset="co-${esc(co.id)}">🗂️ Flashcards (${(co.cards || []).length})</button>
+      <button class="btn sm" data-coquiz="co-${esc(co.id)}">🎯 Quick quiz</button>
+      ${job ? `<button class="btn sm" data-tab="career">💼 Role prep: ${esc(job.title)}</button>` : ""}
+      ${co.careers ? `<a class="btn sm" href="${esc(safeUrl(co.careers))}" target="_blank" rel="noopener">Careers ↗</a>` : ""}</div>
+    ${people.length ? `<h2>Your contacts there</h2><ul class="takeaways">${people.map(p => `<li><b>${esc(p.name)}</b>${p.role ? `: ${esc(p.role)}` : ""}${p.next ? ` <span class="small muted">· next: ${esc(p.next)}</span>` : ""}</li>`).join("")}</ul>` : ""}
+    <h2>Key facts</h2><table class="facts">${(co.facts || []).map(f => `<tr><th>${esc(f.k)}</th><td>${esc(f.v)}</td></tr>`).join("")}</table>
+    <h2>Overview</h2>${(co.overview || []).map(p => `<p style="font-size:14.5px;margin-bottom:8px">${esc(p)}</p>`).join("")}
+    <h2>Sustainability</h2><ul class="takeaways">${li(co.sustainability)}</ul>
+    <h2>Notable projects</h2><ul class="takeaways">${(co.projects || []).map(p => `<li><b>${esc(p.name)}</b> (${esc(p.where)}): ${esc(p.why)}</li>`).join("")}</ul>
+    <h2>Culture</h2><ul class="takeaways">${li(co.culture)}</ul>
+    <h2>What they look for</h2><ul class="takeaways">${li(co.lookFor)}</ul>
+    <h2>Show you've done your homework</h2><ul class="takeaways">${li(co.talkingPoints)}</ul>
+    <h2>Questions to ask</h2><ol class="takeaways">${li(co.questions)}</ol>
+    <h2>In the news</h2><ul class="takeaways" id="coNews"><li class="small muted">Loading...</li></ul>
+    <a class="btn sm" href="watch.html?f=company" style="margin-top:8px">▶ Watch company videos</a>
+    ${(co.sources || []).length ? `<details style="margin-top:14px"><summary>Sources</summary><ul class="takeaways small">${co.sources.map(s => `<li><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener">${esc(s.name)} ↗</a></li>`).join("")}</ul></details>` : ""}`);
+  $("#sheetBody").querySelector("[data-coset]").onclick = e => { const d = e.currentTarget.dataset.coset; closeSheet(); openSet(d); };
+  $("#sheetBody").querySelector("[data-coquiz]").onclick = e => { const d = e.currentTarget.dataset.coquiz; closeSheet(); tab("study"); startSession("quiz", d); };
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-company]"); if (b) { e.preventDefault(); openCompany(b.dataset.company); } });
+
+/* =========================================================
    Study sessions
    ========================================================= */
 const itemName = id => getItem(id)?.title || "";
@@ -2277,11 +2664,27 @@ document.addEventListener("keydown", e => {
   }
 });
 
+document.addEventListener("click", e => {
+  if (e.target.closest("[data-guide]")) { e.preventDefault(); closeSheet(); tab("study"); openGuide(); return; }
+  const ex = e.target.closest("[data-exam-start]"); if (ex) { tab("study"); startExam({mode:ex.dataset.examStart}); return; }
+  const st = e.target.closest("[data-set]"); if (st) { closeSheet(); openSet(st.dataset.set); }
+});
 function renderStudy(){
   const due = dueQueue().length;
   $("#mDue").textContent = due ? `${due} cards due now. Spaced repetition brings each card back right before you'd forget it.` : "All caught up. Cards come back right before you'd forget them.";
-  const ids = Object.keys(allItems()).filter(id => cardsFor(id).some(isUnlocked));
-  $("#deckList").innerHTML = ids.map(itemRow).join("") || `<div class="empty">Finish something in the Library to add its deck here.</div>`;
+  const items = allItems(), has = id => cardsFor(id).some(isUnlocked);
+  const ids = Object.keys(items).filter(has);
+  const leed = ids.filter(id => /^leed-ch\d+$/.test(id)).sort((a, b) => items[a].chapter - items[b].chapter);
+  const scoped = ids.filter(id => items[id].scoped);
+  const other = ids.filter(id => !leed.includes(id) && !scoped.includes(id));
+  const row = id => `<button class="item" data-set="${esc(id)}"><span class="ico">${items[id].chapter ? `<span class="cov emo" style="font-weight:800;font-size:16px">${items[id].chapter}</span>` : thumb(items[id], "S")}</span>
+    <span style="min-width:0;flex:1"><div class="tt">${esc(items[id].title)}</div><div class="by">${cardsFor(id).filter(isUnlocked).length} terms${S.matchBest?.[id] ? ` · Match best ${S.matchBest[id]}s` : ""}</div></span><span class="chev">›</span></button>`;
+  $("#deckList").innerHTML = (leed.length ? `<div class="small muted" style="font-weight:700;margin:4px 0 2px">📘 LEED study guide, in book order</div>${leed.map(row).join("")}` : "")
+    + (other.length ? `<div class="small muted" style="font-weight:700;margin:12px 0 2px">Your decks</div>${other.map(row).join("")}` : "")
+    + (scoped.length ? `<div class="small muted" style="font-weight:700;margin:12px 0 2px">🏢 Company packs (only when you open them, not in daily review)</div>${scoped.map(row).join("")}` : "")
+    || `<div class="empty">Finish something in the Library to add its deck here.</div>`;
+  if (EX && !$("#exResume")) $("#deckList").insertAdjacentHTML("beforebegin", `<button class="btn primary block" id="exResume" style="margin:10px 0">⏱ Resume your practice exam</button>`);
+  $("#exResume")?.addEventListener("click", () => { $("#exResume").remove(); renderExam(); });
 }
 
 /* =========================================================

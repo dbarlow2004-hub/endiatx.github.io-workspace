@@ -282,6 +282,69 @@ def balanced(articles, n):
     return picked
 
 
+# ---------- short videos for the TikTok-style Watch page ----------
+# (handle, display name, kind). Company channels are kept whole; explainer channels are filtered by topic.
+VIDEO_CHANNELS = [
+    ("ClimateTown", "Climate Town", "explainer"),
+    ("EngineeringwithRosie", "Engineering with Rosie", "explainer"),
+    ("TheB1M", "The B1M", "explainer"),
+    ("PracticalEngineeringChannel", "Practical Engineering", "explainer"),
+    ("SimonClark", "Simon Clark", "explainer"),
+    ("WorldResourcesInstitute", "World Resources Institute", "explainer"),
+    ("ArupGroup", "Arup", "company"),
+    ("Gensler_Design", "Gensler", "company"),
+    ("arcadisglobal", "Arcadis", "company"),
+]
+VIDEO_FILE = HERE / "videos.json"
+VIDEO_WORDS = re.compile(r"\b(energy|solar|wind|power|grid|batter|climate|carbon|emission|offset|build|architect|design|cit(y|ies)|construct|infrastructure|bridge|dam|water|heat|electri|ev|nuclear|food|farm|sustainab|green|net zero|house|home|concrete|steel|transit|train|rail|tower|skyscraper|flood|resilien|recycl|waste|plastic|oil|gas|utility|bill)", re.I)
+
+
+def channel_shorts(handle, limit=12):
+    """Read a channel's Shorts tab (YouTube's public page data)."""
+    req = urllib.request.Request(f"https://www.youtube.com/@{handle}/shorts",
+                                 headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
+                                          "Accept-Language": "en-US", "Cookie": "CONSENT=YES+1"})
+    page = urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+    i = page.find("var ytInitialData = ")
+    if i < 0:
+        return []
+    data, _ = json.JSONDecoder().raw_decode(page[i + len("var ytInitialData = "):])
+    out, seen = [], set()
+
+    def walk(o):
+        if isinstance(o, dict):
+            v = o.get("shortsLockupViewModel")
+            if isinstance(v, dict):
+                vid = (((v.get("onTap") or {}).get("innertubeCommand") or {}).get("reelWatchEndpoint") or {}).get("videoId")
+                title = ((v.get("overlayMetadata") or {}).get("primaryText") or {}).get("content") or v.get("accessibilityText", "")
+                if vid and re.fullmatch(r"[A-Za-z0-9_-]{11}", vid) and vid not in seen:
+                    seen.add(vid)
+                    out.append({"id": vid, "title": title.strip()})
+            for x in o.values():
+                walk(x)
+        elif isinstance(o, list):
+            for x in o:
+                walk(x)
+    walk(data)
+    return out[:limit]
+
+
+def update_videos():
+    videos = []
+    for handle, name, kind in VIDEO_CHANNELS:
+        try:
+            for v in channel_shorts(handle):
+                if kind == "company" or VIDEO_WORDS.search(v["title"]):
+                    videos.append({**v, "channel": name, "handle": handle, "kind": kind})
+        except Exception as e:
+            print(f"warn: videos {handle}: {e}", file=sys.stderr)
+    if len(videos) < 10:  # YouTube changed something or blocked us: keep yesterday's list
+        print(f"videos: only {len(videos)} found, keeping previous file", file=sys.stderr)
+        return
+    VIDEO_FILE.write_text(json.dumps({"updated": datetime.now(timezone.utc).isoformat(), "videos": videos}, indent=1, ensure_ascii=False) + "\n")
+    print(f"videos: {len(videos)} shorts saved")
+
+
 def pick_of_the_day():
     """Rotate through resources.json so each digest suggests one thing to read/watch/listen to."""
     try:
@@ -324,7 +387,7 @@ def build_message(articles, max_items):
         lines += ["", f"Today's pick - {pick}"]
     url = os.environ.get("DIGEST_URL")
     if url:
-        lines += ["", f"All stories + resources: {url}"]
+        lines += ["", f"Today's paper: {url.rstrip('/')}/news.html"]
     return "\n".join(lines)
 
 
@@ -405,6 +468,8 @@ def main():
         print(f"warn: {e}", file=sys.stderr)
     print(f"{len(fresh)} new articles")
 
+    if not args.dry_run:
+        update_videos()
     if not fresh:
         return
     max_items = int(os.environ.get("MAX_ITEMS", "5"))

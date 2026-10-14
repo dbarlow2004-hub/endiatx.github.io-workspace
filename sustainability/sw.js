@@ -1,5 +1,5 @@
-const CACHE = "canopy-v6";
-const ASSETS = ["./", "./index.html", "./learn.html", "./manifest.webmanifest", "./resources.json",
+const CACHE = "canopy-v7";
+const ASSETS = ["./", "./index.html", "./learn.html", "./news.html", "./watch.html", "./manifest.webmanifest", "./resources.json",
   "./decks-books.json", "./decks-media.json", "./debates.json", "./career.json", "./icons/icon-180.png", "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
