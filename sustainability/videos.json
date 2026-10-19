@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-18T14:49:04.686906+00:00",
+ "updated": "2026-10-19T17:46:29.314647+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "J1zdE-LwwaU",
+   "title": "Hot vs Cold: Which Is Worse for Your EV?",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -102,13 +109,6 @@
   {
    "id": "8Rb-a_DP67o",
    "title": "How Manufacturers Stop Faulty EV Batteries",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "fDHsiftbQ34",
-   "title": "How Cow Burps are Heating the Earth",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
