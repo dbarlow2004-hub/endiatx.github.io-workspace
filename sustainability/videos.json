@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-20T15:50:23.516297+00:00",
+ "updated": "2026-10-21T16:06:23.921647+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -156,13 +156,6 @@
    "kind": "explainer"
   },
   {
-   "id": "znDKxspuMxg",
-   "title": "Is This The World's MOST BEAUTIFUL Bridge?",
-   "channel": "The B1M",
-   "handle": "TheB1M",
-   "kind": "explainer"
-  },
-  {
    "id": "3GUpquh6ctc",
    "title": "Name That Infrastructure (Ep. 16) #shorts",
    "channel": "Practical Engineering",
@@ -298,13 +291,6 @@
   {
    "id": "o7lkW3u5gEI",
    "title": "Will Climate Solutions Lower Everyday Costs? #StoriesToWatch",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "Nr5TJAQpWK8",
-   "title": "The Energy Transition is Happening: Join Stories to Watch 2026",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
@@ -471,6 +457,41 @@
    "kind": "company"
   },
   {
+   "id": "rqUoigGjZas",
+   "title": "Why I Love Working at Arcadis | Pascal, Advisor",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "1uNhgykheR4",
+   "title": "Why I Love Working at Arcadis | Marie, Team Lead",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "gnDZCn8CfLU",
+   "title": "Why I'm Proud to Work at Arcadis | Shayan, Project Engineer",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "VYB-nF5zPJI",
+   "title": "Why I Love Working at Arcadis | Donna, Sales Enablement Director",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "E5F67Ur0Qk8",
+   "title": "Day in the Life of an Environmental Engineer at Arcadis",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
    "id": "P5ZDw3Q8hEw",
    "title": "Inside Chemung County’s $275M Wastewater Modernization Project",
    "channel": "Arcadis",
@@ -515,41 +536,6 @@
   {
    "id": "UdVzjkhWkpA",
    "title": "ACE 2026: Using Data and Communication to Strengthen Water Utilities",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "vB1hAWswmaw",
-   "title": "Meet Madison: Improving Dallas Water Infrastructure for Future Communities",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "GA3eJNlMrJo",
-   "title": "Meet Nichole: How AMI Is Improving Water Management in Southeast Florida",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "QpE5T8zt4Xg",
-   "title": "ACE 2026 Day 3: Water Innovation, Asset Management & Talent",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "idCuDa_CoRE",
-   "title": "ACE 2026: How Utilities Can Scale Water Infrastructure for Rapid Growth",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "2d3Fy6SETnA",
-   "title": "Small Water Systems: Tackling Microplastics and Water Quality Challenges at ACE 2026",
    "channel": "Arcadis",
    "handle": "arcadisglobal",
    "kind": "company"
