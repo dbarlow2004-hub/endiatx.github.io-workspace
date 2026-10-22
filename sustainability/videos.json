@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-21T16:06:23.921647+00:00",
+ "updated": "2026-10-22T16:01:18.798632+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -114,6 +114,13 @@
    "kind": "explainer"
   },
   {
+   "id": "5Ct2nE3o8qQ",
+   "title": "The World's OLDEST Construction Project",
+   "channel": "The B1M",
+   "handle": "TheB1M",
+   "kind": "explainer"
+  },
+  {
    "id": "wqc-ofJc-YI",
    "title": "How YOU Can Help Improve MENTAL HEALTH in Construction",
    "channel": "The B1M",
@@ -144,13 +151,6 @@
   {
    "id": "_YQsGzw8u0E",
    "title": "Chicago's SEARS TOWER Forever Changed Skyscraper Design",
-   "channel": "The B1M",
-   "handle": "TheB1M",
-   "kind": "explainer"
-  },
-  {
-   "id": "mVA6KyIqBMw",
-   "title": "We Need to Make Construction FAMOUS",
    "channel": "The B1M",
    "handle": "TheB1M",
    "kind": "explainer"
@@ -242,13 +242,6 @@
   {
    "id": "Put6b0MIHYg",
    "title": "Our food system is broken...",
-   "channel": "Simon Clark",
-   "handle": "SimonClark",
-   "kind": "explainer"
-  },
-  {
-   "id": "FxkFR8NlsYY",
-   "title": "Why Lily Phillips is talking about climate change",
    "channel": "Simon Clark",
    "handle": "SimonClark",
    "kind": "explainer"
@@ -457,6 +450,41 @@
    "kind": "company"
   },
   {
+   "id": "nkCCUY6iSLg",
+   "title": "What Career Growth is Like at Arcadis | Meet Daniela",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "oJ1mUhKSWSU",
+   "title": "Why I Love Working at Arcadis | Meet Bashar",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "571xLId-zl8",
+   "title": "Why I Love Working at Arcadis | Meet Kamran",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "Oqc3kJDoajI",
+   "title": "What Career Growth is Like at Arcadis | Meet Donna",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "Nxp6MDtqdu8",
+   "title": "Day in the life of an Assistant Project Manager at Arcadis UK",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
    "id": "rqUoigGjZas",
    "title": "Why I Love Working at Arcadis | Pascal, Advisor",
    "channel": "Arcadis",
@@ -501,41 +529,6 @@
   {
    "id": "EHF5d4kr_JE",
    "title": "Why I Love Working at Arcadis | Pascal, Advisor",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "jHNNAcovIrc",
-   "title": "Why I Love Working at Arcadis | Marie, Team Lead",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "z-KpEyNO6As",
-   "title": "Why I'm Proud to Work at Arcadis | Shayan, Project Engineer",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "9q0Vdtq6s04",
-   "title": "Why I Love Working at Arcadis | Donna, Sales Enablement Director",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "LGfbUA2BnqQ",
-   "title": "Day in the Life of an Environmental Engineer at Arcadis",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "UdVzjkhWkpA",
-   "title": "ACE 2026: Using Data and Communication to Strengthen Water Utilities",
    "channel": "Arcadis",
    "handle": "arcadisglobal",
    "kind": "company"
