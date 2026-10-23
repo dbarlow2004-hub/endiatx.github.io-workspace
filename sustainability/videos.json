@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22T16:01:18.798632+00:00",
+ "updated": "2026-10-23T15:54:58.479443+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "JKKCzJ-NxYc",
+   "title": "What Fukushima Really Taught Us About Nuclear Safety",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -102,13 +109,6 @@
   {
    "id": "Z7GTCEEjxbw",
    "title": "Is Charging to 100% Bad for Your EV?",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "8Rb-a_DP67o",
-   "title": "How Manufacturers Stop Faulty EV Batteries",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -233,6 +233,13 @@
    "kind": "explainer"
   },
   {
+   "id": "V78XsLBfU_8",
+   "title": "Brazilians have been relentlessly targeted by Big Oil",
+   "channel": "Simon Clark",
+   "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
    "id": "qRjv5zwFvWU",
    "title": "The aviation industry has another climate solution* #ad",
    "channel": "Simon Clark",
@@ -244,6 +251,13 @@
    "title": "Our food system is broken...",
    "channel": "Simon Clark",
    "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "tvYG6zVsaRc",
+   "title": "Food waste and carbon emissions",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
    "kind": "explainer"
   },
   {
@@ -277,13 +291,6 @@
   {
    "id": "JnjUy8YRyPA",
    "title": "Stories to Watch: Can re-skilling drive a clean, resilient economy?",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "o7lkW3u5gEI",
-   "title": "Will Climate Solutions Lower Everyday Costs? #StoriesToWatch",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
