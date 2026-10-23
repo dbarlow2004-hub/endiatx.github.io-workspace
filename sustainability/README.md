@@ -49,6 +49,12 @@ Hub page: https://dbarlow2004-hub.github.io/endiatx.github.io-workspace/sustaina
 
 To prep for another posting, add another entry to `jobs` in `career.json`.
 
+**Certifications** (`certifications.json`, Career tab and Study tab) lists the credentials you're working toward, in a sensible order:
+LEED Green Associate (v5), TRUE Advisor, WELL AP, Envision ENV SP, SEED and CIH (long-term).
+- Each one has exam facts, eligibility, cost, why it matters for your target jobs, a study plan, official links and its own flashcards.
+- The LEED GA v5 pack includes the full LEED v5 BD+C scorecard (16 prerequisites, 110 points, Platinum requirements) from USGBC's November 2025 rating system. The Green Associate exam moved to v5 in 2026; the 9-chapter study guide follows the classic book order.
+- Mark each Planned, Studying, Exam booked (with a date countdown) or Passed. Cards for the ones you're Studying or have booked join your daily review, and new cards take turns across decks so no single deck crowds out the rest.
+
 **My network** (top of the Career tab) tracks the people helping you get hired:
 - each person's stage, from "To reach out" through "Intro requested", "Introduced", "Meeting set" and "Met" to "Thank-you sent"
 - your next step, with a 9am phone reminder on the due date

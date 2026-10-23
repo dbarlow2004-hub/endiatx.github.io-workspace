@@ -1,0 +1,1645 @@
+{
+ "updated": "2026-10-23",
+ "intro": "The certifications you're working toward, in the order that makes sense. Mark each one Planned, Studying, Exam booked or Passed. Cards for the ones you're studying go into your daily review.",
+ "certs": [
+  {
+   "id": "leed-ga",
+   "name": "LEED Green Associate (v5)",
+   "short": "LEED GA v5",
+   "icon": "🌿",
+   "issuer": "USGBC / GBCI",
+   "url": "https://www.usgbc.org/credentials/leed-green-associate",
+   "stage": "Now",
+   "order": 1,
+   "tagline": "The entry credential for green building, now tested on LEED v5.",
+   "fit": "Shows Arup, Gensler, Arcadis and SF Environment you speak LEED. It's the baseline for sustainability roles in buildings, and the first step to LEED AP BD+C.",
+   "facts": [
+    {
+     "k": "Exam",
+     "v": "Final v5 exam (beta ran April 28 to June 30, 2026). Third-party guides report 100 multiple-choice questions, 2 hours, 170 of 200 to pass; confirm in the candidate handbook."
+    },
+    {
+     "k": "Eligibility",
+     "v": "No experience required."
+    },
+    {
+     "k": "Study from",
+     "v": "LEED Core Concepts Guide (5th ed.), Foundations of LEED, Guide to Certification: Commercial, LEED Rating System Selection Guidance"
+    },
+    {
+     "k": "Maintain",
+     "v": "Continuing education every 2 years (15 hours for Green Associates)."
+    },
+    {
+     "k": "Next step",
+     "v": "LEED AP BD+C. The v5 AP exam's final version is expected February 2027."
+    }
+   ],
+   "plan": [
+    "Week 1: LEED v5 basics in this pack, then Chapter 1 (LEED Process) of the study guide",
+    "Week 2: the v5 scorecard: learn the 16 prerequisites and the points per category",
+    "Week 3: Energy and Atmosphere and Materials and Resources (most points, most v5 changes)",
+    "Week 4: the other categories, then a full practice exam",
+    "Week 5: review missed questions, then book the exam on usgbc.org"
+   ],
+   "resources": [
+    {
+     "name": "USGBC: LEED v5 exam information",
+     "url": "https://support.usgbc.org/hc/en-us/articles/29656794179987-LEED-v5-exam-information"
+    },
+    {
+     "name": "LEED v5 BD+C rating system (PDF)",
+     "url": "https://www.usgbc.org/sites/default/files/2025-10/LEED%20v5%20BD+C%20Rating%20System_November%202025_clean.pdf"
+    },
+    {
+     "name": "LEED Green Associate credential page",
+     "url": "https://www.usgbc.org/credentials/leed-green-associate"
+    }
+   ],
+   "check": "Canopy's 9-chapter study guide follows the classic Green Associate book order and was written for v4. Learn the v5 names, prerequisites and points from this pack: that's where the exam changed most.",
+   "scorecard": [
+    {
+     "cat": "Integrative Process, Planning and Assessments (IP)",
+     "pts": 1,
+     "items": [
+      [
+       "IPp1",
+       "Climate Resilience Assessment",
+       "Required"
+      ],
+      [
+       "IPp2",
+       "Human Impact Assessment",
+       "Required"
+      ],
+      [
+       "IPp3",
+       "Carbon Assessment",
+       "Required"
+      ],
+      [
+       "IPc1",
+       "Integrative Design Process",
+       "1"
+      ]
+     ]
+    },
+    {
+     "cat": "Location and Transportation (LT)",
+     "pts": 15,
+     "items": [
+      [
+       "LTc1",
+       "Sensitive Land Protection",
+       "1"
+      ],
+      [
+       "LTc2",
+       "Equitable Development",
+       "2"
+      ],
+      [
+       "LTc3",
+       "Compact and Connected Development",
+       "6"
+      ],
+      [
+       "LTc4",
+       "Transportation Demand Management",
+       "4"
+      ],
+      [
+       "LTc5",
+       "Electric Vehicles",
+       "2"
+      ]
+     ]
+    },
+    {
+     "cat": "Sustainable Sites (SS)",
+     "pts": 11,
+     "items": [
+      [
+       "SSp1",
+       "Minimized Site Disturbance",
+       "Required"
+      ],
+      [
+       "SSc1",
+       "Biodiverse Habitat",
+       "2"
+      ],
+      [
+       "SSc2",
+       "Accessible Outdoor Space",
+       "1"
+      ],
+      [
+       "SSc3",
+       "Rainwater Management",
+       "3"
+      ],
+      [
+       "SSc4",
+       "Enhanced Resilient Site Design",
+       "2"
+      ],
+      [
+       "SSc5",
+       "Heat Island Reduction",
+       "2"
+      ],
+      [
+       "SSc6",
+       "Light Pollution Reduction",
+       "1"
+      ]
+     ]
+    },
+    {
+     "cat": "Water Efficiency (WE)",
+     "pts": 9,
+     "items": [
+      [
+       "WEp1",
+       "Water Metering and Reporting",
+       "Required"
+      ],
+      [
+       "WEp2",
+       "Minimum Water Efficiency",
+       "Required"
+      ],
+      [
+       "WEc1",
+       "Water Metering and Leak Detection",
+       "1"
+      ],
+      [
+       "WEc2",
+       "Enhanced Water Efficiency",
+       "8"
+      ]
+     ]
+    },
+    {
+     "cat": "Energy and Atmosphere (EA)",
+     "pts": 33,
+     "items": [
+      [
+       "EAp1",
+       "Operational Carbon Projection and Decarbonization Plan",
+       "Required"
+      ],
+      [
+       "EAp2",
+       "Minimum Energy Efficiency",
+       "Required"
+      ],
+      [
+       "EAp3",
+       "Fundamental Commissioning",
+       "Required"
+      ],
+      [
+       "EAp4",
+       "Energy Metering and Reporting",
+       "Required"
+      ],
+      [
+       "EAp5",
+       "Fundamental Refrigerant Management",
+       "Required"
+      ],
+      [
+       "EAc1",
+       "Electrification",
+       "5"
+      ],
+      [
+       "EAc2",
+       "Reduce Peak Thermal Loads",
+       "5"
+      ],
+      [
+       "EAc3",
+       "Enhanced Energy Efficiency",
+       "10"
+      ],
+      [
+       "EAc4",
+       "Renewable Energy",
+       "5"
+      ],
+      [
+       "EAc5",
+       "Enhanced Commissioning",
+       "4"
+      ],
+      [
+       "EAc6",
+       "Grid Interactive",
+       "2"
+      ],
+      [
+       "EAc7",
+       "Enhanced Refrigerant Management",
+       "2"
+      ]
+     ]
+    },
+    {
+     "cat": "Materials and Resources (MR)",
+     "pts": 18,
+     "items": [
+      [
+       "MRp1",
+       "Planning for Zero Waste Operations",
+       "Required"
+      ],
+      [
+       "MRp2",
+       "Quantify and Assess Embodied Carbon",
+       "Required"
+      ],
+      [
+       "MRc1",
+       "Building and Materials Reuse",
+       "3"
+      ],
+      [
+       "MRc2",
+       "Reduce Embodied Carbon",
+       "6"
+      ],
+      [
+       "MRc3",
+       "Low-Emitting Materials",
+       "2"
+      ],
+      [
+       "MRc4",
+       "Building Product Selection and Procurement",
+       "5"
+      ],
+      [
+       "MRc5",
+       "Construction and Demolition Waste Diversion",
+       "2"
+      ]
+     ]
+    },
+    {
+     "cat": "Indoor Environmental Quality (EQ)",
+     "pts": 13,
+     "items": [
+      [
+       "EQp1",
+       "Construction Management",
+       "Required"
+      ],
+      [
+       "EQp2",
+       "Fundamental Air Quality",
+       "Required"
+      ],
+      [
+       "EQp3",
+       "No Smoking or Vehicle Idling",
+       "Required"
+      ],
+      [
+       "EQc1",
+       "Enhanced Air Quality",
+       "1"
+      ],
+      [
+       "EQc2",
+       "Occupant Experience",
+       "7"
+      ],
+      [
+       "EQc3",
+       "Accessibility and Inclusion",
+       "1"
+      ],
+      [
+       "EQc4",
+       "Resilient Spaces",
+       "2"
+      ],
+      [
+       "EQc5",
+       "Air Quality Testing and Monitoring",
+       "2"
+      ]
+     ]
+    },
+    {
+     "cat": "Project Priorities (PR)",
+     "pts": 10,
+     "items": [
+      [
+       "PRc1",
+       "Project Priorities",
+       "9"
+      ],
+      [
+       "PRc2",
+       "LEED AP",
+       "1"
+      ]
+     ]
+    }
+   ],
+   "cards": [
+    {
+     "q": "Which version of LEED is the Green Associate exam based on now?",
+     "a": "LEED v5",
+     "explain": "The LEED v4 Green Associate exam was last offered April 26, 2026. The exam is now based entirely on LEED v5.",
+     "wrong": [
+      "LEED v4",
+      "LEED v4.1",
+      "LEED 2009"
+     ]
+    },
+    {
+     "q": "What are LEED v5's three impact areas?",
+     "a": "Decarbonization, quality of life, ecological conservation and restoration",
+     "explain": "Every LEED v5 credit maps to one or more of these impact areas.",
+     "wrong": [
+      "Energy, water, materials",
+      "People, planet, profit",
+      "Sites, buildings, cities"
+     ]
+    },
+    {
+     "q": "How many total points are possible in LEED v5 BD+C: New Construction?",
+     "a": "110",
+     "explain": "Same total as v4: 110 possible points.",
+     "wrong": [
+      "100",
+      "120",
+      "136"
+     ]
+    },
+    {
+     "q": "How many points does a LEED v5 project need for Certified?",
+     "a": "40-49 points",
+     "explain": "Certified 40-49, Silver 50-59, Gold 60-79, Platinum 80+.",
+     "wrong": [
+      "30-39 points",
+      "50-59 points",
+      "45-54 points"
+     ]
+    },
+    {
+     "q": "How many points does a LEED v5 project need for Gold?",
+     "a": "60-79 points",
+     "explain": "Certified 40-49, Silver 50-59, Gold 60-79, Platinum 80+.",
+     "wrong": [
+      "50-59 points",
+      "70-89 points",
+      "65-80 points"
+     ]
+    },
+    {
+     "q": "Besides 80+ points, what else does a LEED v5 BD+C New Construction Platinum project need?",
+     "a": "Required minimums in Electrification, Energy Efficiency, Renewables and Embodied Carbon",
+     "explain": "Appendix I: 5 Electrification points, 8 Enhanced Energy Efficiency points, 100% renewable energy for site energy use, and a 20% embodied carbon reduction.",
+     "wrong": [
+      "Nothing beyond 80 points",
+      "A LEED Fellow on the team",
+      "A WELL certification"
+     ]
+    },
+    {
+     "q": "For LEED v5 NC Platinum, how much embodied carbon reduction is required?",
+     "a": "20%",
+     "explain": "MRc2 Reduce Embodied Carbon: a 20% reduction is required for Platinum projects.",
+     "wrong": [
+      "10%",
+      "40%",
+      "50%"
+     ]
+    },
+    {
+     "q": "For LEED v5 NC Platinum, how much of site energy use must come from renewables?",
+     "a": "100% (any mix of Tier 1, 2 and 3)",
+     "explain": "EAc4 Renewable Energy: 100% of site energy use from any combination of Tier 1, Tier 2 and Tier 3 renewable energy.",
+     "wrong": [
+      "50%",
+      "25% on-site",
+      "75% Tier 1 only"
+     ]
+    },
+    {
+     "q": "How many prerequisites does LEED v5 BD+C: New Construction have?",
+     "a": "16",
+     "explain": "3 IP + 1 SS + 2 WE + 5 EA + 2 MR + 3 EQ = 16 (Core and Shell adds Tenant Guidelines).",
+     "wrong": [
+      "12",
+      "10",
+      "20"
+     ]
+    },
+    {
+     "q": "Which credit category is worth the most points in LEED v5 NC?",
+     "a": "Energy and Atmosphere (33 points)",
+     "explain": "EA is 33 of 110 points. Next: MR 18, LT 15, EQ 13.",
+     "wrong": [
+      "Materials and Resources",
+      "Location and Transportation",
+      "Indoor Environmental Quality"
+     ]
+    },
+    {
+     "q": "What is LEED v5's first credit category called?",
+     "a": "Integrative Process, Planning and Assessments (IP)",
+     "explain": "It holds the three assessment prerequisites plus the Integrative Design Process credit.",
+     "wrong": [
+      "Innovation in Design",
+      "Regional Priority",
+      "Project Surroundings"
+     ]
+    },
+    {
+     "q": "Name the three IP prerequisites in LEED v5.",
+     "a": "Climate Resilience, Human Impact, and Carbon Assessments",
+     "explain": "IPp1 Climate Resilience Assessment, IPp2 Human Impact Assessment, IPp3 Carbon Assessment.",
+     "wrong": [
+      "Energy, Water, Waste Audits",
+      "Commissioning, Metering, Reporting",
+      "Site, Health, Equity Plans"
+     ]
+    },
+    {
+     "q": "What does the Climate Resilience Assessment prerequisite cover?",
+     "a": "Observed, projected and future natural hazards for the project",
+     "explain": "Its intent: assess natural hazards to raise awareness, increase transparency of risks and reduce vulnerabilities.",
+     "wrong": [
+      "Indoor air quality testing",
+      "Energy model results",
+      "Construction waste rates"
+     ]
+    },
+    {
+     "q": "What does the Human Impact Assessment prerequisite look at?",
+     "a": "The social context of the community, workforce and supply chain",
+     "explain": "Intent: guide development by understanding the local social context and addressing potential social inequities.",
+     "wrong": [
+      "Occupant thermal comfort surveys",
+      "Ergonomic furniture",
+      "Daylight levels"
+     ]
+    },
+    {
+     "q": "What does the Carbon Assessment prerequisite cover?",
+     "a": "Long-term carbon: on-site combustion, grid electricity, refrigerants and embodied carbon",
+     "explain": "IPp3 aims to understand and reduce long-term direct and indirect carbon emissions.",
+     "wrong": [
+      "Only embodied carbon",
+      "Only transportation emissions",
+      "Only refrigerant leaks"
+     ]
+    },
+    {
+     "q": "Which EA prerequisite asks teams to project long-term operational carbon?",
+     "a": "Operational Carbon Projection and Decarbonization Plan",
+     "explain": "EAp1 helps stakeholders see how today's design decisions affect long-term operational emissions.",
+     "wrong": [
+      "Minimum Energy Efficiency",
+      "Grid Interactive",
+      "Enhanced Commissioning"
+     ]
+    },
+    {
+     "q": "List LEED v5's five EA prerequisites.",
+     "a": "Carbon projection plan, minimum efficiency, fundamental commissioning, metering, refrigerant management",
+     "explain": "EAp1 Operational Carbon Projection and Decarbonization Plan, EAp2 Minimum Energy Efficiency, EAp3 Fundamental Commissioning, EAp4 Energy Metering and Reporting, EAp5 Fundamental Refrigerant Management.",
+     "wrong": [
+      "Renewables, electrification, grid, commissioning, refrigerants",
+      "Daylight, views, acoustics, thermal, air",
+      "Water, waste, energy, transit, sites"
+     ]
+    },
+    {
+     "q": "What is the intent of the Electrification credit (EAc1)?",
+     "a": "Design buildings that don't burn fuel on site",
+     "explain": "Better indoor and outdoor air quality and low-carbon operations as the grid gets cleaner.",
+     "wrong": [
+      "Install EV chargers",
+      "Add rooftop solar",
+      "Meter every circuit"
+     ]
+    },
+    {
+     "q": "Which new v5 EA credit rewards managing building loads in response to grid conditions?",
+     "a": "Grid Interactive (EAc6)",
+     "explain": "It positions buildings as active partners in grid decarbonization, reliability and affordability.",
+     "wrong": [
+      "Demand Response Lite",
+      "Enhanced Metering",
+      "Green Power and Carbon Offsets"
+     ]
+    },
+    {
+     "q": "What does Reduce Peak Thermal Loads (EAc2) aim to do?",
+     "a": "Minimize demand on grid resources and improve resilience",
+     "explain": "Worth up to 5 points in NC.",
+     "wrong": [
+      "Lower water heating costs",
+      "Reduce refrigerant leaks",
+      "Cut construction waste"
+     ]
+    },
+    {
+     "q": "Which two MR prerequisites are new in LEED v5?",
+     "a": "Planning for Zero Waste Operations and Quantify and Assess Embodied Carbon",
+     "explain": "MRp1 and MRp2. Every project now quantifies embodied carbon of its structure, enclosure and hardscape.",
+     "wrong": [
+      "Storage and Collection of Recyclables and PBT Source Reduction",
+      "Construction Waste Plan and Low-Emitting Materials",
+      "Material Ingredients and EPDs"
+     ]
+    },
+    {
+     "q": "What does MRp2 Quantify and Assess Embodied Carbon cover?",
+     "a": "Embodied carbon of the structure, enclosure and hardscape",
+     "explain": "It quantifies those impacts and identifies the top sources of embodied carbon.",
+     "wrong": [
+      "Furniture only",
+      "Operational energy",
+      "Refrigerant leakage"
+     ]
+    },
+    {
+     "q": "Which LEED v5 credit replaced Innovation and Regional Priority?",
+     "a": "Project Priorities (PR)",
+     "explain": "PRc1 Project Priorities (up to 9 points) plus PRc2 LEED AP (1 point) = 10 points.",
+     "wrong": [
+      "Integrative Process",
+      "Pilot Credits",
+      "Equitable Development"
+     ]
+    },
+    {
+     "q": "How many points is the LEED AP credit worth in v5?",
+     "a": "1 point",
+     "explain": "PRc2 LEED AP rewards having a LEED AP on the team.",
+     "wrong": [
+      "2 points",
+      "3 points",
+      "0, it was removed"
+     ]
+    },
+    {
+     "q": "Which LT credit is worth the most in LEED v5 NC?",
+     "a": "Compact and Connected Development (6 points)",
+     "explain": "It rewards building where infrastructure exists, walkability and less driving.",
+     "wrong": [
+      "Electric Vehicles",
+      "Sensitive Land Protection",
+      "Equitable Development"
+     ]
+    },
+    {
+     "q": "Which v5 SS prerequisite limits construction disturbance and protects native vegetation and soils?",
+     "a": "Minimized Site Disturbance",
+     "explain": "SSp1 is Sustainable Sites' only prerequisite.",
+     "wrong": [
+      "Construction Activity Pollution Prevention",
+      "Site Assessment",
+      "Rainwater Management"
+     ]
+    },
+    {
+     "q": "Name the two Water Efficiency prerequisites in LEED v5.",
+     "a": "Water Metering and Reporting, Minimum Water Efficiency",
+     "explain": "WEp1 and WEp2. Enhanced Water Efficiency (WEc2) is worth up to 8 points.",
+     "wrong": [
+      "Outdoor and Indoor Water Use Reduction",
+      "Cooling Tower and Rainwater Use",
+      "Leak Detection and Graywater"
+     ]
+    },
+    {
+     "q": "Name the three EQ prerequisites in LEED v5 NC.",
+     "a": "Construction Management, Fundamental Air Quality, No Smoking or Vehicle Idling",
+     "explain": "EQp1-3. Occupant Experience (EQc2) is the largest EQ credit at 7 points.",
+     "wrong": [
+      "Daylight, Views, Acoustics",
+      "Thermal Comfort, Lighting, Air",
+      "Ventilation, Filtration, Testing"
+     ]
+    },
+    {
+     "q": "Which EQ credit supports diverse occupant needs and a sense of belonging?",
+     "a": "Accessibility and Inclusion (EQc3)",
+     "explain": "One of the quality-of-life credits new in v5.",
+     "wrong": [
+      "Occupant Experience",
+      "Resilient Spaces",
+      "Enhanced Air Quality"
+     ]
+    },
+    {
+     "q": "About what share of LEED v5 points goes to decarbonization?",
+     "a": "About half",
+     "explain": "USGBC weights decarbonization about 50%, quality of life about 25% and ecological conservation and restoration about 25%.",
+     "wrong": [
+      "About a quarter",
+      "About 10%",
+      "About three quarters"
+     ]
+    },
+    {
+     "q": "What are the four LEED v5 rating systems?",
+     "a": "BD+C, ID+C, O+M and LEED for Cities",
+     "explain": "BD+C for new construction and major renovation, ID+C for interiors, O+M for existing buildings. LEED for Cities was still a draft in October 2026.",
+     "wrong": [
+      "NC, CS, EB, ND",
+      "Homes, Schools, Retail, Healthcare",
+      "Gold, Silver, Bronze, Platinum"
+     ]
+    },
+    {
+     "q": "Which references does USGBC list for the v5 Green Associate exam?",
+     "a": "LEED Core Concepts Guide (5th ed.), Foundations of LEED, Guide to Certification: Commercial, Rating System Selection Guidance",
+     "explain": "Listed on USGBC's LEED v5 exam information page.",
+     "wrong": [
+      "Only the BD+C Reference Guide",
+      "ASHRAE 90.1 and 62.1",
+      "The WELL v2 standard"
+     ]
+    },
+    {
+     "q": "Can you sit for the LEED AP with Specialty v5 exam if you earned your Green Associate on v4?",
+     "a": "Yes",
+     "explain": "USGBC: Green Associate holders, regardless of exam version, are eligible for the AP with Specialty v5 exam.",
+     "wrong": [
+      "No, you must retake GA on v5",
+      "Only with a waiver",
+      "Only after 2 years"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "true-advisor",
+   "name": "TRUE Advisor (zero waste)",
+   "short": "TRUE Advisor",
+   "icon": "♻️",
+   "issuer": "GBCI",
+   "url": "https://true.gbci.org/true-advisor",
+   "stage": "Next",
+   "order": 2,
+   "tagline": "A short online course and exam on zero waste and the TRUE certification.",
+   "fit": "A fast win. Zero waste is a core SF Environment program, and every LEED v5 project now needs a Planning for Zero Waste Operations prerequisite.",
+   "facts": [
+    {
+     "k": "Format",
+     "v": "12 narrated online modules, then a 75-question end-of-course exam"
+    },
+    {
+     "k": "Eligibility",
+     "v": "None"
+    },
+    {
+     "k": "Cost",
+     "v": "$450, or $350 for USGBC members (access for 180 days)"
+    },
+    {
+     "k": "Time limit",
+     "v": "Finish the course and pass the exam within 180 days of registering"
+    },
+    {
+     "k": "Bonus",
+     "v": "7.5 continuing-education hours, which count toward your LEED credential"
+    },
+    {
+     "k": "Note",
+     "v": "USGBC launched TRUE v2 in October 2026; check which version the course covers when you register."
+    }
+   ],
+   "plan": [
+    "Learn the flashcards in this pack (1 week)",
+    "Register and work through the 12 modules (about 2 weeks)",
+    "Take the 75-question exam before your 180 days run out"
+   ],
+   "resources": [
+    {
+     "name": "TRUE Advisor (GBCI)",
+     "url": "https://true.gbci.org/true-advisor"
+    }
+   ],
+   "check": "Course topics and price are from the GBCI page in October 2026.",
+   "cards": [
+    {
+     "q": "What does TRUE certify?",
+     "a": "Zero waste facilities and operations",
+     "explain": "TRUE (Total Resource Use and Efficiency) is GBCI's zero waste certification.",
+     "wrong": [
+      "Net zero energy buildings",
+      "Healthy interiors",
+      "Low-carbon concrete"
+     ]
+    },
+    {
+     "q": "What does TRUE stand for?",
+     "a": "Total Resource Use and Efficiency",
+     "explain": "TRUE is administered by GBCI, the same body that runs LEED credentials.",
+     "wrong": [
+      "Truly Renewable Urban Energy",
+      "Total Recycling Under Evaluation",
+      "Transparent Reporting of Use and Emissions"
+     ]
+    },
+    {
+     "q": "What minimum diversion rate does a TRUE project need?",
+     "a": "90%",
+     "explain": "TRUE v2 keeps the 90% diversion requirement.",
+     "wrong": [
+      "50%",
+      "75%",
+      "100%"
+     ]
+    },
+    {
+     "q": "Does waste-to-energy or incineration count as diversion under TRUE?",
+     "a": "No",
+     "explain": "Approved strategies include reduction, reuse, composting, recycling and anaerobic digestion.",
+     "wrong": [
+      "Yes, fully",
+      "Yes, up to 10%",
+      "Only for hazardous waste"
+     ]
+    },
+    {
+     "q": "Are there eligibility requirements for the TRUE Advisor credential?",
+     "a": "No",
+     "explain": "Anyone can register, take the course and the exam.",
+     "wrong": [
+      "A LEED AP",
+      "2 years of waste experience",
+      "An engineering degree"
+     ]
+    },
+    {
+     "q": "How many questions are on the TRUE Advisor exam?",
+     "a": "75",
+     "explain": "The exam comes at the end of the online course.",
+     "wrong": [
+      "50",
+      "100",
+      "120"
+     ]
+    },
+    {
+     "q": "How long do you have to finish the TRUE Advisor course and exam?",
+     "a": "180 days",
+     "explain": "The fee covers 180 days of access.",
+     "wrong": [
+      "30 days",
+      "1 year",
+      "No limit"
+     ]
+    },
+    {
+     "q": "How many online modules does the TRUE Advisor course have?",
+     "a": "12",
+     "explain": "Narrated modules plus downloadable resources and guided notes.",
+     "wrong": [
+      "6",
+      "20",
+      "4"
+     ]
+    },
+    {
+     "q": "How many CE hours does passing TRUE Advisor earn?",
+     "a": "7.5",
+     "explain": "Useful toward LEED credential maintenance.",
+     "wrong": [
+      "2",
+      "15",
+      "30"
+     ]
+    },
+    {
+     "q": "Which TRUE topics come before recycling and composting?",
+     "a": "Redesign, Reduce and Reuse",
+     "explain": "Zero waste works from the top of the hierarchy down: design waste out first.",
+     "wrong": [
+      "Landfill and incineration",
+      "Shipping and storage",
+      "Metering and reporting"
+     ]
+    },
+    {
+     "q": "What is a zero waste audit for?",
+     "a": "Measuring what's in the waste stream to find diversion opportunities",
+     "explain": "Audits give the baseline numbers TRUE reporting relies on.",
+     "wrong": [
+      "Checking fire safety",
+      "Counting employees",
+      "Testing indoor air"
+     ]
+    },
+    {
+     "q": "Which LEED v5 prerequisite connects directly to TRUE?",
+     "a": "MRp1 Planning for Zero Waste Operations",
+     "explain": "Every LEED v5 BD+C project must plan for zero waste operations.",
+     "wrong": [
+      "EAp3 Fundamental Commissioning",
+      "WEp1 Water Metering",
+      "SSp1 Minimized Site Disturbance"
+     ]
+    },
+    {
+     "q": "What is 'bin right-sizing'?",
+     "a": "Matching container size and pickup frequency to actual waste volumes",
+     "explain": "Right-sizing cuts hauling costs and emissions.",
+     "wrong": [
+      "Buying bigger bins",
+      "Painting bins by color",
+      "Removing all trash cans"
+     ]
+    },
+    {
+     "q": "Which TRUE topic covers making sure purchased goods create less waste?",
+     "a": "Zero Waste Purchasing",
+     "explain": "Purchasing upstream is one of TRUE's credit areas.",
+     "wrong": [
+      "Closed Loop",
+      "Training",
+      "Innovation"
+     ]
+    },
+    {
+     "q": "What does 'closed loop' mean in zero waste?",
+     "a": "Materials go back into making new products, often for the same user",
+     "explain": "Example: buying recycled paper made from your own office's recycled paper.",
+     "wrong": [
+      "Locking waste rooms",
+      "Shipping waste overseas",
+      "Burning waste for heat"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "well-ap",
+   "name": "WELL Accredited Professional",
+   "short": "WELL AP",
+   "icon": "💚",
+   "issuer": "IWBI (exam administered with GBCI)",
+   "url": "https://www.wellcertified.com/well-ap/",
+   "stage": "Next",
+   "order": 3,
+   "tagline": "The health and well-being credential for buildings and workplaces.",
+   "fit": "The Arup posting accepts WELL AP. It's especially valuable at Gensler, which designs a lot of workplaces where WELL is common.",
+   "facts": [
+    {
+     "k": "Standard",
+     "v": "WELL v2: 10 concepts plus Innovation"
+    },
+    {
+     "k": "Exam",
+     "v": "Third-party guides report 115 multiple-choice questions in 2.5 hours, scored 125 to 200 with 170 to pass. Confirm in IWBI's candidate handbook."
+    },
+    {
+     "k": "Cost",
+     "v": "Third-party guides list about $299, with a lower student price. Check IWBI's current fee."
+    },
+    {
+     "k": "Eligibility",
+     "v": "No formal prerequisites; WELL knowledge recommended"
+    },
+    {
+     "k": "Maintain",
+     "v": "Continuing education every 2 years"
+    }
+   ],
+   "plan": [
+    "Learn the 10 concepts and the certification levels in this pack",
+    "Read the WELL v2 standard online, one concept a day",
+    "Take practice questions, then register through IWBI"
+   ],
+   "resources": [
+    {
+     "name": "WELL AP (IWBI)",
+     "url": "https://www.wellcertified.com/well-ap/"
+    },
+    {
+     "name": "WELL v2 standard",
+     "url": "https://v2.wellcertified.com/"
+    }
+   ],
+   "check": "Exam length, scoring and fees here come from third-party guides; IWBI's candidate handbook is the official source.",
+   "cards": [
+    {
+     "q": "Who runs the WELL Building Standard?",
+     "a": "IWBI (International WELL Building Institute)",
+     "explain": "WELL focuses on human health and well-being in buildings.",
+     "wrong": [
+      "USGBC",
+      "ASHRAE",
+      "ISI"
+     ]
+    },
+    {
+     "q": "How many concepts does WELL v2 have?",
+     "a": "10 (plus Innovation)",
+     "explain": "Air, Water, Nourishment, Light, Movement, Thermal Comfort, Sound, Materials, Mind, Community.",
+     "wrong": [
+      "7",
+      "12",
+      "8"
+     ]
+    },
+    {
+     "q": "Name the 10 WELL v2 concepts.",
+     "a": "Air, Water, Nourishment, Light, Movement, Thermal Comfort, Sound, Materials, Mind, Community",
+     "explain": "Innovation is an extra category on top of the 10.",
+     "wrong": [
+      "Energy, Water, Waste, Sites, Air, Light, Sound, Comfort, Mind, Equity",
+      "Air, Water, Food, Fitness, Comfort, Mind, Sleep, Light, Noise, Safety",
+      "Site, Water, Energy, Materials, Air, Light, Sound, Thermal, Mind, Community"
+     ]
+    },
+    {
+     "q": "What are the WELL v2 certification levels?",
+     "a": "Bronze, Silver, Gold, Platinum",
+     "explain": "Bronze 40, Silver 50, Gold 60, Platinum 80 points.",
+     "wrong": [
+      "Certified, Silver, Gold, Platinum",
+      "Verified, Silver, Gold, Platinum",
+      "Level 1, 2, 3, 4"
+     ]
+    },
+    {
+     "q": "How many points for WELL Gold?",
+     "a": "60",
+     "explain": "Bronze 40, Silver 50, Gold 60, Platinum 80.",
+     "wrong": [
+      "50",
+      "70",
+      "80"
+     ]
+    },
+    {
+     "q": "In WELL, what is a precondition?",
+     "a": "A required feature every project must meet",
+     "explain": "Optimizations are the optional features that earn points.",
+     "wrong": [
+      "An optional point",
+      "A pilot feature",
+      "A design review"
+     ]
+    },
+    {
+     "q": "In WELL, what is an optimization?",
+     "a": "An optional feature that earns points",
+     "explain": "Preconditions are mandatory; optimizations are chosen to reach a level.",
+     "wrong": [
+      "A required feature",
+      "An energy model",
+      "A recertification step"
+     ]
+    },
+    {
+     "q": "What makes WELL different from LEED in how it's verified?",
+     "a": "On-site performance verification testing (air, water, light, sound)",
+     "explain": "WELL checks how the building actually performs for people.",
+     "wrong": [
+      "It uses only drawings",
+      "It needs no documentation",
+      "It's self-certified"
+     ]
+    },
+    {
+     "q": "How often does WELL certification need renewal?",
+     "a": "Every 3 years",
+     "explain": "WELL certification is renewed with new performance data.",
+     "wrong": [
+      "Every year",
+      "Every 10 years",
+      "Never"
+     ]
+    },
+    {
+     "q": "Which WELL concept covers mental health, stress and restorative spaces?",
+     "a": "Mind",
+     "explain": "Mind features support cognitive and emotional health.",
+     "wrong": [
+      "Community",
+      "Movement",
+      "Light"
+     ]
+    },
+    {
+     "q": "Which WELL concept covers circadian lighting and glare?",
+     "a": "Light",
+     "explain": "Light features cover visual comfort and circadian health.",
+     "wrong": [
+      "Mind",
+      "Thermal Comfort",
+      "Materials"
+     ]
+    },
+    {
+     "q": "Which WELL concept covers active design, stairs and ergonomics?",
+     "a": "Movement",
+     "explain": "Movement encourages physical activity throughout the day.",
+     "wrong": [
+      "Community",
+      "Nourishment",
+      "Mind"
+     ]
+    },
+    {
+     "q": "Which WELL concept covers healthy food, fruit and vegetables, and mindful eating?",
+     "a": "Nourishment",
+     "explain": "Nourishment covers food availability, labeling and eating spaces.",
+     "wrong": [
+      "Water",
+      "Community",
+      "Mind"
+     ]
+    },
+    {
+     "q": "Which WELL concept covers health benefits, inclusive design and emergency preparedness?",
+     "a": "Community",
+     "explain": "Community addresses policies and the social environment.",
+     "wrong": [
+      "Mind",
+      "Movement",
+      "Sound"
+     ]
+    },
+    {
+     "q": "Which WELL concept limits hazardous ingredients such as lead and asbestos?",
+     "a": "Materials",
+     "explain": "Materials reduces exposure to hazardous building materials.",
+     "wrong": [
+      "Air",
+      "Water",
+      "Thermal Comfort"
+     ]
+    },
+    {
+     "q": "Is there a formal experience requirement to take the WELL AP exam?",
+     "a": "No",
+     "explain": "WELL project experience is recommended but not required.",
+     "wrong": [
+      "Yes, 2 years",
+      "Yes, a LEED AP",
+      "Yes, an architecture license"
+     ]
+    },
+    {
+     "q": "Which health credential did the Arup graduate posting accept along with LEED AP?",
+     "a": "WELL AP",
+     "explain": "The Arup posting also named Fitwel and Envision.",
+     "wrong": [
+      "CIH",
+      "TRUE Advisor",
+      "PE"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "env-sp",
+   "name": "Envision Sustainability Professional",
+   "short": "ENV SP",
+   "icon": "🛤️",
+   "issuer": "Institute for Sustainable Infrastructure (ISI)",
+   "url": "https://sustainableinfrastructure.org/",
+   "stage": "Later",
+   "order": 4,
+   "tagline": "Sustainability for infrastructure: roads, water, energy, parks and transit.",
+   "fit": "Arup, Arcadis and AECOM are infrastructure firms, and Envision is named in the Arup posting. It's also used on public works, so it's useful for city jobs.",
+   "facts": [
+    {
+     "k": "Format",
+     "v": "Training course (online or live), then an online exam"
+    },
+    {
+     "k": "Exam",
+     "v": "75 multiple-choice questions; 75% to pass (ISI packet)"
+    },
+    {
+     "k": "Cost",
+     "v": "Usually $450 to $800 including the exam, depending on the provider (APWA, ASCE, ISI). Some public agencies get a $250 rate."
+    },
+    {
+     "k": "Framework",
+     "v": "Envision v3: 64 credits in 5 categories"
+    },
+    {
+     "k": "Eligibility",
+     "v": "None"
+    }
+   ],
+   "plan": [
+    "Learn the 5 categories and achievement levels in this pack",
+    "Take an ISI-approved training course (often 4 sessions of 2 hours)",
+    "Pass the 75-question exam"
+   ],
+   "resources": [
+    {
+     "name": "Institute for Sustainable Infrastructure",
+     "url": "https://sustainableinfrastructure.org/"
+    },
+    {
+     "name": "ISI ENV SP packet (PDF)",
+     "url": "https://sustainableinfrastructure.org/wp-content/uploads/2024/04/20240417-ENV-SP-Packet-Final.pdf"
+    }
+   ],
+   "check": "Prices vary by provider and year; check the course page before you register.",
+   "cards": [
+    {
+     "q": "What does Envision rate?",
+     "a": "Sustainable infrastructure projects",
+     "explain": "Roads, bridges, water systems, energy, parks, transit and more.",
+     "wrong": [
+      "Office interiors",
+      "Single-family homes",
+      "Restaurants"
+     ]
+    },
+    {
+     "q": "Who runs Envision?",
+     "a": "The Institute for Sustainable Infrastructure (ISI)",
+     "explain": "ISI was founded by ASCE, APWA and ACEC.",
+     "wrong": [
+      "USGBC",
+      "IWBI",
+      "EPA"
+     ]
+    },
+    {
+     "q": "How many credits are in Envision v3?",
+     "a": "64",
+     "explain": "Spread across 5 categories.",
+     "wrong": [
+      "40",
+      "100",
+      "110"
+     ]
+    },
+    {
+     "q": "Name Envision's 5 categories.",
+     "a": "Quality of Life, Leadership, Resource Allocation, Natural World, Climate and Resilience",
+     "explain": "QL 14, LD 12, RA 14, NW 14, CR 10 credits.",
+     "wrong": [
+      "Energy, Water, Sites, Materials, Air",
+      "People, Planet, Profit, Policy, Place",
+      "Design, Build, Operate, Maintain, Retire"
+     ]
+    },
+    {
+     "q": "Which Envision category covers wellbeing, mobility and community?",
+     "a": "Quality of Life",
+     "explain": "14 credits.",
+     "wrong": [
+      "Leadership",
+      "Natural World",
+      "Resource Allocation"
+     ]
+    },
+    {
+     "q": "Which Envision category covers collaboration, planning and economy?",
+     "a": "Leadership",
+     "explain": "12 credits.",
+     "wrong": [
+      "Quality of Life",
+      "Climate and Resilience",
+      "Natural World"
+     ]
+    },
+    {
+     "q": "Which Envision category covers materials, energy and water?",
+     "a": "Resource Allocation",
+     "explain": "14 credits.",
+     "wrong": [
+      "Natural World",
+      "Leadership",
+      "Climate and Resilience"
+     ]
+    },
+    {
+     "q": "Which Envision category covers siting, conservation and ecology?",
+     "a": "Natural World",
+     "explain": "14 credits.",
+     "wrong": [
+      "Resource Allocation",
+      "Quality of Life",
+      "Leadership"
+     ]
+    },
+    {
+     "q": "Which Envision category covers emissions and resilience?",
+     "a": "Climate and Resilience",
+     "explain": "10 credits.",
+     "wrong": [
+      "Natural World",
+      "Resource Allocation",
+      "Leadership"
+     ]
+    },
+    {
+     "q": "What are Envision's levels of achievement, lowest to highest?",
+     "a": "Improved, Enhanced, Superior, Conserving, Restorative",
+     "explain": "Each credit is scored by how far it goes, up to restoring natural or social systems.",
+     "wrong": [
+      "Bronze, Silver, Gold, Platinum, Diamond",
+      "Basic, Good, Better, Best, Leading",
+      "Certified, Silver, Gold, Platinum, Restorative"
+     ]
+    },
+    {
+     "q": "What are Envision's project award levels?",
+     "a": "Verified, Silver, Gold, Platinum",
+     "explain": "Awards are based on the share of applicable points a project earns.",
+     "wrong": [
+      "Bronze, Silver, Gold, Platinum",
+      "Certified, Silver, Gold, Platinum",
+      "Level 1-4"
+     ]
+    },
+    {
+     "q": "How many questions are on the ENV SP exam?",
+     "a": "75",
+     "explain": "75% is needed to pass, per ISI.",
+     "wrong": [
+      "100",
+      "50",
+      "115"
+     ]
+    },
+    {
+     "q": "What score do you need to pass the ENV SP exam?",
+     "a": "75%",
+     "explain": "From ISI's ENV SP packet.",
+     "wrong": [
+      "70%",
+      "80%",
+      "170 of 200"
+     ]
+    },
+    {
+     "q": "Why is Envision useful for a career at Arup or Arcadis?",
+     "a": "They're major infrastructure firms and Envision rates infrastructure",
+     "explain": "The Arup graduate posting named Envision directly.",
+     "wrong": [
+      "It's required for all architects",
+      "It replaces LEED",
+      "It's a health standard"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seed",
+   "name": "SEED (Social Economic Environmental Design)",
+   "short": "SEED",
+   "icon": "🤝",
+   "issuer": "SEED Network",
+   "url": "https://seednetwork.org/seed-evaluator/",
+   "stage": "Later",
+   "order": 5,
+   "tagline": "Public interest design: projects certified for their social, economic and environmental outcomes.",
+   "fit": "Ties design to community outcomes, which is the heart of SF Environment's engagement work and Gensler's community-focused projects.",
+   "facts": [
+    {
+     "k": "What gets certified",
+     "v": "Design projects, not people. A panel of SEED Certified professionals reviews each project."
+    },
+    {
+     "k": "How",
+     "v": "The SEED Evaluator, a free online tool that is also the application form"
+    },
+    {
+     "k": "Process",
+     "v": "3 phases, each reviewed by the panel"
+    },
+    {
+     "k": "Cost",
+     "v": "Free to register; processing fees on a sliding scale (professional, nonprofit, student)"
+    },
+    {
+     "k": "Training",
+     "v": "Public Interest Design Institute courses have taught the SEED process. Check seednetwork.org for current sessions."
+    }
+   ],
+   "plan": [
+    "Learn how SEED works with this pack",
+    "Register for the free SEED Evaluator and walk through a past project of yours",
+    "Ask the SEED Network about current Public Interest Design training"
+   ],
+   "resources": [
+    {
+     "name": "SEED Evaluator and certification",
+     "url": "https://seednetwork.org/seed-evaluator/"
+    }
+   ],
+   "check": "SEED certifies projects; there is no individual exam like LEED. If you meant a different SEED credential, tell Claude and this pack will be swapped.",
+   "cards": [
+    {
+     "q": "What does SEED stand for?",
+     "a": "Social Economic Environmental Design",
+     "explain": "SEED looks at a project's social, economic and environmental outcomes together.",
+     "wrong": [
+      "Sustainable Energy and Efficient Design",
+      "Smart Ecological Engineering Design",
+      "Sustainable Environmental Education Degree"
+     ]
+    },
+    {
+     "q": "What does SEED certify: people or projects?",
+     "a": "Projects",
+     "explain": "SEED Certification is granted to design projects after independent review.",
+     "wrong": [
+      "People",
+      "Products",
+      "Companies"
+     ]
+    },
+    {
+     "q": "Who reviews SEED certification applications?",
+     "a": "A panel of SEED Certified professionals",
+     "explain": "Independent third-party review at each phase.",
+     "wrong": [
+      "USGBC staff",
+      "A city inspector",
+      "The project's own architect"
+     ]
+    },
+    {
+     "q": "What is the SEED Evaluator?",
+     "a": "A free online tool that guides and documents a project; also the application form",
+     "explain": "It helps assess community challenges, set goals and document outcomes.",
+     "wrong": [
+      "An energy model",
+      "A paid exam",
+      "A cost estimator"
+     ]
+    },
+    {
+     "q": "How many phases does SEED Certification have?",
+     "a": "3",
+     "explain": "Each phase is reviewed by the panel.",
+     "wrong": [
+      "1",
+      "5",
+      "2"
+     ]
+    },
+    {
+     "q": "How are SEED processing fees set?",
+     "a": "On a sliding scale by project type",
+     "explain": "Professional, nonprofit and student projects pay different fees.",
+     "wrong": [
+      "Flat $1,000",
+      "Free for everyone",
+      "By building size"
+     ]
+    },
+    {
+     "q": "What kind of design is SEED part of?",
+     "a": "Public interest design",
+     "explain": "Design that serves communities, often with people who have limited voice in public decisions.",
+     "wrong": [
+      "Luxury residential design",
+      "Product packaging",
+      "Industrial automation"
+     ]
+    },
+    {
+     "q": "What is a core SEED practice when working with a community?",
+     "a": "Inclusive, participatory decision-making with community members",
+     "explain": "Projects are guided by the community's own goals.",
+     "wrong": [
+      "Designing without input",
+      "Only consulting investors",
+      "Copying past projects"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cih",
+   "name": "Certified Industrial Hygienist",
+   "short": "CIH",
+   "icon": "🧪",
+   "issuer": "Board for Global EHS Credentialing (BGC, formerly ABIH)",
+   "url": "https://gobgc.org/applicants_cih/",
+   "stage": "Long-term",
+   "order": 6,
+   "tagline": "The top credential for protecting workers and occupants from health hazards.",
+   "fit": "A long-term goal for environmental health and safety (EHS) and indoor air quality work. It connects with WELL and LEED indoor air credits.",
+   "facts": [
+    {
+     "k": "Exam",
+     "v": "180 multiple-choice questions (150 scored, 30 pilot), about 5 hours"
+    },
+    {
+     "k": "Eligibility",
+     "v": "Strict: a degree, industrial hygiene coursework, ethics training, and documented years of professional IH experience with references. Check BGC's current tables."
+    },
+    {
+     "k": "When",
+     "v": "Realistic only after a few years working in industrial hygiene or EHS"
+    },
+    {
+     "k": "Content",
+     "v": "16 subject areas, including air sampling, toxicology, biostatistics and epidemiology, and ventilation"
+    },
+    {
+     "k": "Maintain",
+     "v": "BGC Certification Maintenance Process and Code of Ethics"
+    }
+   ],
+   "plan": [
+    "Learn the IH basics in this pack now (they also help with WELL and LEED indoor air)",
+    "Look for EHS or industrial hygiene roles or graduate IH coursework",
+    "Check BGC's eligibility tables once you have qualifying experience"
+   ],
+   "resources": [
+    {
+     "name": "BGC: applying for the CIH",
+     "url": "https://gobgc.org/applicants_cih/"
+    },
+    {
+     "name": "CIH eligibility checklist (PDF)",
+     "url": "https://gobgc.org/wp-content/uploads/2023/08/CIH-Eligibility-Checklist-6-2023.pdf"
+    }
+   ],
+   "check": "Eligibility details (degree, academic hours, years of experience) change; confirm on gobgc.org before planning around them.",
+   "cards": [
+    {
+     "q": "What does a CIH do?",
+     "a": "Anticipates, recognizes, evaluates and controls workplace health hazards",
+     "explain": "Industrial hygiene protects workers and building occupants.",
+     "wrong": [
+      "Designs HVAC systems",
+      "Certifies green buildings",
+      "Audits finances"
+     ]
+    },
+    {
+     "q": "Who grants the CIH?",
+     "a": "BGC, the Board for Global EHS Credentialing (formerly ABIH)",
+     "explain": "The American Board of Industrial Hygiene renamed itself BGC.",
+     "wrong": [
+      "OSHA",
+      "USGBC",
+      "NIOSH"
+     ]
+    },
+    {
+     "q": "How many questions are on the CIH exam?",
+     "a": "180 (150 scored, 30 pilot)",
+     "explain": "About 5 hours, with an optional break.",
+     "wrong": [
+      "100",
+      "75",
+      "250"
+     ]
+    },
+    {
+     "q": "List the hierarchy of controls, most to least effective.",
+     "a": "Elimination, substitution, engineering, administrative, PPE",
+     "explain": "PPE is the last line of defense.",
+     "wrong": [
+      "PPE, administrative, engineering, substitution, elimination",
+      "Engineering, PPE, elimination, training, substitution",
+      "Training, PPE, ventilation, monitoring, elimination"
+     ]
+    },
+    {
+     "q": "What is an OSHA PEL?",
+     "a": "A legally enforceable permissible exposure limit",
+     "explain": "PELs are OSHA regulations; many are decades old.",
+     "wrong": [
+      "A voluntary guideline",
+      "A NIOSH research value",
+      "A building code"
+     ]
+    },
+    {
+     "q": "What is an ACGIH TLV?",
+     "a": "A health-based guideline (threshold limit value), not a law",
+     "explain": "TLVs are often stricter than OSHA PELs.",
+     "wrong": [
+      "An OSHA regulation",
+      "An EPA outdoor air standard",
+      "A WELL precondition"
+     ]
+    },
+    {
+     "q": "What does NIOSH publish?",
+     "a": "Recommended exposure limits (RELs)",
+     "explain": "NIOSH is the research agency; OSHA enforces.",
+     "wrong": [
+      "Enforceable PELs",
+      "TLVs",
+      "Building codes"
+     ]
+    },
+    {
+     "q": "What is a TWA?",
+     "a": "A time-weighted average exposure, usually over 8 hours",
+     "explain": "Most exposure limits are written as 8-hour TWAs.",
+     "wrong": [
+      "A peak instantaneous reading",
+      "A 15-minute limit",
+      "A yearly average"
+     ]
+    },
+    {
+     "q": "What is a STEL?",
+     "a": "A short-term exposure limit, usually 15 minutes",
+     "explain": "It limits brief peaks above the TWA.",
+     "wrong": [
+      "An 8-hour average",
+      "A ceiling that can never be crossed",
+      "A noise limit"
+     ]
+    },
+    {
+     "q": "What is a ceiling limit?",
+     "a": "A concentration that should never be exceeded at any time",
+     "explain": "Different from a STEL, which is an average over 15 minutes.",
+     "wrong": [
+      "An 8-hour average",
+      "A 1-hour average",
+      "The detection limit"
+     ]
+    },
+    {
+     "q": "What are the main routes of entry for hazardous substances?",
+     "a": "Inhalation, skin absorption, ingestion, injection",
+     "explain": "Inhalation is the most common route at work.",
+     "wrong": [
+      "Hearing, sight, touch, taste",
+      "Only inhalation",
+      "Inhalation and radiation"
+     ]
+    },
+    {
+     "q": "What is OSHA's noise PEL?",
+     "a": "90 dBA as an 8-hour TWA (5 dB exchange rate)",
+     "explain": "The action level for hearing conservation is 85 dBA.",
+     "wrong": [
+      "85 dBA, 3 dB exchange",
+      "70 dBA",
+      "100 dBA"
+     ]
+    },
+    {
+     "q": "What is NIOSH's recommended noise limit?",
+     "a": "85 dBA as an 8-hour TWA (3 dB exchange rate)",
+     "explain": "Stricter than OSHA's 90 dBA PEL.",
+     "wrong": [
+      "90 dBA, 5 dB exchange",
+      "80 dBA, 5 dB exchange",
+      "95 dBA"
+     ]
+    },
+    {
+     "q": "What is local exhaust ventilation?",
+     "a": "Capturing contaminants at the source before they spread",
+     "explain": "Example: a fume hood or welding extractor. More effective than general dilution.",
+     "wrong": [
+      "Opening windows",
+      "Adding more people",
+      "Running a ceiling fan"
+     ]
+    },
+    {
+     "q": "What does indoor CO2 usually indicate in buildings?",
+     "a": "How well the space is ventilated for the number of people",
+     "explain": "High CO2 suggests too little outdoor air for occupancy.",
+     "wrong": [
+      "Mold growth",
+      "Radon levels",
+      "Lead in paint"
+     ]
+    },
+    {
+     "q": "Which building hazards often involve an industrial hygienist?",
+     "a": "Asbestos, lead, mold and VOCs",
+     "explain": "Common in renovation, indoor air quality and green building projects.",
+     "wrong": [
+      "Solar glare",
+      "Traffic noise only",
+      "Water pressure"
+     ]
+    }
+   ]
+  }
+ ]
+}

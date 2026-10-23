@@ -605,13 +605,13 @@ let DECKS = {};     // id -> {summary, takeaways, cards}
 async function getJSON(u){ try { const r = await fetch(u, {cache:"no-cache"}); return r.ok ? await r.json() : {}; } catch { return {}; } }
 
 async function loadCatalog(){
-  const [res, books, media, deb, car, vis, sc, g1, g2, g3, cos] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json"), getJSON("visuals.json"), getJSON("scenarios.json"),
-    getJSON("leed-ch1-3.json"), getJSON("leed-ch4-6.json"), getJSON("leed-ch7-9.json"), getJSON("companies.json")]);
+  const [res, books, media, deb, car, vis, sc, g1, g2, g3, cos, crt] = await Promise.all([getJSON("resources.json"), getJSON("decks-books.json"), getJSON("decks-media.json"), getJSON("debates.json"), getJSON("career.json"), getJSON("visuals.json"), getJSON("scenarios.json"),
+    getJSON("leed-ch1-3.json"), getJSON("leed-ch4-6.json"), getJSON("leed-ch7-9.json"), getJSON("companies.json"), getJSON("certifications.json")]);
   VIS = vis || {}; SCEN = sc.scenarios || [];
   const chapters = [g1, g2, g3].flatMap(x => Array.isArray(x) ? x : []).sort((a, b) => a.n - b.n);
   if (chapters.length) LEED = {chapters, exam:{questions:100, minutes:120, pass:170, scale:[125, 200],
-    handbook:"https://www.usgbc.org/resources/leed-v4-green-associate-candidate-handbook",
-    note:"Format from usgbc.org: 2 hours, 100 multiple-choice questions, 170 out of 200 to pass. The current candidate handbook covers LEED v4. LEED v5 launched in 2025, so check which version your exam date uses."}};
+    handbook:"https://support.usgbc.org/hc/en-us/articles/29656794179987-LEED-v5-exam-information",
+    note:"The Green Associate exam is now based on LEED v5 (the v4 exam ended April 26, 2026). Third-party guides report 2 hours, 100 multiple-choice questions and 170 of 200 to pass. These chapters follow the classic book order; learn the v5 names, prerequisites and points in the LEED GA v5 certification pack."}};
   COMPANIES = cos.companies || [];
   DECKS = Object.assign({}, books, media);
   for (const c of [g1, g2, g3].flatMap(x => Array.isArray(x) ? x : [])) {   // LEED chapters, in book order
@@ -624,6 +624,11 @@ async function loadCatalog(){
   for (const co of (cos.companies || [])) {   // company packs: studied only on purpose
     DECKS[`co-${co.id}`] = {summary:co.tagline, takeaways:[], cards:co.cards || []};
     CATALOG[`co-${co.id}`] = {id:`co-${co.id}`, title:`${co.name} prep pack`, type:"course", by:"Company pack · study before you talk with them", why:co.tagline, always:true, scoped:true, company:co.id};
+  }
+  CERTS = (crt.certs || []).sort((a, b) => a.order - b.order);
+  for (const x of CERTS) {   // certification packs: in daily review while you're studying for them
+    DECKS[`cert-${x.id}`] = {summary:x.tagline, takeaways:(x.plan || []), cards:x.cards || []};
+    CATALOG[`cert-${x.id}`] = {id:`cert-${x.id}`, title:`${x.short} prep`, type:"course", by:`Certification · ${x.issuer}`, why:x.tagline, always:true, cert:x.id};
   }
   CAREER = car; JOBS = car.jobs || [];
   for (const j of JOBS) if (j.cards?.length) {
@@ -674,6 +679,7 @@ function isUnlocked(c){
 function unlockedCards(){
   const out = [];
   for (const id of Object.keys(allItems())) { if (getItem(id)?.scoped) continue;   // company packs: only when you choose
+    if (getItem(id)?.cert && !certActive(getItem(id).cert)) continue;   // certifications: only the ones you're studying
     cardsFor(id).forEach(c => { if (isUnlocked(c)) out.push(c); }); }
   return out;
 }
@@ -689,7 +695,14 @@ function dueQueue(){
     if (!r) fresh.push(c); else if (r.due <= now) due.push(c);
   }
   const newLeft = Math.max(0, NEW_PER_DAY - (S.days[today()]?.newCards || 0));
-  return [...shuffle(due), ...fresh.slice(0, newLeft)];
+  // New cards take turns across decks, starting with the certifications you're studying,
+  // so one big deck doesn't hold back the rest.
+  const by = new Map();
+  for (const c of fresh) { if (!by.has(c.item)) by.set(c.item, []); by.get(c.item).push(c); }
+  const lanes = [...by.values()].sort((a, b) => (getItem(b[0].item)?.cert ? 1 : 0) - (getItem(a[0].item)?.cert ? 1 : 0));
+  const mixed = [];
+  for (let i = 0; mixed.length < fresh.length; i++) for (const l of lanes) if (l[i]) mixed.push(l[i]);
+  return [...shuffle(due), ...mixed.slice(0, newLeft)];
 }
 function grade(c, g){ // 1 again, 2 hard, 3 good, 4 easy
   const r = S.srs[c.id] || {ivl:0, ease:2.5, reps:0, lapses:0, due:0};
@@ -1772,7 +1785,7 @@ function renderCareer(){
       <div class="links" style="margin-top:8px">${(CAREER.europe.links || []).map(l => `<a href="${esc(safeUrl(l.url))}" target="_blank" rel="noopener">${esc(l.name)} ↗</a>`).join("")}</div></details>` : ""}
     <h2 id="jobPrep">Open role: ${esc(j.company)}</h2>` : "";
   const segBtns = (steps, cur, attr, id) => `<div class="seg mini" ${attr}="${esc(id)}">${steps.map(([k,l]) => `<button data-v="${k}" aria-pressed="${(cur || "none") === k}">${l}</button>`).join("")}</div>`;
-  el.innerHTML = networkHtml() + targets + `
+  el.innerHTML = networkHtml() + certsHtml() + targets + `
     ${JOBS.length > 1 ? `<div class="chips">${JOBS.map(x => `<button class="chip" data-job="${esc(x.id)}" aria-pressed="${x.id === j.id}">${esc(x.company)}</button>`).join("")}</div>` : ""}
     <div class="card hero" style="align-items:flex-start">
       <div class="ring" aria-label="Job readiness">
@@ -2230,7 +2243,7 @@ function finishScenario(){
    Quizlet-style sets, Match, LEED study guide (book order), exam simulator,
    and company prep packs
    ========================================================= */
-let LEED = null, COMPANIES = [];
+let LEED = null, COMPANIES = [], CERTS = [];
 const showStudyPage = html => { $("#studyMenu").hidden = true; $("#session").hidden = false; $("#session").innerHTML = html; scrollTo(0, 0); };
 const deckTitle = d => getItem(d)?.title || d;
 
@@ -2499,6 +2512,60 @@ function openCompany(id){
 }
 document.addEventListener("click", e => { const b = e.target.closest("[data-company]"); if (b) { e.preventDefault(); openCompany(b.dataset.company); } });
 
+/* ---------- Certifications: exam facts, study plan and flashcards for each credential ---------- */
+const CERT_STEPS = [["planned","Planned"],["studying","Studying"],["booked","Exam booked"],["passed","Passed ✓"]];
+const certSt = id => (S.certs ||= {})[id] || {status: id === "leed-ga" ? "studying" : "planned"};
+const certActive = id => ["studying","booked"].includes(certSt(id).status);
+function certWhen(id){
+  const c = certSt(id); if (c.status !== "booked" || !c.date) return "";
+  const days = Math.round((new Date(c.date + "T12:00") - new Date(new Date().toDateString() + " 12:00")) / 864e5);
+  return days > 1 ? ` · exam in ${days} days` : days === 1 ? " · exam tomorrow" : days === 0 ? " · exam today" : " · exam date passed";
+}
+const certRow = x => `<button class="item" data-cert="${esc(x.id)}"><span class="ico"><span class="cov emo" style="font-size:20px">${esc(x.icon || "🎓")}</span></span>
+  <span style="min-width:0;flex:1"><div class="tt">${esc(x.name)}</div><div class="by">${esc(x.stage)} · ${esc((CERT_STEPS.find(k => k[0] === certSt(x.id).status) || [])[1])}${certWhen(x.id)} · ${(x.cards || []).length} cards</div></span><span class="chev">›</span></button>`;
+function certsHtml(){
+  if (!CERTS.length) return "";
+  return `<h2 style="margin-top:4px">🎓 Certifications to earn <small>${CERTS.filter(x => certSt(x.id).status === "passed").length}/${CERTS.length} passed</small></h2>
+    <p class="small muted" style="margin:-4px 0 8px">In the order that makes sense for you. Tap one for the exam details, a study plan and flashcards.</p>
+    <div class="items">${CERTS.map(certRow).join("")}</div>`;
+}
+function openCert(id, keepScroll){
+  const x = CERTS.find(c => c.id === id); if (!x) return;
+  const c = certSt(id), deck = `cert-${x.id}`;
+  const score = (x.scorecard || []).length ? `<h2>LEED v5 BD+C: New Construction scorecard</h2><p class="small muted">From USGBC's LEED v5 BD+C rating system (November 2025). 16 prerequisites, 110 points.</p>
+    <table class="facts">${x.scorecard.map(g => `<tr><th colspan="2" style="color:var(--text);padding-top:12px">${esc(g.cat)} · ${g.pts} pts</th></tr>${g.items.map(i => `<tr><th style="font-weight:500">${esc(i[0])}</th><td>${esc(i[1])} <span class="small muted">· ${i[2] === "Required" ? "required" : esc(i[2]) + (i[2] === "1" ? " pt" : " pts")}</span></td></tr>`).join("")}`).join("")}</table>
+    <p class="small muted" style="margin-top:8px">Certified 40-49 · Silver 50-59 · Gold 60-79 · Platinum 80+. Platinum also requires 5 Electrification points, 8 Enhanced Energy Efficiency points, 100% renewable energy and a 20% embodied carbon cut.</p>` : "";
+  openSheet(`<div class="small muted" style="padding-right:40px">🎓 Certification · ${esc(x.issuer)}</div>
+    <h1 style="font-size:24px;padding-right:40px">${esc(x.icon || "")} ${esc(x.name)}</h1><p class="muted small">${esc(x.tagline || "")}</p>
+    <div class="seg mini" id="certSeg" style="margin-top:12px">${CERT_STEPS.map(([k, l]) => `<button data-v="${k}" aria-pressed="${c.status === k}">${l}</button>`).join("")}</div>
+    ${c.status === "booked" ? `<label class="f">Exam date</label><input type="date" id="certDate" value="${esc(c.date || "")}"><div class="small muted" style="margin-top:4px">${esc(certWhen(id).replace(/^ · /, ""))}</div>` : ""}
+    <p class="small muted" style="margin-top:6px">${certActive(id) ? "These cards are in your daily review." : c.status === "passed" ? "Nice work. Its cards are out of daily review; open the flashcards any time." : "Cards join your daily review when you mark this Studying."}</p>
+    <div class="row" style="gap:8px;flex-wrap:wrap;margin-top:12px">
+      <button class="btn sm primary" data-certset="${esc(deck)}">🗂️ Flashcards (${(x.cards || []).length})</button>
+      <button class="btn sm" data-certquiz="${esc(deck)}">🎯 Quick quiz</button>
+      ${x.id === "leed-ga" && LEED ? `<button class="btn sm" data-certguide="1">📘 Study guide</button><button class="btn sm" data-certexam="1">⏱ Practice exam</button>` : ""}
+      <a class="btn sm" href="${esc(safeUrl(x.url))}" target="_blank" rel="noopener">Official page ↗</a></div>
+    <h2>Why it matters for you</h2><p style="font-size:14.5px">${esc(x.fit || "")}</p>
+    <h2>Key facts</h2><table class="facts">${(x.facts || []).map(f => `<tr><th>${esc(f.k)}</th><td>${esc(f.v)}</td></tr>`).join("")}</table>
+    <h2>Study plan</h2><ol class="takeaways">${(x.plan || []).map(t => `<li>${esc(t)}</li>`).join("")}</ol>
+    ${score}
+    ${x.check ? `<div class="lock" style="margin-top:12px">ℹ️ <span>${esc(x.check)}</span></div>` : ""}
+    ${(x.resources || []).length ? `<h2>Official resources</h2><ul class="takeaways">${x.resources.map(r => `<li><a href="${esc(safeUrl(r.url))}" target="_blank" rel="noopener">${esc(r.name)} ↗</a></li>`).join("")}</ul>` : ""}`, keepScroll);
+  const body = $("#sheetBody");
+  body.querySelectorAll("#certSeg button").forEach(b => b.onclick = () => {
+    const v = b.dataset.v, cur = (S.certs ||= {})[id] = {...certSt(id), status:v};
+    if (v === "passed" && !cur.xp) { cur.xp = 1; addXp(150, `Passed ${x.short}`); confetti(); }
+    else if (v === "studying" && !cur.xpStart) { cur.xpStart = 1; addXp(10, `Started studying for ${x.short}`); }
+    save(); refresh(); openCert(id, true);
+  });
+  const d = body.querySelector("#certDate"); if (d) d.onchange = () => { (S.certs ||= {})[id] = {...certSt(id), date:d.value}; save(); refresh(); openCert(id, true); };
+  body.querySelector("[data-certset]").onclick = e => { const k = e.currentTarget.dataset.certset; closeSheet(); openSet(k); };
+  body.querySelector("[data-certquiz]").onclick = e => { const k = e.currentTarget.dataset.certquiz; closeSheet(); tab("study"); startSession("quiz", k); };
+  body.querySelector("[data-certguide]")?.addEventListener("click", () => { closeSheet(); tab("study"); openGuide(); });
+  body.querySelector("[data-certexam]")?.addEventListener("click", () => { closeSheet(); tab("study"); startExam({mode:"full"}); });
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-cert]"); if (b) { e.preventDefault(); openCert(b.dataset.cert); } });
+
 /* =========================================================
    Study sessions
    ========================================================= */
@@ -2676,10 +2743,11 @@ function renderStudy(){
   const ids = Object.keys(items).filter(has);
   const leed = ids.filter(id => /^leed-ch\d+$/.test(id)).sort((a, b) => items[a].chapter - items[b].chapter);
   const scoped = ids.filter(id => items[id].scoped);
-  const other = ids.filter(id => !leed.includes(id) && !scoped.includes(id));
+  const other = ids.filter(id => !leed.includes(id) && !scoped.includes(id) && !items[id].cert);
   const row = id => `<button class="item" data-set="${esc(id)}"><span class="ico">${items[id].chapter ? `<span class="cov emo" style="font-weight:800;font-size:16px">${items[id].chapter}</span>` : thumb(items[id], "S")}</span>
     <span style="min-width:0;flex:1"><div class="tt">${esc(items[id].title)}</div><div class="by">${cardsFor(id).filter(isUnlocked).length} terms${S.matchBest?.[id] ? ` · Match best ${S.matchBest[id]}s` : ""}</div></span><span class="chev">›</span></button>`;
-  $("#deckList").innerHTML = (leed.length ? `<div class="small muted" style="font-weight:700;margin:4px 0 2px">📘 LEED study guide, in book order</div>${leed.map(row).join("")}` : "")
+  $("#deckList").innerHTML = (CERTS.length ? `<div class="small muted" style="font-weight:700;margin:4px 0 2px">🎓 Certifications <span style="font-weight:400">· the ones you're studying go into daily review</span></div>${CERTS.map(certRow).join("")}` : "")
+    + (leed.length ? `<div class="small muted" style="font-weight:700;margin:12px 0 2px">📘 LEED study guide, in book order</div>${leed.map(row).join("")}` : "")
     + (other.length ? `<div class="small muted" style="font-weight:700;margin:12px 0 2px">Your decks</div>${other.map(row).join("")}` : "")
     + (scoped.length ? `<div class="small muted" style="font-weight:700;margin:12px 0 2px">🏢 Company packs (only when you open them, not in daily review)</div>${scoped.map(row).join("")}` : "")
     || `<div class="empty">Finish something in the Library to add its deck here.</div>`;

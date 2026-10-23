@@ -1,6 +1,6 @@
-const CACHE = "canopy-v7";
+const CACHE = "canopy-v8";
 const ASSETS = ["./", "./index.html", "./learn.html", "./news.html", "./watch.html", "./manifest.webmanifest", "./resources.json",
-  "./decks-books.json", "./decks-media.json", "./debates.json", "./career.json", "./icons/icon-180.png", "./icons/icon-192.png", "./icons/icon-512.png"];
+  "./decks-books.json", "./decks-media.json", "./debates.json", "./career.json", "./certifications.json", "./icons/icon-180.png", "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));
