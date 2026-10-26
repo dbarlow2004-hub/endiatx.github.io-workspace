@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-25T15:02:57.066060+00:00",
+ "updated": "2026-10-26T17:38:49.235160+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -111,6 +111,13 @@
    "title": "Is Charging to 100% Bad for Your EV?",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
+   "kind": "explainer"
+  },
+  {
+   "id": "2JOWMS3X-nM",
+   "title": "Russia is Building a Nuclear Power Plant Inside NATO",
+   "channel": "The B1M",
+   "handle": "TheB1M",
    "kind": "explainer"
   },
   {
@@ -230,27 +237,6 @@
    "title": "Name That Infrastructure (Ep. 6) #shorts",
    "channel": "Practical Engineering",
    "handle": "PracticalEngineeringChannel",
-   "kind": "explainer"
-  },
-  {
-   "id": "V78XsLBfU_8",
-   "title": "Brazilians have been relentlessly targeted by Big Oil",
-   "channel": "Simon Clark",
-   "handle": "SimonClark",
-   "kind": "explainer"
-  },
-  {
-   "id": "qRjv5zwFvWU",
-   "title": "The aviation industry has another climate solution* #ad",
-   "channel": "Simon Clark",
-   "handle": "SimonClark",
-   "kind": "explainer"
-  },
-  {
-   "id": "Put6b0MIHYg",
-   "title": "Our food system is broken...",
-   "channel": "Simon Clark",
-   "handle": "SimonClark",
    "kind": "explainer"
   },
   {
