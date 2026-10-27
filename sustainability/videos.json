@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T17:38:49.235160+00:00",
+ "updated": "2026-10-27T16:51:35.260899+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -240,6 +240,27 @@
    "kind": "explainer"
   },
   {
+   "id": "V78XsLBfU_8",
+   "title": "Brazilians have been relentlessly targeted by Big Oil",
+   "channel": "Simon Clark",
+   "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "qRjv5zwFvWU",
+   "title": "The aviation industry has another climate solution* #ad",
+   "channel": "Simon Clark",
+   "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "Put6b0MIHYg",
+   "title": "Our food system is broken...",
+   "channel": "Simon Clark",
+   "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
    "id": "tvYG6zVsaRc",
    "title": "Food waste and carbon emissions",
    "channel": "World Resources Institute",
@@ -280,90 +301,6 @@
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
-  },
-  {
-   "id": "dAi0li1ylNM",
-   "title": "How would you describe Arup in one word? | Life at Arup | Early careers",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "DbYl8FrKznk",
-   "title": "Pride at Arup",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "wm6hIQlV39g",
-   "title": "How can we ensure that sustainable urban development meets local needs?",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "deCmLJxUgBs",
-   "title": "Dragon Boat Championship 2024",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "fAu0QIqwSOE",
-   "title": "How does collaboration impact urban development projects?",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "bvGy_rlgidM",
-   "title": "What does a successful, walkable community look like?",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "cOaggqb_nvU",
-   "title": "How can we foster inclusive urban environments through transportation?",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "gaIU0yAqnFQ",
-   "title": "How can we create urban mobility solutions that truly serve everyone?",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "ChxyKlfJqME",
-   "title": "Lunar New Year Celebration Highlights",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "h4pqSyJvI7Q",
-   "title": "Lunar New Year Calligraphy Challenge",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "iKB4vSfiSV0",
-   "title": "How can we deliver climate resilience?",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
-  },
-  {
-   "id": "36Cv0qRxTRM",
-   "title": "Does climate change impact everyone in the same way?",
-   "channel": "Arup",
-   "handle": "ArupGroup",
-   "kind": "company"
   },
   {
    "id": "SiQgCndh2n8",
