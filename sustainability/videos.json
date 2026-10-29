@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28T17:23:36.726623+00:00",
+ "updated": "2026-10-29T17:32:00.490210+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -268,6 +268,20 @@
    "kind": "explainer"
   },
   {
+   "id": "UU02N1hiA3o",
+   "title": "COP31 provides an opportunity to finally harness the ocean’s potential for climate action",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
+   "kind": "explainer"
+  },
+  {
+   "id": "NZEd8lzNXA0",
+   "title": "At COP31 Make Clean Electrification Affordable, Reliable and Accessible",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
+   "kind": "explainer"
+  },
+  {
    "id": "tvYG6zVsaRc",
    "title": "Food waste and carbon emissions",
    "channel": "World Resources Institute",
@@ -291,20 +305,6 @@
   {
    "id": "zZr6e8T_lW0",
    "title": "Extreme heat, air conditioners & the climate crisis",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "AJDXzUbXJ0g",
-   "title": "WRI Explains Carbon Removal",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "JnjUy8YRyPA",
-   "title": "Stories to Watch: Can re-skilling drive a clean, resilient economy?",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
