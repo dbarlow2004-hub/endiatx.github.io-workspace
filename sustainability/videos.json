@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-29T17:32:00.490210+00:00",
+ "updated": "2026-10-30T17:10:41.722719+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "lZZ00dMHooc",
+   "title": "The Brains and Muscle of Modern Solar Grids",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -109,13 +116,6 @@
   {
    "id": "uLOEBYTrtEk",
    "title": "Turning Air into Stored Energy",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "Z7GTCEEjxbw",
-   "title": "Is Charging to 100% Bad for Your EV?",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -471,6 +471,76 @@
    "kind": "company"
   },
   {
+   "id": "-hywX7sjB_I",
+   "title": "How Water Engineers Plan for Safe, Reliable Water",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "pN9_V7usE-A",
+   "title": "Building a More Resilient Future for Louisiana’s Coast",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "IHGbsFRAwOY",
+   "title": "Building a Career in Water Engineering with Community Impact",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "POZcxPUd4R8",
+   "title": "Using Data Science to Build Better Water Systems",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "k1gtFspBje4",
+   "title": "Inside Advanced Metering Infrastructure with Tony Williams",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "mLT3wz7c88c",
+   "title": "Turning Strategy and Technology Into Real-World Impact",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "ATXoPrTF8TY",
+   "title": "How Technology Can Make Water Infrastructure More Resilient",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "-B4u0vmMeVA",
+   "title": "Building the Future of Water in the Chesapeake Bay",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "_HYxCuDyN5c",
+   "title": "Building Water Resilience for the Future",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
+   "id": "E0iMU2rGy2M",
+   "title": "How Collaboration Is Shaping the Future of Water",
+   "channel": "Arcadis",
+   "handle": "arcadisglobal",
+   "kind": "company"
+  },
+  {
    "id": "nkCCUY6iSLg",
    "title": "What Career Growth is Like at Arcadis | Meet Daniela",
    "channel": "Arcadis",
@@ -480,76 +550,6 @@
   {
    "id": "oJ1mUhKSWSU",
    "title": "Why I Love Working at Arcadis | Meet Bashar",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "571xLId-zl8",
-   "title": "Why I Love Working at Arcadis | Meet Kamran",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "Oqc3kJDoajI",
-   "title": "What Career Growth is Like at Arcadis | Meet Donna",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "Nxp6MDtqdu8",
-   "title": "Day in the life of an Assistant Project Manager at Arcadis UK",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "rqUoigGjZas",
-   "title": "Why I Love Working at Arcadis | Pascal, Advisor",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "1uNhgykheR4",
-   "title": "Why I Love Working at Arcadis | Marie, Team Lead",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "gnDZCn8CfLU",
-   "title": "Why I'm Proud to Work at Arcadis | Shayan, Project Engineer",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "VYB-nF5zPJI",
-   "title": "Why I Love Working at Arcadis | Donna, Sales Enablement Director",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "E5F67Ur0Qk8",
-   "title": "Day in the Life of an Environmental Engineer at Arcadis",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "P5ZDw3Q8hEw",
-   "title": "Inside Chemung County’s $275M Wastewater Modernization Project",
-   "channel": "Arcadis",
-   "handle": "arcadisglobal",
-   "kind": "company"
-  },
-  {
-   "id": "EHF5d4kr_JE",
-   "title": "Why I Love Working at Arcadis | Pascal, Advisor",
    "channel": "Arcadis",
    "handle": "arcadisglobal",
    "kind": "company"
