@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T17:14:48.334716+00:00",
+ "updated": "2026-11-02T20:52:36.026714+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -265,6 +265,13 @@
    "title": "Our food system is broken...",
    "channel": "Simon Clark",
    "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "RyDG2pub8hU",
+   "title": "Local Leadership and Cities Drive Climate Action",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
    "kind": "explainer"
   },
   {
