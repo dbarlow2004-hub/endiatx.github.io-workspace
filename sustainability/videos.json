@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-02T20:52:36.026714+00:00",
+ "updated": "2026-11-03T18:40:24.438242+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "KFt4EmAfZ7A",
+   "title": "The Insane Job of Wind Turbine Technicians",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -109,13 +116,6 @@
   {
    "id": "dfl7Ji0y_ww",
    "title": "Google Is Backing a Battery That Stores Energy for 100 HOURS!",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "uLOEBYTrtEk",
-   "title": "Turning Air into Stored Energy",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -265,6 +265,13 @@
    "title": "Our food system is broken...",
    "channel": "Simon Clark",
    "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "XtFj9Ww18Go",
+   "title": "Why we must prioritize climate resilience now #COP31",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
    "kind": "explainer"
   },
   {
