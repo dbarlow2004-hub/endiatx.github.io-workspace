@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T18:52:12.807479+00:00",
+ "updated": "2026-11-05T18:58:00.923153+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -268,6 +268,13 @@
    "kind": "explainer"
   },
   {
+   "id": "Klr2OeoXukU",
+   "title": "Why local action determines our climate future #COP31 #ClimateAction",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
+   "kind": "explainer"
+  },
+  {
    "id": "XtFj9Ww18Go",
    "title": "Why we must prioritize climate resilience now #COP31",
    "channel": "World Resources Institute",
@@ -312,13 +319,6 @@
   {
    "id": "ZJouzn-aMxI",
    "title": "How #ocean Solutions Support Economies, Jobs, #climate and #nature",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "zZr6e8T_lW0",
-   "title": "Extreme heat, air conditioners & the climate crisis",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
