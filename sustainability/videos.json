@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T18:58:00.923153+00:00",
+ "updated": "2026-11-06T18:27:30.473469+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -268,6 +268,13 @@
    "kind": "explainer"
   },
   {
+   "id": "bP56J2pWE8M",
+   "title": "Why Adaptation Cannot Be Separated from Cities in Africa #cop31",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
+   "kind": "explainer"
+  },
+  {
    "id": "Klr2OeoXukU",
    "title": "Why local action determines our climate future #COP31 #ClimateAction",
    "channel": "World Resources Institute",
@@ -312,13 +319,6 @@
   {
    "id": "aoan4-JcKME",
    "title": "With ‘Agrivoltaics,’ Farmers Can Grow Both Food and Energy",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "ZJouzn-aMxI",
-   "title": "How #ocean Solutions Support Economies, Jobs, #climate and #nature",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
