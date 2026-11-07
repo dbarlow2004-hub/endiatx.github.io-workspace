@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T18:27:30.473469+00:00",
+ "updated": "2026-11-07T16:59:08.951968+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -109,13 +109,6 @@
   {
    "id": "J4g9B4LLkN8",
    "title": "Watch This Before Buying a Used EV",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "dfl7Ji0y_ww",
-   "title": "Google Is Backing a Battery That Stores Energy for 100 HOURS!",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -265,62 +258,6 @@
    "title": "Our food system is broken...",
    "channel": "Simon Clark",
    "handle": "SimonClark",
-   "kind": "explainer"
-  },
-  {
-   "id": "bP56J2pWE8M",
-   "title": "Why Adaptation Cannot Be Separated from Cities in Africa #cop31",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "Klr2OeoXukU",
-   "title": "Why local action determines our climate future #COP31 #ClimateAction",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "XtFj9Ww18Go",
-   "title": "Why we must prioritize climate resilience now #COP31",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "RyDG2pub8hU",
-   "title": "Local Leadership and Cities Drive Climate Action",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "UU02N1hiA3o",
-   "title": "COP31 provides an opportunity to finally harness the ocean’s potential for climate action",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "NZEd8lzNXA0",
-   "title": "At COP31 Make Clean Electrification Affordable, Reliable and Accessible",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "tvYG6zVsaRc",
-   "title": "Food waste and carbon emissions",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "aoan4-JcKME",
-   "title": "With ‘Agrivoltaics,’ Farmers Can Grow Both Food and Energy",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
    "kind": "explainer"
   },
   {
