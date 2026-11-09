@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T17:14:27.447323+00:00",
+ "updated": "2026-11-09T21:38:06.497293+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "kgV1IXcMZLk",
+   "title": "Australia Just Installed Its 100th Community Battery!",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -107,13 +114,6 @@
    "kind": "explainer"
   },
   {
-   "id": "J4g9B4LLkN8",
-   "title": "Watch This Before Buying a Used EV",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
    "id": "SvUoYK_f2Ek",
    "title": "Why LONDON's Construction Projects Are So COMPLEX",
    "channel": "The B1M",
@@ -151,13 +151,6 @@
   {
    "id": "SX6IrZhah_E",
    "title": "Las Vegas is Building a $4BN GUITAR-SHAPED Skyscraper",
-   "channel": "The B1M",
-   "handle": "TheB1M",
-   "kind": "explainer"
-  },
-  {
-   "id": "I9yo9cbbGwo",
-   "title": "The World's MOST FAMOUS Construction Site",
    "channel": "The B1M",
    "handle": "TheB1M",
    "kind": "explainer"
@@ -305,13 +298,6 @@
   {
    "id": "tvYG6zVsaRc",
    "title": "Food waste and carbon emissions",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "aoan4-JcKME",
-   "title": "With ‘Agrivoltaics,’ Farmers Can Grow Both Food and Energy",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
