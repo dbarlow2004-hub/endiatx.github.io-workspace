@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T18:49:53.718321+00:00",
+ "updated": "2026-11-11T18:52:34.212227+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "TVMCgU3mNMw",
+   "title": "A World First for Offshore Green Hydrogen!",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -107,10 +114,10 @@
    "kind": "explainer"
   },
   {
-   "id": "GqAO_gKBcCs",
-   "title": "The Truth About Giant Wind Turbines",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
+   "id": "D4QNDBfNwGM",
+   "title": "The UAE's New Passenger Railway",
+   "channel": "The B1M",
+   "handle": "TheB1M",
    "kind": "explainer"
   },
   {
@@ -144,13 +151,6 @@
   {
    "id": "fx7tbZcp2fg",
    "title": "Our NEW Channel — Welcome to THE BUILD",
-   "channel": "The B1M",
-   "handle": "TheB1M",
-   "kind": "explainer"
-  },
-  {
-   "id": "SX6IrZhah_E",
-   "title": "Las Vegas is Building a $4BN GUITAR-SHAPED Skyscraper",
    "channel": "The B1M",
    "handle": "TheB1M",
    "kind": "explainer"
@@ -233,6 +233,13 @@
    "kind": "explainer"
   },
   {
+   "id": "Rlu5fyx1aMc",
+   "title": "Big Oil is up to no good... and using AI",
+   "channel": "Simon Clark",
+   "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
    "id": "V78XsLBfU_8",
    "title": "Brazilians have been relentlessly targeted by Big Oil",
    "channel": "Simon Clark",
@@ -244,6 +251,27 @@
    "title": "The aviation industry has another climate solution* #ad",
    "channel": "Simon Clark",
    "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "FrwEIcVPB2A",
+   "title": "The CHAMP initiative: What you need to know #cop31 #climatepolicy #shorts",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
+   "kind": "explainer"
+  },
+  {
+   "id": "slHHlDO7UIk",
+   "title": "A Really TAFFtastic COP: Transition Away From Fossil Fuels  #cop31",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
+   "kind": "explainer"
+  },
+  {
+   "id": "LVilBzB9fqs",
+   "title": "COP31: Everything You Need To Know About Electrification #cop31 #climate #update",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
    "kind": "explainer"
   },
   {
@@ -284,13 +312,6 @@
   {
    "id": "NZEd8lzNXA0",
    "title": "At COP31 Make Clean Electrification Affordable, Reliable and Accessible",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "tvYG6zVsaRc",
-   "title": "Food waste and carbon emissions",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
