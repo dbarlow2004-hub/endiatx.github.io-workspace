@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T18:52:34.212227+00:00",
+ "updated": "2026-11-12T19:07:45.392793+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "ih4jtlqxe8g",
+   "title": "This Wind Farm Has a Clever Battery Storage Solution",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -102,13 +109,6 @@
   {
    "id": "RgQdD_zDuqg",
    "title": "How Australia Learned to Fix Weak Grids",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "h9H2dPeNXWM",
-   "title": "Why So Many Taxis in China Have Green Number Plates",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -254,6 +254,13 @@
    "kind": "explainer"
   },
   {
+   "id": "kZkEhFJIRbA",
+   "title": "The transition to a low-carbon, resilient economy could generate a net 375 million new jobs  #cop31",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
+   "kind": "explainer"
+  },
+  {
    "id": "FrwEIcVPB2A",
    "title": "The CHAMP initiative: What you need to know #cop31 #climatepolicy #shorts",
    "channel": "World Resources Institute",
@@ -305,13 +312,6 @@
   {
    "id": "UU02N1hiA3o",
    "title": "COP31 provides an opportunity to finally harness the ocean’s potential for climate action",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "NZEd8lzNXA0",
-   "title": "At COP31 Make Clean Electrification Affordable, Reliable and Accessible",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
