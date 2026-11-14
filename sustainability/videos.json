@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13T18:45:47.815961+00:00",
+ "updated": "2026-11-14T17:18:32.649563+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -244,6 +244,13 @@
    "title": "Brazilians have been relentlessly targeted by Big Oil",
    "channel": "Simon Clark",
    "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "KMqpX72-IvI",
+   "title": "Why AI needs a climate strategy #Environment #AI #Future",
+   "channel": "World Resources Institute",
+   "handle": "WorldResourcesInstitute",
    "kind": "explainer"
   },
   {
