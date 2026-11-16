@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15T17:58:49.986204+00:00",
+ "updated": "2026-11-16T21:14:04.319592+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "VwEYrAQa9Rw",
+   "title": "Australia’s Diesel Crisis: Are Electric Trucks the Answer?",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -102,13 +109,6 @@
   {
    "id": "nBQU-O9wQWQ",
    "title": "Air vs Batteries - Which is Better?",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "RgQdD_zDuqg",
-   "title": "How Australia Learned to Fix Weak Grids",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -305,13 +305,6 @@
   {
    "id": "bP56J2pWE8M",
    "title": "Why Adaptation Cannot Be Separated from Cities in Africa #cop31",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "Klr2OeoXukU",
-   "title": "Why local action determines our climate future #COP31 #ClimateAction",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
