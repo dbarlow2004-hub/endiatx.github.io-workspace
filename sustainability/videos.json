@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T21:14:04.319592+00:00",
+ "updated": "2026-11-17T20:00:11.297882+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "gSb83x4Y6-Y",
+   "title": "The World's Largest Electric Plane Just Took Flight!",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -102,13 +109,6 @@
   {
    "id": "ZhnBlf9UsNo",
    "title": "Do Carbon Offsets Actually Work?",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "nBQU-O9wQWQ",
-   "title": "Air vs Batteries - Which is Better?",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -298,13 +298,6 @@
   {
    "id": "LVilBzB9fqs",
    "title": "COP31: Everything You Need To Know About Electrification #cop31 #climate #update",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "bP56J2pWE8M",
-   "title": "Why Adaptation Cannot Be Separated from Cities in Africa #cop31",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
