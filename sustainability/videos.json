@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-17T20:00:11.297882+00:00",
+ "updated": "2026-11-18T19:35:08.675597+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "YlJjUuXqK70",
+   "title": "What If Your Windows Could Generate Electricity?",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -107,10 +114,10 @@
    "kind": "explainer"
   },
   {
-   "id": "ZhnBlf9UsNo",
-   "title": "Do Carbon Offsets Actually Work?",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
+   "id": "ZIWzcZP1CFw",
+   "title": "Can LA Fix It's $1.8BN GRAFFITI Towers?",
+   "channel": "The B1M",
+   "handle": "TheB1M",
    "kind": "explainer"
   },
   {
@@ -144,13 +151,6 @@
   {
    "id": "wqc-ofJc-YI",
    "title": "How YOU Can Help Improve MENTAL HEALTH in Construction",
-   "channel": "The B1M",
-   "handle": "TheB1M",
-   "kind": "explainer"
-  },
-  {
-   "id": "fx7tbZcp2fg",
-   "title": "Our NEW Channel — Welcome to THE BUILD",
    "channel": "The B1M",
    "handle": "TheB1M",
    "kind": "explainer"
@@ -230,20 +230,6 @@
    "title": "Name That Infrastructure (Ep. 6) #shorts",
    "channel": "Practical Engineering",
    "handle": "PracticalEngineeringChannel",
-   "kind": "explainer"
-  },
-  {
-   "id": "Rlu5fyx1aMc",
-   "title": "Big Oil is up to no good... and using AI",
-   "channel": "Simon Clark",
-   "handle": "SimonClark",
-   "kind": "explainer"
-  },
-  {
-   "id": "V78XsLBfU_8",
-   "title": "Brazilians have been relentlessly targeted by Big Oil",
-   "channel": "Simon Clark",
-   "handle": "SimonClark",
    "kind": "explainer"
   },
   {
