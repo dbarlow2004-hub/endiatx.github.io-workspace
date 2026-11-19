@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-18T19:35:08.675597+00:00",
+ "updated": "2026-11-19T19:37:32.368054+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "6QLI4EkJNFE",
+   "title": "Could Robots Make Solar Power Cheaper?",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -102,13 +109,6 @@
   {
    "id": "JKKCzJ-NxYc",
    "title": "What Fukushima Really Taught Us About Nuclear Safety",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "J1zdE-LwwaU",
-   "title": "Hot vs Cold: Which Is Worse for Your EV?",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
@@ -233,6 +233,20 @@
    "kind": "explainer"
   },
   {
+   "id": "Rlu5fyx1aMc",
+   "title": "Big Oil is up to no good... and using AI",
+   "channel": "Simon Clark",
+   "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
+   "id": "V78XsLBfU_8",
+   "title": "Brazilians have been relentlessly targeted by Big Oil",
+   "channel": "Simon Clark",
+   "handle": "SimonClark",
+   "kind": "explainer"
+  },
+  {
    "id": "KMqpX72-IvI",
    "title": "Why AI needs a climate strategy #Environment #AI #Future",
    "channel": "World Resources Institute",
@@ -270,20 +284,6 @@
   {
    "id": "FrwEIcVPB2A",
    "title": "The CHAMP initiative: What you need to know #cop31 #climatepolicy #shorts",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "slHHlDO7UIk",
-   "title": "A Really TAFFtastic COP: Transition Away From Fossil Fuels  #cop31",
-   "channel": "World Resources Institute",
-   "handle": "WorldResourcesInstitute",
-   "kind": "explainer"
-  },
-  {
-   "id": "LVilBzB9fqs",
-   "title": "COP31: Everything You Need To Know About Electrification #cop31 #climate #update",
    "channel": "World Resources Institute",
    "handle": "WorldResourcesInstitute",
    "kind": "explainer"
