@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T21:30:30.786473+00:00",
+ "updated": "2026-11-25T20:38:47.680576+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "seM8Kcs08CM",
+   "title": "The Butterfly Trick That Could Change Solar Panels",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -107,13 +114,6 @@
    "kind": "explainer"
   },
   {
-   "id": "2UCwI9miNFU",
-   "title": "How Cows are Driving Climate Change",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
    "id": "ZIWzcZP1CFw",
    "title": "Can LA Fix It's $1.8BN GRAFFITI Towers?",
    "channel": "The B1M",
@@ -144,13 +144,6 @@
   {
    "id": "5Ct2nE3o8qQ",
    "title": "The World's OLDEST Construction Project",
-   "channel": "The B1M",
-   "handle": "TheB1M",
-   "kind": "explainer"
-  },
-  {
-   "id": "wqc-ofJc-YI",
-   "title": "How YOU Can Help Improve MENTAL HEALTH in Construction",
    "channel": "The B1M",
    "handle": "TheB1M",
    "kind": "explainer"
