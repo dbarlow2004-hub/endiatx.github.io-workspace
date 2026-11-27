@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T20:31:43.756683+00:00",
+ "updated": "2026-11-27T20:18:43.351504+00:00",
  "videos": [
   {
    "id": "KrmXrao8zdE",
@@ -34,6 +34,13 @@
    "title": "Gas Ads Have Changed, Man",
    "channel": "Climate Town",
    "handle": "ClimateTown",
+   "kind": "explainer"
+  },
+  {
+   "id": "z7LQQ344CYk",
+   "title": "How Japan's Hot Springs Can Generate Electricity",
+   "channel": "Engineering with Rosie",
+   "handle": "EngineeringwithRosie",
    "kind": "explainer"
   },
   {
@@ -102,13 +109,6 @@
   {
    "id": "KFt4EmAfZ7A",
    "title": "The Insane Job of Wind Turbine Technicians",
-   "channel": "Engineering with Rosie",
-   "handle": "EngineeringwithRosie",
-   "kind": "explainer"
-  },
-  {
-   "id": "lZZ00dMHooc",
-   "title": "The Brains and Muscle of Modern Solar Grids",
    "channel": "Engineering with Rosie",
    "handle": "EngineeringwithRosie",
    "kind": "explainer"
